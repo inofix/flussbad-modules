@@ -25,6 +25,7 @@ $color-turquois: #a5edf0;
     
     body {
         font-family: 'Source Sans Pro', sans-serif;
+        background: url("/documents/23321/23608/Idee.png"); 
     }
     
     #wrapper {
