@@ -8,6 +8,8 @@
 @import "compass";
 
 @import "mixins";
+
+$color-turquois: #a5edf0;
  
 .aui {
 
@@ -21,13 +23,52 @@
         text-decoration: none;
     }
     
+    body {
+        font-family: 'Source Sans Pro', sans-serif;
+    }
+    
+    .dockbar-user-notifications .dropdown-toggle .user-notifications-count {
+        display: inline;
+        padding: 2px 4px 2px;
+        background-color: #FCF8E3; /* bootstrap alert */
+        color: #C09853; /* bootstrap alert */
+        border: 1px solid #FBEED5; /* bootstrap alert */
+    }
+    
     #navigation {
      
         text-transform: uppercase;
         
+        .nav-collapse {
+            @media (min-width: 980px) {
+                float: right;
+            }
+        }    
+        
+        .navbar-inner {
+        
+            background-color: $color-turquois;
+            background-image: none;
+            
+            .dropdown-menu {
+                margin-top: -5px;
+            }
+            
+            @media (max-width: 767px) {
+                padding-right: 0;
+            }
+            
+        }
+        
      }
      
-    .navbar { 
+    .navbar {
+    
+        .brand { 
+            padding:18px 40px 18px 20px;
+            font-weight: 600;
+            font-size: 24px;
+        } 
         
         .nav { 
         
