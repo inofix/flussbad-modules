@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-08-31 15:40 by Christian Berndt
- * Version:     0.0.1
+ * Modified:    2015-08-31 22:35 by Christian Berndt
+ * Version:     0.0.2
  */
 @import "compass";
 
@@ -25,6 +25,10 @@ $color-turquois: #a5edf0;
     
     body {
         font-family: 'Source Sans Pro', sans-serif;
+    }
+    
+    #wrapper {
+        padding: 0;
     }
     
     .dockbar-user-notifications .dropdown-toggle .user-notifications-count {
@@ -50,13 +54,11 @@ $color-turquois: #a5edf0;
             background-color: $color-turquois;
             background-image: none;
             
-            .dropdown-menu {
-                margin-top: -5px;
-            }
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none; 
+            box-shadow: none;
             
-            @media (max-width: 767px) {
-                padding-right: 0;
-            }
+            border: none;
             
         }
         
