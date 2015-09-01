@@ -2,14 +2,16 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-01 23:01 by Christian Berndt
- * Version:     0.0.6
+ * Modified:    2015-09-02 00:06 by Christian Berndt
+ * Version:     0.0.7
  */
 @import "compass";
 
 @import "mixins";
 
+$button-font: 20px;
 $color-turquois: #a5edf0;
+$max-width: 744px;
 $nav-big-font: 16px; 
 $semi-bold: 600; 
  
@@ -19,6 +21,10 @@ $semi-bold: 600;
     
     h1,h2,h3,h4,h5,h6 {
         font-weight:$semi-bold;
+    }
+    
+    h2 {
+        font-size: 28.5px;
     }
 
     a:hover, a:focus {
@@ -124,7 +130,8 @@ $semi-bold: 600;
         text-align: center;   
         
         h1 {
-            margin: 80px 0 60px;
+            margin: 80px auto 20px;
+            max-width: $max-width; 
             
             a {
                 color: white; 
@@ -144,12 +151,32 @@ $semi-bold: 600;
         
         .abstract {
             text-align: center;
+            padding: 40px;
         }
         
         .link {
-            padding: 80px 0 100px; 
+            padding: 40px 0 100px;
+            
+            .btn {
+                color: gray;
+                background: white;
+                padding: 15px 25px;
+                border: none; 
+                font-size: $button-font; 
+                text-transform: uppercase;
+            } 
         }
 
+    }
+    
+    .carousel {
+    
+        margin-bottom: 0; 
+    
+        .carousel-inner  {
+            background: lightgray;
+            min-height: 720px;
+        }
     }
     
     .opener {
@@ -165,8 +192,33 @@ $semi-bold: 600;
             transform: translateY(-50%);        
         }
         
-        h1 a {
-            color: white; 
+        h2 {
+            max-width: $max-width; 
+            margin: auto;
+            text-transform: uppercase;
+            color: white;
+        }
+        
+        h1 {
+            max-width: $max-width; 
+            margin: auto; 
+            a {
+                color: white; 
+            }
+        }
+    }
+    
+    .story {
+    
+        .content {
+            max-width: $max-width;
+            margin: 60px auto 130px; 
+        }
+        
+        .section p {
+            -webkit-column-count: 2; /* Chrome, Safari, Opera */
+            -moz-column-count: 2; /* Firefox */
+            column-count: 2;
         }
     }
     
