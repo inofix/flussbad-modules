@@ -3,7 +3,7 @@
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
  * Modified:    2015-09-02 00:15 by Christian Berndt
- * Version:     0.0.8
+ * Version:     0.0.9
  */
 @import "compass";
 
@@ -41,6 +41,10 @@ $semi-bold: 600;
     
     #wrapper {
         padding: 0;
+    }
+    
+    #content {
+        font-size: 16px;
     }
     
     .dockbar-user-notifications .dropdown-toggle .user-notifications-count {
