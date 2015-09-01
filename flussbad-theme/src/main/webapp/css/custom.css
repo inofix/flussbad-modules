@@ -3,7 +3,7 @@
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
  * Modified:    2015-09-02 00:15 by Christian Berndt
- * Version:     0.0.9
+ * Version:     0.1.0
  */
 @import "compass";
 
@@ -226,10 +226,61 @@ $semi-bold: 600;
         }
     }
 
+/* Portlets */
+
+    .portlet-body .taglib-asset-categories-navigation {
+    
+        background: #ebeae2; 
+        
+        .tree-view {
+            overflow: hidden;
+        }
+    
+        .accordion-group,
+        .accordion-inner {
+            border: none; 
+            padding: 0; 
+            min-height: 120px;
+        }
+        
+        .accordion-heading {
+            display: none; 
+        }
+        
+        ul {
+            margin-top: 10px;
+            margin-left: 390px;
+        }
+        
+        li {
+            float: left;
+            line-height: 50px;
+        }
+        
+        .tree-view {
+            min-height: 120px;
+        }
+        
+        .tree-node-leaf {
+            margin: 0; 
+        }
+        
+        a {
+            color: gray;
+            padding: 10px 15px;
+            border: 1px solid gray; 
+            font-size: $nav-big-font; 
+            text-transform: uppercase;
+        }
+    }
+    
+    
+
     
 /* Liferay UI */
     
-    .lfr-meta-actions, 
+    .lfr-meta-actions,
+    .portlet-body .taglib-asset-categories-navigation .accordion-group, 
     .portlet-dynamic-data-mapping,
     .portlet-journal
     {
@@ -239,6 +290,7 @@ $semi-bold: 600;
     
     @media (min-width: 1200px) {
         .lfr-meta-actions,
+        .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
         .portlet-journal
         {
@@ -248,6 +300,7 @@ $semi-bold: 600;
     
     @media (max-width: 979px) and (min-width: 768px) {
         .lfr-meta-actions,
+        .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
         .portlet-journal
         {
