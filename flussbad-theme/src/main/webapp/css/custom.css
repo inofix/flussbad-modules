@@ -2,21 +2,23 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-08-31 22:35 by Christian Berndt
- * Version:     0.0.2
+ * Modified:    2015-09-01 14:37 by Christian Berndt
+ * Version:     0.0.3
  */
 @import "compass";
 
 @import "mixins";
 
 $color-turquois: #a5edf0;
+$nav-big-font: 16px; 
+$semi-bold: 600; 
  
 .aui {
 
     font-family: 'Source Sans Pro', sans-serif;
     
     h1,h2,h3,h4,h5,h6 {
-        font-weight:600;
+        font-weight:$semi-bold;
     }
 
     a:hover, a:focus {
@@ -26,6 +28,9 @@ $color-turquois: #a5edf0;
     body {
         font-family: 'Source Sans Pro', sans-serif;
         background: url("/documents/23321/23608/Idee.png"); 
+/*         background: url("/documents/23321/23608/Logbuch.png");  */
+/*         background: url("/documents/23321/23608/Projekt.png");  */
+/*         background: url("/documents/23321/23608/Story.png");  */
     }
     
     #wrapper {
@@ -43,6 +48,9 @@ $color-turquois: #a5edf0;
     #navigation {
      
         text-transform: uppercase;
+        font-size: $nav-big-font;
+        
+        opacity: 0.75;
         
         .nav-collapse {
             @media (min-width: 980px) {
@@ -66,11 +74,10 @@ $color-turquois: #a5edf0;
      }
      
     .navbar {
-    
+        
         .brand { 
             padding:18px 40px 18px 20px;
-            font-weight: 600;
-            font-size: 24px;
+            font-weight: $semi-bold;
         } 
         
         .nav { 
