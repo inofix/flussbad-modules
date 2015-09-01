@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-01 14:37 by Christian Berndt
- * Version:     0.0.3
+ * Modified:    2015-09-01 19:09 by Christian Berndt
+ * Version:     0.0.4
  */
 @import "compass";
 
@@ -110,6 +110,27 @@ $semi-bold: 600;
             height: 60px;
         }
 
+    }
+    
+    
+    /* Web Content Templates */
+    
+    /* Liferay UI */
+    .lfr-meta-actions {
+        margin: auto;
+        width: 940px; /* bootstrap .container */
+    }
+    
+    @media (min-width: 1200px) {
+        .lfr-meta-actions {
+            width: 1170px; /* bootstrap .container */
+        }
+    }
+    
+    @media (max-width: 979px) and (min-width: 768px) {
+        .lfr-meta-actions {
+            width: 724px; /* bootstrap .container */
+        }
     }
     
 }
