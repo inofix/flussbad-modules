@@ -18,11 +18,11 @@
 
     <properties>
 
-        <liferay.base.dir>
-            /home/berndt/Applications/liferay-portal-6.2-ce-ga4
-        </liferay.base.dir>
 
-        <liferay.app.server.deploy.dir>
+         <liferay.base.dir> 
+        /home/sim/liferay-portal-6.2-ce-ga4    
+         </liferay.base.dir> 
+         <liferay.app.server.deploy.dir>
             ${liferay.base.dir}/tomcat-7.0.42/webapps
         </liferay.app.server.deploy.dir>
 
