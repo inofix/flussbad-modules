@@ -1,0 +1,108 @@
+/**
+ * custom.css: Main CSS of the Flussbad theme.
+ * 
+ * Created:     2015-08-31 15:40 by Christian Berndt
+ * Modified:    2015-08-31 22:35 by Christian Berndt
+ * Version:     0.0.2
+ */
+@import "compass";
+
+@import "mixins";
+
+$color-turquois: #a5edf0;
+ 
+.aui {
+
+    font-family: 'Source Sans Pro', sans-serif;
+    
+    h1,h2,h3,h4,h5,h6 {
+        font-weight:600;
+    }
+
+    a:hover, a:focus {
+        text-decoration: none;
+    }
+    
+    body {
+        font-family: 'Source Sans Pro', sans-serif;
+        background: url("/documents/23321/23608/Idee.png"); 
+    }
+    
+    #wrapper {
+        padding: 0;
+    }
+    
+    .dockbar-user-notifications .dropdown-toggle .user-notifications-count {
+        display: inline;
+        padding: 2px 4px 2px;
+        background-color: #FCF8E3; /* bootstrap alert */
+        color: #C09853; /* bootstrap alert */
+        border: 1px solid #FBEED5; /* bootstrap alert */
+    }
+    
+    #navigation {
+     
+        text-transform: uppercase;
+        
+        .nav-collapse {
+            @media (min-width: 980px) {
+                float: right;
+            }
+        }    
+        
+        .navbar-inner {
+        
+            background-color: $color-turquois;
+            background-image: none;
+            
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none; 
+            box-shadow: none;
+            
+            border: none;
+            
+        }
+        
+     }
+     
+    .navbar {
+    
+        .brand { 
+            padding:18px 40px 18px 20px;
+            font-weight: 600;
+            font-size: 24px;
+        } 
+        
+        .nav { 
+        
+            > .active a, 
+            > .active a:focus, 
+            > .active a:hover {
+                background-color : #F3F3F3;
+                box-shadow: none;
+                -moz-box-shadow: none;
+                -webkit-box-shadow: none;
+            }
+
+            > li > a {
+                padding: 20px 20px;
+                text-transform: uppercase;
+            }
+
+        }
+        
+        .btn-navbar {
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            text-shadow: none;
+            color: #555;
+        }
+        
+        .divider-vertical {
+            height: 60px;
+        }
+
+    }
+    
+}

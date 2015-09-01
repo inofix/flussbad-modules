@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE look-and-feel PUBLIC "-//Liferay//DTD Look and Feel 6.2.0//EN" 
+    "http://www.liferay.com/dtd/liferay-look-and-feel_6_2_0.dtd">
+<!-- 
+    liferay-look-and-feel.xml:  Look and feel configuration of the 
+    Flussbad theme.
+    
+    Created:    2015-08-31 16:04 by Christian Berndt
+    Modified:   2015-08-31 16:04 by Christian Berndt
+    Version:    1.0.0  
+ -->
+<look-and-feel>
+    <compatibility>
+        <version>6.2.3+</version>
+    </compatibility>
+    <theme id="flussbad" name="flussbad-theme" >
+        <settings>
+            <setting key="brand" configurable="true" type="text"
+                value="Your Brand" />
+            <setting key="default-font" configurable="true"
+                type="text" value="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" />
+            <setting key="portlet-setup-show-borders-default"
+                value="false" />
+        </settings>
+    </theme>
+</look-and-feel>
