@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-02 00:15 by Christian Berndt
- * Version:     0.1.0
+ * Modified:    2015-09-02 16:57 by Christian Berndt
+ * Version:     0.1.1
  */
 @import "compass";
 
@@ -29,6 +29,10 @@ $semi-bold: 600;
 
     a:hover, a:focus {
         text-decoration: none;
+    }
+    
+    form {
+        margin: 0; 
     }
     
     body {
@@ -182,7 +186,7 @@ $semi-bold: 600;
             min-height: 720px;
         }
     }
-    
+
     .opener {
     
         text-align: center; 
@@ -274,11 +278,26 @@ $semi-bold: 600;
         }
     }
     
+/* Footer */
+
+
+    #footer {
+    
+        background: #ebebeb;
+        padding-bottom: 20px;
+        
+        ul {
+            list-style: none; 
+            margin: 0; 
+            padding: 0; 
+        }
+    }  
     
 
     
 /* Liferay UI */
     
+    .alert,
     .lfr-meta-actions,
     .portlet-body .taglib-asset-categories-navigation .accordion-group, 
     .portlet-dynamic-data-mapping,
@@ -289,6 +308,7 @@ $semi-bold: 600;
     }
     
     @media (min-width: 1200px) {
+        .alert,
         .lfr-meta-actions,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
@@ -299,6 +319,7 @@ $semi-bold: 600;
     }
     
     @media (max-width: 979px) and (min-width: 768px) {
+        .alert,
         .lfr-meta-actions,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
@@ -306,6 +327,10 @@ $semi-bold: 600;
         {
             width: 724px; /* bootstrap .container */
         }
+    }
+    
+    .alert {
+        margin-top: 1em;
     }
    
     .lfr-meta-actions {
