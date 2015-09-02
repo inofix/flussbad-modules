@@ -107,6 +107,12 @@ $semi-bold: 600;
                 padding: 20px 20px;
                 text-transform: uppercase;
             }
+            
+
+             > li > a:focus,> li > a:hover{
+             	color:#333;
+             }
+             
 
         }
         
