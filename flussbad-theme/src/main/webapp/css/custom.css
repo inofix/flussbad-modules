@@ -112,7 +112,10 @@ $semi-bold: 600;
              > li > a:focus,> li > a:hover{
              	color:#333;
              }
-             
+             > .active a,  > .active a:focus, > .active a:hover{
+             	background-color:#A5EDF0;
+             	font-weight: $semi-bold;
+             } 
 
         }
         
