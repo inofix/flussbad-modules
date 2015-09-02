@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-02 23:46 by Christian Berndt
- * Version:     0.1.5
+ * Modified:    2015-09-03 00:58 by Christian Berndt
+ * Version:     0.1.6
  */
 @import "compass";
 
@@ -303,9 +303,22 @@ $semi-bold: 600;
         }
         
         .two-cols {
+        
             -webkit-column-count: 2; /* Chrome, Safari, Opera */
             -moz-column-count: 2; /* Firefox */
             column-count: 2;
+            
+            -webkit-column-gap: 20px; /* Chrome, Safari, Opera */
+            -moz-column-gap: 20px; /* Firefox */
+            column-gap: 20px;
+            
+            img {
+                margin: 10px 0; 
+            }
+        }
+        
+        img {
+            margin: 20px 0; 
         }
     }
 
