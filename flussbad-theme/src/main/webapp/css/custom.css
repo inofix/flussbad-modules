@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-02 16:57 by Christian Berndt
- * Version:     0.1.1
+ * Modified:    2015-09-02 17:04 by Christian Berndt
+ * Version:     0.1.2
  */
 @import "compass";
 
@@ -184,6 +184,31 @@ $semi-bold: 600;
         .carousel-inner  {
             background: lightgray;
             min-height: 720px;
+        }
+    }   
+
+    .logos {
+    
+        $logos-height: 120px;
+    
+        background: #ebebeb;
+        height: $logos-height;
+        border-top: 5px solid white;
+        
+        .logos-inner {
+        
+            text-align: center;
+            line-height: $logos-height; /* center the div's content vertically */
+            
+            a {
+                margin: 0 30px;
+            }
+            
+            img {
+                width: 180px;
+                vertical-align: middle;
+            }            
+            
         }
     }
 
