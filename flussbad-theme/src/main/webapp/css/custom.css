@@ -66,7 +66,7 @@ $semi-bold: 600;
         text-transform: uppercase;
         font-size: $nav-big-font;
         
-        opacity: 0.75;
+/*         opacity: 0.75; */
         
         .nav-collapse {
             @media (min-width: 980px) {
@@ -94,6 +94,7 @@ $semi-bold: 600;
         .brand { 
             padding:18px 40px 18px 20px;
             font-weight: $semi-bold;
+            text-shadow: none; 
         } 
         
         .nav { 
@@ -101,7 +102,7 @@ $semi-bold: 600;
             > .active a, 
             > .active a:focus, 
             > .active a:hover {
-                background-color : #F3F3F3;
+                background-color : transparent;
                 box-shadow: none;
                 -moz-box-shadow: none;
                 -webkit-box-shadow: none;
@@ -110,6 +111,11 @@ $semi-bold: 600;
             > li > a {
                 padding: 20px 20px;
                 text-transform: uppercase;
+                text-shadow: none; 
+            }
+            
+            li.selected a {
+                font-weight: $semi-bold;
             }
 
         }
