@@ -3,8 +3,8 @@
     pom.xml: Parent pom to Flssbad's Liferay Modules
     
     Created:    2015-08-31 13:48 by Christian Berndt
-    Modified:   2015-08-31 13:48 by Christian Berndt
-    Version:    1.0.0
+    Modified:   2015-09-02 09:41 by Christian Berndt
+    Version:    1.0.1
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -18,10 +18,14 @@
 
     <properties>
 
-
-         <liferay.base.dir> 
-        /home/sim/liferay-portal-6.2-ce-ga4    
-         </liferay.base.dir> 
+        <!-- Configure your environment in dev.properties  -->
+        <!-- in the parent project's directory. And do not -->
+        <!-- add the dev.properties file to the git index, -->
+        <!-- since these properties may vary.              -->
+<!--          <liferay.base.dir>  -->
+<!--             /home/berndt/Applications/liferay-portal-6.2-ce-ga4 -->
+<!--          </liferay.base.dir> -->
+          
          <liferay.app.server.deploy.dir>
             ${liferay.base.dir}/tomcat-7.0.42/webapps
         </liferay.app.server.deploy.dir>
