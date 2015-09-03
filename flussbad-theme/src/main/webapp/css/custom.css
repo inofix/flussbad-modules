@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-02 17:04 by Christian Berndt
- * Version:     0.1.2
+ * Modified:    2015-09-03 00:58 by Christian Berndt
+ * Version:     0.1.6
  */
 @import "compass";
 
@@ -43,6 +43,12 @@ $semi-bold: 600;
 /*         background: url("/documents/23321/23608/Story.png");  */
     }
     
+    @media (max-width: 767px) {
+        body {
+            padding:0; 
+        }
+    }
+    
     #wrapper {
         padding: 0;
     }
@@ -51,12 +57,28 @@ $semi-bold: 600;
         font-size: 16px;
     }
     
+/* Dockbar */
+    
     .dockbar-user-notifications .dropdown-toggle .user-notifications-count {
         display: inline;
         padding: 2px 4px 2px;
         background-color: #FCF8E3; /* bootstrap alert */
         color: #C09853; /* bootstrap alert */
         border: 1px solid #FBEED5; /* bootstrap alert */
+    }
+    
+    /* Override settings in dockbar.css  */
+    /* and display #navigation on phones */
+    /* and tablets by default.           */
+    @include respond-to(phone, tablet) {
+    
+        #navigation {
+            display: block; /* override settings in dockbar.css */    
+
+            &.open {
+                display: block;
+            }
+        }
     }
     
 /* Navigation */
@@ -141,6 +163,14 @@ $semi-bold: 600;
             height: 60px;
         }
 
+    }
+    
+    @media (max-width: 767px){
+        .navbar-fixed-top, 
+        .navbar-fixed-bottom, 
+        .navbar-static-top {
+            margin: 0; 
+        }
     }
     
     
@@ -230,9 +260,27 @@ $semi-bold: 600;
     .opener {
     
         text-align: center; 
-        min-height: 720px;
         background: lightgray; 
+        background-position: center 0; 
+        background-repeat: no-repeat;
+        background-size: 1200px;
+        min-height: 640px;
         
+        @media (min-width: 1200px) { 
+            min-height: 720px;  
+            background-size: 1440px; 
+        }
+    
+        @media (max-width: 979px) and (min-width: 768px) {
+            background-size: 980px; /* bootstrap .container */
+            min-height: 560px;              
+        }
+        
+        @media (max-width: 767px) {
+            background-size: 768px; /* bootstrap .container */
+            min-height: 400px;              
+        }
+
         .wrapper {
             position: absolute;
             width: 100%;
@@ -263,10 +311,23 @@ $semi-bold: 600;
             margin: 60px auto 130px; 
         }
         
-        .section p {
+        .two-cols {
+        
             -webkit-column-count: 2; /* Chrome, Safari, Opera */
             -moz-column-count: 2; /* Firefox */
             column-count: 2;
+            
+            -webkit-column-gap: 20px; /* Chrome, Safari, Opera */
+            -moz-column-gap: 20px; /* Firefox */
+            column-gap: 20px;
+            
+            img {
+                margin: 10px 0; 
+            }
+        }
+        
+        img {
+            margin: 20px 0; 
         }
     }
 

@@ -3,14 +3,19 @@
 ## the example of portal_normal.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:18 by Christian Berndt
-## Modified:    2015-09-02 16:46 by Christian Berndt
-## Version:     1.0.1
+## Modified:    2015-09-02 22:10 by Christian Berndt
+## Version:     1.0.2
 ##
 <!DOCTYPE html>
 
 #parse ($init)
 
+##
+## Read site specific configuration
+##
+
 #set ($default_font= $theme_display.getThemeSetting('default-font'))
+#set ($login_url = $theme_display.getThemeSetting('login-url'))
 
 <html class="$root_css_class" dir="#language ("lang.dir")" lang="$w3c_language_id">
 
@@ -67,9 +72,9 @@ $theme.include($body_top_include)
                 <ul class="pull-right">
                                     
                     #if (!$is_signed_in)             
-                        <li><a href="/c/portal/login" title="#language ("sign-in")">#language ("sign-in")</a></li>
+                        <li><a href="$login_url/c/portal/login" title="#language ("sign-in")">#language ("sign-in")</a></li>
                     #else
-                        <li><a href="/c/portal/logout" title="#language ("sign-out")">#language ("sign-out")</a></li>
+                        <li><a href="$login_url/c/portal/logout" title="#language ("sign-out")">#language ("sign-out")</a></li>
                     #end
                 </ul>                
             </div>
