@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-02 00:15 by Christian Berndt
- * Version:     0.1.0
+ * Modified:    2015-09-02 17:04 by Christian Berndt
+ * Version:     0.1.2
  */
 @import "compass";
 
@@ -29,6 +29,10 @@ $semi-bold: 600;
 
     a:hover, a:focus {
         text-decoration: none;
+    }
+    
+    form {
+        margin: 0; 
     }
     
     body {
@@ -62,7 +66,7 @@ $semi-bold: 600;
         text-transform: uppercase;
         font-size: $nav-big-font;
         
-        opacity: 0.75;
+/*         opacity: 0.75; */
         
         .nav-collapse {
             @media (min-width: 980px) {
@@ -90,6 +94,7 @@ $semi-bold: 600;
         .brand { 
             padding:18px 40px 18px 20px;
             font-weight: $semi-bold;
+            text-shadow: none; 
         } 
         
         .nav { 
@@ -97,7 +102,7 @@ $semi-bold: 600;
             > .active a, 
             > .active a:focus, 
             > .active a:hover {
-                background-color : #F3F3F3;
+                background-color : transparent;
                 box-shadow: none;
                 -moz-box-shadow: none;
                 -webkit-box-shadow: none;
@@ -117,6 +122,10 @@ $semi-bold: 600;
              	background-color:#A5EDF0;
              	font-weight: $semi-bold;
              } 
+            
+            li.selected a {
+                font-weight: $semi-bold;
+            }
 
         }
         
@@ -191,8 +200,33 @@ $semi-bold: 600;
             background: lightgray;
             min-height: 720px;
         }
-    }
+    }   
+
+    .logos {
     
+        $logos-height: 120px;
+    
+        background: #ebebeb;
+        height: $logos-height;
+        border-top: 5px solid white;
+        
+        .logos-inner {
+        
+            text-align: center;
+            line-height: $logos-height; /* center the div's content vertically */
+            
+            a {
+                margin: 0 30px;
+            }
+            
+            img {
+                width: 180px;
+                vertical-align: middle;
+            }            
+            
+        }
+    }
+
     .opener {
     
         text-align: center; 
@@ -284,11 +318,26 @@ $semi-bold: 600;
         }
     }
     
+/* Footer */
+
+
+    #footer {
+    
+        background: #ebebeb;
+        padding-bottom: 20px;
+        
+        ul {
+            list-style: none; 
+            margin: 0; 
+            padding: 0; 
+        }
+    }  
     
 
     
 /* Liferay UI */
     
+    .alert,
     .lfr-meta-actions,
     .portlet-body .taglib-asset-categories-navigation .accordion-group, 
     .portlet-dynamic-data-mapping,
@@ -299,6 +348,7 @@ $semi-bold: 600;
     }
     
     @media (min-width: 1200px) {
+        .alert,
         .lfr-meta-actions,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
@@ -309,6 +359,7 @@ $semi-bold: 600;
     }
     
     @media (max-width: 979px) and (min-width: 768px) {
+        .alert,
         .lfr-meta-actions,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
@@ -316,6 +367,10 @@ $semi-bold: 600;
         {
             width: 724px; /* bootstrap .container */
         }
+    }
+    
+    .alert {
+        margin-top: 1em;
     }
    
     .lfr-meta-actions {

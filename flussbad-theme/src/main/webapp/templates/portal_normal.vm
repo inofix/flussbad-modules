@@ -3,8 +3,8 @@
 ## the example of portal_normal.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:18 by Christian Berndt
-## Modified:    2015-08-31 16:18 by Christian Berndt
-## Version:     1.0.0
+## Modified:    2015-09-02 16:46 by Christian Berndt
+## Version:     1.0.1
 ##
 <!DOCTYPE html>
 
@@ -57,12 +57,12 @@ $theme.include($body_top_include)
     
     <footer id="footer" role="contentinfo">
         <div class="container">
-            <div class="copyright">
-                <ul class="pull-left">
-                    <li>
-                &copy; 2015 <a href="http://www.inofix.ch" target="_blank">inofix.ch</a>
-                    </li>
-                </ul>
+##            <div class="copyright">
+##                <ul class="pull-left">
+##                    <li>
+##                        &copy; 2015 <a href="http://www.inofix.ch" target="_blank">inofix.ch</a>
+##                    </li>
+##                </ul>
                 
                 <ul class="pull-right">
                                     
