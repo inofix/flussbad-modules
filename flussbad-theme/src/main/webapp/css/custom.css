@@ -57,6 +57,12 @@ $semi-bold: 600;
         font-size: 16px;
     }
     
+    @media (max-width: 767px) {
+        .container {
+            padding: 0 20px;
+        }
+    }
+    
 /* Dockbar */
     
     .dockbar-user-notifications .dropdown-toggle .user-notifications-count {
@@ -347,6 +353,18 @@ $semi-bold: 600;
                 margin: 10px 0; 
             }
         }
+        
+        @media (max-width: 767px) {
+        
+            .two-cols {
+            
+                -webkit-column-count: 1; /* Chrome, Safari, Opera */
+                -moz-column-count: 1; /* Firefox */
+                column-count: 1;
+                
+            }  
+                                  
+        }        
         
         img {
             margin: 20px 0; 
