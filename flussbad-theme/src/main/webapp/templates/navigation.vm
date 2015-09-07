@@ -3,8 +3,8 @@
 ## the example of navigation.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:59 by Christian Berndt
-## Modified:    2015-08-31 16:59 by Christian Berndt
-## Version:     1.0.0
+## Modified:    2015-07-09 19:05 by Christian Berndt
+## Version:     1.0.1
 ##
 
 #set ($brand= $theme_display.getThemeSetting('brand'))
@@ -64,6 +64,31 @@
                     #end
                     
                 </ul>
+  
+                ##
+                ## Include a configurable service-site-map into the navigation
+                ##
+                   
+                ## Read service-site-map from configuration    
+                #set ($service_site_map_root_layout_uuid = $theme_display.getThemeSetting('service-site-map-root-layout-uuid'))
+                #set ($is_configured = $validator.isNotNull($service_site_map_root_layout_uuid))
+
+                ## Hide borders
+                $velocityPortletPreferences.setValue("portletSetupShowBorders", "false")
+                
+                ## Set the displayDepth 
+                $velocityPortletPreferences.setValue("displayDepth", "1")
+                
+                ## Set the displayDepth 
+                $velocityPortletPreferences.setValue("rootLayoutUuid", "$service_site_map_root_layout_uuid")
+                
+                ## Include a site-map-portlet instance
+                #if ($is_configured)
+                    $theme.runtime("85_INSTANCE_bzN6", "", $velocityPortletPreferences.toString()) 
+                #end
+                
+                ## Reset the preferences settings.
+                $velocityPortletPreferences.reset()    
     
             </div>
         </div>
