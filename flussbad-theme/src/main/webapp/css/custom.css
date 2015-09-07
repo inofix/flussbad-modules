@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-04 16:26 by Simon Hoy
- * Version:     0.1.6
+ * Modified:    2015-09-07 17:40 by Christian Berndt
+ * Version:     0.1.7
  */
 @import "compass";
 
@@ -93,9 +93,7 @@ $semi-bold: 600;
      
         text-transform: uppercase;
         font-size: $nav-big-font;
-        
-/*         opacity: 0.75; */
-        
+                
         .nav-collapse {
             @media (min-width: 980px) {
                 float: right;
@@ -111,10 +109,8 @@ $semi-bold: 600;
             -moz-box-shadow: none; 
             box-shadow: none;
             
-            border: none;
-            
-        }
-        
+            border: none;            
+        }      
      }
      
     .navbar {
@@ -142,19 +138,20 @@ $semi-bold: 600;
                 text-shadow: none;
             }
             
-
-             > li > a:focus,> li > a:hover{
-             	color:#333;
-             }
-             > .active a,  > .active a:focus, > .active a:hover{
-             	background-color:#A5EDF0;
-             	font-weight: $semi-bold;
-             } 
+            > li > a:focus,> li > a:hover{
+                color:#333;
+            }
+            
+            > .active a,  
+            > .active a:focus, 
+            > .active a:hover {
+                background-color:#A5EDF0;
+                font-weight: $semi-bold;
+            } 
             
             li.selected a {
                 font-weight: $semi-bold;
             }
-
         }
         
         .btn-navbar {
@@ -258,30 +255,29 @@ $semi-bold: 600;
             img {
                 width: 180px;
                 vertical-align: middle;
+                opacity: 0.5;
                 
-                				-webkit-filter: grayscale(100%);
+				-webkit-filter: grayscale(100%);
 				-webkit-transition: .5s ease-in-out; 
-				filter:
-				url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+				filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
 				filter: grayscale(100%);
 				-moz-transition: .5s ease-in-out;
 				-o-filter: grayscale(100%);
 				-o-transition: .5s ease-in-out; 
-                
-
-			}       
+			}
+			     
 			img:hover {
 			
+			    opacity: 0.8;
+			    
 				-webkit-filter: grayscale(0%);
 				-webkit-transition: .5s ease-in-out; 
-				filter:
-				url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+				filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
 				filter: grayscale(0%);
 				-moz-transition: .5s ease-in-out;
 				-o-filter: grayscale(0%);
 				-o-transition: .5s ease-in-out; 
-				}     
-            
+            }  
         }
     }
 
