@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-07 20:24 by Christian Berndt
- * Version:     0.1.8
+ * Modified:    2015-09-08 18:07 by Christian Berndt
+ * Version:     0.1.9
  */
 @import "compass";
 
@@ -11,8 +11,10 @@
 
 $button-font: 20px;
 $color-turquois: #a5edf0;
+$default-font-size: 16px; 
+$default-font-color: #222; 
+$h1-font-size: 38.5px;
 $max-width: 744px;
-$nav-big-font: 16px; 
 $semi-bold: 600; 
  
 .aui {
@@ -54,7 +56,7 @@ $semi-bold: 600;
     }
     
     #content {
-        font-size: 16px;
+        font-size: $default-font-size;
     }
     
     @media (max-width: 767px) {
@@ -92,7 +94,7 @@ $semi-bold: 600;
     #navigation {
      
         text-transform: uppercase;
-        font-size: $nav-big-font;
+        font-size: $default-font-size;
                 
         .nav-collapse {
             @media (min-width: 980px) {
@@ -127,6 +129,20 @@ $semi-bold: 600;
             
             a {
                 padding: 20px 10px; 
+            }
+        }
+        
+        .global-search,
+        .language
+         {
+        
+            float: right; 
+            padding: 20px 0 0; 
+            
+            list-style: none; 
+            
+            li {
+                display: inline; 
             }
         }     
     }
@@ -177,7 +193,7 @@ $semi-bold: 600;
             -moz-box-shadow: none;
             box-shadow: none;
             text-shadow: none;
-            color: #555;
+            color: $default-font-color;
         }
         
         .divider-vertical {
@@ -220,7 +236,7 @@ $semi-bold: 600;
         h3 {
             text-transform: uppercase;
             color: white;
-            font-size: $nav-big-font; 
+            font-size: $default-font-size; 
         }
         
         .abstract {
@@ -387,6 +403,71 @@ $semi-bold: 600;
 
 /* Portlets */
 
+    .portlet-asset-publisher {
+    
+        .asset-abstract {
+            margin-top: 100px;
+        }
+    
+        .asset-actions {
+            font-size: $default_font_size; 
+        }
+        
+        .asset-metadata {
+            text-align: center;
+            margin-left: 0;
+        }
+        
+        .asset-metadata span {
+            float: none;
+        }
+        
+        .asset-more {
+            text-align: center; 
+            margin-top: 20px; 
+            line-height: 60px;
+            
+            a {
+                text-decoration: none; 
+                color: $default-font-color; 
+                border: 1px solid $default-font-color; 
+                padding: 10px 20px; 
+            }
+        }
+        
+        .asset-summary {
+            text-align: center; 
+            max-width: 550px; 
+            margin: 0 auto 80px; 
+        }
+        
+        .asset-title {
+        
+            text-align: center; 
+            border: none; 
+            margin: 10px 0 40px; 
+            
+            a {
+                color: $default-font-color; 
+                text-decoration: none; 
+            }
+            
+            img {
+                display: none; 
+            }
+        }
+                  
+        h3 {
+            font-size: $h1-font-size;
+        }
+        
+        .metadata-publish-date {
+            background: none;
+            color: $default-font-color; 
+            padding-left: 0; 
+        }
+    }
+
     .portlet-body .taglib-asset-categories-navigation {
     
         background: #ebeae2; 
@@ -428,7 +509,7 @@ $semi-bold: 600;
             color: gray;
             padding: 10px 15px;
             border: 1px solid gray; 
-            font-size: $nav-big-font; 
+            font-size: $default-font-size; 
             text-transform: uppercase;
         }
     }
@@ -453,6 +534,7 @@ $semi-bold: 600;
 /* Liferay UI */
     
     .alert,
+    .asset-abstract,
     .lfr-meta-actions,
     .portlet-body .taglib-asset-categories-navigation .accordion-group, 
     .portlet-dynamic-data-mapping,
@@ -464,6 +546,7 @@ $semi-bold: 600;
     
     @media (min-width: 1200px) {
         .alert,
+        .asset-abstract,
         .lfr-meta-actions,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
@@ -475,6 +558,7 @@ $semi-bold: 600;
     
     @media (max-width: 979px) and (min-width: 768px) {
         .alert,
+        .asset-abstract,
         .lfr-meta-actions,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
