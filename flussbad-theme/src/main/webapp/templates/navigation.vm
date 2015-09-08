@@ -3,8 +3,8 @@
 ## the example of navigation.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:59 by Christian Berndt
-## Modified:    2015-07-09 19:05 by Christian Berndt
-## Version:     1.0.1
+## Modified:    2015-09-08 23:49 by Christian Berndt
+## Version:     1.0.2
 ##
 
 #set ($brand= $theme_display.getThemeSetting('brand'))
@@ -63,33 +63,67 @@
                         </li>
                     #end
                     
-                </ul>
-  
-                ##
-                ## Include a configurable service-site-map into the navigation
-                ##
-                   
-                ## Read service-site-map from configuration    
-                #set ($service_site_map_root_layout_uuid = $theme_display.getThemeSetting('service-site-map-root-layout-uuid'))
-                #set ($is_configured = $validator.isNotNull($service_site_map_root_layout_uuid))
-
-                ## Hide borders
-                $velocityPortletPreferences.setValue("portletSetupShowBorders", "false")
+                    <li class="language dropdown">
+                        <a href="javascript:;" class="dropdown-toggle"><span class="icon icon-globe"></span></a>
+                        <ul class="dropdown-menu child-menu" role="menu">
+                            <li role="presentation">
+                            
+                                ##
+                                ## Include Liferay's language-select portlet
+                                ##
+                                
+                                ## Hide borders
+                                $velocityPortletPreferences.setValue("portletSetupShowBorders", "false")
+                                $velocityPortletPreferences.setValue("languageIds", "de_DE,en_US,es_ES")
+                                
+                                ## Display style (0-3; 2 = short text) 
+                                $velocityPortletPreferences.setValue("displayStyle", "2")
+                                
+                                ## Insert portlet                          
+                                $theme.runtime("82", "", $velocityPortletPreferences.toString()) 
+                                
+                                ## Reset the preferences settings
+                                $velocityPortletPreferences.reset()                            
+                            </li>
+                        </ul>                        
+                     <li>
+                     
                 
-                ## Set the displayDepth 
-                $velocityPortletPreferences.setValue("displayDepth", "1")
-                
-                ## Set the displayDepth 
-                $velocityPortletPreferences.setValue("rootLayoutUuid", "$service_site_map_root_layout_uuid")
-                
-                ## Include a site-map-portlet instance
-                #if ($is_configured)
-                    $theme.runtime("85_INSTANCE_bzN6", "", $velocityPortletPreferences.toString()) 
-                #end
-                
-                ## Reset the preferences settings.
-                $velocityPortletPreferences.reset()    
+                    <li class="global-search dropdown">
+                        <a href="javascript:;" class="dropdown-toggle"><span class="icon icon-search"></span></a>
+                        <ul class="dropdown-menu child-menu" role="menu">
+                            <li>Search Portlet</li>
+                        </ul>  
+                     <li>
+                    
+                    ##
+                    ## Include a configurable service-site-map into the navigation
+                    ##
+                       
+                    ## Read service-site-map from configuration    
+                    #set ($service_site_map_root_layout_uuid = $theme_display.getThemeSetting('service-site-map-root-layout-uuid'))
+                    #set ($is_configured = $validator.isNotNull($service_site_map_root_layout_uuid))
     
+                    ## Hide borders
+                    $velocityPortletPreferences.setValue("portletSetupShowBorders", "false")
+                    
+                    ## Set the displayDepth 
+                    $velocityPortletPreferences.setValue("displayDepth", "1")
+                    
+                    ## Set the displayDepth 
+                    $velocityPortletPreferences.setValue("rootLayoutUuid", "$service_site_map_root_layout_uuid")
+                    
+                    ## Include a site-map-portlet instance
+                    #if ($is_configured)
+                        <li>
+                            $theme.runtime("85_INSTANCE_bzN6", "", $velocityPortletPreferences.toString())
+                        </li> 
+                    #end
+                    
+                    ## Reset the preferences settings.
+                    $velocityPortletPreferences.reset()                                        
+                    
+                </ul>
             </div>
         </div>
     </div>
