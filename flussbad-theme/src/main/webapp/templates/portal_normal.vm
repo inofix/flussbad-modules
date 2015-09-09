@@ -3,8 +3,8 @@
 ## the example of portal_normal.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:18 by Christian Berndt
-## Modified:    2015-09-09 15:48 by Christian Berndt
-## Version:     1.0.3
+## Modified:    2015-09-09 17:38 by Christian Berndt
+## Version:     1.0.4
 ##
 <!DOCTYPE html>
 
@@ -61,7 +61,7 @@ $theme.include($body_top_include)
     </div>
     
     <footer id="footer" role="contentinfo">
-        <div class="container">
+        <div class="container first">
         
             <div class="span4">
                 TODO: Embed Newsletter Subscription
@@ -107,9 +107,27 @@ $theme.include($body_top_include)
             
         </div>
        
-        <div class="container">
-            TODO: Embed Web-Content-Display for Logos     
-        </div>
+        ##
+        ## Embed a configurable web-content-display for the logos
+        ##
+           
+        ## Read service-site-map from configuration    
+        #set ($logos_article_id = $theme_display.getThemeSetting('logos-article-id'))
+        #set ($is_configured = $validator.isNotNull($logos_article_id))
+
+        ## Hide borders
+        $velocityPortletPreferences.setValue("portletSetupShowBorders", "false")
+        
+        ## Set the articleId 
+        $velocityPortletPreferences.setValue("articleId", "$logos_article_id")
+        
+        ## Include a site-map-portlet instance
+        #if ($is_configured)
+            $theme.runtime("56_INSTANCE_N6bg", "", $velocityPortletPreferences.toString())
+        #end
+        
+        ## Reset the preferences settings.
+        $velocityPortletPreferences.reset()      
         
         <div class="container">
             #if (!$is_signed_in)             
