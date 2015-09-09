@@ -3,8 +3,8 @@
 ## the example of portal_normal.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:18 by Christian Berndt
-## Modified:    2015-09-02 22:10 by Christian Berndt
-## Version:     1.0.2
+## Modified:    2015-09-09 15:48 by Christian Berndt
+## Version:     1.0.3
 ##
 <!DOCTYPE html>
 
@@ -62,23 +62,63 @@ $theme.include($body_top_include)
     
     <footer id="footer" role="contentinfo">
         <div class="container">
-##            <div class="copyright">
-##                <ul class="pull-left">
-##                    <li>
-##                        &copy; 2015 <a href="http://www.inofix.ch" target="_blank">inofix.ch</a>
-##                    </li>
-##                </ul>
-                
-                <ul class="pull-right">
-                                    
-                    #if (!$is_signed_in)             
-                        <li><a href="$login_url/c/portal/login" title="#language ("sign-in")">#language ("sign-in")</a></li>
-                    #else
-                        <li><a href="$login_url/c/portal/logout" title="#language ("sign-out")">#language ("sign-out")</a></li>
-                    #end
-                </ul>                
+        
+            <div class="span4">
+                TODO: Embed Newsletter Subscription
+            </div>
+                        
+            <div class="span4">
+                TODO: Embed Social Media Buttons
+            </div>
+            
+            <div class="span4">
+                TODO: Embed Login Portlet
             </div>
         </div>
+            
+        <div class="container info">
+        
+            <span class="copyright">&copy; 2015 Flussbad Berlin e.V.</span>
+            
+            ##
+            ## Embed a configurable info-site-map
+            ##
+               
+            ## Read service-site-map from configuration    
+            #set ($info_site_map_root_layout_uuid = $theme_display.getThemeSetting('info-site-map-root-layout-uuid'))
+            #set ($is_configured = $validator.isNotNull($info_site_map_root_layout_uuid))
+
+            ## Hide borders
+            $velocityPortletPreferences.setValue("portletSetupShowBorders", "false")
+            
+            ## Set the displayDepth 
+            $velocityPortletPreferences.setValue("displayDepth", "1")
+            
+            ## Set the displayDepth 
+            $velocityPortletPreferences.setValue("rootLayoutUuid", "$info_site_map_root_layout_uuid")
+            
+            ## Include a site-map-portlet instance
+            #if ($is_configured)
+                $theme.runtime("85_INSTANCE_N6bz", "", $velocityPortletPreferences.toString())
+            #end
+            
+            ## Reset the preferences settings.
+            $velocityPortletPreferences.reset()
+            
+        </div>
+       
+        <div class="container">
+            TODO: Embed Web-Content-Display for Logos     
+        </div>
+        
+        <div class="container">
+            #if (!$is_signed_in)             
+                <a href="$login_url/c/portal/login" title="#language ("sign-in")">#language ("sign-in")</a>
+            #else
+                <a href="$login_url/c/portal/logout" title="#language ("sign-out")">#language ("sign-out")</a>
+            #end
+        </div>
+                
     </footer>
 </div>
 
