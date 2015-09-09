@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-09 19:03 by Christian Berndt
- * Version:     0.2.4
+ * Modified:    2015-09-09 19:24 by Christian Berndt
+ * Version:     0.2.5
  */
 @import "compass";
 
@@ -139,8 +139,12 @@ $semi-bold: 600;
             a {
                 padding: 20px 10px;
             }
- 
         }
+        
+        .language .portlet-language,
+        .search .portlet-search {
+            display: none; 
+        }       
     }
      
     .navbar {
@@ -610,6 +614,5 @@ $semi-bold: 600;
    
     .lfr-meta-actions {
         margin-bottom: 1em;
-    }
-    
+    }   
 }
