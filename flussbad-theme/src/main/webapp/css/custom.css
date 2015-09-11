@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-11 22:41 by Christian Berndt
- * Version:     0.2.8
+ * Modified:    2015-09-11 23:45 by Christian Berndt
+ * Version:     0.2.9
  */
 @import "compass";
 
@@ -102,7 +102,12 @@ $semi-bold: 600;
             @media (min-width: 980px) {
                 float: right;
             }
-        }    
+        }
+        
+        /* Hide the default page */
+        #navCollapse > :first-child {
+            display: none; 
+        }   
         
         .navbar-inner {
         
@@ -459,8 +464,7 @@ $semi-bold: 600;
                 clear: none;  
             }   
         
-            .asset-more,
-            .asset-summary,
+            .asset-content,
             .asset-title {
                 width: 60%; 
                 margin-left: 40%;            
@@ -529,14 +533,20 @@ $semi-bold: 600;
 
     .portlet-body .taglib-asset-categories-navigation {
     
-        background: #ebeae2; 
+        background: #ebeae2;
+        min-height: 140px; 
         
         .tree-view {
             overflow: hidden;
         }
         
-        .tree-node-leaf {
+        .tree-node-leaf,
+        .tree-node-content .tree-label {
             margin: 0; 
+        }
+        
+        .lfr-asset-category-list span {
+            padding: 0; 
         }
     
         .accordion-group,
@@ -571,10 +581,11 @@ $semi-bold: 600;
         
         a {
             color: gray;
-            padding: 10px 15px;
+            padding: 8px 15px;
             border: 1px solid gray; 
             font-size: $default-font-size; 
             text-transform: uppercase;
+            margin-right: 15px;
         }
     }
     
