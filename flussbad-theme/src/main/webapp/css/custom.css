@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-11 11:25 by Simon Hoy
- * Version:     0.2.6
+ * Modified:    2015-09-11 17:54 by Christian Berndt
+ * Version:     0.2.7
  */
 @import "compass";
 
@@ -408,7 +408,7 @@ $semi-bold: 600;
 
 /* Portlets */
 
-    .portlet-asset-publisher {
+    .portlet-asset-publisher.main-story {
     
         .asset-abstract {
             margin-top: 100px;
