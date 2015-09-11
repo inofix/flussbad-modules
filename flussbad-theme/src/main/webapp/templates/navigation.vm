@@ -3,8 +3,8 @@
 ## the example of navigation.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:59 by Christian Berndt
-## Modified:    2015-09-09 15:38 by Christian Berndt
-## Version:     1.0.3
+## Modified:    2015-09-11 12:41 by Christian Berndt
+## Version:     1.0.4
 ##
 
 #set ($brand= $theme_display.getThemeSetting('brand'))
@@ -85,10 +85,6 @@
                        
                     <li>
                     
-                    ##
-                    ## TODO: merge the two scripts
-                    ##
-                    
                     <script>                   
                         YUI().use(
                           'aui-popover','widget-anim',
@@ -126,64 +122,19 @@
                         );
                     </script>                    
                      
+                    ##
+                    ## Retrieve the link to the configured search layout
+                    ##
+                    #set ($groupId = $themeDisplay.getScopeGroupId())
+                    #set ($layoutService = $serviceLocator.findService("com.liferay.portal.service.LayoutService"))
+                    #set ($search_layout_uuid = $theme_display.getThemeSetting('search-layout-uuid'))
+                    #set ($searchLayout = $layoutService.getLayoutByUuidAndGroupId($search_layout_uuid, $groupId, false))
+                    #set ($searchURL = $page_group.getPathFriendlyURL(false, $themeDisplay) + $page_group.getFriendlyURL() + $searchLayout.getFriendlyURL($locale))
                 
                     <li class="search">
-                        <a href="javascript:;" id="searchPopover"><span class="icon icon-search"></span></a>
-
-                        ##
-                        ## Include the search form into the template
-                        ##
-                                
-                        ## Hide borders
-                        $velocityPortletPreferences.setValue("portletSetupShowBorders", "false")
-                
-                        ## Set the destination 
-                        ## $velocityPortletPreferences.setValue("portletSetupLinkToLayoutUuid", $dest_uuid)
-                 
-                        ## Include the search-portlet
-                        $theme.runtime("3", "", $velocityPortletPreferences.toString()) 
-                
-                        ## Reset the preferences settings.
-                        $velocityPortletPreferences.reset() 
+                        <a href="$searchURL"><span class="icon icon-search"></span></a>
                     <li>
-                    
-                    <script>                   
-                        YUI().use(
-                          'aui-popover','widget-anim',
-                          function(Y) {
-                                                      
-                            var trigger = Y.one('#searchPopover');
-                        
-                            var popover = new Y.Popover(
-                              {
-                                align: {
-                                  node: trigger,
-                                  points:[Y.WidgetPositionAlign.TC, Y.WidgetPositionAlign.BL]
-                                },
-                                plugins : [ Y.Plugin.WidgetAnim ],
-                                position: 'bottom',
-                                visible: false,
-                                zIndex : 100
-                              }
-                            ).render();
-                            
-                            var portlet = Y.one('#p_p_id_3_');
-                            
-                            popover.set("bodyContent", portlet);
-                            
-                            popover.get('boundingBox').on('clickoutside', function() {
-                                 popover.set('visible', false); 
-                            });
-                    
-                            trigger.on('click', function(e) {
-                                popover.set('visible', !popover.get('visible'));
-                                e.stopPropagation();   
-                              }
-                            );
-                          }
-                        );
-                    </script>
-                    
+                                        
                     ##
                     ## Include a configurable service-site-map into the navigation
                     ##
