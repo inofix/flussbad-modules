@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-11 17:54 by Christian Berndt
- * Version:     0.2.7
+ * Modified:    2015-09-11 22:41 by Christian Berndt
+ * Version:     0.2.8
  */
 @import "compass";
 
@@ -11,7 +11,9 @@
 
 $button-font: 20px;
 $color-turquois: #a5edf0;
-$default-font-size: 16px; 
+$default-font-size: 16px;
+$lead-font-size: 21px; 
+$lead-line-height: 30px; 
 $default-font-color: #222; 
 $h1-font-size: 38.5px;
 $max-width: 744px;
@@ -397,8 +399,7 @@ $semi-bold: 600;
                 -moz-column-count: 1; /* Firefox */
                 column-count: 1;
                 
-            }  
-                                  
+            }
         }        
         
         img {
@@ -408,19 +409,85 @@ $semi-bold: 600;
 
 /* Portlets */
 
-    .portlet-asset-publisher.main-story {
+    .portlet-asset-publisher {
+    
+        margin-bottom: 60px;
     
         .asset-abstract {
-            margin-top: 100px;
+            margin-top: 60px;
         }
     
         .asset-actions {
             font-size: $default_font_size; 
         }
         
+        .asset-content {
+            margin-left: 0; 
+            font-size: $lead-font-size; 
+            line-height: $lead-line-height; 
+        }
+                
+        h3 {
+            font-size: $h1-font-size;
+        }
+        
+        .asset-title {
+        
+            border: none; 
+            
+            a {
+                color: $default-font-color; 
+                text-decoration: none; 
+            }
+            
+            img {
+                display: none; 
+            }
+        }
+        
+        .asset-metadata {
+            margin: 8px 0 0 0;
+            float: left; 
+            text-transform: uppercase;
+        }
+           
+        
+        @media (min-width: 768px) {
+        
+           .asset-metadata {
+                width: 40%;
+                clear: none;  
+            }   
+        
+            .asset-more,
+            .asset-summary,
+            .asset-title {
+                width: 60%; 
+                margin-left: 40%;            
+            }   
+        } 
+        
+        @media (max-width: 767px) { 
+        
+            .asset-more,
+            .asset-summary,
+            .asset-title {
+                clear: left;           
+            }   
+        }        
+    }
+
+    .portlet-asset-publisher.main-story {
+    
+        .asset-abstract {
+            margin-top: 100px;
+        }
+        
         .asset-metadata {
             text-align: center;
-            margin-left: 0;
+            float: none; 
+            min-height: 0;
+            margin: 0 auto 20px;   
         }
         
         .asset-metadata span {
@@ -429,7 +496,7 @@ $semi-bold: 600;
         
         .asset-more {
             text-align: center; 
-            margin-top: 20px; 
+            margin: 20px auto; 
             line-height: 60px;
             
             a {
@@ -449,21 +516,8 @@ $semi-bold: 600;
         .asset-title {
         
             text-align: center; 
-            border: none; 
-            margin: 10px 0 40px; 
-            
-            a {
-                color: $default-font-color; 
-                text-decoration: none; 
-            }
-            
-            img {
-                display: none; 
-            }
-        }
-                  
-        h3 {
-            font-size: $h1-font-size;
+            margin: 10px auto 40px; 
+
         }
         
         .metadata-publish-date {
@@ -480,12 +534,22 @@ $semi-bold: 600;
         .tree-view {
             overflow: hidden;
         }
+        
+        .tree-node-leaf {
+            margin: 0; 
+        }
     
         .accordion-group,
         .accordion-inner {
             border: none; 
-            padding: 0; 
-            min-height: 120px;
+            padding: 0;
+        }
+        
+        @media (min-width: 768px) {
+            .accordion-inner {
+                margin-left: 40%;
+                width: 60%;
+            }
         }
         
         .accordion-heading {
@@ -493,21 +557,16 @@ $semi-bold: 600;
         }
         
         ul {
-            margin-top: 10px;
-            margin-left: 390px;
+            margin: 20px 0;
+            float: left; 
         }
         
         li {
-            float: left;
             line-height: 50px;
-        }
-        
-        .tree-view {
-            min-height: 120px;
-        }
-        
-        .tree-node-leaf {
+            display: inline;
+            float: left; 
             margin: 0; 
+            padding: 0; 
         }
         
         a {
@@ -621,6 +680,18 @@ $semi-bold: 600;
         {
             width: 724px; /* bootstrap .container */
         }
+    }
+    
+    @media (max-width: 767px) {
+        .alert,
+        .asset-abstract,
+        .lfr-meta-actions,
+        .portlet-body .taglib-asset-categories-navigation .accordion-group, 
+        .portlet-dynamic-data-mapping,
+        .portlet-journal
+        {
+            width: 100%; /* bootstrap .container */
+        }     
     }
     
     .alert {
