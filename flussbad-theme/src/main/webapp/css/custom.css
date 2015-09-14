@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-14 18:09 by Christian Berndt
- * Version:     0.3.7
+ * Modified:    2015-09-14 22:19 by Christian Berndt
+ * Version:     0.3.8
  */
 @import "compass";
 
@@ -336,56 +336,13 @@ input {
             }  
         }
     }
-
-    .opener {
-    
-        text-align: center; 
-        background: lightgray; 
-        background-position: center 0; 
-        background-repeat: no-repeat;
-        background-size: 1200px;
-        min-height: 640px;
-        
-        @media (min-width: 1200px) { 
-            min-height: 720px;  
-            background-size: 1440px; 
-        }
-    
-        @media (max-width: 979px) and (min-width: 768px) {
-            background-size: 980px; /* bootstrap .container */
-            min-height: 560px;              
-        }
-        
-        @media (max-width: 767px) {
-            background-size: 768px; /* bootstrap .container */
-            min-height: 400px;              
-        }
-
-        .wrapper {
-            position: absolute;
-            width: 100%;
-            top: 50%;
-            transform: translateY(-50%);        
-        }
-        
-        h2 {
-            max-width: $max-width; 
-            margin: auto;
-            text-transform: uppercase;
-            color: white;
-        }
-        
-        h1 {
-            max-width: $max-width; 
-            margin: auto; 
-            a {
-                color: white; 
-            }
-        }
-    }
     
     .story {
-    
+        
+        .container {
+            background: white; 
+        }
+        
         .content {
             max-width: $max-width;
             margin: 60px auto 130px; 
@@ -417,6 +374,58 @@ input {
         
         img {
             margin: 20px 0; 
+        }
+    }
+    
+    .story,
+    .teaser {
+    
+        background-position: center 0; 
+        background-repeat: no-repeat;
+        background-size: 1200px;
+        min-height: 640px;
+        
+        @media (min-width: 1200px) { 
+            min-height: 720px;  
+            background-size: 1440px; 
+        }
+    
+        @media (max-width: 979px) and (min-width: 768px) {
+            background-size: 980px; /* bootstrap .container */
+            min-height: 560px;              
+        }
+        
+        @media (max-width: 767px) {
+            background-size: 768px; /* bootstrap .container */
+            min-height: 400px;              
+        }       
+    }
+    
+    .teaser {
+    
+        text-align: center; 
+        background-color: lightgray; 
+
+        .wrapper {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            transform: translateY(-50%);        
+        }
+        
+        h2 {
+            max-width: $max-width; 
+            margin: auto;
+            text-transform: uppercase;
+            color: white;
+        }
+        
+        h1 {
+            max-width: $max-width; 
+            margin: auto; 
+            a {
+                color: white; 
+            }
         }
     }
 
