@@ -404,12 +404,10 @@ input {
         
         @media (max-width: 767px) {
         
-            .two-cols {
-            
+            .two-cols {           
                 -webkit-column-count: 1; /* Chrome, Safari, Opera */
                 -moz-column-count: 1; /* Firefox */
-                column-count: 1;
-                
+                column-count: 1;                
             }
         }        
         
@@ -436,10 +434,31 @@ input {
             margin-left: 0; 
             font-size: $lead-font-size; 
             line-height: $lead-line-height; 
+            padding-bottom: 20px; 
+            border-bottom: 4px solid #ebebeb; 
         }
-                
-        h3 {
-            font-size: $h1-font-size;
+        
+        .asset-metadata {
+            margin: 8px 0 0 0;
+            float: left; 
+            text-transform: uppercase;
+        }
+        
+        .asset-more {
+            display: inline; 
+            font-size: $default-font-size; 
+            text-transform: uppercase; 
+        }
+        
+        .asset-more a:before {
+            content: "\f054"; /* chevron right */
+            font-size: 12px; 
+            margin-right: 2px; 
+        }
+        
+        .asset-summary {
+            display: inline; 
+            margin-right: 5px;
         }
         
         .asset-title {
@@ -455,11 +474,9 @@ input {
                 display: none; 
             }
         }
-        
-        .asset-metadata {
-            margin: 8px 0 0 0;
-            float: left; 
-            text-transform: uppercase;
+                
+        h3 {
+            font-size: $h1-font-size;
         }
         
         .metadata-publish-date {
@@ -535,15 +552,18 @@ input {
         
         .asset-content {
             margin: 0 auto;
+            border: none;
         }
         
         .asset-summary {
+            display: block; 
             text-align: center; 
             max-width: 550px; 
             margin: 0 auto 80px; 
         }
         
         .asset-more {
+            display: block; 
             text-align: center; 
             margin: 20px auto; 
             line-height: 60px;
@@ -561,6 +581,7 @@ input {
         .asset-content {
             margin: 0 auto;
             width: 100%;
+            border: none; 
         }   
         
         .section {
