@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-14 14:16 by Christian Berndt
- * Version:     0.3.4
+ * Modified:    2015-09-14 15:37 by Christian Berndt
+ * Version:     0.3.5
  */
 @import "compass";
 
@@ -193,12 +193,12 @@ input {
             > .active a,  
             > .active a:focus, 
             > .active a:hover {
-                background-color:#A5EDF0;
-                font-weight: $semi-bold;
+                background-color:transparent;
+/*                 font-weight: $semi-bold; */
             } 
             
             li.selected a {
-                font-weight: $semi-bold;
+/*                 font-weight: $semi-bold; */
             }
         }
         
@@ -592,8 +592,22 @@ input {
     .portlet-body .taglib-asset-categories-navigation {
     
         background: #ebeae2;
-        min-height: 140px; 
+        min-height: 140px;      
         
+        a {
+            color: gray;
+            padding: 8px 15px;
+            border: 1px solid gray; 
+            font-size: $default-font-size; 
+            text-transform: uppercase;
+            margin-right: 15px;
+        }
+
+        a.tag-selected {
+            border: 1px solid white; 
+            background: white;
+        }   
+
         .tree-view {
             overflow: hidden;
         }
@@ -635,15 +649,6 @@ input {
             float: left; 
             margin: 0; 
             padding: 0; 
-        }
-        
-        a {
-            color: gray;
-            padding: 8px 15px;
-            border: 1px solid gray; 
-            font-size: $default-font-size; 
-            text-transform: uppercase;
-            margin-right: 15px;
         }
     }
     
