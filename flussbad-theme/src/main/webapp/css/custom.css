@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-14 12:39 by Christian Berndt
- * Version:     0.3.1
+ * Modified:    2015-09-14 13:08 by Christian Berndt
+ * Version:     0.3.2
  */
 @import "compass";
 
@@ -19,6 +19,11 @@ $lead-line-height: 30px;
 $h1-font-size: 38.5px;
 $max-width: 744px;
 $semi-bold: 600; 
+
+/* Unset input borders set by jQuery */
+input {
+    border: none; 
+}
  
 .aui {
 
@@ -545,6 +550,26 @@ $semi-bold: 600;
             line-height: $default-line-height; 
         } 
     }
+    
+    .portlet-search {
+    
+        .form {
+            margin-top: 20px;
+        }
+        
+        #_3_facetNavigation {
+            width: 100%; 
+            
+            li.facet-value {
+                float: left; 
+            }            
+        }
+        
+        .result {
+            width: 100%;
+            margin-left: 0;  
+        }
+    }
 
     .portlet-body .taglib-asset-categories-navigation {
     
@@ -678,7 +703,8 @@ $semi-bold: 600;
     .lfr-meta-actions,
     .portlet-body .taglib-asset-categories-navigation .accordion-group, 
     .portlet-dynamic-data-mapping,
-    .portlet-journal
+    .portlet-journal,
+    .portlet-search
     {
         margin: auto;
         width: 940px; /* bootstrap .container */
@@ -690,7 +716,8 @@ $semi-bold: 600;
         .lfr-meta-actions,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
-        .portlet-journal
+        .portlet-journal,
+        .portlet-search
         {
             width: 1170px; /* bootstrap .container */
         }
@@ -702,7 +729,8 @@ $semi-bold: 600;
         .lfr-meta-actions,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
-        .portlet-journal
+        .portlet-journal,
+        .portlet-search
         {
             width: 724px; /* bootstrap .container */
         }
@@ -714,7 +742,8 @@ $semi-bold: 600;
         .lfr-meta-actions,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
-        .portlet-journal
+        .portlet-journal,
+        .portlet-search
         {
             width: 100%; /* bootstrap .container */
         }     
