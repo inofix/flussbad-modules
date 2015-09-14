@@ -3,8 +3,8 @@
 ## the example of portal_normal.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:18 by Christian Berndt
-## Modified:    2015-09-09 19:04 by Christian Berndt
-## Version:     1.0.5
+## Modified:    2015-09-09 18:04 by Christian Berndt
+## Version:     1.0.6
 ##
 <!DOCTYPE html>
 
@@ -15,6 +15,7 @@
 ##
 
 #set ($default_font= $theme_display.getThemeSetting('default-font'))
+#set ($handwritten-font= $theme_display.getThemeSetting('handwritten-font'))
 #set ($login_url = $theme_display.getThemeSetting('login-url'))
 
 <html class="$root_css_class" dir="#language ("lang.dir")" lang="$w3c_language_id">
@@ -23,7 +24,12 @@
     <title>$the_title - $company_name</title>
 
     <meta content="initial-scale=1.0, width=device-width" name="viewport" />
+    
+    ##
+    ## load configured web-fonts
+    ##
     <link href='$default_font' rel='stylesheet' type='text/css'>
+    <link href='$handwritten-font' rel='stylesheet' type='text/css'>
 
     $theme.include($top_head_include)
         

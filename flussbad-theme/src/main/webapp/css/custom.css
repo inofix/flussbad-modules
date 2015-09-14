@@ -2,16 +2,18 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-14 17:37 by Christian Berndt
- * Version:     0.3.6
+ * Modified:    2015-09-14 18:09 by Christian Berndt
+ * Version:     0.3.7
  */
 @import "compass";
 
 @import "mixins";
 
-$button-font: 20px;
+$button-font-size: 35px;
+$button-font-family: 'Amatic SC', cursive;
 $color-turquois: #a5edf0;
 $default-font-color: #222;
+$default-font-family: 'Source Sans Pro', sans-serif; 
 $default-font-size: 16px;
 $default-line-height: 20px; 
 $lead-font-size: 21px; 
@@ -27,7 +29,7 @@ input {
  
 .aui {
 
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: $default-font-family;
     
     h1,h2,h3,h4,h5,h6 {
         font-weight:$semi-bold;
@@ -268,10 +270,12 @@ input {
             .btn {
                 color: gray;
                 background: white;
-                padding: 15px 25px;
                 border: none; 
-                font-size: $button-font; 
-                text-transform: uppercase;
+                font-size: $button-font-size; 
+                font-family: $button-font-family;
+                padding: 15px 25px;
+                
+/*                 text-transform: uppercase; */
             } 
         }
 
@@ -569,10 +573,16 @@ input {
             line-height: 60px;
             
             a {
-                text-decoration: none; 
-                color: $default-font-color; 
                 border: 1px solid $default-font-color; 
+                color: $default-font-color; 
+                font-family: $button-font-family;
+                font-size: $button-font-size; 
                 padding: 10px 20px; 
+                text-decoration: none; 
+            }
+            
+            a:before {
+                content: ''; 
             }
         }
     }
