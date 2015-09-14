@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-14 15:37 by Christian Berndt
- * Version:     0.3.5
+ * Modified:    2015-09-14 17:37 by Christian Berndt
+ * Version:     0.3.6
  */
 @import "compass";
 
@@ -705,7 +705,7 @@ input {
             
             .portlet-site-map, 
             .portlet-borderless-container,
-            .portlet-body, 
+            .portlet-body,
             ul {
                 display: inline; 
             }
@@ -716,24 +716,37 @@ input {
             
             ul {
                 list-style: none; 
-            }
-            
-        .portlet-site-map a {
-                margin: 20px 10px; 
             }   
-            .portlet-title  {
             
-            h1{
-            	color: $default-font-color; 
-            	text-transform: uppercase;
-            	text-align: center;   
-            }
-             img{
-             	display:none;
-             }
-			
-				
-             
+            .portlet-site-map a {
+                color: $default-font-color; 
+                margin: 20px 10px; 
+                text-decoration: underline; 
+                text-transform: uppercase; 
+            } 
+            
+            .portlet-site-map {
+            
+                ul {
+                    margin-left: 10px; 
+                }
+            
+                li:before {
+                    content: "/";  
+                }           
+            }           
+        }
+
+        
+        h1.portlet-title  {
+            
+            color: $default-font-color;
+            font-size: $default-font-size; 
+            text-transform: uppercase;
+            text-align: center;   
+            
+            img {
+                display:none;
             }
         }
     }  
