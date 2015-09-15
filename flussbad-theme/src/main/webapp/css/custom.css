@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-14 22:19 by Christian Berndt
- * Version:     0.3.8
+ * Modified:    2015-09-15 13:32 by Christian Berndt
+ * Version:     0.3.9
  */
 @import "compass";
 
@@ -15,10 +15,18 @@ $color-turquois: #a5edf0;
 $default-font-color: #222;
 $default-font-family: 'Source Sans Pro', sans-serif; 
 $default-font-size: 16px;
-$default-line-height: 20px; 
+$default-line-height: 20px;   
+$full-image-height-xl: 720px; 
+$full-image-height-l: 640px;
+$full-image-height-m: 560px;   
+$full-image-height-s: 400px; 
+$full-image-width-xl: 1440px; /* bootstrap .container */
+$full-image-width-l: 1200px;  /* bootstrap .container */
+$full-image-width-m: 980px;   
+$full-image-width-s: 768px;   
+$h1-font-size: 38.5px;
 $lead-font-size: 21px; 
 $lead-line-height: 30px; 
-$h1-font-size: 38.5px;
 $max-width: 744px;
 $semi-bold: 600; 
 
@@ -274,20 +282,95 @@ input {
                 font-size: $button-font-size; 
                 font-family: $button-font-family;
                 padding: 15px 25px;
-                
-/*                 text-transform: uppercase; */
             } 
         }
-
     }
     
     .carousel {
-    
+
         margin-bottom: 0; 
     
         .carousel-inner  {
+        
             background: lightgray;
-            min-height: 720px;
+            min-height: $full-image-height-l;
+            
+            @media (min-width: 1200px) { 
+                min-height: $full-image-height-xl;  
+            }
+        
+            @media (max-width: 979px) and (min-width: 768px) {
+                min-height: $full-image-height-m;              
+            }
+            
+            @media (max-width: 767px) {
+                min-height: $full-image-height-s;              
+            } 
+        }
+
+        .container {
+            position: relative;
+            z-index: 9;
+        }
+        
+        .carousel-control {
+            color: $color-turquois;
+            left: 0; 
+            margin-top: 0;
+            width: 55px;
+            font-size: 80px;
+            background-color: transparent;
+            border: 0;
+            z-index: 10;
+        }
+        
+        .carousel-control.right {
+            left: auto; 
+        }
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+        }
+        
+        .carousel-caption {
+            background-color: transparent;
+            position: static;
+            max-width: 550px;
+            padding: 0 20px;
+            margin-top: 200px;
+        }
+        
+        .carousel-caption h1, .carousel-caption .lead {
+            margin: 0;
+            line-height: 1.25;
+            color: #fff;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
+        }
+        
+        .carousel-caption .btn {
+            margin-top: 10px;
+        }
+        
+        .item img {
+        
+            margin: auto; 
+        
+            width: $full-image-width-l;
+            
+            @media (min-width: 1200px) { 
+                width: $full-image-width-xl; 
+            }
+        
+            @media (max-width: 979px) and (min-width: 768px) {
+                width: $full-image-width-m; 
+            }
+            
+            @media (max-width: 767px) {
+                width: $full-image-width-s; 
+            }
         }
     }   
 
@@ -379,25 +462,25 @@ input {
     
     .story,
     .teaser {
-    
+
         background-position: center 0; 
         background-repeat: no-repeat;
-        background-size: 1200px;
-        min-height: 640px;
+        background-size: $full-image-width-l;
+        min-height: $full-image-height-l;
         
         @media (min-width: 1200px) { 
-            min-height: 720px;  
-            background-size: 1440px; 
+            background-size: $full-image-width-xl; 
+            min-height: $full-image-height-xl;  
         }
     
         @media (max-width: 979px) and (min-width: 768px) {
-            background-size: 980px; /* bootstrap .container */
-            min-height: 560px;              
+            background-size: $full-image-width-m; /* bootstrap .container */
+            min-height: $full-image-height-m;              
         }
         
         @media (max-width: 767px) {
-            background-size: 768px; /* bootstrap .container */
-            min-height: 400px;              
+            background-size: $full-image-width-s; /* bootstrap .container */
+            min-height: $full-image-height-s;              
         }       
     }
     
