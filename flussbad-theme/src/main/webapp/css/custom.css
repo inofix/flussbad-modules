@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-15 13:32 by Christian Berndt
- * Version:     0.3.9
+ * Modified:    2015-09-17 21:20 by Christian Berndt
+ * Version:     0.4.0
  */
 @import "compass";
 
@@ -552,6 +552,20 @@ input {
             margin-right: 2px; 
         }
         
+        .asset-social-media {
+        
+            ul {
+                display: inline;
+                list-style: none; 
+                margin-left: 0;  
+            }
+            
+            li {
+                display: inline;
+                margin-left: 5px;  
+            }
+        }
+        
         .asset-summary {
             display: inline; 
             margin-right: 5px;
@@ -602,6 +616,7 @@ input {
             }   
         
             .asset-content,
+            .asset-social-media,
             .asset-title {
                 width: 60%; 
                 margin-left: 40%;            
