@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-17 21:20 by Christian Berndt
- * Version:     0.4.0
+ * Modified:    2015-09-19 17:55 by Christian Berndt
+ * Version:     0.4.1
  */
 @import "compass";
 
@@ -110,9 +110,11 @@ input {
 /* Navigation */
     
     #navigation {
-     
+         
         text-transform: uppercase;
         font-size: $default-font-size;
+        width: 100%;
+        z-index: 10;
                 
         .nav-collapse {
             @media (min-width: 980px) {
@@ -172,6 +174,8 @@ input {
     }
      
     .navbar {
+    
+        margin-bottom: 0; 
         
         .brand { 
             padding:18px 40px 18px 20px;
@@ -199,17 +203,6 @@ input {
             > li > a:focus,> li > a:hover{
                 color:#333;
             }
-            
-            > .active a,  
-            > .active a:focus, 
-            > .active a:hover {
-                background-color:transparent;
-/*                 font-weight: $semi-bold; */
-            } 
-            
-            li.selected a {
-/*                 font-weight: $semi-bold; */
-            }
         }
         
         .btn-navbar {
@@ -223,7 +216,6 @@ input {
         .divider-vertical {
             height: 60px;
         }
-
     }
     
     @media (max-width: 767px){
@@ -514,6 +506,89 @@ input {
 
 /* Portlets */
 
+    .portlet-asset-categories-navigation {
+    
+        width: 100%; 
+        z-index: 10;
+    
+        .portlet-body .taglib-asset-categories-navigation {
+    
+            background: #ebeae2;
+            min-height: 140px;       
+            
+            a {
+                color: gray;
+                padding: 8px 15px;
+                border: 1px solid gray; 
+                font-size: $default-font-size; 
+                text-transform: uppercase;
+                margin-right: 15px;
+            }
+    
+            a.tag-selected {
+                border: 1px solid white; 
+                background: white;
+                font-weight: normal;
+            }   
+    
+            .tree-view {
+                overflow: hidden;
+            }
+            
+            .tree-node-leaf,
+            .tree-node-content .tree-label {
+                margin: 0; 
+            }
+            
+            .lfr-asset-category-list span {
+                padding: 0; 
+            }
+        
+            .accordion-group,
+            .accordion-inner {
+                border: none; 
+                padding: 0;
+            }
+            
+            @media (min-width: 768px) {
+                .accordion-inner {
+                    margin-left: 40%;
+                    width: 60%;
+                }
+            }
+            
+            .accordion-heading {
+                display: none; 
+            }
+            
+            ul {
+                margin: 20px 0;
+                float: left; 
+            }
+            
+            li {
+                line-height: 50px;
+                display: inline;
+                float: left; 
+                margin: 0; 
+                padding: 0; 
+            }
+        }
+    }
+    
+    .portlet-asset-categories-navigation.head-categories,
+    .portlet-asset-categories-navigation.head-categories.affix-top {
+        margin-top: 60px; 
+    }
+    
+    .portlet-asset-categories-navigation.head-categories.affix {
+        margin-top: 0; 
+    }    
+    
+    .portlet-asset-categories-navigation.affix {
+        top: 60px; 
+    }    
+
     .portlet-asset-publisher {
     
         margin-bottom: 60px;
@@ -724,69 +799,6 @@ input {
         .result {
             width: 100%;
             margin-left: 0;  
-        }
-    }
-
-    .portlet-body .taglib-asset-categories-navigation {
-    
-        background: #ebeae2;
-        min-height: 140px;      
-        
-        a {
-            color: gray;
-            padding: 8px 15px;
-            border: 1px solid gray; 
-            font-size: $default-font-size; 
-            text-transform: uppercase;
-            margin-right: 15px;
-        }
-
-        a.tag-selected {
-            border: 1px solid white; 
-            background: white;
-        }   
-
-        .tree-view {
-            overflow: hidden;
-        }
-        
-        .tree-node-leaf,
-        .tree-node-content .tree-label {
-            margin: 0; 
-        }
-        
-        .lfr-asset-category-list span {
-            padding: 0; 
-        }
-    
-        .accordion-group,
-        .accordion-inner {
-            border: none; 
-            padding: 0;
-        }
-        
-        @media (min-width: 768px) {
-            .accordion-inner {
-                margin-left: 40%;
-                width: 60%;
-            }
-        }
-        
-        .accordion-heading {
-            display: none; 
-        }
-        
-        ul {
-            margin: 20px 0;
-            float: left; 
-        }
-        
-        li {
-            line-height: 50px;
-            display: inline;
-            float: left; 
-            margin: 0; 
-            padding: 0; 
         }
     }
     

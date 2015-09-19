@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  * 
  * Created: 	2015-09-02 22:31 by Christian Berndt
- * Modified:	2015-09-15 14:02 by Christian Berndt
- * Version: 	1.0.1
+ * Modified:	2015-09-19 10:58 by Christian Berndt
+ * Version: 	1.0.2
  */
 
 /**
@@ -17,9 +17,9 @@ AUI().ready(
 
 		var menu_toggle = navigation.one('#nav_toggle');
 
-
 		if (navigation) {
 			navigation.plug(Liferay.NavigationInteraction);
+//			navigation.plug(A.Hudcrumbs);			
 		}
 
 		menu_toggle.on('click', function(event){
@@ -27,7 +27,7 @@ AUI().ready(
 		});
 
 		var siteBreadcrumbs = A.one('#breadcrumbs');
-
+		
 		if (siteBreadcrumbs) {
 			siteBreadcrumbs.plug(A.Hudcrumbs);
 		}
@@ -111,3 +111,94 @@ AUI().ready('event', 'node', function (A) {
       
     });
 });
+
+/**
+ * show / hide the language-portlet included in #navigation
+ */
+YUI().use(
+	'aui-popover','widget-anim',
+	function(Y) {
+	                            
+	  var trigger = Y.one('#langPopover');
+	  
+	      var popover = new Y.Popover(
+	        {
+	          align: {
+	            node: trigger,
+	            points:[Y.WidgetPositionAlign.TC, Y.WidgetPositionAlign.BL]
+	          },
+	          plugins : [ Y.Plugin.WidgetAnim ],
+	          position: 'bottom',
+	      visible: false,
+	      zIndex : 100
+	    }
+	  ).render();
+	  
+	  var portlet = Y.one('#p_p_id_82_');
+	  
+	  popover.set("bodyContent", portlet);
+	  
+	  popover.get('boundingBox').on('clickoutside', function() {
+	       popover.set('visible', false); 
+		});
+	  
+      trigger.on('click', function(e) {
+	      popover.set('visible', !popover.get('visible'));
+	          e.stopPropagation();   
+      });                        
+	}
+);
+
+/** 
+ * Affix the main navigation
+ */
+YUI().use(
+    'aui-affix',
+    function(Y) {
+        new Y.Affix(
+        {
+          target: '#navigation',
+          offsetTop: 0
+        });
+    }
+);
+
+/** 
+ * Affix the categories navigation below the main navigation
+ */
+YUI().use(
+    'aui-affix', 'node',
+    function(Y) {
+        
+        var portletAssetCategories = Y.one('.portlet-asset-categories-navigation.head-categories')
+        
+        if (portletAssetCategories) {
+                        
+            new Y.Affix(
+            {
+              target: '.portlet-asset-categories-navigation.head-categories',
+              offsetTop: 0
+            });
+        }
+    }
+);
+
+/** 
+ * Affix the project categories navigation below the main navigation
+ */
+YUI().use(
+    'aui-affix', 'node',
+    function(Y) {
+        
+        var portletAssetCategories = Y.one('.portlet-asset-categories-navigation.project-categories')
+        
+        if (portletAssetCategories) {
+                        
+            new Y.Affix(
+            {
+              target: '.portlet-asset-categories-navigation.project-categories',
+              offsetTop: 660 /* height of the intro section - height of navigation */
+            });
+        }
+    }
+);
