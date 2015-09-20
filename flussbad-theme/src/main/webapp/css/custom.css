@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-20 12:22 by Christian Berndt
- * Version:     0.4.2
+ * Modified:    2015-09-20 12:30 by Christian Berndt
+ * Version:     0.4.3
  */
 @import "compass";
 
@@ -107,6 +107,11 @@ input {
                 display: block;
             }
         }
+    }
+    
+    .dockbar.navbar-static-top {
+        position: fixed;
+        z-index: 10;
     }
     
 /* Navigation */
@@ -232,6 +237,9 @@ input {
         min-height: 1em;
     }
     
+    .signed-in #navigation {
+        margin-top: 60px;
+    }    
     
 /* Web Content Templates */
     
@@ -583,13 +591,22 @@ input {
         margin-top: 60px; 
     }
     
+    .signed-in .portlet-asset-categories-navigation.head-categories,
+    .signed-in .portlet-asset-categories-navigation.head-categories.affix-top {
+        margin-top: 120px; /* .dockbar.height + #navigation.height */
+    }
+    
     .portlet-asset-categories-navigation.head-categories.affix {
         margin-top: 0; 
-    }    
+    }
+
+    .signed-in .portlet-asset-categories-navigation.affix {
+        top: 120px; 
+    }
     
     .portlet-asset-categories-navigation.affix {
         top: 60px; 
-    }    
+    }
 
     .portlet-asset-publisher {
     
