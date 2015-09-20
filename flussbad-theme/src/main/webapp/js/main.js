@@ -19,7 +19,6 @@ AUI().ready(
 
 		if (navigation) {
 			navigation.plug(Liferay.NavigationInteraction);
-//			navigation.plug(A.Hudcrumbs);			
 		}
 
 		menu_toggle.on('click', function(event){
