@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-19 17:55 by Christian Berndt
- * Version:     0.4.1
+ * Modified:    2015-09-20 12:22 by Christian Berndt
+ * Version:     0.4.2
  */
 @import "compass";
 
@@ -13,8 +13,9 @@ $button-font-size: 35px;
 $button-font-family: 'Amatic SC', cursive;
 $color-turquois: #a5edf0;
 $default-font-color: #222;
-$default-font-family: 'Source Sans Pro', sans-serif; 
+$default-font-family: 'Apercu Regular', Calibri, Roboto, sans-serif; 
 $default-font-size: 16px;
+$default-font-size-adjust:0.508;
 $default-line-height: 20px;   
 $full-image-height-xl: 720px; 
 $full-image-height-l: 640px;
@@ -38,6 +39,7 @@ input {
 .aui {
 
     font-family: $default-font-family;
+    font-size-adjust: $default-font-size-adjust;
     
     h1,h2,h3,h4,h5,h6 {
         font-weight:$semi-bold;
@@ -56,7 +58,7 @@ input {
     }
     
     body {
-        font-family: 'Source Sans Pro', sans-serif;
+        font-family: $default-font-family;
 /*         background: url("/documents/23321/23608/Idee.png");  */
 /*         background: url("/documents/23321/23608/Logbuch.png");  */
 /*         background: url("/documents/23321/23608/Projekt.png");  */

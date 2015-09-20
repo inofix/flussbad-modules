@@ -3,8 +3,8 @@
 ## the example of portal_normal.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:18 by Christian Berndt
-## Modified:    2015-09-19 11:12 by Christian Berndt
-## Version:     1.0.7
+## Modified:    2015-09-20 12:08 by Christian Berndt
+## Version:     1.0.8
 ##
 <!DOCTYPE html>
 
@@ -30,6 +30,23 @@
     ##
     <link href='$default_font' rel='stylesheet' type='text/css'>
     <link href='$handwritten-font' rel='stylesheet' type='text/css'>
+    
+    ##
+    ## load Apercu font from fontdeck
+    ##
+    <script type="text/javascript">
+        WebFontConfig = { fontdeck: { id: '59962' } };
+        
+        (function() {
+          var wf = document.createElement('script');
+          wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+          wf.type = 'text/javascript';
+          wf.async = 'true';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
 
     $theme.include($top_head_include)
 
@@ -51,6 +68,7 @@ $theme.include($body_top_include)
         #if ($has_navigation || $is_signed_in)
             #parse ("$full_templates_path/navigation.vm")
         #end
+        
     </header>
 
     <div id="content">
