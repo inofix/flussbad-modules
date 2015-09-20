@@ -6,8 +6,8 @@
     Flussbad theme.
     
     Created:    2015-08-31 16:04 by Christian Berndt
-    Modified:   2015-09-14 17:56 by Christian Berndt
-    Version:    1.0.6
+    Modified:   2015-09-20 13:23 by Christian Berndt
+    Version:    1.0.7
  -->
 <look-and-feel>
     <compatibility>
@@ -16,11 +16,7 @@
     <theme id="flussbad" name="flussbad-theme" >
         <settings>
             <setting key="brand" configurable="true" type="text"
-                value="Your Brand" />
-            <setting key="default-font" configurable="true" type="text"
-                value="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" />                    
-            <setting key="handwritten-font" configurable="true" type="text"
-                value="https://fonts.googleapis.com/css?family=Amatic+SC:400,700" />                    
+                value="Your Brand" />                    
             <setting key="login-url" configurable="true" type="text"
                 value="" />
             <setting key="logos-article-id"
