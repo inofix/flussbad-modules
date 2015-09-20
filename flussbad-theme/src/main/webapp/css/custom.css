@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-20 12:30 by Christian Berndt
- * Version:     0.4.3
+ * Modified:    2015-09-20 19:58 by Christian Berndt
+ * Version:     0.4.4
  */
 @import "compass";
 
@@ -16,7 +16,7 @@ $default-font-color: #222;
 $default-font-family: 'Apercu Regular', Calibri, Roboto, sans-serif; 
 $default-font-size: 16px;
 $default-font-size-adjust:0.508;
-$default-line-height: 20px;   
+$default-line-height: 20px;
 $full-image-height-xl: 720px; 
 $full-image-height-l: 640px;
 $full-image-height-m: 560px;   
@@ -77,6 +77,10 @@ input {
     
     #content {
         font-size: $default-font-size;
+    }
+    
+    .signed-in #content {
+        margin-top: 120px; 
     }
     
     @media (max-width: 767px) {
@@ -591,17 +595,8 @@ input {
         margin-top: 60px; 
     }
     
-    .signed-in .portlet-asset-categories-navigation.head-categories,
-    .signed-in .portlet-asset-categories-navigation.head-categories.affix-top {
-        margin-top: 120px; /* .dockbar.height + #navigation.height */
-    }
-    
     .portlet-asset-categories-navigation.head-categories.affix {
         margin-top: 0; 
-    }
-
-    .signed-in .portlet-asset-categories-navigation.affix {
-        top: 120px; 
     }
     
     .portlet-asset-categories-navigation.affix {
