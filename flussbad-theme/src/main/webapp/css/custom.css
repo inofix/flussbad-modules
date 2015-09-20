@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-20 19:58 by Christian Berndt
- * Version:     0.4.4
+ * Modified:    2015-09-20 21:09 by Christian Berndt
+ * Version:     0.4.5
  */
 @import "compass";
 
@@ -115,7 +115,7 @@ input {
     
     .dockbar.navbar-static-top {
         position: fixed;
-        z-index: 10;
+        z-index: 1040;
     }
     
 /* Navigation */
@@ -433,7 +433,6 @@ input {
         }
         
         .content {
-            max-width: $max-width;
             margin: 60px auto 130px; 
         }
         
