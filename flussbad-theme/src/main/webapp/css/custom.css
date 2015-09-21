@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-21 15:44 by Christian Berndt
- * Version:     0.4.7
+ * Modified:    2015-09-21 18:14 by Christian Berndt
+ * Version:     0.4.8
  */
 @import "compass";
 
@@ -708,8 +708,14 @@ input {
             is deployed */
         .vocabulary-title { 
             display: none; 
-        }
-           
+        }        
+    }
+    
+    /** 
+     * Limit the 40-60 configuration to specific asset-publishers
+     * (those with the class "default-list").
+     */
+    .portlet-asset-publisher.default-list {
         
         @media (min-width: 768px) {
         
@@ -733,7 +739,7 @@ input {
             .asset-title {
                 clear: left;           
             }   
-        }        
+        }
     }
 
     .portlet-asset-publisher.main-story {
@@ -915,6 +921,7 @@ input {
     .alert,
     .asset-abstract,
     .lfr-meta-actions,
+    .portlet-asset-publisher,
     .portlet-body .taglib-asset-categories-navigation .accordion-group, 
     .portlet-dynamic-data-mapping,
     .portlet-journal,
@@ -928,6 +935,7 @@ input {
         .alert,
         .asset-abstract,
         .lfr-meta-actions,
+        .portlet-asset-publisher,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
         .portlet-journal,
@@ -941,6 +949,7 @@ input {
         .alert,
         .asset-abstract,
         .lfr-meta-actions,
+        .portlet-asset-publisher,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
         .portlet-journal,
@@ -954,6 +963,7 @@ input {
         .alert,
         .asset-abstract,
         .lfr-meta-actions,
+        .portlet-asset-publisher,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
         .portlet-journal,
