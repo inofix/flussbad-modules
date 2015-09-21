@@ -196,7 +196,7 @@ YUI().use(
             new Y.Affix(
             {
               target: '.portlet-asset-categories-navigation.project-categories',
-              offsetTop: 660 /* height of the intro section - height of navigation */
+              offsetTop: 720 /* height of the intro section */
             });
         }
     }
