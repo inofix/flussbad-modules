@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  * 
  * Created: 	2015-09-02 22:31 by Christian Berndt
- * Modified:	2015-09-19 10:58 by Christian Berndt
- * Version: 	1.0.2
+ * Modified:	2015-09-21 15:43 by Christian Berndt
+ * Version: 	1.0.3
  */
 
 /**
@@ -112,7 +112,7 @@ AUI().ready('event', 'node', function (A) {
 });
 
 /**
- * show / hide the language-portlet included in #navigation
+ * Show / hide the language-portlet included in #navigation
  */
 YUI().use(
 	'aui-popover','widget-anim',
@@ -139,7 +139,7 @@ YUI().use(
 	  
 	  popover.get('boundingBox').on('clickoutside', function() {
 	       popover.set('visible', false); 
-		});
+      });
 	  
       trigger.on('click', function(e) {
 	      popover.set('visible', !popover.get('visible'));
@@ -199,5 +199,46 @@ YUI().use(
               offsetTop: 660 /* height of the intro section - height of navigation */
             });
         }
+    }
+);
+
+/** 
+ * Affix the toc of stories below the main-navigation
+ */
+YUI().use(
+    'aui-affix', 'node',
+    function(Y) {
+        
+        var toc = Y.one('.toc')
+        
+        if (toc) {
+                        
+            new Y.Affix(
+            {
+              target: '.toc',
+              offsetTop: 120,
+            });
+        }
+    }
+);
+
+/**
+ * Create one scrollspy per page 
+ */
+YUI().use(
+    'aui-scrollspy',
+    function(Y) {
+        
+        var toc = Y.one('.toc ul'); 
+        
+        if (toc) {
+            
+            console.log('has toc'); 
+            
+            new Y.Scrollspy({
+                offset: 120, /** height of navigation + margin-top of content */
+                target: '.toc ul'
+            });
+        } 
     }
 );

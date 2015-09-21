@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-20 22:10 by Christian Berndt
- * Version:     0.4.6
+ * Modified:    2015-09-21 15:44 by Christian Berndt
+ * Version:     0.4.7
  */
 @import "compass";
 
@@ -78,6 +78,7 @@ input {
     
     #content {
         font-size: $default-font-size;
+        margin-top: $nav-height;
     }
     
     .signed-in #content {
@@ -428,18 +429,22 @@ input {
     }
     
     .story {
-    
-        .margin-top: $nav-height;
         
         .container {
             background: white; 
         }
         
         .content {
-            margin: 60px auto 130px; 
+            margin: 0 auto 120px; 
+                             
+            > h1 {
+                margin-top: 60px;
+            }
         }
+    
+        .section-body {
         
-        .two-cols {
+            margin-bottom: 20px;
         
             -webkit-column-count: 2; /* Chrome, Safari, Opera */
             -moz-column-count: 2; /* Firefox */
@@ -449,14 +454,11 @@ input {
             -moz-column-gap: 20px; /* Firefox */
             column-gap: 20px;
             
-            img {
-                margin: 10px 0; 
-            }
         }
         
         @media (max-width: 767px) {
         
-            .two-cols {           
+            .section-body {           
                 -webkit-column-count: 1; /* Chrome, Safari, Opera */
                 -moz-column-count: 1; /* Firefox */
                 column-count: 1;                
@@ -464,8 +466,17 @@ input {
         }        
         
         img {
-            margin: 20px 0; 
+            margin: 0 0 20px 0; 
         }
+    }
+    
+    .toc {
+        position: fixed; 
+        margin-top: 60px; /* same as margin-top of main heading */
+    }
+    
+    .signed-in .toc {
+        top: 120px;  /* height of dockbar + height of nav + margin-top of .content (see above) */
     }
     
     .story,
@@ -593,12 +604,13 @@ input {
     }
     
     .portlet-asset-categories-navigation.affix {
+        position: fixed;
         top: $nav-height; 
     }
     
     .portlet-asset-categories-navigation,
     .portlet-asset-categories-navigation.affix-top {
-        position: absolute; 
+        position: relative;
     }
     
     .signed-in .portlet-asset-categories-navigation.affix {
