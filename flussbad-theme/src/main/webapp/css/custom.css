@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-21 18:14 by Christian Berndt
- * Version:     0.4.8
+ * Modified:    2015-09-21 22:31 by Christian Berndt
+ * Version:     0.4.9
  */
 @import "compass";
 
@@ -537,6 +537,10 @@ input {
     
         width: 100%; 
         z-index: 10;
+            
+        .accordion {
+            margin-bottom: 0; 
+        }
     
         .portlet-body .taglib-asset-categories-navigation {
     
@@ -556,7 +560,7 @@ input {
                 border: 1px solid white; 
                 background: white;
                 font-weight: normal;
-            }   
+            }
     
             .tree-view {
                 overflow: hidden;
@@ -618,11 +622,9 @@ input {
     }
 
     .portlet-asset-publisher {
-    
-        margin-bottom: 60px;
-    
+        
         .asset-abstract {
-            margin-top: 60px;
+            margin-bottom: 0; 
         }
     
         .asset-actions {
@@ -716,7 +718,38 @@ input {
      * (those with the class "default-list").
      */
     .portlet-asset-publisher.default-list {
+    
+        width: 100%;
+    
+        .asset-abstract {
+            padding: 40px 0; 
+        }
         
+        .asset-abstract.invert {
+            
+            .asset-content,
+            .asset-title a, 
+            .metadata-publish-date {
+                color: white; 
+            }
+        }
+    }
+    
+    .portlet-asset-publisher.project-list {
+    
+        .asset-wrapper {
+            background-color: white; 
+            padding: 40px 0; 
+        }
+    }
+    
+    .portlet-asset-publisher.default-list,
+    .portlet-asset-publisher.project-list {
+    
+        .taglib-categorization-filter.entry-title {
+            display: none; 
+        }
+    
         @media (min-width: 768px) {
         
            .asset-metadata {
@@ -737,7 +770,7 @@ input {
             .asset-more,
             .asset-summary,
             .asset-title {
-                clear: left;           
+                clear: left;
             }   
         }
     }
@@ -746,6 +779,11 @@ input {
     
         .asset-abstract {
             margin-top: 100px;
+        }
+        
+        .asset-content {
+            margin: 0 auto;
+            border: none;
         }
         
         .asset-metadata {
@@ -757,29 +795,6 @@ input {
         
         .asset-metadata span {
             float: none;
-        }
-      
-        .metadata-publish-date {
-            background: none;
-            color: $default-font-color; 
-            padding-left: 0; 
-        }
-               
-        .asset-title {        
-            text-align: center; 
-            margin: 10px auto 40px; 
-        }
-        
-        .asset-content {
-            margin: 0 auto;
-            border: none;
-        }
-        
-        .asset-summary {
-            display: block; 
-            text-align: center; 
-            max-width: 550px; 
-            margin: 0 auto 80px; 
         }
         
         .asset-more {
@@ -800,6 +815,29 @@ input {
             a:before {
                 content: ''; 
             }
+        }
+        
+        .asset-social-media {
+            display:none; 
+        }
+               
+        .asset-summary {
+            display: block; 
+            text-align: center; 
+            max-width: 550px; 
+            margin: 0 auto 80px; 
+        }
+               
+        .asset-title {        
+            text-align: center; 
+            margin: 10px auto 40px; 
+            max-width: 744px;
+        }
+        
+        .metadata-publish-date {
+            background: none;
+            color: $default-font-color; 
+            padding-left: 0; 
         }
     }
     
@@ -919,7 +957,7 @@ input {
 /* Liferay UI */
     
     .alert,
-    .asset-abstract,
+    .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
     .lfr-meta-actions,
     .portlet-asset-publisher,
     .portlet-body .taglib-asset-categories-navigation .accordion-group, 
@@ -933,7 +971,7 @@ input {
     
     @media (min-width: 1200px) {
         .alert,
-        .asset-abstract,
+        .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
         .lfr-meta-actions,
         .portlet-asset-publisher,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
@@ -947,7 +985,7 @@ input {
     
     @media (max-width: 979px) and (min-width: 768px) {
         .alert,
-        .asset-abstract,
+        .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
         .lfr-meta-actions,
         .portlet-asset-publisher,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
@@ -961,7 +999,7 @@ input {
     
     @media (max-width: 767px) {
         .alert,
-        .asset-abstract,
+        .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
         .lfr-meta-actions,
         .portlet-asset-publisher,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
