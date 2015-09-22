@@ -798,23 +798,23 @@ input {
         }
         
         .asset-more {
-            display: block; 
-            text-align: center; 
-            margin: 20px auto; 
-            line-height: 60px;
+            display: none; 
+/*             text-align: center;  */
+/*             margin: 20px auto;  */
+/*             line-height: 60px; */
             
-            a {
-                border: 1px solid $default-font-color; 
-                color: $default-font-color; 
-                font-family: $button-font-family;
-                font-size: $button-font-size; 
-                padding: 10px 20px; 
-                text-decoration: none; 
-            }
+/*             a { */
+/*                 border: 1px solid $default-font-color;  */
+/*                 color: $default-font-color;  */
+/*                 font-family: $button-font-family; */
+/*                 font-size: $button-font-size;  */
+/*                 padding: 10px 20px;  */
+/*                 text-decoration: none;  */
+/*             } */
             
-            a:before {
-                content: ''; 
-            }
+/*             a:before { */
+/*                 content: '';  */
+/*             } */
         }
         
         .asset-social-media {
