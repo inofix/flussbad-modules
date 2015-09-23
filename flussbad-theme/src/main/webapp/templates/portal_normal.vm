@@ -3,7 +3,7 @@
 ## the example of portal_normal.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:18 by Christian Berndt
-## Modified:    2015-09-20 19:49 by Christian Berndt
+## Modified:    2015-09-22 22:45 by Christian Berndt
 ## Version:     1.1.0
 ##
 <!DOCTYPE html>
@@ -184,6 +184,13 @@ $theme.include($body_top_include)
         
         ## Reset the preferences settings.
         $velocityPortletPreferences.reset()
+        
+        <div class="container status">
+            <ul>
+                <li>#language ("this-page-was-last-rendered") $date.newDate()</li>
+                <li>User Agent: $request.getHeader("User-Agent")</li>
+            </ul>        
+        </div>
                 
     </footer>
 </div>
