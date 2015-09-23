@@ -190,10 +190,14 @@ A.Affix = A.Base.create('affix', A.Base, [], {
      */
     _syncClassesUI: function(position) {
         var target = this.get('target');
-        target.toggleClass(A.Affix.CSS_CLASSES.BOTTOM, position === A.Affix.EVENTS.BOTTOM);
-        target.toggleClass(A.Affix.CSS_CLASSES.DEFAULT, position === A.Affix.EVENTS.DEFAULT);
-        target.toggleClass(A.Affix.CSS_CLASSES.TOP, position === A.Affix.EVENTS.TOP);
-        this._lastPosition = position;
+        
+        // this check is only required in popup-mode
+        if (target) {
+            target.toggleClass(A.Affix.CSS_CLASSES.BOTTOM, position === A.Affix.EVENTS.BOTTOM);
+            target.toggleClass(A.Affix.CSS_CLASSES.DEFAULT, position === A.Affix.EVENTS.DEFAULT);
+            target.toggleClass(A.Affix.CSS_CLASSES.TOP, position === A.Affix.EVENTS.TOP);
+            this._lastPosition = position;
+        }
     },
 
     /**
