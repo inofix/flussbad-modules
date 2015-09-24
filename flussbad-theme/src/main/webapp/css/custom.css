@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-23 17:06 by Christian Berndt
- * Version:     0.5.1
+ * Modified:    2015-09-23 21:50 by Christian Berndt
+ * Version:     0.5.2
  */
 @import "compass";
 
@@ -17,6 +17,8 @@ $default-font-family: 'Apercu Regular', Calibri, Roboto, sans-serif;
 $default-font-size: 16px;
 $default-font-size-adjust:0.508;
 $default-line-height: 20px;
+$dockbar-height: 60px;
+$dockbar-and-nav-height: 120px;
 $full-image-height-xl: 720px; 
 $full-image-height-l: 640px;
 $full-image-height-m: 560px;   
@@ -29,7 +31,8 @@ $h1-font-size: 38.5px;
 $lead-font-size: 21px; 
 $lead-line-height: 30px; 
 $max-width: 744px;
-$nav-height: 60px; 
+$nav-height: 60px;
+$nav-and-categories-height: 120px; 
 $semi-bold: 600; 
 
 /* Unset input borders set by jQuery */
@@ -41,6 +44,10 @@ input {
 
     font-family: $default-font-family;
     font-size-adjust: $default-font-size-adjust;
+    
+    .alert {
+        margin-bottom: 1.5em;
+    }
     
     h1,h2,h3,h4,h5,h6 {
         font-weight:$semi-bold;
@@ -78,11 +85,10 @@ input {
     
     #content {
         font-size: $default-font-size;
-        margin-top: $nav-height;
     }
     
     .signed-in #content {
-        margin-top: 120px; 
+        margin-top: $dockbar-height; 
     }
     
     @media (max-width: 767px) {
@@ -142,7 +148,6 @@ input {
         
         .navbar-inner {
         
-            background-color: $color-turquois;
             background-image: none;
             
             -webkit-box-shadow: none;
@@ -150,7 +155,7 @@ input {
             box-shadow: none;
             
             border: none;            
-        } 
+        }
         
         .portlet-site-map {
             float: right;
@@ -184,6 +189,16 @@ input {
         .search .portlet-search {
             display: none; 
         }       
+    }
+    
+    #navigation.default-page,
+    #navigation.affix .navbar-inner {
+        background-color: $color-turquois;
+    }
+    
+    #navigation .navbar-inner,              /* affix-top is set via js, which is too late on first load */
+    #navigation.affix-top .navbar-inner {
+        background-color: transparent;
     }
      
     .navbar {
@@ -448,14 +463,14 @@ input {
     }
     
     .story {
-        
+
         .container {
             background: white; 
         }
         
         .content {
-            margin: 0 auto 120px; 
-                             
+            margin: 0 auto 120px;
+
             > h1 {
                 margin-top: 60px;
             }
@@ -491,11 +506,7 @@ input {
     
     .toc {
         position: fixed; 
-        margin-top: 60px; /* same as margin-top of main heading */
-    }
-    
-    .signed-in .toc {
-        top: 120px;  /* height of dockbar + height of nav + margin-top of .content (see above) */
+        margin-top: 60px; /* same as margin-top of content > h1 */
     }
     
     .story,
@@ -608,8 +619,16 @@ input {
             }
             
             .accordion-heading {
+                
                 display: none; 
+                
+                .accordion-toggle {
+                    float: left;
+                    padding: 0;
+                }           
             }
+            
+            
             
             ul {
                 margin: 20px 0;
@@ -626,18 +645,17 @@ input {
         }
     }
     
-    .portlet-asset-categories-navigation.affix {
+    .portlet-asset-categories-navigation,
+    .portlet-asset-categories-navigation.affix, 
+    .portlet-asset-categories-navigation.affix-top {
         position: fixed;
         top: $nav-height; 
     }
     
-    .portlet-asset-categories-navigation,
-    .portlet-asset-categories-navigation.affix-top {
-        position: relative;
-    }
-    
-    .signed-in .portlet-asset-categories-navigation.affix {
-        top: 120px 
+    .signed-in .portlet-asset-categories-navigation,
+    .signed-in .portlet-asset-categories-navigation.affix,
+    .signed-in .portlet-asset-categories-navigation.affix-top {
+        top: $dockbar-and-nav-height; 
     }
 
     .portlet-asset-publisher {
@@ -732,13 +750,10 @@ input {
         }        
     }
     
-    /** 
-     * Limit the 40-60 configuration to specific asset-publishers
-     * (those with the class "default-list").
-     */
     .portlet-asset-publisher.default-list {
     
         width: 100%;
+        margin-top: 225px; /* navigation + asset-categories-navigation + margin-top */
     
         .asset-abstract {
             padding: 40px 0; 
@@ -762,6 +777,11 @@ input {
         }
     }
     
+    
+    /** 
+     * Limit the 40-60 configuration to specific asset-publishers
+     * (those with the class "default-list").
+     */
     .portlet-asset-publisher.default-list,
     .portlet-asset-publisher.project-list {
     
@@ -850,6 +870,7 @@ input {
     
     .portlet-asset-publisher.story-publisher {
         
+        margin-top: $nav-and-categories-height; 
         width: 100%;
     
         .asset-content {
@@ -862,6 +883,10 @@ input {
             font-size: $default-font-size; 
             line-height: $default-line-height; 
         } 
+    }
+    
+    .portlet-journal-content.first-display {
+        margin-top: $nav-height;
     }
     
     .portlet-search {
