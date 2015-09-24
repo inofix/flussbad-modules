@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-24 17:15 by Christian Berndt
- * Version:     0.5.5
+ * Modified:    2015-09-24 18:07 by Christian Berndt
+ * Version:     0.5.6
  */
 @import "compass";
 
@@ -47,6 +47,7 @@ input {
     
     .alert {
         margin-bottom: 1.5em;
+        margin-top: 1em; 
     }
     
     h1,h2,h3,h4,h5,h6 {
@@ -1001,11 +1002,6 @@ input {
 
     
 /* Liferay UI */
-
-    
-    .alert {
-        margin-top: 1em;
-    }
     
     .signed-in {
     
@@ -1018,9 +1014,9 @@ input {
    
     .lfr-meta-actions {
         margin-bottom: 1em;
+        padding-bottom: 1em;
     }
     
-    .alert,
     .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
     .lfr-meta-actions,
     .portlet-asset-publisher,
@@ -1034,7 +1030,6 @@ input {
     }
     
     @media (min-width: 1200px) {
-        .alert,
         .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
         .lfr-meta-actions,
         .portlet-asset-publisher,
@@ -1048,7 +1043,6 @@ input {
     }
     
     @media (max-width: 979px) and (min-width: 768px) {
-        .alert,
         .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
         .lfr-meta-actions,
         .portlet-asset-publisher,
@@ -1062,7 +1056,6 @@ input {
     }
     
     @media (max-width: 767px) {
-        .alert,
         .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
         .lfr-meta-actions,
         .portlet-asset-publisher,
