@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-24 14:46 by Christian Berndt
- * Version:     0.5.4
+ * Modified:    2015-09-24 17:15 by Christian Berndt
+ * Version:     0.5.5
  */
 @import "compass";
 
@@ -11,7 +11,7 @@
 
 $button-font-size: 35px;
 $button-font-family: 'Amatic SC', cursive;
-$color-turquois: #a5edf0;
+$color-turquois: #93eaee;
 $default-font-color: #222;
 $default-font-family: 'Apercu Regular', Calibri, Roboto, sans-serif; 
 $default-font-size: 16px;
@@ -264,51 +264,6 @@ input {
     
 /* Web Content Templates */
     
-    .abstracts {
-    
-        background: $color-turquois; 
-        min-height: 500px;
-        text-align: center;   
-        
-        h1 {
-            margin: 80px auto 20px;
-            max-width: $max-width; 
-            
-            a {
-                color: white; 
-            }
-        }
-        
-        h2 {
-            color: gray;
-            margin-bottom: 20px; 
-        }
-        
-        h3 {
-            text-transform: uppercase;
-            color: white;
-            font-size: $default-font-size; 
-        }
-        
-        .abstract {
-            text-align: center;
-            padding: 40px;
-        }
-        
-        .link {
-            padding: 40px 0 100px;
-            
-            .btn {
-                color: gray;
-                background: white;
-                border: none; 
-                font-size: $button-font-size; 
-                font-family: $button-font-family;
-                padding: 15px 25px;
-            } 
-        }
-    }
-    
     .carousel {
 
         margin-bottom: 0; 
@@ -395,7 +350,77 @@ input {
                 width: $full-image-width-s; 
             }
         }
-    }   
+    } 
+    
+    .intro {
+    
+        min-height: 500px;
+        text-align: center;
+        
+        .abstract {
+            text-align: center;
+            padding: 20px 20px;
+            min-height: 290px;
+        }
+                    
+        .btn {
+            color: $default-font-color;
+            background: transparent;
+            border: 2px solid $default-font-color; 
+            box-shadow: none; 
+            -web-box-shadow: none;
+            font-size: $button-font-size; 
+            font-family: $button-font-family;
+            margin: 20px auto;
+            padding: 15px 25px;
+        } 
+        
+        h1 {
+            margin: 80px auto 20px;
+            max-width: $max-width; 
+            
+            > a {
+                color: $default-font-color;
+            }
+        }
+        
+        h2 {
+            color: gray;
+            margin-bottom: 20px; 
+        }
+        
+        h3 {
+            text-transform: uppercase;
+            color: gray;
+            font-size: $default-font-size; 
+        }
+        
+        .link {
+            padding: 40px 0 100px;
+        }
+    } 
+    
+    .intro.with-image {
+    
+        text-align: center; 
+        min-height: 1020px;
+        
+        h1 > a {
+            color: white;
+        }
+           
+        .abstracts {
+            position: absolute;
+            width: 100%;
+            top: 60%;
+        }
+
+        .claim {
+            position: absolute;
+            width: 100%;
+            top: 30%;
+        }
+    } 
     
     .link {
     
@@ -509,9 +534,9 @@ input {
         position: fixed; 
         margin-top: 60px; /* same as margin-top of content > h1 */
     }
-    
-    .story,
-    .teaser {
+ 
+    .intro,   
+    .story {
 
         background-position: center 0; 
         background-repeat: no-repeat;
@@ -532,34 +557,6 @@ input {
             background-size: $full-image-width-s; /* bootstrap .container */
             min-height: $full-image-height-s;              
         }       
-    }
-    
-    .teaser {
-    
-        text-align: center; 
-        background-color: lightgray; 
-
-        .wrapper {
-            position: absolute;
-            width: 100%;
-            top: 50%;
-            transform: translateY(-50%);        
-        }
-        
-        h2 {
-            max-width: $max-width; 
-            margin: auto;
-            text-transform: uppercase;
-            color: white;
-        }
-        
-        h1 {
-            max-width: $max-width; 
-            margin: auto; 
-            a {
-                color: white; 
-            }
-        }
     }
 
 /* Portlets */
@@ -1012,8 +1009,8 @@ input {
     
     .signed-in {
     
-        .article-form,
-        .portlet-dynamic-data-mapping
+        .portlet-dynamic-data-mapping,
+        .portlet-journal
         {
             margin-top: $nav-height; 
         }
