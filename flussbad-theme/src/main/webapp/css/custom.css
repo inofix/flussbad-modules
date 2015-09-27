@@ -3,7 +3,7 @@
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
  * Modified:    2015-09-27 15:18 by Christian Berndt
- * Version:     0.5.9
+ * Version:     0.6.0
  */
 @import "compass";
 
@@ -493,6 +493,85 @@ input {
 				-o-transition: .5s ease-in-out; 
             }  
         }
+    }
+    
+    .statement {
+    
+        background-color: $color-gray-green;
+    
+        .carousel .container {
+          position: relative;
+          z-index: 9;
+        }
+    
+        /** TODO: merge via mixin with carousel */
+        .carousel-control {
+            color: $color-turquois;
+            left: 0; 
+            margin-top: 0;
+            width: 55px;
+            font-size: 80px;
+            background-color: transparent;
+            border: 0;
+            z-index: 10;
+        }
+        
+        .carousel-control.right {
+            left: auto; 
+        }
+    
+        .carousel .item {
+            height: 500px;
+            background-size: cover;
+        }
+        .carousel img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            height: 500px;
+        }
+    
+        .carousel-caption {
+            background-color: transparent;
+            height: 300px;
+            position: static;
+            max-width: 550px;
+            padding: 0 20px;
+            margin-top: 100px;
+            overflow: hidden;
+            line-height: 150%;
+            white-space: normal; /* Restore normal white-space behaviour
+                                    (nowrap is required for scrollview, 
+                                    see below) */
+        }
+        .carousel-caption h1,
+        .carousel-caption .lead {
+              margin: 0;
+              line-height: 1.25;
+              color: #fff;
+              text-shadow: 0 1px 1px rgba(0,0,0,.4);
+        }
+        .carousel-caption .btn {
+          margin-top: 10px;
+        }
+        
+      /* === scrollview styles === */
+
+      /* To layout horizontal LIs */
+      .scrollview-content {
+          white-space:nowrap;
+      }
+
+      .item {
+          display:inline-block;
+      }
+
+      /* For IE 6/7 - needs inline block hack */
+      .item {
+          *display:inline;
+          *zoom:1;
+      }
     }
     
     .story {
