@@ -3,7 +3,7 @@
  * 
  * Created: 	2015-09-02 22:31 by Christian Berndt
  * Modified:	2015-09-23 16:23 by Christian Berndt
- * Version: 	1.0.4
+ * Version: 	1.0.5
  */
 
 /**
@@ -38,6 +38,95 @@ AUI().ready(
 		}
 	}
 );
+
+YUI().use('event', 'node', 'scrollview-base', 'scrollview-paginator', function(Y) {
+
+    var scrollView = new Y.ScrollView({
+        id: "scrollview",
+        srcNode : '.carousel',
+        width : Y.one("body").get("winWidth"),
+        flick: {
+            minDistance:10,
+            minVelocity:0.3,
+            axis: "x"
+        }
+    });
+
+    var winWidth = Y.one("body").get("winWidth") + 'px';
+
+    Y.all('.carousel img').setStyle('width', winWidth);  
+    Y.all('.carousel .item').setStyle('width', winWidth); 
+
+    Y.on('resize', function() {
+      winWidth = Y.one("body").get("winWidth") + 'px';
+      console.log('resize'); 
+      console.log(winWidth); 
+
+      Y.all('.carousel img').setStyle('width', winWidth);  
+      Y.all('.carousel .item').setStyle('width', winWidth);
+      scrollView.set('width', winWidth); 
+      scrollView.render(); 
+    });
+
+    scrollView.plug(Y.Plugin.ScrollViewPaginator, {
+        selector: '.item',
+    });
+
+    scrollView.render();
+
+    var content = scrollView.get("contentBox");
+
+    content.delegate("click", function(e) {
+        // For mouse based devices, we need to make sure the click isn't fired
+        // at the end of a drag/flick. We use 2 as an arbitrary threshold.
+        if (Math.abs(scrollView.lastScrolledAmt) < 2) {
+            alert(e.currentTarget.getAttribute("alt"));
+        }
+    }, "img");
+
+    // Prevent default image drag behavior
+    content.delegate("mousedown", function(e) {
+        e.preventDefault();
+    }, "img");
+    
+    var total = scrollView.pages.get('total');
+
+    var nextControl = Y.one('#scrollview-next'); 
+    
+    if (nextControl) {
+        
+        nextControl.on('click', function(e){
+          
+          var idx = scrollView.pages.get('index'); 
+          var target = idx + 1; 
+          
+          if (target < total) {
+            scrollView.pages.set('index', target); 
+          } else {
+            // scrollView.pages.set('index', total -1); 
+            scrollView.pages.scrollTo(0, 0.3, 'easing');           } 
+        });        
+    }
+   
+    var prevControl = Y.one('#scrollview-prev')
+    
+    if (prevControl) {
+      
+          prevControl.on('click', function(e){
+
+          var idx = scrollView.pages.get('index'); 
+          var target = idx - 1; 
+
+          if (target < 0) {
+            // scrollView.pages.set('index', total -1); 
+            scrollView.pages.scrollTo(total - 1, 0.3, 'easing'); 
+          } else {
+            scrollView.pages.set('index', target); 
+          } 
+        });
+    }
+
+});
 
 
 /**
