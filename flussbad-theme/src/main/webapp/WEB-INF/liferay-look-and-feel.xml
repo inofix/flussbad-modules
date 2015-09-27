@@ -6,8 +6,8 @@
     Flussbad theme.
     
     Created:    2015-08-31 16:04 by Christian Berndt
-    Modified:   2015-09-20 13:23 by Christian Berndt
-    Version:    1.0.7
+    Modified:   2015-09-24 22:26 by Christian Berndt
+    Version:    1.0.8
  -->
 <look-and-feel>
     <compatibility>
@@ -26,6 +26,8 @@
             <setting key="search-layout-uuid"
                 configurable="true" type="text" value="" />
             <setting key="service-site-map-root-layout-uuid"
+                configurable="true" type="text" value="" />
+            <setting key="social-article-id"
                 configurable="true" type="text" value="" />
             <setting key="portlet-setup-show-borders-default" value="false" />
         </settings>

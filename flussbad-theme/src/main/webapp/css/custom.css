@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-24 18:07 by Christian Berndt
- * Version:     0.5.6
+ * Modified:    2015-09-24 23:17 by Christian Berndt
+ * Version:     0.5.7
  */
 @import "compass";
 
@@ -11,6 +11,8 @@
 
 $button-font-size: 35px;
 $button-font-family: 'Amatic SC', cursive;
+$color-gray-green: #648889;
+$color-light-gray: #ebebeb;
 $color-turquois: #93eaee;
 $default-font-color: #222;
 $default-font-family: 'Apercu Regular', Calibri, Roboto, sans-serif; 
@@ -913,20 +915,11 @@ input {
 
     #footer {
     
-        background: #ebebeb;
+        background: $color-light-gray;
         padding-bottom: 20px;
         
         .container.first {
             padding: 120px 0 80px;
-        }
-        
-        .span4 {
-            margin-left: 14px;
-            min-height: 280px;
-        }
-        
-        .span4:nth-child(-n+2) {
-            border-right: 6px solid #cad3d3;
         }
         
         .copyright {
@@ -971,7 +964,7 @@ input {
                 }           
             }           
         }
-     
+
         h1.portlet-title  {
             
             color: $default-font-color;
@@ -984,6 +977,47 @@ input {
             }
         }
         
+        .social {
+        
+            font-size: 30px;
+            text-align: center; 
+        
+            ul {
+                list-style: none;
+                margin: 0; 
+                padding: 0;  
+            }
+            
+            li {
+                display: inline;
+                margin: 0 20px 0 0; 
+            }
+            
+            .circle {
+                background: $color-gray-green;
+                border-radius: 100%;
+                padding: 8px;
+                text-align: center;
+                width: 40px;
+                height: 40px;
+                display: inline-block;
+                line-height: 150%;
+            }
+            
+            a {
+                color: $color-light-gray; 
+            }
+        }
+        
+        .span6 {
+            margin-left: 0;
+            min-height: 280px;
+        }
+        
+        .span6:nth-child(-n+1) {
+            border-right: 6px solid #cad3d3;
+        }
+             
         .status {
         
             ul {
