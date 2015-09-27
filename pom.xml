@@ -3,13 +3,13 @@
     pom.xml: Parent pom to Flssbad's Liferay Modules
     
     Created:    2015-08-31 13:48 by Christian Berndt
-    Modified:   2015-09-02 09:41 by Christian Berndt
-    Version:    1.0.1
+    Modified:   2015-09-27 13:49 by Christian Berndt
+    Version:    1.0.2
 --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.flussbad</groupId>
     <artifactId>flussbad-modules</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.2.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Flussbad Modules</name>
     <description>Maven parent project to the flussbad liferay modules.</description>
@@ -99,5 +99,6 @@
     <modules>
         <module>flussbad-theme</module>
         <module>journal-hook</module>
+    	<module>lang-hook</module>
   </modules>
 </project>
