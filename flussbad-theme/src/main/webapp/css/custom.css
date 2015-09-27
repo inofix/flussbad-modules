@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-27 14:02 by Christian Berndt
- * Version:     0.5.8
+ * Modified:    2015-09-27 15:18 by Christian Berndt
+ * Version:     0.5.9
  */
 @import "compass";
 
@@ -36,6 +36,7 @@ $max-width: 744px;
 $nav-height: 60px;
 $nav-and-categories-height: 120px; 
 $semi-bold: 600; 
+
 
 /* Unset input borders set by jQuery */
 input {
@@ -510,6 +511,7 @@ input {
     
         .section-body {
         
+            /* TODO: merge with intro-publisher .lead via mixin */
             margin-bottom: 20px;
         
             -webkit-column-count: 2; /* Chrome, Safari, Opera */
@@ -655,12 +657,18 @@ input {
         position: fixed;
         top: $nav-height; 
     }
-    
+
     .signed-in .portlet-asset-categories-navigation,
     .signed-in .portlet-asset-categories-navigation.affix,
     .signed-in .portlet-asset-categories-navigation.affix-top {
         top: $dockbar-and-nav-height; 
     }
+    
+        
+    .signed-in .portlet-configuration.portlet-asset-categories-navigation {
+        top: 20px; 
+    }
+   
 
     .portlet-asset-publisher {
         
@@ -671,14 +679,6 @@ input {
         .asset-actions {
             font-size: $default_font_size; 
             float: none; 
-        }
-        
-        .asset-content {
-            margin-left: 0; 
-            font-size: $lead-font-size; 
-            line-height: $lead-line-height; 
-            padding-bottom: 20px; 
-            border-bottom: 4px solid #ebebeb; 
         }
         
         .asset-metadata {
@@ -755,7 +755,7 @@ input {
         }        
     }
     
-    .portlet-asset-publisher.default-list {
+    .portlet-asset-publisher.default-publisher {
     
         width: 100%;
         margin-top: 225px; /* navigation + asset-categories-navigation + margin-top */
@@ -772,23 +772,22 @@ input {
                 color: white; 
             }
         }
-    }
-    
-    .portlet-asset-publisher.project-list {
-    
-        .asset-wrapper {
-            background-color: white; 
-            padding: 40px 0; 
+        
+        .asset-content {
+            margin-left: 0;
+            margin-right: 0;  
+            font-size: $lead-font-size; 
+            line-height: $lead-line-height; 
+            padding-bottom: 20px; 
+            border-bottom: 4px solid #ebebeb; 
         }
-    }
-    
+    }  
     
     /** 
      * Limit the 40-60 configuration to specific asset-publishers
-     * (those with the class "default-list").
+     * (those with the class "default-publisher").
      */
-    .portlet-asset-publisher.default-list,
-    .portlet-asset-publisher.project-list {
+    .portlet-asset-publisher.default-publisher {
     
         .taglib-categorization-filter.entry-title {
             display: none; 
@@ -818,8 +817,26 @@ input {
             }   
         }
     }
+    
+    
+    .portlet-asset-publisher.intro-publisher {
+        width: 100%;
+        
+        .lead {
+            margin-bottom: 20px;
+        
+            -webkit-column-count: 2; /* Chrome, Safari, Opera */
+            -moz-column-count: 2; /* Firefox */
+            column-count: 2;
+            
+            -webkit-column-gap: 20px; /* Chrome, Safari, Opera */
+            -moz-column-gap: 20px; /* Firefox */
+            column-gap: 20px;            
+        }
+        
+    }
 
-    .portlet-asset-publisher.main-story {
+    .portlet-asset-publisher.start-publisher {
     
         .asset-abstract {
             margin-top: 100px;
@@ -828,6 +845,8 @@ input {
         .asset-content {
             margin: 0 auto;
             border: none;
+            font-size: $lead-font-size; 
+            line-height: $lead-line-height;
         }
         
         .asset-metadata {
