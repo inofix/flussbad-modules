@@ -3,8 +3,8 @@
 ## the example of portal_normal.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:18 by Christian Berndt
-## Modified:    2015-09-22 22:45 by Christian Berndt
-## Version:     1.1.0
+## Modified:    2015-09-24 22:24 by Christian Berndt
+## Version:     1.1.1
 ##
 <!DOCTYPE html>
 
@@ -84,7 +84,7 @@ $theme.include($body_top_include)
     <footer id="footer" role="contentinfo">
         <div class="container first">
         
-            <div class="span4">
+            <div class="span6">
             
                 ##
                 ## Embed the newsletter-registration-portlet
@@ -106,30 +106,33 @@ $theme.include($body_top_include)
                 $velocityPortletPreferences.reset()
             </div>
                         
-            <div class="span4">
-                TODO: Embed Social Media Buttons
-            </div>
-            
-            <div class="span4">
+            <div class="span6">
                 ##
-                ## Embed the signin-portlet
+                ## Embed a configurable web-content-display for the social-media links
                 ##
-                         
+                   
+                ## Read service-site-map from configuration    
+                #set ($social_article_id = $theme_display.getThemeSetting('social-article-id'))
+                #set ($is_configured = $validator.isNotNull($social_article_id))
+        
                 ## Show borders
                 $velocityPortletPreferences.setValue("portletSetupShowBorders", "true")
-               
+                
                 ## Set custom-title
                 $velocityPortletPreferences.setValue("portletSetupUseCustomTitle", "true")
-                $velocityPortletPreferences.setValue("portletSetupTitle_de_DE", "Login")
-                $velocityPortletPreferences.setValue("portletSetupTitle_en_US", "Login")
-                $velocityPortletPreferences.setValue("portletSetupTitle_es_ES", "Login")
-               
-                ## Include login-portlet
-                $theme.runtime("58", "", $velocityPortletPreferences.toString())
+                $velocityPortletPreferences.setValue("portletSetupTitle_de_DE", "Weitersagen")
+                $velocityPortletPreferences.setValue("portletSetupTitle_en_US", "Tell others")
+                $velocityPortletPreferences.setValue("portletSetupTitle_es_ES", "Tell others")
+
+                ## Set the articleId 
+                $velocityPortletPreferences.setValue("articleId", "$social_article_id")
                 
-                ## Reset the preferences settings.
-                $velocityPortletPreferences.reset() 
+                ## Include a web-content-display instance
+                #if ($is_configured)
+                    $theme.runtime("56_INSTANCE_f6b8", "", $velocityPortletPreferences.toString())
+                #end
             </div>
+            
         </div>
             
         <div class="container info">

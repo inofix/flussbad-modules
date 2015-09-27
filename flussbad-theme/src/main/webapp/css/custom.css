@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-24 18:07 by Christian Berndt
- * Version:     0.5.6
+ * Modified:    2015-09-27 15:18 by Christian Berndt
+ * Version:     0.5.9
  */
 @import "compass";
 
@@ -11,6 +11,8 @@
 
 $button-font-size: 35px;
 $button-font-family: 'Amatic SC', cursive;
+$color-gray-green: #648889;
+$color-light-gray: #ebebeb;
 $color-turquois: #93eaee;
 $default-font-color: #222;
 $default-font-family: 'Apercu Regular', Calibri, Roboto, sans-serif; 
@@ -34,6 +36,7 @@ $max-width: 744px;
 $nav-height: 60px;
 $nav-and-categories-height: 120px; 
 $semi-bold: 600; 
+
 
 /* Unset input borders set by jQuery */
 input {
@@ -149,7 +152,7 @@ input {
         
         .navbar-inner {
         
-            background-image: none;
+            background-image: none;            
             
             -webkit-box-shadow: none;
             -moz-box-shadow: none; 
@@ -159,21 +162,24 @@ input {
         }
         
         .portlet-site-map {
+        
             float: right;
-            font-size: 14px;
             
-            ul {
-                padding: 20px 0 0; 
-                list-style: none;  
-            }
-            
-            li {
-                display: inline; 
-            }
-            
-            a {
-                padding: 20px 10px; 
-                color:$default-font-color;
+            .portlet-body {
+                
+                ul {
+                    padding: 20px 0 0; 
+                    list-style: none;  
+                }
+                
+                li {
+                    display: inline; 
+                }
+                
+                a {
+                    padding: 20px 10px; 
+                    color:$default-font-color;
+                }
             }
         }
         
@@ -505,6 +511,7 @@ input {
     
         .section-body {
         
+            /* TODO: merge with intro-publisher .lead via mixin */
             margin-bottom: 20px;
         
             -webkit-column-count: 2; /* Chrome, Safari, Opera */
@@ -650,12 +657,18 @@ input {
         position: fixed;
         top: $nav-height; 
     }
-    
+
     .signed-in .portlet-asset-categories-navigation,
     .signed-in .portlet-asset-categories-navigation.affix,
     .signed-in .portlet-asset-categories-navigation.affix-top {
         top: $dockbar-and-nav-height; 
     }
+    
+        
+    .signed-in .portlet-configuration.portlet-asset-categories-navigation {
+        top: 20px; 
+    }
+   
 
     .portlet-asset-publisher {
         
@@ -665,14 +678,7 @@ input {
     
         .asset-actions {
             font-size: $default_font_size; 
-        }
-        
-        .asset-content {
-            margin-left: 0; 
-            font-size: $lead-font-size; 
-            line-height: $lead-line-height; 
-            padding-bottom: 20px; 
-            border-bottom: 4px solid #ebebeb; 
+            float: none; 
         }
         
         .asset-metadata {
@@ -749,7 +755,7 @@ input {
         }        
     }
     
-    .portlet-asset-publisher.default-list {
+    .portlet-asset-publisher.default-publisher {
     
         width: 100%;
         margin-top: 225px; /* navigation + asset-categories-navigation + margin-top */
@@ -766,23 +772,22 @@ input {
                 color: white; 
             }
         }
-    }
-    
-    .portlet-asset-publisher.project-list {
-    
-        .asset-wrapper {
-            background-color: white; 
-            padding: 40px 0; 
+        
+        .asset-content {
+            margin-left: 0;
+            margin-right: 0;  
+            font-size: $lead-font-size; 
+            line-height: $lead-line-height; 
+            padding-bottom: 20px; 
+            border-bottom: 4px solid #ebebeb; 
         }
-    }
-    
+    }  
     
     /** 
      * Limit the 40-60 configuration to specific asset-publishers
-     * (those with the class "default-list").
+     * (those with the class "default-publisher").
      */
-    .portlet-asset-publisher.default-list,
-    .portlet-asset-publisher.project-list {
+    .portlet-asset-publisher.default-publisher {
     
         .taglib-categorization-filter.entry-title {
             display: none; 
@@ -812,8 +817,26 @@ input {
             }   
         }
     }
+    
+    
+    .portlet-asset-publisher.intro-publisher {
+        width: 100%;
+        
+        .lead {
+            margin-bottom: 20px;
+        
+            -webkit-column-count: 2; /* Chrome, Safari, Opera */
+            -moz-column-count: 2; /* Firefox */
+            column-count: 2;
+            
+            -webkit-column-gap: 20px; /* Chrome, Safari, Opera */
+            -moz-column-gap: 20px; /* Firefox */
+            column-gap: 20px;            
+        }
+        
+    }
 
-    .portlet-asset-publisher.main-story {
+    .portlet-asset-publisher.start-publisher {
     
         .asset-abstract {
             margin-top: 100px;
@@ -822,6 +845,8 @@ input {
         .asset-content {
             margin: 0 auto;
             border: none;
+            font-size: $lead-font-size; 
+            line-height: $lead-line-height;
         }
         
         .asset-metadata {
@@ -913,20 +938,11 @@ input {
 
     #footer {
     
-        background: #ebebeb;
+        background: $color-light-gray;
         padding-bottom: 20px;
         
         .container.first {
             padding: 120px 0 80px;
-        }
-        
-        .span4 {
-            margin-left: 14px;
-            min-height: 280px;
-        }
-        
-        .span4:nth-child(-n+2) {
-            border-right: 6px solid #cad3d3;
         }
         
         .copyright {
@@ -936,42 +952,47 @@ input {
         .info {
         
             text-align: center; 
-            margin-bottom: 25px;
+            margin-bottom: 25px; 
             
-            .portlet-site-map, 
-            .portlet-borderless-container,
-            .portlet-body,
-            ul {
+            .portlet-borderless.portlet-site-map {
                 display: inline; 
             }
-            
-            li {
-                display: inline;
-            }
-            
-            ul {
-                list-style: none; 
-            }   
-            
-            .portlet-site-map a {
-                color: $default-font-color; 
-                margin: 20px 10px; 
-                text-decoration: underline; 
-                text-transform: uppercase; 
-            } 
-            
+
             .portlet-site-map {
             
-                ul {
-                    margin-left: 10px; 
+                .portlet-borderless-container {
+                    display: inline; 
                 }
+                        
+                .portlet-body {
+                
+                    display: inline;
+                
+                    li {
+                        display: inline; 
+                    }
             
-                li:before {
-                    content: "/";  
-                }           
+                    li:before {
+                        content: "/";  
+                    }  
+                
+                    a {
+                        color: $default-font-color; 
+                        margin: 20px 10px; 
+                        text-decoration: underline; 
+                        text-transform: uppercase; 
+                    }
+                
+                    ul {
+                        display: inline; 
+                        list-style: none; 
+                        margin-left: 10px; 
+                    }
+                }
+         
             }           
         }
-     
+
         h1.portlet-title  {
             
             color: $default-font-color;
@@ -984,6 +1005,47 @@ input {
             }
         }
         
+        .social {
+        
+            font-size: 30px;
+            text-align: center; 
+        
+            ul {
+                list-style: none;
+                margin: 0; 
+                padding: 0;  
+            }
+            
+            li {
+                display: inline;
+                margin: 0 20px 0 0; 
+            }
+            
+            .circle {
+                background: $color-gray-green;
+                border-radius: 100%;
+                padding: 8px;
+                text-align: center;
+                width: 40px;
+                height: 40px;
+                display: inline-block;
+                line-height: 150%;
+            }
+            
+            a {
+                color: $color-light-gray; 
+            }
+        }
+        
+        .span6 {
+            margin-left: 0;
+            min-height: 280px;
+        }
+        
+        .span6:nth-child(-n+1) {
+            border-right: 6px solid #cad3d3;
+        }
+             
         .status {
         
             ul {
