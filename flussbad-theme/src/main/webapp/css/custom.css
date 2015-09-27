@@ -2,8 +2,8 @@
  * custom.css: Main CSS of the Flussbad theme.
  * 
  * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-24 23:17 by Christian Berndt
- * Version:     0.5.7
+ * Modified:    2015-09-27 14:02 by Christian Berndt
+ * Version:     0.5.8
  */
 @import "compass";
 
@@ -151,7 +151,7 @@ input {
         
         .navbar-inner {
         
-            background-image: none;
+            background-image: none;            
             
             -webkit-box-shadow: none;
             -moz-box-shadow: none; 
@@ -161,21 +161,24 @@ input {
         }
         
         .portlet-site-map {
+        
             float: right;
-            font-size: 14px;
             
-            ul {
-                padding: 20px 0 0; 
-                list-style: none;  
-            }
-            
-            li {
-                display: inline; 
-            }
-            
-            a {
-                padding: 20px 10px; 
-                color:$default-font-color;
+            .portlet-body {
+                
+                ul {
+                    padding: 20px 0 0; 
+                    list-style: none;  
+                }
+                
+                li {
+                    display: inline; 
+                }
+                
+                a {
+                    padding: 20px 10px; 
+                    color:$default-font-color;
+                }
             }
         }
         
@@ -667,6 +670,7 @@ input {
     
         .asset-actions {
             font-size: $default_font_size; 
+            float: none; 
         }
         
         .asset-content {
@@ -929,39 +933,44 @@ input {
         .info {
         
             text-align: center; 
-            margin-bottom: 25px;
+            margin-bottom: 25px; 
             
-            .portlet-site-map, 
-            .portlet-borderless-container,
-            .portlet-body,
-            ul {
+            .portlet-borderless.portlet-site-map {
                 display: inline; 
             }
-            
-            li {
-                display: inline;
-            }
-            
-            ul {
-                list-style: none; 
-            }   
-            
-            .portlet-site-map a {
-                color: $default-font-color; 
-                margin: 20px 10px; 
-                text-decoration: underline; 
-                text-transform: uppercase; 
-            } 
-            
+
             .portlet-site-map {
             
-                ul {
-                    margin-left: 10px; 
+                .portlet-borderless-container {
+                    display: inline; 
                 }
+                        
+                .portlet-body {
+                
+                    display: inline;
+                
+                    li {
+                        display: inline; 
+                    }
             
-                li:before {
-                    content: "/";  
-                }           
+                    li:before {
+                        content: "/";  
+                    }  
+                
+                    a {
+                        color: $default-font-color; 
+                        margin: 20px 10px; 
+                        text-decoration: underline; 
+                        text-transform: uppercase; 
+                    }
+                
+                    ul {
+                        display: inline; 
+                        list-style: none; 
+                        margin-left: 10px; 
+                    }
+                }
+         
             }           
         }
 
