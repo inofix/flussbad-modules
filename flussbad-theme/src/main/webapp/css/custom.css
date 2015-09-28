@@ -267,97 +267,10 @@ input {
     
     .signed-in #navigation {
         margin-top: 60px;
-    }    
+    } 
+       
     
 /* Web Content Templates */
-    
-    .carousel {
-
-        margin-bottom: 0; 
-    
-        .carousel-inner  {
-        
-            background: lightgray;
-            min-height: $full-image-height-l;
-            
-            @media (min-width: 1200px) { 
-                min-height: $full-image-height-xl;  
-            }
-        
-            @media (max-width: 979px) and (min-width: 768px) {
-                min-height: $full-image-height-m;              
-            }
-            
-            @media (max-width: 767px) {
-                min-height: $full-image-height-s;              
-            } 
-        }
-
-        .container {
-            position: relative;
-            z-index: 9;
-        }
-        
-        .carousel-control {
-            color: $color-turquois;
-            left: 0; 
-            margin-top: 0;
-            width: 55px;
-            font-size: 80px;
-            background-color: transparent;
-            border: 0;
-            z-index: 10;
-        }
-        
-        .carousel-control.right {
-            left: auto; 
-        }
-
-        img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            min-width: 100%;
-        }
-        
-        .carousel-caption {
-            background-color: transparent;
-            position: static;
-            max-width: 550px;
-            padding: 0 20px;
-            margin-top: 200px;
-        }
-        
-        .carousel-caption h1, .carousel-caption .lead {
-            margin: 0;
-            line-height: 1.25;
-            color: #fff;
-            text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
-        }
-        
-        .carousel-caption .btn {
-            margin-top: 10px;
-        }
-        
-        .item img {
-        
-            margin: auto; 
-        
-            width: $full-image-width-l;
-            
-            @media (min-width: 1200px) { 
-                width: $full-image-width-xl; 
-            }
-        
-            @media (max-width: 979px) and (min-width: 768px) {
-                width: $full-image-width-m; 
-            }
-            
-            @media (max-width: 767px) {
-                width: $full-image-width-s; 
-            }
-        }
-    } 
     
     .intro {
     
@@ -495,16 +408,72 @@ input {
         }
     }
     
-    .statement {
     
-        background-color: $color-gray-green;
-    
-        .carousel .container {
-          position: relative;
-          z-index: 9;
+    .slide-show {
+
+        margin-bottom: 0; 
+               
+        h1 {
+            margin-top: 200px;
+            white-space: normal;
+        }
+
+/*         img { */
+/*             position: absolute; */
+/*             top: 0; */
+/*             left: 0; */
+/*             min-width: 100%; */
+/*         } */
+        
+        .carousel-caption {
+            background-color: transparent;
+            position: static;
+            max-width: 550px;
+            padding: 0 20px;
+            margin-top: 200px;
         }
     
-        /** TODO: merge via mixin with carousel */
+        .item  {
+        
+            background: lightgray;
+            min-height: $full-image-height-l;
+            
+            @media (min-width: 1200px) { 
+                min-height: $full-image-height-xl;  
+            }
+        
+            @media (max-width: 979px) and (min-width: 768px) {
+                min-height: $full-image-height-m;              
+            }
+            
+            @media (max-width: 767px) {
+                min-height: $full-image-height-s;              
+            } 
+        }
+    } 
+    
+    .slide-show, 
+    .statement {
+    
+        .carousel .container {
+            position: relative;
+            z-index: 9;
+        }
+        
+        .carousel-caption {
+            background-color: transparent;
+            height: 300px;
+            position: static;
+            max-width: 550px;
+            padding: 0 20px;
+            margin-top: 100px;
+            overflow: hidden;
+            line-height: 150%;
+            white-space: normal; /* Restore normal white-space behaviour
+                                    (nowrap is required for scrollview, 
+                                    see below) */
+        }
+        
         .carousel-control {
             color: $color-turquois;
             left: 0; 
@@ -519,59 +488,46 @@ input {
         .carousel-control.right {
             left: auto; 
         }
+        
+        .left.carousel-control span {
+            transform: rotate(180deg);
+            display: inline-block;            
+        } 
+        
+        
+        /* === scrollview styles === */
+        
+        /* To layout horizontal LIs */
+        .scrollview-content {
+            white-space:nowrap;
+        }
+        
+        .item {
+            display:inline-block;
+        }
+        
+        /* For IE 6/7 - needs inline block hack */
+        .item {
+            *display:inline;
+            *zoom:1;
+        }   
+    }
+    
+    .statement {
+    
+        background-color: $color-gray-green;
     
         .carousel .item {
             height: 500px;
             background-size: cover;
         }
-        .carousel img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            min-width: 100%;
-            height: 500px;
-        }
     
-        .carousel-caption {
-            background-color: transparent;
-            height: 300px;
-            position: static;
-            max-width: 550px;
-            padding: 0 20px;
-            margin-top: 100px;
-            overflow: hidden;
-            line-height: 150%;
-            white-space: normal; /* Restore normal white-space behaviour
-                                    (nowrap is required for scrollview, 
-                                    see below) */
-        }
         .carousel-caption h1,
         .carousel-caption .lead {
               margin: 0;
               line-height: 1.25;
               color: #fff;
-              text-shadow: 0 1px 1px rgba(0,0,0,.4);
         }
-        .carousel-caption .btn {
-          margin-top: 10px;
-        }
-        
-      /* === scrollview styles === */
-
-      /* To layout horizontal LIs */
-      .scrollview-content {
-          white-space:nowrap;
-      }
-
-      .item {
-          display:inline-block;
-      }
-
-      /* For IE 6/7 - needs inline block hack */
-      .item {
-          *display:inline;
-          *zoom:1;
-      }
     }
     
     .story {
