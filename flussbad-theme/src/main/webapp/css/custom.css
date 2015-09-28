@@ -39,6 +39,22 @@ $full-image-width-s: 768px;
 
 
 
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin color-scheme-turquois() {
+        
+    .abstract {
+        background-color: yellow; 
+    }
+    
+}
+
+
 /* Unset input borders set by jQuery */
 input {
     border: none; 
@@ -279,41 +295,42 @@ input {
     
         min-height: 500px;
         text-align: center;
-        
+                
         .abstract {
             text-align: center;
             padding: 20px 20px;
             min-height: 290px;
-        }
+        }        
                     
-        .btn {
-            color: $default-font-color;
-            background: transparent;
-            border: 2px solid $default-font-color; 
-            box-shadow: none; 
-            -web-box-shadow: none;
-            font-size: $button-font-size; 
-            font-family: $button-font-family;
-            margin: 20px auto;
-            padding: 15px 25px;
-        } 
+/*         .btn { */
+/*             color: $default-font-color; */
+/*             background: transparent; */
+/*             border: 2px solid $default-font-color;  */
+/*             box-shadow: none;  */
+/*             -web-box-shadow: none; */
+/*             font-size: $button-font-size;  */
+/*             font-family: $button-font-family; */
+/*             margin: 20px auto; */
+/*             padding: 15px 25px; */
+            
+/*         }  */
         
         h1 {
             margin: 80px auto 20px;
             
-            > a {
-                color: $default-font-color;
-            }
+/*             > a { */
+/*                 color: $default-font-color; */
+/*             } */
         }
         
         h2 {
-            color: gray;
+/*             color: gray; */
             margin-bottom: 20px; 
         }
         
         h3 {
             text-transform: uppercase;
-            color: gray;
+/*             color: gray; */
             font-size: $default-font-size; 
         }
         
@@ -326,9 +343,9 @@ input {
     
         text-align: center; 
         min-height: 1020px;
-        
+                
         h1 > a {
-            color: white;
+/*             color: white; */
         }
            
         .abstracts {
@@ -342,7 +359,11 @@ input {
             width: 100%;
             top: 30%;
         }
-    } 
+    }
+    
+    .intro.turquois {
+        @include color-scheme-turquois();
+    }
     
     .link {
     
