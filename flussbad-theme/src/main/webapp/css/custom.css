@@ -1,20 +1,33 @@
-
 @import "compass";
-
 @import "mixins";
 
-$button-font-size: 35px;
-$button-font-family: 'Amatic SC', cursive;
-$color-gray-green: #648889;
-$color-light-gray: #ebebeb;
-$color-turquois: #93eaee;
-$default-font-color: #222;
 $default-font-family: 'Apercu Regular', Calibri, Roboto, sans-serif; 
+$dockbar-height: 60px;
+$dockbar-and-nav-height: 120px;
+$nav-height: 60px;
+$nav-and-categories-height: 120px; 
+
+/* typography */
 $default-font-size: 16px;
 $default-font-size-adjust:0.508;
 $default-line-height: 20px;
-$dockbar-height: 60px;
-$dockbar-and-nav-height: 120px;
+$h1-font-size: 36px;
+$lead-font-size: 21px; 
+$lead-line-height: 30px;
+$letter-spacing-wide: 0.2em;
+$semi-bold: 600; 
+
+/* colors */
+$default-font-color: #222;
+$color-gray-green: #648889;
+$color-light-gray: #ebebeb;
+$color-turquois: #93eaee;
+
+/* button */
+$button-font-size: 35px;
+$button-font-family: 'Amatic SC', cursive;
+
+
 $full-image-height-xl: 720px; 
 $full-image-height-l: 640px;
 $full-image-height-m: 560px;   
@@ -23,14 +36,7 @@ $full-image-width-xl: 1440px; /* bootstrap .container */
 $full-image-width-l: 1200px;  /* bootstrap .container */
 $full-image-width-m: 980px;   
 $full-image-width-s: 768px;   
-$h1-font-size: 36px;
-$lead-font-size: 21px; 
-$lead-line-height: 30px; 
-$letter-spacing-wide: 0.2em;
-$max-width: 744px;
-$nav-height: 60px;
-$nav-and-categories-height: 120px; 
-$semi-bold: 600; 
+
 
 
 /* Unset input borders set by jQuery */
@@ -294,7 +300,6 @@ input {
         
         h1 {
             margin: 80px auto 20px;
-            max-width: $max-width; 
             
             > a {
                 color: $default-font-color;
