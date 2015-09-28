@@ -39,6 +39,9 @@ AUI().ready(
 	}
 );
 
+/**
+ * A scrollview based carousel implementation.
+ */
 YUI().use('event', 'node', 'scrollview-base', 'scrollview-paginator', function(Y) {
 
     var scrollView = new Y.ScrollView({
@@ -58,9 +61,8 @@ YUI().use('event', 'node', 'scrollview-base', 'scrollview-paginator', function(Y
     Y.all('.carousel .item').setStyle('width', winWidth); 
 
     Y.on('resize', function() {
+        
       winWidth = Y.one("body").get("winWidth") + 'px';
-      console.log('resize'); 
-      console.log(winWidth); 
 
       Y.all('.carousel img').setStyle('width', winWidth);  
       Y.all('.carousel .item').setStyle('width', winWidth);
@@ -80,7 +82,7 @@ YUI().use('event', 'node', 'scrollview-base', 'scrollview-paginator', function(Y
         // For mouse based devices, we need to make sure the click isn't fired
         // at the end of a drag/flick. We use 2 as an arbitrary threshold.
         if (Math.abs(scrollView.lastScrolledAmt) < 2) {
-            alert(e.currentTarget.getAttribute("alt"));
+//            alert(e.currentTarget.getAttribute("alt"));
         }
     }, "img");
 
@@ -91,7 +93,7 @@ YUI().use('event', 'node', 'scrollview-base', 'scrollview-paginator', function(Y
     
     var total = scrollView.pages.get('total');
 
-    var nextControl = Y.one('#scrollview-next'); 
+    var nextControl = Y.one('.right.carousel-control'); 
     
     if (nextControl) {
         
@@ -103,12 +105,13 @@ YUI().use('event', 'node', 'scrollview-base', 'scrollview-paginator', function(Y
           if (target < total) {
             scrollView.pages.set('index', target); 
           } else {
+            // TODO: improve the flick behaviour at the ends
             // scrollView.pages.set('index', total -1); 
             scrollView.pages.scrollTo(0, 0.3, 'easing');           } 
         });        
     }
    
-    var prevControl = Y.one('#scrollview-prev')
+    var prevControl = Y.one('.left.carousel-control')
     
     if (prevControl) {
       
@@ -118,6 +121,7 @@ YUI().use('event', 'node', 'scrollview-base', 'scrollview-paginator', function(Y
           var target = idx - 1; 
 
           if (target < 0) {
+            // TODO: improve the flick behaviour at the ends
             // scrollView.pages.set('index', total -1); 
             scrollView.pages.scrollTo(total - 1, 0.3, 'easing'); 
           } else {
@@ -128,77 +132,6 @@ YUI().use('event', 'node', 'scrollview-base', 'scrollview-paginator', function(Y
 
 });
 
-
-/**
- * js for the carousel-elements.
- */
-AUI().ready('event', 'node', function (A) {
-
-    var controls = A.all('.carousel-control');
-
-    controls.on('click', function (e) {
-      
-      console.log('control clicked');
-      
-      var carouselId = "myCarousel";  
-//      var carouselId = e.target.getData('carousel-id'); 
-    
-      console.log('carousel = ' + e.target.getAttribute('data-carousel'));
-      console.log('slide = ' + e.target.getAttribute('data-slide'));
-                  
-      // Get the configured carousel
-      var carousel = A.one('#' + carouselId);
-      
-      // Get the carousel's items
-      var items = carousel.all('.item');
-
-      var isNext = true; 
-      
-      if (e.target.getData('slide') === 'prev') {
-        isNext = false;
-      }
-      
-      var i = 0;
-      var current = 0; 
-      
-      // Loop over the carousel's items
-      items.each(function(item) {
-        
-        console.log('i = ' + i); 
-        
-        if (item.hasClass('active')) {
-          
-          current = i;
-          console.log(i + ' is active'); 
-          item.removeClass('active'); 
-          
-        }  
-        
-        i++;
-        
-      });
-      
-      var next = 0;
-      
-      if (isNext) {
-        if (current < items.size()-1) {
-          next = current + 1; 
-        } else {
-          next = 0; 
-        }
-      } else {
-        if (current > 0) {
-          next = current -1; 
-        } else {
-          next = items.size() - 1;
-        }
-      }
-      
-      // Set the next slide active
-      items.item(next).addClass('active');
-      
-    });
-});
 
 /**
  * Show / hide the language-portlet included in #navigation
