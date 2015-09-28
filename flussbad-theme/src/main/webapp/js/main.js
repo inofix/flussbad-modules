@@ -248,7 +248,7 @@ YUI().use(
         new Y.Affix(
         {
           target: '#navigation',
-          offsetTop: 0
+          offsetTop: 200
         });
     }
 );
