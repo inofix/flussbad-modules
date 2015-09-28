@@ -1,10 +1,4 @@
-/**
- * custom.css: Main CSS of the Flussbad theme.
- * 
- * Created:     2015-08-31 15:40 by Christian Berndt
- * Modified:    2015-09-27 15:18 by Christian Berndt
- * Version:     0.6.0
- */
+
 @import "compass";
 
 @import "mixins";
@@ -29,9 +23,10 @@ $full-image-width-xl: 1440px; /* bootstrap .container */
 $full-image-width-l: 1200px;  /* bootstrap .container */
 $full-image-width-m: 980px;   
 $full-image-width-s: 768px;   
-$h1-font-size: 38.5px;
+$h1-font-size: 36px;
 $lead-font-size: 21px; 
 $lead-line-height: 30px; 
+$letter-spacing-wide: 0.2em;
 $max-width: 744px;
 $nav-height: 60px;
 $nav-and-categories-height: 120px; 
@@ -47,7 +42,7 @@ input {
 
     font-family: $default-font-family;
     font-size-adjust: $default-font-size-adjust;
-    
+        
     .alert {
         margin-bottom: 1.5em;
         margin-top: 1em; 
@@ -213,8 +208,10 @@ input {
         margin-bottom: 0; 
         
         .brand { 
-            padding:18px 40px 18px 20px;
+            padding: 20px 0 0 0;
             font-weight: $semi-bold;
+            font-size: $default-font-size;
+            letter-spacing: $letter-spacing-wide;
             text-shadow: none; 
         } 
         
