@@ -301,7 +301,6 @@ input {
     
     .intro {
     
-        //min-height: 500px;
         text-align: center;
                 
         .abstract {
@@ -324,7 +323,7 @@ input {
 /*         }  */
         
         h1 {
-            margin: 80px auto 20px;
+            padding: 80px 0 20px;
         }
         
         h2 {
