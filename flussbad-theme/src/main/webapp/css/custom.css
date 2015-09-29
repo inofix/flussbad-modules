@@ -1161,6 +1161,23 @@ input {
         padding-bottom: 1em;
     }
     
+    /* This configuration is only meant as a workaround
+       because otherwise the portlet actions would be hidden
+       in the intro sections by following portlets */
+    .portlet-journal-content .lfr-meta-actions {
+        position: absolute; 
+        top: 0;
+        background: rgba(0,0,0,0.5);  
+        z-index: 10; 
+        float: left;
+        width: auto; 
+        padding: 1em; 
+    }
+    
+    .portlet-journal-content .lfr-meta-actions:hover {
+        background: rgba(0,0,0,0.9);
+    }
+    
     .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
     .lfr-meta-actions,
     .portlet-asset-publisher,
