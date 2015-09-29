@@ -976,7 +976,7 @@ input {
     
     .portlet-asset-publisher.story-publisher {
         
-        margin-top: $nav-and-categories-height; 
+        margin-top: $nav-height; 
         width: 100%;
     
         .asset-content {
@@ -989,6 +989,10 @@ input {
             font-size: $default-font-size; 
             line-height: $default-line-height; 
         } 
+        
+        .taglib-header {
+            display: none; 
+        }
     }
     
     .portlet-journal-content.first-display {
