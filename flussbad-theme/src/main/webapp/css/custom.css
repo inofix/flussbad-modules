@@ -1,7 +1,8 @@
 @import "compass";
 @import "mixins";
 
-$default-font-family: 'Apercu Regular', Calibri, Roboto, sans-serif; 
+$default-font-family: 'Apercu Regular', Calibri, Roboto, sans-serif;
+$navigation-font-family: 'Apercu Medium', Calibri, Roboto, sans-serif; 
 $dockbar-height: 60px;
 $dockbar-and-nav-height: 120px;
 $nav-height: 60px;
@@ -9,19 +10,24 @@ $nav-and-categories-height: 120px;
 
 /* typography */
 $default-font-size: 16px;
+$small-font-size: 12px;
 $default-font-size-adjust:0.508;
-$default-line-height: 20px;
+$default-line-height: 19px;
 $h1-font-size: 36px;
 $h2-font-size: 28px;
 $h3-font-size: $default-font-size;
 $lead-font-size: 21px; 
-$lead-line-height: 30px;
-$letter-spacing-default: 0.1em;
-$letter-spacing-wide: 0.2em;
-$semi-bold: 600; 
+$lead-line-height: 28px;
+$letter-spacing-wide: 0.1em;
+$semi-bold: 600;
+$light: 200;
 
 /* colors */
 $default-font-color: #2D2D2D;
+$navigation-font-color: #648889;
+$hover-font-color: darken($navigation-font-color, 10%);
+$active-font-color: #222;
+$frontpage-navigation-font-color: #fff;
 $color-gray-green: #648889;
 $color-light-gray: #ebebeb;
 $color-turquois: #93eaee;
@@ -67,6 +73,10 @@ input {
     html, body {
         height: 100% !important;
     }
+    
+    body {
+        font-family: $default-font-family;
+    }
 
     font-family: $default-font-family;
     font-size-adjust: $default-font-size-adjust;
@@ -94,12 +104,12 @@ input {
         text-decoration: none;
     }
     
-    form {
-        margin: 0; 
+    ul {
+        margin: 0 0 10px 10px;
     }
     
-    body {
-        font-family: $default-font-family;
+    form {
+        margin: 0; 
     }
     
     @media (max-width: 767px) {
@@ -158,11 +168,26 @@ input {
 /* Navigation */
     
     #navigation {
-         
+    
+        font-family: $navigation-font-family;
         text-transform: uppercase;
-        font-size: $default-font-size;
         width: 100%;
         z-index: 10;
+        
+        li {
+	        font-size: $default-font-size;
+	        font-weight: 600;
+	        letter-spacing: $letter-spacing-wide;
+	        .portlet-static-end {
+	           li > a {
+                font-size: $small-font-size;
+                color: $navigation-font-color;
+                &:hover {
+                    color: $hover-font-color;
+                }
+	           }
+	        }
+        }
                 
         .nav-collapse {
             @media (min-width: 980px) {
@@ -193,7 +218,7 @@ input {
             .portlet-body {
                 
                 ul {
-                    padding: 20px 0 0; 
+                    padding: 20px 0 0 0;
                     list-style: none;  
                 }
                 
@@ -203,7 +228,6 @@ input {
                 
                 a {
                     padding: 20px 10px; 
-                    color:$default-font-color;
                 }
             }
         }
@@ -235,18 +259,19 @@ input {
      
     .navbar {
     
-        margin-bottom: 0; 
+        margin-bottom: 0;
         
         .brand { 
-            padding: 20px 0 0 30px;
+            padding: 20px 0 0 0;
             font-weight: $semi-bold;
             font-size: $default-font-size;
             letter-spacing: $letter-spacing-wide;
+            color: $navigation-font-color;
             text-shadow: none; 
         } 
         
         .nav { 
-        
+                
             > .active a, 
             > .active a:focus, 
             > .active a:hover {
@@ -257,13 +282,13 @@ input {
             }
 
             > li > a {
-                padding: 20px 20px;
-                text-transform: uppercase;
+                padding: 20px 10px;
                 text-shadow: none;
+                color: $navigation-font-color;
             }
             
             > li > a:focus,> li > a:hover{
-                color:#333;
+                color: $hover-font-color;
             }
         }
         
