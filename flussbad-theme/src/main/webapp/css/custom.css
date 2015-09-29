@@ -30,6 +30,7 @@ $active-font-color: #222;
 $frontpage-navigation-font-color: #fff;
 $color-gray-green: #648889;
 $color-light-gray: #ebebeb;
+$color-sand: #f6f5f1;
 $color-turquois: #93eaee;
 
 /* button */
@@ -41,13 +42,53 @@ $full-image-height-md: 558px;
 $full-image-height-sm: 432px;
 $full-image-height-xs: 400px;
 
-@mixin color-scheme-turquois() {
+/* Mixins */
+
+@mixin color-scheme-gray-green() {
 	
-	background-color: $color-turquois;
+	background-color: $color-gray-green;
 	
 	h1 {
 	   color: #fff;
 	}
+        
+    .abstract {
+        background-color: $color-gray-green;
+        h3 {
+            color: #fff;
+        }
+        h2 {
+           color: $color-turquois; 
+        }
+    }
+}
+
+@mixin color-scheme-sand() {
+    
+    background-color: $color-sand;
+    
+    h1 {
+       color: #fff;
+    }
+        
+    .abstract {
+        background-color: $color-sand;
+        h3 {
+            color: $color-turquois;
+        }
+        h2 {
+           color: $color-gray-green; 
+        }
+    }
+}
+
+@mixin color-scheme-turquois() {
+    
+    background-color: $color-turquois;
+    
+    h1 {
+       color: #fff;
+    }
         
     .abstract {
         background-color: $color-turquois;
@@ -59,6 +100,7 @@ $full-image-height-xs: 400px;
         }
     }
 }
+
 
 
 /* Unset input borders set by jQuery */
@@ -406,6 +448,15 @@ input {
             top: 75%;
             width: 100%;
         }
+    }
+    
+    
+    .intro.gray-green {
+        @include color-scheme-gray-green();
+    }
+    
+    .intro.sand {
+        @include color-scheme-sand();
     }
     
     .intro.turquois {
