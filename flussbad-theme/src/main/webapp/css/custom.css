@@ -233,7 +233,8 @@ input {
         }
         
         .language,
-        .search {     
+        .search {   
+          
             float: right;
             
             a {
@@ -243,18 +244,32 @@ input {
         
         .language .portlet-language,
         .search .portlet-search {
+        
             display: none; 
         }       
     }
     
     #navigation.default-page,
     #navigation.affix .navbar-inner {
+    
         background-color: $color-turquois;
     }
     
     #navigation .navbar-inner,              /* affix-top is set via js, which is too late on first load */
     #navigation.affix-top .navbar-inner {
+    
         background-color: transparent;
+    }
+    
+    #navigation.affix-top .navbar-inner {
+    
+        .brand,
+        li > a {
+            color: #fff;
+            &:hover {
+                color: $color-turquois;
+            }
+        }
     }
      
     .navbar {
@@ -262,15 +277,20 @@ input {
         margin-bottom: 0;
         
         .brand { 
-            padding: 20px 0 0 0;
+            padding-top: 20px;
             font-weight: $semi-bold;
             font-size: $default-font-size;
             letter-spacing: $letter-spacing-wide;
             color: $navigation-font-color;
-            text-shadow: none; 
+            text-shadow: none;
+            &:hover {
+                color: $hover-font-color;
+            }
         } 
         
-        .nav { 
+        .nav {
+        
+            margin: 0;
                 
             > .active a, 
             > .active a:focus, 
@@ -330,7 +350,7 @@ input {
                 
         .abstract {
             text-align: center;
-            padding: 20px 20px;
+            padding: 0 20px 20px 20px;
             //min-height: 290px;
         }        
                     
@@ -403,7 +423,7 @@ input {
         
         .abstracts {
             position: absolute;
-            top: 75%;
+            top: 80%;
             width: 100%;
         }
     }
