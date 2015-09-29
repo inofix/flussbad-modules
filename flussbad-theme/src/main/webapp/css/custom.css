@@ -128,15 +128,19 @@ input {
         margin-top: 1em; 
     }
     
-    h1,h2,h3,h4,h5,h6 {
-        font-weight: $semi-bold;
+    h1 {
+        font-family: 'Apercu Bold', Calibri, Roboto, sans-serif;
+        font-size: $h1-font-size;
     }
     
     h2 {
+        font-family: 'Apercu Bold', Calibri, Roboto, sans-serif;
         font-size: $h2-font-size;
     }
     
     h3 {
+        font-family: 'Apercu Medium', Calibri, Roboto, sans-serif;
+        font-weight: $semi-bold;
         font-size: $h3-font-size;
         text-transform: uppercase;
         letter-spacing: $letter-spacing-wide;
@@ -146,7 +150,7 @@ input {
         text-decoration: none;
     }
     
-    ul {
+    ul, ol {
         margin: 0 0 10px 10px;
     }
     
@@ -305,11 +309,14 @@ input {
     
     #navigation.affix-top .navbar-inner {
     
-        .brand,
+        .brand {
+            color: #fff;
+        }
+        
         li > a {
             color: #fff;
             &:hover {
-                color: $color-turquois;
+                color: $hover-font-color;
             }
         }
     }
@@ -349,7 +356,8 @@ input {
                 color: $navigation-font-color;
             }
             
-            > li > a:focus,> li > a:hover{
+            > li > a:focus,
+            > li > a:hover {
                 color: $hover-font-color;
             }
         }
@@ -393,7 +401,7 @@ input {
         .abstract {
             text-align: center;
             padding: 0 20px 20px 20px;
-            //min-height: 290px;
+            min-height: 280px;    
         }        
                     
 /*         .btn { */
@@ -467,6 +475,13 @@ input {
             position: absolute;
             top: 80%;
             width: 100%;
+            
+            .abstract {
+	            border-top: 15px solid transparent;
+	            -webkit-border-image: url(../images/wave-border-top.png) 361 round;
+	            -o-border-image: url(../images/wave-border-top.png) 361 round;
+	            border-image: url(../images/wave-border-top.png) 361 round;
+            }
         }
     }
     
