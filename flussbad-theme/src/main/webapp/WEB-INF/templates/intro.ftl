@@ -2,15 +2,14 @@
     Intro template: Format the Intro structure
     
     Created:    2015-08-28 17:52 by Christian Berndt
-    Modified:   2015-09-24 14:57 by Christian Berndt
-    Version:    0.9.3
+    Modified:   2015-09-29 20:04 by Christian Berndt
+    Version:    0.9.5
     
     Please note: Although this template is stored in the 
     site's context it's source is managed via git. Whenever you 
     change the template online make sure that you commit your 
     changes to the flussbad-modules repo, too.
 -->
-<#assign bgColor = "#efefef">
 <#assign cssClass = "">
 <#assign path = "">
 <#assign style = "background: white;">
@@ -18,19 +17,18 @@
 <#if background??>
     <#assign path = "${background.getData()}">
 </#if>
-
-<#if backgroundColor??>
-    <#assign bgColor = "${backgroundColor.getData()}">
-</#if>
     
 <#if path?has_content>
     <#assign cssClass = "with-image" >
     <#assign style = "background-image: url('${path}');" >
-<#else>
-    <#assign style = "background: ${bgColor}">
 </#if>
 
-<div class="intro turquois ${cssClass}">
+<#if backgroundColor??>
+    <#assign cssClass = "${cssClass}" + " " + "${backgroundColor.getData()}">
+</#if>
+
+<div class="intro ${cssClass}">
+
     <div class="keyvisual" style="${style}">
         <div class="claim">
             <h1>${headline.getData()}</h1>
