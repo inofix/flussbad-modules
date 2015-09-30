@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  * 
  * Created: 	2015-09-02 22:31 by Christian Berndt
- * Modified:	2015-09-23 16:23 by Christian Berndt
- * Version: 	1.0.5
+ * Modified:	2015-09-30 13:42 by Christian Berndt
+ * Version: 	1.0.6
  */
 
 /**
@@ -38,6 +38,21 @@ AUI().ready(
 		}
 	}
 );
+
+/**
+ * Toggle the asset-categories filter.
+ */
+
+AUI().ready('node', function(A) {
+    
+    var toggle = A.one('.accordion-toggle');
+    
+    toggle.on('click', function(event) {
+        A.one('.portlet-asset-categories-navigation .portlet-body .taglib-asset-categories-navigation').toggleClass('categories-closed');
+        A.one('.lfr-asset-category-list-container').toggleClass('categories-closed');
+        A.one('.default-publisher').toggleClass('categories-closed');
+    });
+}); 
 
 /**
  * A scrollview based carousel implementation.
