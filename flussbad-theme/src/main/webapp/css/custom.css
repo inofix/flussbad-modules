@@ -30,9 +30,9 @@ $hover-font-color: darken($navigation-font-color, 10%);
 $active-font-color: #222;
 $frontpage-navigation-font-color: #fff;
 $color-gray-green: #648889;
-$color-light-gray: #ebebeb;
-$color-sand: #f6f5f1;
-$color-turquois: #93eaee;
+$color-light-gray: #EBEBEB;
+$color-sand: #EBEAE2;
+$color-turquois: 93EAEE;
 
 /* button */
 $button-font-size: 24px;
@@ -122,6 +122,10 @@ input {
     body, p {
         font-family: $regular-font-family;
     }
+    
+    strong {
+        font-family: $bold-font-family;
+    }
 
     font-size-adjust: $default-font-size-adjust;
         
@@ -147,6 +151,11 @@ input {
         text-transform: uppercase;
         letter-spacing: $letter-spacing-wide;
     }
+    
+    h1,h2,h3,h4,h5,h6,strong,cite {
+	    font-style: normal;
+	    font-weight: normal;
+	}
 
     a:hover, a:focus {
         text-decoration: none;
@@ -771,22 +780,19 @@ input {
     
         width: 100%; 
         z-index: 10;
+        background: $color-sand;
             
         .accordion {
-            margin-bottom: 0; 
+            margin-bottom: 0;
         }
     
         .portlet-body .taglib-asset-categories-navigation {
-    
-            background: #ebeae2;
-            min-height: 140px;       
-            
+                
             a {
                 color: $navigation-font-color;
                 padding: 5px 30px;
                 border: 1px solid $navigation-font-color; 
                 font-size: $default-font-size;
-                font-weight: normal;
                 text-transform: uppercase;
                 letter-spacing: $letter-spacing-wide;
                 margin-right: 15px;
@@ -795,7 +801,6 @@ input {
             a.tag-selected {
                 border: 1px solid white; 
                 background: white;
-                font-weight: normal;
             }
     
             .tree-view {
@@ -833,8 +838,6 @@ input {
                     padding: 0;
                 }           
             }
-            
-            
             
             ul {
                 margin: 15px 0;
