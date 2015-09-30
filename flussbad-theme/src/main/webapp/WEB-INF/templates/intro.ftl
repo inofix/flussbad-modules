@@ -2,8 +2,8 @@
     Intro template: Format the Intro structure
     
     Created:    2015-08-28 17:52 by Christian Berndt
-    Modified:   2015-09-29 20:04 by Christian Berndt
-    Version:    0.9.5
+    Modified:   2015-09-30 11:22 by Christian Berndt
+    Version:    0.9.6
     
     Please note: Although this template is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -35,20 +35,33 @@
         </div>
     </div>
     <div class="abstracts">
+        <div class="container club-link">
+            <div class="span4 offset8">
+            </div>
+        </div>
         <div class="container">
             <#if caption.getSiblings()?has_content>
-            <#list caption.getSiblings() as cur_caption>
-            <div class="span4 abstract">
-               <h3>${cur_caption.getData()}</h3>
-               <h2>${cur_caption.claim.getData()}</h2>
-               <strong>${cur_caption.abstract.getData()}</strong>
-                    <#if cur_caption.abstractLink.getData()?has_content>
-                        <div>
-                            <a href="${cur_caption.abstractLink.getData()}" class="btn" title="${cur_caption.abstractLabel.getData()}">${cur_caption.abstractLabel.getData()}</a>
+                <#assign i = 0 >
+                <#list caption.getSiblings() as cur_caption>
+                    <#if (i < 3) >                   
+                        <div class="span4">
+                            <div class="abstract">
+                                <#if i==2>
+                                    <button class="club-link" href="#" title="${languageUtil.get(locale, "get-involved")}">${languageUtil.get(locale, "get-involved")}</button>
+                                </#if>
+                                <h3>${cur_caption.getData()}</h3>
+                                <h2>${cur_caption.claim.getData()}</h2>
+                                <div>${cur_caption.abstract.getData()}</div>
+                                <#if cur_caption.abstractLink.getData()?has_content>
+                                    <div>
+                                        <a href="${cur_caption.abstractLink.getData()}" class="btn" title="${cur_caption.abstractLabel.getData()}">${cur_caption.abstractLabel.getData()}</a>
+                                    </div>
+                                </#if>
+                            </div>
                         </div>
+                        <#assign i = i+1>
                     </#if>
-            </div>
-            </#list>
+                </#list>
             </#if>
         </div>
     </div>
