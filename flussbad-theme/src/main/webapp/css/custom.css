@@ -1,14 +1,17 @@
 @import "compass";
 @import "mixins";
 
-$default-font-family: 'Apercu Regular', Calibri, Roboto, sans-serif;
-$navigation-font-family: 'Apercu Medium', Calibri, Roboto, sans-serif;
 $dockbar-height: 60px;
 $dockbar-and-nav-height: 120px;
 $nav-height: 60px;
 $nav-and-categories-height: 120px; 
 
 /* typography */
+$regular-font-family: 'Apercu Regular', Calibri, Roboto, sans-serif;
+$medium-font-family: 'Apercu Medium', Calibri, Roboto, sans-serif;
+$bold-font-family: 'Apercu Bold', Calibri, Roboto, sans-serif;
+$light-font-family: 'Apercu Light', Calibri, Roboto, sans-serif;
+
 $default-font-size: 16px;
 $small-font-size: 12px;
 $default-font-size-adjust:0.508;
@@ -19,8 +22,6 @@ $h3-font-size: $default-font-size;
 $lead-font-size: 21px; 
 $lead-line-height: 28px;
 $letter-spacing-wide: 0.1em;
-$semi-bold: 600;
-$light: 200;
 
 /* colors */
 $default-font-color: #2D2D2D;
@@ -29,9 +30,9 @@ $hover-font-color: darken($navigation-font-color, 10%);
 $active-font-color: #222;
 $frontpage-navigation-font-color: #fff;
 $color-gray-green: #648889;
-$color-light-gray: #ebebeb;
-$color-sand: #f6f5f1;
-$color-turquois: #93eaee;
+$color-light-gray: #EBEBEB;
+$color-sand: #EBEAE2;
+$color-turquois: 93EAEE;
 
 /* button */
 $button-font-size: 24px;
@@ -118,11 +119,14 @@ input {
         height: 100% !important;
     }
     
-    body {
-        font-family: $default-font-family;
+    body, p {
+        font-family: $regular-font-family;
+    }
+    
+    strong {
+        font-family: $bold-font-family;
     }
 
-    font-family: $default-font-family;
     font-size-adjust: $default-font-size-adjust;
         
     .alert {
@@ -131,23 +135,27 @@ input {
     }
     
     h1 {
-        font-family: 'Apercu Bold', Calibri, Roboto, sans-serif;
+        font-family: $bold-font-family;
         font-size: $h1-font-size;
         letter-spacing: 0.02em;
     }
     
     h2 {
-        font-family: 'Apercu Bold', Calibri, Roboto, sans-serif;
+        font-family: $bold-font-family;
         font-size: $h2-font-size;
     }
     
     h3 {
-        font-family: 'Apercu Medium', Calibri, Roboto, sans-serif;
-        font-weight: $semi-bold;
+        font-family: $medium-font-family;
         font-size: $h3-font-size;
         text-transform: uppercase;
         letter-spacing: $letter-spacing-wide;
     }
+    
+    h1,h2,h3,h4,h5,h6,strong,cite {
+	    font-style: normal;
+	    font-weight: normal;
+	}
 
     a:hover, a:focus {
         text-decoration: none;
@@ -218,7 +226,7 @@ input {
     
     #navigation {
     
-        font-family: $navigation-font-family;
+        font-family: $medium-font-family;
         text-transform: uppercase;
         width: 100%;
         z-index: 10;
@@ -335,7 +343,7 @@ input {
         
         .brand { 
             padding-top: 20px;
-            font-weight: $semi-bold;
+            font-family: $medium-font-family;
             font-size: $default-font-size;
             letter-spacing: $letter-spacing-wide;
             color: $navigation-font-color;
@@ -772,22 +780,19 @@ input {
     
         width: 100%; 
         z-index: 10;
+        background: $color-sand;
             
         .accordion {
-            margin-bottom: 0; 
+            margin-bottom: 0;
         }
     
         .portlet-body .taglib-asset-categories-navigation {
-    
-            background: #ebeae2;
-            min-height: 140px;       
-            
+                
             a {
                 color: $navigation-font-color;
                 padding: 5px 30px;
                 border: 1px solid $navigation-font-color; 
                 font-size: $default-font-size;
-                font-weight: normal;
                 text-transform: uppercase;
                 letter-spacing: $letter-spacing-wide;
                 margin-right: 15px;
@@ -796,7 +801,6 @@ input {
             a.tag-selected {
                 border: 1px solid white; 
                 background: white;
-                font-weight: normal;
             }
     
             .tree-view {
@@ -834,8 +838,6 @@ input {
                     padding: 0;
                 }           
             }
-            
-            
             
             ul {
                 margin: 15px 0;
@@ -1210,7 +1212,6 @@ input {
         h1.portlet-title  {
             
             color: $navigation-font-color;
-            font-weight: $semi-bold;
             font-size: $default-font-size; 
             text-transform: uppercase;
             letter-spacing: $letter-spacing-wide;
