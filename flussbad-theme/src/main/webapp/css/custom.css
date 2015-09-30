@@ -104,8 +104,6 @@ $full-image-height-xs: 400px;
     }
 }
 
-
-
 /* Unset input borders set by jQuery */
 input {
     border: none; 
@@ -787,6 +785,9 @@ input {
         }
     
         .portlet-body .taglib-asset-categories-navigation {
+    
+            background: $color-sand;
+            min-height: 140px;       
                 
             a {
                 color: $navigation-font-color;
@@ -822,6 +823,11 @@ input {
                 padding: 0;
             }
             
+            .accordion-inner .lfr-asset-category-list-container.categories-closed {
+                height: 0; 
+                overflow: hidden;  
+            }
+            
             @media (min-width: 768px) {
                 .accordion-inner {
                     margin-left: 40%;
@@ -831,11 +837,19 @@ input {
             
             .accordion-heading {
                 
-                display: none; 
+                .accordion-toggle:before {
+                    content: "caret-down"; 
+                }
                 
                 .accordion-toggle {
+                
+                    background-color: $color-sand;
                     float: left;
-                    padding: 0;
+                    padding: 20px 10px;
+                    
+                    .title-text {
+                        display: none; 
+                    }
                 }           
             }
             
@@ -851,6 +865,10 @@ input {
                 margin: 0; 
                 padding: 0; 
             }
+        }
+        
+        .portlet-body .taglib-asset-categories-navigation.categories-closed {
+            min-height: 0; 
         }
     }
     
@@ -961,7 +979,7 @@ input {
     .portlet-asset-publisher.default-publisher {
     
         width: 100%;
-        margin-top: 225px; /* navigation + asset-categories-navigation + margin-top */
+        margin-top: 184px; /* navigation + asset-categories-navigation + margin-top */
     
         .asset-abstract {
             padding: 40px 0; 
@@ -1022,6 +1040,10 @@ input {
                 clear: left;
             }   
         }
+    }
+    
+    .default-publisher.categories-closed {
+        margin-top: 40px;
     }
     
     .portlet-asset-publisher.intro-publisher {
