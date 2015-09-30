@@ -1,14 +1,17 @@
 @import "compass";
 @import "mixins";
 
-$default-font-family: 'Apercu Regular', Calibri, Roboto, sans-serif;
-$navigation-font-family: 'Apercu Medium', Calibri, Roboto, sans-serif; 
 $dockbar-height: 60px;
 $dockbar-and-nav-height: 120px;
 $nav-height: 60px;
 $nav-and-categories-height: 120px; 
 
 /* typography */
+$regular-font-family: 'Apercu Regular', Calibri, Roboto, sans-serif;
+$medium-font-family: 'Apercu Medium', Calibri, Roboto, sans-serif;
+$bold-font-family: 'Apercu Bold', Calibri, Roboto, sans-serif;
+$light-font-family: 'Apercu Light', Calibri, Roboto, sans-serif;
+
 $default-font-size: 16px;
 $small-font-size: 12px;
 $default-font-size-adjust:0.508;
@@ -19,8 +22,6 @@ $h3-font-size: $default-font-size;
 $lead-font-size: 21px; 
 $lead-line-height: 28px;
 $letter-spacing-wide: 0.1em;
-$semi-bold: 600;
-$light: 200;
 
 /* colors */
 $default-font-color: #2D2D2D;
@@ -29,14 +30,16 @@ $hover-font-color: darken($navigation-font-color, 10%);
 $active-font-color: #222;
 $frontpage-navigation-font-color: #fff;
 $color-gray-green: #648889;
-$color-light-gray: #ebebeb;
-$color-sand: #f6f5f1;
-$color-turquois: #93eaee;
+$color-light-gray: #EBEBEB;
+$color-sand: #EBEAE2;
+$color-turquois: 93EAEE;
 
 /* button */
-$button-font-size: 35px;
-$button-font-family: 'Amatic SC', cursive;
+$button-font-size: 24px;
+$button-font-family: 'Amatic SC';
+$button-letter-spacing: 0.1em;
 
+/* keyvisual */
 $full-image-height-lg: 720px;
 $full-image-height-md: 558px;
 $full-image-height-sm: 432px;
@@ -101,8 +104,6 @@ $full-image-height-xs: 400px;
     }
 }
 
-
-
 /* Unset input borders set by jQuery */
 input {
     border: none; 
@@ -116,11 +117,14 @@ input {
         height: 100% !important;
     }
     
-    body {
-        font-family: $default-font-family;
+    body, p {
+        font-family: $regular-font-family;
+    }
+    
+    strong {
+        font-family: $bold-font-family;
     }
 
-    font-family: $default-font-family;
     font-size-adjust: $default-font-size-adjust;
         
     .alert {
@@ -128,25 +132,34 @@ input {
         margin-top: 1em; 
     }
     
-    h1,h2,h3,h4,h5,h6 {
-        font-weight: $semi-bold;
+    h1 {
+        font-family: $bold-font-family;
+        font-size: $h1-font-size;
+        letter-spacing: 0.02em;
     }
     
     h2 {
+        font-family: $bold-font-family;
         font-size: $h2-font-size;
     }
     
     h3 {
+        font-family: $medium-font-family;
         font-size: $h3-font-size;
         text-transform: uppercase;
         letter-spacing: $letter-spacing-wide;
     }
+    
+    h1,h2,h3,h4,h5,h6,strong,cite {
+	    font-style: normal;
+	    font-weight: normal;
+	}
 
     a:hover, a:focus {
         text-decoration: none;
     }
     
-    ul {
+    ul, ol {
         margin: 0 0 10px 10px;
     }
     
@@ -211,7 +224,7 @@ input {
     
     #navigation {
     
-        font-family: $navigation-font-family;
+        font-family: $medium-font-family;
         text-transform: uppercase;
         width: 100%;
         z-index: 10;
@@ -275,7 +288,8 @@ input {
         }
         
         .language,
-        .search {     
+        .search {   
+          
             float: right;
             
             a {
@@ -285,18 +299,40 @@ input {
         
         .language .portlet-language,
         .search .portlet-search {
+        
             display: none; 
         }       
     }
     
     #navigation.default-page,
     #navigation.affix .navbar-inner {
+    
         background-color: $color-turquois;
+        -webkit-transition: background-color 200ms ease-in;
+	    -moz-transition: background-color 200ms ease-in;
+	    -o-transition: background-color 200ms ease-in;
+	    -ms-transition: background-color 200ms ease-in;
+	    transition: background-color 200ms ease-in;
     }
     
     #navigation .navbar-inner,              /* affix-top is set via js, which is too late on first load */
     #navigation.affix-top .navbar-inner {
+    
         background-color: transparent;
+    }
+    
+    #navigation.affix-top .navbar-inner {
+    
+        .brand {
+            color: #fff;
+        }
+        
+        li > a {
+            color: #fff;
+            &:hover {
+                color: $navigation-font-color;
+            }
+        }
     }
      
     .navbar {
@@ -304,15 +340,20 @@ input {
         margin-bottom: 0;
         
         .brand { 
-            padding: 20px 0 0 0;
-            font-weight: $semi-bold;
+            padding-top: 20px;
+            font-family: $medium-font-family;
             font-size: $default-font-size;
             letter-spacing: $letter-spacing-wide;
             color: $navigation-font-color;
-            text-shadow: none; 
+            text-shadow: none;
+            &:hover {
+                color: $hover-font-color;
+            }
         } 
         
-        .nav { 
+        .nav {
+        
+            margin: 0;
                 
             > .active a, 
             > .active a:focus, 
@@ -329,7 +370,8 @@ input {
                 color: $navigation-font-color;
             }
             
-            > li > a:focus,> li > a:hover{
+            > li > a:focus,
+            > li > a:hover {
                 color: $hover-font-color;
             }
         }
@@ -365,16 +407,6 @@ input {
        
     
 /* Web Content Templates */
-        
-    button.club-link {
-        background: orange;
-        border: 2px solid orange; 
-        border-radius: 100%;
-        width: 100px;
-        height: 100px;
-        color: white;
-        font-size: 20px;
-    }
     
     .intro {
     
@@ -382,21 +414,26 @@ input {
                 
         .abstract {
             text-align: center;
-            padding: 20px 20px;
+            padding: 0 15px 30px 15px;
+            
+            p {
+                min-height: 3em;
+            }
         }        
                     
-/*         .btn { */
-/*             color: $default-font-color; */
-/*             background: transparent; */
-/*             border: 2px solid $default-font-color;  */
-/*             box-shadow: none;  */
-/*             -web-box-shadow: none; */
-/*             font-size: $button-font-size;  */
-/*             font-family: $button-font-family; */
-/*             margin: 20px auto; */
-/*             padding: 15px 25px; */
+        .btn {
+            color: $navigation-font-color;
+            background: transparent;
+            border: 2px solid $navigation-font-color; 
+            box-shadow: none; 
+            -web-box-shadow: none;
+            font-size: $button-font-size; 
+            font-family: $button-font-family;
+            letter-spacing: $button-letter-spacing;
+            margin-top: 1em;
+            padding: 8px 30px;
             
-/*         }  */
+        } 
         
         h1 {
             padding: 80px 0 20px;
@@ -447,20 +484,32 @@ input {
             
             .claim {
 	           position: absolute;
-	           top: 25%;
+	           top: 30%;
 	           width: 100%;
 	        }
         } 
         
         .abstracts {
             position: absolute;
-            top: 75%;
+            top: 90%;
             width: 100%;
-        }
-        
-        .club-link {
-            position: absolute; 
-            top: -50px;
+            
+            .abstract {
+	            border-top: 15px solid transparent;
+	            border-bottom: 15px solid transparent;
+	            border-image: url(../images/border-wave.png) 15 0 15 0 round;
+	            -webkit-border-image: url(../images/border-wave.png) 15 0 15 0 round;
+	            -o-border-image: url(../images/border-wave.png) 15 0 15 0 round;
+	            
+	            -webkit-background-clip: padding;
+				-moz-background-clip: padding;
+				background-clip: padding-box;
+				
+				.btn {
+		            background: #fff;
+		            border: 2px solid #fff; 
+                } 
+            }
         }
     }
     
@@ -510,13 +559,13 @@ input {
             line-height: $logos-height; /* center the div's content vertically */
             
             a {
-                margin: 0 30px;
+                margin: 0 60px;
             }
             
             img {
-                width: 180px;
+                width: 120px;
                 vertical-align: middle;
-                opacity: 0.5;
+                opacity: 0.3;
                 
 				-webkit-filter: grayscale(100%);
 				-webkit-transition: .5s ease-in-out; 
@@ -729,29 +778,30 @@ input {
     
         width: 100%; 
         z-index: 10;
+        background: $color-sand;
             
         .accordion {
-            margin-bottom: 0; 
+            margin-bottom: 0;
         }
     
         .portlet-body .taglib-asset-categories-navigation {
     
             background: $color-sand;
             min-height: 140px;       
-            
+                
             a {
-                color: gray;
-                padding: 8px 15px;
-                border: 1px solid gray; 
-                font-size: $default-font-size; 
+                color: $navigation-font-color;
+                padding: 5px 30px;
+                border: 1px solid $navigation-font-color; 
+                font-size: $default-font-size;
                 text-transform: uppercase;
+                letter-spacing: $letter-spacing-wide;
                 margin-right: 15px;
             }
     
             a.tag-selected {
                 border: 1px solid white; 
                 background: white;
-                font-weight: normal;
             }
     
             .tree-view {
@@ -802,14 +852,14 @@ input {
                     }
                 }           
             }
-             
+            
             ul {
-                margin: 20px 0;
+                margin: 15px 0;
                 float: left; 
             }
             
             li {
-                line-height: 50px;
+                line-height: 45px;
                 display: inline;
                 float: left; 
                 margin: 0; 
@@ -826,7 +876,7 @@ input {
     .portlet-asset-categories-navigation.affix, 
     .portlet-asset-categories-navigation.affix-top {
         position: fixed;
-        top: $nav-height; 
+        top: $nav-height;
     }
 
     .signed-in .portlet-asset-categories-navigation,
@@ -1127,7 +1177,10 @@ input {
         }
         
         .copyright {
-            text-transform: uppercase; 
+            font-size: $small-font-size;
+            color: $navigation-font-color;
+            text-transform: uppercase;
+            letter-spacing: $letter-spacing-wide;
         }
         
         .info {
@@ -1148,26 +1201,30 @@ input {
                 .portlet-body {
                 
                     display: inline;
+                    font-size: $small-font-size;
                 
                     li {
-                        display: inline; 
+                        display: inline;
+                        margin: 0 3px;
                     }
             
                     li:before {
-                        content: "/";  
+                        content: "/ ";
+                        color: $navigation-font-color;
                     }  
                 
                     a {
-                        color: $default-font-color; 
-                        margin: 20px 10px; 
+                        color: $navigation-font-color; 
                         text-decoration: underline; 
-                        text-transform: uppercase; 
+                        text-transform: uppercase;
+                        letter-spacing: $letter-spacing-wide;
+                        margin-left: 5px;
                     }
                 
                     ul {
                         display: inline; 
                         list-style: none; 
-                        margin-left: 10px; 
+                        margin-left: 0; 
                     }
                 }
          
@@ -1176,9 +1233,10 @@ input {
 
         h1.portlet-title  {
             
-            color: $default-font-color;
+            color: $navigation-font-color;
             font-size: $default-font-size; 
             text-transform: uppercase;
+            letter-spacing: $letter-spacing-wide;
             text-align: center;   
             
             img {
@@ -1189,7 +1247,8 @@ input {
         .social {
         
             font-size: 30px;
-            text-align: center; 
+            text-align: center;
+            padding: 1.5em 0;
         
             ul {
                 list-style: none;
@@ -1199,18 +1258,22 @@ input {
             
             li {
                 display: inline;
-                margin: 0 20px 0 0; 
+                margin: 0 15px 0 0; 
             }
             
             .circle {
+            
                 background: $color-gray-green;
                 border-radius: 100%;
-                padding: 8px;
                 text-align: center;
-                width: 40px;
-                height: 40px;
+                width: 60px;
+                height: 60px;
                 display: inline-block;
                 line-height: 150%;
+                
+                span::before {
+                    margin-top: 14px;
+                }
             }
             
             a {
@@ -1227,8 +1290,11 @@ input {
             border-right: 6px solid #cad3d3;
         }
              
-        .status {
+        .container.status {
         
+            color: red;
+            padding: 30px 0;
+            border-top: 5px solid red;        
             ul {
                 list-style: none; 
                 padding: 0; 
