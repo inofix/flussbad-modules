@@ -373,6 +373,7 @@ input {
         width: 100px;
         height: 100px;
         color: white;
+        font-size: 20px;
     }
     
     .intro {
@@ -460,7 +461,6 @@ input {
         .club-link {
             position: absolute; 
             top: -50px;
-            right: 100px;
         }
     }
     

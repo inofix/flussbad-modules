@@ -47,7 +47,7 @@
                         <div class="span4">
                             <div class="abstract">
                                 <#if i==2>
-                                    <button class="club-link" href="#" title="TODO">Werde aktiv!</button>
+                                    <button class="club-link" href="#" title="${languageUtil.get(locale, "get-involved")}">${languageUtil.get(locale, "get-involved")}</button>
                                 </#if>
                                 <h3>${cur_caption.getData()}</h3>
                                 <h2>${cur_caption.claim.getData()}</h2>
