@@ -188,7 +188,11 @@ input {
             -moz-box-shadow: none; 
             box-shadow: none;
             
-            border: none;            
+            border: none;    
+            
+            .dropdown-menu {
+                margin-top: -5px;
+            }        
         }
         
         .portlet-site-map {
