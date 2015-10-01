@@ -956,12 +956,22 @@ input {
         }
         
     }
+    
+    /** 
+     * Whenever an asset-publisher is placed below
+     * an .intro(.with-image), we need to pull it
+     * down, since the .abstracts wrapper is positioned
+     * absolute
+     */
+    .portlet-asset-publisher.below-intro {
+    	margin-top: 290px;
+    }
 
     .portlet-asset-publisher.start-publisher {
     
-        .asset-abstract {
-            margin-top: 100px;
-        }
+/*         .asset-abstract { */
+/*             margin-top: 100px; */
+/*         } */
         
         .asset-content {
             margin: 0 auto;
