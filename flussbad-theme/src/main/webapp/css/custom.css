@@ -108,12 +108,6 @@ input {
         margin: 0; 
     }
     
-    @media (max-width: 767px) {
-        body {
-            padding:0; 
-        }
-    }
-    
     #wrapper {
         padding: 0;
     }
@@ -125,12 +119,7 @@ input {
     .signed-in #content {
         margin-top: $dockbar-height; 
     }
-    
-    @media (max-width: 767px) {
-        .container {
-            padding: 0 20px;
-        }
-    }
+
     
 /* Dockbar */
     
@@ -183,12 +172,6 @@ input {
                 }
 	           }
 	        }
-        }
-                
-        .nav-collapse {
-            @media (min-width: 980px) {
-                float: right;
-            }
         }
         
         /* Hide the default page */
@@ -333,14 +316,6 @@ input {
             height: $nav-height;
         }
     }
-    
-    @media (max-width: 767px){
-        .navbar-fixed-top, 
-        .navbar-fixed-bottom, 
-        .navbar-static-top {
-            margin: 0; 
-        }
-    }
         
     .portlet-language .portlet-borderless-container {
         min-height: 1em;
@@ -400,20 +375,7 @@ input {
     .intro.with-image {
     
         text-align: center;
-        background-color: transparent !important; 
-        
-		@media (max-width: 767px) {
-		   min-height: $full-image-height-xs;
-		}
-		@media (min-width: 768px) {
-		   min-height: $full-image-height-sm;
-		}
-		@media (min-width: 992px) {
-		   min-height: $full-image-height-md;
-		}
-		@media (min-width: 1200px) {
-		   min-height: $full-image-height-lg;
-		}  
+        background-color: transparent !important;
                 
         h1  {
             
@@ -603,22 +565,6 @@ input {
             padding: 0 20px;
             margin-top: 200px;
         }
-    
-        .item  {
-                    
-			@media (max-width: 767px) {
-			   min-height: $full-image-height-xs;
-			}
-			@media (min-width: 768px) {
-			   min-height: $full-image-height-sm;
-			}
-			@media (min-width: 992px) {
-			   min-height: $full-image-height-md;
-			}
-			@media (min-width: 1200px) {
-			   min-height: $full-image-height-lg;
-			} 
-        }
     } 
     
     .slide-show, 
@@ -739,16 +685,7 @@ input {
             -moz-column-gap: 20px; /* Firefox */
             column-gap: 20px;
             
-        }
-        
-        @media (max-width: 767px) {
-        
-            .section-body {           
-                -webkit-column-count: 1; /* Chrome, Safari, Opera */
-                -moz-column-count: 1; /* Firefox */
-                column-count: 1;                
-            }
-        }        
+        }       
         
         img {
             margin: 0 0 20px 0; 
@@ -814,13 +751,6 @@ input {
             .accordion-inner .lfr-asset-category-list-container.categories-closed {
                 height: 0; 
                 overflow: hidden;  
-            }
-            
-            @media (min-width: 768px) {
-                .accordion-inner {
-                    margin-left: 40%;
-                    width: 60%;
-                }
             }
             
             .accordion-heading {
@@ -1003,30 +933,6 @@ input {
     
         .taglib-categorization-filter.entry-title {
             display: none; 
-        }
-    
-        @media (min-width: 768px) {
-        
-           .asset-metadata {
-                width: 40%;
-                clear: none;  
-            }   
-        
-            .asset-content,
-            .asset-social-media,
-            .asset-title {
-                width: 60%; 
-                margin-left: 40%;            
-            }   
-        } 
-        
-        @media (max-width: 767px) { 
-        
-            .asset-more,
-            .asset-summary,
-            .asset-title {
-                clear: left;
-            }   
         }
     }
     
@@ -1330,6 +1236,114 @@ input {
     .portlet-journal-content .lfr-meta-actions:hover {
         background: rgba(0,0,0,0.9);
     }
+    
+/* media-queries */
+
+/* Probably this needs more cleanup, but we start with collecting them the queries
+   at the end of the document */
+   
+    
+    @media (max-width: 767px) {
+        body {
+            padding:0; 
+        }
+    }
+    
+    @media (max-width: 767px) {
+        .container {
+            padding: 0 20px;
+        }
+    }
+    
+    @media (max-width: 767px){
+        .navbar-fixed-top, 
+        .navbar-fixed-bottom, 
+        .navbar-static-top {
+            margin: 0; 
+        }
+    }
+        
+	@media (max-width: 767px) {
+	
+	    .section-body {           
+	        -webkit-column-count: 1; /* Chrome, Safari, Opera */
+	        -moz-column-count: 1; /* Firefox */
+	        column-count: 1;                
+	    }
+	}
+	      
+	@media (min-width: 768px) {
+	    .accordion-inner {
+	        margin-left: 40%;
+	        width: 60%;
+	    }
+	}
+	
+	@media (min-width: 768px) {
+	
+	    .portlet-asset-publisher.default-publisher {
+	    
+	    	.asset-metadata {
+		        width: 40%;
+		        clear: none;  
+		    }   
+		
+		    .asset-content,
+		    .asset-social-media,
+		    .asset-title {
+		        width: 60%; 
+		        margin-left: 40%;            
+		    }  
+		} 
+	} 
+	
+	@media (max-width: 767px) { 
+	
+	    .portlet-asset-publisher.default-publisher {
+	
+		    .asset-more,
+		    .asset-summary,
+		    .asset-title {
+		        clear: left;
+		    } 
+		}  
+	}
+    
+    @media (min-width: 980px) {
+        .nav-collapse {
+            float: right;
+        }
+	}
+	
+	.intro.with-image {
+		@media (max-width: 767px) {
+		   min-height: $full-image-height-xs;
+		}
+		@media (min-width: 768px) {
+		   min-height: $full-image-height-sm;
+		}
+		@media (min-width: 992px) {
+		   min-height: $full-image-height-md;
+		}
+		@media (min-width: 1200px) {
+		   min-height: $full-image-height-lg;
+		} 
+	}
+	
+	.item  {	                 
+		@media (max-width: 767px) {
+		   min-height: $full-image-height-xs;
+		}
+		@media (min-width: 768px) {
+		   min-height: $full-image-height-sm;
+		}
+		@media (min-width: 992px) {
+		   min-height: $full-image-height-md;
+		}
+		@media (min-width: 1200px) {
+		   min-height: $full-image-height-lg;
+		} 
+	}
     
     .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
     .lfr-meta-actions,
