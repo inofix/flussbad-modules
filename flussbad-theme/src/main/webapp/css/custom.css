@@ -234,7 +234,7 @@ input {
         background-color: transparent;
     }
     
-    #navigation.default-page .navbar-inner {
+    .default-page #navigation .navbar-inner {
         background-color: $color-turquois;
     }
     
@@ -248,7 +248,7 @@ input {
 	    transition: background-color 200ms ease-in;
     }
     
-    #navigation.start-page .navbar-inner, /* affix-top is set via js, which comes too late on first load */
+    .start-page #navigation .navbar-inner, /* affix-top is set via js, which comes too late on first load */
     #navigation.affix-top .navbar-inner {
     
         .brand {
