@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  * 
  * Created: 	2015-09-02 22:31 by Christian Berndt
- * Modified:	2015-09-30 13:42 by Christian Berndt
- * Version: 	1.0.6
+ * Modified:	2015-10-01 10:29 by Christian Berndt
+ * Version: 	1.0.7
  */
 
 /**
@@ -188,14 +188,14 @@ YUI().use(
 );
 
 /** 
- * Affix the main navigation
+ * Affix with offset for the main navigation on the start page
  */
 YUI().use(
     'aui-affix',
     function(Y) {
         new Y.Affix(
         {
-          target: '#navigation',
+          target: '#navigation.start-page',
           offsetTop: 200
         });
     }
