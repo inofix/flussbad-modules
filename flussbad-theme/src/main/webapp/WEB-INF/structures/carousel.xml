@@ -1,0 +1,42 @@
+<root available-locales="de_DE" default-locale="de_DE">
+<!--
+    Carousel structure: A structure for a content object of 
+    type "Carousel", which is a collection of images, which 
+    are formatted as a carousel.
+    
+    Created:    2015-10-01 18:58 by Christian Berndt
+    Modified:   2015-10-01 18:58 by Christian Berndt
+    Version:    0.9.0
+    
+    Please note: Although this structure is stored in the 
+    site's context it's source is managed via git. Whenever you 
+    change the structure online make sure that you commit your 
+    changes to the flussbad-modules repo, too.
+-->
+	<dynamic-element dataType="document-library" fieldNamespace="ddm" indexType="keyword" localizable="true" name="image" readOnly="false" repeatable="true" required="false" showLabel="true" type="ddm-documentlibrary" width="">
+		<dynamic-element dataType="string" indexType="keyword" localizable="true" name="caption" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="medium">
+			<meta-data locale="de_DE">
+				<entry name="label">
+					<![CDATA[Bildunterschrift]]>
+				</entry>
+				<entry name="predefinedValue">
+					<![CDATA[]]>
+				</entry>
+				<entry name="tip">
+					<![CDATA[Füge für jedes Bild eine kurze Beschreibung hinzu.]]>
+				</entry>
+			</meta-data>
+		</dynamic-element>
+		<meta-data locale="de_DE">
+			<entry name="label">
+				<![CDATA[Bilddokument]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[Wähle ein Bilddokument aus der Dokumentenbibliothek aus, das in diesem Karussell erscheinen soll.]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+</root>
