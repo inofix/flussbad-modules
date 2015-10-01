@@ -4,8 +4,8 @@
     type "Event", which is used to record events.
     
     Created:    2015-10-01 19:00 by Christian Berndt
-    Modified:   2015-10-01 19:00 by Christian Berndt
-    Version:    0.9.0
+    Modified:   2015-10-01 22:48 by Christian Berndt
+    Version:    0.9.1
     
     Please note: Although this structure is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -25,7 +25,7 @@
 			</entry>
 		</meta-data>
 	</dynamic-element>
-	<dynamic-element dataType="date" fieldNamespace="ddm" indexType="keyword" localizable="true" name="date" readOnly="false" repeatable="false" required="true" showLabel="true" type="ddm-date" width="small">
+	<dynamic-element dataType="date" fieldNamespace="ddm" indexType="keyword" localizable="true" name="date" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-date" width="small">
 		<meta-data locale="de_DE">
 			<entry name="label">
 				<![CDATA[Datum]]>
