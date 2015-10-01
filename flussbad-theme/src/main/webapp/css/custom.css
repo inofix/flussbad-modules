@@ -45,65 +45,6 @@ $full-image-height-md: 558px;
 $full-image-height-sm: 432px;
 $full-image-height-xs: 400px;
 
-/* Mixins */
-
-@mixin color-scheme-gray-green() {
-	
-	background-color: $color-gray-green;
-	
-	h1 {
-	   color: #fff;
-	}
-        
-    .abstract {
-        background-color: $color-gray-green;
-        h3 {
-            color: #fff;
-        }
-        h2 {
-           color: $color-turquois; 
-        }
-    }
-}
-
-@mixin color-scheme-sand() {
-    
-    background-color: $color-sand;
-    
-    h1 {
-       color: #fff;
-    }
-        
-    .abstract {
-        background-color: $color-sand;
-        h3 {
-            color: $color-turquois;
-        }
-        h2 {
-           color: $color-gray-green; 
-        }
-    }
-}
-
-@mixin color-scheme-turquois() {
-    
-    background-color: $color-turquois;
-    
-    h1 {
-       color: #fff;
-    }
-        
-    .abstract {
-        background-color: $color-turquois;
-        h3 {
-            color: #fff;
-        }
-        h2 {
-           color: $color-gray-green; 
-        }
-    }
-}
-
 /* Unset input borders set by jQuery */
 input {
     border: none; 
@@ -518,15 +459,58 @@ input {
     }
     
     .intro.gray-green {
-        @include color-scheme-gray-green();
+		background-color: $color-gray-green;
+		
+		h1 {
+		   color: #fff;
+		}
+	        
+	    .abstract {
+	        background-color: $color-gray-green;
+	        h3 {
+	            color: #fff;
+	        }
+	        h2 {
+	           color: $color-turquois; 
+	        }
+	    }
     }
     
     .intro.sand {
-        @include color-scheme-sand();
+	    background-color: $color-sand;
+	    
+	    h1 {
+	       color: #fff;
+	    }
+	        
+	    .abstract {
+	        background-color: $color-sand;
+	        h3 {
+	            color: $color-turquois;
+	        }
+	        h2 {
+	           color: $color-gray-green; 
+	        }
+	    }
     }
     
     .intro.turquois {
-        @include color-scheme-turquois();
+    
+	    background-color: $color-turquois;
+	    
+	    h1 {
+	       color: #fff;
+	    }
+	        
+	    .abstract {
+	        background-color: $color-turquois;
+	        h3 {
+	            color: #fff;
+	        }
+	        h2 {
+	           color: $color-gray-green; 
+	        }
+	    }
     }
     
     .link {
@@ -717,15 +701,15 @@ input {
     }
               
     .statement.gray-green {
-        @include color-scheme-gray-green();
+	    background-color: $color-gray-green;
     }
     
     .statement.sand {
-        @include color-scheme-sand();
+	    background-color: $color-sand;
     }
     
     .statement.turquois {
-        @include color-scheme-turquois();
+	    background-color: $color-turquois;
     }
     
     .story {
@@ -990,15 +974,15 @@ input {
         }
         
         .asset-abstract.gray-green {
-            @include color-scheme-gray-green();
+		    background-color: $color-gray-green;
         }
     
         .asset-abstract.sand {
-            @include color-scheme-sand();
+		    background-color: $color-sand;
         }
     
         .asset-abstract.turquois {
-            @include color-scheme-turquois();
+		    background-color: $color-turquois;
         }
         
         .asset-content {
