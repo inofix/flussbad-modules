@@ -1,0 +1,42 @@
+<root available-locales="de_DE" default-locale="de_DE">
+<!--
+    Logos structure: A structure for a content object of 
+    type "Logo", which is a combination of an image and 
+    a link.
+    
+    Created:    2015-10-01 18:57 by Christian Berndt
+    Modified:   2015-10-01 18:57 by Christian Berndt
+    Version:    0.9.0
+    
+    Please note: Although this structure is stored in the 
+    site's context it's source is managed via git. Whenever you 
+    change the structure online make sure that you commit your 
+    changes to the flussbad-modules repo, too.
+-->
+	<dynamic-element dataType="document-library" fieldNamespace="ddm" indexType="keyword" localizable="true" name="logo" readOnly="false" repeatable="true" required="false" showLabel="true" type="ddm-documentlibrary" width="">
+		<dynamic-element dataType="string" indexType="keyword" localizable="true" name="link" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="medium">
+			<meta-data locale="de_DE">
+				<entry name="label">
+					<![CDATA[Link]]>
+				</entry>
+				<entry name="predefinedValue">
+					<![CDATA[]]>
+				</entry>
+				<entry name="tip">
+					<![CDATA[Gib den Link zur Hauptseite der betreffenden Institution im Format: http://www.name.org ein.]]>
+				</entry>
+			</meta-data>
+		</dynamic-element>
+		<meta-data locale="de_DE">
+			<entry name="label">
+				<![CDATA[Logo]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[Wähle ein Logo eines Partners oder Förderers aus der Dokumentenbibliothek aus. Das Logo sollte in Farbe sein und 80 x 180 px groß sein.]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+</root>
