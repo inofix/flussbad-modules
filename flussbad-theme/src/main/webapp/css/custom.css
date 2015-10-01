@@ -36,8 +36,9 @@ $color-turquois: #93EAEE;
 
 /* button */
 $button-font-size: 24px;
-$button-font-family: 'Amatic SC';
+$button-font-family: 'Qiltray Regular Condensed';
 $button-letter-spacing: 0.1em;
+$button-font-size-adjust:0.477; 
 
 /* keyvisual */
 $full-image-height-lg: 720px;
@@ -348,6 +349,7 @@ input {
             box-shadow: none; 
             -web-box-shadow: none;
             font-size: $button-font-size; 
+            font-size-adjust: $button-font-size-adjust;
             font-family: $button-font-family;
             letter-spacing: $button-letter-spacing;
             margin-top: 1em;
@@ -486,6 +488,7 @@ input {
             color: $default-font-color; 
             font-family: $button-font-family;
             font-size: $button-font-size; 
+            font-size-adjust: $button-font-size-adjust;
             padding: 10px 20px; 
             text-decoration: none; 
         }
