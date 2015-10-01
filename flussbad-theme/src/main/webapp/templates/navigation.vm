@@ -3,18 +3,13 @@
 ## the example of navigation.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:59 by Christian Berndt
-## Modified:    2015-09-24 11:58 by Christian Berndt
-## Version:     1.0.6
+## Modified:    2015-10-01 14:56 by Christian Berndt
+## Version:     1.0.7
 ##
 
 #set ($brand= $theme_display.getThemeSetting('brand'))
 
-#set ($page_type = "default-page")
-#if ($nav_items.get(0).isSelected())
-    #set ($page_type = "start-page")
-#end
-
-<nav class="$nav_css_class navbar navbar-fixed-top top site-navigation $page_type" id="navigation" role="navigation">
+<nav class="$nav_css_class navbar navbar-fixed-top top site-navigation" id="navigation" role="navigation">
     <div class="navbar-inner">
         <div class="container">
             <button type="button" class="btn btn-navbar"  id="nav_toggle" data-navid="navCollapse" data-toggle="collapse" data-target=".nav-collapse">

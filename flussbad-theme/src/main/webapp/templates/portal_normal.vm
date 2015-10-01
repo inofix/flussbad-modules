@@ -49,7 +49,12 @@
 
 </head>
 
-<body class="$css_class">
+#set ($page_type = "default-page")
+#if ($nav_items.get(0).isSelected())
+    #set ($page_type = "start-page")
+#end
+
+<body class="$css_class $page_type">
 
 <a href="#main-content" id="skip-to-content">#language ("skip-to-content")</a>
 
