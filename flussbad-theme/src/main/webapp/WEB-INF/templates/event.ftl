@@ -2,8 +2,8 @@
     Event template: Format the Event structure
     
     Created:    2015-10-01 19:09 by Christian Berndt
-    Modified:   2015-10-01 19:09 by Christian Berndt
-    Version:    0.9.0
+    Modified:   2015-10-01 23:23 by Christian Berndt
+    Version:    0.9.1
     
     Please note: Although this template is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -25,9 +25,11 @@
             <div class="lead">${summary.getData()}</div>
             <#if section.getSiblings()?has_content>
                 <#list section.getSiblings() as cur_section>
-                    <div class="section" id="section-${i}">
+                    <div class="section">
                         <h2>${cur_section.getData()}</h2>
-                        <div class="section-body">${cur_section.body.getData()}</div>
+                        <#if cur_section.body??>
+	                        <div class="section-body">${cur_section.body.getData()}</div>
+                        </#if>
                     </div>
                 </#list>
             </#if> 
