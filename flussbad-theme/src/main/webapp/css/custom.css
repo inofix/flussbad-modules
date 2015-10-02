@@ -1394,9 +1394,33 @@ input {
 		} 
 	} 
 	
+	@media (min-width: 768px) {
+	
+		/** 
+		 * 50-50 configuration for project-publisher
+		 */
+	
+	    .portlet-asset-publisher.project-publisher {
+	
+	    	.asset-metadata {
+		        width: 50%;
+		        clear: none;  
+		    }   
+		
+		    .asset-content,
+		    .asset-social-media,
+		    .asset-title {
+		        width: 50%; 
+		        margin-left: 50%;            
+		    }  
+		} 
+	}
+	
 	@media (max-width: 767px) { 
 	
-	    .portlet-asset-publisher.default-publisher {
+	    .portlet-asset-publisher.default-publisher,
+	    .portlet-asset-publisher.event-publisher,
+	    .portlet-asset-publisher.project-publisher {
 	
 		    .asset-more,
 		    .asset-summary,
