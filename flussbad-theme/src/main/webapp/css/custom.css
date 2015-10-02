@@ -1042,9 +1042,14 @@ input {
 /*     } */
     
     .portlet-asset-publisher.event-publisher {
+    
 		.asset-abstract:nth-child(even) {
 			background: $color-sand; 
 		}
+        
+        .taglib-header {
+            display: none; 
+        }
     }
 
     .portlet-asset-publisher.start-publisher {
@@ -1386,18 +1391,21 @@ input {
 	
 	    .portlet-asset-publisher.default-publisher,
 	    .portlet-asset-publisher.event-publisher {
+	    
+	    	.asset-abstract {
 	
-	    	.asset-metadata {
-		        width: 40%;
-		        clear: none;  
-		    }   
-		
-		    .asset-content,
-		    .asset-social-media,
-		    .asset-title {
-		        width: 60%; 
-		        margin-left: 40%;            
-		    }  
+		    	.asset-metadata {
+			        width: 40%;
+			        clear: none;  
+			    }   
+			
+			    .asset-content,
+			    .asset-social-media,
+			    .asset-title {
+			        width: 60%; 
+			        margin-left: 40%;            
+			    } 
+			} 
 		} 
 	} 
 	
