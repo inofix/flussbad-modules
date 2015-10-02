@@ -1022,59 +1022,33 @@ input {
 
     .portlet-asset-publisher.start-publisher {
     
-/*         .asset-abstract { */
-/*             margin-top: 100px; */
-/*         } */
-        
-        .asset-content {
-            margin: 0 auto;
-            border: none;
-            font-family: $light-font-family;
-            font-size: $lead-font-size; 
-            line-height: $lead-line-height; 
-            padding-bottom: 1em; 
-        }
+    	margin-bottom: 50px;
         
         .asset-metadata {
-            text-align: center;
+        	display: inline; 
             float: none; 
             min-height: 0;
             margin: 0 auto 20px;   
         }
         
-        .asset-metadata span {
-            float: none;
+        .asset-metadata:after {
+        	content: " _ "; 
         }
         
         .asset-more {
             display: none;
         }
-        
-        .asset-social-media {
-            display:none; 
-        }
                
-        .asset-summary {
-            display: block;
-            text-align: center; 
-/*             max-width: 550px;  */
-            margin: 0 auto 60px; 
-        }
-               
-        .asset-title {        
-            text-align: center; 
-            margin: 1em auto; 
-/*             max-width: 744px; */
+        .asset-title { 
+        	display: inline; 
+        	font-family: $medium-font-family;
+        	font-size: $default-font-size; 
+        	padding-bottom: 0;        
         }
         
         .asset-wrapper {
+        	text-align: center; 
             background: white; 
-        }
-        
-        .metadata-publish-date {
-            background: none;
-            color: $default-font-color; 
-            padding-left: 0; 
         }
     }
     
