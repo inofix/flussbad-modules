@@ -1003,11 +1003,7 @@ input {
             border-bottom: 4px solid #ebebeb; 
         }
     }  
-    
-    /** 
-     * Limit the 40-60 configuration to specific asset-publishers
-     * (those with the class "default-publisher").
-     */
+
     .portlet-asset-publisher.default-publisher {
     
         .taglib-categorization-filter.entry-title {
@@ -1336,8 +1332,14 @@ input {
 	
 	@media (min-width: 768px) {
 	
-	    .portlet-asset-publisher.default-publisher {
-	    
+		/** 
+		 * 40-60 configuration for default and 
+		 * and event-publisher 
+		 */
+	
+	    .portlet-asset-publisher.default-publisher,
+	    .portlet-asset-publisher.event-publisher {
+	
 	    	.asset-metadata {
 		        width: 40%;
 		        clear: none;  
