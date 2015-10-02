@@ -1374,8 +1374,8 @@ input {
 		}  
 	}
     
-    @media (min-width: 980px) {
-        .nav-collapse {
+    @media (min-width: 992px) {
+        #navigation .nav-collapse {
             float: right;
         }
 	}
