@@ -48,6 +48,24 @@ $full-image-height-md: 558px;
 $full-image-height-sm: 432px;
 $full-image-height-xs: 400px;
 
+
+/* Mixins */
+@mixin filter-item() {
+	color: $navigation-font-color;
+	padding: 5px 30px;
+	border: 1px solid $navigation-font-color; 
+	font-size: $default-font-size;
+	text-transform: uppercase;
+	letter-spacing: $letter-spacing-wide;
+	margin-right: 15px;
+}
+
+@mixin filter-item-selected() {
+	border: 1px solid white; 
+	background: white;
+}
+
+
 /* Unset input borders set by jQuery */
 input {
     border: none; 
@@ -788,18 +806,11 @@ input {
             min-height: 140px;       
                 
             a {
-                color: $navigation-font-color;
-                padding: 5px 30px;
-                border: 1px solid $navigation-font-color; 
-                font-size: $default-font-size;
-                text-transform: uppercase;
-                letter-spacing: $letter-spacing-wide;
-                margin-right: 15px;
+				@include filter-item(); 
             }
     
             a.tag-selected {
-                border: 1px solid white; 
-                background: white;
+				@include filter-item-selected(); 
             }
     
             .tree-view {
@@ -893,10 +904,7 @@ input {
             float: none; 
         }
         
-        .asset-metadata {
-/*             margin: 8px 0 0 0; */
-/*             float: left;  */
-            
+        .asset-metadata {            
             font-family: $medium-font-family;
             text-transform: uppercase;
             letter-spacing: $letter-spacing-wide;
@@ -1011,7 +1019,7 @@ input {
         }
     }
     
-    .default-publisher.categories-closed {
+    .portlet-asset-publisher.default-publisher.categories-closed {
         margin-top: 40px;
     }
     
@@ -1087,6 +1095,38 @@ input {
     
     .portlet-journal-content.first-display {
         margin-top: $nav-height;
+    }
+    
+    .portlet-site-map.project-sections {
+    
+    	background: $color-sand;
+		position: fixed; 
+		top: 0;
+		z-index: 10; 
+		width: 100%;   	
+    	
+    	a {
+			@include filter-item();
+    	}
+    	
+    	a.current {
+			@include filter-item-selected(); 
+    	}
+    	
+    	.portlet-borderless-container {
+    		min-height: 0; 
+    	}
+
+    	li {
+    		display: inline; 
+    	}
+    	
+    	ul {
+    		margin: 15px 0; 
+    		list-style: none; 
+    	}
+    	
+    	
     }
     
     .portlet-search {
