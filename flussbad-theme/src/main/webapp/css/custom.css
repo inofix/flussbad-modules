@@ -179,7 +179,7 @@ input {
         font-weight: normal;
         text-transform: uppercase;
         width: 100%;
-        z-index: 10;
+        z-index: 11;
         
         li {
 	        font-size: $default-font-size;
@@ -783,11 +783,11 @@ input {
     }
     
     .below-navigation {
-    	margin-top: $nav-height; 
+    	padding-top: $nav-height; 
     }
-    
+     
     .signed-in .below-navigation {
-		margin-top: $dockbar-and-nav-height;
+    	padding-top: $dockbar-and-nav-height; 
     }
 
     .portlet-asset-categories-navigation {
@@ -894,6 +894,8 @@ input {
    
 
     .portlet-asset-publisher {
+    
+        width: 100%;
         
         .asset-abstract {
             margin-bottom: 0; 
@@ -983,7 +985,6 @@ input {
     
     .portlet-asset-publisher.default-publisher {
     
-        width: 100%;
         margin-top: 184px; /* navigation + asset-categories-navigation + margin-top */
     
         .asset-abstract {
@@ -1023,21 +1024,27 @@ input {
         margin-top: 40px;
     }
     
-    .portlet-asset-publisher.intro-publisher {
-        width: 100%;
+/*     .portlet-asset-publisher.intro-publisher { */
+/*         width: 100%; */
         
-        .lead {
-            margin-bottom: 20px;
+/*         .lead { */
+/*             margin-bottom: 20px; */
         
-            -webkit-column-count: 2; /* Chrome, Safari, Opera */
-            -moz-column-count: 2; /* Firefox */
-            column-count: 2;
+/*             -webkit-column-count: 2; Chrome, Safari, Opera */
+/*             -moz-column-count: 2; Firefox */
+/*             column-count: 2; */
             
-            -webkit-column-gap: 20px; /* Chrome, Safari, Opera */
-            -moz-column-gap: 20px; /* Firefox */
-            column-gap: 20px;            
-        }
+/*             -webkit-column-gap: 20px; Chrome, Safari, Opera */
+/*             -moz-column-gap: 20px; Firefox */
+/*             column-gap: 20px;             */
+/*         } */
         
+/*     } */
+    
+    .portlet-asset-publisher.event-publisher {
+		.asset-abstract:nth-child(even) {
+			background: $color-sand; 
+		}
     }
 
     .portlet-asset-publisher.start-publisher {
@@ -1468,7 +1475,6 @@ input {
     
     .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
     .lfr-meta-actions,
-    .portlet-asset-publisher,
     .portlet-body .taglib-asset-categories-navigation .accordion-group, 
     .portlet-dynamic-data-mapping,
     .portlet-journal,
@@ -1481,7 +1487,6 @@ input {
     @media (min-width: 1200px) {
         .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
         .lfr-meta-actions,
-        .portlet-asset-publisher,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
         .portlet-journal,
@@ -1494,7 +1499,6 @@ input {
     @media (max-width: 979px) and (min-width: 768px) {
         .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
         .lfr-meta-actions,
-        .portlet-asset-publisher,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
         .portlet-journal,
@@ -1507,7 +1511,6 @@ input {
     @media (max-width: 767px) {
         .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
         .lfr-meta-actions,
-        .portlet-asset-publisher,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
         .portlet-journal,
