@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.flussbad</groupId>
     <artifactId>flussbad-modules</artifactId>
-    <version>0.2.0-SNAPSHOT</version>
+    <version>0.3.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Flussbad Modules</name>
     <description>Maven parent project to the flussbad liferay modules.</description>
@@ -97,6 +97,7 @@
         </dependency>
     </dependencies>
     <modules>
+	    <module>asset-publisher-hook</module>
         <module>flussbad-theme</module>
         <module>journal-hook</module>
     	<module>lang-hook</module>
