@@ -822,6 +822,10 @@ input {
                 margin: 0; 
             }
             
+            .tree-node-over .tree-label {
+            	text-decoration: none; 
+            }
+            
             .lfr-asset-category-list span {
                 padding: 0; 
             }
