@@ -1338,7 +1338,7 @@ input {
 	}
 	      
 	@media (min-width: 768px) {
-	    .accordion-inner {
+	    .portlet-asset-categories-navigation .accordion-inner {
 	        margin-left: 40%;
 	        width: 60%;
 	    }
