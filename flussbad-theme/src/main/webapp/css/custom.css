@@ -678,6 +678,10 @@ input {
         }   
     }
     
+    .snippet {
+    	text-align: center; 
+    }
+    
     .statement {
         
         .carousel .item {
@@ -745,6 +749,28 @@ input {
     }
 
 /* Portlets */
+
+	/** 
+	 * Helper classes for the positioning of portlets
+	 */
+	 
+    /** 
+     * Whenever an asset-publisher is placed below
+     * an .intro(.with-image), we need to pull it
+     * down, since the .abstracts wrapper is positioned
+     * absolute
+     */
+    .below-intro {
+    	margin-top: 360px;
+    }
+    
+    .below-navigation {
+    	margin-top: $nav-height; 
+    }
+    
+    .signed-in .below-navigation {
+		margin-top: $dockbar-and-nav-height;
+    }
 
     .portlet-asset-categories-navigation {
     
@@ -1008,16 +1034,6 @@ input {
             column-gap: 20px;            
         }
         
-    }
-    
-    /** 
-     * Whenever an asset-publisher is placed below
-     * an .intro(.with-image), we need to pull it
-     * down, since the .abstracts wrapper is positioned
-     * absolute
-     */
-    .portlet-asset-publisher.below-intro {
-    	margin-top: 360px;
     }
 
     .portlet-asset-publisher.start-publisher {
