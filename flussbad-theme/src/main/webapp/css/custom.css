@@ -1121,6 +1121,7 @@ input {
             display: none; 
         }
         
+        &.categories-auto-closed,
         &.categories-closed {
 	        margin-top: 40px;
         }
