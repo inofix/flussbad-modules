@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  * 
  * Created: 	2015-09-02 22:31 by Christian Berndt
- * Modified:	2015-10-01 14:58 by Christian Berndt
- * Version: 	1.0.8
+ * Modified:	2015-10-03 17:40 by Christian Berndt
+ * Version: 	1.0.9
  */
 
 /**
@@ -47,12 +47,40 @@ AUI().ready('node', function(A) {
     
     var toggle = A.one('.accordion-toggle');
     
+    var categories = A.one('.portlet-asset-categories-navigation'); 
+    
     toggle.on('click', function(event) {
-        A.one('.portlet-asset-categories-navigation .portlet-body .taglib-asset-categories-navigation').toggleClass('categories-closed');
-        A.one('.lfr-asset-category-list-container').toggleClass('categories-closed');
+        categories.toggleClass('categories-closed');
+        categories.removeClass('categories-auto-closed');
         A.one('.default-publisher').toggleClass('categories-closed');
     });
 }); 
+
+/**
+ * Show hide the asset categories filter while scrolling.
+ */
+AUI().ready('node', 'node-scroll-info', function(A) {
+	
+	var body = A.one('body');
+	
+	var categories = A.one('.portlet-asset-categories-navigation'); 
+		
+	body.plug(A.Plugin.ScrollInfo);
+	
+	body.scrollInfo.set('scrollDelay', 0); 
+		
+	body.scrollInfo.on('scrollDown', function (e) {
+		
+        categories.addClass('categories-auto-closed');
+
+	});
+	
+	body.scrollInfo.on('scrollUp', function (e) {
+		
+        categories.removeClass('categories-auto-closed');
+
+	});
+});
 
 /**
  * A scrollview based carousel implementation.

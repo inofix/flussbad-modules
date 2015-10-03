@@ -864,7 +864,16 @@ input {
         width: 100%; 
         z-index: 10;
         background: $color-sand;
-            
+        
+		-webkit-transition: max-height 0.2s; 
+		-moz-transition: max-height 0.2s; 
+		-ms-transition: max-height 0.2s; 
+		-o-transition: max-height 0.2s; 
+		transition: max-height 0.2s;
+        
+		max-height: 160px; 
+		overflow: hidden; 
+		            
         .accordion {
             margin-bottom: 0;
         }
@@ -905,11 +914,6 @@ input {
                 padding: 0;
             }
             
-            .accordion-inner .lfr-asset-category-list-container.categories-closed {
-                height: 0; 
-                overflow: hidden;  
-            }
-            
             .accordion-heading {
                 
                 .accordion-toggle:before {
@@ -919,12 +923,15 @@ input {
                 }
                 
                 .accordion-toggle {
+                          
+	                position: fixed; 
+	                right: 0; 
                 
 	                font-size: $h2-font-size;
                 
                     background-color: $color-sand;
                     color: $navigation-font-color;
-                    float: right;
+					padding: 5px 15px 20px; 
                     
                     .title-text {
                         display: none; 
@@ -947,14 +954,23 @@ input {
                 padding: 0; 
             }
         }
-        
-        .portlet-body .taglib-asset-categories-navigation.categories-closed {
+		
+		.portlet-borderless-container {
 			min-height: 0; 
-            
-			.accordion-toggle {
-				@include rotate(0); 
-			}
 		}
+		
+		&.categories-auto-closed,
+		&.categories-closed {
+			max-height: 0; 
+			
+	        .portlet-body .taglib-asset-categories-navigation {
+				min-height: 0; 
+	            
+				.accordion-toggle {
+					@include rotate(0); 
+				}
+			}
+		}				
     }
     
     .portlet-asset-categories-navigation,
@@ -1106,23 +1122,6 @@ input {
     .portlet-asset-publisher.default-publisher.categories-closed {
         margin-top: 40px;
     }
-    
-/*     .portlet-asset-publisher.intro-publisher { */
-/*         width: 100%; */
-        
-/*         .lead { */
-/*             margin-bottom: 20px; */
-        
-/*             -webkit-column-count: 2; Chrome, Safari, Opera */
-/*             -moz-column-count: 2; Firefox */
-/*             column-count: 2; */
-            
-/*             -webkit-column-gap: 20px; Chrome, Safari, Opera */
-/*             -moz-column-gap: 20px; Firefox */
-/*             column-gap: 20px;             */
-/*         } */
-        
-/*     } */
     
     .portlet-asset-publisher.event-publisher {
     
