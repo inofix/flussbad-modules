@@ -7,11 +7,11 @@ $nav-height: 60px;
 $nav-and-categories-height: 120px; 
 
 /* typography */
-$regular-font-family: 'Apercu Regular', Calibri, Roboto, sans-serif;
-$italic-font-family: 'Apercu Italic', Calibri, Roboto, sans-serif;
-$medium-font-family: 'Apercu Medium', Calibri, Roboto, sans-serif;
-$bold-font-family: 'Apercu Bold', Calibri, Roboto, sans-serif;
-$light-font-family: 'Apercu Light', Calibri, Roboto, sans-serif;
+$regular-font-family: 'Apercu Pro Regular', Calibri, Roboto, sans-serif;
+$italic-font-family: 'Apercu Pro Italic', Calibri, Roboto, sans-serif;
+$medium-font-family: 'Apercu Pro Medium', Calibri, Roboto, sans-serif;
+$bold-font-family: 'Apercu Pro Bold', Calibri, Roboto, sans-serif;
+$light-font-family: 'Apercu Pro Light', Calibri, Roboto, sans-serif;
 
 $default-font-size: 16px;
 $small-font-size: 12px;
@@ -930,7 +930,7 @@ input {
                         display: none; 
                     }
                     
-       				@include rotate(0deg); 
+       				@include rotate(180deg); 
                 }           
             }
             
@@ -952,7 +952,7 @@ input {
 			min-height: 0; 
             
 			.accordion-toggle {
-				@include rotate(90deg); 
+				@include rotate(0); 
 			}
 		}
     }
