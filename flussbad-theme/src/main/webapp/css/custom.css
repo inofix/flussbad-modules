@@ -66,6 +66,13 @@ $full-image-height-xs: 400px;
 	background: white;
 }
 
+@mixin rotate($degree) {
+	transform: rotate($degree);
+	-webkit-transform: rotate($degree);
+	-moz-transform: rotate($degree);
+	-o-transform: rotate($degree);
+}
+
 
 /* Unset input borders set by jQuery */
 input {
@@ -683,10 +690,9 @@ input {
         }
         
         .left.carousel-control span {
-            transform: rotate(180deg);
-            -webkit-transform: rotate(180deg);
-            -moz-transform: rotate(180deg);
-            -o-transform: rotate(180deg);
+        
+			@include rotate(180deg); 
+
             display: inline-block;            
         } 
         
@@ -907,18 +913,24 @@ input {
             .accordion-heading {
                 
                 .accordion-toggle:before {
-                    content: "caret-down"; 
+                
+                    content: "\2304";
+ 
                 }
                 
                 .accordion-toggle {
                 
+	                font-size: $h2-font-size;
+                
                     background-color: $color-sand;
-                    float: left;
-                    padding: 20px 10px;
+                    color: $navigation-font-color;
+                    float: right;
                     
                     .title-text {
                         display: none; 
                     }
+                    
+       				@include rotate(0deg); 
                 }           
             }
             
@@ -937,8 +949,12 @@ input {
         }
         
         .portlet-body .taglib-asset-categories-navigation.categories-closed {
-            min-height: 0; 
-        }
+			min-height: 0; 
+            
+			.accordion-toggle {
+				@include rotate(90deg); 
+			}
+		}
     }
     
     .portlet-asset-categories-navigation,
