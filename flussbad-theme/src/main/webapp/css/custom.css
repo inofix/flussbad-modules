@@ -1084,6 +1084,12 @@ input {
     
     .portlet-asset-publisher.default-publisher {
     
+		-webkit-transition: margin-top 0.2s; 
+		-moz-transition: margin-top 0.2s; 
+		-ms-transition: margin-top 0.2s; 
+		-o-transition: margin-top 0.2s; 
+		transition: margin-top 0.2s;
+    
         margin-top: 184px; /* navigation + asset-categories-navigation + margin-top */
     
         .asset-abstract {
@@ -1110,17 +1116,14 @@ input {
             padding-bottom: 20px; 
             border-bottom: 4px solid #ebebeb; 
         }
-    }  
-
-    .portlet-asset-publisher.default-publisher {
-    
+        
         .taglib-categorization-filter.entry-title {
             display: none; 
         }
-    }
-    
-    .portlet-asset-publisher.default-publisher.categories-closed {
-        margin-top: 40px;
+        
+        &.categories-closed {
+	        margin-top: 40px;
+        }
     }
     
     .portlet-asset-publisher.event-publisher {
