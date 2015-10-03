@@ -47,12 +47,17 @@ AUI().ready('node', function(A) {
     
     var toggle = A.one('.accordion-toggle');
     
-    var categories = A.one('.portlet-asset-categories-navigation'); 
+    var categories = A.one('.portlet-asset-categories-navigation');
+    var publisher = A.one('.default-publisher'); 
     
     toggle.on('click', function(event) {
+    	
         categories.toggleClass('categories-closed');
         categories.removeClass('categories-auto-closed');
-        A.one('.default-publisher').toggleClass('categories-closed');
+        
+        publisher.toggleClass('categories-closed');
+        publisher.removeClass('categories-auto-closed');
+
     });
 }); 
 
@@ -64,6 +69,7 @@ AUI().ready('node', 'node-scroll-info', function(A) {
 	var body = A.one('body');
 	
 	var categories = A.one('.portlet-asset-categories-navigation'); 
+    var publisher = A.one('.default-publisher'); 
 		
 	body.plug(A.Plugin.ScrollInfo);
 	
@@ -72,12 +78,14 @@ AUI().ready('node', 'node-scroll-info', function(A) {
 	body.scrollInfo.on('scrollDown', function (e) {
 		
         categories.addClass('categories-auto-closed');
+        publisher.addClass('categories-auto-closed');
 
 	});
 	
 	body.scrollInfo.on('scrollUp', function (e) {
 		
         categories.removeClass('categories-auto-closed');
+        publisher.removeClass('categories-auto-closed');
 
 	});
 });
