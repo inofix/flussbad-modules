@@ -120,7 +120,7 @@ if (assetCategory != null) {
 			        </div>
 		        </div>
 		
-				<div class="span8 offset 4">
+				<div class="span8">
 			        <h3 class="asset-title">
 <%-- 
     Customization: for journal-article assets try to use the journal-article's
