@@ -4,8 +4,8 @@
     - the date and title is read from the event-structure's fields
     
     Created:    2015-10-02 10:29 by Christian Berndt
-    Modified:   2015-10-02 10:29 by Christian Berndt
-    Version:    1.0.0
+    Modified:   2015-10-04 17:56 by Christian Berndt
+    Version:    1.0.1
 --%>
 <%--
 /**
@@ -102,7 +102,7 @@ if (assetCategory != null) {
     Customization: wrap the asset's content sections. 
 --%> 
      
-    <div class="asset-wrapper">  
+    <div class="container">  
     
 <%-- 
     Customization: for journal-article assets try to use the journal-article's
