@@ -589,73 +589,69 @@ input {
     .portlet-asset-publisher.start-publisher {
     
         margin-bottom: 6em;
-    
-        .asset-wrapper {
-        
-            text-align: center; 
-            background: white;
             
-            .asset-metadata {
-	           display: inline;
-	           float: none;
-	           min-height: 0;
-	           margin: 0 auto;
-	           font-family: $regular-font-family;
-	           font-size: $lead-font-size;
-	           text-transform: none;
-	           letter-spacing: none;
-	        }
-        
-	        .asset-metadata:after {
-	            content: " _ "; 
-	        }
-	        
-	        h3.asset-title {
-	            display: inline;
-	            font-family: $bold-font-family;
-	            font-size: $lead-font-size; 
-	            padding-bottom: 0;
-	            
-	            a:hover {
-	               color: $hover-font-color;
-	            }
-	        }
-	        
-	        .asset-more {
-	            display: none;
-	        }   
-        }
-    }
-    
-    .link {
-    
-        text-align: center; 
-        margin: 0 auto; 
-        padding-bottom: 120px;
-        
-        a {
-            border: 2px solid $navigation-font-color; 
-            color: $navigation-font-color; 
-            font-family: $button-font-family;
-            font-size: $button-font-size; 
-            font-size-adjust: $button-font-size-adjust;
-            letter-spacing: $button-letter-spacing;
-            text-transform: uppercase;
-            padding: $button-padding;; 
-            text-decoration: none;
-            
-            &:hover {
-                color: $hover-font-color;
-                border: 2px solid $hover-font-color;
-/*                 background: darken(white, 5%); */
-            }
-        }
-        
-        a:before {
-            content: ''; 
-        }
-    }
-    
+		text-align: center; 
+		background: white;
+		   
+		.asset-metadata {
+			display: inline;
+			float: none;
+			min-height: 0;
+			margin: 0 auto;
+			font-family: $regular-font-family;
+			font-size: $lead-font-size;
+			text-transform: none;
+			letter-spacing: none;
+		}
+		
+		.asset-metadata:after {
+		    content: " _ "; 
+		}
+		
+		h3.asset-title {
+		    display: inline;
+		    font-family: $bold-font-family;
+		    font-size: $lead-font-size; 
+		    padding-bottom: 0;
+		    
+		    a:hover {
+		       color: $hover-font-color;
+		    }
+		}
+		
+		.asset-more {
+		    display: none;
+		}   
+		    }
+		    
+		    .link {
+		    
+		        text-align: center; 
+		        margin: 0 auto; 
+		        padding-bottom: 120px;
+		        
+		        a {
+		            border: 2px solid $navigation-font-color; 
+		            color: $navigation-font-color; 
+		            font-family: $button-font-family;
+		            font-size: $button-font-size; 
+		            font-size-adjust: $button-font-size-adjust;
+		            letter-spacing: $button-letter-spacing;
+		            text-transform: uppercase;
+		            padding: $button-padding;; 
+		            text-decoration: none;
+		            
+		            &:hover {
+		                color: $hover-font-color;
+		                border: 2px solid $hover-font-color;
+		/*                 background: darken(white, 5%); */
+		            }
+		        }
+		        
+		        a:before {
+		            content: ''; 
+		        }
+		    }
     
     
 /* ----------------------------------------------- Slider */
@@ -998,11 +994,21 @@ input {
         
         .asset-abstract {
             margin-bottom: 0; 
+            padding: 40px 0;        
         }
     
         .asset-actions {
             font-size: $default_font_size; 
             float: none; 
+        }
+        
+        .asset-content {
+            margin-left: 0;
+            margin-right: 0;
+            font-size: $lead-font-size; 
+            line-height: $lead-line-height; 
+            padding-bottom: 20px; 
+            border-bottom: 4px solid #ebebeb;
         }
         
         .asset-metadata {            
@@ -1093,7 +1099,7 @@ input {
         margin-top: 184px; /* navigation + asset-categories-navigation + margin-top */
     
         .asset-abstract {
-            padding: 40px 0; 
+/*             padding: 40px 0;  */
         }
         
         .asset-abstract.gray-green {
@@ -1106,15 +1112,6 @@ input {
     
         .asset-abstract.turquois {
 		    background-color: $color-turquois;
-        }
-        
-        .asset-content {
-            margin-left: 0;
-            margin-right: 0;
-            font-size: $lead-font-size; 
-            line-height: $lead-line-height; 
-            padding-bottom: 20px; 
-            border-bottom: 4px solid #ebebeb; 
         }
         
         .taglib-categorization-filter.entry-title {
@@ -1431,59 +1428,11 @@ input {
 	      
 	@media (min-width: 768px) {
 	    .portlet-asset-categories-navigation .accordion-inner {
-	        margin-left: 40%;
-	        width: 60%;
+	    /* TODO: adjust to bootstrap grid */
+/* 	        margin-left: 40%; */
+/* 	        width: 60%; */
 	    }
-	}
-	
-	@media (min-width: 768px) {
-	
-		/** 
-		 * 40-60 configuration for default and 
-		 * and event-publisher 
-		 */
-	
-	    .portlet-asset-publisher.default-publisher,
-	    .portlet-asset-publisher.event-publisher {
-	    
-	    	.asset-abstract {
-	
-		    	.asset-metadata {
-			        width: 40%;
-			        clear: none;  
-			    }   
-			
-			    .asset-content,
-			    .asset-social-media,
-			    .asset-title {
-			        width: 60%; 
-			        margin-left: 40%;            
-			    } 
-			} 
-		} 
 	} 
-	
-	@media (min-width: 768px) {
-	
-		/** 
-		 * 50-50 configuration for project-publisher
-		 */
-	
-	    .portlet-asset-publisher.project-publisher {
-	
-	    	.asset-metadata {
-		        width: 50%;
-		        clear: none;  
-		    }   
-		
-		    .asset-content,
-		    .asset-social-media,
-		    .asset-title {
-		        width: 50%; 
-		        margin-left: 50%;            
-		    }  
-		} 
-	}
 	
 	@media (max-width: 767px) { 
 	
@@ -1522,7 +1471,6 @@ input {
 		} 
 	}
     
-    .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
     .lfr-meta-actions,
     .portlet-body .taglib-asset-categories-navigation .accordion-group, 
     .portlet-dynamic-data-mapping,
@@ -1534,7 +1482,6 @@ input {
     }
     
     @media (min-width: 1200px) {
-        .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
         .lfr-meta-actions,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
@@ -1546,7 +1493,6 @@ input {
     }
     
     @media (max-width: 979px) and (min-width: 768px) {
-        .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
         .lfr-meta-actions,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
@@ -1558,7 +1504,6 @@ input {
     }
     
     @media (max-width: 767px) {
-        .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
         .lfr-meta-actions,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
