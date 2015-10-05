@@ -43,7 +43,7 @@ $button-letter-spacing: 0.1em;
 $button-font-size-adjust:0.477; 
 $button-padding: 10px 30px 8px;
 
-/* keyvisual */
+/* slideshow */
 $full-image-height-lg: 720px;
 $full-image-height-md: 558px;
 $full-image-height-sm: 432px;
@@ -404,6 +404,7 @@ html, body {
     } 
 
 
+
 /* --------------------------------------------------------------------- */
 /* ----------------------------------------------- Web Content Templates */
     
@@ -539,6 +540,7 @@ html, body {
 	                width: 120px;
 	                height: 120px;
 	                display: inline-block;
+	                padding-top: 3px;
 	                line-height: 150%;
 	                
 	                &:hover {
@@ -619,14 +621,11 @@ html, body {
 
 
 /* ----------------------------------------------- Frontpage Event Teaser */
-
-/*     .below-intro { */
-/*         margin-top: 300px; */
-/*     } */
     
     .portlet-journal-content.below-intro {
     
-        text-align: center; 
+        text-align: center;
+        padding-top: 6em;
     
         h1 {
             padding: 0.5em 0 1.5em;
@@ -711,25 +710,64 @@ html, body {
     }
     
     
+
+/* ----------------------------------------------- Statement */
+
+	.statement {
+	    
+	        padding: 180px 0;
+	    
+	        blockquote {
+	            
+	            border: none;
+	            padding: 0;
+	            margin: 0;
+	            font-family: $bold-font-family;
+	            font-size: $h1-font-size;
+	            line-height: 125%;
+	            white-space: normal; /* Restore normal white-space behaviour
+	                         (nowrap is required for scrollview, 
+	                         see below) */
+	        }    
+	    }
+	              
+	    .statement.gray-green {
+	        background-color: $color-gray-green;
+	        color: white;
+	    }
+	    
+	    .statement.sand {
+	        background-color: $color-sand;
+	    }
+	    
+	    .statement.turquois {
+	        background-color: $color-turquois;
+	        color: white;
+	    }
     
-/* ----------------------------------------------- Slider */
+    
+    
+/* ----------------------------------------------- Statement & Slider */
     
     .slide-show, 
     .statement {
     
-        .carousel .container {
-            position: relative;
-            z-index: 9;
-        }
+       positoin: relative;
+    
+       margin: 0 !important;
+       padding: 0 !important;
+       overflow: hidden;
         
-        .carousel-caption {
+        .carousel {
             background-color: transparent;
-            position: static;
             overflow: hidden;
+            text-align: center;
         }
         
         .carousel-control {
             color: $color-turquois;
+            top: 50%;
+            margin-top: -15px;
             left: 15px; 
             width: 60px;
             font-size: 60px;
@@ -744,14 +782,10 @@ html, body {
         }
         
         .left.carousel-control span {
-        
 			@include rotate(180deg); 
-
             display: inline-block;            
         } 
-        
-        /* === scrollview styles === */
-        
+                
         /* To layout horizontal LIs */
         .scrollview-content {
             white-space: nowrap;
@@ -768,37 +802,16 @@ html, body {
         }   
     }
     
-    .statement {
     
-        padding: 180px 0;
-    
-        blockquote {
-            
-            border: none;
-            padding: 0;
-            margin: 0;
-            font-family: $bold-font-family;
-            font-size: $h1-font-size;
-            line-height: 125%;
-            white-space: normal; /* Restore normal white-space behaviour
-                         (nowrap is required for scrollview, 
-                         see below) */
-        }    
-    }
-              
-    .statement.gray-green {
-	    background-color: $color-gray-green;
-	    color: white;
-    }
-    
-    .statement.sand {
-	    background-color: $color-sand;
-    }
-    
-    .statement.turquois {
-	    background-color: $color-turquois;
-	    color: white;
-    }
+/* ----------------------------------------------- Image Slider */
+
+	.slide-show {
+      
+        @media (max-width: 767px) { height: $full-image-height-xs; }
+	    @media (min-width: 768px) { height: $full-image-height-sm; }
+	    @media (min-width: 992px) { height: $full-image-height-md; }
+	    @media (min-width: 1200px) { height: $full-image-height-lg; }
+	}
     
     
 
@@ -1289,10 +1302,8 @@ html, body {
 	            }
 	        }
         }
-        
-        
-        
-        
+
+
 
         /** 
             The class vocabualary-title is only
@@ -1490,6 +1501,10 @@ html, body {
             }
         }
         
+        
+        
+/* ----------------------------------------------- Social Media Icons */
+        
         .social {
         
             font-size: 30px;
@@ -1517,13 +1532,20 @@ html, body {
                 display: inline-block;
                 line-height: 150%;
                 
+                &:hover {
+                    background: $color-turquois;
+                }
+                
                 span::before {
                     margin-top: 14px;
                 }
             }
             
             a {
-                color: $color-light-gray; 
+                color: $color-light-gray;
+                &:hover {
+                    color: $color-gray-green;
+                }
             }
         }
         

@@ -2,7 +2,7 @@
     Statement template: Format the Statement structure
     
     Created:    2015-09-29 11:28 by Christian Berndt
-    Modified:   2015-10-01 14:44 by Christian Berndt
+    Modified:   2015-10-01 18:50 by Nils Sanders
     Version:    0.9.2
     
     Please note: Although this template is stored in the 
@@ -23,7 +23,7 @@
             <#list statement.getSiblings() as cur_statement>
                 <div class="item">
 	                <div class="container">
-	                  <div class="carousel-caption">
+	                  <div class="carousel">
 	                    <blockquote>${cur_statement.getData()}</blockquote>
 	                    <cite class="author pull-right">${cur_statement.author.getData()}</cite>
 	                  </div>
