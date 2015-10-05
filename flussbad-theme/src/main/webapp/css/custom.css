@@ -1001,6 +1001,11 @@ input {
                 padding: 0; 
             }
         
+        	.accordion-group {
+/*                 width: 65.81197%; = bootstrap .span8 */
+/*                 margin-left: 36.75213675213675%; bootstrap .offset4 */
+        	}
+        
             .accordion-group,
             .accordion-inner {
                 border: none; 
@@ -1592,7 +1597,7 @@ input {
 	}
     
     .lfr-meta-actions,
-    .portlet-body .taglib-asset-categories-navigation .accordion-group, 
+    .portlet-asset-categories-navigation .portlet-body,
     .portlet-dynamic-data-mapping,
     .portlet-journal,
     .portlet-search
@@ -1603,7 +1608,7 @@ input {
     
     @media (min-width: 1200px) {
         .lfr-meta-actions,
-        .portlet-body .taglib-asset-categories-navigation .accordion-group, 
+        .portlet-asset-categories-navigation .portlet-body,
         .portlet-dynamic-data-mapping,
         .portlet-journal,
         .portlet-search
@@ -1614,7 +1619,7 @@ input {
     
     @media (max-width: 979px) and (min-width: 768px) {
         .lfr-meta-actions,
-        .portlet-body .taglib-asset-categories-navigation .accordion-group, 
+        .portlet-asset-categories-navigation .portlet-body,
         .portlet-dynamic-data-mapping,
         .portlet-journal,
         .portlet-search
@@ -1625,7 +1630,7 @@ input {
     
     @media (max-width: 767px) {
         .lfr-meta-actions,
-        .portlet-body .taglib-asset-categories-navigation .accordion-group, 
+        .portlet-asset-categories-navigation .portlet-body,
         .portlet-dynamic-data-mapping,
         .portlet-journal,
         .portlet-search
