@@ -83,11 +83,12 @@ input {
 
 /* ----------------------------------------------- global settings */
 
-.aui {
+html, body {
+	width: 100%;
+    height: 100%;
+}
 
-    html, body {
-        height: 100% !important;
-    }
+.aui {
     
     body, p {
         font-family: $regular-font-family;
@@ -452,53 +453,55 @@ input {
         }
     } 
     
-    body,
-    #wrapper,
-    #content,
-    #main-content,
-    #column-1,
-    .portlet-column,
-    .portlet-column-content,
-    /* working up to here but fails at .portlet-journal-content */
-    .portlet-journal-content,
-    .portlet-borderless-container,
-    .portlet-body,
-    .journal-content-article {
-    	height: 100%;
-    }
+/*     body, */
+/*     #wrapper, */
+/*     #content, */
+/*     #main-content, */
+/*     .portlet-layout, */
+/*     #column-1, */
+/*     #layout-column_column-1, */
+/*     .portlet-column-content, */
+/*     working up to here but fails at .portlet-journal-content */
+/*     .portlet-journal-content, */
+/*     .portlet-borderless-container, */
+/*     .portlet-body, */
+/*     .journal-content-article, */
+/*     .with-image { */
+/*     	height: 100% !important; */
+/*     	width: 100% !important; */
+/*     } */  
+    
     
     .intro.with-image {
     
         background-color: transparent !important;
         
-        @media (max-width: 767px) { min-height: $full-image-height-xs; }
-        @media (min-width: 768px) { min-height: $full-image-height-sm; }
-        @media (min-width: 992px) { min-height: $full-image-height-md; }
-        @media (min-width: 1200px) { min-height: $full-image-height-lg; }
+/*         @media (max-width: 767px) { min-height: $full-image-height-xs; } */
+/*         @media (min-width: 768px) { min-height: $full-image-height-sm; } */
+/*         @media (min-width: 992px) { min-height: $full-image-height-md; } */
+/*         @media (min-width: 1200px) { min-height: $full-image-height-lg; } */
         
-        &.keyvisual {
-/*             position: absolute;             */
-/*             top: 0; */
-/*             left: 0; */
-            width: 100%;
-            height: 100% !important;
-            margin: 0;
-            
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            
-            .claim {
-	           position: absolute;
-	           top: 30%;
+        .keyvisual {
+	        width: 100%;
+	        height: 100vh;
+	        text-align:center;
+	        background-position:center center;
+	        background-repeat:no-repeat;
+	        background-size:cover;
+	        overflow:hidden;
+	        display: table;
+	        
+	        .claim {
 	           width: 100%;
+	            height: 100%;
+	            display: table-cell;
+	            vertical-align: middle;
 	        }
-        } 
+	    } 
         
         .abstracts {
-            position: absolute;
-            top: 80%;
-            width: 100%;
+
+            margin-top: -150px;
             
             .abstract {
                 position: relative;
@@ -617,9 +620,9 @@ input {
 
 /* ----------------------------------------------- Frontpage Event Teaser */
 
-    .below-intro {
-        margin-top: 300px;
-    }
+/*     .below-intro { */
+/*         margin-top: 300px; */
+/*     } */
     
     .portlet-journal-content.below-intro {
     
