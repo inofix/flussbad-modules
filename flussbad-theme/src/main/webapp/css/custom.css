@@ -1139,16 +1139,33 @@ html, body {
 		            text-transform: uppercase;
 		            letter-spacing: $letter-spacing-wide;
 		            
-		            .vertical-separator:after {
+		            padding-top: 1em;
+		            
+		            .vertical-separator::after {
 			            content: "/";
 			            margin: 0 7px;
 			        }
-                
+			        
+			        .taglib-asset-categories-summary {   /* separator if more than one category */
+			            a:nth-child(3n) {
+					         &::before {
+					            content: "/";
+					            color: $default-font-color;
+	                            margin: 0 7px 0 0;
+					         }
+                        }
+			        }
+			        
+			        .taglib-asset-categories-summary .asset-category {
+                        padding-right: 0;
+                    }
+			        
                     .metadata-publish-date {
 			            background: none;
 			            padding-left: 0;
 			            color: $default-font-color;
 			        }
+			        
                 }
                 
                 h3.asset-title {
@@ -1158,7 +1175,8 @@ html, body {
 		            text-transform: none;
 		            letter-spacing:  0.02em;
         
-		            padding-bottom: 0.25em;
+		            padding: 0 0 0.5em 0;
+		            margin: 0;
 		            border: none; 
 		            
 		            a {
@@ -1220,56 +1238,61 @@ html, body {
 	            font-size: $default_font_size; 
 	            float: none; 
 	        }
+	        
+	        &.gray-green {
+        
+	            background-color: $color-gray-green;
+	            color: white;
+	            
+	            .asset-metadata .metadata-publish-date {
+	              color: white;
+	            }
+	            
+	            a {
+	              color: $color-turquois;
+	              &:hover {
+	                  color: darken($color-turquois, 20%);
+	              }
+	            }
+	            
+	            h3.asset-title a {
+	              color: white;
+	              &:hover {
+	                  color: $color-turquois;
+	              }
+	            }
+	            
+	            .asset-content {
+	              border-bottom: 5px solid #73A0A2;
+	            }
+	        }
+	        
+	        &.light-gray {
+	            background-color: $color-light-gray;
+	            border-top: 5px solid white;
+	            .asset-content {
+	              border-bottom: 5px solid #F5F5F5;
+	            }
+	        }
+	        
+	        &.sand {
+	            background-color: $color-sand;
+	            .asset-content {
+	              border-bottom: 5px solid #F5F4F0;
+	            }
+	        }
+	    
+	        &.turquois {
+	            background-color: $color-turquois;
+	            .asset-content {
+	              border-bottom: 5px solid #C9F4F6;
+	            }
+	        }
         }
         
-        .asset-abstract.gray-green {
         
-		    background-color: $color-gray-green;
-		    color: white;
-		    
-		    .metadata-publish-date {
-              color: white;
-            }
-		    
-		    a {
-		      color: $color-turquois;
-		      &:hover {
-		          color: darken($color-turquois, 20%);
-		      }
-		    }
-		    
-		    h3.asset-title a {
-		      color: white;
-		      &:hover {
-		          color: $color-turquois;
-		      }
-		    }
-		    .asset-content {
-              border-bottom: 5px solid #73A0A2;
-            }
-        }
         
-        .asset-abstract.light-gray {
-            background-color: $color-light-gray;
-            border-top: 5px solid white;
-            .asset-content {
-              border-bottom: 5px solid #F5F5F5;
-            }
-        }
         
-        .asset-abstract.sand {
-		    background-color: $color-sand;
-		    .asset-content {
-		      border-bottom: 5px solid #F5F4F0;
-		    }
-        }
-    
-        .asset-abstract.turquois {
-		    background-color: $color-turquois;
-		    .asset-content {
-              border-bottom: 5px solid #C9F4F6;
-            }
-        }
 
         /** 
             The class vocabualary-title is only
