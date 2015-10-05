@@ -636,6 +636,13 @@ html, body {
     .portlet-asset-publisher.start-publisher {
     
         margin-bottom: 6em;
+        
+        .asset-abstract.sand,
+        .asset-abstract.gray-green,
+        .asset-abstract.turquois,
+        .asset-abstract.light-gray {
+            background-color: white !important;
+        }
     
         .container {
         
