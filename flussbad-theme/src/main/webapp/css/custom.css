@@ -452,6 +452,21 @@ input {
         }
     } 
     
+    body,
+    #wrapper,
+    #content,
+    #main-content,
+    #column-1,
+    .portlet-column,
+    .portlet-column-content,
+    /* working up to here but fails at .portlet-journal-content */
+    .portlet-journal-content,
+    .portlet-borderless-container,
+    .portlet-body,
+    .journal-content-article {
+    	height: 100%;
+    }
+    
     .intro.with-image {
     
         background-color: transparent !important;
@@ -461,10 +476,10 @@ input {
         @media (min-width: 992px) { min-height: $full-image-height-md; }
         @media (min-width: 1200px) { min-height: $full-image-height-lg; }
         
-        .keyvisual {
-            position: absolute;            
-            top: 0;
-            left: 0;
+        &.keyvisual {
+/*             position: absolute;             */
+/*             top: 0; */
+/*             left: 0; */
             width: 100%;
             height: 100% !important;
             margin: 0;
