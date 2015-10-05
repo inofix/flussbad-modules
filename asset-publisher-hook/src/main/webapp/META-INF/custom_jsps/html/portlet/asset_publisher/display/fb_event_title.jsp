@@ -4,8 +4,8 @@
     - the date and title is read from the event-structure's fields
     
     Created:    2015-10-02 10:29 by Christian Berndt
-    Modified:   2015-10-02 10:29 by Christian Berndt
-    Version:    1.0.0
+    Modified:   2015-10-05 12:39 by Christian Berndt
+    Version:    1.0.1
 --%>
 <%--
 /**
@@ -99,10 +99,10 @@ if (assetCategory != null) {
          
         <liferay-util:include page="/html/portlet/asset_publisher/asset_actions.jsp" />
 <%-- 
-    Customization: wrap the asset's content sections. 
+    Customization: wrap the asset's content sections into a bootstrap container. 
 --%> 
      
-    <div class="asset-wrapper">  
+    <div class="container">  
     
 <%-- 
     Customization: for journal-article assets try to use the journal-article's
