@@ -2,8 +2,8 @@
     Intro template: Format the Intro structure
     
     Created:    2015-08-28 17:52 by Christian Berndt
-    Modified:   2015-10-03 13:46 by Christian Berndt
-    Version:    0.9.9
+    Modified:   2015-10-05 16:47 by Nils Sanders
+    Version:    0.10.0
     
     Please note: Although this template is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -32,7 +32,7 @@
     <div class="keyvisual" style="${style}">
         <div class="claim">
             <div class="row">
-                <div class="span4 offset4">
+                <div class="span6 offset3">
                     <h1>${headline.getData()}</h1>
                 </div>
             </div>
@@ -52,11 +52,11 @@
                             <#if cur_caption.getData()?has_content>
                                 <div class="abstract">
                                     <#if i==2>
-										<#if clubLink??>
-			                                <#if clubLink.getData()?has_content>
-			                                    <a class="club-link" href="${clubLink.getData()}" title="${languageUtil.get(locale, "get-involved")}"><span>${languageUtil.get(locale, "get-involved")}</span></a>
-			                                </#if>
-		                                </#if>
+                                        <#if clubLink??>
+                                            <#if clubLink.getData()?has_content>
+                                                <a class="club-link" href="${clubLink.getData()}" title="${languageUtil.get(locale, "get-involved")}"><span>${languageUtil.get(locale, "get-involved")}</span></a>
+                                            </#if>
+                                        </#if>
                                     </#if>
                                     <h3>${cur_caption.getData()}</h3>
                                     <h2>${cur_caption.claim.getData()}</h2>
