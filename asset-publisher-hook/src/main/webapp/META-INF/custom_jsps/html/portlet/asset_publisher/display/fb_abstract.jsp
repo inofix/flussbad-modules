@@ -105,20 +105,24 @@ if (assetCategory != null) {
     Customization: wrap the asset's content sections. 
 --%> 
      
-    <div class="asset-wrapper">  
+	    <div class="container"> 
+	    	<div class="row">
 <%-- 
     Customization: display the asset's metadata as first element.
  --%>
-        <div class="asset-metadata">
-
-            <%
-            request.setAttribute("asset_metadata.jspf-filterByMetadata", true);
-            %>
-
-            <%@ include file="/html/portlet/asset_publisher/asset_metadata.jspf" %>
-        </div>
-
-        <h3 class="asset-title">
+		 		<div class="span4">
+			        <div class="asset-metadata">
+			
+			            <%
+			            request.setAttribute("asset_metadata.jspf-filterByMetadata", true);
+			            %>
+			
+			            <%@ include file="/html/portlet/asset_publisher/asset_metadata.jspf" %>
+			        </div>
+		        </div>
+		
+				<div class="span8">
+			        <h3 class="asset-title">
 <%-- 
     Customization: for journal-article assets try to use the journal-article's
     articleTitle, which can be retrieved from an article's structure.
@@ -156,73 +160,73 @@ if (assetCategory != null) {
                 }
 
 %>
-			</c:if>             
-                 
-		    <%-- default behaviour --%>
-	        <c:choose>
-	            <c:when test="<%= Validator.isNotNull(viewURL) %>">
-	                <a href="<%= viewURL %>"><img alt="" src="<%= assetRenderer.getIconPath(renderRequest) %>" /> <%= HtmlUtil.escape(title) %></a>
-	            </c:when>
-	            <c:otherwise>
-	                <img alt="" src="<%= assetRenderer.getIconPath(renderRequest) %>" /> <%= HtmlUtil.escape(title) %>
-	            </c:otherwise>
-	        </c:choose>
-
-        </h3>
-
-        <div class="asset-content">
-            <div class="asset-summary">
-
-                <%
-					// Disabled, since we need the assetRenderer earlier
-					String path = assetRenderer.render(renderRequest, renderResponse, AssetRenderer.TEMPLATE_ABSTRACT);
-					
-					request.setAttribute(WebKeys.ASSET_RENDERER, assetRenderer);
-					request.setAttribute(WebKeys.ASSET_PUBLISHER_ABSTRACT_LENGTH, abstractLength);
-					request.setAttribute(WebKeys.ASSET_PUBLISHER_VIEW_URL, viewURL);
-                 %> 
-                
-                <c:choose>
-                    <c:when test="<%= path == null %>">
-                        <%= HtmlUtil.escape(summary) %>
-                    </c:when>
-                    <c:otherwise>
-                        <liferay-util:include page="<%= path %>" portletId="<%= assetRendererFactory.getPortletId() %>" />
-                    </c:otherwise>
-                </c:choose>
-            </div>
-
-            <c:if test="<%= Validator.isNotNull(viewURL) %>">
-                <div class="asset-more">
-                    <a href="<%= viewURL %>"><liferay-ui:message arguments='<%= new Object[] {"hide-accessible", HtmlUtil.escape(assetRenderer.getTitle(locale))} %>' key="<%= viewURLMessage %>" /> &raquo; </a>
-                </div>
-            </c:if>
+					</c:if>             
+		                 
+				    <%-- default behaviour --%>
+			        <c:choose>
+			            <c:when test="<%= Validator.isNotNull(viewURL) %>">
+			                <a href="<%= viewURL %>"><img alt="" src="<%= assetRenderer.getIconPath(renderRequest) %>" /> <%= HtmlUtil.escape(title) %></a>
+			            </c:when>
+			            <c:otherwise>
+			                <img alt="" src="<%= assetRenderer.getIconPath(renderRequest) %>" /> <%= HtmlUtil.escape(title) %>
+			            </c:otherwise>
+			        </c:choose>
+		
+		        </h3>
+	
+		        <div class="asset-content">
+		            <div class="asset-summary">
+		
+		                <%
+							// Disabled, since we need the assetRenderer earlier
+							String path = assetRenderer.render(renderRequest, renderResponse, AssetRenderer.TEMPLATE_ABSTRACT);
+							
+							request.setAttribute(WebKeys.ASSET_RENDERER, assetRenderer);
+							request.setAttribute(WebKeys.ASSET_PUBLISHER_ABSTRACT_LENGTH, abstractLength);
+							request.setAttribute(WebKeys.ASSET_PUBLISHER_VIEW_URL, viewURL);
+		                 %> 
+		                
+		                <c:choose>
+		                    <c:when test="<%= path == null %>">
+		                        <%= HtmlUtil.escape(summary) %>
+		                    </c:when>
+		                    <c:otherwise>
+		                        <liferay-util:include page="<%= path %>" portletId="<%= assetRendererFactory.getPortletId() %>" />
+		                    </c:otherwise>
+		                </c:choose>
+		            </div>
+		
+		            <c:if test="<%= Validator.isNotNull(viewURL) %>">
+		                <div class="asset-more">
+		                    <a href="<%= viewURL %>"><liferay-ui:message arguments='<%= new Object[] {"hide-accessible", HtmlUtil.escape(assetRenderer.getTitle(locale))} %>' key="<%= viewURLMessage %>" /> &raquo; </a>
+		                </div>
+		            </c:if>
+		        </div>
+	        
+		        <div class="asset-social-media">
+					<liferay-ui:message key="tell-others"/>
+		            <ul>
+		                <li class="shariff-button facebook">
+		                    <a aria-label="TODO" role="button" title="TODO" rel="popup" href="javascript:;">
+		                        <span class="fa fa-facebook"></span>
+		                        <span class="share_text">Facebook</span>
+		                    </a>
+		                </li>
+		                <li class="shariff-button twitter">
+		                    <a aria-label="TODO" role="button" title="TODO" rel="popup" href="javascript:;">
+		                        <span class="fa fa-twitter"></span>
+		                        <span class="share_text">Twitter</span>
+		                    </a>
+		                </li>
+		                <li class="shariff-button mail">
+		                    <a aria-label="TODO" role="button" title="TODO" rel="popup" href="javascript:;">
+		                        <span class="fa fa-mail"></span>
+		                        <span class="share_text">Email</span>
+		                    </a>
+		                </li>
+		            </ul>
+		        </div>
+			</div>
         </div>
-        
-        <div class="asset-social-media">
-			<liferay-ui:message key="tell-others"/>
-            <ul>
-                <li class="shariff-button facebook">
-                    <a aria-label="TODO" role="button" title="TODO" rel="popup" href="javascript:;">
-                        <span class="fa fa-facebook"></span>
-                        <span class="share_text">Facebook</span>
-                    </a>
-                </li>
-                <li class="shariff-button twitter">
-                    <a aria-label="TODO" role="button" title="TODO" rel="popup" href="javascript:;">
-                        <span class="fa fa-twitter"></span>
-                        <span class="share_text">Twitter</span>
-                    </a>
-                </li>
-                <li class="shariff-button mail">
-                    <a aria-label="TODO" role="button" title="TODO" rel="popup" href="javascript:;">
-                        <span class="fa fa-mail"></span>
-                        <span class="share_text">Email</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        </div>
-    </div>
+    </div> <!-- /.asset-abstract -->
 </c:if>
