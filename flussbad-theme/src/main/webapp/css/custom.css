@@ -619,7 +619,7 @@ input {
     
         margin-bottom: 6em;
     
-        .asset-wrapper {
+        .container {
         
             text-align: center; 
             background: white;
@@ -1569,62 +1569,6 @@ input {
 	        column-count: 1;                
 	    }
 	}
-	      
-	@media (min-width: 768px) {
-	    .portlet-asset-categories-navigation .accordion-inner {
-	        margin-left: 40%;
-	        width: 60%;
-	    }
-	}
-	
-	@media (min-width: 768px) {
-	
-		/** 
-		 * 40-60 configuration for default and 
-		 * and event-publisher 
-		 */
-	
-	    .portlet-asset-publisher.default-publisher,
-	    .portlet-asset-publisher.event-publisher {
-	    
-	    	.asset-abstract {
-	
-		    	.asset-metadata {
-			        width: 40%;
-			        clear: none;  
-			    }   
-			
-			    .asset-content,
-			    .asset-social-media,
-			    .asset-title {
-			        width: 60%; 
-			        margin-left: 40%;            
-			    } 
-			} 
-		} 
-	} 
-	
-	@media (min-width: 768px) {
-	
-		/** 
-		 * 50-50 configuration for project-publisher
-		 */
-	
-	    .portlet-asset-publisher.project-publisher {
-	
-	    	.asset-metadata {
-		        width: 50%;
-		        clear: none;  
-		    }   
-		
-		    .asset-content,
-		    .asset-social-media,
-		    .asset-title {
-		        width: 50%; 
-		        margin-left: 50%;            
-		    }  
-		} 
-	}
 	
 	@media (max-width: 767px) { 
 	
@@ -1646,7 +1590,6 @@ input {
         }
 	}
     
-    .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
     .lfr-meta-actions,
     .portlet-body .taglib-asset-categories-navigation .accordion-group, 
     .portlet-dynamic-data-mapping,
@@ -1658,7 +1601,6 @@ input {
     }
     
     @media (min-width: 1200px) {
-        .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
         .lfr-meta-actions,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
@@ -1670,7 +1612,6 @@ input {
     }
     
     @media (max-width: 979px) and (min-width: 768px) {
-        .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
         .lfr-meta-actions,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
@@ -1682,7 +1623,6 @@ input {
     }
     
     @media (max-width: 767px) {
-        .asset-wrapper,     /* only available, if the asset-display-hook is deployed */
         .lfr-meta-actions,
         .portlet-body .taglib-asset-categories-navigation .accordion-group, 
         .portlet-dynamic-data-mapping,
