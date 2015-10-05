@@ -1089,12 +1089,20 @@ input {
     
         width: 100%;
         
+		-webkit-transition: margin-top 0.2s; 
+		-moz-transition: margin-top 0.2s; 
+		-ms-transition: margin-top 0.2s; 
+		-o-transition: margin-top 0.2s; 
+		transition: margin-top 0.2s;
+        
         .asset-abstract {
         
             margin-bottom: 0; 
+            padding: 60px 0;
+            
             
             .container {
-            
+                        
                 .asset-metadata {
                 
                     font-family: $medium-font-family;
@@ -1138,6 +1146,13 @@ input {
 		        
 		        .asset-content {
 		        
+    		        margin-left: 0;
+		            margin-right: 0;
+		            font-size: $lead-font-size; 
+		            line-height: $lead-line-height; 
+		            padding-bottom: 30px; 
+		            border-bottom: 5px solid #ebebeb;
+		        
 			        .asset-summary {
 			             display: inline;
 			             font-family: $light-font-family;
@@ -1176,37 +1191,6 @@ input {
 	            float: none; 
 	        }
         }
-
-        /** 
-            The class vocabualary-title is only
-            available when the asset-categories-summary-hook
-            is deployed */
-        .vocabulary-title { 
-            display: none; 
-        }        
-    }
-    
-    .portlet-asset-publisher.default-publisher {
-    
-		-webkit-transition: margin-top 0.2s; 
-		-moz-transition: margin-top 0.2s; 
-		-ms-transition: margin-top 0.2s; 
-		-o-transition: margin-top 0.2s; 
-		transition: margin-top 0.2s;
-    
-        margin-top: 184px; /* navigation + asset-categories-navigation + margin-top */
-    
-        .asset-abstract {
-            padding: 60px 0;
-        }
-                
-        .asset-abstract.light-gray {
-            background-color: $color-light-gray;
-            border-top: 5px solid white;
-            .asset-content {
-              border-bottom: 5px solid #F5F5F5;
-            }
-        }
         
         .asset-abstract.gray-green {
         
@@ -1234,7 +1218,15 @@ input {
               border-bottom: 5px solid #73A0A2;
             }
         }
-    
+        
+        .asset-abstract.light-gray {
+            background-color: $color-light-gray;
+            border-top: 5px solid white;
+            .asset-content {
+              border-bottom: 5px solid #F5F5F5;
+            }
+        }
+        
         .asset-abstract.sand {
 		    background-color: $color-sand;
 		    .asset-content {
@@ -1248,18 +1240,27 @@ input {
               border-bottom: 5px solid #C9F4F6;
             }
         }
-        
-        .asset-content {
-            margin-left: 0;
-            margin-right: 0;
-            font-size: $lead-font-size; 
-            line-height: $lead-line-height; 
-            padding-bottom: 30px; 
-            border-bottom: 5px solid #ebebeb; 
+
+        /** 
+            The class vocabualary-title is only
+            available when the asset-categories-summary-hook
+            is deployed */
+        .vocabulary-title { 
+            display: none; 
         }
         
         .taglib-categorization-filter.entry-title {
             display: none; 
+        }
+        
+        &.default-publisher {
+	        margin-top: 184px; /* navigation + asset-categories-navigation + margin-top */
+        }
+        
+        &.start-publisher {
+        	.asset-abstract {
+        		padding: 0; 
+        	}
         }
         
         &.categories-auto-closed,
@@ -1271,7 +1272,7 @@ input {
     .portlet-asset-publisher.event-publisher {
     
 		.asset-abstract:nth-child(even) {
-			background: $color-sand; 
+			background: $color-sand;
 		}
         
         .taglib-header {
