@@ -753,10 +753,6 @@ html, body {
     .statement {
     
        positoin: relative;
-    
-       margin: 0 !important;
-       padding: 0 !important;
-       overflow: hidden;
         
         .carousel {
             background-color: transparent;
