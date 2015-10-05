@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  * 
  * Created: 	2015-09-02 22:31 by Christian Berndt
- * Modified:	2015-10-03 17:40 by Christian Berndt
- * Version: 	1.0.9
+ * Modified:	2015-10-05 10:25 by Christian Berndt
+ * Version: 	1.1.0
  */
 
 /**
@@ -50,15 +50,21 @@ AUI().ready('node', function(A) {
     var categories = A.one('.portlet-asset-categories-navigation');
     var publisher = A.one('.default-publisher'); 
     
-    toggle.on('click', function(event) {
-    	
-        categories.toggleClass('categories-closed');
-        categories.removeClass('categories-auto-closed');
-        
-        publisher.toggleClass('categories-closed');
-        publisher.removeClass('categories-auto-closed');
-
-    });
+    if (toggle) {
+	    toggle.on('click', function(event) {
+	    	
+	    	if (categories) {
+	            categories.toggleClass('categories-closed');
+	            categories.removeClass('categories-auto-closed');    		
+	    	}
+	        
+	    	if (publisher) {
+	            publisher.toggleClass('categories-closed');
+	            publisher.removeClass('categories-auto-closed');    		
+	    	}
+	
+	    });
+	}
 }); 
 
 /**
@@ -77,15 +83,23 @@ AUI().ready('node', 'node-scroll-info', function(A) {
 		
 	body.scrollInfo.on('scrollDown', function (e) {
 		
-        categories.addClass('categories-auto-closed');
-        publisher.addClass('categories-auto-closed');
+		if (categories) {
+	        categories.addClass('categories-auto-closed');			
+		}
+		if (publisher) {
+	        publisher.addClass('categories-auto-closed');			
+		}
 
 	});
 	
 	body.scrollInfo.on('scrollUp', function (e) {
 		
-        categories.removeClass('categories-auto-closed');
-        publisher.removeClass('categories-auto-closed');
+		if (categories) {
+	        categories.removeClass('categories-auto-closed');			
+		}
+		if (publisher) {
+	        publisher.removeClass('categories-auto-closed');			
+		}
 
 	});
 });
