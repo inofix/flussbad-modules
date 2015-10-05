@@ -7,8 +7,8 @@
     - shariff-based social media buttons are included 
     
     Created:    2015-07-28 11:53 by Christian Berndt
-    Modified:   2015-10-04 17:32 by Christian Berndt
-    Version:    1.0.6
+    Modified:   2015-09-29 20:35 by Christian Berndt
+    Version:    1.0.5
 --%>
 <%--
 /**
@@ -102,10 +102,11 @@ if (assetCategory != null) {
          
         <liferay-util:include page="/html/portlet/asset_publisher/asset_actions.jsp" />
 <%-- 
-    Customization: wrap the asset's content sections into a bootstrap container.
+    Customization: wrap the asset's content sections. 
 --%> 
-		<div class="container">     
-		    <div class="row">  
+     
+	    <div class="container"> 
+	    	<div class="row">
 <%-- 
     Customization: display the asset's metadata as first element.
  --%>
@@ -126,107 +127,106 @@ if (assetCategory != null) {
     Customization: for journal-article assets try to use the journal-article's
     articleTitle, which can be retrieved from an article's structure.
  --%>
-			<%
-			    String articleTitle = null; 
-			    String languageId = LanguageUtil.getLanguageId(request);
-			%>
-						<%-- custom test --%>        
-						<c:if test="<%= JournalArticle.class.getName().equals(assetEntry.getClassName()) %>">
-			<%
-							JournalArticleAssetRenderer journalRenderer = (JournalArticleAssetRenderer) assetRenderer; 
-							JournalArticle article = journalRenderer.getArticle(); 
-			                    
-			                if (article != null) {
-			                    try {
-			                    
-			                        Document document = SAXReaderUtil.read(article
-			                                .getContentByLocale(languageId));
-			                                             
-			                        Node headline = document
-			                                .selectSingleNode("/root/dynamic-element[@name='headline']/dynamic-content");
-			                        
-			                        if (headline.getText().length() > 0) {
-			                            articleTitle = headline.getText();
-			                        }
-			                    
-			                    } catch (Exception ignore) {
-			                        articleTitle = null;
-			                    }
-			                }
-			                
-			                if (articleTitle != null) {
-			                	title = articleTitle; 
-			                }
-			
-			%>
-						</c:if>             
-			                 
-					    <%-- default behaviour --%>
-				        <c:choose>
-				            <c:when test="<%= Validator.isNotNull(viewURL) %>">
-				                <a href="<%= viewURL %>"><img alt="" src="<%= assetRenderer.getIconPath(renderRequest) %>" /> <%= HtmlUtil.escape(title) %></a>
-				            </c:when>
-				            <c:otherwise>
-				                <img alt="" src="<%= assetRenderer.getIconPath(renderRequest) %>" /> <%= HtmlUtil.escape(title) %>
-				            </c:otherwise>
-				        </c:choose>
-			
-			        </h3>
+<%
+    String articleTitle = null; 
+    String languageId = LanguageUtil.getLanguageId(request);
+%>
+			<%-- custom test --%>        
+			<c:if test="<%= JournalArticle.class.getName().equals(assetEntry.getClassName()) %>">
+<%
+				JournalArticleAssetRenderer journalRenderer = (JournalArticleAssetRenderer) assetRenderer; 
+				JournalArticle article = journalRenderer.getArticle(); 
+                    
+                if (article != null) {
+                    try {
+                    
+                        Document document = SAXReaderUtil.read(article
+                                .getContentByLocale(languageId));
+                                             
+                        Node headline = document
+                                .selectSingleNode("/root/dynamic-element[@name='headline']/dynamic-content");
+                        
+                        if (headline.getText().length() > 0) {
+                            articleTitle = headline.getText();
+                        }
+                    
+                    } catch (Exception ignore) {
+                        articleTitle = null;
+                    }
+                }
+                
+                if (articleTitle != null) {
+                	title = articleTitle; 
+                }
+
+%>
+					</c:if>             
+		                 
+				    <%-- default behaviour --%>
+			        <c:choose>
+			            <c:when test="<%= Validator.isNotNull(viewURL) %>">
+			                <a href="<%= viewURL %>"><img alt="" src="<%= assetRenderer.getIconPath(renderRequest) %>" /> <%= HtmlUtil.escape(title) %></a>
+			            </c:when>
+			            <c:otherwise>
+			                <img alt="" src="<%= assetRenderer.getIconPath(renderRequest) %>" /> <%= HtmlUtil.escape(title) %>
+			            </c:otherwise>
+			        </c:choose>
 		
-			        <div class="asset-content">
-			            <div class="asset-summary">
-			
-			                <%
-								// Disabled, since we need the assetRenderer earlier
-								String path = assetRenderer.render(renderRequest, renderResponse, AssetRenderer.TEMPLATE_ABSTRACT);
-								
-								request.setAttribute(WebKeys.ASSET_RENDERER, assetRenderer);
-								request.setAttribute(WebKeys.ASSET_PUBLISHER_ABSTRACT_LENGTH, abstractLength);
-								request.setAttribute(WebKeys.ASSET_PUBLISHER_VIEW_URL, viewURL);
-			                 %> 
-			                
-			                <c:choose>
-			                    <c:when test="<%= path == null %>">
-			                        <%= HtmlUtil.escape(summary) %>
-			                    </c:when>
-			                    <c:otherwise>
-			                        <liferay-util:include page="<%= path %>" portletId="<%= assetRendererFactory.getPortletId() %>" />
-			                    </c:otherwise>
-			                </c:choose>
-			            </div>
-			
-			            <c:if test="<%= Validator.isNotNull(viewURL) %>">
-			                <div class="asset-more">
-			                    <a href="<%= viewURL %>"><liferay-ui:message arguments='<%= new Object[] {"hide-accessible", HtmlUtil.escape(assetRenderer.getTitle(locale))} %>' key="<%= viewURLMessage %>" /> &raquo; </a>
-			                </div>
-			            </c:if>
-			        </div>
-		        
-			        <div class="asset-social-media">
-						<liferay-ui:message key="tell-others"/>
-			            <ul>
-			                <li class="shariff-button facebook">
-			                    <a aria-label="TODO" role="button" title="TODO" rel="popup" href="javascript:;">
-			                        <span class="fa fa-facebook"></span>
-			                        <span class="share_text">Facebook</span>
-			                    </a>
-			                </li>
-			                <li class="shariff-button twitter">
-			                    <a aria-label="TODO" role="button" title="TODO" rel="popup" href="javascript:;">
-			                        <span class="fa fa-twitter"></span>
-			                        <span class="share_text">Twitter</span>
-			                    </a>
-			                </li>
-			                <li class="shariff-button mail">
-			                    <a aria-label="TODO" role="button" title="TODO" rel="popup" href="javascript:;">
-			                        <span class="fa fa-mail"></span>
-			                        <span class="share_text">Email</span>
-			                    </a>
-			                </li>
-			            </ul>
-			        </div>
-		        </div> <!-- /span8 -->	
-			</div> <!-- /row -->
-        </div> <!-- /container -->
-    </div>
+		        </h3>
+	
+		        <div class="asset-content">
+		            <div class="asset-summary">
+		
+		                <%
+							// Disabled, since we need the assetRenderer earlier
+							String path = assetRenderer.render(renderRequest, renderResponse, AssetRenderer.TEMPLATE_ABSTRACT);
+							
+							request.setAttribute(WebKeys.ASSET_RENDERER, assetRenderer);
+							request.setAttribute(WebKeys.ASSET_PUBLISHER_ABSTRACT_LENGTH, abstractLength);
+							request.setAttribute(WebKeys.ASSET_PUBLISHER_VIEW_URL, viewURL);
+		                 %> 
+		                
+		                <c:choose>
+		                    <c:when test="<%= path == null %>">
+		                        <%= HtmlUtil.escape(summary) %>
+		                    </c:when>
+		                    <c:otherwise>
+		                        <liferay-util:include page="<%= path %>" portletId="<%= assetRendererFactory.getPortletId() %>" />
+		                    </c:otherwise>
+		                </c:choose>
+		            </div>
+		
+		            <c:if test="<%= Validator.isNotNull(viewURL) %>">
+		                <div class="asset-more">
+		                    <a href="<%= viewURL %>"><liferay-ui:message arguments='<%= new Object[] {"hide-accessible", HtmlUtil.escape(assetRenderer.getTitle(locale))} %>' key="<%= viewURLMessage %>" /> &raquo; </a>
+		                </div>
+		            </c:if>
+		        </div>
+	        
+		        <div class="asset-social-media">
+					<liferay-ui:message key="tell-others"/>
+		            <ul>
+		                <li class="shariff-button facebook">
+		                    <a aria-label="TODO" role="button" title="TODO" rel="popup" href="javascript:;">
+		                        <span class="fa fa-facebook"></span>
+		                        <span class="share_text">Facebook</span>
+		                    </a>
+		                </li>
+		                <li class="shariff-button twitter">
+		                    <a aria-label="TODO" role="button" title="TODO" rel="popup" href="javascript:;">
+		                        <span class="fa fa-twitter"></span>
+		                        <span class="share_text">Twitter</span>
+		                    </a>
+		                </li>
+		                <li class="shariff-button mail">
+		                    <a aria-label="TODO" role="button" title="TODO" rel="popup" href="javascript:;">
+		                        <span class="fa fa-mail"></span>
+		                        <span class="share_text">Email</span>
+		                    </a>
+		                </li>
+		            </ul>
+		        </div>
+			</div>
+        </div>
+    </div> <!-- /.asset-abstract -->
 </c:if>
