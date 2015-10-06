@@ -1106,170 +1106,212 @@ html, body {
             margin-bottom: 0; 
             padding: 60px 0;
             
-		        &.gray-green {
-		       
-		            background-color: $color-gray-green;
-		            color: white;
-		            
-		            .asset-metadata .metadata-entry {
-						color: white;
-		            }
-		            
-		            a {
-						color: $color-turquois;
-						&:hover {
-						    color: darken($color-turquois, 20%);
-						}
-		            }
-		            
-		            h3.asset-title a {
-						color: white;
-						&:hover {
-						    color: $color-turquois;
-						}
-		            }
-		            
-		            .asset-content {
-						border-bottom: 5px solid #73A0A2;
-		            }
-		        }
-		        
-		        &.light-gray {
-		            background-color: $color-light-gray;
-	                .asset-content {
-                        border-bottom: 5px solid #F5F5F5;
+	        &.gray-green {
+	       
+	            background-color: $color-gray-green;
+	            color: white;
+	            
+	            .asset-metadata .metadata-entry {
+					color: white;
+	            }
+	            
+	            a {
+					color: $color-turquois;
+					&:hover {
+					    color: darken($color-turquois, 20%);
+					}
+	            }
+	            
+	            h3.asset-title a {
+					color: white;
+					&:hover {
+					    color: $color-turquois;
+					}
+	            }
+	            
+	            .asset-content {
+					border-bottom: 5px solid #73A0A2;
+	            }
+	        }
+	        
+	        &.light-gray {
+	            background-color: $color-light-gray;
+                .asset-content {
+                       border-bottom: 5px solid #F5F5F5;
+                   }
+	        }
+	        
+	        &.sand {
+	            background-color: $color-sand;
+	            .asset-content {
+					border-bottom: 5px solid #F5F4F0;
+	            }
+	        }
+	    
+	        &.turquois {
+	            background-color: $color-turquois;
+	            .asset-content {
+					border-bottom: 5px solid #C9F4F6;
+	            }
+	        }            
+                                   
+			.asset-metadata {
+										     
+				font-family: $medium-font-family;
+				text-transform: uppercase;
+				letter-spacing: $letter-spacing-wide;
+			   
+				padding-top: 1em;
+				
+				.metadata-entry {
+                        background: none;
+                        padding-left: 0;
+                        color: $default-font-color;
+                   }
+                   
+                   .metadata-publish-date {
+                       padding-right: 7px;
+                       display: block;
+                   }
+                   
+                   .metadata-categories {
+                       a {
+                        display: block;
+                        &::before {
+                            content: "/";
+                            color: $default-font-color;
+                            margin: 0 7px 0 0;
+                       }
                     }
-		        }
-		        
-		        &.sand {
-		            background-color: $color-sand;
-		            .asset-content {
-						border-bottom: 5px solid #F5F4F0;
-		            }
-		        }
-		    
-		        &.turquois {
-		            background-color: $color-turquois;
-		            .asset-content {
-						border-bottom: 5px solid #C9F4F6;
-		            }
-		        }            
-                                    
-				.asset-metadata {
-											     
-					font-family: $medium-font-family;
+                   }
+				
+				.vocabulary-title,
+				.vertical-separator::after {
+					display: none; 
+				}
+			}
+     
+			h3.asset-title {
+      
+			    font-family: $bold-font-family;
+			    font-size: $h1-font-size;
+			    text-transform: none;
+			    letter-spacing:  0.02em;
+			
+			    padding: 0 0 0.5em 0;
+			    margin: 0;
+			    border: none; 
+    
+			    a {
+			        color: $default-font-color; 
+			        text-decoration: none;
+			        &:hover {
+			            color: $hover-font-color;
+			        }
+			    }
+    
+			    img {
+			        display: none; 
+			    }
+			}
+
+			.asset-content {
+							
+			    margin-left: 0;
+			    margin-right: 0;
+			    font-size: $lead-font-size; 
+			    line-height: $lead-line-height; 
+			    padding-bottom: 30px; 
+			    border-bottom: 5px solid #ebebeb;
+
+				.asset-summary {
+				     display: inline;
+				     font-family: $light-font-family;
+				}
+	 
+			    .asset-more {
+			    
+					display: inline;
+					font-size: $default-font-size; 
 					text-transform: uppercase;
 					letter-spacing: $letter-spacing-wide;
-				   
-					padding-top: 1em;
+					margin-left: 5px;
 					
-					.metadata-entry {
-                         background: none;
-                         padding-left: 0;
-                         color: $default-font-color;
-                    }
-                    
-                    .metadata-publish-date {
-                        padding-right: 7px;
-                        display: block;
-                    }
-                    
-                    .metadata-categories {
-                        a {
-	                        display: block;
-	                        &::before {
-	                            content: "/";
-	                            color: $default-font-color;
-	                            margin: 0 7px 0 0;
-	                       }
-	                    }
-                    }
+					a:before {
+						content:"\203A"; /* chevron right */
+						margin-right: 3px; 
+					}
+				}
+			}	            
+		}
+		
+        .asset-actions {
+            font-size: $default_font_size; 
+            float: none; 
+        }
+		
+		.asset-social-media {
+		
+			.shariff,
+			.tell-others {
+				display: inline;
+			} 
+			
+			.tell-others {
+				float: left; 
+				margin: 4px 5px 0 0;  
+			}
+			
+			.shariff {
+			
+				.orientation-horizontal.col-3 {
+					li {
+						min-width: 20px;
+						flex: none; 
+						-webkit-flex: none;
+						margin-bottom: 0; 
+					}
+				}
+				
+				li a {
+					color: $default-font-color; 
+				}
+			
+				.shariff-button {
+				
+					a {
+						background: transparent; 
+					}
 					
-					.vocabulary-title,
-					.vertical-separator::after {
+					span.fa {
 						display: none; 
 					}
-				}
-      
-				h3.asset-title {
-	      
-				    font-family: $bold-font-family;
-				    font-size: $h1-font-size;
-				    text-transform: none;
-				    letter-spacing:  0.02em;
-				
-				    padding: 0 0 0.5em 0;
-				    margin: 0;
-				    border: none; 
-	    
-				    a {
-				        color: $default-font-color; 
-				        text-decoration: none;
-				        &:hover {
-				            color: $hover-font-color;
-				        }
-				    }
-	    
-				    img {
-				        display: none; 
-				    }
-				}
-
-				.asset-content {
-								
-				    margin-left: 0;
-				    margin-right: 0;
-				    font-size: $lead-font-size; 
-				    line-height: $lead-line-height; 
-				    padding-bottom: 30px; 
-				    border-bottom: 5px solid #ebebeb;
-	
-					.asset-summary {
-					     display: inline;
-					     font-family: $light-font-family;
-					}
-		 
-				    .asset-more {
-				    
-						display: inline;
+					
+					.share_text {
+						font-family: $regular-font-family; 
 						font-size: $default-font-size; 
-						text-transform: uppercase;
-						letter-spacing: $letter-spacing-wide;
-						margin-left: 5px;
-						
-						a:before {
-							content:"\203A"; /* chevron right */
-							margin-right: 3px; 
+					}
+				
+					&.facebook {					
+						.share_text:before {
+							content: "Facebook: "; 
+						}
+					}
+					&.twitter {					
+						.share_text:before {
+							content: "Twitter: "; 
+						}
+					}
+					&.mail {					
+						.share_text:before {
+							content: "E-Mail: senden"; 
+						}
+						.share_text {
+							width: 0; 
 						}
 					}
 				}
-	            
-		        .asset-actions {
-		        
-		            font-size: $default_font_size; 
-		            float: none; 
-		        }
 			}
-			
-			.asset-social-media {
-			
-                   ul {
-                       list-style-type: none;
-                       margin: 0;
-                       padding: 0;
-                       display: inline;
-                       
-                       li {
-                           display: inline;
-                           &:after {
-                                content:"/";
-                           }
-                           &:last-child:after { 
-                                content: " ";
-                           }
-                       }
-                  }
-             }
 		}
     }
     
