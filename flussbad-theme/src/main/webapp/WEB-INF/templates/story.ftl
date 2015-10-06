@@ -2,8 +2,8 @@
     Story template: Format the Story structure
     
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2015-09-21 13:50 by Christian Berndt
-    Version:    0.9.8
+    Modified:   2015-10-06 19:15 by Nils Sanders
+    Version:    0.9.9
     
     Please note: Although this template is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -23,11 +23,12 @@
 
 <#if keyVisual??>
     <#if keyVisual.getData()?has_content>
-        <#assign cssStyle = "background-image: url('${keyVisual.getData()}'); padding-top: 420px;">
+        <#assign cssStyle = "background-image: url('${keyVisual.getData()}');">
     </#if>
 </#if>
 
-<div class="story" style="${cssStyle}">
+<div class="story">
+    <div class="keyvisual" style="${cssStyle}"></div>
     <div class="container">
         <#assign cssStyle = "content span8 offset2">
 
@@ -36,6 +37,7 @@
         </#if>
 
         <div class="${cssStyle}">
+            <h3><a href="#">Category</a></h3>
             <h1 id="section-0">${headline.getData()}</h1>
             <p class="lead">${teaser.getData()}</p>
             <#if section.getSiblings()?has_content>
