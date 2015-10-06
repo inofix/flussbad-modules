@@ -1282,25 +1282,6 @@ html, body {
 						}
 					}
 				}
-	            
-	        .asset-actions {
-	            font-size: $default_font_size; 
-	            float: none; 
-	        }
-		        
-			.asset-social-media {
-				.shariff,
-				.tell-others
-				{
-					display: inline;
-				} 
-				
-				.tell-others {
-					float: left; 
-					margin-right: 5px; 
-				}
-				
-			}
 		}
     }
     
