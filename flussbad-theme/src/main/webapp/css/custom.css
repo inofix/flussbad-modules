@@ -1316,6 +1316,10 @@ html, body {
 			background: $color-sand;
 		}
         
+  		.asset-abstract:nth-child(odd) {
+			background: white;
+		}
+		
         .taglib-header {
             display: none; 
         }
