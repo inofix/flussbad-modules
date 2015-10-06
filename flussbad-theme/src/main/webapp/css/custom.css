@@ -1016,11 +1016,6 @@ html, body {
                 padding: 0; 
             }
         
-        	.accordion-group {
-/*                 width: 65.81197%; = bootstrap .span8 */
-/*                 margin-left: 36.75213675213675%; bootstrap .offset4 */
-        	}
-        
             .accordion-group,
             .accordion-inner {
                 border: none; 
@@ -1031,7 +1026,8 @@ html, body {
                 
                 .accordion-toggle:before {
                 
-                    content: "\2304";
+/*                     content: "\2304"; */
+                    content: "\274C";
  
                 }
                 
@@ -1044,13 +1040,13 @@ html, body {
                 
                     background-color: $color-sand;
                     color: $navigation-font-color;
-					padding: 5px 15px 20px; 
+					padding: 15px 15px 20px; 
                     
                     .title-text {
                         display: none; 
                     }
                     
-       				@include rotate(180deg); 
+/*        				@include rotate(180deg);  */
                 }           
             }
             
@@ -1077,10 +1073,12 @@ html, body {
 			max-height: 0; 
 			
 	        .portlet-body .taglib-asset-categories-navigation {
+	        
 				min-height: 0; 
 	            
-				.accordion-toggle {
-					@include rotate(0); 
+				.accordion-toggle:before {					
+					content: "\22EE"; 
+					font-weight: bolder; 
 				}
 			}
 		}				
