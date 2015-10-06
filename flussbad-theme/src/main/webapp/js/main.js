@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  * 
  * Created: 	2015-09-02 22:31 by Christian Berndt
- * Modified:	2015-10-05 10:25 by Christian Berndt
- * Version: 	1.1.0
+ * Modified:	2015-10-06 11:48 by Christian Berndt
+ * Version: 	1.1.1
  */
 
 /**
@@ -103,6 +103,24 @@ AUI().ready('node', 'node-scroll-info', function(A) {
 
 	});
 });
+
+/**
+ * A fallback for 100vh configuration of intro elements.
+ */
+YUI().use('event', 'node', function(Y) {
+	
+    var winHeight = Y.one("body").get("winHeight") + 'px';
+
+    /** TODO: all or only the first ? */
+    Y.all('.intro').setStyle('height', winHeight);  
+
+    Y.on('resize', function() {       
+        winHeight = Y.one("body").get("winHeight") + 'px';
+        console.log('winHeight = ' + winHeight); 
+        Y.all('.intro').setStyle('height', winHeight);        
+    });	
+});
+
 
 /**
  * A scrollview based carousel implementation.
