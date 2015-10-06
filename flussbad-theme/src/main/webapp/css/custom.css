@@ -989,7 +989,7 @@ html, body {
         .portlet-body .taglib-asset-categories-navigation {
     
             background: $color-sand;
-            min-height: 140px;       
+            min-height: 120px;       
                 
             a {
 				@include filter-item(); 
@@ -1652,6 +1652,15 @@ html, body {
     }
     
     @media (min-width: 1200px) {
+    
+    	.taglib-asset-categories-navigation .accordion-group {
+		    margin-left: 34.18803%;  /* bootstrap .offset4:first-child */
+    	}
+    	
+    	.portlet-asset-categories-navigation .taglib-asset-categories-navigation {
+    		margin-left: -30px; /* bootstrap .row */
+    	}
+    
         .lfr-meta-actions,
         .portlet-asset-categories-navigation .portlet-body,
         .portlet-dynamic-data-mapping,
