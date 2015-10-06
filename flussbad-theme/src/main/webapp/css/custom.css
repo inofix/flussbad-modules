@@ -1275,16 +1275,31 @@ html, body {
 						text-transform: uppercase;
 						letter-spacing: $letter-spacing-wide;
 						margin-left: 5px;
+						
 						a:before {
-						content:"\203A"; /* chevron right */
-						margin-right: 3px; 
+							content:"\203A"; /* chevron right */
+							margin-right: 3px; 
+						}
 					}
 				}
 	            
-		        .asset-actions {
-		            font-size: $default_font_size; 
-		            float: none; 
-		        }
+	        .asset-actions {
+	            font-size: $default_font_size; 
+	            float: none; 
+	        }
+		        
+			.asset-social-media {
+				.shariff,
+				.tell-others
+				{
+					display: inline;
+				} 
+				
+				.tell-others {
+					float: left; 
+					margin-right: 5px; 
+				}
+				
 			}
 		}
     }
