@@ -52,25 +52,25 @@ $full-image-height-xs: 400px;
 
 /* Mixins */
 @mixin filter-item() {
-	color: $navigation-font-color;
-	padding: 5px 30px;
-	border: 1px solid $navigation-font-color; 
-	font-size: $default-font-size;
-	text-transform: uppercase;
-	letter-spacing: $letter-spacing-wide;
-	margin-right: 15px;
+    color: $navigation-font-color;
+    padding: 5px 30px;
+    border: 1px solid $navigation-font-color; 
+    font-size: $default-font-size;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wide;
+    margin-right: 15px;
 }
 
 @mixin filter-item-selected() {
-	border: 1px solid white; 
-	background: white;
+    border: 1px solid white; 
+    background: white;
 }
 
 @mixin rotate($degree) {
-	transform: rotate($degree);
-	-webkit-transform: rotate($degree);
-	-moz-transform: rotate($degree);
-	-o-transform: rotate($degree);
+    transform: rotate($degree);
+    -webkit-transform: rotate($degree);
+    -moz-transform: rotate($degree);
+    -o-transform: rotate($degree);
 }
 
 
@@ -84,7 +84,7 @@ input {
 /* ----------------------------------------------- global settings */
 
 html, body {
-	width: 100%;
+    width: 100%;
     height: 100%;
 }
 
@@ -1264,14 +1264,14 @@ html, body {
 			
 			.shariff {
 			
-				.orientation-horizontal.col-3 {
-					li {
-						min-width: 20px;
-						flex: none; 
-						-webkit-flex: none;
-						margin-bottom: 0; 
-					}
-				}
+                .orientation-horizontal.col-3 {
+                	li {
+                		min-width: 20px;
+                		flex: none; 
+                		-webkit-flex: none;
+                		margin-bottom: 0; 
+                	}
+                }
 				
 				li a {
 					color: $default-font-color; 
