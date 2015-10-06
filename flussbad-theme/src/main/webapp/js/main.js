@@ -116,7 +116,6 @@ YUI().use('event', 'node', function(Y) {
 
     Y.on('resize', function() {       
         winHeight = Y.one("body").get("winHeight") + 'px';
-        console.log('winHeight = ' + winHeight); 
         Y.all('.keyvisual').setStyle('height', winHeight);        
     });	
 });

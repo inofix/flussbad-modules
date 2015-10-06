@@ -7,8 +7,8 @@
     - shariff-based social media buttons are included 
     
     Created:    2015-07-28 11:53 by Christian Berndt
-    Modified:   2015-10-05 13:06 by Christian Berndt
-    Version:    1.0.6
+    Modified:   2015-10-06 14:27 by Christian Berndt
+    Version:    1.0.7
 --%>
 <%--
 /**
@@ -198,33 +198,34 @@ if (assetCategory != null) {
 			
 			            <c:if test="<%= Validator.isNotNull(viewURL) %>">
 			                <div class="asset-more">
-			                    <a href="<%= viewURL %>"><liferay-ui:message arguments='<%= new Object[] {"hide-accessible", HtmlUtil.escape(assetRenderer.getTitle(locale))} %>' key="<%= viewURLMessage %>" /> &raquo; </a>
+			                    <a href="<%= viewURL %>"><liferay-ui:message arguments='<%= new Object[] {"hide-accessible", HtmlUtil.escape(assetRenderer.getTitle(locale))} %>' key="<%= viewURLMessage %>" /></a>
 			                </div>
 			            </c:if>
 			        </div>
 	        
 			        <div class="asset-social-media">
-						<liferay-ui:message key="tell-others"/>
-			            <ul>
-			                <li class="shariff-button facebook">
-			                    <a aria-label="TODO" role="button" title="TODO" rel="popup" href="javascript:;">
-			                        <span class="fa fa-facebook"></span>
-			                        <span class="share_text">Facebook</span>
-			                    </a>
-			                </li>
-			                <li class="shariff-button twitter">
-			                    <a aria-label="TODO" role="button" title="TODO" rel="popup" href="javascript:;">
-			                        <span class="fa fa-twitter"></span>
-			                        <span class="share_text">Twitter</span>
-			                    </a>
-			                </li>
-			                <li class="shariff-button mail">
-			                    <a aria-label="TODO" role="button" title="TODO" rel="popup" href="javascript:;">
-			                        <span class="fa fa-mail"></span>
-			                        <span class="share_text">Email</span>
-			                    </a>
-			                </li>
-			            </ul>
+			        
+<% 
+	// TODO: make the shariff properties configurable
+	String backendUrl = "https://portal.flussbad-berlin.de/shariff"; 
+//     String currentURL = viewURL; 
+    String mailBody = "Schau mal hier auf www.flussbad-berlin.de"; 
+//     String mailBody = "Schau mal hier <a href=\"" + viewURL + "\"> + auf www.flussbad-berlin.de</a>"; 
+    String mailSubject = "Schau mal auf www.flussbad-berlin.de"; 
+    String mailUrl = "mailto:"; 
+    String selectedOrientation = "horizontal"; 
+    String servicesConfig = "[&quot;facebook&quot;,&quot;twitter&quot;,&quot;mail&quot;]"; 
+    String selectedTheme = "standard"; 
+    String twitterVia = ""; 
+
+%>
+						<span class="tell-others"><liferay-ui:message key="tell-others"/></span>
+						<div class="shariff" data-backend-url="<%= backendUrl %>"
+							data-url="<%= viewURL %>" data-mail-body="<%= mailBody %>"
+							data-mail-subject="<%= mailSubject %>" data-mail-url="<%= mailUrl %>"
+							data-orientation="<%= selectedOrientation %>"
+							data-services="<%= servicesConfig %>"
+							data-theme="<%= selectedTheme %>" data-twitter-via="<%= twitterVia %>"></div>						
 			        </div>
 		        </div> <!-- /.span8 -->
 			</div> <!-- /.row -->

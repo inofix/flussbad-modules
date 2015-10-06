@@ -1208,17 +1208,19 @@ html, body {
 		        }
 		        
 		        .asset-social-media {
-        
-		            ul {
-		                display: inline;
-		                list-style: none; 
-		                margin-left: 0;  
-		            }
-		            
-		            li {
-		                display: inline;
-		                margin-left: 5px;  
-		            }
+		        
+		        	> span {
+		        		float: left;
+		        		margin-right: 5px;
+		        	}
+		        
+		        	.shariff,
+		        	.shariff:before,
+		        	li,
+		        	ul {
+		        		display: inline; 
+		        	}
+
 		        }
             }
             
