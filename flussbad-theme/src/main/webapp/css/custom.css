@@ -453,26 +453,7 @@ html, body {
             padding: 40px 0 100px;
         }
     } 
-    
-/*     body, */
-/*     #wrapper, */
-/*     #content, */
-/*     #main-content, */
-/*     .portlet-layout, */
-/*     #column-1, */
-/*     #layout-column_column-1, */
-/*     .portlet-column-content, */
-/*     working up to here but fails at .portlet-journal-content */
-/*     .portlet-journal-content, */
-/*     .portlet-borderless-container, */
-/*     .portlet-body, */
-/*     .journal-content-article, */
-/*     .with-image { */
-/*     	height: 100% !important; */
-/*     	width: 100% !important; */
-/*     } */  
-    
-    
+       
     .intro.with-image {
     
         background-color: transparent !important;
