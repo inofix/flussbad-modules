@@ -214,6 +214,7 @@ html, body {
         text-transform: uppercase;
         width: 100%;
         z-index: 11;
+        opacity: 0.95;
         
         li {
 	        font-size: $default-font-size;
@@ -680,7 +681,7 @@ html, body {
             }
         }
         
-        a:before {
+        a::before {
             content: ''; 
         }
     }
@@ -778,13 +779,13 @@ html, body {
     
 /* ----------------------------------------------- Image Slider */
 
-/* 	.slide-show { */
+	.slide-show {
       
-/*         @media (max-width: 767px) { height: $full-image-height-xs; } */
-/* 	    @media (min-width: 768px) { height: $full-image-height-sm; } */
-/* 	    @media (min-width: 992px) { height: $full-image-height-md; } */
-/* 	    @media (min-width: 1200px) { height: $full-image-height-lg; } */
-/* 	} */
+        @media (max-width: 767px) { height: $full-image-height-xs; }
+	    @media (min-width: 768px) { height: $full-image-height-sm; }
+	    @media (min-width: 992px) { height: $full-image-height-md; }
+	    @media (min-width: 1200px) { height: $full-image-height-lg; }
+	}
    
 
 
@@ -794,7 +795,7 @@ html, body {
     
 	    .keyvisual {
             width: 100%;
-            height: calc(100vh - $nav-height);
+            height: calc(100vh - $nav-and-categories-height);
             background-position: center center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -944,7 +945,7 @@ html, body {
     
         width: 100%; 
         z-index: 10;
-        background: $color-sand;
+        background: lighten($color-sand, 2%);
         
 		-webkit-transition: max-height 0.2s; 
 		-moz-transition: max-height 0.2s; 
@@ -961,7 +962,6 @@ html, body {
     
         .portlet-body .taglib-asset-categories-navigation {
     
-            background: $color-sand;
             min-height: 120px;       
                 
             a {
@@ -997,23 +997,20 @@ html, body {
             
             .accordion-heading {
                 
-                .accordion-toggle:before {
-                
-/*                     content: "\2304"; */
-                    content: "\274C";
- 
-                }
-                
                 .accordion-toggle {
                           
 	                position: fixed; 
 	                right: 0; 
                 
-	                font-size: $h2-font-size;
+	                font-size: $default-font-size;
                 
-                    background-color: $color-sand;
+                    background-color: lighten($color-sand, 2%);
                     color: $navigation-font-color;
-					padding: 15px 15px 20px; 
+					padding: 30px 15px 20px;
+					
+					&::before {
+	                    content: "\274C";
+	                }
                     
                     .title-text {
                         display: none; 
@@ -1049,7 +1046,7 @@ html, body {
 	        
 				min-height: 0; 
 	            
-				.accordion-toggle:before {					
+				.accordion-toggle::before {					
 					content: "\22EE"; 
 					font-weight: bolder; 
 				}
@@ -1139,10 +1136,9 @@ html, body {
 		        
 		        &.light-gray {
 		            background-color: $color-light-gray;
-		            border-top: 5px solid white;
-		            .asset-content {
-						border-bottom: 5px solid #F5F5F5;
-		            }
+	                .asset-content {
+                        border-bottom: 5px solid #F5F5F5;
+                    }
 		        }
 		        
 		        &.sand {
@@ -1166,42 +1162,33 @@ html, body {
 					letter-spacing: $letter-spacing-wide;
 				   
 					padding-top: 1em;
-			   
-				   .vertical-separator::after {
-					    content: "/";
-					    margin: 0 7px;
-					}
-						
-					span {
-						float: none; 
-						display: block;
-					}
-		
-					.taglib-asset-categories-summary {   /* separator if more than one category */
-						a:nth-child(3n) {
-						
-							&::before {
-								content: "/";
-								color: $default-font-color;
-								margin: 0 7px 0 0;
-						   }
-						}
-					}
-	 
-					.taglib-asset-categories-summary .asset-category {
-						padding-right: 0;
-					}
-		 
-					.metadata-entry {
-					     background: none;
-					     padding-left: 0;
-					     color: $default-font-color;
-					}
 					
-					.vocabulary-title {
+					.metadata-entry {
+                         background: none;
+                         padding-left: 0;
+                         color: $default-font-color;
+                    }
+                    
+                    .metadata-publish-date {
+                        padding-right: 7px;
+                        display: block;
+                    }
+                    
+                    .metadata-categories {
+                        a {
+	                        display: block;
+	                        &::before {
+	                            content: "/";
+	                            color: $default-font-color;
+	                            margin: 0 7px 0 0;
+	                       }
+	                    }
+                    }
+					
+					.vocabulary-title,
+					.vertical-separator::after {
 						display: none; 
 					}
-			 
 				}
       
 				h3.asset-title {
@@ -1243,22 +1230,44 @@ html, body {
 					}
 		 
 				    .asset-more {
+				    
 						display: inline;
 						font-size: $default-font-size; 
 						text-transform: uppercase;
 						letter-spacing: $letter-spacing-wide;
 						margin-left: 5px;
-						a:before {
+						a::before {
 						content:"\203A"; /* chevron right */
 						margin-right: 3px; 
 					}
 				}
 	            
 		        .asset-actions {
+		        
 		            font-size: $default_font_size; 
 		            float: none; 
 		        }
 			}
+			
+			.asset-social-media {
+			
+                   ul {
+                       list-style-type: none;
+                       margin: 0;
+                       padding: 0;
+                       display: inline;
+                       
+                       li {
+                           display: inline;
+                           &:after {
+                                content:"/";
+                           }
+                           &:last-child:after { 
+                                content: " ";
+                           }
+                       }
+                  }
+             }
 		}
     }
     
@@ -1398,7 +1407,7 @@ html, body {
                         margin: 0 3px;
                     }
             
-                    li:before {
+                    li::before {
                         content: "/ ";
                         color: $navigation-font-color;
                     }  
