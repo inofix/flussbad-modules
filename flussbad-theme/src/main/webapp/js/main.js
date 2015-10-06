@@ -105,19 +105,19 @@ AUI().ready('node', 'node-scroll-info', function(A) {
 });
 
 /**
- * A fallback for 100vh configuration of intro elements.
+ * A fallback for 100vh configuration of keyvisual elements.
  */
 YUI().use('event', 'node', function(Y) {
 	
     var winHeight = Y.one("body").get("winHeight") + 'px';
 
     /** TODO: all or only the first ? */
-    Y.all('.intro').setStyle('height', winHeight);  
+    Y.all('.keyvisual').setStyle('height', winHeight);  
 
     Y.on('resize', function() {       
         winHeight = Y.one("body").get("winHeight") + 'px';
         console.log('winHeight = ' + winHeight); 
-        Y.all('.intro').setStyle('height', winHeight);        
+        Y.all('.keyvisual').setStyle('height', winHeight);        
     });	
 });
 
