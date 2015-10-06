@@ -1074,7 +1074,6 @@ html, body {
     .signed-in .portlet-configuration.portlet-asset-categories-navigation {
         top: 20px; 
     }
-   
 
     .portlet-asset-publisher {
     
@@ -1086,201 +1085,181 @@ html, body {
 		-o-transition: margin-top 0.2s; 
 		transition: margin-top 0.2s;
         
-        .asset-abstract {
-        
-            margin-bottom: 0; 
-            padding: 60px 0;
-            
-            
-            .container {
-                        
-                .asset-metadata {
-                
-                    font-family: $medium-font-family;
-		            text-transform: uppercase;
-		            letter-spacing: $letter-spacing-wide;
-		            
-		            padding-top: 1em;
-		            
-		            .vertical-separator::after {
-			            content: "/";
-			            margin: 0 7px;
-			        }
-			        
-			        .taglib-asset-categories-summary {   /* separator if more than one category */
-			            a:nth-child(3n) {
-					         &::before {
-					            content: "/";
-					            color: $default-font-color;
-	                            margin: 0 7px 0 0;
-					         }
-                        }
-			        }
-			        
-			        .taglib-asset-categories-summary .asset-category {
-                        padding-right: 0;
-                    }
-			        
-                    .metadata-publish-date {
-			            background: none;
-			            padding-left: 0;
-			            color: $default-font-color;
-			        }
-			        
-                }
-                
-                h3.asset-title {
-                
-	                font-family: $bold-font-family;
-		            font-size: $h1-font-size;
-		            text-transform: none;
-		            letter-spacing:  0.02em;
-        
-		            padding: 0 0 0.5em 0;
-		            margin: 0;
-		            border: none; 
-		            
-		            a {
-		                color: $default-font-color; 
-		                text-decoration: none;
-		                &:hover {
-		                    color: $hover-font-color;
-		                }
-		            }
-		            
-		            img {
-		                display: none; 
-		            }
-		        }
-		        
-		        .asset-content {
-		        
-    		        margin-left: 0;
-		            margin-right: 0;
-		            font-size: $lead-font-size; 
-		            line-height: $lead-line-height; 
-		            padding-bottom: 30px; 
-		            border-bottom: 5px solid #ebebeb;
-		        
-			        .asset-summary {
-			             display: inline;
-			             font-family: $light-font-family;
-			        }
-			        
-		            .asset-more {
-			             display: inline;
-			             font-size: $default-font-size; 
-			             text-transform: uppercase;
-			             letter-spacing: $letter-spacing-wide;
-			             margin-left: 5px;
-			             a:before {
-				            content:"\203A"; /* chevron right */
-				            margin-right: 3px; 
-				        }
-			        }
-		        }
-		        
-		        .asset-social-media {
-		        
-		        	> span {
-		        		float: left;
-		        		margin-right: 5px;
-		        	}
-		        
-		        	.shariff,
-		        	.shariff:before,
-		        	li,
-		        	ul {
-		        		display: inline; 
-		        	}
-
-		        }
-            }
-            
-            .asset-actions {
-	            font-size: $default_font_size; 
-	            float: none; 
-	        }
-	        
-	        &.gray-green {
-        
-	            background-color: $color-gray-green;
-	            color: white;
-	            
-	            .asset-metadata .metadata-publish-date {
-	              color: white;
-	            }
-	            
-	            a {
-	              color: $color-turquois;
-	              &:hover {
-	                  color: darken($color-turquois, 20%);
-	              }
-	            }
-	            
-	            h3.asset-title a {
-	              color: white;
-	              &:hover {
-	                  color: $color-turquois;
-	              }
-	            }
-	            
-	            .asset-content {
-	              border-bottom: 5px solid #73A0A2;
-	            }
-	        }
-	        
-	        &.light-gray {
-	            background-color: $color-light-gray;
-	            border-top: 5px solid white;
-	            .asset-content {
-	              border-bottom: 5px solid #F5F5F5;
-	            }
-	        }
-	        
-	        &.sand {
-	            background-color: $color-sand;
-	            .asset-content {
-	              border-bottom: 5px solid #F5F4F0;
-	            }
-	        }
-	    
-	        &.turquois {
-	            background-color: $color-turquois;
-	            .asset-content {
-	              border-bottom: 5px solid #C9F4F6;
-	            }
-	        }
-        }
-
-
-
-        /** 
-            The class vocabualary-title is only
-            available when the asset-categories-summary-hook
-            is deployed */
-        .vocabulary-title { 
-            display: none; 
-        }
-        
-        .taglib-categorization-filter.entry-title {
-            display: none; 
-        }
-        
         &.default-publisher {
 	        margin-top: 184px; /* navigation + asset-categories-navigation + margin-top */
         }
         
         &.start-publisher {
-        	.asset-abstract {
-        		padding: 0; 
-        	}
+	       	.asset-abstract {
+	       		padding: 0; 
+	       	}
         }
         
         &.categories-auto-closed,
         &.categories-closed {
 	        margin-top: 40px;
         }
+        
+        .taglib-categorization-filter.entry-title {
+            display: none; 
+        }
+        
+        .asset-abstract {
+        
+            margin-bottom: 0; 
+            padding: 60px 0;
+            
+		        &.gray-green {
+		       
+		            background-color: $color-gray-green;
+		            color: white;
+		            
+		            .asset-metadata .metadata-entry {
+						color: white;
+		            }
+		            
+		            a {
+						color: $color-turquois;
+						&:hover {
+						    color: darken($color-turquois, 20%);
+						}
+		            }
+		            
+		            h3.asset-title a {
+						color: white;
+						&:hover {
+						    color: $color-turquois;
+						}
+		            }
+		            
+		            .asset-content {
+						border-bottom: 5px solid #73A0A2;
+		            }
+		        }
+		        
+		        &.light-gray {
+		            background-color: $color-light-gray;
+		            border-top: 5px solid white;
+		            .asset-content {
+						border-bottom: 5px solid #F5F5F5;
+		            }
+		        }
+		        
+		        &.sand {
+		            background-color: $color-sand;
+		            .asset-content {
+						border-bottom: 5px solid #F5F4F0;
+		            }
+		        }
+		    
+		        &.turquois {
+		            background-color: $color-turquois;
+		            .asset-content {
+						border-bottom: 5px solid #C9F4F6;
+		            }
+		        }            
+                                    
+				.asset-metadata {
+											     
+					font-family: $medium-font-family;
+					text-transform: uppercase;
+					letter-spacing: $letter-spacing-wide;
+				   
+					padding-top: 1em;
+			   
+				   .vertical-separator::after {
+					    content: "/";
+					    margin: 0 7px;
+					}
+						
+					span {
+						float: none; 
+						display: block;
+					}
+		
+					.taglib-asset-categories-summary {   /* separator if more than one category */
+						a:nth-child(3n) {
+						
+							&::before {
+								content: "/";
+								color: $default-font-color;
+								margin: 0 7px 0 0;
+						   }
+						}
+					}
+	 
+					.taglib-asset-categories-summary .asset-category {
+						padding-right: 0;
+					}
+		 
+					.metadata-entry {
+					     background: none;
+					     padding-left: 0;
+					     color: $default-font-color;
+					}
+					
+					.vocabulary-title {
+						display: none; 
+					}
+			 
+				}
+      
+				h3.asset-title {
+	      
+				    font-family: $bold-font-family;
+				    font-size: $h1-font-size;
+				    text-transform: none;
+				    letter-spacing:  0.02em;
+				
+				    padding: 0 0 0.5em 0;
+				    margin: 0;
+				    border: none; 
+	    
+				    a {
+				        color: $default-font-color; 
+				        text-decoration: none;
+				        &:hover {
+				            color: $hover-font-color;
+				        }
+				    }
+	    
+				    img {
+				        display: none; 
+				    }
+				}
+
+				.asset-content {
+								
+				    margin-left: 0;
+				    margin-right: 0;
+				    font-size: $lead-font-size; 
+				    line-height: $lead-line-height; 
+				    padding-bottom: 30px; 
+				    border-bottom: 5px solid #ebebeb;
+	
+					.asset-summary {
+					     display: inline;
+					     font-family: $light-font-family;
+					}
+		 
+				    .asset-more {
+						display: inline;
+						font-size: $default-font-size; 
+						text-transform: uppercase;
+						letter-spacing: $letter-spacing-wide;
+						margin-left: 5px;
+						a:before {
+						content:"\203A"; /* chevron right */
+						margin-right: 3px; 
+					}
+				}
+	            
+		        .asset-actions {
+		            font-size: $default_font_size; 
+		            float: none; 
+		        }
+			}
+		}
     }
     
     .portlet-asset-publisher.event-publisher {

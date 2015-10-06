@@ -7,8 +7,8 @@
     - shariff-based social media buttons are included 
     
     Created:    2015-07-28 11:53 by Christian Berndt
-    Modified:   2015-10-06 14:27 by Christian Berndt
-    Version:    1.0.7
+    Modified:   2015-10-06 16:16 by Christian Berndt
+    Version:    1.0.8
 --%>
 <%--
 /**
@@ -91,6 +91,66 @@ if (assetCategory != null) {
         }
     }
 }
+
+// Customization: for journal-article assets try to use the journal-article's
+// articleTitle, which can be retrieved from an article's structure.
+
+String articleTitle = null; 
+long eventTime = 0; 
+String eventDate = null;
+String location = null; 
+		
+String languageId = LanguageUtil.getLanguageId(request);
+   	
+   	
+if (JournalArticle.class.getName().equals(assetEntry.getClassName())) {
+	
+	JournalArticleAssetRenderer journalRenderer = (JournalArticleAssetRenderer) assetRenderer; 
+	JournalArticle article = journalRenderer.getArticle(); 
+	                
+	if (article != null) {
+	    try {
+	    
+	        Document document = SAXReaderUtil.read(article
+	                .getContentByLocale(languageId));	       
+            
+			Node dateNode = document.selectSingleNode("/root/dynamic-element[@name='date']/dynamic-content");
+			
+	        Node headlineNode = document.selectSingleNode("/root/dynamic-element[@name='headline']/dynamic-content");
+	        
+	        Node locationNode = document.selectSingleNode("/root/dynamic-element[@name='location']/dynamic-content");
+	        
+			Node titleNode = document.selectSingleNode("/root/dynamic-element[@name='title']/dynamic-content");
+
+			
+			if (dateNode != null) {
+				eventDate = dateNode.getText();
+				eventTime = GetterUtil.getLong(eventDate); 
+			}
+            
+			if (headlineNode != null && headlineNode.getText().length() > 0) {
+				articleTitle = headlineNode.getText();
+			}
+			
+			if (locationNode != null && locationNode.getText().length() > 0) {
+				location = locationNode.getText();
+			}
+			
+			if (titleNode != null && titleNode.getText().length() > 0) {
+				articleTitle = titleNode.getText();
+			}
+
+	    
+	    } catch (Exception ignore) {
+	        articleTitle = null;
+	    }
+	}
+	
+	if (articleTitle != null) {
+		title = articleTitle; 
+	}
+}
+	
 %>
 
 <c:if test="<%= show %>">
@@ -98,71 +158,39 @@ if (assetCategory != null) {
 <%-- 
     Customization: read the color-scheme from the current category 
 --%> 
-    <div class="asset-abstract <%= defaultAssetPublisher ? "default-asset-publisher" : StringPool.BLANK %> <%= scheme %>">
+	<div class="asset-abstract <%= defaultAssetPublisher ? "default-asset-publisher" : StringPool.BLANK %> <%= scheme %>">
          
         <liferay-util:include page="/html/portlet/asset_publisher/asset_actions.jsp" />
 <%-- 
     Customization: wrap the asset's content sections. 
---%> 
-     
+--%>     
 	    <div class="container"> 
 	    	<div class="row">
 <%-- 
     Customization: display the asset's metadata as first element.
  --%>
-			 		<div class="span4">
-				        <div class="asset-metadata">
-				
-				            <%
-				            request.setAttribute("asset_metadata.jspf-filterByMetadata", true);
-				            %>
-				
-				            <%@ include file="/html/portlet/asset_publisher/asset_metadata.jspf" %>
-				        </div>
+		 		<div class="span4">
+			        <div class="asset-metadata">
+			        
+			            <c:if test="<%= Validator.isNotNull(eventDate) %>">
+			                <span class="metadata-entry metadata-event-date"><%= dateFormatDate.format(eventTime) %></span>
+			            </c:if>
+			            
+			            <c:if test="<%= Validator.isNotNull(location) %>">
+			                <span class="metadata-entry metadata-event-location"><%= location %></span>
+			            </c:if>			
+			
+			            <%
+			            request.setAttribute("asset_metadata.jspf-filterByMetadata", true);
+			            %>
+			
+			            <%@ include file="/html/portlet/asset_publisher/asset_metadata.jspf" %>
 			        </div>
+		        </div>
 		
-					<div class="span8">
-				        <h3 class="asset-title">
-	<%-- 
-	    Customization: for journal-article assets try to use the journal-article's
-	    articleTitle, which can be retrieved from an article's structure.
-	 --%>
-	<%
-	    String articleTitle = null; 
-	    String languageId = LanguageUtil.getLanguageId(request);
-	%>
-				<%-- custom test --%>        
-				<c:if test="<%= JournalArticle.class.getName().equals(assetEntry.getClassName()) %>">
-	<%
-					JournalArticleAssetRenderer journalRenderer = (JournalArticleAssetRenderer) assetRenderer; 
-					JournalArticle article = journalRenderer.getArticle(); 
-	                    
-	                if (article != null) {
-	                    try {
-	                    
-	                        Document document = SAXReaderUtil.read(article
-	                                .getContentByLocale(languageId));
-	                                             
-	                        Node headline = document
-	                                .selectSingleNode("/root/dynamic-element[@name='headline']/dynamic-content");
-	                        
-	                        if (headline.getText().length() > 0) {
-	                            articleTitle = headline.getText();
-	                        }
-	                    
-	                    } catch (Exception ignore) {
-	                        articleTitle = null;
-	                    }
-	                }
-	                
-	                if (articleTitle != null) {
-	                	title = articleTitle; 
-	                }
-	
-	%>
-						</c:if>             
-			                 
-					    <%-- default behaviour --%>
+				<div class="span8">
+			        <h3 class="asset-title">           
+		                 
 				        <c:choose>
 				            <c:when test="<%= Validator.isNotNull(viewURL) %>">
 				                <a href="<%= viewURL %>"><img alt="" src="<%= assetRenderer.getIconPath(renderRequest) %>" /> <%= HtmlUtil.escape(title) %></a>
@@ -171,9 +199,9 @@ if (assetCategory != null) {
 				                <img alt="" src="<%= assetRenderer.getIconPath(renderRequest) %>" /> <%= HtmlUtil.escape(title) %>
 				            </c:otherwise>
 				        </c:choose>
-			
+		
 			        </h3>
-	
+
 			        <div class="asset-content">
 			            <div class="asset-summary">
 			
@@ -195,16 +223,16 @@ if (assetCategory != null) {
 			                    </c:otherwise>
 			                </c:choose>
 			            </div>
-			
+		
 			            <c:if test="<%= Validator.isNotNull(viewURL) %>">
 			                <div class="asset-more">
 			                    <a href="<%= viewURL %>"><liferay-ui:message arguments='<%= new Object[] {"hide-accessible", HtmlUtil.escape(assetRenderer.getTitle(locale))} %>' key="<%= viewURLMessage %>" /></a>
 			                </div>
 			            </c:if>
 			        </div>
-	        
+        
 			        <div class="asset-social-media">
-			        
+		        
 <% 
 	// TODO: make the shariff properties configurable
 	String backendUrl = "https://portal.flussbad-berlin.de/shariff"; 
