@@ -729,14 +729,11 @@ html, body {
     .slide-show, 
     .statement {
     
-       position: relative;
-        
         .carousel {
-            background-color: transparent;
-            overflow: hidden;
-            text-align: center;
+            -webkit-transform: translate3d(0, 0, 0);
+            white-space: nowrap;
         }
-        
+    
         .carousel-control {
             color: $color-turquois;
             top: 50%;
@@ -757,12 +754,6 @@ html, body {
         .left.carousel-control span {
 			@include rotate(180deg); 
             display: inline-block;            
-        } 
-                
-        /* To layout horizontal LIs */
-        .scrollview-content {
-            position:relative; /* To allow positioning */
-            white-space: nowrap;
         }
         
         .item {
@@ -771,9 +762,9 @@ html, body {
         
         /* For IE 6/7 - needs inline block hack */
         .item {
-            *display: inline;
-            *zoom: 1;
-        }   
+            *display:inline;
+            *zoom:1;
+        }
     }
     
     
