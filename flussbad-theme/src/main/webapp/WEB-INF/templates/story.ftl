@@ -2,7 +2,7 @@
     Story template: Format the Story structure
     
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2015-10-06 19:15 by Nils Sanders
+    Modified:   2015-10-07 19:20 by Nils Sanders
     Version:    0.9.9
     
     Please note: Although this template is stored in the 
@@ -37,7 +37,7 @@
         </#if>
 
         <div class="${cssStyle}">
-            <h3><a href="#">Category</a></h3>
+            <h3 class="category"><a href="#">Category</a></h3>
             <h1 id="section-0">${headline.getData()}</h1>
             <p class="lead">${teaser.getData()}</p>
             <#if section.getSiblings()?has_content>

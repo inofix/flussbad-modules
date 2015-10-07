@@ -83,12 +83,14 @@ input {
 
 /* ----------------------------------------------- global settings */
 
-html, body {
-    width: 100%;
-    height: 100%;
-}
-
 .aui {
+	
+	body.signed-out {
+	    .lfr-meta-actions,
+	    .add-asset-selector {
+	       display: none !important;
+	    }
+	}
     
     body, p {
         font-family: $regular-font-family;
@@ -851,6 +853,17 @@ html, body {
 	                }
                 }
 	        }
+        }
+    }
+    
+    .project-story {
+    
+        .story {
+            .content {
+                h1, h3.category {
+                    text-align: center;
+                }
+            }
         }
     }
     
