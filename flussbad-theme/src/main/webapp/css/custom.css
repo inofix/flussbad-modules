@@ -937,7 +937,7 @@ html, body {
     
         width: 100%; 
         z-index: 10;
-        background: lighten($color-sand, 2%);
+        background: lighten($color-sand, 3%);
         
 		-webkit-transition: max-height 0.2s; 
 		-moz-transition: max-height 0.2s; 
@@ -992,23 +992,26 @@ html, body {
                 .accordion-toggle {
                           
 	                position: fixed; 
-	                right: 0; 
-                
-	                font-size: $default-font-size;
-                
-                    background-color: lighten($color-sand, 2%);
-                    color: $navigation-font-color;
-					padding: 30px 15px 20px;
+	                right: 0;
+	                padding: 25px;
+	                
+	                font-family: $regular-font-family;
+	                font-size: $h2-font-size;
+	                color: $navigation-font-color;              
+					
+					-moz-transform: rotate(45deg);
+                    -ms-transform: rotate(45deg);
+                    -o-transform: rotate(45deg);
+                    -webkit-transform: rotate(45deg);
+                    transform: rotate(45deg);
 					
 					&::before {
-	                    content: "\274C";
+	                    content: "+";
 	                }
                     
                     .title-text {
                         display: none; 
-                    }
-                    
-/*        				@include rotate(180deg);  */
+                    }                    
                 }           
             }
             
@@ -1032,16 +1035,29 @@ html, body {
 		
 		&.categories-auto-closed,
 		&.categories-closed {
+		
 			max-height: 0; 
 			
 	        .portlet-body .taglib-asset-categories-navigation {
 	        
-				min-height: 0; 
+				min-height: 0;
 	            
-				.accordion-toggle::before {					
-					content: "\22EE"; 
-					font-weight: bolder; 
-				}
+				.accordion-toggle {
+				
+				    transition: 0.2s ease-in-out;
+				
+				    background-color: lighten($color-sand, 3%);
+				
+				    -moz-transform: rotate(0deg);
+                    -ms-transform: rotate(0deg);
+                    -o-transform: rotate(0deg);
+                    -webkit-transform: rotate(0deg);
+                    transform: rotate(0deg);
+				
+					&::before {					
+						content: "+"; 
+					}
+                }
 			}
 		}				
     }
