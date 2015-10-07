@@ -3,7 +3,7 @@
     
     Created:    2015-09-29 11:28 by Christian Berndt
     Modified:   2015-10-01 18:50 by Nils Sanders
-    Version:    0.9.2
+    Version:    0.9.3
     
     Please note: Although this template is stored in the 
     site's context it's source is managed via git. Whenever you 
