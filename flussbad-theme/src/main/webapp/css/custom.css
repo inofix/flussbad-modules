@@ -696,6 +696,7 @@ html, body {
 	    
 	        blockquote {
 	            
+	            text-align: center;
 	            border: none;
 	            padding: 0;
 	            margin: 0;
@@ -786,7 +787,7 @@ html, body {
     
 	    .keyvisual {
             width: 100%;
-            height: calc(100vh - $nav-and-categories-height);
+            height: calc(100vh - 150px);
             background-position: center center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -1123,6 +1124,17 @@ html, body {
 	            .asset-content {
 					border-bottom: 5px solid #73A0A2;
 	            }
+	            
+	            .asset-social-media {
+	               .shariff {                        
+		                 a {
+		                     color: $color-turquois;
+		                     &:hover {
+		                       color: darken($color-turquois, 20%);
+		                     }  
+		                 }
+		             }   
+	            }            
 	        }
 	        
 	        &.light-gray {
@@ -1242,66 +1254,47 @@ html, body {
         }
 		
 		.asset-social-media {
-		
-			.shariff,
-			.tell-others {
-				display: inline;
-			} 
 			
 			.tell-others {
-				float: left; 
-				margin: 4px 5px 0 0;  
+				float: left;
+				vertical-align: middle;
+				line-height: 30px;
+				margin-right: 5px;
 			}
 			
 			.shariff {
 			
-                .orientation-horizontal.col-3 {
-                	li {
-                		min-width: 20px;
+                ul {
+                	li.shariff-button {
                 		flex: none; 
                 		-webkit-flex: none;
+                		min-width: 80px;
                 		margin-bottom: 0; 
+                		
+                		a {
+		                    color: $navigation-font-color;
+		                    background: transparent;
+		                    &:hover {
+		                      color: $hover-font-color;
+		                    }
+		                    
+		                    .fa-facebook {
+		                      margin-right: -5px;
+		                    }
+		                    
+		                    .share_text {
+		                    
+		                        font-family: $regular-font-family; 
+                                font-size: $default-font-size;
+                                badding-left: 0;
+                                
+			                    &::before {
+			                        display: none;
+			                    }
+		                    }
+		                }
                 	}
                 }
-				
-				li a {
-					color: $default-font-color; 
-				}
-			
-				.shariff-button {
-				
-					a {
-						background: transparent; 
-					}
-					
-					span.fa {
-						display: none; 
-					}
-					
-					.share_text {
-						font-family: $regular-font-family; 
-						font-size: $default-font-size; 
-					}
-				
-					&.facebook {					
-						.share_text:before {
-							content: "Facebook: "; 
-						}
-					}
-					&.twitter {					
-						.share_text:before {
-							content: "Twitter: "; 
-						}
-					}
-					&.mail {					
-						.share_text:before {
-							content: "E-Mail: senden"; 
-						}
-						.share_text {
-							width: 0; 
-						}
-					}
-				}
 			}
 		}
     }
