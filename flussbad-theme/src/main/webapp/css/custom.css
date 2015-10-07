@@ -1167,26 +1167,32 @@ html, body {
 				padding-top: 1em;
 				
 				.metadata-entry {
-                        background: none;
-                        padding-left: 0;
-                        color: $default-font-color;
-                   }
+				    
+                    background: none;
+                    padding-left: 0;
+                    color: $default-font-color;
+                }
                    
-                   .metadata-publish-date {
-                       padding-right: 7px;
-                       display: block;
-                   }
+                .metadata-publish-date {
+                
+                    padding-right: 7px;
+                    display: block;
+                }
                    
-                   .metadata-categories {
-                       a {
-                        display: block;
-                        &::before {
-                            content: "/";
-                            color: $default-font-color;
-                            margin: 0 7px 0 0;
-                       }
-                    }
-                   }
+                .metadata-categories {
+                
+                    a {
+                        display: inline;
+                        word-wrap: break-word !important;
+                        float: left;
+                        
+                         &::before {
+                             content: "/";
+                             color: $default-font-color;
+                             margin: 0 7px 0 0;
+                         }
+                     }
+                }
 				
 				.vocabulary-title,
 				.vertical-separator::after {
