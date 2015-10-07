@@ -1262,7 +1262,7 @@ html, body {
 					letter-spacing: $letter-spacing-wide;
 					margin-left: 5px;
 					
-					a:before {
+					a::before {
 						content:"\203A"; /* chevron right */
 						margin-right: 3px; 
 					}
@@ -1325,6 +1325,10 @@ html, body {
     
 		.asset-abstract:nth-child(even) {
 			background: $color-sand;
+			
+			.asset-content {
+			     border-bottom-color: #F5F4F0;
+			}
 		}
         
   		.asset-abstract:nth-child(odd) {
@@ -1334,6 +1338,27 @@ html, body {
         .taglib-header {
             display: none; 
         }
+        
+        .asset-metadata {
+        
+            padding-top: 0.75em;
+            
+            .metadata-entry {
+	            display: block;
+	            float: none;
+	        }
+	        
+	        .metadata-event-date {
+	            font-size: $h2-font-size;
+	            padding-bottom: 0.9em;
+	            
+	            &::after {
+	               content: " _";
+	            }
+	        }
+        }
+        
+        
     }
     
     .portlet-asset-publisher.story-publisher {
@@ -1419,6 +1444,7 @@ html, body {
     #footer {
     
         background: $color-light-gray;
+        border-top: 5px solid white;
         padding-bottom: 20px;
         
         .container.first {
