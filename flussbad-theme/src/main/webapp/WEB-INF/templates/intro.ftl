@@ -2,8 +2,8 @@
     Intro template: Format the Intro structure
     
     Created:    2015-08-28 17:52 by Christian Berndt
-    Modified:   2015-10-05 16:47 by Nils Sanders
-    Version:    0.10.0
+    Modified:   2015-10-07 14:06 by Nils Sanders
+    Version:    0.9.9
     
     Please note: Although this template is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -32,7 +32,7 @@
     <div class="keyvisual" style="${style}">
         <div class="claim">
             <div class="row">
-                <div class="span6 offset3">
+                <div class="span4 offset4">
                     <h1>${headline.getData()}</h1>
                 </div>
             </div>
