@@ -1136,12 +1136,6 @@ input {
             display: none; 
         }
         
-        .asset-metadata {
-            margin-left: 30px;
-            
-            @media (max-width: 767px) { margin-left: 0; }
-        }
-        
         .asset-abstract {
         
             margin-bottom: 0; 
