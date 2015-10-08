@@ -222,16 +222,16 @@ input {
             font-weight: 600;
             letter-spacing: $letter-spacing-wide;
             .portlet-static-end {
-               li > a {
-                font-size: $small-font-size;
-                color: $navigation-font-color;
-                &:hover {
-                    color: $hover-font-color;
+                li > a {
+                    font-size: $small-font-size;
+                    color: $navigation-font-color;
+                    &:hover {
+                        color: $hover-font-color;
+                    }
                 }
-               }
             }
         }
-        
+    
         /* Hide the default page */
         #navCollapse > :first-child {
             display: none; 
@@ -931,16 +931,6 @@ input {
     /** 
      * Helper classes for the positioning of portlets
      */
-     
-    /** 
-     * Whenever an asset-publisher is placed below
-     * an .intro(.with-image), we need to pull it
-     * down, since the .abstracts wrapper is positioned
-     * absolute
-     */
-    /*     .below-intro { */
-    /*     	margin-top: 360px; */
-    /*     } */
     
     .below-navigation {
     	padding-top: $nav-height; 
@@ -1109,6 +1099,12 @@ input {
         
         &.default-publisher {
             margin-top: 184px; /* navigation + asset-categories-navigation + margin-top */
+        }
+        
+        &.project-publisher {
+            .asset-abstract {
+                background: $color-sand; 
+            }
         }
         
         &.start-publisher {
