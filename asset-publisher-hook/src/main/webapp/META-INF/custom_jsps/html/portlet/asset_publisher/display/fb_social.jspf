@@ -1,0 +1,32 @@
+<%--
+    fb_social.jsp: Shariff based social media buttons for the flussbad-abstracts.
+    
+    Created:    2015-10-08 17:05 by Christian Berndt
+    Modified:   2015-10-08 17:05 by Christian Berndt
+    Version:    1.0.0
+--%>
+
+<div class="asset-social-media">
+
+	<% 
+    // TODO: make the shariff properties configurable
+    String backendUrl = "https://portal.flussbad-berlin.de/shariff"; 
+//     String currentURL = viewURL; 
+    String mailBody = "Schau mal hier auf www.flussbad-berlin.de"; 
+//     String mailBody = "Schau mal hier <a href=\"" + viewURL + "\"> + auf www.flussbad-berlin.de</a>"; 
+    String mailSubject = "Schau mal auf www.flussbad-berlin.de"; 
+    String mailUrl = "mailto:"; 
+    String selectedOrientation = "horizontal"; 
+    String servicesConfig = "[&quot;facebook&quot;,&quot;twitter&quot;,&quot;mail&quot;]"; 
+    String selectedTheme = "standard"; 
+    String twitterVia = ""; 
+
+%>
+	<span class="tell-others"><liferay-ui:message key="tell-others" /></span>
+	<div class="shariff" data-backend-url="<%= backendUrl %>"
+		data-url="<%= viewURL %>" data-mail-body="<%= mailBody %>"
+		data-mail-subject="<%= mailSubject %>" data-mail-url="<%= mailUrl %>"
+		data-orientation="<%= selectedOrientation %>"
+		data-services="<%= servicesConfig %>"
+		data-theme="<%= selectedTheme %>" data-twitter-via="<%= twitterVia %>"></div>
+</div>

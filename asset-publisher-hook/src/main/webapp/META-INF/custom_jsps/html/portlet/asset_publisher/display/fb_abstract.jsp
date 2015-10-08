@@ -2,181 +2,28 @@
     fb_abstract.jsp: A custom asset-publisher style where 
     
     - the asset's metadata is displayed BEFORE the title and summary
-    - the title is read from the structure's headline field
+    - the title is read from the structure's headline or title field
+    - the event-title and event-location is read from the structures's respective fields
     - the color-scheme property is read from the applied categories
     - shariff-based social media buttons are included 
     
     Created:    2015-07-28 11:53 by Christian Berndt
-    Modified:   2015-10-08 15:09 by Christian Berndt
-    Version:    1.0.9
---%>
-<%--
-/**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
+    Modified:   2015-10-08 17:09 by Christian Berndt
+    Version:    1.1.0
 --%>
 
-<%@ include file="/html/portlet/asset_publisher/init.jsp" %>
-
-<%-- Import classes required by customization --%>
-<%@page import="com.liferay.portal.kernel.util.Validator"%>
-<%@page import="com.liferay.portal.kernel.util.StringPool"%>
-
-<%@page import="com.liferay.portal.kernel.xml.Document"%>
-<%@page import="com.liferay.portal.kernel.xml.Node"%>
-<%@page import="com.liferay.portal.kernel.xml.SAXReaderUtil"%>
-
-<%@page import="com.liferay.portlet.asset.service.AssetCategoryPropertyServiceUtil"%>
-<%@page import="com.liferay.portlet.asset.model.AssetCategoryProperty"%>
-<%@page import="com.liferay.portlet.journal.asset.JournalArticleAssetRenderer"%>
-
-<%
-List results = (List)request.getAttribute("view.jsp-results");
-
-int assetEntryIndex = ((Integer)request.getAttribute("view.jsp-assetEntryIndex")).intValue();
-
-AssetEntry assetEntry = (AssetEntry)request.getAttribute("view.jsp-assetEntry");
-AssetRendererFactory assetRendererFactory = (AssetRendererFactory)request.getAttribute("view.jsp-assetRendererFactory");
-AssetRenderer assetRenderer = (AssetRenderer)request.getAttribute("view.jsp-assetRenderer");
-
-boolean show = ((Boolean)request.getAttribute("view.jsp-show")).booleanValue();
-
-request.setAttribute("view.jsp-showIconLabel", true);
-
-String title = (String)request.getAttribute("view.jsp-title");
-
-if (Validator.isNull(title)) {
-    title = assetRenderer.getTitle(locale);
-}
-
-String viewURL = AssetPublisherHelperImpl.getAssetViewURL(liferayPortletRequest, liferayPortletResponse, assetEntry, viewInContext);
-
-String viewURLMessage = viewInContext ? assetRenderer.getViewInContextMessage() : "read-more-x-about-x";
-
-String summary = StringUtil.shorten(assetRenderer.getSummary(locale), abstractLength);
-
-List<AssetCategory> assetCategories = AssetCategoryServiceUtil.getCategories(assetEntry.getClassName(), assetEntry.getClassPK());
-
-AssetCategory assetCategory = null; 
-
-if (assetCategories.size() > 0) {
-	assetCategory = assetCategories.get(0); 
-}
-
-String scheme = StringPool.BLANK; 
-
-if (assetCategory != null) {
-    
-    List<AssetCategoryProperty> categoryProperties = AssetCategoryPropertyServiceUtil.getCategoryProperties(assetCategory.getCategoryId());
-    
-    for (AssetCategoryProperty categoryProperty : categoryProperties) {
-        
-        if ("color-scheme".equals(categoryProperty.getKey())) {
-            
-        	String value = categoryProperty.getValue(); 
-        	
-        	if (Validator.isNotNull(value)) {
-	            scheme = value; 
-        	}
-        }
-    }
-}
-
-// Customization: for journal-article assets try to use the journal-article's
-// articleTitle, which can be retrieved from an article's structure.
-
-String articleTitle = null;
-String cssStyle = ""; 
-long eventTime = 0; 
-String eventDate = null;
-String keyVisual = null; 
-String location = null; 
-		
-String languageId = LanguageUtil.getLanguageId(request);
-   	
-   	
-if (JournalArticle.class.getName().equals(assetEntry.getClassName())) {
-	
-	JournalArticleAssetRenderer journalRenderer = (JournalArticleAssetRenderer) assetRenderer; 
-	JournalArticle article = journalRenderer.getArticle(); 
-	                
-	if (article != null) {
-	    try {
-	    
-	        Document document = SAXReaderUtil.read(article
-	                .getContentByLocale(languageId));	 
-	                    
-			Node dateNode = document.selectSingleNode("/root/dynamic-element[@name='date']/dynamic-content");
-			
-	        Node headlineNode = document.selectSingleNode("/root/dynamic-element[@name='headline']/dynamic-content");
-	        
-            Node locationNode = document.selectSingleNode("/root/dynamic-element[@name='location']/dynamic-content");
-            
-            Node keyVisualNode = document.selectSingleNode("/root/dynamic-element[@name='keyVisual']/dynamic-content");
-            
-			Node titleNode = document.selectSingleNode("/root/dynamic-element[@name='title']/dynamic-content");
-
-			
-			if (dateNode != null) {
-				eventDate = dateNode.getText();
-				eventTime = GetterUtil.getLong(eventDate); 
-			}
-            
-			if (headlineNode != null && headlineNode.getText().length() > 0) {
-				articleTitle = headlineNode.getText();
-			}
-			
-            if (keyVisualNode != null && keyVisualNode.getText().length() > 0) {
-                cssStyle = "background-image: url('" + keyVisualNode.getText() + "');";
-            }
-            
-            if (locationNode != null && locationNode.getText().length() > 0) {
-                location = locationNode.getText();
-            }
-            
-    		if (titleNode != null && titleNode.getText().length() > 0) {
-				articleTitle = titleNode.getText();
-			}
-
-	    
-	    } catch (Exception ignore) {
-	        articleTitle = null;
-	    }
-	}
-	
-	if (articleTitle != null) {
-		title = articleTitle; 
-	}
-}
-	
-%>
+<%-- Include fb-abstract specific setup code --%>
+<%@ include file="/html/portlet/asset_publisher/display/fb_init.jsp" %>
 
 <c:if test="<%= show %>">
 
-<%-- 
-    Customization: read the color-scheme from the current category 
---%> 
-	<div class="asset-abstract <%= defaultAssetPublisher ? "default-asset-publisher" : StringPool.BLANK %> <%= Validator.isNotNull(cssStyle) ? "with-keyvisual" : StringPool.BLANK %> <%= scheme %>" style="<%= cssStyle %>">
+	<div class="asset-abstract <%= defaultAssetPublisher ? "default-asset-publisher" : StringPool.BLANK %> fb-abstract <%= Validator.isNotNull(cssStyle) ? "with-keyvisual" : StringPool.BLANK %> <%= scheme %>" style="<%= cssStyle %>">
          
         <liferay-util:include page="/html/portlet/asset_publisher/asset_actions.jsp" />
-<%-- 
-    Customization: wrap the asset's content sections. 
---%>     
+    
 	    <div class="container"> 
 	    	<div class="row">
-<%-- 
-    Customization: display the asset's metadata as first element.
- --%>
+
 		 		<div class="span4">
 			        <div class="asset-metadata">
 			        
@@ -238,31 +85,10 @@ if (JournalArticle.class.getName().equals(assetEntry.getClassName())) {
 			                </div>
 			            </c:if>
 			        </div>
+			        
+					<%-- Include flussbad's social-media-buttons --%>
+					<%@ include file="/html/portlet/asset_publisher/display/fb_social.jspf" %>
         
-			        <div class="asset-social-media">
-		        
-<% 
-	// TODO: make the shariff properties configurable
-	String backendUrl = "https://portal.flussbad-berlin.de/shariff"; 
-//     String currentURL = viewURL; 
-    String mailBody = "Schau mal hier auf www.flussbad-berlin.de"; 
-//     String mailBody = "Schau mal hier <a href=\"" + viewURL + "\"> + auf www.flussbad-berlin.de</a>"; 
-    String mailSubject = "Schau mal auf www.flussbad-berlin.de"; 
-    String mailUrl = "mailto:"; 
-    String selectedOrientation = "horizontal"; 
-    String servicesConfig = "[&quot;facebook&quot;,&quot;twitter&quot;,&quot;mail&quot;]"; 
-    String selectedTheme = "standard"; 
-    String twitterVia = ""; 
-
-%>
-						<span class="tell-others"><liferay-ui:message key="tell-others"/></span>
-						<div class="shariff" data-backend-url="<%= backendUrl %>"
-							data-url="<%= viewURL %>" data-mail-body="<%= mailBody %>"
-							data-mail-subject="<%= mailSubject %>" data-mail-url="<%= mailUrl %>"
-							data-orientation="<%= selectedOrientation %>"
-							data-services="<%= servicesConfig %>"
-							data-theme="<%= selectedTheme %>" data-twitter-via="<%= twitterVia %>"></div>						
-			        </div>
 		        </div> <!-- /.span8 -->
 			</div> <!-- /.row -->
         </div> <!-- /.container -->
