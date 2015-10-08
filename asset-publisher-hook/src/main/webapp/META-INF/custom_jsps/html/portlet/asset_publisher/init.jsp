@@ -28,6 +28,7 @@
 --%>
 
 <%-- Custom imports  --%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 
 <%@page import="com.liferay.portal.kernel.util.FastDateFormatFactoryUtil"%>
@@ -277,7 +278,7 @@ Map<String, PortletURL> addPortletURLs = null;
 Format dateFormatDate = FastDateFormatFactoryUtil.getDate(locale, timeZone);
 
 //Customized: 
-dateFormatDate = FastDateFormatFactoryUtil.getDate(DateFormat.LONG, locale, timeZone);
+dateFormatDate = FastDateFormatFactoryUtil.getDate(DateFormat.MEDIUM, locale, timeZone);
 
 %>
 
