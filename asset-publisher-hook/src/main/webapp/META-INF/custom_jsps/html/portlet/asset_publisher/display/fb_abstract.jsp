@@ -7,8 +7,8 @@
     - shariff-based social media buttons are included 
     
     Created:    2015-07-28 11:53 by Christian Berndt
-    Modified:   2015-10-06 16:16 by Christian Berndt
-    Version:    1.0.8
+    Modified:   2015-10-08 15:09 by Christian Berndt
+    Version:    1.0.9
 --%>
 <%--
 /**
@@ -95,9 +95,11 @@ if (assetCategory != null) {
 // Customization: for journal-article assets try to use the journal-article's
 // articleTitle, which can be retrieved from an article's structure.
 
-String articleTitle = null; 
+String articleTitle = null;
+String cssStyle = ""; 
 long eventTime = 0; 
 String eventDate = null;
+String keyVisual = null; 
 String location = null; 
 		
 String languageId = LanguageUtil.getLanguageId(request);
@@ -112,14 +114,16 @@ if (JournalArticle.class.getName().equals(assetEntry.getClassName())) {
 	    try {
 	    
 	        Document document = SAXReaderUtil.read(article
-	                .getContentByLocale(languageId));	       
-            
+	                .getContentByLocale(languageId));	 
+	                    
 			Node dateNode = document.selectSingleNode("/root/dynamic-element[@name='date']/dynamic-content");
 			
 	        Node headlineNode = document.selectSingleNode("/root/dynamic-element[@name='headline']/dynamic-content");
 	        
-	        Node locationNode = document.selectSingleNode("/root/dynamic-element[@name='location']/dynamic-content");
-	        
+            Node locationNode = document.selectSingleNode("/root/dynamic-element[@name='location']/dynamic-content");
+            
+            Node keyVisualNode = document.selectSingleNode("/root/dynamic-element[@name='keyVisual']/dynamic-content");
+            
 			Node titleNode = document.selectSingleNode("/root/dynamic-element[@name='title']/dynamic-content");
 
 			
@@ -132,11 +136,15 @@ if (JournalArticle.class.getName().equals(assetEntry.getClassName())) {
 				articleTitle = headlineNode.getText();
 			}
 			
-			if (locationNode != null && locationNode.getText().length() > 0) {
-				location = locationNode.getText();
-			}
-			
-			if (titleNode != null && titleNode.getText().length() > 0) {
+            if (keyVisualNode != null && keyVisualNode.getText().length() > 0) {
+                cssStyle = "background-image: url('" + keyVisualNode.getText() + "');";
+            }
+            
+            if (locationNode != null && locationNode.getText().length() > 0) {
+                location = locationNode.getText();
+            }
+            
+    		if (titleNode != null && titleNode.getText().length() > 0) {
 				articleTitle = titleNode.getText();
 			}
 
@@ -158,7 +166,7 @@ if (JournalArticle.class.getName().equals(assetEntry.getClassName())) {
 <%-- 
     Customization: read the color-scheme from the current category 
 --%> 
-	<div class="asset-abstract <%= defaultAssetPublisher ? "default-asset-publisher" : StringPool.BLANK %> <%= scheme %>">
+	<div class="asset-abstract <%= defaultAssetPublisher ? "default-asset-publisher" : StringPool.BLANK %> <%= Validator.isNotNull(cssStyle) ? "with-keyvisual" : StringPool.BLANK %> <%= scheme %>" style="<%= cssStyle %>">
          
         <liferay-util:include page="/html/portlet/asset_publisher/asset_actions.jsp" />
 <%-- 
