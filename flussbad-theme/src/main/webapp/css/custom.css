@@ -464,11 +464,18 @@ input {
             width: 100%;
             height: calc(100vh - $nav-height);
             text-align: center;
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: cover;
             overflow: hidden;
             display: table;
+            
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
+            -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
             
             .claim {
                width: 100%;
@@ -789,10 +796,17 @@ input {
         .keyvisual {
             width: 100%;
             height: calc(100vh - 150px);
+            overflow: hidden;
+            
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
-            background-size: cover;
-            overflow: hidden;
+            
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
+            -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
         } 
         
         &.with-keyvisual {
@@ -1122,6 +1136,12 @@ input {
             display: none; 
         }
         
+        .asset-metadata {
+            margin-left: 30px;
+            
+            @media (max-width: 767px) { margin-left: 0; }
+        }
+        
         .asset-abstract {
         
             margin-bottom: 0; 
@@ -1132,10 +1152,11 @@ input {
                 background-color: $color-gray-green;
                 color: white;
                 
-                .asset-metadata .metadata-entry {
+                .asset-metadata .metadata-entry,
+                .asset-metadata .metadata-categories a::before {
     				color: white;
                 }
-                
+                                
                 a {
     				color: $color-turquois;
     				&:hover {
@@ -1187,13 +1208,27 @@ input {
                 }
             }
             
-            &.with-keyvisual {
+            &.with-keyvisual {                
+                
+                @media (max-width: 767px) { padding-top: 200px; }
+		        @media (min-width: 768px) { padding-top: 216px; }
+		        @media (min-width: 992px) { padding-top: 280px; }
+		        @media (min-width: 1200px) { padding-top: 360px; }
+        
+                padding-bottom: 0;
+                -webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;
+				background-position: center center;
+                background-repeat: no-repeat;
             
-                padding-top: 400px;
-                background-size: cover;
+				filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
+                -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
                 
                 .container {
                     background: white;
+                    padding: 60px 30px;
                 }
             }          
                                    
