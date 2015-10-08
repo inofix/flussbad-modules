@@ -79,6 +79,15 @@ input {
     border: none; 
 }
 
+/* Unset Liferay Metadata margin */
+.portlet-asset-publisher .asset-metadata {
+	clear: none;
+	margin-left: 0;
+}
+.portlet-asset-publisher .metadata-publish-dqte {
+	padding-left: 30px;
+}
+
 
 
 /* ----------------------------------------------- global settings */
@@ -1237,7 +1246,6 @@ input {
     			.metadata-entry {
     			    
                     background: none;
-                    padding-left: 0;
                     color: $default-font-color;
                 }
                    
