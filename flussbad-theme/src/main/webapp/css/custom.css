@@ -79,6 +79,15 @@ input {
     border: none; 
 }
 
+/* Unset Liferay Metadata margin */
+.portlet-asset-publisher .asset-metadata {
+	clear: none;
+	margin-left: 0;
+}
+.portlet-asset-publisher .metadata-publish-date {
+	padding-left: 30px;
+}
+
 
 
 /* ----------------------------------------------- global settings */
@@ -478,10 +487,15 @@ input {
             -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
             
             .claim {
-               width: 100%;
+                width: 100%;
                 height: 100%;
                 display: table-cell;
                 vertical-align: middle;
+                
+                h1 {
+		            padding: 0;
+		            font-size: 42px;
+		        }
             }
         } 
         
@@ -811,7 +825,7 @@ input {
         
         &.with-keyvisual {
             .container {
-                margin-top: -150px;
+                margin-top: -210px;
             }
         }
     
@@ -823,7 +837,7 @@ input {
                 padding: 30px 0 60px;
                 
                 h3 {
-                   margin-bottom: 2em;
+                   margin-bottom: 1em;
                 }
                 
                 h1 {
@@ -841,7 +855,11 @@ input {
                 .section {
                 
                     h2 {
-                        
+                    
+                        font-size: $h3-font-size;
+                        text-transform: uppercase;
+                        letter-spacing: $letter-spacing-wide;
+                        margin: 2em 0 0;
                     }
                     
                     img {
@@ -950,9 +968,9 @@ input {
     	padding-top: $nav-height; 
     }
      
-    .signed-in .below-navigation {
-    	padding-top: $dockbar-and-nav-height; 
-    }
+/*     .signed-in .below-navigation { */
+/*     	padding-top: $dockbar-and-nav-height;  */
+/*     } */
     
     .portlet-asset-categories-navigation {
     
@@ -1224,7 +1242,46 @@ input {
                     background: white;
                     padding: 60px 30px;
                 }
-            }          
+            }
+            
+            &.fb-display {
+            
+                padding: 0;
+                border-top: 5px solid white;
+                
+                .asset-metadata {
+                    padding: 2em 0 0 0;
+                    
+                    .metadata-publish-date {
+                        padding-left: 0;
+                    }
+                }
+                
+                h3.asset-title {
+                    font-size: $h2-font-size;
+                    line-height: 30px;
+                }
+                
+                .asset-content {
+                
+                    border-bottom: 5px solid #F5F4F0;
+                    font-size: $default-font-size;
+                    line-height: $default-line-height;
+                    
+                    .asset-summary {
+                        font-family: $regular-font-family;
+                    }
+                    
+                    .asset-more {
+                        font-size: $small-font-size;
+                    }
+                }
+                
+                .asset-social-media {
+                    padding-bottom: 1em !important;
+                    margin-bottom: 2em !important;
+                }
+            }       
                                    
     		.asset-metadata {
     									     
@@ -1237,7 +1294,6 @@ input {
     			.metadata-entry {
     			    
                     background: none;
-                    padding-left: 0;
                     color: $default-font-color;
                 }
                    

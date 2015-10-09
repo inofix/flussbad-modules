@@ -2,7 +2,7 @@
     Intro template: Format the Intro structure
     
     Created:    2015-08-28 17:52 by Christian Berndt
-    Modified:   2015-10-07 14:06 by Christian Berndt
+    Modified:   2015-10-09 10:29 by Nils Sanders
     Version:    1.0.0
     
     Please note: Although this template is stored in the 
@@ -34,7 +34,7 @@
         <div class="keyvisual" style="${style}">
             <div class="claim">
                 <div class="row">
-                    <div class="span4 offset4">
+                    <div class="span6 offset3">
                         <#if link.getData()?has_content >
                             <a href="${link.getData()}" title="${label.getData()}">
                                 <h1>${headline.getData()}</h1>
