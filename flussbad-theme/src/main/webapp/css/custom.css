@@ -968,9 +968,9 @@ input {
     	padding-top: $nav-height; 
     }
      
-/*     .signed-in .below-navigation { */
-/*     	padding-top: $dockbar-and-nav-height;  */
-/*     } */
+    .signed-in .below-navigation {
+    	padding-top: $dockbar-and-nav-height; 
+    }
     
     .portlet-asset-categories-navigation {
     
