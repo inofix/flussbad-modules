@@ -9,3 +9,5 @@ flussbad-theme is a bootstrap based theme for public sites of www.flussbad-berli
 Read the asset's abstract from a structure field named "teaser" (instead from the article's summary).
 ## lang-hook
 flussbad specific adjustments of Liferay's default Language.properties
+## toggle-button-hook
+add DIVs to the asset-categories-navigation and site-map portlet which can be used as a target for a custom toggle
