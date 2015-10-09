@@ -4,7 +4,7 @@
 $dockbar-height: 60px;
 $dockbar-and-nav-height: 120px;
 $nav-height: 60px;
-$nav-and-categories-height: 120px; 
+$nav-and-categories-height: 180px; 
 
 /* typography */
 $regular-font-family: 'Apercu Pro Regular', Calibri, Roboto, sans-serif;
@@ -714,20 +714,20 @@ input {
     
     .statement {
         
-            padding: 180px 0;
-        
-            blockquote {
-                
-                text-align: center;
-                border: none;
-                padding: 0;
-                margin: 0;
-                font-family: $bold-font-family;
-                font-size: $h1-font-size;
-                line-height: 125%;
-                white-space: normal; /* Restore normal white-space behaviour
-                         (nowrap is required for scrollview, 
-                         see below) */
+        padding: 180px 0;
+    
+        blockquote {
+            
+            text-align: center;
+            border: none;
+            padding: 0;
+            margin: 0;
+            font-family: $bold-font-family;
+            font-size: $h1-font-size;
+            line-height: 125%;
+            white-space: normal; /* Restore normal white-space behaviour
+                     (nowrap is required for scrollview, 
+                     see below) */
         }    
     }
               
@@ -894,12 +894,19 @@ input {
     
     .project-story {
     
+        margin-top: $nav-and-categories-height;
+        
         .story {
             .content {
                 h1, h3.category {
                     text-align: center;
                 }
             }
+        }
+        
+        &.categories-closed,
+        &.categories-auto-closed {
+            margin-top: $nav-height;
         }
     }
     
@@ -976,16 +983,6 @@ input {
     
         width: 100%; 
         z-index: 10;
-        background: lighten($color-sand, 3%);
-        
-    	-webkit-transition: max-height 0.2s; 
-    	-moz-transition: max-height 0.2s; 
-    	-ms-transition: max-height 0.2s; 
-    	-o-transition: max-height 0.2s; 
-    	transition: max-height 0.2s;
-        
-    	max-height: 160px; 
-    	overflow: hidden; 
     	            
         .accordion {
             margin-bottom: 0;
@@ -1027,31 +1024,7 @@ input {
             }
             
             .accordion-heading {
-                
-                .accordion-toggle {
-                          
-                    position: fixed; 
-                    right: 0;
-                    padding: 25px;
-                    
-                    font-family: $regular-font-family;
-                    font-size: $h2-font-size;
-                    color: $navigation-font-color;              
-    				
-    				-moz-transform: rotate(45deg);
-                    -ms-transform: rotate(45deg);
-                    -o-transform: rotate(45deg);
-                    -webkit-transform: rotate(45deg);
-                    transform: rotate(45deg);
-    				
-    				&::before {
-                        content: "+";
-                    }
-                    
-                    .title-text {
-                        display: none; 
-                    }                    
-                }           
+                display: none;
             }
             
             ul {
@@ -1071,34 +1044,71 @@ input {
     	.portlet-borderless-container {
     		min-height: 0; 
     	}
-    	
-    	&.categories-auto-closed,
-    	&.categories-closed {
-    	
-    		max-height: 0; 
-    		
-            .portlet-body .taglib-asset-categories-navigation {
+    }
+    
+    .portlet-asset-categories-navigation,
+    .portlet-site-map.project-sections { 
+    
+        background: lighten($color-sand, 3%);
+        
+        position: fixed; 
+        top: $nav-height;
+        z-index: 10; 
+        width: 100%;  
+        
+        -webkit-transition: max-height 0.2s; 
+        -moz-transition: max-height 0.2s; 
+        -ms-transition: max-height 0.2s; 
+        -o-transition: max-height 0.2s; 
+        transition: max-height 0.2s;
+        
+        max-height: 120px; 
+        overflow: hidden;
+      
+        .toggle {
+                          
+            position: fixed; 
+            right: 0;
+            top: $nav-height;
+            padding: 25px;
             
-    			min-height: 0;
-                
-    			.accordion-toggle {
-    			
-    			    transition: 0.2s ease-in-out;
-    			
-    			    background-color: lighten($color-sand, 3%);
-    			
-    			    -moz-transform: rotate(0deg);
-                    -ms-transform: rotate(0deg);
-                    -o-transform: rotate(0deg);
-                    -webkit-transform: rotate(0deg);
-                    transform: rotate(0deg);
-    			
-    				&::before {					
-    					content: "+"; 
-    				}
-                }
-    		}
-    	}				
+            font-family: $regular-font-family;
+            font-size: $h2-font-size;
+            color: $navigation-font-color;
+            
+            background-color: lighten($color-sand, 3%);
+            
+            .toggle-button {
+            
+                transition: 0.2s ease-in-out;
+                                            
+                -moz-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                -o-transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);   
+            }
+            
+            .toggle-button:after {
+                content: "+";
+            }                
+        } 
+
+        
+        &.categories-auto-closed,
+        &.categories-closed {
+        
+            max-height: 0;
+            overflow: hidden;
+    
+            .toggle-button {
+                -moz-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+        }
     }
     
     .portlet-asset-categories-navigation,
@@ -1147,7 +1157,7 @@ input {
         
         &.categories-auto-closed,
         &.categories-closed {
-            margin-top: 40px;
+            margin-top: $nav-height;
         }
         
         .taglib-categorization-filter.entry-title {
@@ -1495,12 +1505,6 @@ input {
     }
     
     .portlet-site-map.project-sections {
-    
-    	background: $color-sand;
-    	position: fixed; 
-    	top: 0;
-    	z-index: 10; 
-    	width: 100%;   	
     	
     	a {
     		@include filter-item();
@@ -1705,13 +1709,21 @@ input {
 
     
 /* Liferay UI */
-    
+
     .signed-in {
     
         .portlet-dynamic-data-mapping,
-        .portlet-journal
-        {
+        .portlet-journal {
+        
             margin-top: $nav-height; 
+        }
+    
+        .portlet-asset-categories-navigation,
+        .portlet-site-map.project-sections { 
+          
+            .toggle {
+                top: $dockbar-and-nav-height; 
+            }
         }
     }
     

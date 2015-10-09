@@ -44,7 +44,7 @@ AUI().ready(
  */
 AUI().ready('node', function(A) {
 
-    var toggle = A.one('.accordion-toggle');
+    var toggle = A.one('.portlet-asset-categories-navigation .toggle');
 
     var categories = A.one('.portlet-asset-categories-navigation');
     var publisher = A.one('.default-publisher');
@@ -66,6 +66,35 @@ AUI().ready('node', function(A) {
     }
 });
 
+
+/**
+ * Toggle the site-map of project-sections.
+ */
+AUI().ready('node', function(A) {
+
+    var toggle = A.one('.portlet-site-map.project-sections .toggle-button');
+
+    var portlet = A.one('.portlet-site-map.project-sections');
+    
+    var story = A.one('.project-story');
+
+    if (toggle) {
+        toggle.on('click', function(event) {
+        	
+            if (portlet) {
+            	portlet.toggleClass('categories-closed');
+            	portlet.removeClass('categories-auto-closed');
+            }
+            
+            if (story) {
+            	story.toggleClass('categories-closed');
+            	story.removeClass('categories-auto-closed');
+            }            
+
+        });
+    }
+});
+
 /**
  * Show hide the asset categories filter while scrolling.
  */
@@ -75,6 +104,8 @@ AUI().ready('node', 'node-scroll-info', function(A) {
 
     var categories = A.one('.portlet-asset-categories-navigation');
     var publisher = A.one('.default-publisher');
+    var sitemap = A.one('.portlet-site-map.project-sections');
+    var story = A.one('.project-story');
 
     body.plug(A.Plugin.ScrollInfo);
 
@@ -88,6 +119,12 @@ AUI().ready('node', 'node-scroll-info', function(A) {
         if (publisher) {
             publisher.addClass('categories-auto-closed');
         }
+        if (story) {
+            story.addClass('categories-auto-closed');
+        }
+        if (sitemap) {
+        	sitemap.addClass('categories-auto-closed');
+        }
 
     });
 
@@ -98,6 +135,12 @@ AUI().ready('node', 'node-scroll-info', function(A) {
         }
         if (publisher) {
             publisher.removeClass('categories-auto-closed');
+        }
+        if (story) {
+            story.removeClass('categories-auto-closed');
+        }
+        if (sitemap) {
+        	sitemap.removeClass('categories-auto-closed');
         }
 
     });
