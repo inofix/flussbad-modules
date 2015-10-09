@@ -42,7 +42,6 @@ AUI().ready(
 /**
  * Toggle the asset-categories filter.
  */
-
 AUI().ready('node', function(A) {
 
     var toggle = A.one('.accordion-toggle');

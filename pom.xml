@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.flussbad</groupId>
     <artifactId>flussbad-modules</artifactId>
-    <version>0.3.0-SNAPSHOT</version>
+    <version>0.4.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Flussbad Modules</name>
     <description>Maven parent project to the flussbad liferay modules.</description>
@@ -17,9 +17,10 @@
     <properties>
 
         <!-- Configure liferay.base.dir in dev.properties  -->
-        <!-- in the parent project's directory.            -->
+        <!-- in the parent project's directory. Copy the   -->
+        <!-- included sample.properties to dev.properties  -->
+        <!-- and adjust it to your personal environment.   -->
 <!--          <liferay.base.dir>  -->
-<!--             /home/berndt/Applications/liferay-portal-6.2-ce-ga4 -->
 <!--          </liferay.base.dir> -->
           
          <liferay.app.server.deploy.dir>
@@ -101,5 +102,6 @@
         <module>flussbad-theme</module>
         <module>journal-hook</module>
     	<module>lang-hook</module>
+        <module>toggle-button-hook</module>
   </modules>
 </project>
