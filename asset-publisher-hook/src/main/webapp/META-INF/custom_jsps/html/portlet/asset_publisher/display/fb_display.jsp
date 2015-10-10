@@ -8,8 +8,8 @@
     - shariff-based social media buttons are included 
     
     Created:    2015-10-08 17:14 by Christian Berndt
-    Modified:   2015-10-08 17:14 by Christian Berndt
-    Version:    1.0.0
+    Modified:   2015-10-10 14:45 by Christian Berndt
+    Version:    1.0.1
 --%>
 
 <%-- Include fb-abstract specific setup code --%>
@@ -17,7 +17,7 @@
 
 <c:if test="<%= show %>">
 
-    <div class="asset-abstract <%= defaultAssetPublisher ? "default-asset-publisher" : StringPool.BLANK %> fb-display <%= scheme %>">
+    <div class="asset-abstract <%= defaultAssetPublisher ? "default-asset-publisher" : StringPool.BLANK %> <%= isFiltered ? "filtered" : StringPool.BLANK %> fb-display <%= scheme %>">
          
         <liferay-util:include page="/html/portlet/asset_publisher/asset_actions.jsp" />
     

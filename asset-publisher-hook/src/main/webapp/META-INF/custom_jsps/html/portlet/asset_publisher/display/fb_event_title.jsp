@@ -4,8 +4,8 @@
     - the date and title is read from the event-structure's fields
     
     Created:    2015-10-02 10:29 by Christian Berndt
-    Modified:   2015-10-08 17:38 by Christian Berndt
-    Version:    1.0.2
+    Modified:   2015-10-10 14:48 by Christian Berndt
+    Version:    1.0.3
 --%>
 <%--
 /**
@@ -31,7 +31,7 @@
 <%-- 
     Customization: read the color-scheme from the current category 
 --%> 
-    <div class="asset-abstract <%= defaultAssetPublisher ? "default-asset-publisher" : StringPool.BLANK %> fb-event-title <%= scheme %>">
+    <div class="asset-abstract <%= defaultAssetPublisher ? "default-asset-publisher" : StringPool.BLANK %> <%= isFiltered ? "filtered" : StringPool.BLANK %> fb-event-title <%= scheme %>">
          
         <liferay-util:include page="/html/portlet/asset_publisher/asset_actions.jsp" />
 <%-- 
