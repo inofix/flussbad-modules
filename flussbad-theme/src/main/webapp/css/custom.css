@@ -894,8 +894,14 @@ input {
     
     .project-story {
     
-        margin-top: $nav-and-categories-height;
+        -webkit-transition: margin-top 0.2s; 
+        -moz-transition: margin-top 0.2s; 
+        -ms-transition: margin-top 0.2s; 
+        -o-transition: margin-top 0.2s; 
+        transition: margin-top 0.2s;
         
+        margin-top: $nav-and-categories-height;
+                
         .story {
             .content {
                 h1, h3.category {
@@ -1142,7 +1148,7 @@ input {
     	transition: margin-top 0.2s;
         
         &.default-publisher {
-            margin-top: 184px; /* navigation + asset-categories-navigation + margin-top */
+            margin-top: $nav-and-categories-height;
         }
         
         &.project-publisher {
