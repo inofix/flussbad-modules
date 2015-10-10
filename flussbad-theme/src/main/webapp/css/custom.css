@@ -1077,8 +1077,10 @@ input {
             color: $navigation-font-color;
             
             background-color: lighten($color-sand, 3%);
-            
+                        
             .toggle-button {
+            
+                cursor: pointer; 
             
                 transition: 0.2s ease-in-out;
                                             
