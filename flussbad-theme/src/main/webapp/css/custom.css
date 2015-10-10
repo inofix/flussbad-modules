@@ -178,12 +178,6 @@ input {
     #content {
         font-size: $default-font-size;
     }
-    
-    .signed-in #content {
-        margin-top: $dockbar-height; 
-    }
-    
-    
 
 /* ----------------------------------------------- Dockbar */
     
@@ -409,12 +403,7 @@ input {
     .portlet-language .portlet-borderless-container {
         min-height: 1em;
     }
-    
-    .signed-in #navigation {
-        margin-top: 60px;
-    } 
-    
-    
+
     
 /* --------------------------------------------------------------------- */
 /* ----------------------------------------------- Web Content Templates */
@@ -980,10 +969,6 @@ input {
     .below-navigation {
     	padding-top: $nav-height; 
     }
-     
-    .signed-in .below-navigation {
-    	padding-top: $dockbar-and-nav-height; 
-    }
     
     .portlet-asset-categories-navigation {
     
@@ -1125,18 +1110,7 @@ input {
         position: fixed;
         top: $nav-height;
     }
-    
-    .signed-in .portlet-asset-categories-navigation,
-    .signed-in .portlet-asset-categories-navigation.affix,
-    .signed-in .portlet-asset-categories-navigation.affix-top {
-        top: $dockbar-and-nav-height; 
-    }
-    
-        
-    .signed-in .portlet-configuration.portlet-asset-categories-navigation {
-        top: 20px; 
-    }
-    
+
     .portlet-asset-publisher {
     
         width: 100%;
@@ -1719,19 +1693,30 @@ input {
 /* Liferay UI */
 
     .signed-in {
-    
+
+        #content,
+        #navigation,
         .portlet-dynamic-data-mapping,
         .portlet-journal {
-        
-            margin-top: $nav-height; 
+            margin-top: $dockbar-height;
+        } 
+         
+        .below-navigation {
+            padding-top: $dockbar-and-nav-height; 
         }
+ 
     
         .portlet-asset-categories-navigation,
-        .portlet-site-map.project-sections { 
-          
-            .toggle {
-                top: $dockbar-and-nav-height; 
-            }
+        .portlet-asset-categories-navigation.affix,
+        .portlet-asset-categories-navigation.affix-top,
+        .portlet-asset-categories-navigation .toggle,
+        .portlet-site-map.project-sections,
+        .portlet-site-map.project-sections .toggle {
+            top: $dockbar-and-nav-height; 
+        }
+               
+        .portlet-configuration.portlet-asset-categories-navigation {
+            top: 20px; 
         }
     }
     
