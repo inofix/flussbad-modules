@@ -1,9 +1,9 @@
 <%--
-    fb_init.jsp: Common setup-code for the flussbad-display
+    fb_init.jsp: Common setup-code for the flussbad-displays and abstracts.
     
     Created:    2015-10-08 16:48 by Christian Berndt
-    Modified:   2015-10-08 16:48 by Christian Berndt
-    Version:    1.0.0
+    Modified:   2015-10-10 14:45 by Christian Berndt
+    Version:    1.0.2
 --%>
 
 <%@ include file="/html/portlet/asset_publisher/init.jsp" %>
@@ -80,6 +80,7 @@
 	String cssStyle = "";
 	long eventTime = 0;
 	String eventDate = null;
+	boolean isFiltered = assetCategoryId > 0;
 	String keyVisual = null;
 	String location = null;
 	

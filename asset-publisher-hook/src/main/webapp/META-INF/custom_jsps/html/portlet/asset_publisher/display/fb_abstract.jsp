@@ -8,8 +8,8 @@
     - shariff-based social media buttons are included 
     
     Created:    2015-07-28 11:53 by Christian Berndt
-    Modified:   2015-10-08 17:09 by Christian Berndt
-    Version:    1.1.0
+    Modified:   2015-10-10 14:40 by Christian Berndt
+    Version:    1.1.1
 --%>
 
 <%-- Include fb-abstract specific setup code --%>
@@ -17,7 +17,7 @@
 
 <c:if test="<%= show %>">
 
-	<div class="asset-abstract <%= defaultAssetPublisher ? "default-asset-publisher" : StringPool.BLANK %> fb-abstract <%= Validator.isNotNull(cssStyle) ? "with-keyvisual" : StringPool.BLANK %> <%= scheme %>" style="<%= cssStyle %>">
+	<div class="asset-abstract <%= defaultAssetPublisher ? "default-asset-publisher" : StringPool.BLANK %> <%= isFiltered ? "filtered" : StringPool.BLANK %> fb-abstract <%= Validator.isNotNull(cssStyle) ? "with-keyvisual" : StringPool.BLANK %> <%= scheme %>" style="<%= cssStyle %>">
          
         <liferay-util:include page="/html/portlet/asset_publisher/asset_actions.jsp" />
     
@@ -25,8 +25,7 @@
 	    	<div class="row">
 
 		 		<div class="span4">
-			        <div class="asset-metadata">
-			        
+			        <div class="asset-metadata">			        			        
 			            <c:if test="<%= Validator.isNotNull(eventDate) %>">
 			                <span class="metadata-entry metadata-event-date"><%= dateFormatDate.format(eventTime) %></span>
 			            </c:if>
