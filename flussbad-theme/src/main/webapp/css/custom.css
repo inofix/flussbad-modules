@@ -452,9 +452,12 @@ input {
         .link {
             padding: 40px 0 100px;
         }
-    } 
-       
-    .intro.with-image {
+    }
+    
+    
+    .intro.with-image,
+    .introduction
+    {
     
         background-color: transparent !important;
         
@@ -474,6 +477,15 @@ input {
             
             filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
             -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
+
+        } 
+    } 
+       
+    .intro.with-image {
+    
+        background-color: transparent !important;
+        
+        .keyvisual {
             
             .claim {
                 width: 100%;
@@ -604,6 +616,10 @@ input {
                color: $color-gray-green; 
             }
         }
+    }
+    
+    .introduction {
+        margin-top: $nav-height;
     }
     
     

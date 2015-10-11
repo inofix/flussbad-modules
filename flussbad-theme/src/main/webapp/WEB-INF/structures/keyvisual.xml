@@ -1,0 +1,29 @@
+<root available-locales="de_DE" default-locale="de_DE">
+<!--
+    keyvisual structure: A structure for a content object of 
+    type "keyvisual", which is a fullscreen image at the top of 
+    the page.
+    
+    Created:    2015-10-11 12:15 by Christian Berndt
+    Modified:   2015-10-11 12:15 by Christian Berndt
+    Version:    1.0.0
+    
+    Please note: Although this structure is stored in the 
+    site's context it's source is managed via git. Whenever you 
+    change the structure online make sure that you commit your 
+    changes to the flussbad-modules repo, too.
+-->
+    <dynamic-element dataType="document-library" fieldNamespace="ddm" indexType="keyword" localizable="true" name="keyvisual" readOnly="false" repeatable="false" required="true" showLabel="true" type="ddm-documentlibrary" width="">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[Schlüsselbild]]>
+            </entry>
+            <entry name="predefinedValue">
+                <![CDATA[]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Wähle ein Bild aus der Dokumentenbibliothek aus, das als Schlüsselbild bildschirmfüllend dargestellt werden soll.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>
+</root>
