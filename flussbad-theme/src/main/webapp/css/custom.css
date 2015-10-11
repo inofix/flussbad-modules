@@ -1502,7 +1502,7 @@ input {
     
     	li {
             line-height: 45px;
-            display: inline; 
+            display: inline-block; 
     	}
     	
     	ul {
