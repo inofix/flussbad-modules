@@ -2,8 +2,8 @@
     Carousel template: Format the Carousel structure
 
     Created:    2015-08-28 17:51 by Christian Berndt
-    Modified:   2015-09-28 11:54 by Christian Berndt
-    Version:    0.9.4
+    Modified:   2015-10-12 10:17 by Christian Berndt
+    Version:    0.9.5
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
