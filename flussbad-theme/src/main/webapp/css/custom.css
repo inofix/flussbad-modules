@@ -456,8 +456,7 @@ input {
     
     
     .intro.with-image,
-    .introduction
-    {
+    .introduction {
     
         background-color: transparent !important;
         
@@ -484,6 +483,7 @@ input {
     .intro.with-image {
     
         background-color: transparent !important;
+        overflow: hidden;
         
         .keyvisual {
             
@@ -602,6 +602,7 @@ input {
     .intro.turquois {
     
         background-color: $color-turquois;
+        padding: 2em 0 8em;
         
         h1 {
            color: #fff;
@@ -616,6 +617,10 @@ input {
                color: $color-gray-green; 
             }
         }
+    }
+    
+    .intro.with-image.turquois {
+        padding: 0;
     }
     
     .introduction {
@@ -725,7 +730,7 @@ input {
             
             text-align: center;
             border: none;
-            padding: 0;
+            padding: 0 8.54701% 1em;
             margin: 0;
             font-family: $bold-font-family;
             font-size: $h1-font-size;
@@ -733,7 +738,11 @@ input {
             white-space: normal; /* Restore normal white-space behaviour
                      (nowrap is required for scrollview, 
                      see below) */
-        }    
+        }
+        
+        .author {
+            padding: 0 8.54701%;
+        }  
     }
               
     .statement.gray-green {
@@ -1078,7 +1087,7 @@ input {
             right: 0;
             top: $nav-height;
             padding: 25px;
-            
+                        
             font-family: $regular-font-family;
             font-size: $h2-font-size;
             color: $navigation-font-color;
@@ -1111,6 +1120,9 @@ input {
             overflow: hidden;
     
             .toggle-button {
+            
+                transition: 0.2s ease-in-out;
+            
                 -moz-transform: rotate(0deg);
                 -ms-transform: rotate(0deg);
                 -o-transform: rotate(0deg);
@@ -1164,8 +1176,13 @@ input {
         
         .asset-abstract {
         
-            margin-bottom: 0; 
-            padding: 60px 0;
+            margin-bottom: 0;
+            padding: 1em 0;
+            
+            .container {
+                padding-top: 30px;
+                padding-bottom: 30px;
+            }
             
             &.gray-green {
            
@@ -1383,7 +1400,42 @@ input {
     					margin-right: 3px; 
     				}
     			}
-    		}	            
+    		}
+    		
+    	   &.filtered.gray-green { /* Genese filter style */
+
+                padding: 0;
+                
+	           .container {
+    	           
+    	           border-top: none;
+    	           
+    	           .asset-metadata {
+    	               padding-top: 0.75em;
+    	           }
+    	           
+    	           h3.asset-title {
+    	               padding-bottom: 0;
+    	           }
+    	           
+    	           .asset-content,
+    	           .asset-social-media {
+    	               display: none;
+    	           }
+    	       }
+               
+               & ~ .filtered.gray-green {
+		           .container {
+		              border-top: 5px solid #73A0A2;
+		           }
+		       }
+		       
+		       &:last-child {
+                   .container {
+                       padding-bottom: 120px;
+                   }
+               }
+    	    }
     	}
     	
         .asset-actions {
