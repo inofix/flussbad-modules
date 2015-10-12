@@ -725,7 +725,7 @@ input {
             
             text-align: center;
             border: none;
-            padding: 0;
+            padding: 0 8.54701% 1em;
             margin: 0;
             font-family: $bold-font-family;
             font-size: $h1-font-size;
@@ -733,7 +733,11 @@ input {
             white-space: normal; /* Restore normal white-space behaviour
                      (nowrap is required for scrollview, 
                      see below) */
-        }    
+        }
+        
+        .author {
+            padding: 0 8.54701%;
+        }  
     }
               
     .statement.gray-green {

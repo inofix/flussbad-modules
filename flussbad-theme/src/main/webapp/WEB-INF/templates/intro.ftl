@@ -2,7 +2,7 @@
     Intro template: Format the Intro structure
     
     Created:    2015-08-28 17:52 by Christian Berndt
-    Modified:   2015-10-09 10:29 by Nils Sanders
+    Modified:   2015-10-12 14:43 by Nils Sanders
     Version:    1.0.0
     
     Please note: Although this template is stored in the 
