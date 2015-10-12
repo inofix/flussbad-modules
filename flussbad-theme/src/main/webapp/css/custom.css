@@ -456,8 +456,7 @@ input {
     
     
     .intro.with-image,
-    .introduction
-    {
+    .introduction {
     
         background-color: transparent !important;
         
@@ -484,6 +483,7 @@ input {
     .intro.with-image {
     
         background-color: transparent !important;
+        overflow: hidden;
         
         .keyvisual {
             
@@ -602,6 +602,7 @@ input {
     .intro.turquois {
     
         background-color: $color-turquois;
+        padding: 2em 0 8em;
         
         h1 {
            color: #fff;
@@ -616,6 +617,10 @@ input {
                color: $color-gray-green; 
             }
         }
+    }
+    
+    .intro.with-image.turquois {
+        padding: 0;
     }
     
     .introduction {
