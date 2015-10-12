@@ -1,10 +1,12 @@
 @import "compass";
 @import "mixins";
 
-$dockbar-height: 60px;
-$dockbar-and-nav-height: 120px;
-$nav-height: 60px;
-$nav-and-categories-height: 180px; 
+$dockbarHeight: 60px;
+$dockbarNavHeight: 120px;
+$navHeight: 60px;
+$categoriesHeight: 120px;
+$navCategoriesHeight: 180px;
+$containerPush: -165px;
 
 /* typography */
 $regular-font-family: 'Apercu Pro Regular', Calibri, Roboto, sans-serif;
@@ -309,7 +311,7 @@ input {
     
     #navigation.affix-top .navbar-inner {
     
-        height: $nav-height *3;
+        height: $navHeight *3;
     
     	background: -moz-linear-gradient(top,  rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
     	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.25)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
@@ -396,7 +398,7 @@ input {
         }
         
         .divider-vertical {
-            height: $nav-height;
+            height: $navHeight;
         }
     }
         
@@ -410,6 +412,7 @@ input {
     
     .intro {
     
+        padding: 2em 0 8em;
         text-align: center;
                 
         .abstract {
@@ -417,7 +420,7 @@ input {
             padding: 0 15px 30px 15px;
             
             p {
-                min-height: 3em;
+                min-height: 5em;
             }
         }        
                     
@@ -450,19 +453,19 @@ input {
         }
         
         .link {
-            padding: 40px 0 100px;
+            padding: 40px 0 0;
         }
     }
     
     
-    .intro.with-image,
-    .introduction {
+    .intro.with-image {
     
         background-color: transparent !important;
+        overflow: hidden;
         
         .keyvisual {
             width: 100%;
-            height: calc(100vh - $nav-height);
+            height: 100vh;
             text-align: center;
             overflow: hidden;
             display: table;
@@ -476,16 +479,6 @@ input {
             
             filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
             -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
-
-        } 
-    } 
-       
-    .intro.with-image {
-    
-        background-color: transparent !important;
-        overflow: hidden;
-        
-        .keyvisual {
             
             .claim {
                 width: 100%;
@@ -494,15 +487,15 @@ input {
                 vertical-align: middle;
                 
                 h1 {
-		            padding: 0;
-		            font-size: 42px;
-		        }
+                    padding: 0;
+                    font-size: 42px;
+                }
             }
-        } 
+        }
         
         .abstracts {
     
-            margin-top: -150px;
+            margin-top: $containerPush;
             
             .abstract {
                 position: relative;
@@ -602,7 +595,7 @@ input {
     .intro.turquois {
     
         background-color: $color-turquois;
-        padding: 2em 0 8em;
+/*         padding: 2em 0 8em; */
         
         h1 {
            color: #fff;
@@ -621,10 +614,6 @@ input {
     
     .intro.with-image.turquois {
         padding: 0;
-    }
-    
-    .introduction {
-        margin-top: $nav-height;
     }
     
     
@@ -656,6 +645,8 @@ input {
         
             text-align: center; 
             background: white;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
             
             .asset-metadata {
                display: inline;
@@ -823,7 +814,7 @@ input {
     
         .keyvisual {
             width: 100%;
-            height: calc(100vh - 150px);
+            height: calc(100vh - #{$navHeight}) !important;
             overflow: hidden;
             
             -webkit-background-size: cover;
@@ -839,7 +830,7 @@ input {
         
         &.with-keyvisual {
             .container {
-                margin-top: -210px;
+                margin-top: $containerPush;
             }
         }
     
@@ -873,7 +864,7 @@ input {
                         font-size: $h3-font-size;
                         text-transform: uppercase;
                         letter-spacing: $letter-spacing-wide;
-                        margin: 2em 0 0;
+                        margin: 3em 0 .5em;
                     }
                     
                     img {
@@ -906,6 +897,17 @@ input {
         }
     }
     
+    .below-category .story.with-keyvisual {
+    
+        .keyvisual {
+            height: calc(100vh - #{$navCategoriesHeight}) !important;
+        }
+        
+        .container {
+            margin-top: $containerPush !important;
+        }
+    }
+    
     .project-story {
     
         -webkit-transition: margin-top 0.2s; 
@@ -914,7 +916,7 @@ input {
         -o-transition: margin-top 0.2s; 
         transition: margin-top 0.2s;
         
-        margin-top: $nav-and-categories-height;
+        margin-top: $navCategoriesHeight;
                 
         .story {
             .content {
@@ -926,13 +928,36 @@ input {
         
         &.categories-closed,
         &.categories-auto-closed {
-            margin-top: $nav-height;
+            margin-top: $navHeight;
         }
     }
     
     .toc {
         position: fixed; 
         margin-top: 60px; /* same as margin-top of content > h1 */
+    }
+    
+    
+    
+/* ----------------------------------------------- Wir */
+    
+    .introduction {
+    
+        .keyvisual {
+            width: 100%;
+            height: 75vh !important;
+            overflow: hidden;
+            
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
+            -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
+        }
     }
     
     
@@ -992,7 +1017,7 @@ input {
      */
     
     .below-navigation {
-    	padding-top: $nav-height; 
+    	padding-top: $navHeight; 
     }
     
     .portlet-asset-categories-navigation {
@@ -1006,7 +1031,7 @@ input {
     
         .portlet-body .taglib-asset-categories-navigation {
     
-            min-height: 120px;       
+            min-height: $categoriesHeight;       
                 
             a {
     			@include filter-item(); 
@@ -1068,7 +1093,7 @@ input {
         background: lighten($color-sand, 3%);
         
         position: fixed; 
-        top: $nav-height;
+        top: $navHeight;
         z-index: 10; 
         width: 100%;  
         
@@ -1085,7 +1110,7 @@ input {
                           
             position: fixed; 
             right: 0;
-            top: $nav-height;
+            top: $navHeight;
             padding: 25px;
                         
             font-family: $regular-font-family;
@@ -1136,7 +1161,7 @@ input {
     .portlet-asset-categories-navigation.affix, 
     .portlet-asset-categories-navigation.affix-top {
         position: fixed;
-        top: $nav-height;
+        top: $navHeight;
     }
 
     .portlet-asset-publisher {
@@ -1150,7 +1175,7 @@ input {
     	transition: margin-top 0.2s;
         
         &.default-publisher {
-            margin-top: $nav-and-categories-height;
+            margin-top: $navCategoriesHeight;
         }
         
         &.project-publisher {
@@ -1167,7 +1192,7 @@ input {
         
         &.categories-auto-closed,
         &.categories-closed {
-            margin-top: $nav-height;
+            margin-top: $navHeight;
         }
         
         .taglib-categorization-filter.entry-title {
@@ -1531,7 +1556,7 @@ input {
     
     .portlet-asset-publisher.story-publisher {
         
-        margin-top: $nav-height; 
+        margin-top: $navHeight; 
         width: 100%;
     
         .asset-content {
@@ -1551,7 +1576,7 @@ input {
     }
     
     .portlet-journal-content.first-display {
-        margin-top: $nav-height;
+        margin-top: $navHeight;
     }
     
     .portlet-site-map.project-sections {
@@ -1689,7 +1714,7 @@ input {
         
             font-size: 30px;
             text-align: center;
-            padding: 1.5em 0;
+            padding: 1em 0;
         
             ul {
                 list-style: none;
@@ -1731,7 +1756,7 @@ input {
         
         .span6 {
             margin-left: 0;
-            min-height: 280px;
+            min-height: 240px;
         }
         
         .span6:nth-child(-n+1) {
@@ -1766,11 +1791,11 @@ input {
         #navigation,
         .portlet-dynamic-data-mapping,
         .portlet-journal {
-            margin-top: $dockbar-height;
+            margin-top: $dockbarHeight;
         } 
          
         .below-navigation {
-            padding-top: $dockbar-and-nav-height; 
+            padding-top: $dockbarNavHeight; 
         }
  
     
@@ -1780,7 +1805,7 @@ input {
         .portlet-asset-categories-navigation .toggle,
         .portlet-site-map.project-sections,
         .portlet-site-map.project-sections .toggle {
-            top: $dockbar-and-nav-height; 
+            top: $dockbarNavHeight; 
         }
                
         .portlet-configuration.portlet-asset-categories-navigation {
