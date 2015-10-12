@@ -49,7 +49,7 @@
     <#else>
         <div class="claim">
             <div class="row">
-                <div class="span6 offset3">
+                <div class="span8 offset2">
                     <h1>${headline.getData()}</h1>
                 </div>
             </div>
