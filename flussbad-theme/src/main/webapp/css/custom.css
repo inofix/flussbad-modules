@@ -1176,6 +1176,15 @@ input {
         
         &.default-publisher {
             margin-top: $navCategoriesHeight;
+            
+            /* Do not show asset-categories that don't have the "show-in-logbook" class */
+            .asset-abstract .asset-metadata .metadata-categories a.asset-category {
+                display: none; 
+            }
+            
+            .asset-abstract .asset-metadata .metadata-categories a.asset-category.show-in-logbook {
+                display: inline;
+            }
         }
         
         &.project-publisher {
