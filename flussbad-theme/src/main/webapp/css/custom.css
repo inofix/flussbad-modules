@@ -1247,7 +1247,17 @@ input {
                 }
                 
                 .asset-social-media {
-                   .shariff {                        
+                
+                   .shariff {  
+                   
+                        .facebook,
+                        .twitter {
+                            .share_count {
+                                color: $color-turquois;
+                                background-color: transparent;
+                            }
+                        }
+                    
     	                 a {
     	                     color: $color-turquois;
     	                     &:hover {
@@ -1487,6 +1497,34 @@ input {
     		}
     		
     		.shariff {
+    		
+                .facebook,
+                .twitter {
+                    .share_count {
+                        color: $navigation-font-color;
+                        background-color: transparent;
+                    }
+                }
+    
+                li {
+                    .share_count {
+                        position: relative; 
+                        display: inline; 
+                        padding: 0; 
+                        top: 0; 
+                        right: 0; 
+                        font-family: $regular-font-family;
+                        font-size: $default-font-size; 
+                    }
+                    
+                    .share_count:before {
+                        content: " ("; 
+                    }
+                    
+                    .share_count:after {
+                        content: ")"; 
+                    }
+                }
     		
                 ul {
                 	li.shariff-button {
