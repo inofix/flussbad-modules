@@ -2,7 +2,7 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2015-10-06 11:48 by Christian Berndt
+ * Modified:    2015-10-13 11:48 by Michael Lustenberger
  * Version:     1.1.1
  */
 
@@ -75,21 +75,21 @@ AUI().ready('node', function(A) {
     var toggle = A.one('.portlet-site-map.project-sections .toggle-button');
 
     var portlet = A.one('.portlet-site-map.project-sections');
-    
+
     var story = A.one('.project-story');
 
     if (toggle) {
         toggle.on('click', function(event) {
-        	
+
             if (portlet) {
-            	portlet.toggleClass('categories-closed');
-            	portlet.removeClass('categories-auto-closed');
+                portlet.toggleClass('categories-closed');
+                portlet.removeClass('categories-auto-closed');
             }
-            
+
             if (story) {
-            	story.toggleClass('categories-closed');
-            	story.removeClass('categories-auto-closed');
-            }            
+                story.toggleClass('categories-closed');
+                story.removeClass('categories-auto-closed');
+            }
 
         });
     }
@@ -123,7 +123,7 @@ AUI().ready('node', 'node-scroll-info', function(A) {
             story.addClass('categories-auto-closed');
         }
         if (sitemap) {
-        	sitemap.addClass('categories-auto-closed');
+            sitemap.addClass('categories-auto-closed');
         }
 
     });
@@ -140,7 +140,7 @@ AUI().ready('node', 'node-scroll-info', function(A) {
             story.removeClass('categories-auto-closed');
         }
         if (sitemap) {
-        	sitemap.removeClass('categories-auto-closed');
+            sitemap.removeClass('categories-auto-closed');
         }
 
     });
@@ -415,17 +415,16 @@ AUI().ready('imageloader', function (Y) {
     var imageGroup = new Y.ImgLoadGroup({ name: 'foldGroup', foldDistance: 2 });
 //    imageGroup.addTrigger('.item', 'mouseover');
 
-//TODO: enable    var images = document.getElementsByTagName("img");
 //TODO: decide on going for CSS-Classes or elements: Y.all('img')
-    var images = [];
+    var images = document.getElementsByTagName("img");
 
 //    console.log("imageloader: " + images.length);
     for (var i = 0; i < images.length; i++)
     {
         if ( images[i].getAttribute("data-src") )
         {
-//            console.log(images[i].get("title"));
-//            console.log(images[i].get("id"));
+//            console.log(images[i].getAttribute("title"));
+//            console.log(images[i].getAttribute("id"));
             imageGroup.registerImage({
                 domId: images[i].getAttribute("id"),
                 srcUrl: images[i].getAttribute("data-src")
