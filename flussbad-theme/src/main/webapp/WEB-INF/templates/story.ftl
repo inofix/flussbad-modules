@@ -55,7 +55,7 @@
                         <#assign path = "${cur_section.image.getData()}">
                         
                         <#if path?has_content>
-                            <img src="${path}"/>
+                            <img src="${path}&imageThumbnail=3"/>
                         </#if>
                     </div>
                     <#assign i = i+1>

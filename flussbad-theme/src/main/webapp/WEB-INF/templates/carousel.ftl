@@ -23,9 +23,9 @@
                         </div>
                         -->
                         <#if i gt 0>
-                            <img data-src="${cur_image.getData()}" title="${cur_image.caption.getData()}">
+                            <img data-src="${cur_image.getData()}&imageThumbnail=3" title="${cur_image.caption.getData()}">
                         <#else>
-                            <img src="${cur_image.getData()}" title="${cur_image.caption.getData()}">
+                            <img src="${cur_image.getData()}&imageThumbnail=3" title="${cur_image.caption.getData()}">
                         </#if>
                     </div>
                     <#assign i = i+1>
