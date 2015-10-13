@@ -115,6 +115,10 @@ input {
        line-height: $lead-line-height;
     }
     
+    p {
+        margin-bottom: $default-line-height;
+    }
+    
     strong {
         font-family: $bold-font-family;
     }
