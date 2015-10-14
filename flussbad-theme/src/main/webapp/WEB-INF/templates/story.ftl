@@ -2,8 +2,8 @@
     Story template: Format the Story structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2015-10-13 22:59 by Michael Lustenberger
-    Version:    1.0.2
+    Modified:   2015-10-14 18:59 by Christian Berndt
+    Version:    1.0.3
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -26,7 +26,7 @@
     <#if keyVisual.getData()?has_content>
         <#assign cssClass = "with-keyvisual" >
         <#assign hasKeyVisual = true>
-        <#assign style = "background-image: url('${keyVisual.getData()}');" >
+        <#assign style = "background-image: url('${keyVisual.getData()}&imageThumbnail=3');" >
     </#if>
 </#if>
 
