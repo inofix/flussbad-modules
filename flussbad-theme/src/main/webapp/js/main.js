@@ -201,6 +201,8 @@ YUI().use('event', 'node', 'scrollview-base', 'scrollview-paginator', function(Y
     scrollView.render();
 
     var content = scrollView.get("contentBox");
+    var total = scrollView.pages.get('total');
+    var imageArray = scrollView.get("srcNode").get("children").get(0);
 
     content.delegate("click", function(e) {
         // For mouse based devices, we need to make sure the click isn't fired
@@ -210,9 +212,23 @@ YUI().use('event', 'node', 'scrollview-base', 'scrollview-paginator', function(Y
         }
     }, "img");
 
-    // Prevent default image drag behavior
+    // Prevent default image drag behavior,
+    // just load the prev and next image url
     content.delegate("mousedown", function(e) {
+
         e.preventDefault();
+
+        var idx = scrollView.pages.get('index');
+        var next = idx + 1;
+        if (next >= total) {
+            next = 0;
+        }
+        var prev = idx - 1;
+        if (prev < 0) {
+            prev = total - 1;
+        }
+        loadImgUrl(imageArray[next].get("firstElementChild"));
+        loadImgUrl(imageArray[prev].get("firstElementChild"));
     }, "img");
 
     // lazyLoad the image Url on demand only
@@ -222,10 +238,6 @@ YUI().use('event', 'node', 'scrollview-base', 'scrollview-paginator', function(Y
             img.setAttribute("src", img.getAttribute("data-src"));
         }
     }
-
-    var imageArray = scrollView.get("srcNode").get("children").get(0);
-
-    var total = scrollView.pages.get('total');
 
     var nextControl = Y.one('.right.carousel-control');
 
@@ -268,7 +280,6 @@ YUI().use('event', 'node', 'scrollview-base', 'scrollview-paginator', function(Y
             loadImgUrl(imageArray[target].get("firstElementChild"));
         });
     }
-
 });
 
 
