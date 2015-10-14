@@ -2,8 +2,8 @@
     Intro template: Format the Intro structure
     
     Created:    2015-08-28 17:52 by Christian Berndt
-    Modified:   2015-10-12 14:43 by Nils Sanders
-    Version:    1.0.0
+    Modified:   2015-10-14 18:57 by Christian Berndt
+    Version:    1.0.1
     
     Please note: Although this template is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -20,7 +20,7 @@
     <#if background.getData()?has_content>    
         <#assign cssClass = "with-image" >
         <#assign hasKeyVisual = true>
-        <#assign style = "background-image: url('${background.getData()}');" >
+        <#assign style = "background-image: url('${background.getData()}&imageThumbnail=3');" >
     </#if>
 </#if>
 
