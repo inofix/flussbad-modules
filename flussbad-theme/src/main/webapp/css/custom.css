@@ -115,6 +115,10 @@ input {
        line-height: $lead-line-height;
     }
     
+    p {
+        margin-bottom: $default-line-height;
+    }
+    
     strong {
         font-family: $bold-font-family;
     }
@@ -715,11 +719,16 @@ input {
     
     .statement {
         
-        padding: 40px 0;
+        padding: 3em 0;
+        overflow: hidden; 
+        
+        @media (max-width: 767px) { height: $full-image-height-xs; }
+        @media (min-width: 768px) { height: $full-image-height-sm; }
+        @media (min-width: 992px) { height: $full-image-height-md; }
+        @media (min-width: 1200px) { height: $full-image-height-lg; }
         
         .item {
-            max-height: 520px; 
-            overflow: hidden; 
+            margin: auto 0;
         }
     
         blockquote {
@@ -728,8 +737,8 @@ input {
             border: none;
             padding: 0 8.54701% 1em;
             margin: 0;
-            font-family: $bold-font-family;
-            font-size: $h1-font-size;
+            font-family: $medium-font-family;
+            font-size: $h2-font-size;
             line-height: 125%;
             white-space: normal; /* Restore normal white-space behaviour
                      (nowrap is required for scrollview, 
