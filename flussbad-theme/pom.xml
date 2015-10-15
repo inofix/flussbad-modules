@@ -9,7 +9,7 @@
 	<artifactId>flussbad-theme</artifactId>
 	<packaging>war</packaging>
 	<name>Flussbad Theme</name>
-	<version>0.3.4-SNAPSHOT</version>
+	<version>0.4.1-SNAPSHOT</version>
 	<build>
 		<plugins>
             <plugin>

@@ -719,7 +719,12 @@ input {
     
     .statement {
         
-        padding: 180px 0;
+        padding: 40px 0;
+        
+        .item {
+            max-height: 520px; 
+            overflow: hidden; 
+        }
     
         blockquote {
             

@@ -1,13 +1,13 @@
 <#--
     Story template: Format the Story structure
-    
+
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2015-10-07 22:45 by Christian Berndt
-    Version:    1.0.0
-    
-    Please note: Although this template is stored in the 
-    site's context it's source is managed via git. Whenever you 
-    change the template online make sure that you commit your 
+    Modified:   2015-10-14 18:59 by Christian Berndt
+    Version:    1.0.3
+
+    Please note: Although this template is stored in the
+    site's context it's source is managed via git. Whenever you
+    change the template online make sure that you commit your
     changes to the flussbad-modules repo, too.
 -->
 <#assign cssClass = "">
@@ -26,7 +26,7 @@
     <#if keyVisual.getData()?has_content>
         <#assign cssClass = "with-keyvisual" >
         <#assign hasKeyVisual = true>
-        <#assign style = "background-image: url('${keyVisual.getData()}');" >
+        <#assign style = "background-image: url('${keyVisual.getData()}&imageThumbnail=3');" >
     </#if>
 </#if>
 
@@ -51,16 +51,16 @@
                     <div class="section" id="section-${i}">
                         <h2>${cur_section.getData()}</h2>
                         <div class="section-body">${cur_section.body.getData()}</div>
-                        
+
                         <#assign path = "${cur_section.image.getData()}">
-                        
+
                         <#if path?has_content>
-                            <img src="${path}"/>
+                            <img id="storyImage${i}" data-src="${path}&imageThumbnail=3"/>
                         </#if>
                     </div>
                     <#assign i = i+1>
                 </#list>
-            </#if> 
+            </#if>
         </div>
         <#if displayToc>
             <div class="toc span2 offset8">
