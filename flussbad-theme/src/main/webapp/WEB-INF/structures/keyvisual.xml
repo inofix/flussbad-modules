@@ -5,15 +5,15 @@
     the page.
     
     Created:    2015-10-11 12:15 by Christian Berndt
-    Modified:   2015-10-11 12:15 by Christian Berndt
-    Version:    1.0.0
+    Modified:   2015-10-16 11:50 by Christian Berndt
+    Version:    1.0.1
     
     Please note: Although this structure is stored in the 
     site's context it's source is managed via git. Whenever you 
     change the structure online make sure that you commit your 
     changes to the flussbad-modules repo, too.
 -->
-    <dynamic-element dataType="document-library" fieldNamespace="ddm" indexType="keyword" localizable="true" name="keyvisual" readOnly="false" repeatable="false" required="true" showLabel="true" type="ddm-documentlibrary" width="">
+    <dynamic-element dataType="document-library" fieldNamespace="ddm" indexType="keyword" localizable="true" name="keyVisual" readOnly="false" repeatable="false" required="true" showLabel="true" type="ddm-documentlibrary" width="">
         <meta-data locale="de_DE">
             <entry name="label">
                 <![CDATA[Schlüsselbild]]>
