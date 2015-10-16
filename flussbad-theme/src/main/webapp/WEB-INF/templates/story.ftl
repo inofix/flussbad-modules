@@ -2,8 +2,8 @@
     Story template: Format the Story structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2015-10-14 18:59 by Christian Berndt
-    Version:    1.0.3
+    Modified:   2015-10-16 18:22 by Christian Berndt
+    Version:    1.0.4
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -48,15 +48,28 @@
             <#if section.getSiblings()?has_content>
                 <#assign i = 1>
                 <#list section.getSiblings() as cur_section>
+                
+                    <#assign path = "${cur_section.image.getData()}">
+                    <#assign imageAboveTheText = false>
+                    <#if cur_section.imageAboveTheText??>
+                        <#assign imageAboveTheText = getterUtil.getBoolean(cur_section.imageAboveTheText.getData())>
+                    </#if>
+                
                     <div class="section" id="section-${i}">
                         <h2>${cur_section.getData()}</h2>
-                        <div class="section-body">${cur_section.body.getData()}</div>
-
-                        <#assign path = "${cur_section.image.getData()}">
-
-                        <#if path?has_content>
-                            <img id="storyImage${i}" data-src="${path}&imageThumbnail=3"/>
+                        
+                        <#if imageAboveTheText >
+                            <#if path?has_content>
+                                <img id="storyImage${i}" data-src="${path}&imageThumbnail=3"/>
+                            </#if>
+                            <div class="section-body">${cur_section.body.getData()}</div>
+                        <#else >
+                            <div class="section-body">${cur_section.body.getData()}</div>
+                            <#if path?has_content>
+                                <img id="storyImage${i}" data-src="${path}&imageThumbnail=3"/>
+                            </#if>
                         </#if>
+                        
                     </div>
                     <#assign i = i+1>
                 </#list>
