@@ -824,6 +824,7 @@ input {
 
 /* ----------------------------------------------- Story */
     
+    .introduction,
     .story {
     
         .keyvisual {
@@ -911,6 +912,7 @@ input {
         }
     }
     
+    .below-category .introduction.with-keyvisual,
     .below-category .story.with-keyvisual {
     
         .keyvisual {
@@ -931,7 +933,8 @@ input {
         transition: margin-top 0.2s;
         
         margin-top: $navCategoriesHeight;
-                
+         
+        .introduction,       
         .story {
             .content {
                 h1, h3.category {
