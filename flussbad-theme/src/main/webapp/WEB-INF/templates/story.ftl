@@ -2,8 +2,8 @@
     story.ftl: Format the Story structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2015-10-16 18:22 by Christian Berndt
-    Version:    1.0.4
+    Modified:   2015-10-16 21:37 by Christian Berndt
+    Version:    1.0.5
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -43,7 +43,7 @@
         </#if>
 
         <div class="${cssStyle}">
-            <h3 class="category"><a href="#">Category</a></h3>
+            <h3 class="category"><a href="javascript:history.back();">Category</a></h3>
             <h1 id="section-0">${headline.getData()}</h1>
             <p class="lead">${teaser.getData()}</p>
             <#if section.getSiblings()?has_content>
