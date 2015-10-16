@@ -1,0 +1,55 @@
+<root available-locales="de_DE" default-locale="de_DE">
+<!--
+    introduction: A structure for a content object of 
+    type "introduction", which is an introductory text to 
+    a site area.
+    
+    Created:    2015-10-16 17:32 by Christian Berndt
+    Modified:   2015-10-16 17:32 by Christian Berndt
+    Version:    1.0.1
+    
+    Please note: Although this structure is stored in the 
+    site's context it's source is managed via git. Whenever you 
+    change the structure online make sure that you commit your 
+    changes to the flussbad-modules repo, too.
+-->
+    <dynamic-element dataType="string" indexType="keyword" localizable="true" name="headline" readOnly="false" repeatable="false" required="true" showLabel="true" type="text" width="large">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[Überschrift]]>
+            </entry>
+            <entry name="predefinedValue">
+                <![CDATA[]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Gib der Einführung eine aussagekräftige Überschrift.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>
+    <dynamic-element dataType="string" indexType="keyword" localizable="true" name="teaser" readOnly="false" repeatable="false" required="false" showLabel="true" type="textarea" width="large">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[Teaser]]>
+            </entry>
+            <entry name="predefinedValue">
+                <![CDATA[]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Schreib einen kurzen Anreisser für den Bereich, der nicht mehr als 500 Zeichen umfasst.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>
+    <dynamic-element dataType="html" fieldNamespace="ddm" indexType="keyword" localizable="true" name="description" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-text-html" width="large">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[Beschreibung]]>
+            </entry>
+            <entry name="predefinedValue">
+                <![CDATA[]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[In der Beschreibung darf es etwas ausführlicher werden.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>
+</root>
