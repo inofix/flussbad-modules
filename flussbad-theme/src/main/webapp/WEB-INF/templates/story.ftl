@@ -2,8 +2,8 @@
     story.ftl: Format the Story structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2015-10-16 21:37 by Christian Berndt
-    Version:    1.0.5
+    Modified:   2015-10-17 00:25 by Christian Berndt
+    Version:    1.0.6
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -50,7 +50,6 @@
                 <#assign i = 1>
                 <#list section.getSiblings() as cur_section>
                 
-                    <#assign path = "${cur_section.image.getData()}">
                     <#assign imageAboveTheText = false>
                     <#if cur_section.imageAboveTheText??>
                         <#assign imageAboveTheText = getterUtil.getBoolean(cur_section.imageAboveTheText.getData())>
@@ -60,15 +59,31 @@
                         <h2>${cur_section.getData()}</h2>
                         
                         <#if imageAboveTheText >
-                            <#if path?has_content>
-                                <img id="storyImage${i}" data-src="${path}&imageThumbnail=3"/>
+                        
+                            <#if cur_section.image.getSiblings()?has_content>
+                                <#list cur_section.image.getSiblings() as cur_image >
+                                    <#assign path = "${cur_image.getData()}">
+                                    <#if path?has_content>
+                                        <img src="${path}&imageThumbnail=3"/>
+                                    <#-- <img id="storyImage${i}" data-src="${path}&imageThumbnail=3"/> -->
+                                    </#if>
+                                </#list>
                             </#if>
+                            
                             <div class="section-body">${cur_section.body.getData()}</div>
                         <#else >
                             <div class="section-body">${cur_section.body.getData()}</div>
-                            <#if path?has_content>
-                                <img id="storyImage${i}" data-src="${path}&imageThumbnail=3"/>
+                            
+                            <#if cur_section.image.getSiblings()?has_content>
+                                <#list cur_section.image.getSiblings() as cur_image >
+                                    <#assign path = "${cur_image.getData()}">
+                                    <#if path?has_content>
+                                        <img src="${path}&imageThumbnail=3"/>
+                                    <#-- <img id="storyImage${i}" data-src="${path}&imageThumbnail=3"/> -->
+                                    </#if>
+                                </#list>
                             </#if>
+                            
                         </#if>
                         
                     </div>
