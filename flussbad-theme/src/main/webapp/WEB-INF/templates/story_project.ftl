@@ -1,9 +1,9 @@
 <#--
-    story.ftl: Format the Story structure
+    story_project.ftl: Format the project article structure
 
-    Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2015-10-16 18:22 by Christian Berndt
-    Version:    1.0.4
+    Created:    2015-10-16 19:04 by Christian Berndt
+    Modified:   2015-10-16 19:04 by Christian Berndt
+    Version:    1.0.0
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
