@@ -5,8 +5,8 @@
     long texts.
     
     Created:    2015-10-01 18:55 by Christian Berndt
-    Modified:   2015-10-16 23:50 by Christian Berndt
-    Version:    0.9.2
+    Modified:   2015-10-17 13:11 by Christian Berndt
+    Version:    0.9.3
     
     Please note: Although this structure is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -80,7 +80,7 @@
             </meta-data>
         </dynamic-element>
         <dynamic-element dataType="document-library" fieldNamespace="ddm" indexType="keyword" localizable="true" name="image" readOnly="false" repeatable="true" required="false" showLabel="true" type="ddm-documentlibrary" width="">
-            <dynamic-element dataType="string" indexType="keyword" localizable="true" name="Bildunterschrift" readOnly="false" repeatable="false" required="false" showLabel="true" type="textarea" width="small">
+            <dynamic-element dataType="string" indexType="keyword" localizable="true" name="caption" readOnly="false" repeatable="false" required="false" showLabel="true" type="textarea" width="small">
                 <meta-data locale="de_DE">
                     <entry name="label">
                         <![CDATA[Bildunterschrift]]>
@@ -89,7 +89,7 @@
                         <![CDATA[]]>
                     </entry>
                     <entry name="tip">
-                        <![CDATA[]]>
+                        <![CDATA[Gib jedem Bild eine knappe und aussagekräftige Bildunterschrift.]]>
                     </entry>
                 </meta-data>
             </dynamic-element>

@@ -2,8 +2,8 @@
     story.ftl: Format the Story structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2015-10-17 00:25 by Christian Berndt
-    Version:    1.0.6
+    Modified:   2015-10-17 13:08 by Christian Berndt
+    Version:    1.0.7
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -61,12 +61,14 @@
                         <#if imageAboveTheText >
                         
                             <#if cur_section.image.getSiblings()?has_content>
+                                <#assign j = 1 >
                                 <#list cur_section.image.getSiblings() as cur_image >
                                     <#assign path = "${cur_image.getData()}">
                                     <#if path?has_content>
-                                        <img src="${path}&imageThumbnail=3"/>
-                                    <#-- <img id="storyImage${i}" data-src="${path}&imageThumbnail=3"/> -->
+                                        <img id="story-image-${i}-${j}" data-src="${path}&imageThumbnail=3"/>
+                                        <div class="caption">${cur_image.caption.getData()}</div>
                                     </#if>
+                                    <#assign j = j+1> 
                                 </#list>
                             </#if>
                             
@@ -75,12 +77,14 @@
                             <div class="section-body">${cur_section.body.getData()}</div>
                             
                             <#if cur_section.image.getSiblings()?has_content>
+                                <#assign j = 1 >
                                 <#list cur_section.image.getSiblings() as cur_image >
                                     <#assign path = "${cur_image.getData()}">
                                     <#if path?has_content>
-                                        <img src="${path}&imageThumbnail=3"/>
-                                    <#-- <img id="storyImage${i}" data-src="${path}&imageThumbnail=3"/> -->
+                                        <img id="story-image-${i}-${j}" data-src="${path}&imageThumbnail=3"/>
+                                        <div class="caption">${cur_image.caption.getData()}</div>
                                     </#if>
+                                     <#assign j = j+1> 
                                 </#list>
                             </#if>
                             

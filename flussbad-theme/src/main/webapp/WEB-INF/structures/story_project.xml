@@ -5,8 +5,8 @@
     long texts.
     
     Created:    2015-10-16 19:35 by Christian Berndt
-    Modified:   2015-10-16 19:35 by Christian Berndt
-    Version:    0.9.0
+    Modified:   2015-10-17 13:11 by Christian Berndt
+    Version:    0.9.1
     
     Please note: Although this structure is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -82,7 +82,7 @@
         <dynamic-element dataType="boolean" indexType="keyword" localizable="true" name="imageAboveTheText" readOnly="false" repeatable="false" required="false" showLabel="true" type="checkbox" width="">
             <meta-data locale="de_DE">
                 <entry name="label">
-                    <![CDATA[Abbildung(en) vor dem Text]]>
+                    <![CDATA[Abbildung(en) vor dem Text?]]>
                 </entry>
                 <entry name="predefinedValue">
                     <![CDATA[false]]>
@@ -93,7 +93,7 @@
             </meta-data>
         </dynamic-element>
         <dynamic-element dataType="document-library" fieldNamespace="ddm" indexType="keyword" localizable="true" name="image" readOnly="false" repeatable="true" required="false" showLabel="true" type="ddm-documentlibrary" width="">
-            <dynamic-element dataType="string" indexType="keyword" localizable="true" name="Bildunterschrift" readOnly="false" repeatable="false" required="false" showLabel="true" type="textarea" width="small">
+            <dynamic-element dataType="string" indexType="keyword" localizable="true" name="caption" readOnly="false" repeatable="false" required="false" showLabel="true" type="textarea" width="small">
                 <meta-data locale="de_DE">
                     <entry name="label">
                         <![CDATA[Bildunterschrift]]>
@@ -102,7 +102,7 @@
                         <![CDATA[]]>
                     </entry>
                     <entry name="tip">
-                        <![CDATA[]]>
+                        <![CDATA[Gib jedem Bild eine knappe und aussagekräftige Bildunterschrift.]]>
                     </entry>
                 </meta-data>
             </dynamic-element>
@@ -136,7 +136,7 @@
                 <![CDATA[layoutUuid]]>
             </entry>
             <entry name="predefinedValue">
-                <![CDATA[0a5f85a1-9851-468e-acd8-30cb6f61d9a5]]>
+                <![CDATA[e98173e1-3554-43c1-b0f7-a7aed82bb7d6]]>
             </entry>
             <entry name="tip">
                 <![CDATA[Gib hier die uuid des betrefffenden Layouts an, auf dem Inhalte vom Typ "Story" angezeigt werden. Wenn Du jetzt nur Bahnhof verstehst, frag einen von Inofix - die machen das dann.]]>
