@@ -1,0 +1,30 @@
+<root available-locales="de_DE" default-locale="de_DE">
+<!--
+    article_logbook.xml: A structure for a content object of 
+    type "article_logbook", which is the standard structure for all
+    logbook contributions. 
+    This structure is meant to be configured as a child structure to the default article structure.
+    
+    Created:    2015-10-17 15:23 by Christian Berndt
+    Modified:   2015-10-17 15:23 by Christian Berndt
+    Version:    1.0.0
+    
+    Please note: Although this structure is stored in the 
+    site's context it's source is managed via git. Whenever you 
+    change the structure online make sure that you commit your 
+    changes to the flussbad-modules repo, too.
+-->
+    <dynamic-element dataType="string" indexType="keyword" localizable="true" name="layoutUuid" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="small">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[layoutUuid]]>
+            </entry>
+            <entry name="predefinedValue">
+                <![CDATA[93909e61-8ad3-45fa-bdd1-aa5ecaf6c812]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Gib hier die uuid des betrefffenden Layouts an, auf dem Inhalte vom Typ "Logbuchbeitrag" angezeigt werden. Wenn Du jetzt nur Bahnhof verstehst, frag einen von Inofix - die machen das dann.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>
+</root>

@@ -1,5 +1,5 @@
 <#--
-    story_project.ftl: Format the project article structure
+    article_project.ftl: Format the project article structure
 
     Created:    2015-10-16 19:04 by Christian Berndt
     Modified:   2015-10-17 14:35 by Christian Berndt
@@ -11,5 +11,5 @@
     changes to the flussbad-modules repo, too.
 -->
 
-<#-- Include the default story template to format the project story, too -->
+<#-- Include the default article template to format the project article, too -->
 <#include "${templatesPath}/41248" />
