@@ -1,8 +1,8 @@
 <root available-locales="de_DE" default-locale="de_DE">
 <!--
-    Story structure: A structure for a content object of 
-    type "Story", which is the standard structure for all
-    long texts.
+    story_project: A structure for a content object of 
+    type "project_story", which is the standard structure for 
+    all project stories.
     
     Created:    2015-10-16 19:35 by Christian Berndt
     Modified:   2015-10-17 13:11 by Christian Berndt
