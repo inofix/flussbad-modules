@@ -1,12 +1,12 @@
 <root available-locales="de_DE" default-locale="de_DE">
 <!--
-    story_project: A structure for a content object of 
-    type "project_story", which is the standard structure for 
-    all project stories.
+    article_xml: A structure for a content object of 
+    type "article", which is the standard structure for all
+    long texts.
     
-    Created:    2015-10-16 19:35 by Christian Berndt
-    Modified:   2015-10-17 13:11 by Christian Berndt
-    Version:    0.9.1
+    Created:    2015-10-01 18:55 by Christian Berndt
+    Modified:   2015-10-17 15:19 by Christian Berndt
+    Version:    0.9.4
     
     Please note: Although this structure is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -22,20 +22,7 @@
                 <![CDATA[]]>
             </entry>
             <entry name="tip">
-                <![CDATA[Gib Deinem Projektbeitrag eine knappe aber aussagekräftige Überschrift.]]>
-            </entry>
-        </meta-data>
-    </dynamic-element>
-    <dynamic-element dataType="document-library" fieldNamespace="ddm" indexType="keyword" localizable="true" name="keyVisual" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-documentlibrary" width="">
-        <meta-data locale="de_DE">
-            <entry name="label">
-                <![CDATA[Schlüsselbild]]>
-            </entry>
-            <entry name="predefinedValue">
-                <![CDATA[]]>
-            </entry>
-            <entry name="tip">
-                <![CDATA[Wähle ein Bild aus der Dokumentenbibliothek aus, das als Haupthintergrundbild verwendet werden soll. Achte darauf, dass das Bild mindestens 1024px breit ist.]]>
+                <![CDATA[Gib Deinem Beitrag eine knappe aber aussagekräftige Überschrift.]]>
             </entry>
         </meta-data>
     </dynamic-element>
@@ -82,7 +69,7 @@
         <dynamic-element dataType="boolean" indexType="keyword" localizable="true" name="imageAboveTheText" readOnly="false" repeatable="false" required="false" showLabel="true" type="checkbox" width="">
             <meta-data locale="de_DE">
                 <entry name="label">
-                    <![CDATA[Abbildung(en) vor dem Text?]]>
+                    <![CDATA[Abbildung(en) vor dem Text]]>
                 </entry>
                 <entry name="predefinedValue">
                     <![CDATA[false]]>
@@ -127,19 +114,6 @@
             </entry>
             <entry name="tip">
                 <![CDATA[Gib dem Abschnitt eine knappe aber aussagekräftige Zwischenüberschrift.]]>
-            </entry>
-        </meta-data>
-    </dynamic-element>
-    <dynamic-element dataType="string" indexType="keyword" localizable="true" name="layoutUuid" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="small">
-        <meta-data locale="de_DE">
-            <entry name="label">
-                <![CDATA[layoutUuid]]>
-            </entry>
-            <entry name="predefinedValue">
-                <![CDATA[e98173e1-3554-43c1-b0f7-a7aed82bb7d6]]>
-            </entry>
-            <entry name="tip">
-                <![CDATA[Gib hier die uuid des betrefffenden Layouts an, auf dem Inhalte vom Typ "Story" angezeigt werden. Wenn Du jetzt nur Bahnhof verstehst, frag einen von Inofix - die machen das dann.]]>
             </entry>
         </meta-data>
     </dynamic-element>
