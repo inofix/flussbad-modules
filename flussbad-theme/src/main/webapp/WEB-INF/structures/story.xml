@@ -1,6 +1,6 @@
 <root available-locales="de_DE" default-locale="de_DE">
 <!--
-    Story structure: A structure for a content object of 
+    story_xml: A structure for a content object of 
     type "Story", which is the standard structure for all
     long texts.
     

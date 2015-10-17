@@ -2,8 +2,8 @@
     story.ftl: Format the Story structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2015-10-17 13:08 by Christian Berndt
-    Version:    1.0.7
+    Modified:   2015-10-17 15:01 by Christian Berndt
+    Version:    1.0.8
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -66,14 +66,18 @@
                                     <#assign path = "${cur_image.getData()}">
                                     <#if path?has_content>
                                         <img id="story-image-${i}-${j}" data-src="${path}&imageThumbnail=3"/>
-                                        <div class="caption">${cur_image.caption.getData()}</div>
+                                        <#if cur_image.caption??>
+                                            <div class="caption">${cur_image.caption.getData()}</div>
+                                        </#if>
                                     </#if>
                                     <#assign j = j+1> 
                                 </#list>
                             </#if>
                             
                             <div class="section-body">${cur_section.body.getData()}</div>
+                            
                         <#else >
+                        
                             <div class="section-body">${cur_section.body.getData()}</div>
                             
                             <#if cur_section.image.getSiblings()?has_content>
@@ -82,8 +86,10 @@
                                     <#assign path = "${cur_image.getData()}">
                                     <#if path?has_content>
                                         <img id="story-image-${i}-${j}" data-src="${path}&imageThumbnail=3"/>
-                                        <div class="caption">${cur_image.caption.getData()}</div>
-                                    </#if>
+                                        <#if cur_image.caption??>
+                                            <div class="caption">${cur_image.caption.getData()}</div>
+                                        </#if>
+                                     </#if>
                                      <#assign j = j+1> 
                                 </#list>
                             </#if>
