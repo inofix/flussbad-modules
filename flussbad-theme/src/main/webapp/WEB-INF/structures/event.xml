@@ -4,103 +4,103 @@
     type "Event", which is used to record events.
     
     Created:    2015-10-01 19:00 by Christian Berndt
-    Modified:   2015-10-01 22:48 by Christian Berndt
-    Version:    0.9.1
+    Modified:   2015-10-17 18:27 by Christian Berndt
+    Version:    0.9.2
     
     Please note: Although this structure is stored in the 
     site's context it's source is managed via git. Whenever you 
     change the structure online make sure that you commit your 
     changes to the flussbad-modules repo, too.
 -->
-	<dynamic-element dataType="string" indexType="keyword" localizable="true" name="title" readOnly="false" repeatable="false" required="true" showLabel="true" type="text" width="large">
-		<meta-data locale="de_DE">
-			<entry name="label">
-				<![CDATA[Titel]]>
-			</entry>
-			<entry name="predefinedValue">
-				<![CDATA[]]>
-			</entry>
-			<entry name="tip">
-				<![CDATA[Gib hier den Titel der Veranstaltung ein. Dieses Feld muss ausgefüllt sein.]]>
-			</entry>
-		</meta-data>
-	</dynamic-element>
-	<dynamic-element dataType="date" fieldNamespace="ddm" indexType="keyword" localizable="true" name="date" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-date" width="small">
-		<meta-data locale="de_DE">
-			<entry name="label">
-				<![CDATA[Datum]]>
-			</entry>
-			<entry name="predefinedValue">
-				<![CDATA[]]>
-			</entry>
-			<entry name="tip">
-				<![CDATA[Wähle hier das Datum aus, an dem der Termin stattfindet.]]>
-			</entry>
-		</meta-data>
-	</dynamic-element>
-	<dynamic-element dataType="string" indexType="keyword" localizable="true" name="location" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="large">
-		<meta-data locale="de_DE">
-			<entry name="label">
-				<![CDATA[Veranstaltungsort]]>
-			</entry>
-			<entry name="predefinedValue">
-				<![CDATA[]]>
-			</entry>
-			<entry name="tip">
-				<![CDATA[Gib hier den Ort an, an dem die Veranstaltung stattfindet.]]>
-			</entry>
-		</meta-data>
-	</dynamic-element>
-	<dynamic-element dataType="html" fieldNamespace="ddm" indexType="keyword" localizable="true" name="summary" readOnly="false" repeatable="false" required="true" showLabel="true" type="ddm-text-html" width="large">
-		<meta-data locale="de_DE">
-			<entry name="label">
-				<![CDATA[Kurzbeschreibung]]>
-			</entry>
-			<entry name="predefinedValue">
-				<![CDATA[]]>
-			</entry>
-			<entry name="tip">
-				<![CDATA[Gib hier eine kurze Beschreibung der Veranstaltung an. Worum geht es? Wer spricht? Warum ist das wichtig?]]>
-			</entry>
-		</meta-data>
-	</dynamic-element>
-	<dynamic-element dataType="string" indexType="keyword" localizable="true" name="section" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="large">
-		<dynamic-element dataType="html" fieldNamespace="ddm" indexType="keyword" localizable="true" name="Textkörper" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-text-html" width="large">
-			<meta-data locale="de_DE">
-				<entry name="label">
-					<![CDATA[Textkörper]]>
-				</entry>
-				<entry name="predefinedValue">
-					<![CDATA[]]>
-				</entry>
-				<entry name="tip">
-					<![CDATA[Schreibe hier Deine ausführliche Veranstaltungsbeschreibung. Wenn es viel zu beschreiben gibt, dann hast Du die Möglichkeit, Deine Beschreibung in mehrere Abschnitte zu gliedern und mit Zwischenüberschriften zu versehen.]]>
-				</entry>
-			</meta-data>
-		</dynamic-element>
-		<meta-data locale="de_DE">
-			<entry name="label">
-				<![CDATA[Abschnitt]]>
-			</entry>
-			<entry name="predefinedValue">
-				<![CDATA[]]>
-			</entry>
-			<entry name="tip">
-				<![CDATA[Wenn Du die Beschreibung in mehrere Abschnitte gliedern möchtest, dann hast Du hier die Möglichkeit, den einzelnen Abschnitten Zwischenüberschriften zu geben.]]>
-			</entry>
-		</meta-data>
-	</dynamic-element>
-	<dynamic-element dataType="string" indexType="keyword" localizable="true" name="layoutUuid" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="small">
-		<meta-data locale="de_DE">
-			<entry name="label">
-				<![CDATA[layoutUuid]]>
-			</entry>
-			<entry name="predefinedValue">
-				<![CDATA[]]>
-			</entry>
-			<entry name="tip">
-				<![CDATA[Gib hier die uuid des betrefffenden Layouts an, auf dem Inhalte vom Typ "Termin" angezeigt werden. Wenn Du jetzt nur Bahnhof verstehst, frag einen von Inofix - die machen das dann.]]>
-			</entry>
-		</meta-data>
-	</dynamic-element>
+    <dynamic-element dataType="string" indexType="keyword" localizable="true" name="title" readOnly="false" repeatable="false" required="true" showLabel="true" type="text" width="large">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[Titel]]>
+            </entry>
+            <entry name="predefinedValue">
+                <![CDATA[]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Gib hier den Titel der Veranstaltung ein. Dieses Feld muss ausgefüllt sein.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>
+    <dynamic-element dataType="date" fieldNamespace="ddm" indexType="keyword" localizable="true" name="date" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-date" width="small">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[Datum]]>
+            </entry>
+            <entry name="predefinedValue">
+                <![CDATA[]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Wähle hier das Datum aus, an dem der Termin stattfindet.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>
+    <dynamic-element dataType="string" indexType="keyword" localizable="true" name="location" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="large">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[Veranstaltungsort]]>
+            </entry>
+            <entry name="predefinedValue">
+                <![CDATA[]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Gib hier den Ort an, an dem die Veranstaltung stattfindet.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>
+    <dynamic-element dataType="html" fieldNamespace="ddm" indexType="keyword" localizable="true" name="summary" readOnly="false" repeatable="false" required="true" showLabel="true" type="ddm-text-html" width="large">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[Kurzbeschreibung]]>
+            </entry>
+            <entry name="predefinedValue">
+                <![CDATA[]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Gib hier eine kurze Beschreibung der Veranstaltung an. Worum geht es? Wer spricht? Warum ist das wichtig?]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>
+    <dynamic-element dataType="string" indexType="keyword" localizable="true" name="section" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="large">
+        <dynamic-element dataType="html" fieldNamespace="ddm" indexType="keyword" localizable="true" name="Textkörper" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-text-html" width="large">
+            <meta-data locale="de_DE">
+                <entry name="label">
+                    <![CDATA[Textkörper]]>
+                </entry>
+                <entry name="predefinedValue">
+                    <![CDATA[]]>
+                </entry>
+                <entry name="tip">
+                    <![CDATA[Schreibe hier Deine ausführliche Veranstaltungsbeschreibung. Wenn es viel zu beschreiben gibt, dann hast Du die Möglichkeit, Deine Beschreibung in mehrere Abschnitte zu gliedern und mit Zwischenüberschriften zu versehen.]]>
+                </entry>
+            </meta-data>
+        </dynamic-element>
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[Abschnitt]]>
+            </entry>
+            <entry name="predefinedValue">
+                <![CDATA[]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Wenn Du die Beschreibung in mehrere Abschnitte gliedern möchtest, dann hast Du hier die Möglichkeit, den einzelnen Abschnitten Zwischenüberschriften zu geben.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>
+    <dynamic-element dataType="string" indexType="keyword" localizable="true" name="layoutUuid" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="small">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[layoutUuid]]>
+            </entry>
+            <entry name="predefinedValue">
+                <![CDATA[ac3dd1b3-ef78-4ae4-b932-1959c81312a0]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Gib hier die uuid des betrefffenden Layouts an, auf dem Inhalte vom Typ "Termin" angezeigt werden. Wenn Du jetzt nur Bahnhof verstehst, frag einen von Inofix - die machen das dann.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>
 </root>
