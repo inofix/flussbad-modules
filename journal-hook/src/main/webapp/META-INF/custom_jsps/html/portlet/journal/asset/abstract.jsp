@@ -2,9 +2,9 @@
     abstract.jsp: A customized asset abstract for the JournalArticle
     which tries to retrieve the summary from the structure.  
     
-    Created:    2015-09 17 13:45 by Christian Berndt
-    Modified:   2015-09-17 13:45 by Christian Berndt
-    Version:    1.0.0
+    Created:    2015-09-17 13:45 by Christian Berndt
+    Modified:   2015-10-18 12:59 by Christian Berndt
+    Version:    1.0.1
 --%>
 <%--
 /**
@@ -56,15 +56,30 @@ try {
 
     Document document = SAXReaderUtil.read(article
             .getContentByLocale(languageId));
-    
-    Node teaser = document
+        
+    // Stories have a teaser
+    Node teaserNode = document
              .selectSingleNode("/root/dynamic-element[@name='teaser']/dynamic-content");
 
-    if (teaser.getText().length() > 0) {
-        articleSummary = teaser.getText();
+    if (teaserNode != null) {
+	    if (teaserNode.getText().length() > 0) {
+	        articleSummary = teaserNode.getText();
+	    }
     }
+    
+    // Events have a summary
+    Node summaryNode = document
+            .selectSingleNode("/root/dynamic-element[@name='summary']/dynamic-content");
+    
 
-} catch (Exception ignore) {
+    if (summaryNode != null) {
+	    if (summaryNode.getText().length() > 0) {
+	        articleSummary = summaryNode.getText();
+	    }
+    }
+    
+} catch (Exception e) {
+    _log.error(e.getMessage());
     articleSummary = null;
 }
 
@@ -115,3 +130,8 @@ if (Validator.isNull(summary)) {
 %>
 
 <%= StringUtil.shorten(summary, abstractLength) %>
+
+
+<%!
+private static Log _log = LogFactoryUtil.getLog("portal-web.docroot.html.portlet.asset_publisher.abstract_jsp");
+%>
