@@ -2,8 +2,8 @@
     fb_init.jsp: Common setup-code for the flussbad-displays and abstracts.
     
     Created:    2015-10-08 16:48 by Christian Berndt
-    Modified:   2015-10-14 19:12 by Christian Berndt
-    Version:    1.0.3
+    Modified:   2015-10-18 13:55 by Christian Berndt
+    Version:    1.0.4
 --%>
 
 <%@ include file="/html/portlet/asset_publisher/init.jsp" %>
@@ -80,9 +80,11 @@
 	String cssStyle = "";
 	long eventTime = 0;
 	String eventDate = null;
+	String hour = null; 
 	boolean isFiltered = assetCategoryId > 0;
 	String keyVisual = null;
 	String location = null;
+	String minute = null; 
 	
 	String languageId = LanguageUtil.getLanguageId(request);
 	
@@ -97,16 +99,22 @@
 	
 	            Document document = SAXReaderUtil.read(article
 	                    .getContentByLocale(languageId));
-	
+	            	
 	            Node dateNode = document
 	                    .selectSingleNode("/root/dynamic-element[@name='date']/dynamic-content");
 	
-	            Node headlineNode = document
-	                    .selectSingleNode("/root/dynamic-element[@name='headline']/dynamic-content");
-	
+                Node headlineNode = document
+                        .selectSingleNode("/root/dynamic-element[@name='headline']/dynamic-content");
+    
+                Node hourNode = document
+                        .selectSingleNode("/root/dynamic-element[@name='hour']/dynamic-content");
+    
 	            Node locationNode = document
 	                    .selectSingleNode("/root/dynamic-element[@name='location']/dynamic-content");
 	
+                Node minuteNode = document
+                        .selectSingleNode("/root/dynamic-element[@name='minute']/dynamic-content");
+    
 	            Node keyVisualNode = document
 	                    .selectSingleNode("/root/dynamic-element[@name='keyVisual']/dynamic-content");
 	
@@ -118,11 +126,16 @@
 	                eventTime = GetterUtil.getLong(eventDate);
 	            }
 	
-	            if (headlineNode != null
-	                    && headlineNode.getText().length() > 0) {
-	                articleTitle = headlineNode.getText();
-	            }
-	
+                if (headlineNode != null
+                        && headlineNode.getText().length() > 0) {
+                    articleTitle = headlineNode.getText();
+                }
+    
+                if (hourNode != null
+                        && hourNode.getText().length() > 0) {
+                    hour = hourNode.getText();
+                }
+    
                 if (keyVisualNode != null
                         && keyVisualNode.getText().length() > 0) {
                     keyVisual = keyVisualNode.getText();
@@ -134,6 +147,11 @@
                     location = locationNode.getText();
                 }
 
+                if (minuteNode != null
+                        && minuteNode.getText().length() > 0) {
+                    minute = minuteNode.getText();
+                }
+    
                 if (titleNode != null
                         && titleNode.getText().length() > 0) {
                     articleTitle = titleNode.getText();

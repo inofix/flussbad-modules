@@ -8,8 +8,8 @@
     - shariff-based social media buttons are included 
     
     Created:    2015-07-28 11:53 by Christian Berndt
-    Modified:   2015-10-10 14:40 by Christian Berndt
-    Version:    1.1.1
+    Modified:   2015-10-18 14:01 by Christian Berndt
+    Version:    1.1.2
 --%>
 
 <%-- Include fb-abstract specific setup code --%>
@@ -26,19 +26,36 @@
 
 		 		<div class="span4">
 			        <div class="asset-metadata">			        			        
-			            <c:if test="<%= Validator.isNotNull(eventDate) %>">
-			                <span class="metadata-entry metadata-event-date"><%= dateFormatDate.format(eventTime) %></span>
-			            </c:if>
+                        <c:if test="<%= Validator.isNotNull(eventDate) %>">
+                            <span class="metadata-entry metadata-event-date"><%= dateFormatDate.format(eventTime) %></span>
+                        </c:if>
+                       
+                        <c:if test="<%= Validator.isNotNull(hour) %>">
+                            <span class="metadata-entry metadata-event-time">
+		                        <c:choose>
+		                           <c:when test="<%= Validator.isNotNull(minute) %>">
+		                               <%= hour %>:<%= minute %>
+		                           </c:when>
+		                           <c:otherwise>
+		                               <%= hour %>:00
+		                           </c:otherwise>
+		                        </c:choose> 
+                            </span>
+                        </c:if>
+                       			           
 			            
 			            <c:if test="<%= Validator.isNotNull(location) %>">
 			                <span class="metadata-entry metadata-event-location"><%= location %></span>
 			            </c:if>			
-			
+						
 			            <%
 			            request.setAttribute("asset_metadata.jspf-filterByMetadata", true);
 			            %>
 			
-			            <%@ include file="/html/portlet/asset_publisher/asset_metadata.jspf" %>
+			            <%-- include the metadata (the publishdate and categories) only of no eventDate is available --%>
+                        <c:if test="<%= Validator.isNull(eventDate) %>">
+				            <%@ include file="/html/portlet/asset_publisher/asset_metadata.jspf" %>
+			            </c:if>
 			        </div>
 		        </div>
 		
