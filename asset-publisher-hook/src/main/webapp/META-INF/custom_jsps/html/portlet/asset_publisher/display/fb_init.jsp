@@ -2,8 +2,8 @@
     fb_init.jsp: Common setup-code for the flussbad-displays and abstracts.
     
     Created:    2015-10-08 16:48 by Christian Berndt
-    Modified:   2015-10-18 13:55 by Christian Berndt
-    Version:    1.0.4
+    Modified:   2015-10-18 14:94 by Christian Berndt
+    Version:    1.0.5
 --%>
 
 <%@ include file="/html/portlet/asset_publisher/init.jsp" %>
@@ -77,6 +77,7 @@
 	//articleTitle, which can be retrieved from an article's structure.
 	
 	String articleTitle = null;
+	String description = null;
 	String cssStyle = "";
 	long eventTime = 0;
 	String eventDate = null;
@@ -99,8 +100,11 @@
 	
 	            Document document = SAXReaderUtil.read(article
 	                    .getContentByLocale(languageId));
-	            	
-	            Node dateNode = document
+	            	            	
+                Node bodyNode = document
+                        .selectSingleNode("/root/dynamic-element[@name='section']/dynamic-element[@name='body']/dynamic-content");
+                
+                Node dateNode = document
 	                    .selectSingleNode("/root/dynamic-element[@name='date']/dynamic-content");
 	
                 Node headlineNode = document
@@ -120,7 +124,11 @@
 	
 	            Node titleNode = document
 	                    .selectSingleNode("/root/dynamic-element[@name='title']/dynamic-content");
-	
+	            
+                if (bodyNode != null && bodyNode.getText().length() > 0) {
+                    description = bodyNode.getText();
+                }
+	            
 	            if (dateNode != null) {
 	                eventDate = dateNode.getText();
 	                eventTime = GetterUtil.getLong(eventDate);
@@ -155,6 +163,11 @@
                 if (titleNode != null
                         && titleNode.getText().length() > 0) {
                     articleTitle = titleNode.getText();
+                }
+                
+                // if it's an event, disable the viewURL if no description is available
+                if (eventDate != null && description == null) {
+                    viewURL = null; 
                 }
 
             } catch (Exception ignore) {
