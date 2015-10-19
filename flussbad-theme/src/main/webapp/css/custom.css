@@ -171,6 +171,7 @@ input {
     
     .highlight {
         background-color: $color-orange;
+        color: white;
     }
     
     ul, ol {
@@ -1852,25 +1853,89 @@ input {
     
     
     
-/* ----------------------------------------------- the search */
+/* ----------------------------------------------- the big search */
 
 	.portlet-search {
+	
+	   .control-group {
+	   
+	       width: 100%;
+	       margin-top: 30px;
+	       
+	       input[type="text"] {
+	           display: inline;
+	           position: relative;
+	           width: 96%;
+	           height: 90px;
+	           background-color: $color-light-gray;
+	           border: none;
+	           box-shadow: none;
+	           font-size: $h1-font-size;
+	           font-family: $light-font-family;
+	           padding: 15px;
+	           margin: 0;
+	           position: relative;
+	           
+	       }
+	       
+           &:first-child::after {
+               font-family: "FontAwesome";
+               content: "\f002";
+               font-size: $h1-font-size;
+               color: white;
+               margin-left: -60px;
+               position: relative;
+           }
+	   }
 	
 	   .search-layout {
 	   
 	       .search-facet {
 	       
+	           padding: 0 0 30px 0;
 	           border: none;
 	           
 	           .facet-value {
 	               
 	               a {
 	                   border: 1px solid $color-gray-green;
-	                   padding: 5px 30px;
-	                   margin-right: 15px;
+	                   padding-top: 10px !important;
+	                   padding-right: 30px;
+	                   padding-bottom: 10px !important;
+	                   padding-left: 30px;
+	                   margin: 0 15px 15px 0;
 	                   border-radius: 0;
+	                   
+	                   &:hover {
+	                       color: $hover-font-color;
+	                       border: 1px solid $hover-font-color;
+	                       background: none;
+	                   }
+	                   
+	                   .badge {
+	                       padding: 0;
+	                       background: none;
+	                       color: $navigation-font-color;
+	                       font-family: $regular-font-family;
+	                       
+	                       &::before {
+	                           content: "(";
+	                       }
+	                       &::after {
+                               content: ")";
+                           }
+	                   }
 	               }
-	           }
+	               
+	               &.active > a {
+	                   background-color: $navigation-font-color;
+	                   
+	                   &:hover {
+                           color: white;
+                           background-color: $hover-font-color;
+                       }
+	               }
+	           } 
 	       }
 	       
 	       .result {
@@ -1892,7 +1957,7 @@ input {
 	           }
 	           
 	           .table-cell {
-	               padding-bottom: 90px !important;
+	               padding-bottom: 60px !important;
 	           }
 	           
 	           .asset-entry-title {
@@ -1913,6 +1978,37 @@ input {
 	           .asset-entry-categories {
                    padding-right: 0;
                }
+	       }
+	       
+	       .taglib-search-iterator-page-iterator-top,
+	       .taglib-search-iterator-page-iterator-bottom {
+	           padding: 5px 0;
+	           border-top: 5px solid #ebebeb;
+	           border-bottom: 5px solid #ebebeb;
+	           margin-bottom: 60px;
+	           
+	           .lfr-pagination-buttons {
+	               padding-top: 6px;
+	           }
+	       }
+	       
+	       .search-suggested-spelling {
+	       
+	           margin-bottom: 30px;
+	          
+	           .label {
+	               background-color: $color-gray-green;
+	               border-radius: 0;
+	               padding: 5px;
+	           }
+	       }
+	       
+	       .alert-info {
+	           background-color: $color-orange;
+	           color: white;
+	           border: none;
+	           padding: 15px;
+	           margin-bottom: 60px;
 	       }
 	   }
 	}
