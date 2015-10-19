@@ -169,6 +169,10 @@ input {
         color: $hover-font-color;
     }
     
+    .highlight {
+        background-color: $color-orange;
+    }
+    
     ul, ol {
         margin: 0 0 10px 10px;
     }
@@ -1845,6 +1849,74 @@ input {
             }
         }
     }  
+    
+    
+    
+/* ----------------------------------------------- the search */
+
+	.portlet-search {
+	
+	   .search-layout {
+	   
+	       .search-facet {
+	       
+	           border: none;
+	           
+	           .facet-value {
+	               
+	               a {
+	                   border: 1px solid $color-gray-green;
+	                   padding: 5px 30px;
+	                   margin-right: 15px;
+	                   border-radius: 0;
+	               }
+	           }
+	       }
+	       
+	       .result {
+	           
+	           small.search-results {
+	               margin-left: 0;
+	               font-family: $medium-font-family;
+	               font-size: $h3-font-size;
+	               text-transform: uppercase;
+	               letter-spacing: $letter-spacing-wide;
+	           }
+	           
+	           .table-bordered,
+	           .table-bordered th,
+	           .table-bordered td {
+	               border: none;
+	               background: none;
+	               padding: 0;
+	           }
+	           
+	           .table-cell {
+	               padding-bottom: 90px !important;
+	           }
+	           
+	           .asset-entry-title {
+	               font-size: $h2-font-size;
+	               margin-bottom: 0.75em;
+	           }
+	           
+	           .asset-entry-type {
+	               display: none;
+	           }
+	           
+	           .asset-entry-tags,
+	           .asset-entry-categories {
+	               border-top: 5px solid #ebebeb;
+	               padding-top: 15px;
+	           }
+	           
+	           .asset-entry-categories {
+                   padding-right: 0;
+               }
+	       }
+	   }
+	}
+
     
 
     
