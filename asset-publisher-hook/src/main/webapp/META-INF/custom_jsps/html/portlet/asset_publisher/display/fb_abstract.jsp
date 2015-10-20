@@ -8,8 +8,8 @@
     - shariff-based social media buttons are included 
     
     Created:    2015-07-28 11:53 by Christian Berndt
-    Modified:   2015-10-18 14:01 by Christian Berndt
-    Version:    1.1.2
+    Modified:   2015-10-20 16:29 by Christian Berndt
+    Version:    1.1.3
 --%>
 
 <%-- Include fb-abstract specific setup code --%>
@@ -34,10 +34,10 @@
                             <span class="metadata-entry metadata-event-time">
 		                        <c:choose>
 		                           <c:when test="<%= Validator.isNotNull(minute) %>">
-		                               <%= hour %>:<%= minute %>
+		                               <span class="icon-time"></span><%= hour %>:<%= minute %>
 		                           </c:when>
 		                           <c:otherwise>
-		                               <%= hour %>:00
+		                               <span class="icon-time"></span><%= hour %>:00
 		                           </c:otherwise>
 		                        </c:choose> 
                             </span>
@@ -45,7 +45,10 @@
                        			           
 			            
 			            <c:if test="<%= Validator.isNotNull(location) %>">
-			                <span class="metadata-entry metadata-event-location"><%= location %></span>
+			                <span class="metadata-entry metadata-event-location">
+				                 <span class="icon-map-marker"></span>
+	                             <%= location %>
+			                 </span>
 			            </c:if>			
 						
 			            <%
