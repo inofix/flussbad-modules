@@ -206,6 +206,10 @@ input {
             background-color: $color-turquois;
         }
     }
+    
+    *:focus {
+	    outline: 0;
+	}
 
 /* ----------------------------------------------- Dockbar */
     
@@ -1885,7 +1889,8 @@ input {
 		       width: 10%;
 		       margin-bottom: 0;
 		       
-		       input#_3_keywords {
+		       input {
+		       
 		           display: inline;
 		           position: relative;
 	               width: 95%;
@@ -1900,11 +1905,22 @@ input {
 		           position: relative;
 		       }
 		       
-		       input#_3_search {
-		           
+		       button {
+		       
+		          background: none;
+		          border: none;
+		       		           
+		           .icon-search {
+		              font-size: $h1-font-size;
+		              color: $navigation-font-color;
+		              
+		              &:hover {
+		                  color: $hover-font-color;
+		              }
+		           }
 		       }
 		           
-		       input#_3_clearSearch {
+		       #_3_clearSearch {
 		           display: none;
 		       }
 		       
@@ -1939,6 +1955,10 @@ input {
 	           border: none;
 	           
 	           .facet-value {
+	           
+	               img {
+	                   display: none;
+	               }
 	               
 	               a {
 	                   border: 1px solid $color-gray-green;
