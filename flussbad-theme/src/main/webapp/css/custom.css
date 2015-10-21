@@ -33,6 +33,7 @@ $hover-font-color: darken($navigation-font-color, 10%);
 $active-font-color: #222;
 $frontpage-navigation-font-color: #fff;
 $color-gray-green: #648889;
+$color-gray: #C8C8C8;
 $color-light-gray: #EBEBEB;
 $color-sand: #EBEAE2;
 $color-turquois: #93EAEE;
@@ -171,6 +172,10 @@ input {
     
     .highlight {
         background-color: $color-turquois;
+    }
+    
+    .required {
+        color: $color-orange;
     }
     
     .disabled {
@@ -437,6 +442,95 @@ input {
         min-height: 1em;
     }
 
+
+
+/* ----------------------------------------------- Forms */
+
+    .portlet-login {
+        text-align: center;
+    }
+
+    .control-group {
+    
+        input[type="text"],
+        input[type="password"] {
+        
+            border: none;
+            border-radius: 0;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none; 
+            box-shadow: none;
+            
+            background-color: $color-light-gray;
+            padding: 5px 15px;
+            height: 45px;
+        }
+    
+        &.success {
+            
+            input {
+                
+                border: none;
+                background-color: $color-turquois !important;
+                color: $default-font-color;
+            }
+            
+            .control-label {
+                color: $default-font-color;
+            }
+        }
+        
+        &.error {
+            
+            input {
+                
+                border: none;
+                background-color: $color-orange !important;
+                color: $default-font-color;
+            }
+            
+            .control-label {
+                color: $default-font-color;
+            }
+        }
+    }
+    
+    footer {
+    
+        .control-group {
+        
+            position: relative;
+    
+	        input[type="text"],
+	        input[type="password"] {
+	        
+	            background-color: white;
+	            
+	            @media (max-width: 767px) { width: 96%; }
+                @media (min-width: 768px) { width: 280px; }
+                @media (min-width: 992px) { width: 300px; }
+                @media (min-width: 1200px) { width: 360px; }
+	            
+	        }
+	        
+	        label {
+	        
+	           position: absolute;
+	           left: 70px;
+	           top: 18px;
+	           color: $color-gray;
+	           font-size: $default-font-size;
+	           
+	           @media (max-width: 767px) { left: 15px; }
+		       @media (min-width: 768px) { left: 30px; }
+		       @media (min-width: 992px) { left: 70px; }
+		       @media (min-width: 1200px) { left: 100px; }
+        
+	        }
+	    }
+    }
+    
+
     
 /* --------------------------------------------------------------------- */
 /* ----------------------------------------------- Web Content Templates */
@@ -459,8 +553,9 @@ input {
             color: $navigation-font-color;
             background: transparent;
             border: 2px solid $navigation-font-color; 
-            box-shadow: none; 
-            -web-box-shadow: none;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none; 
+            box-shadow: none;
             font-size: $button-font-size; 
             font-size-adjust: $button-font-size-adjust;
             font-family: $button-font-family;
@@ -1903,7 +1998,9 @@ input {
 		           height: 90px;
 		           background-color: $color-light-gray;
 		           border: none;
-		           box-shadow: none;
+		           -webkit-box-shadow: none;
+		            -moz-box-shadow: none; 
+		            box-shadow: none;
 		           font-size: $h1-font-size;
 		           font-family: $light-font-family;
 		           padding: 15px;
