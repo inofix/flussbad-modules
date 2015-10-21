@@ -1368,6 +1368,28 @@ input {
                 padding: 0;
                 border-top: 5px solid white;
                 
+                .image-container {
+                
+                    /** TODO: min-height by media query */
+                
+                    -webkit-background-size: cover;
+                    -moz-background-size: cover;
+                    -o-background-size: cover;
+                    background-size: cover;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    
+                    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
+                    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";                        
+                }
+                
+                .asset-wrapper {
+                
+                    /** TODO: margin-right by media query */
+    
+                    margin-right: 50%; 
+                }
+                
                 .asset-metadata {
                     padding: 2em 0 0 0;
                     
