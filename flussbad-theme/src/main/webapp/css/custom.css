@@ -765,11 +765,17 @@ input {
             padding: 0 8.54701% 1em;
             margin: 0;
             font-family: $medium-font-family;
-            font-size: $h2-font-size;
+            font-size: $h1-font-size;
             line-height: 125%;
-            white-space: normal; /* Restore normal white-space behaviour
-                     (nowrap is required for scrollview, 
-                     see below) */
+            white-space: normal; /* Restore normal white-space behaviour */
+                     
+            &::before {
+                content: "\201E";
+            }
+            
+            &::after {
+                content: "\201C";
+            }         
         }
         
         .author {
