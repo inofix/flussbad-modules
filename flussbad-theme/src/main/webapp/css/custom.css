@@ -193,14 +193,17 @@ input {
         font-size: $default-font-size;
     }
     
+    .lfr-pagination {
+        padding: 1em 0;
+    }
+    
     .pager li > a {
         background-color: #F5F4F0;
         border: none;
         border-radius: 0;
         
         &:hover {
-            background-color: white;
-            color: $hover-font-color;
+            background-color: $color-turquois;
         }
     }
 
@@ -1982,6 +1985,7 @@ input {
 	           
 	           small.search-results {
 	               margin-left: 0;
+	               padding-top: 8px;
 	               font-family: $medium-font-family;
 	               font-size: $h3-font-size;
 	               text-transform: uppercase;
@@ -2025,11 +2029,15 @@ input {
 	       .taglib-search-iterator-page-iterator-bottom {
 	       
 	           background-color: $color-sand;
-	           padding: 5px 10px 0;
+	           padding: 0 15px;
 	           margin-bottom: 60px;
 	           
-	           .lfr-pagination-buttons {
-	               padding-top: 6px;
+	           .lfr-pagination {
+	               padding: 0;
+	               
+	               .lfr-pagination-buttons {
+	                   padding: 15px 0;
+	               }
 	           }
 	       }
 	       
