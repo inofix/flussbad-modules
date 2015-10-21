@@ -1078,8 +1078,8 @@ input {
     }
     
     .toc {
-        position: fixed; 
-        margin-top: 60px; /* same as margin-top of content > h1 */
+/*         position: fixed;  */
+/*         margin-top: 60px; same as margin-top of content > h1 */
     }
     
     
@@ -1462,6 +1462,28 @@ input {
             
                 padding: 0;
                 border-top: 5px solid white;
+                
+                .image-container {
+                
+                    /** TODO: min-height by media query */
+                
+                    -webkit-background-size: cover;
+                    -moz-background-size: cover;
+                    -o-background-size: cover;
+                    background-size: cover;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    
+                    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
+                    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";                        
+                }
+                
+                .asset-wrapper {
+                
+                    /** TODO: margin-right by media query */
+    
+                    margin-right: 50%; 
+                }
                 
                 .asset-metadata {
                     padding: 2em 0 0 0;
@@ -2302,7 +2324,9 @@ input {
         .portlet-asset-categories-navigation .portlet-body,
         .portlet-dynamic-data-mapping,
         .portlet-journal,
-        .portlet-search {
+        .portlet-search,
+        .web-form-portlet
+        {
             width: 100%; /* bootstrap .container */
         }
     }
@@ -2319,7 +2343,8 @@ input {
     .portlet-dynamic-data-mapping,
     .portlet-journal,
     .portlet-search,
-    .portlet-site-map.project-sections .portlet-borderless-container
+    .portlet-site-map.project-sections .portlet-borderless-container,
+    .web-form-portlet
     {
         margin: auto;
         width: 940px; /* bootstrap .container */
@@ -2342,7 +2367,8 @@ input {
         .portlet-dynamic-data-mapping,
         .portlet-journal,
         .portlet-search,
-        .portlet-site-map.project-sections .portlet-borderless-container
+        .portlet-site-map.project-sections .portlet-borderless-container,
+        .web-form-portlet    
         {
             width: 1170px; /* bootstrap .container */
         }
@@ -2355,7 +2381,8 @@ input {
         .portlet-dynamic-data-mapping,
         .portlet-journal,
         .portlet-search,
-        .portlet-site-map.project-sections .portlet-borderless-container
+        .portlet-site-map.project-sections .portlet-borderless-container,
+        .web-form-portlet    
         {
             width: 724px; /* bootstrap .container */
         }
