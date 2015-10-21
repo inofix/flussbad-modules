@@ -2,8 +2,8 @@
     story.ftl: Format the Story structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2015-10-17 15:01 by Christian Berndt
-    Version:    1.0.8
+    Modified:   2015-10-21 18:47 by Christian Berndt
+    Version:    1.0.9
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -102,7 +102,7 @@
             </#if>
         </div>
         <#if displayToc>
-            <div class="toc span2 offset8">
+            <div class="toc span3">
                 <ul class="nav nav-list bs-docs-sidenav">
                     <li class="active"><a href="#section-0"><i class="icon-chevron-right"></i>Start</a></li>
                     <#if section.getSiblings()?has_content>
