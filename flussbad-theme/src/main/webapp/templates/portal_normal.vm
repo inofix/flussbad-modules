@@ -3,8 +3,8 @@
 ## the example of portal_normal.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:18 by Christian Berndt
-## Modified:    2015-10-01 15:22 by Christian Berndt
-## Version:     1.1.2
+## Modified:    2015-10-20 00:00 by Christian Berndt
+## Version:     1.1.3
 ##
 <!DOCTYPE html>
 
@@ -100,7 +100,8 @@ $theme.include($body_top_include)
                 $velocityPortletPreferences.setValue("portletSetupTitle_es_ES", "Dranbleiben")
                
                 ## Include newsletter-registration-portlet
-                $theme.runtime("NewsletterRegistration_WAR_rcsnewsletterportlet_INSTANCE_RNgf", "", $velocityPortletPreferences.toString())
+                $theme.runtime("58", "", $velocityPortletPreferences.toString())
+                ## $theme.runtime("NewsletterRegistration_WAR_rcsnewsletterportlet_INSTANCE_RNgf", "", $velocityPortletPreferences.toString())
                 
                 ## Reset the preferences settings.
                 $velocityPortletPreferences.reset()
