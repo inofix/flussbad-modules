@@ -1129,8 +1129,37 @@ input {
     }
     
     .toc {
+    
 /*         position: fixed;  */
 /*         margin-top: 60px; same as margin-top of content > h1 */
+
+        i {
+            display: none; /* TO DO: should be deletet in template. this is just for now */
+        }
+        
+        border-left: 10px solid $color-sand;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        
+        li {
+            
+            text-transform: uppercase;
+            letter-spacing: $letter-spacing-wide;
+            padding-bottom: 0.33em;
+            
+            &.active > a {
+            
+               background: none;
+               color: $default-font-color;
+            }
+            
+            &:hover > a,
+            &.active > a:hover {
+            
+               background: none;
+               color: $hover-font-color;
+            }
+        }
     }
     
     
