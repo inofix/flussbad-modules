@@ -1543,59 +1543,86 @@ input {
                 padding: 0;
                 border-top: 5px solid white;
                 
-                .image-container {
+                .row {
                 
-                    /** TODO: min-height by media query */
-                
-                    -webkit-background-size: cover;
-                    -moz-background-size: cover;
-                    -o-background-size: cover;
-                    background-size: cover;
-                    background-position: center center;
-                    background-repeat: no-repeat;
+                    position: relative;
+                    width: 100%;
+                    margin-left: -15px !important;
                     
-                    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
-                    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";                        
-                }
+                    .image-container {
+                        
+                        position: absolute;
+	                    height: 100%;
+	                    width: 50%;
+	                    left: 0;
+	                    top: 0;
+	                
+	                    -webkit-background-size: cover;
+	                    -moz-background-size: cover;
+	                    -o-background-size: cover;
+	                    background-size: cover;
+	                    background-position: center center;
+	                    background-repeat: no-repeat;
+	                    
+	                    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
+	                    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";                        
+	                }
+	                
+	                .span6:last-child {
+	                
+	                   margin-left: 50%;
+	                }
+	                
+	                .asset-wrapper {
+	                    
+	                    margin-left: 30px;
+	                    width: 370px; /* bootstrap span4 */
+	                    
+	                    @media (max-width: 767px) { width: 100%; }  
+	                    @media (min-width: 768px) { width: 228px; }
+	                    @media (min-width: 992px) { width: 300px; }
+	                    @media (min-width: 1200px) { width: 370px; }
+	                }
+	                
+	                .asset-metadata {
                 
-                .asset-wrapper {
+	                    padding: 2em 0 0 0;
+	                    
+	                    .metadata-publish-date {
+	                    
+	                        padding-left: 0;
+	                        font-size: $small-font-size;
+	                        font-family: $bold-font-family;
+	                    }
+	                }
+	                
+	                h3.asset-title {
                 
-                    /** TODO: margin-right by media query */
-    
-                    margin-right: 50%; 
-                }
+	                    font-size: $h2-font-size;
+	                    line-height: 30px;
+	                }
+	                
+	                .asset-content {
                 
-                .asset-metadata {
-                    padding: 2em 0 0 0;
-                    
-                    .metadata-publish-date {
-                        padding-left: 0;
-                    }
-                }
+	                    border-bottom: 5px solid #F5F4F0;
+	                    font-size: $default-font-size;
+	                    line-height: $default-line-height;
+	                    
+	                    .asset-summary {
+	                    
+	                        font-family: $regular-font-family;
+	                    }
+	                    
+	                    .asset-more {
+	                    
+	                        font-size: $small-font-size;
+	                    }
+	                }
+	                
+	                .asset-social-media {
                 
-                h3.asset-title {
-                    font-size: $h2-font-size;
-                    line-height: 30px;
-                }
-                
-                .asset-content {
-                
-                    border-bottom: 5px solid #F5F4F0;
-                    font-size: $default-font-size;
-                    line-height: $default-line-height;
-                    
-                    .asset-summary {
-                        font-family: $regular-font-family;
-                    }
-                    
-                    .asset-more {
-                        font-size: $small-font-size;
-                    }
-                }
-                
-                .asset-social-media {
-                    padding-bottom: 1em !important;
-                    margin-bottom: 2em !important;
+	                    padding-bottom: 1em !important;
+	                }
                 }
             }       
                                    
