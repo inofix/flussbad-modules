@@ -91,7 +91,6 @@ input {
 }
 
 
-
 /* ----------------------------------------------- global settings */
 
 .aui {
@@ -744,18 +743,23 @@ input {
     
 /* ----------------------------------------------- Statement */
     
-    .statement {
-        
-        padding: 3em 0;
-        overflow: hidden; 
-        
-        @media (max-width: 767px) { height: $full-image-height-xs; }
-        @media (min-width: 768px) { height: $full-image-height-sm; }
-        @media (min-width: 992px) { height: $full-image-height-md; }
-        @media (min-width: 1200px) { height: $full-image-height-lg; }
+    .statements {
+    
+        .statement {
+            display: table-cell; 
+            vertical-align: middle;
+            
+            @media (max-width: 767px) { height: $full-image-height-xs; }
+            @media (min-width: 768px) { height: $full-image-height-sm; }
+            @media (min-width: 992px) { height: $full-image-height-md; }
+            @media (min-width: 1200px) { height: $full-image-height-lg; }
+        }
         
         .item {
+        
             margin: auto 0;
+            background-color: $color-gray-green;
+
         }
     
         blockquote {
@@ -783,16 +787,16 @@ input {
         }  
     }
               
-    .statement.gray-green {
+    .statements.gray-green {
         background-color: $color-gray-green;
         color: white;
     }
     
-    .statement.sand {
+    .statements.sand {
         background-color: $color-sand;
     }
     
-    .statement.turquois {
+    .statements.turquois {
         background-color: $color-turquois;
         color: white;
     }
@@ -802,7 +806,7 @@ input {
 /* ----------------------------------------------- Statement & Slider */
     
     .slide-show, 
-    .statement {
+    .statements {
     
         .carousel {
             -webkit-transform: translate3d(0, 0, 0);
@@ -840,7 +844,54 @@ input {
             *display:inline;
             *zoom:1;
         }
-    }
+    }  
+    
+
+/* ---- new alloy carousel configuration ---------- */
+/* ---- currently limited to the statements scope   */
+  
+
+              
+    .statements {
+    
+        menu {
+            top: 50%;
+            background: none; 
+            right: auto;
+            width: 100%;
+            padding: 0; 
+            
+            li {
+                float: none; 
+            }
+        }
+    
+        .carousel-menu-prev,
+        .carousel-menu-next {
+            color: $color-turquois;
+            margin-top: -15px;
+            width: 60px;
+            font-size: 60px;
+            background-color: $color-turquois;
+            background-image: none; 
+            border: 0;
+        }
+        
+        .carousel-menu-next {
+            position: absolute; 
+            left: auto; 
+            right: 0; 
+        }    
+        
+        .carousel-menu-pause {
+            display: none; 
+        }
+        
+        .carousel-menu-index {
+            display: none;
+        }
+        
+    }        
     
     
 /* ----------------------------------------------- Image Slider */
