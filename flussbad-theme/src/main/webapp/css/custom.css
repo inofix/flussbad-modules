@@ -38,6 +38,7 @@ $color-light-gray: #EBEBEB;
 $color-sand: #EBEAE2;
 $color-turquois: #93EAEE;
 $color-orange: #F5A623;
+$color-muted: #B2C4C4;
 
 /* button */
 $button-font-size: 21px;
@@ -549,7 +550,7 @@ input {
             padding: 0 15px 30px 15px;
             
             p {
-                min-height: 5em;
+                min-height: 3em;
             }
         }        
                     
@@ -566,7 +567,12 @@ input {
             letter-spacing: $button-letter-spacing;
             text-transform: uppercase;
             margin-top: 1em;
-            padding: $button-padding;;
+            padding: $button-padding;
+            
+            &:hover {
+                color: $hover-font-color;
+                border: 2px solid $hover-font-color;
+            }
             
         } 
         
@@ -628,6 +634,7 @@ input {
             margin-top: $containerPush;
             
             .abstract {
+            
                 position: relative;
                 
                 border-top: 15px solid transparent;
@@ -687,36 +694,50 @@ input {
     }
     
     .intro.gray-green {
+    	
     	background-color: $color-gray-green;
     	
     	h1 {
+    	   
     	   color: #fff;
     	}
             
         .abstract {
+           
             background-color: $color-gray-green;
+           
             h3 {
+           
                 color: #fff;
             }
+           
             h2 {
+           
                color: $color-turquois; 
             }
         }
     }
     
     .intro.sand {
+        
         background-color: $color-sand;
         
         h1 {
+        
            color: #fff;
         }
             
         .abstract {
+        
             background-color: $color-sand;
+            
             h3 {
+            
                 color: $color-turquois;
             }
+            
             h2 {
+            
                color: $color-gray-green; 
             }
         }
@@ -724,25 +745,56 @@ input {
     
     .intro.turquois {
     
+        position: relative;
+        
         background-color: $color-turquois;
-/*         padding: 2em 0 8em; */
+        
+        border-left-width: 0 !important;
+        border-right-width: 0 !important;
+        border-bottom-width: 0 !important;
+        
+        border-top: 15px solid transparent;
+        border-image: url(../images/border-wave.png) 15 0 15 0 round;
+        -webkit-border-image: url(../images/border-wave.png) 15 0 15 0 round;
+        -o-border-image: url(../images/border-wave.png) 15 0 15 0 round;
+        
+        -webkit-background-clip: padding;
+        -moz-background-clip: padding;
+        background-clip: padding-box;
         
         h1 {
            color: #fff;
         }
             
         .abstract {
+        
             background-color: $color-turquois;
+            
             h3 {
+            
                 color: #fff;
             }
+            
             h2 {
+            
                color: $color-gray-green; 
             }
+            
+            .btn {
+                 background: white;
+                 border: none;
+                 
+                 &:hover {
+                   opacity: 0.75;
+                   color: $hover-font-color;
+                 }
+             }
         }
     }
     
     .intro.with-image.turquois {
+        
+        border: none;
         padding: 0;
     }
     
@@ -1537,6 +1589,18 @@ input {
                 }
             }
             
+            &.muted {
+                background-color: $color-muted;
+                
+                h3.asset-title {
+                    color: $navigation-font-color;
+                    
+                    a {
+                        color: $navigation-font-color;
+                    }
+                }
+            }
+            
             &.with-keyvisual {                
                 
                 @media (max-width: 767px) { padding-top: 200px; }
@@ -1861,18 +1925,22 @@ input {
     .portlet-asset-publisher.event-publisher {
     
     	.asset-abstract:nth-child(even) {
+    	
     		background: lighten($color-sand, 5%);
     		
     		.asset-content {
-    		     border-bottom-color: #F5F4F0;
+    		
+    		     border-bottom-color: white;
     		}
     	}
         
     	.asset-abstract:nth-child(odd) {
+    	
     		background: white;
     	}
     	
         .taglib-header {
+        
             display: none; 
         }
         
@@ -1882,15 +1950,18 @@ input {
             margin-left: 30px;
             
             .metadata-entry {
+            
                 display: block;
                 float: none;
             }
             
             .metadata-event-date {
+            
                 font-size: $h2-font-size;
                 padding-bottom: 1.175em;
                 
                 &::after {
+                
                    content: " _";
                 }
             }
