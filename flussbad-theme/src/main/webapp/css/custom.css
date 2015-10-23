@@ -27,6 +27,9 @@ $lead-font-size: 21px;
 $lead-line-height: 30px;
 $letter-spacing-wide: 0.1em;
 
+$h1-mobile-font-size: 32px;
+$h2-mobile-font-size: 24px;
+
 /* colors */
 $default-font-color: #2D2D2D;
 $navigation-font-color: #648889;
@@ -582,6 +585,7 @@ input {
         .abstract {
             text-align: center;
             padding: 0 15px 30px 15px;
+            margin-bottom: 1em;
             
             p {
                 min-height: 3em;
@@ -659,6 +663,8 @@ input {
                 h1 {
                     padding: 0;
                     font-size: 42px;
+                    
+                    @media (max-width: 767px) { font-size: $h1-mobile-font-size; }
                 }
             }
         }
@@ -1153,7 +1159,7 @@ input {
                     }
                     
                     img {
-                        margin: 3em 0;
+                        margin: 2em 0;
                     }
                     
                     .section-body {
