@@ -102,6 +102,7 @@ input {
 }
 
 
+
 /* ----------------------------------------------- global settings */
 
 .aui {
@@ -488,15 +489,63 @@ input {
 
 /* ----------------------------------------------- Forms */
 
+    .web-form-portlet {
+        
+        .portlet-borderless-container {
+            
+            width: 770px; /* bootstrap span8 */
+            margin-left: 230px; /* bootstrap offset1 */
+            
+            .fieldset-legend {
+                
+                font-size: $h3-font-size;
+                font-family: $bold-font-family;
+                letter-spacing: $letter-spacing-wide;
+                text-transform: uppercase;
+                border: none;
+                margin-bottom: .5em;
+            }
+        }
+        
+        &.form-with-toc {
+            
+           .portlet-borderless-container {
+            
+	            margin-left: 100px; /* bootstrap offset1 */
+	        } 
+        }
+    }
+
     .portlet-login {
         text-align: center;
     }
 
     .control-group {
     
+        width: 50%;
+        float: left;
+        margin-bottom: 1em;
+    
+        label {
+        
+            display: block;
+            
+            font-size: $small-font-size;
+            font-family: $medium-font-family;
+            letter-spacing: $letter-spacing-wide;
+            text-transform: uppercase;
+            border: none;
+            margin-bottom: .5em;
+            
+            .label-required {
+            
+                color: $color-gray;
+            }
+        }
+    
         input[type="text"],
         input[type="password"] {
-        
+                
             border: none;
             border-radius: 0;
             -webkit-box-shadow: none;
@@ -506,6 +555,7 @@ input {
             background-color: $color-light-gray;
             padding: 5px 15px;
             height: 45px;
+            width: 93%;
         }
     
         &.success {
@@ -532,26 +582,70 @@ input {
             }
             
             .control-label {
+            
                 color: $default-font-color;
             }
         }
     }
+    
+    .taglib-captcha {
+    
+        clear: both;
+        
+        img {
+        
+            margin: 1.75em 0 0 30px;
+        }
+        
+        img#refreshCaptcha {
+        
+            margin: 2.75em 0 0 5px;
+        }
+    }
+    
+    .btn-primary {
+    
+        margin: 3em 0;
+    
+        border: 2px solid $navigation-font-color; 
+        color: $navigation-font-color; 
+        font-family: $button-font-family;
+        font-size: $button-font-size; 
+        font-size-adjust: $button-font-size-adjust;
+        letter-spacing: $button-letter-spacing;
+        text-transform: uppercase;
+        padding: $button-padding;
+        text-decoration: none;
+        background: none;
+        text-shadow: none;
+        border-radius: 0;
+        
+        &:hover {
+            color: $hover-font-color;
+            border: 2px solid $hover-font-color;
+            background: none;
+        }
+    }
+    
+    /* Newsletter form */
     
     footer {
     
         .control-group {
         
             position: relative;
-    
+            width: 100%;
+            float: none;
+                
 	        input[type="text"],
 	        input[type="password"] {
 	        
 	            background-color: white;
 	            
-	            @media (max-width: 767px) { width: 96%; }
+	            @media (max-width: 767px) { width: 93%; }
                 @media (min-width: 768px) { width: 280px; }
                 @media (min-width: 992px) { width: 300px; }
-                @media (min-width: 1200px) { width: 360px; }
+                @media (min-width: 1200px) { width: 360px; }  
 	            
 	        }
 	        
@@ -569,6 +663,18 @@ input {
 		       @media (min-width: 1200px) { left: 100px; }
         
 	        }
+	    }
+	    
+	    .btn-primary {
+	    
+	        margin-top: 0;
+            margin-bottom: 0;
+	    }
+	    
+	    .navigation,
+	    .form-inline {
+	    
+	       display: none;
 	    }
     }
     
@@ -860,7 +966,7 @@ input {
         .asset-abstract.gray-green,
         .asset-abstract.turquois,
         .asset-abstract.light-gray {
-            background-color: white !important;
+            linkbackground-color: white !important;
         }
     
         .container {
@@ -916,13 +1022,12 @@ input {
             font-size-adjust: $button-font-size-adjust;
             letter-spacing: $button-letter-spacing;
             text-transform: uppercase;
-            padding: $button-padding;; 
+            padding: $button-padding;
             text-decoration: none;
             
             &:hover {
                 color: $hover-font-color;
                 border: 2px solid $hover-font-color;
-    /*                 background: darken(white, 5%); */
             }
         }
         
@@ -2573,8 +2678,7 @@ input {
         .portlet-dynamic-data-mapping,
         .portlet-journal,
         .portlet-search,
-        .web-form-portlet
-        {
+        .web-form-portlet {
             width: 100%; /* bootstrap .container */
         }
     }
@@ -2592,8 +2696,7 @@ input {
     .portlet-journal,
     .portlet-search,
     .portlet-site-map.project-sections .portlet-borderless-container,
-    .web-form-portlet
-    {
+    .web-form-portlet {
         margin: auto;
         width: 940px; /* bootstrap .container */
     }
@@ -2616,8 +2719,7 @@ input {
         .portlet-journal,
         .portlet-search,
         .portlet-site-map.project-sections .portlet-borderless-container,
-        .web-form-portlet    
-        {
+        .web-form-portlet {
             width: 1170px; /* bootstrap .container */
         }
     }
@@ -2630,8 +2732,7 @@ input {
         .portlet-journal,
         .portlet-search,
         .portlet-site-map.project-sections .portlet-borderless-container,
-        .web-form-portlet    
-        {
+        .web-form-portlet  {
             width: 724px; /* bootstrap .container */
         }
     }
