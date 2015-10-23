@@ -1685,12 +1685,13 @@ input {
 	                .asset-wrapper {
 	                    
 	                    margin-left: 30px;
-	                    width: 370px; /* bootstrap span4 */
+	                    width: 470px; /* bootstrap span5 */
+	                    min-height: 420px;
 	                    
-	                    @media (max-width: 767px) { width: 100%; }  
-	                    @media (min-width: 768px) { width: 228px; }
-	                    @media (min-width: 992px) { width: 300px; }
-	                    @media (min-width: 1200px) { width: 370px; }
+	                    @media (max-width: 767px) { width: 100%; }
+	                    @media (min-width: 768px) { width: 290px; }
+	                    @media (min-width: 992px) { width: 380px; }
+	                    @media (min-width: 1200px) { width: 470px; }
 	                }
 	                
 	                .asset-metadata {
