@@ -2,41 +2,34 @@
     statements.ftl: Display a list of statements in a scrollview-carousel.
     
     Created:    2015-10-13 18:27 by Christian Berndt
-    Modified:   2015-10-22 18:37 by Christian Berndt
-    Version:    1.0.1
+    Modified:   2015-10-23 15:54 by Christian Berndt
+    Version:    1.0.2
 -->
 
 <#assign journalArticleService = serviceLocator.findService("com.liferay.portlet.journal.service.JournalArticleLocalService")>
 
 <#assign cssClass = "gray-green">
 
-<div class="statements ${cssClass}">
+<div class="statements flexslider ${cssClass}">
     <#if entries?has_content>
+        <ul class="slides">
         <#list entries as curEntry>
-            <div class="item">
+            <li class="item">
 
                 <#assign article = journalArticleService.getLatestArticle(curEntry.getClassPK())>
                 <#assign content = journalContentUtil.getContent(themeDisplay.getScopeGroupId(), article.getArticleId(), article.getTemplateId(), themeDisplay.getLanguageId(), themeDisplay)>
                 ${content}
 
-            </div>
+            </li>
         </#list>
+        </ul>
     </#if>
 </div>
 
 <script>
-YUI().use(
-  'aui-carousel',
-  function(Y) {
-    new Y.Carousel(
-      {
-        activeIndex: 'rand',
-        contentBox: '.statements',
-        height: (Y.one("body").get("winWidth") / 16) * 9 - 60,
-        intervalTime: 20,
-        width: Y.one("body").get("winWidth")
-      }
-    ).render();
-  }
-);
+    $( document ).ready(function() {
+      $('.flexslider').flexslider({
+        animation: "slide"
+      });
+    });
 </script>
