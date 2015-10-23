@@ -1114,6 +1114,12 @@ input {
         }
     }
     
+    /* Do not display categories when the story is used in */
+    /* standalone mode = (within a webcontent-display      */
+    .portlet-journal-content .story h3.category {
+        display: none; 
+    }
+    
     .below-category .introduction.with-keyvisual,
     .below-category .story.with-keyvisual {
     
