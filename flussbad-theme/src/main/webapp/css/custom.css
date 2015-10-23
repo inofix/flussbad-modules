@@ -1573,6 +1573,14 @@ input {
             
             &.muted {
                 background-color: $color-muted;
+                
+                h3.asset-title {
+                    color: $navigation-font-color;
+                    
+                    a {
+                        color: $navigation-font-color;
+                    }
+                }
             }
             
             &.with-keyvisual {                
