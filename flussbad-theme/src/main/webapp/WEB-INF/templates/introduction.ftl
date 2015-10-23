@@ -2,8 +2,8 @@
     introduction.ftl: Format the introduction structure
     
     Created:    2015-10-15 23:58 by Christian Berndt
-    Modified:   2015-10-19 15:02 by Christian Berndt
-    Version:    1.0.3
+    Modified:   2015-10-23 18:49 by Nils Sanders
+    Version:    1.0.4
     
     Please note: Although this template is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -38,7 +38,7 @@
 <div class="introduction with-keyvisual">
     <div class="keyvisual" style="${style}"></div>
     <div class="container">
-        <div class="content span8 offset2">
+        <div class="content span10 offset1">
             <h3 class="category"><a href="${backURL}">${title}</a></h3>
             <h1>${headline.getData()}</h1>
             <p class="lead">${teaser.getData()}</p>

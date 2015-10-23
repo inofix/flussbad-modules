@@ -16,15 +16,19 @@ $bold-font-family: 'Apercu Pro Bold', Calibri, Roboto, sans-serif;
 $light-font-family: 'Apercu Pro Light', Calibri, Roboto, sans-serif;
 
 $default-font-size: 16px;
-$small-font-size: 12px;
 $default-font-size-adjust:0.508;
-$default-line-height: 20px;
+$default-line-height: 21px;
+$small-font-size: 12px;
 $h1-font-size: 36px;
 $h2-font-size: 28px;
+$h2-line-height: 36px;
 $h3-font-size: $default-font-size;
 $lead-font-size: 21px; 
 $lead-line-height: 30px;
 $letter-spacing-wide: 0.1em;
+
+$h1-mobile-font-size: 32px;
+$h2-mobile-font-size: 24px;
 
 /* colors */
 $default-font-color: #2D2D2D;
@@ -102,52 +106,63 @@ input {
 
 .aui {
 	
+    font-size-adjust: $default-font-size-adjust;
+	
     body.signed-out {
+    
         .lfr-meta-actions,
         .add-asset-selector {
+        
            display: none !important;
         }
     }
     
     body, p {
+    
         font-family: $regular-font-family;
         font-size: $default-font-size;
         color: $default-font-color;
     }
     
     p.lead, .lead {
+    
        font-family: $light-font-family;
        font-size: $lead-font-size;
        line-height: $lead-line-height;
     }
     
     p {
+    
         margin-bottom: $default-line-height;
     }
     
     strong {
+    
         font-family: $bold-font-family;
     }
-    
-    font-size-adjust: $default-font-size-adjust;
-        
+            
     .alert {
+    
         margin-bottom: 1.5em;
         margin-top: 1em; 
     }
     
     h1 {
+    
         font-family: $bold-font-family;
         font-size: $h1-font-size;
         letter-spacing: 0.02em;
     }
     
     h2 {
+    
         font-family: $bold-font-family;
         font-size: $h2-font-size;
+        line-height: $h2-line-height;
     }
     
     h3 {
+    
         font-family: $medium-font-family;
         font-size: $h3-font-size;
         text-transform: uppercase;
@@ -155,75 +170,94 @@ input {
     }
     
     h1,h2,h3,h4,h5,h6,strong {
+    
         font-style: normal;
         font-weight: normal;
     }
     
     cite {
+    
         font-style: italic;
         font-weight: normal;
         letter-spacing: $letter-spacing-wide;
     }
     
     a {
+    
         color: $navigation-font-color;
     }
 
     a:hover, 
     a:focus {
+    
         text-decoration: none;
         color: $hover-font-color;
     }
     
     .highlight {
+    
         background-color: $color-turquois;
     }
     
     .required {
+    
         color: $color-orange;
     }
     
     .disabled {
+    
         display: none !important;
     }
     
     ul, ol {
+    
         margin: 0 0 10px 10px;
     }
     
     form {
+    
         margin: 0; 
     }
     
     #wrapper {
+    
         padding: 0;
     }
     
     #content {
+    
         font-size: $default-font-size;
+        line-height: $default-line-height;
     }
     
     .lfr-pagination {
+    
         padding: 1em 0;
     }
     
     .pager li > a {
+    
         background-color: #F5F4F0;
         border: none;
         border-radius: 0;
         
         &:hover {
+        
             background-color: $color-turquois;
         }
     }
     
     *:focus {
+    
 	    outline: 0;
 	}
+
+
 
 /* ----------------------------------------------- Dockbar */
     
     .dockbar-user-notifications .dropdown-toggle .user-notifications-count {
+    
         display: inline;
         padding: 2px 4px 2px;
         background-color: #FCF8E3; /* bootstrap alert */
@@ -237,15 +271,18 @@ input {
     @include respond-to(phone, tablet) {
     
         #navigation {
+        
             display: block; /* override settings in dockbar.css */    
     
             &.open {
+            
                 display: block;
             }
         }
     }
     
     .dockbar.navbar-static-top {
+    
         position: fixed;
         z-index: 1040;
     }
@@ -548,6 +585,7 @@ input {
         .abstract {
             text-align: center;
             padding: 0 15px 30px 15px;
+            margin-bottom: 1em;
             
             p {
                 min-height: 3em;
@@ -625,6 +663,8 @@ input {
                 h1 {
                     padding: 0;
                     font-size: 42px;
+                    
+                    @media (max-width: 767px) { font-size: $h1-mobile-font-size; }
                 }
             }
         }
@@ -1137,7 +1177,7 @@ input {
                     }
                     
                     img {
-                        margin: 3em 0;
+                        margin: 2em 0;
                     }
                     
                     .section-body {
@@ -1669,12 +1709,13 @@ input {
 	                .asset-wrapper {
 	                    
 	                    margin-left: 30px;
-	                    width: 370px; /* bootstrap span4 */
+	                    width: 470px; /* bootstrap span5 */
+	                    min-height: 420px;
 	                    
-	                    @media (max-width: 767px) { width: 100%; }  
-	                    @media (min-width: 768px) { width: 228px; }
-	                    @media (min-width: 992px) { width: 300px; }
-	                    @media (min-width: 1200px) { width: 370px; }
+	                    @media (max-width: 767px) { width: 100%; }
+	                    @media (min-width: 768px) { width: 290px; }
+	                    @media (min-width: 992px) { width: 380px; }
+	                    @media (min-width: 1200px) { width: 470px; }
 	                }
 	                
 	                .asset-metadata {
@@ -1692,7 +1733,7 @@ input {
 	                h3.asset-title {
                 
 	                    font-size: $h2-font-size;
-	                    line-height: 30px;
+	                    line-height: $lead-line-height;
 	                }
 	                
 	                .asset-content {
@@ -1859,7 +1900,7 @@ input {
     		.tell-others {
     			float: left;
     			vertical-align: middle;
-    			line-height: 30px;
+    			line-height: $lead-line-height;
     			margin-right: 5px;
     		}
     		
