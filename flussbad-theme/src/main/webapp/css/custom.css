@@ -845,7 +845,10 @@ input {
     
     .statements {
     
+        overflow: hidden; 
+    
         .statement {
+        
             display: table-cell; 
             vertical-align: middle;
             
@@ -900,7 +903,22 @@ input {
         background-color: $color-turquois;
         color: white;
     }
+
+/* ----------------------------------------------- Flexslider --------*/
+
+    .flexslider {
     
+        border: none;
+        margin: 0; 
+        
+        ol, ul {
+            margin: 0; 
+        }
+        
+        .flex-control-nav {
+            bottom: 20px;
+        }
+    }   
     
     
 /* ----------------------------------------------- Statement & Slider */
