@@ -92,6 +92,55 @@ $full-image-height-xs: 400px;
     -o-transform: rotate($degree);
 }
 
+@mixin cols() {
+	
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    
+    -webkit-column-width: 50%;
+    -moz-column-width: 50%;
+    column-width: 50%;
+
+    -webkit-column-gap: 30px;
+    -moz-column-gap: 30px;
+    column-gap: 30px;
+}
+
+@mixin btn-primary() {
+	
+	border: 2px solid $navigation-font-color; 
+    color: $navigation-font-color; 
+    font-family: $button-font-family;
+    font-size: $button-font-size; 
+    font-size-adjust: $button-font-size-adjust;
+    letter-spacing: $button-letter-spacing;
+    text-transform: uppercase;
+    padding: $button-padding;
+    text-decoration: none;
+    background: none;
+    text-shadow: none;
+    border-radius: 0;
+    
+    &:hover {
+        color: $hover-font-color;
+        border: 2px solid $hover-font-color;
+        background: none;
+    }
+}
+
+@mixin input() {
+
+    border: none;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none; 
+    box-shadow: none;    
+    padding: 5px 15px;
+    height: 45px;
+    width: 93%;
+}
+
 
 /* Unset input borders set by jQuery */
 
@@ -510,15 +559,26 @@ input {
             width: 770px; /* bootstrap span8 */
             margin-left: 230px; /* bootstrap offset1 */
             
-            .fieldset-legend {
+            .fieldset {
+            
+                .fieldset-legend {
                 
-                font-size: $h3-font-size;
-                font-family: $bold-font-family;
-                letter-spacing: $letter-spacing-wide;
-                text-transform: uppercase;
-                border: none;
-                margin-bottom: .5em;
-            }
+                    font-size: $h3-font-size;
+                    font-family: $bold-font-family;
+                    letter-spacing: $letter-spacing-wide;
+                    text-transform: uppercase;
+                    border: none;
+                    margin-bottom: .5em;
+                }
+                
+                .test {
+                
+                    @media (min-width: 768px) {
+                    
+		                @include cols();
+		            }
+                }
+            }    
         }
         
         &.form-with-toc {
@@ -528,122 +588,99 @@ input {
 	            margin-left: 100px; /* bootstrap offset1 */
 	        } 
         }
-    }
-
-    .portlet-login {
-        text-align: center;
-    }
-
-    .control-group {
-    
-        width: 50%;
-        float: left;
-        margin-bottom: 1em;
-    
-        label {
         
-            display: block;
-            
-            font-size: $small-font-size;
-            font-family: $medium-font-family;
-            letter-spacing: $letter-spacing-wide;
-            text-transform: uppercase;
-            border: none;
-            margin-bottom: .5em;
-            
-            .label-required {
-            
-                color: $color-gray;
-            }
-        }
+        .control-group {
     
-        input[type="text"],
-        input[type="password"] {
-                
-            border: none;
-            border-radius: 0;
-            -webkit-box-shadow: none;
-            -moz-box-shadow: none; 
-            box-shadow: none;
-            
-            background-color: $color-light-gray;
-            padding: 5px 15px;
-            height: 45px;
-            width: 93%;
-        }
+/* 	        width: 50%; */
+/* 	        float: left; */
+/* 	        margin-bottom: 1em; */
+	    
+	        label {
+	        
+	            display: block;
+	            
+	            font-size: $small-font-size;
+	            font-family: $medium-font-family;
+	            letter-spacing: $letter-spacing-wide;
+	            text-transform: uppercase;
+	            border: none;
+	            margin-bottom: .5em;
+	            
+	            .label-required {
+	            
+	                color: $color-gray;
+	            }
+	        }
+	    
+	        input[type="text"],
+	        input[type="password"] {
+	                
+	            @include input();
+	            background-color: $color-light-gray;
+	        }
+	    
+	        &.success {
+	            
+	            input {
+	                
+	                border: none;
+	                background-color: $color-turquois !important;
+	                color: $default-font-color;
+	            }
+	            
+	            .control-label {
+	                color: $default-font-color;
+	            }
+	        }
+	        
+	        &.error {
+	            
+	            input {
+	                
+	                border: none;
+	                background-color: $color-orange !important;
+	                color: $default-font-color;
+	            }
+	            
+	            .control-label {
+	            
+	                color: $default-font-color;
+	            }
+	        }
+	    }
+	    
+	    .taglib-captcha {
     
-        &.success {
-            
-            input {
-                
-                border: none;
-                background-color: $color-turquois !important;
-                color: $default-font-color;
-            }
-            
-            .control-label {
-                color: $default-font-color;
-            }
-        }
-        
-        &.error {
-            
-            input {
-                
-                border: none;
-                background-color: $color-orange !important;
-                color: $default-font-color;
-            }
-            
-            .control-label {
-            
-                color: $default-font-color;
-            }
-        }
-    }
-    
-    .taglib-captcha {
-    
-        clear: both;
-        
-        img {
-        
-            margin: 1.75em 0 0 30px;
-        }
-        
-        img#refreshCaptcha {
-        
-            margin: 2.75em 0 0 5px;
-        }
-    }
-    
-    .btn-primary {
-    
-        margin: 3em 0;
-    
-        border: 2px solid $navigation-font-color; 
-        color: $navigation-font-color; 
-        font-family: $button-font-family;
-        font-size: $button-font-size; 
-        font-size-adjust: $button-font-size-adjust;
-        letter-spacing: $button-letter-spacing;
-        text-transform: uppercase;
-        padding: $button-padding;
-        text-decoration: none;
-        background: none;
-        text-shadow: none;
-        border-radius: 0;
-        
-        &:hover {
-            color: $hover-font-color;
-            border: 2px solid $hover-font-color;
-            background: none;
-        }
+	        clear: both;
+	        
+	        img {
+	        
+	            margin: 1.75em 0 0 30px;
+	        }
+	        
+	        img#refreshCaptcha {
+	        
+	            margin: 2.75em 0 0 5px;
+	        }
+	    }
+	    
+	    
+	    
+	    .btn-primary {
+	    
+	       @include btn-primary();
+	       margin: 3em 0;
+	    }
     }
     
     /* Newsletter form */
     
     footer {
+    
+	    .portlet-login {
+	    
+	        text-align: center;
+	    }
     
         .control-group {
         
@@ -654,12 +691,13 @@ input {
 	        input[type="text"],
 	        input[type="password"] {
 	        
-	            background-color: white;
+	           @include input();
+	           background-color: white;
 	            
-	            @media (max-width: 767px) { width: 93%; }
-                @media (min-width: 768px) { width: 280px; }
-                @media (min-width: 992px) { width: 300px; }
-                @media (min-width: 1200px) { width: 360px; }  
+	           @media (max-width: 767px) { width: 93%; }
+               @media (min-width: 768px) { width: 280px; }
+               @media (min-width: 992px) { width: 300px; }
+               @media (min-width: 1200px) { width: 360px; }  
 	            
 	        }
 	        
@@ -681,6 +719,7 @@ input {
 	    
 	    .btn-primary {
 	    
+	        @include btn-primary();
 	        margin-top: 0;
             margin-bottom: 0;
 	    }
@@ -845,9 +884,11 @@ input {
     	            line-height: 34px !important;
     	            text-transform: uppercase;
     	            color: #fff;
-    	            padding-top: 25px;
+    	            padding-top: 28px;
+    	            padding-left: -5px;
     	            display: block;
-                    
+    	            
+    	            @include rotate(-15deg);                    
                 }
             }
         }
@@ -968,7 +1009,7 @@ input {
         padding-top: 6em;
     
         h1 {
-            padding: 0.5em 0 1.5em;
+            padding: 1em 0;
         }
     }
     
@@ -1080,7 +1121,7 @@ input {
 	            border: none;
 	            padding: 0 8.54701% 1em;
 	            margin: 0;
-	            font-family: $bold-font-family;
+	            font-family: $medium-font-family;
 	            font-size: $h1-font-size;
 	            line-height: 125%;
 	            white-space: normal; /* Restore normal white-space behaviour */
@@ -1349,17 +1390,7 @@ input {
                     
                         @media (min-width: 768px) {
                         
-                            -webkit-column-count: 2;
-                            -moz-column-count: 2;
-                            column-count: 2;
-                            
-                            -webkit-column-width: 50%;
-                            -moz-column-width: 50%;
-                            column-width: 50%;
-        
-                            -webkit-column-gap: 30px;
-                            -moz-column-gap: 30px;
-                            column-gap: 30px;
+                            @include cols();
                         }
                         
                         img {
@@ -1657,14 +1688,9 @@ input {
             .toggle-button {
             
                 cursor: pointer; 
-            
                 transition: 0.2s ease-in-out;
-                                            
-                -moz-transform: rotate(45deg);
-                -ms-transform: rotate(45deg);
-                -o-transform: rotate(45deg);
-                -webkit-transform: rotate(45deg);
-                transform: rotate(45deg);   
+                
+                @include rotate(45deg);  
             }
             
             .toggle-button:after {
@@ -1683,12 +1709,8 @@ input {
             .toggle-button {
             
                 transition: 0.2s ease-in-out;
-            
-                -moz-transform: rotate(0deg);
-                -ms-transform: rotate(0deg);
-                -o-transform: rotate(0deg);
-                -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
+
+                @include rotate(0deg);
             }
         }
     }
@@ -2269,6 +2291,7 @@ input {
             
                 font-size: $h2-font-size;
                 padding-bottom: 1.12em;
+                padding-left: 0;
                 
                 &::after {
                 
@@ -2601,6 +2624,7 @@ input {
 		       
 		          background: none;
 		          border: none;
+		          padding-top: 40px;
 		       		           
 		           .icon-search {
 		              font-size: $h1-font-size;
