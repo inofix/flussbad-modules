@@ -3,8 +3,8 @@
 ## the example of portal_normal.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:18 by Christian Berndt
-## Modified:    2015-10-20 00:00 by Christian Berndt
-## Version:     1.1.3
+## Modified:    2015-10-24 13:01 by Christian Berndt
+## Version:     1.1.4
 ##
 <!DOCTYPE html>
 
@@ -47,6 +47,7 @@
     
     <!-- Include CSS for Flexslider -->
     <link rel="stylesheet" href="$css_folder/flexslider.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="$css_folder/font-awesome.min.css" type="text/css" media="screen" />
 
 </head>
 
