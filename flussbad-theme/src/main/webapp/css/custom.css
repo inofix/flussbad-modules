@@ -108,7 +108,8 @@ input {
 	margin-left: 0;
 }
 
-.portlet-asset-publisher .metadata-publish-date {
+.portlet-asset-publisher .metadata-publish-date,
+.portlet-asset-publisher .metadata-event-date {
 	
 	padding-left: 30px;
 }
