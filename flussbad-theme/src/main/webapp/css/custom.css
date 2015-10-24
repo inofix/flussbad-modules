@@ -20,6 +20,7 @@ $default-font-size-adjust:0.508;
 $default-line-height: 21px;
 $small-font-size: 12px;
 $h1-font-size: 36px;
+$h1-line-height: 42px;
 $h2-font-size: 28px;
 $h2-line-height: 36px;
 $h3-font-size: $default-font-size;
@@ -152,6 +153,7 @@ input {
     
         font-family: $bold-font-family;
         font-size: $h1-font-size;
+        line-height: $h1-line-height;
         letter-spacing: 0.02em;
     }
     
@@ -907,10 +909,6 @@ input {
         -webkit-background-clip: padding;
         -moz-background-clip: padding;
         background-clip: padding-box;
-        
-        h1 {
-           color: #fff;
-        }
             
         .abstract {
         
@@ -942,6 +940,10 @@ input {
         
         border: none;
         padding: 0;
+        
+        h1 {
+           color: white;
+        }
     }
     
     
