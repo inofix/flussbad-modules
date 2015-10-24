@@ -107,6 +107,21 @@ $full-image-height-xs: 400px;
     column-gap: 30px;
 }
 
+@mixin cols-reset() {
+    
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+    
+    -webkit-column-width: 100%;
+    -moz-column-width: 100%;
+    column-width: 100%;
+
+    -webkit-column-gap: 0;
+    -moz-column-gap: 0;
+    column-gap: 0;
+}
+
 @mixin btn-primary() {
 	
 	border: 2px solid $navigation-font-color; 
@@ -216,6 +231,8 @@ input {
         font-size: $h1-font-size;
         line-height: $h1-line-height;
         letter-spacing: 0.02em;
+        
+        
     }
     
     h2 {
@@ -2562,7 +2579,7 @@ input {
         
         .span6:nth-child(-n+1) {
         
-            border-right: 6px solid #cad3d3;
+            border-right: 5px solid #cad3d3;
         }
              
         .container.status {
@@ -2873,6 +2890,17 @@ input {
         background: rgba(0,0,0,0.9);
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 /* media-queries */
 
 /* Probably this needs more cleanup, but we start with collecting them the queries
@@ -2880,25 +2908,136 @@ input {
    
     
     @media (max-width: 767px) {
+        
         body {
-            padding:0; 
-        }
         
-        .container {
-            padding: 0 20px;
-        }
+            padding: 0;
+            
+            h1 {
         
-        .navbar-fixed-top, 
-        .navbar-fixed-bottom, 
-        .navbar-static-top {
-            margin: 0; 
-        }
+	            font-size: $h1-mobile-font-size;
+	        }
+	        
+	        h2 {
+	        
+	            font-size: $h2-mobile-font-size;
+	        }
+	        
+	        h3 {
+	        
+	           line-height: 32px;
+	        }
+	        
+	        .row,
+	        .container {
+	        
+	            margin: 0 15px;
+	        }
+	        
+	        .link {
+            
+               padding-top: 30px;
+               padding-bottom: 90px;
+            }
+	        
+	        .flex-direction-nav {
+	        
+	           display: none;
+	        }
+	        
+	        .section-body { 
         
-	    .section-body {           
-	        -webkit-column-count: 1; /* Chrome, Safari, Opera */
-	        -moz-column-count: 1; /* Firefox */
-	        column-count: 1;                
-	    }
+	           @include cols-reset(); 
+	        }
+	        
+	        .portlet-journal-content.below-intro {
+    
+		        padding-top: 3em;
+		        padding-left: 15px;
+		        padding-right: 15px;
+		    }
+		    
+		    .portlet-asset-publisher.start-publisher {
+		    
+		        margin-bottom: 3em;
+		        
+		        .fb-event-title {
+		        
+			          margin-bottom: 2em;
+			          
+			          .asset-metadata::after {
+			          
+			              content:"\A"; 
+			              white-space: pre;
+			          }
+		        }
+		    }
+		    
+		    .statements {
+		    
+		      .statement {
+		      
+		          blockquote {
+		          
+		             font-size: $lead-font-size;
+		             padding: 2em 0 0 0; 
+		          }
+		          
+		          .author {
+		          
+		             padding: 0 0 1em 0;
+		          }
+		      }
+		    }
+		    
+		    #footer {
+		    
+		      .container.first {
+		      
+		          padding-top: 60px;
+		          padding-bottom: 0; 
+		      }
+		    
+		      .span6:nth-child(-n+1) {
+		      
+		          border-right: none;
+		          border-bottom: 5px solid #cad3d3;
+		          margin-bottom: 60px;
+		      }
+		      
+		      .btn-primary {
+		      
+		          margin-bottom: 60px;
+		      }
+		      
+		      .container.status {
+		      
+		          display: none;
+		      }
+		      
+		      .logos {
+		      
+		          .container {
+		          
+		              margin: 0;
+		              background-color: $color-light-gray;
+		              
+		              .logos-inner {
+		              
+		                  width: 100%;
+		              
+		                  a {
+		                  
+		                      margin: 0 15px;
+		                  }
+		              }
+		           }
+		       }
+		    }
+        } 
+
+        
+	    
 	    
 	    .portlet-asset-publisher.default-publisher,
 	    .portlet-asset-publisher.event-publisher,
@@ -2907,6 +3046,7 @@ input {
 		    .asset-more,
 		    .asset-summary,
 		    .asset-title {
+		    
 		        clear: left;
 		    } 
 		}
@@ -2921,6 +3061,33 @@ input {
             width: 100%; /* bootstrap .container */
         }
     }
+    
+    
+    
+    
+    
+    @media (max-width: 979px) { /* bootstrap Navigation switch point */
+    
+        .navbar-fixed-top, 
+        .navbar-fixed-bottom, 
+        .navbar-static-top {
+        
+            margin: 0; 
+            
+            .btn-navbar {
+            
+               background: none;
+               border: none;
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
     
     @media (min-width: 992px) {
     
