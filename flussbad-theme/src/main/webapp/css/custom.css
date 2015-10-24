@@ -690,6 +690,9 @@ input {
 	    }
     }
     
+    
+    
+    
     /* Newsletter form */
     
     footer {
@@ -711,7 +714,8 @@ input {
 	           @include input();
 	           background-color: white;
 	            
-	           @media (max-width: 767px) { width: 93%; }
+	           @media (max-width: 767px) and (orientation: landscape) { width: 95%; max-width: 95% !important; }
+	           @media (max-width: 767px) { width: 100%; }
                @media (min-width: 768px) { width: 280px; }
                @media (min-width: 992px) { width: 300px; }
                @media (min-width: 1200px) { width: 360px; }  
