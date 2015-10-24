@@ -845,9 +845,11 @@ input {
     	            line-height: 34px !important;
     	            text-transform: uppercase;
     	            color: #fff;
-    	            padding-top: 25px;
+    	            padding-top: 28px;
+    	            padding-left: -5px;
     	            display: block;
-                    
+    	            
+    	            @include rotate(-15deg);                    
                 }
             }
         }
@@ -1657,14 +1659,9 @@ input {
             .toggle-button {
             
                 cursor: pointer; 
-            
                 transition: 0.2s ease-in-out;
-                                            
-                -moz-transform: rotate(45deg);
-                -ms-transform: rotate(45deg);
-                -o-transform: rotate(45deg);
-                -webkit-transform: rotate(45deg);
-                transform: rotate(45deg);   
+                
+                @include rotate(45deg);  
             }
             
             .toggle-button:after {
@@ -1683,12 +1680,8 @@ input {
             .toggle-button {
             
                 transition: 0.2s ease-in-out;
-            
-                -moz-transform: rotate(0deg);
-                -ms-transform: rotate(0deg);
-                -o-transform: rotate(0deg);
-                -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
+
+                @include rotate(0deg);
             }
         }
     }
