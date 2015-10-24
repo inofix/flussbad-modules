@@ -2,8 +2,8 @@
     statements.ftl: Display a list of statements in a scrollview-carousel.
     
     Created:    2015-10-13 18:27 by Christian Berndt
-    Modified:   2015-10-23 15:54 by Christian Berndt
-    Version:    1.0.2
+    Modified:   2015-10-24 19:54 by Christian Berndt
+    Version:    1.0.3
 -->
 
 <#assign journalArticleService = serviceLocator.findService("com.liferay.portlet.journal.service.JournalArticleLocalService")>
@@ -29,7 +29,12 @@
 <script>
     $( document ).ready(function() {
       $('.flexslider').flexslider({
-        animation: "slide"
+        animation: "slide", 
+        randomize: true,
+        pauseOnHover: true,
+        controlNav: false,
+        prevText:"",      
+        nextText:""      
       });
     });
 </script>
