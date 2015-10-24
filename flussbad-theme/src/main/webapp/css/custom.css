@@ -92,6 +92,21 @@ $full-image-height-xs: 400px;
     -o-transform: rotate($degree);
 }
 
+@mixin cols() {
+	
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    
+    -webkit-column-width: 50%;
+    -moz-column-width: 50%;
+    column-width: 50%;
+
+    -webkit-column-gap: 30px;
+    -moz-column-gap: 30px;
+    column-gap: 30px;
+}
+
 @mixin btn-primary() {
 	
 	border: 2px solid $navigation-font-color; 
@@ -544,15 +559,26 @@ input {
             width: 770px; /* bootstrap span8 */
             margin-left: 230px; /* bootstrap offset1 */
             
-            .fieldset-legend {
+            .fieldset {
+            
+                .fieldset-legend {
                 
-                font-size: $h3-font-size;
-                font-family: $bold-font-family;
-                letter-spacing: $letter-spacing-wide;
-                text-transform: uppercase;
-                border: none;
-                margin-bottom: .5em;
-            }
+                    font-size: $h3-font-size;
+                    font-family: $bold-font-family;
+                    letter-spacing: $letter-spacing-wide;
+                    text-transform: uppercase;
+                    border: none;
+                    margin-bottom: .5em;
+                }
+                
+                .test {
+                
+                    @media (min-width: 768px) {
+                    
+		                @include cols();
+		            }
+                }
+            }    
         }
         
         &.form-with-toc {
@@ -565,9 +591,9 @@ input {
         
         .control-group {
     
-	        width: 50%;
-	        float: left;
-	        margin-bottom: 1em;
+/* 	        width: 50%; */
+/* 	        float: left; */
+/* 	        margin-bottom: 1em; */
 	    
 	        label {
 	        
@@ -1364,17 +1390,7 @@ input {
                     
                         @media (min-width: 768px) {
                         
-                            -webkit-column-count: 2;
-                            -moz-column-count: 2;
-                            column-count: 2;
-                            
-                            -webkit-column-width: 50%;
-                            -moz-column-width: 50%;
-                            column-width: 50%;
-        
-                            -webkit-column-gap: 30px;
-                            -moz-column-gap: 30px;
-                            column-gap: 30px;
+                            @include cols();
                         }
                         
                         img {
