@@ -2944,11 +2944,6 @@ input {
                padding-bottom: 90px;
             }
 	        
-	        .flex-direction-nav {
-	        
-	           display: none;
-	        }
-	        
 	        .section-body { 
         
 	           @include cols-reset(); 
@@ -3083,6 +3078,11 @@ input {
                background: none;
                border: none;
             }
+        }
+        
+        .flex-direction-nav {
+            
+           display: none;
         }
     }
     
