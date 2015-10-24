@@ -95,7 +95,7 @@ html[xmlns] .flexslider .slides {
   height: auto;
 }
 .flex-viewport {
-  max-height: 2000px;
+  max-height: 720px; /* to cut the mega long statments */
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
   -ms-transition: all 1s ease;
