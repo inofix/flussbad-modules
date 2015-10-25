@@ -28,8 +28,12 @@ $lead-font-size: 21px;
 $lead-line-height: 30px;
 $letter-spacing-wide: 0.1em;
 
-$h1-mobile-font-size: 32px;
-$h2-mobile-font-size: 24px;
+$mobile-default-font-size: 14px;
+$mobile-default-line-height: 19px;
+$mobile-h1-font-size: 32px;
+$mobile-h2-font-size: 24px;
+$mobile-lead-font-size: 18px;
+$mobile-lead-line-height: 28px;
 
 /* colors */
 $default-font-color: #2D2D2D;
@@ -608,9 +612,14 @@ input {
         
         .control-group {
     
-/* 	        width: 50%; */
-/* 	        float: left; */
-/* 	        margin-bottom: 1em; */
+	        width: 48%;
+	        float: left;
+	        margin-bottom: 1em;
+	        
+	        &:nth-of-type(odd) {
+	        
+	           margin-right: 30px;
+	        }
 	    
 	        label {
 	        
@@ -844,7 +853,7 @@ input {
                     padding: 0;
                     font-size: 42px;
                     
-                    @media (max-width: 767px) { font-size: $h1-mobile-font-size; }
+                    @media (max-width: 767px) { font-size: $mobile-h1-font-size; }
                 }
             }
         }
@@ -2907,24 +2916,41 @@ input {
     
 /* media-queries */
 
-/* Probably this needs more cleanup, but we start with collecting them the queries
-   at the end of the document */
-   
+
     
     @media (max-width: 767px) {
+    
+/* ----------------------------------------------- responsive global settings */
         
         body {
         
             padding: 0;
             
+            body, p {
+    
+		        font-size: $mobile-default-font-size;
+		    }
+		    
+		    #content {
+    
+		        font-size: $mobile-default-font-size;
+		        line-height: $mobile-default-line-height;
+		    }
+		    
+		    p.lead, .lead {
+		    
+		       font-size: $mobile-lead-font-size;
+		       line-height: $mobile-lead-line-height;
+		    }
+            
             h1 {
         
-	            font-size: $h1-mobile-font-size;
+	            font-size: $mobile-h1-font-size;
 	        }
 	        
 	        h2 {
 	        
-	            font-size: $h2-mobile-font-size;
+	            font-size: $mobile-h2-font-size;
 	        }
 	        
 	        h3 {
@@ -2948,6 +2974,10 @@ input {
         
 	           @include cols-reset(); 
 	        }
+	        
+	        
+	        
+/* ----------------------------------------------- responsive front-page */
 	        
 	        .portlet-journal-content.below-intro {
     
@@ -3036,7 +3066,51 @@ input {
         } 
 
         
-	    
+/* ----------------------------------------------- responsive logbook */
+
+
+        .portlet-asset-publisher {
+        
+            .metadata-publish-date,
+            .metadata-event-date {
+            
+                padding-left: 0;
+            }
+            
+            .asset-abstract {
+                        
+                .container {
+				    padding-top: 15px;
+				    padding-bottom: 15px;
+				}
+            
+                h3.asset-title {
+                
+                    font-size: $mobile-h2-font-size;
+                    line-height: $mobile-lead-line-height;
+                }
+                
+                .asset-content {
+                
+                    font-size: $mobile-lead-font-size;
+                    line-height: $mobile-lead-line-height;
+                    
+                    .asset-more {
+                    
+                        font-size: $mobile-default-font-size;
+                    }
+                }
+                
+                .asset-social-media .shariff ul li.shariff-button {
+                
+                    min-width: 45px;
+                }
+            }
+        }
+        
+        
+        
+
 	    
 	    .portlet-asset-publisher.default-publisher,
 	    .portlet-asset-publisher.event-publisher,
