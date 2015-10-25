@@ -873,6 +873,7 @@ input {
                 position: relative;
                 z-index: 9999;
                 margin-bottom: -120px;
+                margin-right: 15px;
                 
                 background: $color-orange;
                 border-radius: 100%;
