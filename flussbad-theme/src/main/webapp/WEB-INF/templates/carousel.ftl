@@ -2,8 +2,8 @@
     Carousel template: Format the Carousel structure
 
     Created:    2015-08-28 17:51 by Christian Berndt
-    Modified:   2015-10-25 14:01 by Christian Berndt
-    Version:    0.9.7
+    Modified:   2015-10-25 15:18 by Christian Berndt
+    Version:    0.9.8
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -35,7 +35,8 @@
 <script>
     $( document ).ready(function() {
       $('.flexslider').flexslider({
-        animation: "slide", 
+        animation: "fade", 
+        direction: "vertical",
         animationLoop: false,
         slideshow: false,
         pauseOnHover: true,
