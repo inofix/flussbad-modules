@@ -89,6 +89,19 @@ $full-image-height-xs: 400px;
     background: white;
 }
 
+@mixin background-cover() {
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
+}
+
 @mixin rotate($degree) {
 	
     transform: rotate($degree);
@@ -834,15 +847,7 @@ input {
             overflow: hidden;
             display: table;
             
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            
-            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
-            -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
+            @include background-cover();
             
             .claim {
                 width: 100%;
@@ -1252,7 +1257,18 @@ input {
 /*             text-shadow: 0 -1px 0 rgba(0,0,0,.3); */
 /*             font-size: 14px; */
 /*             line-height: 18px; */
-        }           
+        }    
+        
+    
+	    .slide-show .item { 
+	    
+	        @include background-cover();
+	        
+	        @media (max-width: 767px) { height: $full-image-height-xs; }
+	        @media (min-width: 768px) { height: $full-image-height-sm; }
+	        @media (min-width: 992px) { height: $full-image-height-md; }
+	        @media (min-width: 1200px) { height: $full-image-height-lg; }
+	    }       
     }
     
     
@@ -1267,15 +1283,7 @@ input {
             height: calc(100vh - #{$navHeight}) !important;
             overflow: hidden;
             
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            
-            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
-            -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
+            @include background-cover();
         } 
         
         &.with-keyvisual {
@@ -1448,15 +1456,7 @@ input {
             height: 75vh !important;
             overflow: hidden;
             
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            
-            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
-            -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
+            @include background-cover();
         }
     }
     
@@ -1847,15 +1847,7 @@ input {
         
                 padding-bottom: 0;
                 
-                -webkit-background-size: cover;
-				-moz-background-size: cover;
-				-o-background-size: cover;
-				background-size: cover;
-				background-position: center center;
-                background-repeat: no-repeat;
-            
-				filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
-                -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
+                @include background-cover();
                 
                 .container {
                 
@@ -1883,15 +1875,7 @@ input {
 	                    left: 0;
 	                    top: 0;
 	                
-	                    -webkit-background-size: cover;
-	                    -moz-background-size: cover;
-	                    -o-background-size: cover;
-	                    background-size: cover;
-	                    background-position: center center;
-	                    background-repeat: no-repeat;
-	                    
-	                    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
-	                    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";                        
+	                    @include background-cover();                        
 	                }
 	                
 	                .span6:last-child {
