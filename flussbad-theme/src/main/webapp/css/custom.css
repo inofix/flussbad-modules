@@ -477,12 +477,15 @@ input {
     }
     
     /* unset bootstrap's default background */
+    
     #navigation .navbar-inner,              /* affix-top is set via js, which comes too late on first load */
     #navigation.affix-top .navbar-inner {
+    
         background-color: transparent;
     }
     
     .default-page #navigation .navbar-inner {
+    
         background-color: $color-turquois;
     }
     
@@ -1675,14 +1678,13 @@ input {
         
             background: transparent;
             min-height: $categoriesHeight; /* otherwise the toggle-button is truncated in closed mode */
+            transition: 0.5s ease-in-out;
         
             .taglib-asset-categories-navigation .accordion-group,
-            .site-map-wrapper
-            {
+            .site-map-wrapper {
         
                 max-height: 0;
                 overflow: hidden;
-            
             }
     
             .toggle-button {
@@ -2592,7 +2594,6 @@ input {
 		       
 		          background: none;
 		          border: none;
-		          padding-top: 40px;
 		       		           
 		           .icon-search {
 		              font-size: $h1-font-size;
@@ -3065,8 +3066,7 @@ input {
 
 	    
 	    
-	    
-	    
+/* ----------------------------------------------- responsive diverses */
 	    
 	    .portlet-asset-publisher.default-publisher,
 	    .portlet-asset-publisher.event-publisher,
@@ -3119,10 +3119,20 @@ input {
                padding: 7px 0 0;
                margin: 0;
             }
+            
+            &.affix-top {
+            
+                .btn-navbar,
+	            .btn-navbar:hover,
+	            .btn-navbar:active {
+	            
+	               color: white;
+	            }
+            }
         }
         
         .navbar-fixed-top .navbar-inner,
-        .aui .navbar-fixed-bottom .navbar-inner {
+        .navbar-fixed-bottom .navbar-inner {
         
             padding: 10px 0;
         }
@@ -3140,6 +3150,11 @@ input {
         .nav-collapse .nav > li > a {
         
             margin: 0;
+        }
+        
+        #navigation.affix-top .navbar-inner {
+        
+            height: 40px;
         }
         
         #navigation .portlet-site-map {
