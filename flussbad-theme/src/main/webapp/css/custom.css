@@ -868,6 +868,40 @@ input {
     
             margin-top: $containerPush;
             
+            a.club-link {
+            
+                position: relative;
+                z-index: 9999;
+                margin-bottom: -120px;
+                
+                background: $color-orange;
+                border-radius: 100%;
+                text-align: center;
+                width: 120px;
+                height: 120px;
+                display: inline-block;
+                padding-top: 3px;
+                line-height: 150%;
+                
+                &:hover {
+                   background: darken($color-orange, 5%);
+                }
+            }
+            
+            a.club-link span {
+                
+                font-family: $button-font-family;
+                font-size: 38px;
+                line-height: 34px !important;
+                text-transform: uppercase;
+                color: #fff;
+                padding-top: 28px;
+                padding-left: -5px;
+                display: block;
+                
+                @include rotate(-15deg);                    
+            }
+            
             .abstract {
             
                 position: relative;
@@ -890,41 +924,6 @@ input {
     	              opacity: 0.75;
     	              color: $hover-font-color;
     	            }
-                }
-                
-                a.club-link {
-                
-                    position: absolute;
-                    z-index: 9999;
-                    top: -105px;
-                    right: 15px;
-                    
-                    background: $color-orange;
-                    border-radius: 100%;
-                    text-align: center;
-                    width: 120px;
-                    height: 120px;
-                    display: inline-block;
-                    padding-top: 3px;
-                    line-height: 150%;
-                    
-                    &:hover {
-                       background: darken($color-orange, 5%);
-                    }
-                }
-                
-                a.club-link span {
-    	            
-    	            font-family: $button-font-family;
-    	            font-size: 38px;
-    	            line-height: 34px !important;
-    	            text-transform: uppercase;
-    	            color: #fff;
-    	            padding-top: 28px;
-    	            padding-left: -5px;
-    	            display: block;
-    	            
-    	            @include rotate(-15deg);                    
                 }
             }
         }
