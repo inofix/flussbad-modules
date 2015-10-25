@@ -1174,7 +1174,12 @@ input {
 	        .author {
 	            padding: 0 8.54701%;
 	        } 
-        }    
+        }
+        
+        &.flexslider .flex-viewport {
+                  
+           max-height: 720px !important;
+        }   
     }
               
     .statements.gray-green {
@@ -2925,19 +2930,19 @@ input {
 		    
 		    .statements {
 		    
-		      .statement {
-		      
-		          blockquote {
-		          
-		             font-size: $lead-font-size;
-		             padding: 2em 0 0 0; 
-		          }
-		          
-		          .author {
-		          
-		             padding: 0 0 1em 0;
-		          }
-		      }
+			      .statement {
+			      
+			          blockquote {
+			          
+			             font-size: $lead-font-size;
+			             padding: 2em 0 0 0; 
+			          }
+			          
+			          .author {
+			          
+			             padding: 0 0 1em 0;
+			          }
+			      }
 		    }
 		    
 		    #footer {
