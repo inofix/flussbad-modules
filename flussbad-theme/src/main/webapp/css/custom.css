@@ -1196,6 +1196,8 @@ input {
 		
         border: none;
         margin: 0;
+        margin-bottom: -15px;
+        z-index: 0;
         
         ol, ul {
         
@@ -1242,8 +1244,15 @@ input {
         
         .flex-caption {
         
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 15px 30px 30px;
             margin-bottom: 0;
-            background-color: #f0f;
+            line-height: $default-line-height;
+            background-color: white;
+            opacity: 0.75;
         }        
     }
     
