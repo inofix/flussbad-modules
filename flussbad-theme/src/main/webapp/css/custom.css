@@ -1242,33 +1242,20 @@ input {
         
         .flex-caption {
         
-            margin-top: -90px;
             margin-bottom: 0;
             background-color: #f0f;
-/*             position: absolute;  */
-/*             top:0; */
-/*             width: 96%; */
-/*             padding: 2%; */
-/*             left: 0; */
-/*             bottom: 0; */
-/*             background: rgba(0,0,0,.5); */
-/*             color: black; */
-/*             text-shadow: 0 -1px 0 rgba(0,0,0,.3); */
-/*             font-size: 14px; */
-/*             line-height: 18px; */
-        }    
-        
-    
-	    .slide-show .item { 
-	    
-	        @include background-cover();
-	        
-	        @media (max-width: 767px) { height: $full-image-height-xs; }
-	        @media (min-width: 768px) { height: $full-image-height-sm; }
-	        @media (min-width: 992px) { height: $full-image-height-md; }
-	        @media (min-width: 1200px) { height: $full-image-height-lg; }
-	    }       
+        }        
     }
+    
+    .slide-show .item {
+        
+        @include background-cover();
+        
+        @media (max-width: 767px) { height: $full-image-height-xs; }
+        @media (min-width: 768px) { height: $full-image-height-sm; }
+        @media (min-width: 992px) { height: $full-image-height-md; }
+        @media (min-width: 1200px) { height: $full-image-height-lg; }
+    }   
     
     
 
@@ -1624,7 +1611,6 @@ input {
             position: absolute;
             right: 0;
             top: 0;
-/*             top: $navHeight; */
             padding: 25px;
                         
             font-family: $regular-font-family;
@@ -3133,7 +3119,7 @@ input {
         
         #navigation .search {
         
-/*             display: none; */
+            display: none;
             
             float: none;
             
