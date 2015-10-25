@@ -1485,6 +1485,18 @@ input {
         }
     }
     
+    .wir {
+    
+        .intro {
+        
+            h1 {
+            
+                font-size: 42px;
+                padding: .25em 0 2em;
+            }
+        }
+    }
+    
     
     
 /* ----------------------------------------------- Logoleiste im Footer */
