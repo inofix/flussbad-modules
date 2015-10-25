@@ -1673,8 +1673,17 @@ input {
         &.categories-auto-closed,
         &.categories-closed {
         
-            max-height: 0;
-            overflow: hidden;
+            background: transparent;
+            min-height: $categoriesHeight; /* otherwise the toggle-button is truncated in closed mode */
+        
+            .taglib-asset-categories-navigation .accordion-group,
+            .site-map-wrapper
+            {
+        
+                max-height: 0;
+                overflow: hidden;
+            
+            }
     
             .toggle-button {
             
@@ -2332,10 +2341,15 @@ input {
             display: inline-block; 
     	}
     	
-    	ul {
+    	.site-map-wrapper {
     	
     		margin: 15px 0; 
-    		list-style: none; 
+    		float: left; 
+    		
+    		ul {
+                margin: 0; 
+        		list-style: none; 
+        	}
     	}	
     }
     
@@ -3226,7 +3240,6 @@ input {
     .portlet-dynamic-data-mapping,
     .portlet-journal,
     .portlet-search,
-    .portlet-site-map.project-sections .portlet-borderless-container,
     .web-form-portlet {
     
         margin: auto;
@@ -3235,7 +3248,7 @@ input {
     
     @media (min-width: 1200px) {
 
-        .portlet-site-map.project-sections .portlet-body,
+        .portlet-site-map.project-sections .portlet-body .site-map-wrapper,
     	.taglib-asset-categories-navigation .accordion-group {
     	
 		    margin-left: 34.18803%; /* bootstrap .offset4:first-child */
@@ -3252,7 +3265,6 @@ input {
         .portlet-dynamic-data-mapping,
         .portlet-journal,
         .portlet-search,
-        .portlet-site-map.project-sections .portlet-borderless-container,
         .web-form-portlet {
         
             width: 1170px; /* bootstrap .container */
@@ -3267,7 +3279,6 @@ input {
         .portlet-dynamic-data-mapping,
         .portlet-journal,
         .portlet-search,
-        .portlet-site-map.project-sections .portlet-borderless-container,
         .web-form-portlet  {
             width: 724px; /* bootstrap .container */
         }
