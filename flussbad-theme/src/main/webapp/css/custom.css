@@ -31,6 +31,7 @@ $letter-spacing-wide: 0.1em;
 $mobile-default-font-size: 14px;
 $mobile-default-line-height: 19px;
 $mobile-h1-font-size: 32px;
+$mobile-h1-line-height: 39px;
 $mobile-h2-font-size: 24px;
 $mobile-lead-font-size: 18px;
 $mobile-lead-line-height: 28px;
@@ -2946,6 +2947,7 @@ input {
             h1 {
         
 	            font-size: $mobile-h1-font-size;
+	            line-height: $mobile-h1-line-height;
 	        }
 	        
 	        h2 {
@@ -2955,6 +2957,7 @@ input {
 	        
 	        h3 {
 	        
+	           font-size: $mobile-default-font-size;
 	           line-height: 32px;
 	        }
 	        
@@ -3107,10 +3110,20 @@ input {
                 }
             }
         }
+     
         
         
-        
+/* ----------------------------------------------- responsive story */
 
+        .portlet-asset-publisher.story-publisher {
+        
+            margin-top: 0;
+        }
+
+	    
+	    
+	    
+	    
 	    
 	    .portlet-asset-publisher.default-publisher,
 	    .portlet-asset-publisher.event-publisher,
@@ -3145,12 +3158,23 @@ input {
         .navbar-fixed-bottom, 
         .navbar-static-top {
         
-            margin: 0; 
+            margin: 0;
             
-            .btn-navbar {
+            .brand {
+            
+                padding: 10px 0 0 0;
+            }
+            
+            .btn-navbar,
+            .btn-navbar:hover,
+            .btn-navbar:active {
             
                background: none;
                border: none;
+               font-size: 24px;
+               color: $navigation-font-color;
+               padding: 7px 0 0;
+               margin: 0;
             }
         }
         
