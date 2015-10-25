@@ -1211,14 +1211,17 @@ input {
         }
         
         .flex-control-nav {
+        
             bottom: 30px;
         }
         
         .flex-direction-nav a {
+        
             opacity: .7;
         }
         
         .flex-direction-nav a::before {
+        
             font-family: "flexslider-icon";
             font-size: 40px;
             display: inline-block;
@@ -1228,20 +1231,20 @@ input {
         }
         
         .flex-direction-nav a.flex-next:before {
+        
           content: '\f002';
         }
 
         .flex-direction-nav .flex-prev {
+        
           left: 30px;
         }
+        
         .flex-direction-nav .flex-next {
+        
           right: 30px;
           text-align: right;
-        }    
-        
-        .flexslider:hover .flex-direction-nav .flex-next {
-          opacity: 0.7;
-        }  
+        }     
         
         .flex-caption {
         
@@ -1254,9 +1257,27 @@ input {
             line-height: $default-line-height;
             background-color: white;
             opacity: 0.75;
-        }        
+        }
+        
+        &:hover {
+        
+            .flex-direction-nav .flex-next {
+        
+	           opacity: 0.7;
+	        }
+	        
+	        .flex-direction-nav .flex-prev {
+        
+	          left: 30px;
+	        }
+	        
+	        .flex-direction-nav .flex-next {
+        
+	          right: 30px;
+	        } 
+        } 
     }
-    
+        
     .slide-show .item {
         
         @include background-cover();
