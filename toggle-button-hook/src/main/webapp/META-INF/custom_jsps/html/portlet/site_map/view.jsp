@@ -8,8 +8,8 @@
     toggle_button.jspf.
         
     Created:    2015-10-09 19:01 by Christian Berndt
-    Modified:   2015-10-09 19:01 by Christian Berndt
-    Version:    1.0.0
+    Modified:   2015-10-25 18:06 by Christian Berndt
+    Version:    1.0.1
 --%>
 <%--
 /**
@@ -35,22 +35,24 @@ List<Layout> rootLayouts = LayoutLocalServiceUtil.getLayouts(layout.getGroupId()
 long portletDisplayDDMTemplateId = PortletDisplayTemplateUtil.getPortletDisplayTemplateDDMTemplateId(displayStyleGroupId, displayStyle);
 %>
 
-<c:choose>
-    <c:when test="<%= portletDisplayDDMTemplateId > 0 %>">
-        <%= PortletDisplayTemplateUtil.renderDDMTemplate(pageContext, portletDisplayDDMTemplateId, rootLayouts) %>
-    </c:when>
-    <c:otherwise>
-
-        <%
-        StringBundler sb = new StringBundler();
-
-        _buildSiteMap(layout, rootLayouts, rootLayout, includeRootInTree, displayDepth, showCurrentPage, useHtmlTitle, showHiddenPages, 1, themeDisplay, sb);
-        %>
-
-        <%= sb.toString() %>
-    </c:otherwise>
-</c:choose>
-
+<%-- Custom site-map-wrapper class --%>
+<div class="site-map-wrapper">
+	<c:choose>
+	    <c:when test="<%= portletDisplayDDMTemplateId > 0 %>">
+	        <%= PortletDisplayTemplateUtil.renderDDMTemplate(pageContext, portletDisplayDDMTemplateId, rootLayouts) %>
+	    </c:when>
+	    <c:otherwise>
+	
+	        <%
+	        StringBundler sb = new StringBundler();
+	
+	        _buildSiteMap(layout, rootLayouts, rootLayout, includeRootInTree, displayDepth, showCurrentPage, useHtmlTitle, showHiddenPages, 1, themeDisplay, sb);
+	        %>
+	
+	        <%= sb.toString() %>
+	    </c:otherwise>
+	</c:choose>
+</div> <%-- / .site-map-wrapper --%>
 <%!
 private void _buildLayoutView(Layout layout, String cssClass, boolean useHtmlTitle, ThemeDisplay themeDisplay, StringBundler sb) throws Exception {
     String layoutURL = PortalUtil.getLayoutURL(layout, themeDisplay);
