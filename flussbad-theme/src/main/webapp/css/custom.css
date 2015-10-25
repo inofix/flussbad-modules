@@ -854,7 +854,7 @@ input {
             
             .claim {
                 width: 100%;
-                height: 100%;
+/*                 height: 100%; */
                 display: table-cell;
                 vertical-align: middle;
                 
@@ -3077,10 +3077,34 @@ input {
         
 /* ----------------------------------------------- responsive story */
 
-        .portlet-asset-publisher.story-publisher {
+        .portlet-asset-publisher.story-publisher,
+        .project-story.categories-closed {
         
             margin-top: 0;
         }
+        
+        .below-category .introduction.with-keyvisual .keyvisual {
+        
+            height: 66vh !important;
+        }
+        
+        .below-category .introduction.with-keyvisual .container {
+        
+            margin-top: 0 !important;
+        }
+        
+        .intro {
+        
+            padding: 2em 0;
+        
+            h1 {
+        
+	            padding: 20px 0;
+	        }
+        }
+        
+        
+        
 
 	    
 	    
