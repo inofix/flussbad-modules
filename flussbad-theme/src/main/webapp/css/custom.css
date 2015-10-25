@@ -3147,7 +3147,7 @@ input {
 	               color: white;
 	            }
             }
-        }
+/*         } */
         
         .navbar-fixed-top .navbar-inner,
         .navbar-fixed-bottom .navbar-inner {
@@ -3223,36 +3223,36 @@ input {
 /* ----------------------------------------------- responsive category accordion */
 
 
-/*     .portlet-asset-categories-navigation { */
+    .portlet-asset-categories-navigation {
     
-/*         max-height: 100%; */
-/*         text-align: center; */
+        max-height: 100%;
+        text-align: center;
         
-/*         .toggle { */
+        .toggle {
         
-/*             font-size: 36px; */
-/*             padding: 15px; */
-/*         } */
+            font-size: 36px;
+            padding: 15px;
+        }
         
-/*         .portlet-body { */
+        .portlet-body {
             
-/*             width: 100% !important; */
+            width: 100% !important;
             
-/*             ul { */
+            ul {
         
-/*                 width: 100%; */
-/* 	            margin: 0; */
+                width: 100%;
+	            margin: 0;
 	                
-/* 	            li { */
+	            li {
 	            
-/* 	                float: none !important; */
-/* 	                display: block !important; */
-/* 	            } */
-/* 	        } */
-/*         } */
-/*     } */
+	                float: none !important;
+	                display: block !important;
+	            }
+	        }
+        }
+    }
     
-    
+}
     
     
     
