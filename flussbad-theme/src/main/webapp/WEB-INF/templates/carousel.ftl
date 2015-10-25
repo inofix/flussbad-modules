@@ -16,16 +16,14 @@
             <#assign i = 0 >
             <#list image.getSiblings() as cur_image>
                 <li class="item">
-                    <!--
-                    <div class="carousel-caption">
-                        <h1>${cur_image.caption.getData()}</h1>
-                    </div>
-                    -->
                     <#if i gt 0>
                         <img src="${cur_image.getData()}&imageThumbnail=3" title="${cur_image.caption.getData()}">
 <#--                        <img data-src="${cur_image.getData()}&imageThumbnail=3" title="${cur_image.caption.getData()}"> -->
                     <#else>
                         <img src="${cur_image.getData()}&imageThumbnail=3" title="${cur_image.caption.getData()}">
+                    </#if>
+                    <#if cur_image.caption.getData()?has_content>
+                        <p class="flex-caption">${cur_image.caption.getData()}</p>
                     </#if>
                 </li>
                 <#assign i = i+1>
@@ -38,6 +36,8 @@
     $( document ).ready(function() {
       $('.flexslider').flexslider({
         animation: "slide", 
+        animationLoop: false,
+        slideshow: false,
         pauseOnHover: true,
         controlNav: false,
         prevText:"",      
