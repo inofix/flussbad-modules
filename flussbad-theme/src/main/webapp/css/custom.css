@@ -477,12 +477,15 @@ input {
     }
     
     /* unset bootstrap's default background */
+    
     #navigation .navbar-inner,              /* affix-top is set via js, which comes too late on first load */
     #navigation.affix-top .navbar-inner {
+    
         background-color: transparent;
     }
     
     .default-page #navigation .navbar-inner {
+    
         background-color: $color-turquois;
     }
     
@@ -3050,8 +3053,7 @@ input {
 
 	    
 	    
-	    
-	    
+/* ----------------------------------------------- responsive diverses */
 	    
 	    .portlet-asset-publisher.default-publisher,
 	    .portlet-asset-publisher.event-publisher,
@@ -3104,10 +3106,20 @@ input {
                padding: 7px 0 0;
                margin: 0;
             }
+            
+            &.affix-top {
+            
+                .btn-navbar,
+	            .btn-navbar:hover,
+	            .btn-navbar:active {
+	            
+	               color: white;
+	            }
+            }
         }
         
         .navbar-fixed-top .navbar-inner,
-        .aui .navbar-fixed-bottom .navbar-inner {
+        .navbar-fixed-bottom .navbar-inner {
         
             padding: 10px 0;
         }
@@ -3125,6 +3137,11 @@ input {
         .nav-collapse .nav > li > a {
         
             margin: 0;
+        }
+        
+        #navigation.affix-top .navbar-inner {
+        
+            height: 40px;
         }
         
         #navigation .portlet-site-map {
