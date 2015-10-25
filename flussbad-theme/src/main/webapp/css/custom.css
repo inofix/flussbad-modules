@@ -3162,7 +3162,7 @@ input {
             
             .brand {
             
-                padding: 10px 0 0 0;
+                padding: 10px 0 5px 5px;
             }
             
             .btn-navbar,
@@ -3175,6 +3175,64 @@ input {
                color: $navigation-font-color;
                padding: 7px 0 0;
                margin: 0;
+            }
+        }
+        
+        .navbar-fixed-top .navbar-inner,
+        .aui .navbar-fixed-bottom .navbar-inner {
+        
+            padding: 10px 0;
+        }
+        
+        .navbar .nav {
+        
+            padding-top: 20px;
+        }
+        
+        .navbar .nav > li > a {
+        
+            padding: 10px 0;
+        }
+        
+        .nav-collapse .nav > li > a {
+        
+            margin: 0;
+        }
+        
+        #navigation .portlet-site-map {
+        
+            float: none;
+            
+            .portlet-body {
+            
+                ul {
+                
+                    padding: 20px 0;
+                    margin: 0;
+                    
+                    li {
+                    
+                        display: block;
+                        padding: 5px 0;
+                    
+                        a {
+                     
+                            padding: 0;
+                        }
+                    }
+                }
+            }
+        }
+        
+        #navigation .search {
+        
+/*             display: none; */
+            
+            float: none;
+            
+            a {
+                
+                padding: 10px 0 0 0;
             }
         }
         
