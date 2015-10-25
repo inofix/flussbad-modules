@@ -1189,7 +1189,7 @@ input {
 /* ----------------------------------------------- Flexslider --------*/
 
     .flexslider {
-    
+		
         border: none;
         margin: 0;
         
@@ -1622,9 +1622,10 @@ input {
       
         .toggle {
                           
-            position: fixed; 
+            position: absolute;
             right: 0;
-            top: $navHeight;
+            top: 0;
+/*             top: $navHeight; */
             padding: 25px;
                         
             font-family: $regular-font-family;
@@ -2991,6 +2992,12 @@ input {
 
         .portlet-asset-publisher {
         
+            &.categories-closed,
+            &.default-publisher {
+            
+                margin-top: 0;
+            }
+        
             .metadata-publish-date,
             .metadata-event-date {
             
@@ -3067,7 +3074,7 @@ input {
     
     
     
-    
+/* ----------------------------------------------- responsive navigation */
     
     @media (max-width: 979px) { /* bootstrap Navigation switch point */
     
@@ -3156,6 +3163,40 @@ input {
         .flex-direction-nav {
             
            display: none;
+        }
+    }
+    
+    
+    
+/* ----------------------------------------------- responsive category accordion */
+
+
+    .portlet-asset-categories-navigation {
+    
+        max-height: 100%;
+        text-align: center;
+        
+        .toggle {
+        
+            font-size: 36px;
+            padding: 15px;
+        }
+        
+        .portlet-body {
+            
+            width: 100% !important;
+            
+            ul {
+        
+                width: 100%;
+	            margin: 0;
+	                
+	            li {
+	            
+	                float: none !important;
+	                display: block !important;
+	            }
+	        }
         }
     }
     
