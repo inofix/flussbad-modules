@@ -89,6 +89,19 @@ $full-image-height-xs: 400px;
     background: white;
 }
 
+@mixin background-cover() {
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
+}
+
 @mixin rotate($degree) {
 	
     transform: rotate($degree);
@@ -834,15 +847,7 @@ input {
             overflow: hidden;
             display: table;
             
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            
-            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
-            -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
+            @include background-cover();
             
             .claim {
                 width: 100%;
@@ -1188,15 +1193,17 @@ input {
 /* ----------------------------------------------- Flexslider --------*/
 
     .flexslider {
-    
+		
         border: none;
-        margin: 0; 
+        margin: 0;
         
         ol, ul {
-            margin: 0; 
+        
+            margin: 0;
         }
         
         li {
+        
             line-height: 40px; /* the same as the flex-direction-icon */
         }
         
@@ -1234,21 +1241,33 @@ input {
         }  
         
         .flex-caption {
-        }        
         
-    }
-    
-    
-/* ----------------------------------------------- Image Slider */
-    
-    .slide-show .item { 
-    
-        background-size: cover; 
+            margin-top: -90px;
+            margin-bottom: 0;
+            background-color: #f0f;
+/*             position: absolute;  */
+/*             top:0; */
+/*             width: 96%; */
+/*             padding: 2%; */
+/*             left: 0; */
+/*             bottom: 0; */
+/*             background: rgba(0,0,0,.5); */
+/*             color: black; */
+/*             text-shadow: 0 -1px 0 rgba(0,0,0,.3); */
+/*             font-size: 14px; */
+/*             line-height: 18px; */
+        }    
         
-        @media (max-width: 767px) { height: $full-image-height-xs; }
-        @media (min-width: 768px) { height: $full-image-height-sm; }
-        @media (min-width: 992px) { height: $full-image-height-md; }
-        @media (min-width: 1200px) { height: $full-image-height-lg; }
+    
+	    .slide-show .item { 
+	    
+	        @include background-cover();
+	        
+	        @media (max-width: 767px) { height: $full-image-height-xs; }
+	        @media (min-width: 768px) { height: $full-image-height-sm; }
+	        @media (min-width: 992px) { height: $full-image-height-md; }
+	        @media (min-width: 1200px) { height: $full-image-height-lg; }
+	    }       
     }
     
     
@@ -1263,15 +1282,7 @@ input {
             height: calc(100vh - #{$navHeight}) !important;
             overflow: hidden;
             
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            
-            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
-            -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
+            @include background-cover();
         } 
         
         &.with-keyvisual {
@@ -1444,15 +1455,7 @@ input {
             height: 75vh !important;
             overflow: hidden;
             
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            
-            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
-            -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
+            @include background-cover();
         }
     }
     
@@ -1618,9 +1621,10 @@ input {
       
         .toggle {
                           
-            position: fixed; 
+            position: absolute;
             right: 0;
-            top: $navHeight;
+            top: 0;
+/*             top: $navHeight; */
             padding: 25px;
                         
             font-family: $regular-font-family;
@@ -1842,15 +1846,7 @@ input {
         
                 padding-bottom: 0;
                 
-                -webkit-background-size: cover;
-				-moz-background-size: cover;
-				-o-background-size: cover;
-				background-size: cover;
-				background-position: center center;
-                background-repeat: no-repeat;
-            
-				filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
-                -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
+                @include background-cover();
                 
                 .container {
                 
@@ -1878,15 +1874,7 @@ input {
 	                    left: 0;
 	                    top: 0;
 	                
-	                    -webkit-background-size: cover;
-	                    -moz-background-size: cover;
-	                    -o-background-size: cover;
-	                    background-size: cover;
-	                    background-position: center center;
-	                    background-repeat: no-repeat;
-	                    
-	                    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
-	                    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";                        
+	                    @include background-cover();                        
 	                }
 	                
 	                .span6:last-child {
@@ -2987,6 +2975,12 @@ input {
 
         .portlet-asset-publisher {
         
+            &.categories-closed,
+            &.default-publisher {
+            
+                margin-top: 0;
+            }
+        
             .metadata-publish-date,
             .metadata-event-date {
             
@@ -3063,7 +3057,7 @@ input {
     
     
     
-    
+/* ----------------------------------------------- responsive navigation */
     
     @media (max-width: 979px) { /* bootstrap Navigation switch point */
     
@@ -3075,7 +3069,7 @@ input {
             
             .brand {
             
-                padding: 10px 0 0 0;
+                padding: 10px 0 5px 5px;
             }
             
             .btn-navbar,
@@ -3091,9 +3085,101 @@ input {
             }
         }
         
+        .navbar-fixed-top .navbar-inner,
+        .aui .navbar-fixed-bottom .navbar-inner {
+        
+            padding: 10px 0;
+        }
+        
+        .navbar .nav {
+        
+            padding-top: 20px;
+        }
+        
+        .navbar .nav > li > a {
+        
+            padding: 10px 0;
+        }
+        
+        .nav-collapse .nav > li > a {
+        
+            margin: 0;
+        }
+        
+        #navigation .portlet-site-map {
+        
+            float: none;
+            
+            .portlet-body {
+            
+                ul {
+                
+                    padding: 20px 0;
+                    margin: 0;
+                    
+                    li {
+                    
+                        display: block;
+                        padding: 5px 0;
+                    
+                        a {
+                     
+                            padding: 0;
+                        }
+                    }
+                }
+            }
+        }
+        
+        #navigation .search {
+        
+/*             display: none; */
+            
+            float: none;
+            
+            a {
+                
+                padding: 10px 0 0 0;
+            }
+        }
+        
         .flex-direction-nav {
             
            display: none;
+        }
+    }
+    
+    
+    
+/* ----------------------------------------------- responsive category accordion */
+
+
+    .portlet-asset-categories-navigation {
+    
+        max-height: 100%;
+        text-align: center;
+        
+        .toggle {
+        
+            font-size: 36px;
+            padding: 15px;
+        }
+        
+        .portlet-body {
+            
+            width: 100% !important;
+            
+            ul {
+        
+                width: 100%;
+	            margin: 0;
+	                
+	            li {
+	            
+	                float: none !important;
+	                display: block !important;
+	            }
+	        }
         }
     }
     
