@@ -1678,14 +1678,13 @@ input {
         
             background: transparent;
             min-height: $categoriesHeight; /* otherwise the toggle-button is truncated in closed mode */
+            transition: 0.5s ease-in-out;
         
             .taglib-asset-categories-navigation .accordion-group,
-            .site-map-wrapper
-            {
+            .site-map-wrapper {
         
                 max-height: 0;
                 overflow: hidden;
-            
             }
     
             .toggle-button {
