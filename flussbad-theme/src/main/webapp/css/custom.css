@@ -3111,9 +3111,9 @@ input {
     
     
     
-/* ----------------------------------------------- responsive navigation */
+/* ----------------------------------------------- responsive navigation / bootstrap Navigation switch point */
     
-    @media (max-width: 979px) { /* bootstrap Navigation switch point */
+    @media (max-width: 979px) { 
     
         .navbar-fixed-top, 
         .navbar-fixed-bottom, 
@@ -3147,7 +3147,7 @@ input {
 	               color: white;
 	            }
             }
-/*         } */
+        }
         
         .navbar-fixed-top .navbar-inner,
         .navbar-fixed-bottom .navbar-inner {
@@ -3216,48 +3216,40 @@ input {
             
            display: none;
         }
-    }
-    
-    
-    
-/* ----------------------------------------------- responsive category accordion */
 
-
-    .portlet-asset-categories-navigation {
-    
-        max-height: 100%;
-        text-align: center;
-        
-        .toggle {
-        
-            font-size: 36px;
-            padding: 15px;
-        }
-        
-        .portlet-body {
-            
-            width: 100% !important;
-            
-            ul {
-        
-                width: 100%;
-	            margin: 0;
-	                
-	            li {
-	            
-	                float: none !important;
-	                display: block !important;
-	            }
+	    .portlet-asset-categories-navigation,
+	    .portlet-site-map.project-sections {
+	    
+	        max-height: 100%;
+	        text-align: center;
+	        
+	        .toggle {
+	        
+	            font-size: 36px;
+	            padding: 15px;
 	        }
-        }
-    }
+	        
+	        .portlet-body,
+	        .site-map-wrapper {
+	            
+	            width: 100% !important;
+	            
+	            ul {
+	        
+	                width: 100%;
+		            margin: 0;
+		                
+		            li {
+		            
+		                float: none !important;
+		                display: block !important;
+		            }
+		        }
+	        }
+	    }
+	}
     
-}
-    
-    
-    
-    
-    
+
     
     @media (min-width: 992px) {
     
