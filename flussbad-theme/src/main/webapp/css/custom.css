@@ -873,6 +873,7 @@ input {
                 position: relative;
                 z-index: 9999;
                 margin-bottom: -120px;
+                margin-right: 15px;
                 
                 background: $color-orange;
                 border-radius: 100%;
@@ -1173,7 +1174,12 @@ input {
 	        .author {
 	            padding: 0 8.54701%;
 	        } 
-        }    
+        }
+        
+        &.flexslider .flex-viewport {
+                  
+           max-height: 720px !important;
+        }   
     }
               
     .statements.gray-green {
@@ -1210,14 +1216,17 @@ input {
         }
         
         .flex-control-nav {
+        
             bottom: 30px;
         }
         
         .flex-direction-nav a {
+        
             opacity: .7;
         }
         
         .flex-direction-nav a::before {
+        
             font-family: "flexslider-icon";
             font-size: 40px;
             display: inline-block;
@@ -1227,20 +1236,20 @@ input {
         }
         
         .flex-direction-nav a.flex-next:before {
+        
           content: '\f002';
         }
 
         .flex-direction-nav .flex-prev {
+        
           left: 30px;
         }
+        
         .flex-direction-nav .flex-next {
+        
           right: 30px;
           text-align: right;
-        }    
-        
-        .flexslider:hover .flex-direction-nav .flex-next {
-          opacity: 0.7;
-        }  
+        }     
         
         .flex-caption {
         
@@ -1253,9 +1262,27 @@ input {
             line-height: $default-line-height;
             background-color: white;
             opacity: 0.75;
-        }        
+        }
+        
+        &:hover {
+        
+            .flex-direction-nav .flex-next {
+        
+	           opacity: 0.7;
+	        }
+	        
+	        .flex-direction-nav .flex-prev {
+        
+	          left: 30px;
+	        }
+	        
+	        .flex-direction-nav .flex-next {
+        
+	          right: 30px;
+	        } 
+        } 
     }
-    
+        
     .slide-show .item {
         
         @include background-cover();
@@ -2903,19 +2930,19 @@ input {
 		    
 		    .statements {
 		    
-		      .statement {
-		      
-		          blockquote {
-		          
-		             font-size: $lead-font-size;
-		             padding: 2em 0 0 0; 
-		          }
-		          
-		          .author {
-		          
-		             padding: 0 0 1em 0;
-		          }
-		      }
+			      .statement {
+			      
+			          blockquote {
+			          
+			             font-size: $lead-font-size;
+			             padding: 2em 0 0 0; 
+			          }
+			          
+			          .author {
+			          
+			             padding: 0 0 1em 0;
+			          }
+			      }
 		    }
 		    
 		    #footer {
