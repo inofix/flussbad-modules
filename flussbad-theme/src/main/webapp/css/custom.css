@@ -1780,6 +1780,13 @@ input {
                 padding-bottom: 30px;
             }
             
+            .asset-social-media {
+                
+                margin-top: 1em;
+                border-top: 5px solid $color-light-gray;
+                padding-top: .5em;
+            }
+            
             &.gray-green {
            
                 background-color: $color-gray-green;
@@ -1810,12 +1817,9 @@ input {
     				}
                 }
                 
-                .asset-content {
-                
-    				border-bottom: 5px solid #73A0A2;
-                }
-                
                 .asset-social-media {
+                
+                    border-top: 5px solid #73A0A2;
                 
                    .shariff {  
                    
@@ -1846,9 +1850,9 @@ input {
             
                 background-color: $color-light-gray;
                 
-                .asset-content {
+                .asset-social-media {
                 
-                       border-bottom: 5px solid #F5F5F5;
+                       border-top: 5px solid #F5F5F5;
                    }
             }
             
@@ -1856,9 +1860,9 @@ input {
             
                 background-color: $color-sand;
                 
-                .asset-content {
+                .asset-social-media {
                 
-    				border-bottom: 5px solid #F5F4F0;
+    				border-top: 5px solid #F5F4F0;
                 }
             }
         
@@ -1866,9 +1870,9 @@ input {
             
                 background-color: $color-turquois;
                 
-                .asset-content {
+                .asset-social-media {
                 
-    				border-bottom: 5px solid #C9F4F6;
+    				border-top: 5px solid #C9F4F6;
                 }
             }
             
@@ -1958,8 +1962,7 @@ input {
 	                }
 	                
 	                .asset-content {
-                
-	                    border-bottom: 5px solid #F5F4F0;
+               
 	                    font-size: $default-font-size;
 	                    line-height: $default-line-height;
 	                    
@@ -1976,6 +1979,8 @@ input {
 	                
 	                .asset-social-media {
                 
+	                    border-top: 5px solid #F5F4F0;
+	                    padding-top: 1em !important;
 	                    padding-bottom: 1em !important;
 	                }
                 }
@@ -2057,8 +2062,6 @@ input {
     		    margin-right: 0;
     		    font-size: $lead-font-size; 
     		    line-height: $lead-line-height; 
-    		    padding-bottom: 30px; 
-    		    border-bottom: 5px solid #ebebeb;
     
     			.asset-summary {
     			
@@ -2224,9 +2227,9 @@ input {
     	
     		background: lighten($color-sand, 5%);
     		
-    		.asset-content {
+    		.asset-social-media {
     		
-    		     border-bottom-color: white;
+    		     border-top-color: white;
     		}
     	}
         
