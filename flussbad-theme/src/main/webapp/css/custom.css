@@ -1235,122 +1235,22 @@ input {
         }  
         
         .flex-caption {
-            position: absolute; 
-            top:0;
-            width: 96%;
-            padding: 2%;
-/*             left: 0; */
-/*             bottom: 0; */
-/*             background: rgba(0,0,0,.5); */
-            color: black;
-/*             text-shadow: 0 -1px 0 rgba(0,0,0,.3); */
-/*             font-size: 14px; */
-/*             line-height: 18px; */
         }        
         
     }
     
     
-/* ----------------------------------------------- Statement & Slider */
-    
-/*     .slide-show,  */
-/*     .statements { */
-    
-/*         .carousel { */
-/*             -webkit-transform: translate3d(0, 0, 0); */
-/*             white-space: nowrap; */
-/*         } */
-    
-/*         .carousel-control { */
-/*             color: $color-turquois; */
-/*             top: 50%; */
-/*             margin-top: -15px; */
-/*             left: 30px;  */
-/*             width: 60px; */
-/*             font-size: 60px; */
-/*             background-color: transparent; */
-/*             border: 0; */
-/*             z-index: 10; */
-/*         } */
-        
-/*         .carousel-control.right { */
-/*             margin-right: 15px; */
-/*             left: auto;  */
-/*         } */
-        
-/*         .left.carousel-control span { */
-/*     		@include rotate(180deg);  */
-/*             display: inline-block;             */
-/*         } */
-        
-/*         .item { */
-/*             display: inline-block; */
-/*         } */
-        
-        /* For IE 6/7 - needs inline block hack */
-/*         .item { */
-/*             *display:inline; */
-/*             *zoom:1; */
-/*         } */
-/*     }   */
-    
-
-/* ---- new alloy carousel configuration ---------- */
-/* ---- currently limited to the statements scope   */
-  
-
-              
-/*     .statements { */
-    
-/*         menu { */
-/*             top: 50%; */
-/*             background: none;  */
-/*             right: auto; */
-/*             width: 100%; */
-/*             padding: 0;  */
-            
-/*             li { */
-/*                 float: none;  */
-/*             } */
-/*         } */
-    
-/*         .carousel-menu-prev, */
-/*         .carousel-menu-next { */
-/*             color: $color-turquois; */
-/*             margin-top: -15px; */
-/*             width: 60px; */
-/*             font-size: 60px; */
-/*             background-color: $color-turquois; */
-/*             background-image: none;  */
-/*             border: 0; */
-/*         } */
-        
-/*         .carousel-menu-next { */
-/*             position: absolute;  */
-/*             left: auto;  */
-/*             right: 0;  */
-/*         }     */
-        
-/*         .carousel-menu-pause { */
-/*             display: none;  */
-/*         } */
-        
-/*         .carousel-menu-index { */
-/*             display: none; */
-/*         } */
-        
-/*     }         */
-    
-    
 /* ----------------------------------------------- Image Slider */
     
-/*     .slide-show { */
-      
-/*         @media (max-width: 767px) { height: $full-image-height-xs; } */
-/*         @media (min-width: 768px) { height: $full-image-height-sm; } */
-/*         @media (min-width: 992px) { height: $full-image-height-md; } */
-/*         @media (min-width: 1200px) { height: $full-image-height-lg; } */
-/*     } */
+    .slide-show .item { 
+    
+        background-size: cover; 
+        
+        @media (max-width: 767px) { height: $full-image-height-xs; }
+        @media (min-width: 768px) { height: $full-image-height-sm; }
+        @media (min-width: 992px) { height: $full-image-height-md; }
+        @media (min-width: 1200px) { height: $full-image-height-lg; }
+    }
     
     
 
