@@ -2,8 +2,8 @@
     Intro template: Format the Intro structure
     
     Created:    2015-08-28 17:52 by Christian Berndt
-    Modified:   2015-10-14 18:57 by Christian Berndt
-    Version:    1.0.1
+    Modified:   2015-10-25 15:55 by Christian Berndt
+    Version:    1.0.2
     
     Please note: Although this template is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -56,10 +56,19 @@
         </div>    
     </#if>
     <div class="abstracts">
-        <div class="container club-link">
-            <div class="span4 offset8">
-            </div>
-        </div>
+
+        <#if clubLink??>
+            <#if clubLink.getData()?has_content>
+                <div class="container">
+                    <div class="span4 offset8">
+                        <div class="pull-right">
+                            <a class="club-link" href="${clubLink.getData()}" title="${languageUtil.get(locale, "get-involved")}"><span>${languageUtil.get(locale, "get-involved")}</span></a>
+                        </div>
+                    </div>
+                </div>
+            </#if>
+        </#if>
+        
         <div class="container">
             <#if caption.getSiblings()?has_content>
                 <#assign i = 0 >
@@ -68,13 +77,6 @@
                         <div class="span4">
                             <#if cur_caption.getData()?has_content>
                                 <div class="abstract">
-                                    <#if i==2>
-                                        <#if clubLink??>
-                                            <#if clubLink.getData()?has_content>
-                                                <a class="club-link" href="${clubLink.getData()}" title="${languageUtil.get(locale, "get-involved")}"><span>${languageUtil.get(locale, "get-involved")}</span></a>
-                                            </#if>
-                                        </#if>
-                                    </#if>
                                     <h3>${cur_caption.getData()}</h3>
                                     <h2>${cur_caption.claim.getData()}</h2>
                                     <p>${cur_caption.abstract.getData()}</p>
