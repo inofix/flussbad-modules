@@ -1,15 +1,24 @@
 <#--
-    story.ftl: Format the Story structure
+    article.ftl: Format the Article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2015-10-21 18:47 by Christian Berndt
-    Version:    1.0.9
+    Modified:   2015-10-26 17:21 by Christian Berndt
+    Version:    1.1.0
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
     change the template online make sure that you commit your
     changes to the flussbad-modules repo, too.
 -->
+
+<#assign articleService = serviceLocator.findService("com.liferay.portlet.journal.service.JournalArticleService")>
+<#assign articleId = getterUtil.getString(.vars['reserved-article-id'].data) >
+<#assign article = articleService.getArticle(groupId, articleId) >
+<#assign classPK =  article.getResourcePrimKey() >
+
+<#assign categoryService = serviceLocator.findService("com.liferay.portlet.asset.service.AssetCategoryLocalService") >
+<#assign categories = categoryService.getCategories("com.liferay.portlet.journal.model.JournalArticle", classPK) >
+<#assign language_id = languageUtil.getLanguageId(locale) >
 
 <#assign cssClass = "">
 <#assign displayToc = false>
@@ -43,7 +52,17 @@
         </#if>
 
         <div class="${cssStyle}">
-            <h3 class="category"><a href="javascript:history.back();">Category</a></h3>
+        
+            <#if categories?size gt 0 >
+                <ul>
+                    <#list categories as category >
+                        <li>
+                            <h3 class="category"><a href="javascript:history.back();">${category.getTitle(language_id)}</a></h3>
+                        </li>
+                    </#list>
+                </ul>
+            </#if>
+            
             <h1 id="section-0">${headline.getData()}</h1>
             <p class="lead">${teaser.getData()}</p>
             <#if section.getSiblings()?has_content>
