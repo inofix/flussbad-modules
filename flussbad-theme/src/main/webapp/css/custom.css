@@ -398,6 +398,10 @@ input {
         z-index: 11;
         opacity: 0.95;
         
+        &.navbar-fixed-top {
+            position: fixed;
+        }
+        
         li {
             font-size: $default-font-size;
             font-weight: 600;
