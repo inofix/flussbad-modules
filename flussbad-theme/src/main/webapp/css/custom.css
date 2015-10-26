@@ -2854,6 +2854,12 @@ input {
         }
     }
     
+    .signed-out {
+        .portlet-journal-content .taglib-asset-links {
+            display: none; 
+        }
+    }
+    
     .lfr-meta-actions {
         margin-bottom: 1em;
         padding-bottom: 1em;
@@ -3350,6 +3356,7 @@ input {
     .portlet-asset-categories-navigation .portlet-body,
     .portlet-dynamic-data-mapping,
     .portlet-journal,
+    .portlet-journal-content .taglib-asset-links,
     .portlet-search,
     .web-form-portlet {
     
@@ -3375,6 +3382,7 @@ input {
         .portlet-asset-categories-navigation .portlet-body,
         .portlet-dynamic-data-mapping,
         .portlet-journal,
+        .portlet-journal-content .taglib-asset-links,
         .portlet-search,
         .web-form-portlet {
         
@@ -3389,6 +3397,7 @@ input {
         .portlet-asset-categories-navigation .portlet-body,
         .portlet-dynamic-data-mapping,
         .portlet-journal,
+        .portlet-journal-content .taglib-asset-links,
         .portlet-search,
         .web-form-portlet  {
             width: 724px; /* bootstrap .container */
