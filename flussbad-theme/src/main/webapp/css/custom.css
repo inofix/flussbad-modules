@@ -1947,7 +1947,8 @@ input {
                 
 	                    padding: 2em 0 0 0;
 	                    
-	                    .metadata-publish-date {
+	                    .metadata-publish-date,
+	                    .metadata-event-date {
 	                    
 	                        padding-left: 0;
 	                        font-size: $small-font-size;
@@ -2000,9 +2001,11 @@ input {
                     color: $default-font-color;
                 }
                    
-                .metadata-publish-date {
+                .metadata-publish-date,
+                .metadata-event-date {
                 
                     padding-right: 7px;
+                    margin-bottom: 1em;
                     display: block;
                 }
                    
@@ -3074,10 +3077,80 @@ input {
         
 /* ----------------------------------------------- responsive story */
 
-        .portlet-asset-publisher.story-publisher {
+        .portlet-asset-publisher.story-publisher,
+        .project-story.categories-closed {
         
             margin-top: 0;
         }
+        
+        .below-category .introduction.with-keyvisual .keyvisual,
+        .introduction .keyvisual {
+        
+            height: 66vh !important;
+        }
+        
+        .below-category .introduction.with-keyvisual .container,
+        .introduction.with-keyvisual .container,
+        .story.with-keyvisual .container {
+        
+            margin-top: 0 !important;
+        }
+        
+        .introduction .container .content {
+        
+            padding-bottom: 0;
+        }
+
+        
+        .intro {
+        
+            padding: 2em 0;
+        
+            h1 {
+        
+	            padding: 20px 0;
+	        }
+        }
+        
+        .project-story {
+        
+            margin-top: 0;
+        }
+        
+        .portlet-asset-publisher {
+        
+            .asset-abstract.fb-display {
+            
+                .row {
+                
+                    margin-left: 0 !important;
+                
+                    .image-container {
+        
+			            position: relative;
+			            width: 100%;
+			            height: 220px;
+			        }
+			        
+			        .asset-wrapper {
+			        
+			             position: relative;
+			             width: 100%;
+			             min-height: 220px;
+			             margin-left: 15px;
+			        }
+			        
+			        .span6:last-child {
+			        
+			             margin-left: 0;
+			             padding-right: 30px;
+			        }
+                }
+            }
+        }  
+        
+        
+        
 
 	    
 	    
@@ -3108,9 +3181,9 @@ input {
     
     
     
-/* ----------------------------------------------- responsive navigation */
+/* ----------------------------------------------- responsive navigation / bootstrap Navigation switch point */
     
-    @media (max-width: 979px) { /* bootstrap Navigation switch point */
+    @media (max-width: 979px) { 
     
         .navbar-fixed-top, 
         .navbar-fixed-bottom, 
@@ -3213,48 +3286,40 @@ input {
             
            display: none;
         }
-    }
-    
-    
-    
-/* ----------------------------------------------- responsive category accordion */
 
-
-/*     .portlet-asset-categories-navigation { */
-    
-/*         max-height: 100%; */
-/*         text-align: center; */
-        
-/*         .toggle { */
-        
-/*             font-size: 36px; */
-/*             padding: 15px; */
-/*         } */
-        
-/*         .portlet-body { */
-            
-/*             width: 100% !important; */
-            
-/*             ul { */
-        
-/*                 width: 100%; */
-/* 	            margin: 0; */
-	                
-/* 	            li { */
+	    .portlet-asset-categories-navigation,
+	    .portlet-site-map.project-sections {
+	    
+	        max-height: 100%;
+	        text-align: center;
+	        
+	        .toggle {
+	        
+	            font-size: 36px;
+	            padding: 15px;
+	        }
+	        
+	        .portlet-body,
+	        .site-map-wrapper {
 	            
-/* 	                float: none !important; */
-/* 	                display: block !important; */
-/* 	            } */
-/* 	        } */
-/*         } */
-/*     } */
+	            width: 100% !important;
+	            
+	            ul {
+	        
+	                width: 100%;
+		            margin: 0;
+		                
+		            li {
+		            
+		                float: none !important;
+		                display: block !important;
+		            }
+		        }
+	        }
+	    }
+	}
     
-    
-    
-    
-    
-    
-    
+
     
     @media (min-width: 992px) {
     
