@@ -398,6 +398,10 @@ input {
         z-index: 11;
         opacity: 0.95;
         
+        &.navbar-fixed-top {
+            position: fixed;
+        }
+        
         li {
             font-size: $default-font-size;
             font-weight: 600;
@@ -1207,6 +1211,7 @@ input {
         margin: 0;
         margin-bottom: -15px;
         z-index: 0;
+        overflow: hidden; 
         
         ol, ul {
         
