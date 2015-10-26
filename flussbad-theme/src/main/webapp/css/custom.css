@@ -1729,18 +1729,40 @@ input {
         &.default-publisher {
         
             margin-top: $navCategoriesHeight;
+                        
+            .asset-abstract {
             
-            /* Do not show asset-categories that don't have the "show-in-logbook" class */
-            
-            .asset-abstract .asset-metadata .metadata-categories a.asset-category {
-            
-                display: none; 
+                &.event {
+                
+                    background-color: $color-muted;
+                    
+                    h3.asset-title {
+                    
+                        color: $color-light-gray;  
+                    } 
+                    
+                    .asset-summary, 
+                    .asset-social-media,
+                    .metadata-event-location,
+                    .metadata-event-time {
+                        display: none; 
+                    }      
+                }   
+                
+                /* Do not show asset-categories that don't have the "show-in-logbook" */
+                /* class */
+                
+                .asset-metadata .metadata-categories a.asset-category {
+                
+                    display: none; 
+                }
+                
+                .asset-metadata .metadata-categories a.asset-category.show-in-logbook {
+                
+                    display: inline;
+                } 
             }
-            
-            .asset-abstract .asset-metadata .metadata-categories a.asset-category.show-in-logbook {
-            
-                display: inline;
-            }
+
         }
         
         &.project-publisher {
@@ -1874,16 +1896,6 @@ input {
                 
     				border-top: 5px solid #C9F4F6;
                 }
-            }
-            
-            &.muted {
-            
-                background-color: $color-muted;
-                
-                h3.asset-title {
-                
-                    color: $color-light-gray;  
-                }       
             }
             
             &.with-keyvisual {                
