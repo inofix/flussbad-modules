@@ -1,0 +1,29 @@
+<root available-locales="de_DE" default-locale="de_DE">
+<!--
+    genesis.xml: A structure for a content object of 
+    type "Genesis", which describes an important milestone
+    of the project history.
+    
+    Created:    2015-10-26 07:30 by Christian Berndt
+    Modified:   2015-10-26 07:30 by Christian Berndt
+    Version:    0.9.0
+    
+    Please note: Although this structure is stored in the 
+    site's context it's source is managed via git. Whenever you 
+    change the structure online make sure that you commit your 
+    changes to the flussbad-modules repo, too.
+-->
+    <dynamic-element dataType="string" indexType="keyword" localizable="true" name="title" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="large">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[Meilenstein]]>
+            </entry>
+            <entry name="predefinedValue">
+                <![CDATA[]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Beschreibe den Meilenstein der Projektgeschichte stichwortartig oder in einem Satz.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>
+</root>

@@ -2,8 +2,8 @@
     fb_init.jsp: Common setup-code for the flussbad-displays and abstracts.
     
     Created:    2015-10-08 16:48 by Christian Berndt
-    Modified:   2015-10-26 05:40 by Christian Berndt
-    Version:    1.0.6
+    Modified:   2015-10-26 07:45 by Christian Berndt
+    Version:    1.0.7
 --%>
 
 <%@ include file="/html/portlet/asset_publisher/init.jsp" %>
@@ -84,6 +84,7 @@
 	String hour = null; 
 	boolean isEvent = false;
 	boolean isFiltered = assetCategoryId > 0;
+    boolean isGenesis = false;
 	String keyVisual = null;
 	String location = null;
 	String minute = null; 
@@ -177,6 +178,10 @@
                 structureId = article.getStructureId();
                 if ("52522".equals(structureId)) {
                     isEvent = true; 
+                }
+                
+                if ("69567".equals(structureId)) {
+                    isGenesis = true; 
                 }
 
 

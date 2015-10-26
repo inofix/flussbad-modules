@@ -8,8 +8,8 @@
     - shariff-based social media buttons are included 
     
     Created:    2015-07-28 11:53 by Christian Berndt
-    Modified:   2015-10-26 05:32 by Christian Berndt
-    Version:    1.1.4
+    Modified:   2015-10-26 07:44 by Christian Berndt
+    Version:    1.1.5
 --%>
 
 <%-- Include fb-abstract specific setup code --%>
@@ -25,8 +25,8 @@
 	    	<div class="row">
 
 		 		<div class="span4">
-			        <div class="asset-metadata">	
-			      			        		        			        
+			        <div class="asset-metadata">
+			        			      			        		        			        
                         <c:if test="<%= Validator.isNotNull(eventDate) %>">
                             <span class="metadata-entry metadata-event-date"><%= dateFormatDate.format(eventTime) %></span>
                         </c:if>
@@ -63,7 +63,14 @@
 		        </div>
 		
 				<div class="span8">
-			        <h3 class="asset-title">           
+			        <h3 class="asset-title">  
+			        
+			            <% 
+			                // Do not display a link for Genesis objects
+							if (isGenesis) {
+							    viewURL = null; 
+							}
+                        %>         
 		                 
 				        <c:choose>
 				            <c:when test="<%= Validator.isNotNull(viewURL) %>">
@@ -75,39 +82,43 @@
 				        </c:choose>
 		
 			        </h3>
-
-			        <div class="asset-content">
-			            <div class="asset-summary">
-			
-			                <%
-								// Disabled, since we need the assetRenderer earlier
-								String path = assetRenderer.render(renderRequest, renderResponse, AssetRenderer.TEMPLATE_ABSTRACT);
-								
-								request.setAttribute(WebKeys.ASSET_RENDERER, assetRenderer);
-								request.setAttribute(WebKeys.ASSET_PUBLISHER_ABSTRACT_LENGTH, abstractLength);
-								request.setAttribute(WebKeys.ASSET_PUBLISHER_VIEW_URL, viewURL);
-			                 %> 
-			                
-			                <c:choose>
-			                    <c:when test="<%= path == null %>">
-			                        <%= HtmlUtil.escape(summary) %>
-			                    </c:when>
-			                    <c:otherwise>
-			                        <liferay-util:include page="<%= path %>" portletId="<%= assetRendererFactory.getPortletId() %>" />
-			                    </c:otherwise>
-			                </c:choose>
-			            </div>
-		
-			            <c:if test="<%= Validator.isNotNull(viewURL) %>">
-			                <div class="asset-more">
-			                    <a href="<%= viewURL %>"><liferay-ui:message arguments='<%= new Object[] {"hide-accessible", HtmlUtil.escape(assetRenderer.getTitle(locale))} %>' key="<%= viewURLMessage %>" /></a>
-			                </div>
-			            </c:if>
-			        </div>
 			        
-					<%-- Include flussbad's social-media-buttons --%>
-					<%@ include file="/html/portlet/asset_publisher/display/fb_social.jspf" %>
+                   <c:if test="<%= !isGenesis %>">
+
+				        <div class="asset-content">
+				            <div class="asset-summary">
+				
+				                <%
+									// Disabled, since we need the assetRenderer earlier
+									String path = assetRenderer.render(renderRequest, renderResponse, AssetRenderer.TEMPLATE_ABSTRACT);
+									
+									request.setAttribute(WebKeys.ASSET_RENDERER, assetRenderer);
+									request.setAttribute(WebKeys.ASSET_PUBLISHER_ABSTRACT_LENGTH, abstractLength);
+									request.setAttribute(WebKeys.ASSET_PUBLISHER_VIEW_URL, viewURL);
+				                 %> 
+				                
+				                <c:choose>
+				                    <c:when test="<%= path == null %>">
+				                        <%= HtmlUtil.escape(summary) %>
+				                    </c:when>
+				                    <c:otherwise>
+				                        <liferay-util:include page="<%= path %>" portletId="<%= assetRendererFactory.getPortletId() %>" />
+				                    </c:otherwise>
+				                </c:choose>
+				            </div>
+			
+				            <c:if test="<%= Validator.isNotNull(viewURL) %>">
+				                <div class="asset-more">
+				                    <a href="<%= viewURL %>"><liferay-ui:message arguments='<%= new Object[] {"hide-accessible", HtmlUtil.escape(assetRenderer.getTitle(locale))} %>' key="<%= viewURLMessage %>" /></a>
+				                </div>
+				            </c:if>
+				        </div>
+				        
+						<%-- Include flussbad's social-media-buttons --%>
+						<%@ include file="/html/portlet/asset_publisher/display/fb_social.jspf" %>
         
+                    </c:if>
+                    
 		        </div> <!-- /.span8 -->
 			</div> <!-- /.row -->
         </div> <!-- /.container -->
