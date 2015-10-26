@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2015-10-13 11:48 by Michael Lustenberger
- * Version:     1.1.1
+ * Modified:    2015-10-26 17:18 by Christian Berndt
+ * Version:     1.1.2
  */
 
 /**
@@ -109,7 +109,7 @@ AUI().ready('node', 'node-scroll-info', function(A) {
 
     body.plug(A.Plugin.ScrollInfo);
 
-    body.scrollInfo.set('scrollDelay', 0);
+    body.scrollInfo.set('scrollDelay', 20);
 
     body.scrollInfo.on('scrollDown', function (e) {
 
