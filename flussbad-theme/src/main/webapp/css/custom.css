@@ -2444,6 +2444,10 @@ input {
     
             .portlet-site-map {
             
+                .site-map-wrapper {
+                    display: inline; 
+                }
+            
                 .portlet-borderless-container {
                 
                     display: inline; 
