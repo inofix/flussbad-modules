@@ -1741,7 +1741,7 @@ input {
                         color: $color-light-gray;  
                     } 
                     
-                    .asset-summary, 
+                    .asset-content, 
                     .asset-social-media,
                     .metadata-event-location,
                     .metadata-event-time {
