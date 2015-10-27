@@ -2,8 +2,8 @@
     article.ftl: Format the Article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2015-10-26 17:21 by Christian Berndt
-    Version:    1.1.0
+    Modified:   2015-10-27 09:51 by Christian Berndt
+    Version:    1.1.1
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -19,6 +19,8 @@
 <#assign categoryService = serviceLocator.findService("com.liferay.portlet.asset.service.AssetCategoryLocalService") >
 <#assign categories = categoryService.getCategories("com.liferay.portlet.journal.model.JournalArticle", classPK) >
 <#assign language_id = languageUtil.getLanguageId(locale) >
+
+<#assign propertyService = serviceLocator.findService("com.liferay.portlet.asset.service.AssetCategoryPropertyService") >
 
 <#assign cssClass = "">
 <#assign displayToc = false>
@@ -56,68 +58,83 @@
             <#if categories?size gt 0 >
                 <ul>
                     <#list categories as category >
-                        <li>
-                            <h3 class="category"><a href="javascript:history.back();">${category.getTitle(language_id)}</a></h3>
-                        </li>
+                    
+                        <#assign properties = propertyService.getCategoryProperties(category.getCategoryId()) >
+                        <#assign layoutUuid = "">
+                        
+                        <#list properties as property>
+                            <#if property.key == "layoutUuid">
+                                <#assign layoutUuid = property.value >
+                            </#if>
+                        </#list>
+                        
+                        <#if layoutUuid?has_content >
+                            <li>
+                                <h3 class="category"><a href="${layoutUuid}">${category.getTitle(language_id)} ${properties?size}</a></h3>
+                            </li>
+                        </#if>
                     </#list>
                 </ul>
             </#if>
             
             <h1 id="section-0">${headline.getData()}</h1>
             <p class="lead">${teaser.getData()}</p>
-            <#if section.getSiblings()?has_content>
-                <#assign i = 1>
-                <#list section.getSiblings() as cur_section>
-                
-                    <#assign imageAboveTheText = false>
-                    <#if cur_section.imageAboveTheText??>
-                        <#assign imageAboveTheText = getterUtil.getBoolean(cur_section.imageAboveTheText.getData())>
-                    </#if>
-                
-                    <div class="section" id="section-${i}">
-                        <h2>${cur_section.getData()}</h2>
-                        
-                        <#if imageAboveTheText >
-                        
-                            <#if cur_section.image.getSiblings()?has_content>
-                                <#assign j = 1 >
-                                <#list cur_section.image.getSiblings() as cur_image >
-                                    <#assign path = "${cur_image.getData()}">
-                                    <#if path?has_content>
-                                        <img id="story-image-${i}-${j}" data-src="${path}&imageThumbnail=3"/>
-                                        <#if cur_image.caption??>
-                                            <div class="caption">${cur_image.caption.getData()}</div>
-                                        </#if>
-                                    </#if>
-                                    <#assign j = j+1> 
-                                </#list>
-                            </#if>
-                            
-                            <div class="section-body">${cur_section.body.getData()}</div>
-                            
-                        <#else >
-                        
-                            <div class="section-body">${cur_section.body.getData()}</div>
-                            
-                            <#if cur_section.image.getSiblings()?has_content>
-                                <#assign j = 1 >
-                                <#list cur_section.image.getSiblings() as cur_image >
-                                    <#assign path = "${cur_image.getData()}">
-                                    <#if path?has_content>
-                                        <img id="story-image-${i}-${j}" data-src="${path}&imageThumbnail=3"/>
-                                        <#if cur_image.caption??>
-                                            <div class="caption">${cur_image.caption.getData()}</div>
-                                        </#if>
-                                     </#if>
-                                     <#assign j = j+1> 
-                                </#list>
-                            </#if>
-                            
+            
+            <#if section?? >
+                <#if section.getSiblings()?has_content>
+                    <#assign i = 1>
+                    <#list section.getSiblings() as cur_section>
+                    
+                        <#assign imageAboveTheText = false>
+                        <#if cur_section.imageAboveTheText??>
+                            <#assign imageAboveTheText = getterUtil.getBoolean(cur_section.imageAboveTheText.getData())>
                         </#if>
-                        
-                    </div>
-                    <#assign i = i+1>
-                </#list>
+                    
+                        <div class="section" id="section-${i}">
+                            <h2>${cur_section.getData()}</h2>
+                            
+                            <#if imageAboveTheText >
+                            
+                                <#if cur_section.image.getSiblings()?has_content>
+                                    <#assign j = 1 >
+                                    <#list cur_section.image.getSiblings() as cur_image >
+                                        <#assign path = "${cur_image.getData()}">
+                                        <#if path?has_content>
+                                            <img id="story-image-${i}-${j}" data-src="${path}&imageThumbnail=3"/>
+                                            <#if cur_image.caption??>
+                                                <div class="caption">${cur_image.caption.getData()}</div>
+                                            </#if>
+                                        </#if>
+                                        <#assign j = j+1> 
+                                    </#list>
+                                </#if>
+                                
+                                <div class="section-body">${cur_section.body.getData()}</div>
+                                
+                            <#else >
+                            
+                                <div class="section-body">${cur_section.body.getData()}</div>
+                                
+                                <#if cur_section.image.getSiblings()?has_content>
+                                    <#assign j = 1 >
+                                    <#list cur_section.image.getSiblings() as cur_image >
+                                        <#assign path = "${cur_image.getData()}">
+                                        <#if path?has_content>
+                                            <img id="story-image-${i}-${j}" data-src="${path}&imageThumbnail=3"/>
+                                            <#if cur_image.caption??>
+                                                <div class="caption">${cur_image.caption.getData()}</div>
+                                            </#if>
+                                         </#if>
+                                         <#assign j = j+1> 
+                                    </#list>
+                                </#if>
+                                
+                            </#if>
+                            
+                        </div>
+                        <#assign i = i+1>
+                    </#list>
+                </#if>
             </#if>
         </div>
         <#if displayToc>
