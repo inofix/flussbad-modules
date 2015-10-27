@@ -2862,7 +2862,10 @@ input {
             margin-top: $dockbar-height;
         }
         
-        #content,
+        #content {
+            margin-top: $dockbar-nav-height; 
+        }
+        
         .portlet-asset-categories-navigation,
         .portlet-asset-categories-navigation.affix,
         .portlet-asset-categories-navigation.affix-top,
