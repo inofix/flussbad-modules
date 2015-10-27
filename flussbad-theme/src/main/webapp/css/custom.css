@@ -1,12 +1,11 @@
 @import "compass";
 @import "mixins";
 
-$dockbarHeight: 60px;
-$dockbarNavHeight: 120px;
-$navHeight: 60px;
-$categoriesHeight: 120px;
-$navCategoriesHeight: 180px;
-$containerPush: -165px;
+$dockbar-height: 60px;
+$dockbar-nav-height: 120px;
+$nav-height: 60px;
+$categories-height: 120px;
+$container-push: -165px;
 
 /* typography */
 $regular-font-family: 'Apercu Pro Regular', Calibri, Roboto, sans-serif;
@@ -413,6 +412,11 @@ input {
     
         font-size: $default-font-size;
         line-height: $default-line-height;
+        margin-top: $nav-height;
+    }
+    
+    .start-page #content {
+        margin-top: 0; 
     }
     
     .lfr-pagination {
@@ -581,7 +585,7 @@ input {
     
     #navigation.affix-top .navbar-inner {
     
-        height: $navHeight *3;
+        height: $nav-height *3;
     
     	background: -moz-linear-gradient(top,  rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
     	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.25)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
@@ -668,7 +672,7 @@ input {
         }
         
         .divider-vertical {
-            height: $navHeight;
+            height: $nav-height;
         }
     }
         
@@ -959,7 +963,7 @@ input {
         
         .abstracts {
     
-            margin-top: $containerPush;
+            margin-top: $container-push;
             
             a.club-link {
             
@@ -1396,7 +1400,7 @@ input {
     
         .keyvisual {
             width: 100%;
-            height: calc(100vh - #{$navHeight}) !important;
+            height: calc(100vh - #{$nav-height}) !important;
             overflow: hidden;
             
             @include background-cover();
@@ -1404,7 +1408,7 @@ input {
         
         &.with-keyvisual {
             .container {
-                margin-top: $containerPush;
+                margin-top: $container-push;
             }
         }
     
@@ -1505,12 +1509,12 @@ input {
     
         .keyvisual {
         
-            height: calc(100vh - #{$navCategoriesHeight}) !important;
+            height: calc(100vh - #{$categories-height}) !important;
         }
         
         .container {
         
-            margin-top: $containerPush !important;
+            margin-top: $container-push !important;
         }
     }
     
@@ -1522,7 +1526,7 @@ input {
         -o-transition: margin-top 0.2s; 
         transition: margin-top 0.2s;
         
-        margin-top: $navCategoriesHeight;
+        margin-top: $categories-height;
          
         .introduction,       
         .story {
@@ -1540,21 +1544,19 @@ input {
         &.categories-closed,
         &.categories-auto-closed {
         
-            margin-top: $navHeight;
+            margin-top: 0;
         }
     }
     
     .toc {
     
-/*         position: fixed;  */
-/*         margin-top: 60px; same as margin-top of content > h1 */
         border-left: 10px solid $color-sand;
         padding-top: 15px;
         padding-bottom: 15px;
 
         i {
         
-            display: none; /* TO DO: should be deletet in template. this is just for now */
+            display: none; /* TO DO: should be deleted in template. this is just for now */
         }
 
         li {
@@ -1659,15 +1661,6 @@ input {
     
 /* Portlets */
     
-    /** 
-     * Helper classes for the positioning of portlets
-     */
-    
-    .below-navigation {
-    
-    	padding-top: $navHeight; 
-    }
-    
     .portlet-asset-categories-navigation {
     
         width: 100%; 
@@ -1680,7 +1673,7 @@ input {
     
         .portlet-body .taglib-asset-categories-navigation {
     
-            min-height: $categoriesHeight;       
+            min-height: $categories-height;       
                 
             a {
             
@@ -1753,7 +1746,7 @@ input {
         background: lighten($color-sand, 3%);
         
         position: fixed; 
-        top: $navHeight;
+        top: $nav-height;
         z-index: 10; 
         width: 100%;  
         
@@ -1798,7 +1791,7 @@ input {
         &.categories-closed {
         
             background: transparent;
-            min-height: $categoriesHeight; /* otherwise the toggle-button is truncated in closed mode */
+            min-height: $categories-height; /* otherwise the toggle-button is truncated in closed mode */
             transition: 0.5s ease-in-out;
         
             .taglib-asset-categories-navigation .accordion-group,
@@ -1822,7 +1815,7 @@ input {
     .portlet-asset-categories-navigation.affix-top {
     
         position: fixed;
-        top: $navHeight;
+        top: $nav-height;
     }
 
     .portlet-asset-publisher {
@@ -1837,7 +1830,7 @@ input {
         
         &.default-publisher {
         
-            margin-top: $navCategoriesHeight;
+            margin-top: $categories-height;
                         
             .asset-abstract {
             
@@ -1893,7 +1886,7 @@ input {
         &.categories-auto-closed,
         &.categories-closed {
         
-            margin-top: $navHeight;
+            margin-top: 0;
         }
         
         .taglib-categorization-filter.entry-title {
@@ -2358,7 +2351,7 @@ input {
     
     .portlet-asset-publisher.story-publisher {
         
-        margin-top: $navHeight; 
+        margin-top: $nav-height; 
         width: 100%;
     
         .asset-content {
@@ -2382,7 +2375,7 @@ input {
     
     .portlet-journal-content.first-display {
     
-        margin-top: $navHeight;
+        margin-top: $nav-height;
     }
     
     .portlet-site-map.project-sections {
@@ -2856,32 +2849,25 @@ input {
         }
         
         .portlet-borderless {
-            margin-top: $navHeight;
+            margin-top: $nav-height;
         }
     } 
     
 
     .signed-in {
 
-        #content,
         #navigation,
         .portlet-dynamic-data-mapping,
         .portlet-journal {
-            margin-top: $dockbarHeight;
-        } 
-         
-        .below-navigation {
-            padding-top: $dockbarNavHeight; 
+            margin-top: $dockbar-height;
         }
- 
-    
+        
+        #content,
         .portlet-asset-categories-navigation,
         .portlet-asset-categories-navigation.affix,
         .portlet-asset-categories-navigation.affix-top,
-        .portlet-asset-categories-navigation .toggle,
-        .portlet-site-map.project-sections,
-        .portlet-site-map.project-sections .toggle {
-            top: $dockbarNavHeight; 
+        .portlet-site-map.project-sections {
+            top: $dockbar-nav-height; 
         }
                
         .portlet-configuration.portlet-asset-categories-navigation {
