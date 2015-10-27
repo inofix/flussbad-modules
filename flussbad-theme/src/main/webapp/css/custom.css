@@ -978,6 +978,10 @@ input {
            line-height: $lead-line-height;
        }
        
+       .section {
+            padding-bottom: 3em;
+       }
+       
        .section-body {
         
             @media (min-width: 768px) {
@@ -2460,7 +2464,6 @@ input {
     
     .portlet-asset-publisher.story-publisher {
         
-        margin-top: $nav-height; 
         width: 100%;
     
         .asset-content {
