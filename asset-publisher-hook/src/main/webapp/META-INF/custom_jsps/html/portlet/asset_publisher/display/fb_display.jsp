@@ -8,8 +8,8 @@
     - shariff-based social media buttons are included 
     
     Created:    2015-10-08 17:14 by Christian Berndt
-    Modified:   2015-10-27 15:44 by Christian Berndt
-    Version:    1.0.4
+    Modified:   2015-10-27 16:01 by Christian Berndt
+    Version:    1.0.5
 --%>
 
 <%-- Include fb-abstract specific setup code --%>
@@ -24,7 +24,7 @@
         <div class="row">
         
 	            <div class="span6 image-container" style="background-image: url('<%= keyVisual %>&imageThumbnail=2');">
-		            <a href="<%= viewURL %>" class="image-container"></a>
+		            <a href="<%= viewURL %>"></a>
 	            </div>
 
             <div class="span6">
