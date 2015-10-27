@@ -2,8 +2,8 @@
     fb_social.jsp: Shariff based social media buttons for the flussbad-abstracts.
     
     Created:    2015-10-08 17:05 by Christian Berndt
-    Modified:   2015-10-13 11:51 by Christian Berndt
-    Version:    1.0.2
+    Modified:   2015-10-27 16:33 by Christian Berndt
+    Version:    1.0.3
 --%>
 
 <div class="asset-social-media">
@@ -24,7 +24,7 @@
     String selectedOrientation = "horizontal"; 
     String servicesConfig = "[&quot;facebook&quot;,&quot;twitter&quot;,&quot;mail&quot;]"; 
     String selectedTheme = "standard"; 
-    String twitterVia = ""; 
+    String twitterVia = "flussbad"; 
 
 %>
 	<span class="tell-others"><liferay-ui:message key="tell-others" /></span>
