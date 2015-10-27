@@ -174,6 +174,92 @@ $full-image-height-xs: 400px;
     width: 93%;
 }
 
+@mixin social-media() {
+    
+    .tell-others {
+    
+        float: left;
+        vertical-align: middle;
+        line-height: $lead-line-height;
+        margin-right: 5px;
+    }
+    
+    .shariff {
+    
+        .facebook,
+        .twitter {
+        
+            .share_count {
+            
+                color: $navigation-font-color;
+                background-color: transparent;
+            }
+        }
+
+        li {
+        
+            .share_count {
+            
+                position: relative; 
+                display: inline; 
+                padding: 0; 
+                top: 0; 
+                right: 0; 
+                font-family: $regular-font-family;
+                font-size: $default-font-size; 
+            }
+            
+            .share_count:before {
+            
+                content: " ("; 
+            }
+            
+            .share_count:after {
+            
+                content: ")"; 
+            }
+        }
+    
+        ul {
+        
+            li.shariff-button {
+            
+                flex: none; 
+                -webkit-flex: none;
+                min-width: 80px;
+                margin-bottom: 0; 
+                
+                a {
+                
+                    color: $navigation-font-color;
+                    background: transparent;
+                    
+                    &:hover {
+                    
+                      color: $hover-font-color;
+                    }
+                    
+                    .fa-facebook {
+                    
+                      margin-right: -5px;
+                    }
+                    
+                    .share_text {
+                    
+                        font-family: $regular-font-family; 
+                        font-size: $default-font-size;
+                        badding-left: 0;
+                        
+                        &::before {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 /* Unset input borders set by jQuery */
 
@@ -1383,8 +1469,6 @@ input {
                     
                     .section-body {
                     
-                       
-                    
                         @media (min-width: 768px) {
                         
                             @include cols();
@@ -1395,6 +1479,15 @@ input {
                         }
                     }
                 }
+                
+                .social-media {
+                
+                    margin-top: 1em;
+                    border-top: 5px solid $color-light-gray;
+                    padding-top: .5em;
+                
+                    @include social-media();            
+                }    
             }
         }
     }
@@ -2173,91 +2266,9 @@ input {
             float: none; 
         }
     	
-    	.asset-social-media {
-    		
-    		.tell-others {
-    		
-    			float: left;
-    			vertical-align: middle;
-    			line-height: $lead-line-height;
-    			margin-right: 5px;
-    		}
-    		
-    		.shariff {
-    		
-                .facebook,
-                .twitter {
-                
-                    .share_count {
-                    
-                        color: $navigation-font-color;
-                        background-color: transparent;
-                    }
-                }
-    
-                li {
-                
-                    .share_count {
-                    
-                        position: relative; 
-                        display: inline; 
-                        padding: 0; 
-                        top: 0; 
-                        right: 0; 
-                        font-family: $regular-font-family;
-                        font-size: $default-font-size; 
-                    }
-                    
-                    .share_count:before {
-                    
-                        content: " ("; 
-                    }
-                    
-                    .share_count:after {
-                    
-                        content: ")"; 
-                    }
-                }
-    		
-                ul {
-                
-                	li.shariff-button {
-                	
-                		flex: none; 
-                		-webkit-flex: none;
-                		min-width: 80px;
-                		margin-bottom: 0; 
-                		
-                		a {
-                		
-    	                    color: $navigation-font-color;
-    	                    background: transparent;
-    	                    
-    	                    &:hover {
-    	                    
-    	                      color: $hover-font-color;
-    	                    }
-    	                    
-    	                    .fa-facebook {
-    	                    
-    	                      margin-right: -5px;
-    	                    }
-    	                    
-    	                    .share_text {
-    	                    
-    	                        font-family: $regular-font-family; 
-                                font-size: $default-font-size;
-                                badding-left: 0;
-                                
-    		                    &::before {
-    		                        display: none;
-    		                    }
-    	                    }
-    	                }
-                	}
-                }
-    		}
-    	}
+        .asset-social-media {
+            @include social-media();    		
+        }
     }
     
     .portlet-asset-publisher.event-publisher {
