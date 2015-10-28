@@ -1,279 +1,172 @@
-/**
- * From 6.2.x html/js/aui/aui-scrollspy/aui-scrollspy.js
- */
+/* ========================================================================
+ * Bootstrap: scrollspy.js v3.3.5
+ * http://getbootstrap.com/javascript/#scrollspy
+ * ========================================================================
+ * Copyright 2011-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
 
-YUI.add('aui-scrollspy', function (A, NAME) {
 
-/**
- * The Scrollspy Component
- *
- * @module aui-scrollspy
- */
++function ($) {
+  'use strict';
 
-var getClassName = A.getClassName,
-    Lang = A.Lang,
+  // SCROLLSPY CLASS DEFINITION
+  // ==========================
 
-    ACTIVATE_EVENT = 'activate';
+  function ScrollSpy(element, options) {
+    this.$body          = $(document.body)
+    this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+    this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+    this.selector       = (this.options.target || '') + ' .nav li > a'
+    this.offsets        = []
+    this.targets        = []
+    this.activeTarget   = null
+    this.scrollHeight   = 0
 
-/**
- * A base class for Scrollspy.
- *
- * Check the [live demo](http://alloyui.com/examples/scrollspy/).
- *
- * @class A.Scrollspy
- * @extends Base
- * @param {Object} config Object literal specifying scrollspy configuration
- *     properties.
- * @constructor
- * @include http://alloyui.com/examples/scrollspy/basic-markup.html
- * @include http://alloyui.com/examples/scrollspy/basic.js
- */
-A.Scrollspy = A.Base.create('scrollspy', A.Base, [], {
+    this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+    this.refresh()
+    this.process()
+  }
 
-    /**
-     * Holds the active link node reference.
-     *
-     * @property activeLink
-     * @type {Node}
-     * @protected
-     */
-    activeLink: null,
+  ScrollSpy.VERSION  = '3.3.5'
 
-    /**
-     * Holds a cache of the valid links.
-     *
-     * @property cachedLinks
-     * @type {NodeList}
-     * @protected
-     */
-    cachedLinks: null,
+  ScrollSpy.DEFAULTS = {
+    offset: 10
+  }
 
-    /**
-     * Construction logic executed during Scrollspy instantiation. Lifecycle.
-     *
-     * @method initializer
-     * @protected
-     */
-    initializer: function() {
-        var scrollNode = this.get('scrollNode');
+  ScrollSpy.prototype.getScrollHeight = function () {
+    return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+  }
 
-        /**
-         * Fired when any target's link changes.
-         *
-         * @event activate
-         * @param {EventFacade} event That activate link change event.
-         */
-        this.publish(ACTIVATE_EVENT, {
-            defaultFn: this._defActivateEventFn
-        });
+  ScrollSpy.prototype.refresh = function () {
+    var that          = this
+    var offsetMethod  = 'offset'
+    var offsetBase    = 0
 
-        scrollNode.on('scroll', A.bind(this._onScroll, this));
-        this.refresh();
-    },
+    this.offsets      = []
+    this.targets      = []
+    this.scrollHeight = this.getScrollHeight()
 
-    /**
-     * Cleans the cached links.
-     *
-     * @method clearCachedLinks
-     */
-    clearCachedLinks: function() {
-        this.cachedLinks = null;
-    },
-
-    /**
-     * Recalculates the current active node in the list and resets the active
-     * CSS class names.
-     *
-     * @method refresh
-     **/
-    refresh: function() {
-        var link = this._findLinkBestMatch();
-
-        // Early return to avoid fire activate event when not necessary.
-        // Event should be fired only when link is different from activeLink.
-        if (link === this.activeLink || (!link && !this.activeLink)) {
-            return;
-        }
-
-        this.fire(ACTIVATE_EVENT, {
-            newVal: link,
-            prevVal: this.activeLink
-        });
-    },
-
-    /**
-     * Handler function for scrollNode's scroll event.
-     *
-     * @method _defActivateEventFn
-     * @param {EventFacade} event
-     * @protected
-     **/
-    _defActivateEventFn: function(event) {
-        this._uiSetLink(event.newVal, event.prevVal);
-    },
-
-    /**
-     * Finds the node whose target should be activated.
-     *
-     * @method _findLinkBestMatch
-     * @return {Node} Best link match that attends the viewport criteria.
-     * @protected
-     **/
-    _findLinkBestMatch: function() {
-        var links = this._getValidLinks();
-
-        return links.filter(A.bind(this._isLinkInViewport, this)).pop();
-    },
-
-    /**
-     * Gets target ids from target links.
-     *
-     * @method _getValidLinks
-     * @return {NodeList} Filtered cached links.
-     * @protected
-     **/
-    _getValidLinks: function() {
-        if (!this.cachedLinks) {
-            this.cachedLinks = this.get('target').all('a');
-        }
-
-        this.cachedLinks = this.cachedLinks.filter(function(link) {
-            return link.hash && (link.hash.length > 1);
-        });
-
-        return this.cachedLinks;
-    },
-
-    /**
-     * Checks if there's a link corresponding to an anchor in the viewport.
-     *
-     * @method _isLinkInViewport
-     * @param {Node} link
-     * @return {Boolean} Whether link is in viewport.
-     * @protected
-     **/
-    _isLinkInViewport: function(link) {
-        var offset = this.get('offset'),
-            scrollNode = this.get('scrollNode'),
-            scrollNodeY,
-            anchor = A.one(link.hash);
-
-        if (scrollNode.compareTo(A.config.win) || scrollNode.compareTo(A.config.doc)) {
-            scrollNodeY = scrollNode.get('scrollTop');
-        }
-        else {
-            scrollNodeY = scrollNode.getY();
-        }
-        return (anchor && (scrollNodeY >= (anchor.getY() - offset)));
-    },
-
-    /**
-     * Call refresh on scroll event from scrollNode.
-     *
-     * @method _onScroll
-     * @protected
-     **/
-    _onScroll: function() {
-        this.refresh();
-    },
-
-    /**
-     * Sets correct class to active node.
-     *
-     * @method _uiSetLink
-     * @param {Node} val
-     * @param {Node} prevVal
-     * @protected
-     **/
-    _uiSetLink: function(val, prevVal) {
-        var activeGroup = this.get('activeGroup');
-        var activeClass = this.get('activeClass');
-
-        // For the first time it gets here make sure to clean the previous active
-        if (!prevVal) {
-          this._getValidLinks().filter(function(link) {
-            return A.one(link).ancestors(activeGroup).removeClass(activeClass);
-          });
-        }
-
-        if (prevVal) {
-            prevVal.ancestors(activeGroup).removeClass(activeClass);
-            this.activeLink = null;
-        }
-
-        if (val) {
-            val.ancestors(activeGroup).addClass(activeClass);
-            this.activeLink = val;
-        }
+    if (!$.isWindow(this.$scrollElement[0])) {
+      offsetMethod = 'position'
+      offsetBase   = this.$scrollElement.scrollTop()
     }
-}, {
-    /**
-     * Static property used to define the default attribute
-     * configuration for the Scrollspy.
-     *
-     * @property ATTRS
-     * @type Object
-     * @static
-     */
-    ATTRS: {
-        /**
-         * Ancestors which should be added the .active class.
-         *
-         * @attribute activeGroup
-         * @type {String}
-         */
-        activeGroup: {
-            validator: Lang.isString,
-            value: 'li, .dropdown'
-        },
 
-        /**
-         * Class to be used as active class.
-         *
-         * @attribute activeClass
-         * @type {String}
-         */
-        activeClass: {
-          validator: Lang.isString,
-          value: getClassName('active')
-        },
+    this.$body
+      .find(this.selector)
+      .map(function () {
+        var $el   = $(this)
+        var href  = $el.data('target') || $el.attr('href')
+        var $href = /^#./.test(href) && $(href)
 
-        /**
-         * Pixels to offset from top when calculating position of scroll.
-         *
-         * @attribute offset
-         * @type {Number}
-         */
-        offset: {
-            validator: Lang.isNumber,
-            value: 10
-        },
+        return ($href
+          && $href.length
+          && $href.is(':visible')
+          && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+      })
+      .sort(function (a, b) { return a[0] - b[0] })
+      .each(function () {
+        that.offsets.push(this[0])
+        that.targets.push(this[1])
+      })
+  }
 
-        /**
-         * Container that maps target links.
-         *
-         * @attribute scrollNode
-         * @type {Node | String}
-         * @initOnly
-         */
-        scrollNode: {
-            setter: A.one,
-            value: A.config.win,
-            writeOnce: 'initOnly'
-        },
+  ScrollSpy.prototype.process = function () {
+    var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+    var scrollHeight = this.getScrollHeight()
+    var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+    var offsets      = this.offsets
+    var targets      = this.targets
+    var activeTarget = this.activeTarget
+    var i
 
-        /**
-         * Target list. Usually a nav bar element with anchors.
-         *
-         * @attribute target
-         * @type {Node | String}
-         * @initOnly
-         */
-        target: {
-            setter: A.one,
-            writeOnce: 'initOnly'
-        }
+    if (this.scrollHeight != scrollHeight) {
+      this.refresh()
     }
-});
 
-}, '3.0.1', {"requires": ["base-build", "node-screen", "aui-classnamemanager"]});
+    if (scrollTop >= maxScroll) {
+      return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+    }
+
+    if (activeTarget && scrollTop < offsets[0]) {
+      this.activeTarget = null
+      return this.clear()
+    }
+
+    for (i = offsets.length; i--;) {
+      activeTarget != targets[i]
+        && scrollTop >= offsets[i]
+        && (offsets[i + 1] === undefined || scrollTop < offsets[i + 1])
+        && this.activate(targets[i])
+    }
+  }
+
+  ScrollSpy.prototype.activate = function (target) {
+    this.activeTarget = target
+
+    this.clear()
+
+    var selector = this.selector +
+      '[data-target="' + target + '"],' +
+      this.selector + '[href="' + target + '"]'
+
+    var active = $(selector)
+      .parents('li')
+      .addClass('active')
+
+    if (active.parent('.dropdown-menu').length) {
+      active = active
+        .closest('li.dropdown')
+        .addClass('active')
+    }
+
+    active.trigger('activate.bs.scrollspy')
+  }
+
+  ScrollSpy.prototype.clear = function () {
+    $(this.selector)
+      .parentsUntil(this.options.target, '.active')
+      .removeClass('active')
+  }
+
+
+  // SCROLLSPY PLUGIN DEFINITION
+  // ===========================
+
+  function Plugin(option) {
+    return this.each(function () {
+      var $this   = $(this)
+      var data    = $this.data('bs.scrollspy')
+      var options = typeof option == 'object' && option
+
+      if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  var old = $.fn.scrollspy
+
+  $.fn.scrollspy             = Plugin
+  $.fn.scrollspy.Constructor = ScrollSpy
+
+
+  // SCROLLSPY NO CONFLICT
+  // =====================
+
+  $.fn.scrollspy.noConflict = function () {
+    $.fn.scrollspy = old
+    return this
+  }
+
+
+  // SCROLLSPY DATA-API
+  // ==================
+
+  $(window).on('load.bs.scrollspy.data-api', function () {
+    $('[data-spy="scroll"]').each(function () {
+      var $spy = $(this)
+      Plugin.call($spy, $spy.data())
+    })
+  })
+
+}(jQuery);

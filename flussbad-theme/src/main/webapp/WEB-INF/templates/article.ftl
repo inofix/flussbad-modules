@@ -2,8 +2,8 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2015-10-28 09:32 by Christian Berndt
-    Version:    1.1.5
+    Modified:   2015-10-28 18:45 by Christian Berndt
+    Version:    1.1.6
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -164,7 +164,7 @@
                     data-services="${servicesConfig}"
                     data-theme="${selectedTheme}" data-twitter-via="${twitterVia}"></div>
             </div>            
-        </div> <#-- / .content -->
+        </div> <#-- / .span8 -->
         
         <#if displayToc>
             <#if hasKeyVisual >
@@ -175,13 +175,13 @@
         
             <div class="${cssClass}">
                 <div class="toc">
-                    <ul class="nav nav-list bs-docs-sidenav">                        
+                    <ul class="nav nav-list">                        
                         <#if section.getSiblings()?has_content>
                             <#assign i = 1 />
                             <#list section.getSiblings() as cur_section >
                                 <#if cur_section.getData()?has_content >
                                     <li class="">
-                                        <a href="#section-${i}"><i class="icon-chevron-right"></i>${cur_section.getData()}</a>
+                                        <a href="#section-${i}">${cur_section.getData()}</a>
                                     </li>
                                 </#if>
                                 <#assign i = i+1 />
@@ -191,6 +191,5 @@
                 </div> <#-- / .toc -->
             </div> <#-- / .span3 / 4 -->
         </#if>
-        
     </div> <#-- / .container -->
 </div> <#-- / .story -->
