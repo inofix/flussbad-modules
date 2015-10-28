@@ -1,31 +1,46 @@
 <#--
-    Intro template: Format the Intro structure
+    intro.ftl: Format the intro structure
     
     Created:    2015-08-28 17:52 by Christian Berndt
-    Modified:   2015-10-25 15:55 by Christian Berndt
-    Version:    1.0.2
+    Modified:   2015-10-28 20:52 by Christian Berndt
+    Version:    1.0.3
     
     Please note: Although this template is stored in the 
     site's context it's source is managed via git. Whenever you 
     change the template online make sure that you commit your 
     changes to the flussbad-modules repo, too.
 -->
-<#assign cssClass = "">
-<#assign style = "background: white;">
-<#assign hasKeyVisual = false>
+
+<#assign cssClass = "" />
+<#assign style = "background: white;" />
+<#assign hasKeyVisual = false />
+<#assign hasGradient = true />
+
+<#if useGradient?? >
+    <#if getterUtil.getBoolean(useGradient.getData())>
+        <#assign hasGradient = true  />
+    <#else>
+        <#assign hasGradient = false  />        
+    </#if>
+</#if>
 
 
 <#-- remove with-image when custom.css is updated -->
 <#if background??>
     <#if background.getData()?has_content>    
-        <#assign cssClass = "with-image" >
-        <#assign hasKeyVisual = true>
-        <#assign style = "background-image: url('${background.getData()}&imageThumbnail=3');" >
+        <#assign cssClass = "with-image" />
+        <#assign hasKeyVisual = true/>
+        <#if hasGradient>
+            <#assign style = "background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${background.getData()}&imageThumbnail=3');" />
+        <#else>
+             <#assign style = "background-image: url('${background.getData()}&imageThumbnail=3');" />
+        </#if>        
     </#if>
 </#if>
 
+
 <#if backgroundColor??>
-    <#assign cssClass = "${cssClass}" + " " + "${backgroundColor.getData()}">
+    <#assign cssClass = "${cssClass}" + " " + "${backgroundColor.getData()}" />
 </#if>
 
 <div class="intro ${cssClass}">
@@ -37,10 +52,10 @@
                     <div class="span6 offset3">
                         <#if link.getData()?has_content >
                             <a href="${link.getData()}" title="${label.getData()}">
-                                <h1>${headline.getData()}</h1>
+                                <h1>${headline.getData()} ${useGradient.getData()}</h1>
                             </a>
                         <#else>
-                            <h1>${headline.getData()}</h1>
+                            <h1>${headline.getData()} ${useGradient.getData()}</h1>
                         </#if>
                     </div>
                 </div>
@@ -71,7 +86,7 @@
         
         <div class="container">
             <#if caption.getSiblings()?has_content>
-                <#assign i = 0 >
+                <#assign i = 0 />
                 <#list caption.getSiblings() as cur_caption>
                     <#if (i < 3) >                   
                         <div class="span4">
@@ -88,7 +103,7 @@
                                 </div>
                             </#if>
                         </div>
-                        <#assign i = i+1>
+                        <#assign i = i+1/>
                     </#if>
                 </#list>
             </#if>
