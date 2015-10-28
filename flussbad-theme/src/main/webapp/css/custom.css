@@ -332,6 +332,10 @@ input {
         }
     }
     
+    body {
+        position: relative;
+    }
+    
     body, p {
     
         font-family: $regular-font-family;
@@ -751,7 +755,8 @@ input {
             
            .portlet-borderless-container {
             
-	            margin-left: 100px; /* bootstrap offset1 */
+                margin-left: 0;
+/*                 margin-left: 100px; bootstrap offset1 */
 	        } 
         }
         
@@ -1538,6 +1543,18 @@ input {
             .container {
                 margin-top: $container-push;
             }
+            
+            .toc {
+            
+                width: 300px;        
+                 
+                margin-top: 180px;
+                
+                &.affix {
+                    top: 50%;
+                }                
+            
+            }
         }
     
         .container {
@@ -1681,10 +1698,16 @@ input {
         border-left: 10px solid $color-sand;
         padding-top: 15px;
         padding-bottom: 15px;
-
-        i {
+        width: 360px;        
+         
+        margin-top: 60px;
         
-            display: none; /* TO DO: should be deleted in template. this is just for now */
+        &.affix {
+            top: 60px;
+        }
+        
+        &.affix-bottom {
+            position: fixed;
         }
 
         li {

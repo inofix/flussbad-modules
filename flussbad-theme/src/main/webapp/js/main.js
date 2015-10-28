@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2015-10-26 17:18 by Christian Berndt
- * Version:     1.1.2
+ * Modified:    2015-10-28 18:41 by Christian Berndt
+ * Version:     1.1.3
  */
 
 /**
@@ -162,127 +162,6 @@ YUI().use('event', 'node', function(Y) {
     });
 });
 
-
-/**
- * A scrollview based carousel implementation.
- */
-YUI().use('event', 'node', 'scrollview-base', 'scrollview-paginator', function(Y) {
-
-    var scrollView = new Y.ScrollView({
-        id: "scrollview",
-        srcNode : '.carousel',
-        width : Y.one("body").get("winWidth"),
-        flick: {
-            minDistance:10,
-            minVelocity:0.3,
-            axis: "x"
-        }
-    });
-
-    var winWidth = Y.one("body").get("winWidth") + 'px';
-
-    Y.all('.carousel img').setStyle('width', winWidth);
-    Y.all('.carousel .item').setStyle('width', winWidth);
-
-    Y.on('resize', function() {
-
-      winWidth = Y.one("body").get("winWidth") + 'px';
-
-      Y.all('.carousel img').setStyle('width', winWidth);
-      Y.all('.carousel .item').setStyle('width', winWidth);
-      scrollView.set('width', winWidth);
-      scrollView.render();
-    });
-
-    scrollView.plug(Y.Plugin.ScrollViewPaginator, {
-        selector: '.item',
-    });
-
-    scrollView.render();
-
-    var content = scrollView.get("contentBox");
-    var total = scrollView.pages.get('total');
-    var imageArray = scrollView.get("srcNode").get("children").get(0);
-
-    content.delegate("click", function(e) {
-        // For mouse based devices, we need to make sure the click isn't fired
-        // at the end of a drag/flick. We use 2 as an arbitrary threshold.
-        if (Math.abs(scrollView.lastScrolledAmt) < 2) {
-//            alert(e.currentTarget.getAttribute("alt"));
-        }
-    }, "img");
-
-    // Prevent default image drag behavior,
-    // just load the prev and next image url
-    content.delegate("mousedown", function(e) {
-
-        e.preventDefault();
-
-        var idx = scrollView.pages.get('index');
-        var next = idx + 1;
-        if (next >= total) {
-            next = 0;
-        }
-        var prev = idx - 1;
-        if (prev < 0) {
-            prev = total - 1;
-        }
-        loadImgUrl(imageArray[next].get("firstElementChild"));
-        loadImgUrl(imageArray[prev].get("firstElementChild"));
-    }, "img");
-
-    // lazyLoad the image Url on demand only
-    function loadImgUrl(img) {
-//        console.log(img.get("id"));
-        if ( !img.getAttribute("src") && img.getAttribute("data-src") ) {
-            img.setAttribute("src", img.getAttribute("data-src"));
-        }
-    }
-
-    var nextControl = Y.one('.right.carousel-control');
-
-    if (nextControl) {
-
-        nextControl.on('click', function(e){
-
-          var idx = scrollView.pages.get('index');
-          var target = idx + 1;
-
-          if (target < total) {
-            scrollView.pages.set('index', target);
-            // see if we must lazyLoad the Url
-            loadImgUrl(imageArray[target].get("firstElementChild"));
-          } else {
-            // TODO: improve the flick behaviour at the ends
-            // scrollView.pages.set('index', total -1);
-            scrollView.pages.scrollTo(0, 0.3, 'easing');           }
-        });
-    }
-
-    var prevControl = Y.one('.left.carousel-control')
-
-    if (prevControl) {
-
-          prevControl.on('click', function(e){
-
-          var idx = scrollView.pages.get('index');
-          var target = idx - 1;
-
-          if (target < 0) {
-            // TODO: improve the flick behaviour at the ends
-            // scrollView.pages.set('index', total -1);
-            target = total - 1;
-            scrollView.pages.scrollTo(target, 0.3, 'easing');
-          } else {
-            scrollView.pages.set('index', target);
-          }
-            // see if we must lazyLoad the Url
-            loadImgUrl(imageArray[target].get("firstElementChild"));
-        });
-    }
-});
-
-
 /**
  * Show / hide the language-portlet included in #navigation
  */
@@ -322,105 +201,30 @@ YUI().use(
     }
 );
 
-/**
- * Affix with offset for the main navigation on the start page
- */
-YUI().use(
-    'aui-affix',
-    function(Y) {
-
-        var startPageNavigation = Y.one('.start-page #navigation');
-
-        if (startPageNavigation) {
-            new Y.Affix(
-            {
-              target: '.start-page #navigation',
-              offsetTop: 200
-            });
-        }
-    }
-);
 
 /**
- * Affix the categories navigation below the main navigation
+ * Apply the affix class to the main-navigation .
  */
-YUI().use(
-    'aui-affix', 'node',
-    function(Y) {
+$( document ).ready(function() {
 
-        var portletAssetCategories = Y.one('.portlet-asset-categories-navigation.head-categories')
-
-        if (portletAssetCategories) {
-
-            new Y.Affix(
-            {
-              target: '.portlet-asset-categories-navigation.head-categories',
-              offsetTop: 0
-            });
-        }
-    }
-);
+	$('.start-page #navigation').affix({
+	     offset: {top: 200 }
+    });
+}); 
 
 /**
- * Affix the project categories navigation below the main navigation
+ * Affix the toc of stories
  */
-YUI().use(
-    'aui-affix', 'node',
-    function(Y) {
+$( document ).ready(function() {
 
-        var portletAssetCategories = Y.one('.portlet-asset-categories-navigation.project-categories')
+	$('.toc').affix({
+	     offset: {top: 0, bottom: 900 }
+    });
 
-        if (portletAssetCategories) {
+	 $('.toc').scrollspy();
 
-            new Y.Affix(
-            {
-              target: '.portlet-asset-categories-navigation.project-categories',
-              offsetTop: 720 /* height of the intro section */
-            });
-        }
-    }
-);
+});
 
-/**
- * Affix the toc of stories below the main-navigation
- */
-YUI().use(
-    'aui-affix', 'node',
-    function(Y) {
-
-        var toc = Y.one('.toc')
-
-        if (toc) {
-
-            new Y.Affix(
-            {
-              target: '.toc',
-              offsetTop: 120,
-            });
-        }
-    }
-);
-
-/**
- * Create one scrollspy per page
- */
-YUI().use(
-    'aui-scrollspy',
-    function(Y) {
-
-        var toc = Y.one('.toc ul');
-
-        if (toc) {
-
-            console.log('has toc');
-
-            new Y.Scrollspy({
-                offset: 120, /** height of navigation + margin-top of content */
-                target: '.toc ul'
-            });
-        }
-    }
-);
 // TODO: needs IDs in DOM (even with AUI().ready())
 AUI().ready('imageloader', function (Y) {
     var imageGroup = new Y.ImgLoadGroup({ name: 'foldGroup', foldDistance: 2 });

@@ -1,277 +1,162 @@
-/**
- * From 6.2.x html/js/aui/aui-affix/aui-affix.js
- */
+/* ========================================================================
+ * Bootstrap: affix.js v3.3.5
+ * http://getbootstrap.com/javascript/#affix
+ * ========================================================================
+ * Copyright 2011-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
 
-YUI.add('aui-affix', function (A, NAME) {
 
-/**
- * The Affix Component
- *
- * @module aui-affix
- */
++function ($) {
+  'use strict';
 
-var win = A.config.win;
+  // AFFIX CLASS DEFINITION
+  // ======================
 
-/**
- * A base class for Affix.
- *
- * Check the [live demo](http://alloyui.com/examples/affix/).
- *
- * @class A.Affix
- * @extends Base
- * @param {Object} config Object literal specifying scrollspy configuration
- *     properties.
- * @constructor
- * @include http://alloyui.com/examples/affix/basic-markup.html
- * @include http://alloyui.com/examples/affix/basic.js
- */
-A.Affix = A.Base.create('affix', A.Base, [], {
-    /**
-     * Holds the scroll event handle.
-     *
-     * @type {Node}
-     * @private
-     */
-    _eventHandle: null,
+  var Affix = function (element, options) {
+    this.options = $.extend({}, Affix.DEFAULTS, options)
 
-    /**
-     * Holds the last event (bottom, default, top).
-     * @type {String}
-     * @private
-     */
-    _lastPosition: null,
+    this.$target = $(this.options.target)
+      .on('scroll.bs.affix.data-api', $.proxy(this.checkPosition, this))
+      .on('click.bs.affix.data-api',  $.proxy(this.checkPositionWithEventLoop, this))
 
-    /**
-     * Constructor for the Affix component.
-     *
-     * @method initializer
-     * @protected
-     */
-    initializer: function() {
-        this.publish({
-            bottom: {
-                defaultFn: this._defAffixBottomFn
-            },
-            'default': {
-                defaultFn: this._defAffixFn
-            },
-            top: {
-                defaultFn: this._defAffixTopFn
-            }
-        });
+    this.$element     = $(element)
+    this.affixed      = null
+    this.unpin        = null
+    this.pinnedOffset = null
 
-        this.after({
-            offsetBottomChange: this._afterOffsetChange,
-            offsetTopChange: this._afterOffsetChange
-        });
+    this.checkPosition()
+  }
 
-        this.refresh();
-        this._eventHandle = A.one(win).on('scroll', this._onScroll, this);
-    },
+  Affix.VERSION  = '3.3.5'
 
-    /**
-     * Destructor for the Affix component
-     * @method destructor
-     * @private
-     */
-    destructor: function() {
-        this._eventHandle.detach();
-    },
+  Affix.RESET    = 'affix affix-top affix-bottom'
 
-    /**
-     * Refreshes the affix component to its current state.
-     *
-     * @method refresh
-     */
-    refresh: function() {
-        var scrollY = A.DOM.docScrollY(),
-            offsetBottom = this.get('offsetBottom'),
-            offsetTop = this.get('offsetTop'),
-            targetRegion;
+  Affix.DEFAULTS = {
+    offset: 0,
+    target: window
+  }
 
-        if ((offsetTop >= 0) && (offsetTop >= scrollY)) {
-            this._handleAffixEvent(A.Affix.EVENTS.TOP);
-            return;
-        }
+  Affix.prototype.getState = function (scrollHeight, height, offsetTop, offsetBottom) {
+    var scrollTop    = this.$target.scrollTop()
+    var position     = this.$element.offset()
+    var targetHeight = this.$target.height()
 
-        targetRegion = this.get('target').get('region');
+    if (offsetTop != null && this.affixed == 'top') return scrollTop < offsetTop ? 'top' : false
 
-        if ((offsetBottom >= 0) && ((A.DOM.docHeight() - A.DOM.winHeight() - offsetBottom) <= targetRegion.bottom)) {
-            this._handleAffixEvent(A.Affix.EVENTS.BOTTOM);
-            return;
-        }
-
-        this._handleAffixEvent(A.Affix.EVENTS.DEFAULT);
-    },
-
-    /**
-     * Call the refresh method after changing the offset
-     *
-     * @method  _afterOffsetChange
-     * @private
-     */
-    _afterOffsetChange: function() {
-        this.refresh();
-    },
-
-    /**
-     * Affix bottom position syncing callback function.
-     *
-     * @method _defAffixBottomFn
-     * @private
-     */
-    _defAffixBottomFn: function() {
-        this._syncClassesUI(A.Affix.EVENTS.BOTTOM);
-    },
-
-    /**
-     * Affix default position syncing callback function.
-     *
-     * @method _defAffixFn
-     * @private
-     */
-    _defAffixFn: function() {
-        this._syncClassesUI(A.Affix.EVENTS.DEFAULT);
-    },
-
-    /**
-     * Affix top position syncing callback function.
-     *
-     * @method _defAffixTopFn
-     * @private
-     */
-    _defAffixTopFn: function() {
-        this._syncClassesUI(A.Affix.EVENTS.TOP);
-    },
-
-    /**
-     * Get the `offset` attribute.
-     *
-     * @method _getOffset
-     * @param {Number | Number.NEGATIVE_INFINITY} val
-     * @protected
-     */
-    _getOffset: function(val) {
-        if (A.Lang.isFunction(val)) {
-            val = val.call(this);
-        }
-        return val;
-    },
-
-    /**
-     * Safeguard function for firing the affix change event only when necessary.
-     *
-     * @method _handleAffixEvent
-     * @param {String} Position value, could be 'bottom', 'default' or 'top'.
-     * @private
-     */
-    _handleAffixEvent: function(position) {
-        if (position !== this._lastPosition) {
-            this.fire(position);
-        }
-    },
-
-    /**
-     * Scroll event listener function.
-     *
-     * @method _onScroll
-     * @private
-     */
-    _onScroll: function() {
-        this.refresh();
-    },
-
-    /**
-     * Sync the target element class based on the affix positioning.
-     *
-     * @method _syncClassesUI
-     * @param {String} Position value, could be 'bottom', 'default' or 'top'.
-     * @private
-     */
-    _syncClassesUI: function(position) {
-        var target = this.get('target');
-        
-        // this check is only required in popup-mode
-        if (target) {
-            target.toggleClass(A.Affix.CSS_CLASSES.BOTTOM, position === A.Affix.EVENTS.BOTTOM);
-            target.toggleClass(A.Affix.CSS_CLASSES.DEFAULT, position === A.Affix.EVENTS.DEFAULT);
-            target.toggleClass(A.Affix.CSS_CLASSES.TOP, position === A.Affix.EVENTS.TOP);
-            this._lastPosition = position;
-        }
-    },
-
-    /**
-     * Validate the offset type.
-     *
-     * @method _validateOffset
-     * @param  {Function | Number | Number.NEGATIVE_INFINITY} val
-     */
-    _validateOffset: function(val) {
-        if (A.Lang.isFunction(val)) {
-            val = val.call(this);
-        }
-
-        return A.Lang.isNumber(val) ||
-            A.Lang.isFunction(val) ||
-            (val === Number.NEGATIVE_INFINITY);
+    if (this.affixed == 'bottom') {
+      if (offsetTop != null) return (scrollTop + this.unpin <= position.top) ? false : 'bottom'
+      return (scrollTop + targetHeight <= scrollHeight - offsetBottom) ? false : 'bottom'
     }
-}, {
-    ATTRS: {
-        /**
-         * Defines the bottom offset.
-         *
-         * @attribute offsetBottom
-         * @type {Function | Number}
-         */
-        offsetBottom: {
-            getter: '_getOffset',
-            validator: '_validateOffset',
-            value: Number.NEGATIVE_INFINITY
-        },
 
-        /**
-         * Defines the top offset.
-         *
-         * @attribute offsetTop
-         * @type {Function | Number}
-         */
-        offsetTop: {
-            getter: '_getOffset',
-            validator: '_validateOffset',
-            value: Number.NEGATIVE_INFINITY
-        },
+    var initializing   = this.affixed == null
+    var colliderTop    = initializing ? scrollTop : position.top
+    var colliderHeight = initializing ? targetHeight : height
 
-        /**
-         * Defines the target element.
-         *
-         * @attribute target
-         * @type {Node | String}
-         */
-        target: {
-            setter: A.one
-        }
-    },
-    /**
-     * Map of events containing `BOTTOM`, `DEFAULT` or `TOP` keys.
-     *
-     * @type {Object}
-     */
-    EVENTS: {
-        BOTTOM: 'bottom',
-        DEFAULT: 'default',
-        TOP: 'top'
-    },
-    /**
-     * Map of class names containing `BOTTOM`, `DEFAULT` or `TOP` keys.
-     *
-     * @type {Object}
-     */
-    CSS_CLASSES: {
-        BOTTOM: A.getClassName('affix', 'bottom'),
-        DEFAULT: A.getClassName('affix'),
-        TOP: A.getClassName('affix', 'top')
+    if (offsetTop != null && scrollTop <= offsetTop) return 'top'
+    if (offsetBottom != null && (colliderTop + colliderHeight >= scrollHeight - offsetBottom)) return 'bottom'
+
+    return false
+  }
+
+  Affix.prototype.getPinnedOffset = function () {
+    if (this.pinnedOffset) return this.pinnedOffset
+    this.$element.removeClass(Affix.RESET).addClass('affix')
+    var scrollTop = this.$target.scrollTop()
+    var position  = this.$element.offset()
+    return (this.pinnedOffset = position.top - scrollTop)
+  }
+
+  Affix.prototype.checkPositionWithEventLoop = function () {
+    setTimeout($.proxy(this.checkPosition, this), 1)
+  }
+
+  Affix.prototype.checkPosition = function () {
+    if (!this.$element.is(':visible')) return
+
+    var height       = this.$element.height()
+    var offset       = this.options.offset
+    var offsetTop    = offset.top
+    var offsetBottom = offset.bottom
+    var scrollHeight = Math.max($(document).height(), $(document.body).height())
+
+    if (typeof offset != 'object')         offsetBottom = offsetTop = offset
+    if (typeof offsetTop == 'function')    offsetTop    = offset.top(this.$element)
+    if (typeof offsetBottom == 'function') offsetBottom = offset.bottom(this.$element)
+
+    var affix = this.getState(scrollHeight, height, offsetTop, offsetBottom)
+
+    if (this.affixed != affix) {
+      if (this.unpin != null) this.$element.css('top', '')
+
+      var affixType = 'affix' + (affix ? '-' + affix : '')
+      var e         = $.Event(affixType + '.bs.affix')
+
+      this.$element.trigger(e)
+
+      if (e.isDefaultPrevented()) return
+
+      this.affixed = affix
+      this.unpin = affix == 'bottom' ? this.getPinnedOffset() : null
+
+      this.$element
+        .removeClass(Affix.RESET)
+        .addClass(affixType)
+        .trigger(affixType.replace('affix', 'affixed') + '.bs.affix')
     }
-});
+
+    if (affix == 'bottom') {
+      this.$element.offset({
+        top: scrollHeight - height - offsetBottom
+      })
+    }
+  }
 
 
-}, '3.0.1', {"requires": ["base", "node-screen", "aui-node"]});
+  // AFFIX PLUGIN DEFINITION
+  // =======================
+
+  function Plugin(option) {
+    return this.each(function () {
+      var $this   = $(this)
+      var data    = $this.data('bs.affix')
+      var options = typeof option == 'object' && option
+
+      if (!data) $this.data('bs.affix', (data = new Affix(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  var old = $.fn.affix
+
+  $.fn.affix             = Plugin
+  $.fn.affix.Constructor = Affix
+
+
+  // AFFIX NO CONFLICT
+  // =================
+
+  $.fn.affix.noConflict = function () {
+    $.fn.affix = old
+    return this
+  }
+
+
+  // AFFIX DATA-API
+  // ==============
+
+  $(window).on('load', function () {
+    $('[data-spy="affix"]').each(function () {
+      var $spy = $(this)
+      var data = $spy.data()
+
+      data.offset = data.offset || {}
+
+      if (data.offsetBottom != null) data.offset.bottom = data.offsetBottom
+      if (data.offsetTop    != null) data.offset.top    = data.offsetTop
+
+      Plugin.call($spy, data)
+    })
+  })
+
+}(jQuery);
