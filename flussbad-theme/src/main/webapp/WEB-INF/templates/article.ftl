@@ -2,8 +2,8 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2015-10-28 18:45 by Christian Berndt
-    Version:    1.1.6
+    Modified:   2015-10-29 17:29 by Christian Berndt
+    Version:    1.1.7
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -49,11 +49,19 @@
         <div class="keyvisual" style="${style}"></div>
     </#if>
     <div class="container">
-        <#assign cssStyle = "content span8" />
+        <#assign cssStyle = "content span8 offset2" />
+        
+        <#if displayToc >
+            <#assign cssStyle = "content span8" />       
+        </#if>  
 
         <#if hasKeyVisual >
-            <#assign cssStyle = "content span8 offset1" />       
-        </#if>
+            <#if displayToc >
+                <#assign cssStyle = "content span8 offset1" /> 
+            <#else>
+                <#assign cssStyle = "content span8 offset2" />             
+            </#if>      
+        </#if>      
 
         <div class="${cssStyle}">
         
