@@ -2,8 +2,8 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2015-10-29 17:29 by Christian Berndt
-    Version:    1.1.7
+    Modified:   2015-10-29 18:47 by Christian Berndt
+    Version:    1.1.8
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -38,10 +38,15 @@
 
 <#if keyVisual??>
     <#if keyVisual.getData()?has_content>
-        <#assign cssClass = "with-keyvisual" />
         <#assign hasKeyVisual = true />
         <#assign style = "background-image: url('${keyVisual.getData()}&imageThumbnail=3');" />
     </#if>
+</#if>
+
+<#if hasKeyVisual >
+    <#assign cssClass = "with-keyvisual" />
+<#else>
+    <#assign cssClass = "without-keyvisual" />
 </#if>
 
 <div class="story ${cssClass}">

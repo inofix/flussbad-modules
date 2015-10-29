@@ -248,9 +248,13 @@ $( document ).ready(function() {
  */
 $( document ).ready(function() {
 
-	$('.toc').affix({
+	$('.without-keyvisual .toc').affix({
 	     offset: {top: 0, bottom: 900 }
     });
+	
+	$('.with-keyvisual .toc').affix({
+	     offset: {top: 530, bottom: 900 }
+   });
 
 	 $('.toc').scrollspy();
 
