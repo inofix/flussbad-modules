@@ -2,8 +2,8 @@
     intro.ftl: Format the intro structure
     
     Created:    2015-08-28 17:52 by Christian Berndt
-    Modified:   2015-10-28 20:52 by Christian Berndt
-    Version:    1.0.3
+    Modified:   2015-10-29 19:31 by Christian Berndt
+    Version:    1.0.4
     
     Please note: Although this template is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -52,10 +52,10 @@
                     <div class="span6 offset3">
                         <#if link.getData()?has_content >
                             <a href="${link.getData()}" title="${label.getData()}">
-                                <h1>${headline.getData()} ${useGradient.getData()}</h1>
+                                <h1>${headline.getData()}</h1>
                             </a>
                         <#else>
-                            <h1>${headline.getData()} ${useGradient.getData()}</h1>
+                            <h1>${headline.getData()}</h1>
                         </#if>
                     </div>
                 </div>
