@@ -1544,7 +1544,8 @@ input {
                 margin-top: 180px;
                 
                 &.affix {
-                    top: 50%;
+                    margin-top: 120px;
+                    top: 0;
                 }                
             
             }
@@ -3008,7 +3009,11 @@ input {
     
     .signed-out {
     
-        .taglib-asset-links,
+        .taglib-asset-links {
+            display: none;
+        }
+        
+    
         #navigation {
         
             .language,
