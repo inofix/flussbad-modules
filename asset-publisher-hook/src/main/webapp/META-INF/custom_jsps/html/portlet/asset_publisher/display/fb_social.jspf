@@ -2,8 +2,8 @@
     fb_social.jsp: Shariff based social media buttons for the flussbad-abstracts.
     
     Created:    2015-10-08 17:05 by Christian Berndt
-    Modified:   2015-10-29 17:08 by Christian Berndt
-    Version:    1.0.4
+    Modified:   2015-10-29 19:19 by Christian Berndt
+    Version:    1.0.5
 --%>
 
 <div class="asset-social-media">
@@ -15,9 +15,6 @@
 	String shareURL = tokens[0]; 
 	
     // TODO: make the shariff properties configurable
-    // No backendUrl in list
-    String backendUrl = ""; 
-//     String backendUrl = "http://neu.flussbad-berlin.de/shariff"; 
     String mailBody = "Schau mal hier auf www.flussbad-berlin.de"; 
 //     String mailBody = "Schau mal hier <a href=\"" + viewURL + "\"> + auf www.flussbad-berlin.de</a>"; 
     String mailSubject = "Schau mal auf www.flussbad-berlin.de"; 
@@ -29,7 +26,7 @@
 
 %>
 	<span class="tell-others"><liferay-ui:message key="tell-others" /></span>
-	<div class="shariff" data-backend-url="<%= backendUrl %>"
+	<div class="shariff"
 		data-url="<%= shareURL %>" data-mail-body="<%= mailBody %>"
 		data-mail-subject="<%= mailSubject %>" data-mail-url="<%= mailUrl %>"
 		data-orientation="<%= selectedOrientation %>"
