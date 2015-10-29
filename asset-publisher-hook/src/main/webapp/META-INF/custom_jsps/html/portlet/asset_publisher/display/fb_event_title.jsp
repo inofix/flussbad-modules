@@ -4,8 +4,8 @@
     - the date and title is read from the event-structure's fields
     
     Created:    2015-10-02 10:29 by Christian Berndt
-    Modified:   2015-10-10 14:48 by Christian Berndt
-    Version:    1.0.3
+    Modified:   2015-10-29 17:00 by Christian Berndt
+    Version:    1.0.4
 --%>
 <%--
 /**
@@ -62,7 +62,12 @@
 	
 	        </div>
 	
-	        <h3 class="asset-title">             
+	        <h3 class="asset-title">  
+        
+	           <%-- Last decision: no links --%>
+	           <%
+		           viewURL = null; 	           
+	           %>          
 	                 
 		        <c:choose>
 		            <c:when test="<%= Validator.isNotNull(viewURL) %>">
