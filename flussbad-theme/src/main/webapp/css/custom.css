@@ -598,13 +598,6 @@ input {
             a {
                 padding: 20px 10px;
             }
-        }
-        
-        .language,
-        .language .portlet-language,
-        .search .portlet-search {
-        
-            display: none; 
         }       
     }
     
@@ -3014,8 +3007,15 @@ input {
     }
     
     .signed-out {
-        .portlet-journal-content .taglib-asset-links {
-            display: none; 
+    
+        .taglib-asset-links,
+        #navigation {
+        
+            .language,
+            .language .portlet-language, 
+            .search {
+                display: none; 
+            }        
         }
     }
     
