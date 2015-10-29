@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2015-10-28 19:05 by Christian Berndt
- * Version:     1.1.4
+ * Modified:    2015-10-29 19:26 by Christian Berndt
+ * Version:     1.1.5
  */
 
 /**
@@ -201,16 +201,43 @@ YUI().use(
     }
 );
 
+
+//TODO: needs IDs in DOM (even with AUI().ready())
+AUI().ready('imageloader', function (Y) {
+ var imageGroup = new Y.ImgLoadGroup({ name: 'foldGroup', foldDistance: 2 });
+// imageGroup.addTrigger('.item', 'mouseover');
+
+//TODO: decide on going for CSS-Classes or elements: Y.all('img')
+ var images = document.getElementsByTagName("img");
+
+// console.log("imageloader: " + images.length);
+ for (var i = 0; i < images.length; i++)
+ {
+     if ( images[i].getAttribute("data-src") )
+     {
+//         console.log(images[i].getAttribute("title"));
+//         console.log(images[i].getAttribute("id"));
+         imageGroup.registerImage({
+             domId: images[i].getAttribute("id"),
+             srcUrl: images[i].getAttribute("data-src")
+         });
+     }
+ }
+});
+
+
 /**
- * Toggle the categories navigation and project-sitemap 
- * on mobile devices.
+ * jQuery plugins
  */
+
 $( document ).ready(function() {
-    
+	
+	/**
+	 * Toggle the categories navigation and project-sitemap 
+	 * on mobile devices.
+	 */	
     var windowWidth = $(window).width(); //retrieve current window width
-    
-    console.log("windowWidth = " + windowWidth); 
-    
+        
     if (windowWidth < 768) {
     	
     	var sitemapPortlet = $(".portlet-site-map.project-sections");
@@ -228,58 +255,25 @@ $( document ).ready(function() {
     	}
     	
     }
-
-
-}); 
-
-
-/**
- * Apply the affix class to the main-navigation .
- */
-$( document ).ready(function() {
-
+	
+	/**
+	 * Apply the affix class to the main-navigation .
+	 */
 	$('.start-page #navigation').affix({
 	     offset: {top: 200 }
-    });
-}); 
+	});
 
-/**
- * Affix the toc of stories
- */
-$( document ).ready(function() {
-
+	/**
+	 * Affix the toc of stories
+	 */
 	$('.without-keyvisual .toc').affix({
 	     offset: {top: 0, bottom: 900 }
     });
 	
 	$('.with-keyvisual .toc').affix({
 	     offset: {top: 530, bottom: 900 }
-   });
+	});
 
-	 $('.toc').scrollspy();
+	$('.toc').scrollspy();
 
 });
-
-// TODO: needs IDs in DOM (even with AUI().ready())
-AUI().ready('imageloader', function (Y) {
-    var imageGroup = new Y.ImgLoadGroup({ name: 'foldGroup', foldDistance: 2 });
-//    imageGroup.addTrigger('.item', 'mouseover');
-
-//TODO: decide on going for CSS-Classes or elements: Y.all('img')
-    var images = document.getElementsByTagName("img");
-
-//    console.log("imageloader: " + images.length);
-    for (var i = 0; i < images.length; i++)
-    {
-        if ( images[i].getAttribute("data-src") )
-        {
-//            console.log(images[i].getAttribute("title"));
-//            console.log(images[i].getAttribute("id"));
-            imageGroup.registerImage({
-                domId: images[i].getAttribute("id"),
-                srcUrl: images[i].getAttribute("data-src")
-            });
-        }
-    }
-});
-
