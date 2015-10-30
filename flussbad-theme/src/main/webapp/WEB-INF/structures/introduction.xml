@@ -5,8 +5,8 @@
     a site area.
     
     Created:    2015-10-16 17:32 by Christian Berndt
-    Modified:   2015-10-16 17:32 by Christian Berndt
-    Version:    1.0.1
+    Modified:   2015-10-30 18:33 by Christian Berndt
+    Version:    1.0.2
     
     Please note: Although this structure is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -49,6 +49,32 @@
             </entry>
             <entry name="tip">
                 <![CDATA[In der Beschreibung darf es etwas ausführlicher werden.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>
+    <dynamic-element dataType="boolean" indexType="keyword" localizable="true" name="showToc" readOnly="false" repeatable="false" required="false" showLabel="true" type="checkbox" width="">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[Inhaltsverzeichnis anzeigen?]]>
+            </entry>
+            <entry name="predefinedValue">
+                <![CDATA[false]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Markiere diese Option, wenn Du ein Inhaltsverzeichnis für diese Seite anzeigen möchtest. Das Inhaltsverzeichnis wird auf Grundlage auf der Seite installierten Module erstellt.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>
+    <dynamic-element dataType="boolean" indexType="keyword" localizable="true" name="displayFullWidth" readOnly="false" repeatable="false" required="false" showLabel="true" type="checkbox" width="">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[Volle Breite?]]>
+            </entry>
+            <entry name="predefinedValue">
+                <![CDATA[false]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Markiere diese Option, wenn die Einführung in voller Breite (10 Spalten) dargestellt werden soll.]]>
             </entry>
         </meta-data>
     </dynamic-element>
