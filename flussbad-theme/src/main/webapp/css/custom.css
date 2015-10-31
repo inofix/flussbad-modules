@@ -1538,9 +1538,7 @@ input {
             }
             
             .toc {
-            
-                width: 300px;        
-                 
+                             
                 margin-top: 180px;
                 
                 &.affix {
@@ -1692,8 +1690,6 @@ input {
         border-left: 10px solid $color-sand;
         padding-top: 15px;
         padding-bottom: 15px;
-        width: 360px;        
-         
         margin-top: 60px;
         
         &.affix {
@@ -3103,12 +3099,6 @@ input {
 	           line-height: 32px;
 	        }
 	        
-	        .row,
-	        .container {
-	        
-	            margin: 0 15px;
-	        }
-	        
 	        .link {
             
                padding-top: 30px;
@@ -3118,6 +3108,10 @@ input {
 	        .section-body { 
         
 	           @include cols-reset(); 
+	        }
+	        
+	        .toc {
+	           display: none; 
 	        }
 	        
 	        
@@ -3472,6 +3466,11 @@ input {
             
            display: none;
         }
+        
+        #navigation .container {
+        
+            margin: 0 15px;
+        }        
 
 	    .portlet-asset-categories-navigation,
 	    .portlet-site-map.project-sections {
@@ -3503,6 +3502,11 @@ input {
 		        }
 	        }
 	    }
+	    
+	    .story.with-keyvisual .toc,
+        .toc {
+           word-wrap: break-word;
+        }
 	}
     
 
