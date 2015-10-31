@@ -478,6 +478,28 @@ input {
     
 	    outline: 0;
 	}
+	
+	.portlet-boundary {
+	
+	   /** 
+	       utility classes used to control the position of the portlet
+	       portlet-body within the bootstrap grid. 
+	       portlet-borderless-container is configured to behave like 
+	       bootstrap's container class. The offset classes can be used
+	       like bpotstrap's offsets. */    
+	     
+        &.offset-1 {
+           .portlet-body {
+               margin-left: 8.54701%; /* bootstrap  .offset1:first-child */
+           }
+        }
+	   
+        &.offset-2 {
+           .portlet-body {
+                margin-left: 17.02128%;  /* bootstrap  .offset2:first-child */        
+           }
+       }
+	}
 
 
 
@@ -717,10 +739,9 @@ input {
 
     .web-form-portlet {
         
-        .portlet-borderless-container {
+        .portlet-body {
             
             width: 770px; /* bootstrap span8 */
-            margin-left: 230px; /* bootstrap offset1 */
             
             .fieldset {
             
@@ -744,11 +765,13 @@ input {
             }    
         }
         
+        /** TODO: remove when all portlets a reconfigured */
+        /*  with the offset-1-10 classes */
         &.form-with-toc {
             
            .portlet-borderless-container {
             
-                margin-left: 0;
+/*                 margin-left: 0; */
 /*                 margin-left: 100px; bootstrap offset1 */
 	        } 
         }
@@ -3280,7 +3303,15 @@ input {
         
             padding-bottom: 0;
         }
-
+                       
+        .story .container .content .social-media .shariff ul li.shariff-button {
+        
+            min-width: 45px;
+        }
+        
+        .story .container .content li {
+            margin-right: 0;
+        }
         
         .intro {
         
@@ -3331,11 +3362,21 @@ input {
                
         .web-form-portlet {
         
-            .portlet-body {
-                margin-left: 15px; 
-                margin-right: 15px;
+            .portlet-borderless-container {
+                margin-left: 0; 
             }
-
+        
+            &.portlet-boundary,
+            &.portlet-boundary.offset-1,
+            &.portlet-boundary.offset-2 {
+                .portlet-body {
+                    margin: 0; 
+/*                     margin-left: 15px;  */
+/*                     margin-right: 15px; */
+                    width: 100%;
+                }
+            }
+            
             .control-group {
                 width: 100%;
                 overflow: hidden; 
@@ -3530,9 +3571,14 @@ input {
                 
         .web-form-portlet {
         
+            .portlet-borderless-container {
+                margin-left: 0; 
+            }
+        
             .portlet-body {
                 margin-left: 15px; 
                 margin-right: 15px;
+                width: 100%;
             }
 
             .control-group {
@@ -3563,6 +3609,17 @@ input {
             margin: auto;
             width: 940px; /* bootstrap .container */
         }
+        
+        .web-form-portlet {
+        
+            .portlet-body {
+                width: 620px; 
+            }
+            
+            .control-group:nth-of-type(odd) {
+                margin-right: 20px;
+            }
+        }
     }
     
     
@@ -3589,6 +3646,17 @@ input {
         .web-form-portlet {
         
             width: 1170px; /* bootstrap .container */
+        }
+        
+        .web-form-portlet {
+        
+            .portlet-body {
+                width: 770px; 
+            }
+            
+            .control-group:nth-of-type(odd) {
+                margin-right: 30px;
+            }
         }
     }
     
