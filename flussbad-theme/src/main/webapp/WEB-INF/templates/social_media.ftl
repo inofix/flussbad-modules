@@ -13,8 +13,6 @@
     change the template online make sure that you commit your
     changes to the flussbad-modules repo, too.
 -->
-<div class="social-media">
-
 <#--                <#assign canonicalURL = portalUtil.getCanonicalURL(viewURL, themeDisplay, layout) > -->
 <#--           String[] tokens = canonicalURL.split("\\?");  -->
 <#--           String shareURL = tokens[0]; -->
@@ -27,13 +25,16 @@
 <#assign selectedOrientation = "horizontal" />
 <#assign servicesConfig = "[&quot;facebook&quot;,&quot;twitter&quot;,&quot;mail&quot;]" /> 
 <#assign selectedTheme = "standard" />
-<#assign twitterVia = "flussbad" /> 
+<#assign twitterVia = "flussbad" />
 
-<span class="tell-others"><#-- <liferay-ui:message key="tell-others" /> -->Weitersagen: </span>
-<div class="shariff" data-backend-url="${backendUrl}"
+<div class="social-media"> 
+
+    <span class="tell-others"><#-- <liferay-ui:message key="tell-others" /> -->Weitersagen: </span>
+    <div class="shariff" data-backend-url="${backendUrl}"
     data-url="${shareURL}" data-mail-body="${mailBody}"
     data-mail-subject="${mailSubject}" data-mail-url="${mailUrl}"
     data-orientation="${selectedOrientation}"
     data-services="${servicesConfig}"
-    data-theme="${selectedTheme}" data-twitter-via="${twitterVia}"></div>
+    data-theme="${selectedTheme}" data-twitter-via="${twitterVia}">
+    </div>
 </div> <#-- / .social-media -->
