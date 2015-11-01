@@ -1,0 +1,29 @@
+<root available-locales="de_DE" default-locale="de_DE">
+<!--
+    article_press_release.xml: A structure for a content object of 
+    type "article_press_release". This structure must be configured
+    as a child structure of the default article structure.
+    
+    Created:    2015-11-01 18:57 by Christian Berndt
+    Modified:   2015-11-01 18:57 15:19 by Christian Berndt
+    Version:    1.0.0
+    
+    Please note: Although this structure is stored in the 
+    site's context it's source is managed via git. Whenever you 
+    change the structure online make sure that you commit your 
+    changes to the flussbad-modules repo, too.
+-->
+    <dynamic-element dataType="string" indexType="keyword" localizable="true" name="layoutUuid" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="small">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[layoutUuid]]>
+            </entry>
+            <entry name="predefinedValue">
+                <![CDATA[9e3da74d-4ffa-4630-8ce0-3610493c6027]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Gib hier die uuid des betrefffenden Layouts an, auf dem Inhalte vom Typ "Termin" angezeigt werden. Wenn Du jetzt nur Bahnhof verstehst, frag einen von Inofix - die machen das dann.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>
+</root>
