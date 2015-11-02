@@ -1699,6 +1699,13 @@ input {
                     text-align: center;
                 }
             }
+            
+            .pointer {
+                text-align: center; 
+                color: $color-turquois;
+                font-size: 40px;
+                margin-left: -18px;
+            }
         }
         
         &.categories-closed,
