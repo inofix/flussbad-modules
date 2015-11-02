@@ -1474,17 +1474,17 @@ input {
         
         .flex-direction-nav a::before {
         
-            font-family: "flexslider-icon";
+            font-family: 'fontawesome-alloy';
             font-size: 40px;
             display: inline-block;
-            content: "";
+            content: "\f060";
             color: $color-turquois;
             text-shadow: none;
         }
         
         .flex-direction-nav a.flex-next:before {
         
-          content: '\f002';
+          content: '\f061';
         }
 
         .flex-direction-nav .flex-prev {
