@@ -2,8 +2,8 @@
     introduction.ftl: Format the introduction structure
     
     Created:    2015-10-15 23:58 by Christian Berndt
-    Modified:   2015-10-30 18:17 by Christian Berndt
-    Version:    1.0.5
+    Modified:   2015-11-02 19:43 by Christian Berndt
+    Version:    1.0.6
     
     Please note: Although this template is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -28,6 +28,8 @@
 </#if>
 
 <#assign style = "" />
+<#assign displayToc = false />
+<#assign displayPointer = false />
 
 <#if keyVisual??>
     <#if keyVisual.getData()?has_content>
@@ -35,12 +37,18 @@
     </#if>
 </#if>
 
-<#assign displayToc = false />
-
 <#if showToc?? >
     <#if showToc.getData()?has_content>
         <#if getterUtil.getBoolean(showToc.getData())>
             <#assign displayToc = getterUtil.getBoolean(showToc.getData()) />
+        </#if>
+    </#if>
+</#if>
+
+<#if showPointer?? >
+    <#if showPointer.getData()?has_content>
+        <#if getterUtil.getBoolean(showPointer.getData())>
+            <#assign displayPointer = getterUtil.getBoolean(showPointer.getData()) />
         </#if>
     </#if>
 </#if>
@@ -73,6 +81,10 @@
             <div class="section">
                 <div class="section-body">${description.getData()}</div>
             </div>
+            <#if displayPointer >
+                <h3 class="category">Alle Artikel zum Thema ${layout.getName(locale)}</h3>
+                <div class="pointer"><span class="icon-arrow-down"></span></div>
+            </#if>
         </div> <#-- /.content -->
         
         <#if displayToc>

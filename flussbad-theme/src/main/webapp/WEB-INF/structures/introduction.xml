@@ -5,8 +5,8 @@
     a site area.
     
     Created:    2015-10-16 17:32 by Christian Berndt
-    Modified:   2015-10-30 18:33 by Christian Berndt
-    Version:    1.0.2
+    Modified:   2015-11-02 20:09 by Christian Berndt
+    Version:    1.0.3
     
     Please note: Although this structure is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -62,6 +62,19 @@
             </entry>
             <entry name="tip">
                 <![CDATA[Markiere diese Option, wenn Du ein Inhaltsverzeichnis für diese Seite anzeigen möchtest. Das Inhaltsverzeichnis wird auf Grundlage auf der Seite installierten Module erstellt.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>
+    <dynamic-element dataType="boolean" indexType="keyword" localizable="true" name="showPointer" readOnly="false" repeatable="false" required="false" showLabel="true" type="checkbox" width="">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[Hinweis "Alle Artikel zum Thema ..." einblenden?]]>
+            </entry>
+            <entry name="predefinedValue">
+                <![CDATA[false]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Markiere diese Option, wenn der Einführungstext mit dem Hinweis: Alle Artikel zum Thema und einem Hinweispfeil abgeschlossen werden soll.]]>
             </entry>
         </meta-data>
     </dynamic-element>
