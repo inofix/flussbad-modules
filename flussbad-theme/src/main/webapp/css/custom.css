@@ -1649,6 +1649,10 @@ input {
                     margin-top: 1em;
                     border-top: 5px solid $color-light-gray;
                     padding-top: .5em;
+                    
+                    a {
+                        text-decoration: none;
+                    }
                 
                     @include social-media();            
                 }    
@@ -3071,17 +3075,7 @@ input {
     .portlet-journal-content .lfr-meta-actions:hover {
         background: rgba(0,0,0,0.9);
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+     
     
 /* media-queries */
 
@@ -3143,8 +3137,7 @@ input {
 	        .toc {
 	           display: none; 
 	        }
-	        
-	        
+	             
 	        
 /* ----------------------------------------------- responsive front-page */
 	        
@@ -3253,10 +3246,20 @@ input {
             }
             
             .asset-abstract {
+            
+                padding: 0; 
+                margin: 0; 
+                
+                &.with-keyvisual {
+                
+                    .container {
+                        padding: 30px 15px;
+                        margin: 0 15px;
+                    }
+                }
                         
                 .container {
-				    padding-top: 15px;
-				    padding-bottom: 15px;
+                    padding: 30px;
 				}
             
                 h3.asset-title {
@@ -3286,6 +3289,14 @@ input {
         
         
 /* ----------------------------------------------- responsive story */
+
+        .introduction,
+        .statement,
+        .story {
+            .container {
+                padding: 15px;
+            }
+        }
 
         .portlet-asset-publisher.story-publisher,
         .project-story.categories-closed {
@@ -3365,7 +3376,27 @@ input {
 			        }
                 }
             }
-        }  
+            
+            /* ------------------------------------------ event */
+            &.event-publisher {
+            
+                .asset-metadata {
+                    margin-left: 0; 
+                    margin-bottom: 1em;
+                                           
+                    .metadata-event-date {
+                        padding: 15px 0 0; 
+                    }
+                }
+                
+                .container {
+                    padding: 15px;
+                }
+                
+            }
+        } 
+        
+/** -------------------------- web-form-portlet */ 
                
         .web-form-portlet {
         
@@ -3377,20 +3408,26 @@ input {
             &.portlet-boundary.offset-1,
             &.portlet-boundary.offset-2 {
                 .portlet-body {
-                    margin: 0; 
-/*                     margin-left: 15px;  */
-/*                     margin-right: 15px; */
+                    margin: 0;
                     width: 100%;
                 }
             }
             
             .control-group {
-                width: 100%;
+                
                 overflow: hidden; 
+                
+                input[type="text"] {
+                    width: 100%;
+                }
             }
             
             .control-group:nth-of-type(odd) {
                 margin-right: 0; 
+            }
+            
+            .taglib-captcha img {
+                margin: 0; 
             }
         }
         
@@ -3591,6 +3628,11 @@ input {
             .control-group {
                 width: 100%;
                 overflow: hidden; 
+            }
+            
+            fieldset {
+                padding: 15px;
+                width: auto; 
             }
         }        
 	}
