@@ -1,9 +1,9 @@
 <#--
-    Carousel template: Format the Carousel structure
+    carousel.ftl: Format the carousel structure
 
     Created:    2015-08-28 17:51 by Christian Berndt
-    Modified:   2015-10-25 15:34 by Christian Berndt
-    Version:    0.9.9
+    Modified:   2015-11-03 21:22 by Christian Berndt
+    Version:    1.0.0
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -37,12 +37,12 @@
 <script>
     $( document ).ready(function() {
       $('.flexslider').flexslider({
-        animationLoop: false,
-        slideshow: false,
-        pauseOnHover: true,
+        animation: "slide",
         controlNav: false,
+        nextText:"",     
+        pauseOnHover: true,
         prevText:"",      
-        nextText:""      
+        slideshow: true
       });
     });
 </script>
