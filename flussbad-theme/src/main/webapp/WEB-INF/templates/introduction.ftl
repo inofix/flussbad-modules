@@ -2,8 +2,8 @@
     introduction.ftl: Format the introduction structure
     
     Created:    2015-10-15 23:58 by Christian Berndt
-    Modified:   2015-11-02 19:43 by Christian Berndt
-    Version:    1.0.6
+    Modified:   2015-11-03 17:23 by Christian Berndt
+    Version:    1.0.7
     
     Please note: Although this template is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -28,8 +28,10 @@
 </#if>
 
 <#assign style = "" />
+<#assign displayCategories = false />
 <#assign displayToc = false />
 <#assign displayPointer = false />
+<#assign fullWidth = false />
 
 <#if keyVisual??>
     <#if keyVisual.getData()?has_content>
@@ -45,6 +47,14 @@
     </#if>
 </#if>
 
+<#if showCategories?? >
+    <#if showCategories.getData()?has_content>
+        <#if getterUtil.getBoolean(showCategories.getData())>
+            <#assign displayCategories = getterUtil.getBoolean(showCategories.getData()) />
+        </#if>
+    </#if>
+</#if>
+
 <#if showPointer?? >
     <#if showPointer.getData()?has_content>
         <#if getterUtil.getBoolean(showPointer.getData())>
@@ -52,8 +62,6 @@
         </#if>
     </#if>
 </#if>
-
-<#assign fullWidth = false />
 
 <#if displayFullWidth?? >
     <#if displayFullWidth.getData()?has_content>
@@ -75,16 +83,22 @@
     <div class="keyvisual" style="${style}"></div>
     <div class="container">
         <div class="content ${cssStyle}">
-            <h3 class="category"><a href="${backURL}">${title}</a></h3>
+        
+            <#if displayCategories >
+                <h3 class="category"><a href="${backURL}">${title}</a></h3>
+            </#if>
+            
             <h1>${headline.getData()}</h1>
             <p class="lead">${teaser.getData()}</p>
             <div class="section">
                 <div class="section-body">${description.getData()}</div>
             </div>
+            
             <#if displayPointer >
                 <h3 class="category">Alle Artikel zum Thema ${layout.getName(locale)}</h3>
                 <div class="pointer"><span class="icon-arrow-down"></span></div>
             </#if>
+            
         </div> <#-- /.content -->
         
         <#if displayToc>
