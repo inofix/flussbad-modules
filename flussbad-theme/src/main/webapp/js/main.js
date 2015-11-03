@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2015-10-29 19:26 by Christian Berndt
- * Version:     1.1.5
+ * Modified:    2015-11-03 22:46 by Christian Berndt
+ * Version:     1.1.6
  */
 
 /**
@@ -236,7 +236,10 @@ $( document ).ready(function() {
 	 * Toggle the categories navigation and project-sitemap 
 	 * on mobile devices.
 	 */	
-    var windowWidth = $(window).width(); //retrieve current window width
+    var windowWidth = $(window).width(); 
+    var windowHeight = $(window).height();
+    
+    // console.log('windowHeight = ' + windowHeight); 
         
     if (windowWidth < 768) {
     	
@@ -270,8 +273,12 @@ $( document ).ready(function() {
 	     offset: {top: 0, bottom: 900 }
     });
 	
-	$('.with-keyvisual .toc').affix({
-	     offset: {top: 530, bottom: 900 }
+	$('.story.with-keyvisual .toc').affix({
+	     offset: {top: (windowHeight - (60 + 60)), bottom: 900 }
+	});
+	
+	$('.introduction.with-keyvisual .toc').affix({
+	     offset: {top: (windowHeight - (60 + 160)), bottom: 900 }
 	});
 
 	$('.toc').scrollspy();
