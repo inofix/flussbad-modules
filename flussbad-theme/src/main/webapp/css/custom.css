@@ -3463,6 +3463,7 @@ input {
         .portlet-dynamic-data-mapping,
         .portlet-journal,
         .portlet-search,
+        .portlet-site-map.project-sections .portlet-body,
         .web-form-portlet,
         .web-form-portlet .portlet-borderless-container
          {
@@ -3668,6 +3669,7 @@ input {
         .portlet-journal,
         .portlet-journal-content .taglib-asset-links,
         .portlet-search,
+        .portlet-site-map.project-sections .portlet-body,
         .web-form-portlet {
         
             margin: auto;
@@ -3712,9 +3714,11 @@ input {
         .portlet-journal,
         .portlet-journal-content .taglib-asset-links,
         .portlet-search,
+        .portlet-site-map.project-sections .portlet-body,
         .web-form-portlet {
         
             width: 1170px; /* bootstrap .container */
+            margin: auto; 
         }
         
         .web-form-portlet {
@@ -3738,6 +3742,7 @@ input {
         .portlet-journal,
         .portlet-journal-content .taglib-asset-links,
         .portlet-search,
+        .portlet-site-map.project-sections .portlet-body,
         .web-form-portlet  {
             width: 724px; /* bootstrap .container */
         }
