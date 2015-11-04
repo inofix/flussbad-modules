@@ -1555,7 +1555,7 @@ input {
             overflow: hidden;
             
             @include background-cover();
-        } 
+        }
         
         &.with-keyvisual {
             .container {
@@ -1755,6 +1755,11 @@ input {
                color: $hover-font-color;
             }
         }
+    }
+    
+    .span3 .toc.affix, 
+    .span3 .toc.affix-bottom {
+        z-index: 3;
     }
     
     
@@ -3469,6 +3474,14 @@ input {
     
     
 /* ----------------------------------------------- responsive navigation / bootstrap Navigation switch point */
+
+    @media (min-width: 768px) {
+    
+        .span3 .toc.affix, 
+        .span3 .toc.affix-bottom {
+            width: 210px;
+        }
+    }
     
     @media (max-width: 979px) { 
     
@@ -3641,7 +3654,7 @@ input {
     
 
     
-    @media (min-width: 992px) {
+    @media (min-width: 980px) {
     
         #navigation .nav-collapse {
         
@@ -3670,6 +3683,11 @@ input {
             .control-group:nth-of-type(odd) {
                 margin-right: 20px;
             }
+        }
+        
+        .span3 .toc.affix, 
+        .span3 .toc.affix-bottom {
+            width: 270px;
         }
     }
     
