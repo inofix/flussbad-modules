@@ -1548,9 +1548,12 @@ input {
         }
         
         &.with-keyvisual {
+        
             .container {
                 margin-top: $container-push;
-                opacity: .9;
+                opacity: .95;
+                position: relative; 
+                z-index:2;
             }
             
             .toc {
