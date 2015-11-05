@@ -3190,11 +3190,11 @@ input {
 		    .statements {
 		    
 			      .statement {
-			      
+			      			      			      
 			          blockquote {
 			          
 			             font-size: $lead-font-size;
-			             padding: 2em 0 0 0; 
+			             padding: 2em 0 0 0;
 			          }
 			          
 			          .author {
@@ -3770,6 +3770,117 @@ input {
         .portlet-site-map.project-sections .portlet-body,
         .web-form-portlet  {
             width: 724px; /* bootstrap .container */
+        }
+    }
+    
+    
+    
+/* ----------------------------------------------- iPad fixes */
+    
+    @media (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) { 
+    
+        .intro.with-image .abstracts .abstract {
+        
+            h2 {
+            
+                min-height: 2.5em;
+            }
+            
+            p {
+            
+                min-height: 4em;
+            }
+        }
+        
+        .wir .intro .abstracts .abstract {
+        
+            h2 {
+            
+                min-height: 5.5em;
+            }
+            
+            p {
+            
+                min-height: 11em;
+            }
+        }
+        
+        .intro.turquois {
+        
+            h1 {
+            
+                padding: 2em 0;
+            }
+        }
+        
+        .intro .abstracts .abstract {
+        
+            h2 {
+            
+                min-height: 5.5em;
+            }
+            
+            p {
+            
+                min-height: 7em;
+            }
+        }
+    }
+    
+    @media (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) { 
+    
+        .flex-direction-nav {
+        
+            .prev {
+            
+                left: 15px !important;
+            }
+            
+            .next {
+                right: 15px !important; 
+            }
+        }
+    
+        .intro.with-image .abstracts .abstract {
+        
+            h2 {
+            
+                min-height: 0;
+            }
+            
+            p {
+            
+                min-height: 4em;
+            }
+        }
+        
+        .wir .intro .abstracts .abstract {
+        
+            h2 {
+            
+                min-height: 4em;
+            }
+        }
+        
+        .intro.turquois {
+        
+            h1 {
+            
+                padding: 2em 0;
+            }
+        }
+        
+        .intro .abstracts .abstract {
+        
+            h2 {
+            
+                min-height: 4em;
+            }
+            
+            p {
+            
+                min-height: 6em;
+            }
         }
     }
 }
