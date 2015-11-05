@@ -1445,7 +1445,7 @@ input {
 /* ----------------------------------------------- Flexslider --------*/
 
     .flexslider {
-		
+     
         border: none;
         margin: 0;
         margin-bottom: -15px;
@@ -1456,50 +1456,46 @@ input {
         
             margin: 0;
         }
+    
+        .flex-direction-nav  {
         
-        li {
-            position: relative;
-            line-height: 40px; /* the same as the flex-direction-icon */
-        }
-        
-        .flex-direction-nav {
-        
-            position: absolute; 
-            right: 0; 
-            left: 0; 
-            top: 45%;
-        }
-        
-        .flex-direction-nav a {
-        
-            opacity: .7;
-        }
-        
-        .flex-direction-nav a::before {
-        
-            font-family: 'fontawesome-alloy';
-            font-size: 40px;
-            display: inline-block;
-            content: "\f060";
-            color: $color-turquois;
-            text-shadow: none;
-        }
-        
-        .flex-direction-nav a.flex-next:before {
-        
-            content: '\f061';
-        }
-
-        .flex-direction-nav .flex-prev {
-        
-            left: 30px;
-        }
-        
-        .flex-direction-nav .flex-next {
-        
-            right: 30px;
-            text-align: right;
-        }     
+            li a {
+                text-indent: 0; 
+                font-family: 'fontawesome-alloy';
+                font-size: 40px;
+                line-height: 40px;
+                display: inline-block;
+                color: $color-turquois;
+                text-shadow: none;
+                opacity: .7; 
+                width: 40px; 
+                height: 40px; 
+                
+                &:hover {
+                    opacity: 1; 
+                }                
+            }
+            
+            .prev {
+                left: 30px; 
+            }
+            
+            .prev:after {
+                content: "\f060";
+                position: absolute;
+                opacity: 1;
+            }
+            
+            .next {
+                right: 30px; 
+            }
+            
+           .next:after {
+                content: "\f061";
+                position: absolute;
+                right: 0; 
+            }
+        }  
         
         .flex-caption {
             position: absolute;
@@ -1511,26 +1507,9 @@ input {
             line-height: $default-line-height;
             background-color: white;
             opacity: 0.75;
-        }
-        
-        &:hover {
-        
-            .flex-direction-nav .flex-next {
-        
-	           opacity: 0.7;
-	        }
-	        
-	        .flex-direction-nav .flex-prev {
-        
-	          left: 30px;
-	        }
-	        
-	        .flex-direction-nav .flex-next {
-        
-	          right: 30px;
-	        } 
-        } 
+        }     
     }
+
         
     .slide-show .item {
         
