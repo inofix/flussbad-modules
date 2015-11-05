@@ -2008,6 +2008,9 @@ input {
         max-height: none; 
         background: none; 
         
+        overflow: auto; 
+        position: relative;
+        
         &.portlet-borderless {
             margin-top: 0; 
         }
