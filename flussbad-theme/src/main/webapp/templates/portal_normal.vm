@@ -42,11 +42,17 @@
 
     $theme.include($top_head_include)
     
-    <script src='$javascript_folder/jquery-1.11.3.min.js' type='text/javascript'></script>
-    <script src='$javascript_folder/jquery.flexslider-min.js' type='text/javascript'></script>
+## The rcs-newsletter-portlet does not work with the current jquery version 
+## (and hence the current flexslider version. Until this issue is solved, we use
+## jquery 1.9.1 (which is shipped with the rcs-newsletter registration portlet)
+##     
+##    <script src='$javascript_folder/jquery-1.11.3.min.js' type='text/javascript'></script>
+    <script src='$javascript_folder/jquery.flexslider-1-8-min.js' type='text/javascript'></script>
+##    <script src='$javascript_folder/jquery.flexslider-min.js' type='text/javascript'></script>
     
     <!-- Include CSS for Flexslider -->
-    <link rel="stylesheet" href="$css_folder/flexslider.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="$css_folder/flexslider-1-8.css" type="text/css" media="screen" />
+##    <link rel="stylesheet" href="$css_folder/flexslider.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="$css_folder/font-awesome.min.css" type="text/css" media="screen" />
 
 </head>
