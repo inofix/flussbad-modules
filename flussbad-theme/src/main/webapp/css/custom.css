@@ -2000,6 +2000,23 @@ input {
         position: fixed;
         top: $nav-height;
     }
+    
+    /** unset some parameters for the configuration in popup-mode */
+    .portlet-configuration.portlet-asset-categories-navigation {
+    
+        margin-top: 0; 
+        max-height: none; 
+        background: none; 
+        
+        &.portlet-borderless {
+            margin-top: 0; 
+        }
+        
+        .portlet-body {
+            width: auto; 
+        }
+  
+    }
 
     .portlet-asset-publisher {
     
