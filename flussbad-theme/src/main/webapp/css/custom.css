@@ -2021,10 +2021,17 @@ input {
                 
                     background-color: $color-muted;
                     
-                    h3.asset-title {
+                    h3.asset-title,
+                    h3.asset-title a {
                     
-                        color: $color-light-gray;  
-                    } 
+                        color: $color-light-gray;
+                        padding: 0;  
+                    }
+                    
+                    .metadata-event-date {
+                    
+                        color: $color-light-gray;
+                    }
                     
                     .asset-content, 
                     .asset-social-media,
@@ -2032,7 +2039,15 @@ input {
                     .metadata-event-time {
                         display: none; 
                     }      
-                }   
+                }
+                
+                &.gray-green {
+                
+                    h3.asset-title {
+                    
+                        padding: 0;  
+                    }
+                }  
                 
                 /* Do not show asset-categories that don't have the "show-in-logbook" */
                 /* class */
@@ -2706,7 +2721,7 @@ input {
         
             font-size: 30px;
             text-align: center;
-            padding: 1em 0;
+            padding: 2.5em 0;
         
             ul {
             
