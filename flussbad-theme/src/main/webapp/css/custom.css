@@ -872,9 +872,19 @@ input {
     
     footer {
     
-	    .portlet-login {
+        .portlet-boundary_NewsletterRegistration_WAR_rcsnewsletterportlet_ {
 	    
-	        text-align: center;
+	       .portlet-body {
+    	        text-align: center;
+            }
+            
+            .unregister-link {
+                display: none; 
+            }
+            
+            input {
+                @include btn-primary();                
+            }
 	    }
     
         .control-group {
