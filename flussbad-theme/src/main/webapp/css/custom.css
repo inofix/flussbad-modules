@@ -1074,7 +1074,7 @@ input {
         } 
         
         h1 {
-            padding: 80px 0 20px;
+            padding: 2em 0;
         }
         
         h2 {
@@ -3859,14 +3859,6 @@ input {
             h2 {
             
                 min-height: 4em;
-            }
-        }
-        
-        .intro.turquois {
-        
-            h1 {
-            
-                padding: 2em 0;
             }
         }
         
