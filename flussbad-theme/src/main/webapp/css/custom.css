@@ -1942,6 +1942,11 @@ input {
         
         max-height: 120px; 
         overflow: hidden;
+        
+        ul {
+            margin: 15px 0; 
+            padding: 0; 
+        }
       
         .toggle {
                           
@@ -1974,16 +1979,12 @@ input {
         &.categories-auto-closed,
         &.categories-closed {
         
-            background: transparent;
-            min-height: $categories-height; /* otherwise the toggle-button is truncated in closed mode */
-            transition: 0.5s ease-in-out;
-        
-            .taglib-asset-categories-navigation .accordion-group,
-            .site-map-wrapper {
-        
-                max-height: 0;
-                overflow: hidden;
-            }
+/*             background: transparent; */
+/*             min-height: $categories-height; otherwise the toggle-button is truncated in closed mode */
+/*             transition: 0.5s ease-in-out; */
+                
+            max-height: 0;
+            overflow: hidden;
     
             .toggle-button {
             
@@ -2604,16 +2605,16 @@ input {
             display: inline-block; 
     	}
     	
-    	.site-map-wrapper {
+/*     	.site-map-wrapper { */
     	
-    		margin: 15px 0; 
-    		float: left; 
+/*     		margin: 15px 0;  */
+/*     		float: left;  */
     		
-    		ul {
-                margin: 0; 
-        		list-style: none; 
-        	}
-    	}	
+/*     		ul { */
+/*                 margin: 0;  */
+/*         		list-style: none;  */
+/*         	} */
+/*     	}	 */
     }
     
     .portlet-search {
@@ -2675,9 +2676,9 @@ input {
     
             .portlet-site-map {
             
-                .site-map-wrapper {
-                    display: inline; 
-                }
+/*                 .site-map-wrapper { */
+/*                     display: inline;  */
+/*                 } */
             
                 .portlet-borderless-container {
                 
@@ -3500,7 +3501,7 @@ input {
         .portlet-dynamic-data-mapping,
         .portlet-journal,
         .portlet-search,
-        .portlet-site-map.project-sections .portlet-body,
+        .portlet-site-map.project-sections .portlet-borderless-container,
         .web-form-portlet,
         .web-form-portlet .portlet-borderless-container
          {
@@ -3635,8 +3636,7 @@ input {
 	            padding: 15px;
 	        }
 	        
-	        .portlet-body,
-	        .site-map-wrapper {
+	        .portlet-body {
 	            
 	            width: 100% !important;
 	            
@@ -3710,7 +3710,7 @@ input {
         .portlet-journal,
         .portlet-journal-content .taglib-asset-links,
         .portlet-search,
-        .portlet-site-map.project-sections .portlet-body,
+        .portlet-site-map.project-sections .portlet-borderless-container,
         .web-form-portlet {
         
             margin: auto;
@@ -3732,7 +3732,7 @@ input {
     
     @media (min-width: 1200px) {
 
-        .portlet-site-map.project-sections .portlet-body .site-map-wrapper,
+        .portlet-site-map.project-sections .portlet-body,
     	.taglib-asset-categories-navigation .accordion-group {
     	
 		    margin-left: 34.18803%; /* bootstrap .offset4:first-child */
@@ -3740,7 +3740,9 @@ input {
     	
     	.portlet-asset-categories-navigation .taglib-asset-categories-navigation {
     	
-    		margin-left: -30px; /* bootstrap .row */
+    	/** do we need this? If yes, we need it for the 
+    	    .portlet-site-map.project-sections ul, too */
+/*     		margin-left: -30px; bootstrap .row */
     	}
     
         .columns-max,
@@ -3750,7 +3752,7 @@ input {
         .portlet-journal,
         .portlet-journal-content .taglib-asset-links,
         .portlet-search,
-        .portlet-site-map.project-sections .portlet-body,
+        .portlet-site-map.project-sections .portlet-borderless-container,
         .web-form-portlet {
         
             width: 1170px; /* bootstrap .container */
@@ -3788,7 +3790,7 @@ input {
         .portlet-journal,
         .portlet-journal-content .taglib-asset-links,
         .portlet-search,
-        .portlet-site-map.project-sections .portlet-body,
+        .portlet-site-map.project-sections .portlet-borderless-container,
         .web-form-portlet  {
             width: 724px; /* bootstrap .container */
         }
