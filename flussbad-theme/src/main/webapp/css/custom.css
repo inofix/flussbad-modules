@@ -3452,19 +3452,16 @@ input {
         .info {
         
             .portlet-site-map {
-            
-                .site-map-wrapper {
                 
-                    display: block !important;
+                display: block !important;
+                
+                li:first-child {
                     
-                    li:first-child {
-                        
-                        &::before {
-                    
-                            content: none !important;
-                        }  
-                    } 
-                }
+                    &::before {
+                
+                        content: none !important;
+                    }  
+                } 
             }
         } 
 	    
