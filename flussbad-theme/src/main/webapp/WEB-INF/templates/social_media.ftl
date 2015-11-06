@@ -5,8 +5,8 @@
     template.
 
     Created:    2015-11-01 11:41 by Christian Berndt
-    Modified:   2015-11-01 11:41 by Christian Berndt
-    Version:    1.0.0
+    Modified:   2015-11-06 15:57 by Christian Berndt
+    Version:    1.0.1
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -17,7 +17,7 @@
 <#--           String[] tokens = canonicalURL.split("\\?");  -->
 <#--           String shareURL = tokens[0]; -->
 
-<#assign shareURL = "http://neu.flussbad-berlin.de" />
+<#assign shareURL = "http://www.flussbad-berlin.de" />
 <#assign backendUrl = "http://neu.flussbad-berlin.de/shariff" /> 
 <#assign mailBody = "Schau mal hier auf www.flussbad-berlin.de" /> 
 <#assign mailSubject = "Schau mal auf www.flussbad-berlin.de" />
