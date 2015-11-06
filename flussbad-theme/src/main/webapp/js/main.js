@@ -175,11 +175,11 @@ $( document ).ready(function() {
 
 	var scrollTop = $(this).scrollTop();
 
-	console.log("scrollTop = " + scrollTop);
+	// console.log("scrollTop = " + scrollTop);
 
 	if (scrollTop > lastScrollTop) {
 
-		console.log("scrolling down");
+		// console.log("scrolling down");
 
 		if (categories) {
 			categories.addClass('categories-auto-closed');
@@ -199,7 +199,7 @@ $( document ).ready(function() {
 
 	} else {
 		
-		console.log("scrolling up");
+		// console.log("scrolling up");
 
 		if (categories) {
 			categories.removeClass('categories-auto-closed');
