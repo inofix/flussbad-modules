@@ -3391,6 +3391,7 @@ input {
             }
             
             /* ------------------------------------------ event */
+            
             &.event-publisher {
             
                 .asset-metadata {
@@ -3443,7 +3444,29 @@ input {
                 margin: 0; 
             }
         }
-	    	    
+        
+        
+/* ----------------------------------------------- responsive footer */
+
+        .info {
+        
+            .portlet-site-map {
+            
+                .site-map-wrapper {
+                
+                    display: block !important;
+                    
+                    li:first-child {
+                        
+                        &::before {
+                    
+                            content: none !important;
+                        }  
+                    } 
+                }
+            }
+        } 
+	    
 /* ----------------------------------------------- responsive diverses */
 	    
 	    .portlet-asset-publisher.default-publisher,
