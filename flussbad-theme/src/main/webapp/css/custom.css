@@ -765,17 +765,6 @@ input {
             }    
         }
         
-        /** TODO: remove when all portlets a reconfigured */
-        /*  with the offset-1-10 classes */
-        &.form-with-toc {
-            
-           .portlet-borderless-container {
-            
-/*                 margin-left: 0; */
-/*                 margin-left: 100px; bootstrap offset1 */
-	        } 
-        }
-        
         .control-group {
     
 	        width: 48%;
@@ -1947,52 +1936,44 @@ input {
             margin: 15px 0; 
             padding: 0; 
         }
-      
-        .toggle {
-                          
-            position: absolute;
-            right: 0;
-            top: 0;
-            padding: 25px;
-                        
-            font-family: $regular-font-family;
-            font-size: $h2-font-size;
-            color: $navigation-font-color;
-            
-            background-color: lighten($color-sand, 3%);
-                        
-            .toggle-button {
-            
-                cursor: pointer; 
-                transition: 0.2s ease-in-out;
-                
-                @include rotate(45deg);  
-            }
-            
-            .toggle-button:after {
-            
-                content: "+";
-            }                
-        } 
 
-        
         &.categories-auto-closed,
         &.categories-closed {
-        
-/*             background: transparent; */
-/*             min-height: $categories-height; otherwise the toggle-button is truncated in closed mode */
-/*             transition: 0.5s ease-in-out; */
                 
             max-height: 0;
             overflow: hidden;
+
+        }
+    }
     
-            .toggle-button {
+    .toggle {
+                      
+        position: fixed;
+        z-index: 10;
+        right: 0;
+        top: $nav-height;
+        padding: 25px;
+                    
+        font-family: $regular-font-family;
+        font-size: $h2-font-size;
+        color: $navigation-font-color;
+        
+        background-color: lighten($color-sand, 3%); 
+        
+        .toggle-button {
+    
+            cursor: pointer; 
+            transition: 0.2s ease-in-out;
+            
+            @include rotate(45deg);  
+            
+            .categories-closed {
             
                 transition: 0.2s ease-in-out;
-
+    
                 @include rotate(0deg);
             }
-        }
+        }     
     }
     
     .portlet-asset-categories-navigation,
@@ -2665,11 +2646,6 @@ input {
     
             .portlet-site-map {
             
-                .site-map-wrapper {
-                
-                    display: inline; 
-                }
-            
                 .portlet-borderless-container {
                 
                     display: inline; 
@@ -3056,6 +3032,7 @@ input {
             margin-top: $dockbar-height;
         }
         
+        
         #content {
             margin-top: $dockbar-nav-height; 
         }
@@ -3063,7 +3040,8 @@ input {
         .portlet-asset-categories-navigation,
         .portlet-asset-categories-navigation.affix,
         .portlet-asset-categories-navigation.affix-top,
-        .portlet-site-map.project-sections {
+        .portlet-site-map.project-sections, 
+        .toggle {
             top: $dockbar-nav-height; 
         }
                
@@ -3467,11 +3445,6 @@ input {
             }
         }
         
-        /** TODO: remove when replaced with rcs-subscription */
-        .portlet-login {
-            overflow: hidden; 
-        }
-        
         
 /* ----------------------------------------------- responsive footer */
 
@@ -3492,8 +3465,7 @@ input {
                     } 
                 }
             }
-        }
-	    
+        } 
 	    
 /* ----------------------------------------------- responsive diverses */
 	    
@@ -3642,12 +3614,6 @@ input {
 	    
 	        max-height: 100%;
 	        text-align: center;
-	        
-	        .toggle {
-	        
-	            font-size: 36px;
-	            padding: 15px;
-	        }
 	        
 	        .portlet-body {
 	            
