@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2015-11-03 22:46 by Christian Berndt
- * Version:     1.1.6
+ * Modified:    2015-11-06 12:41 by Christian Berndt
+ * Version:     1.1.7
  */
 
 /**
@@ -38,62 +38,6 @@ AUI().ready(
         }
     }
 );
-
-/**
- * Toggle the asset-categories filter.
- */
-AUI().ready('node', function(A) {
-
-    var toggle = A.one('.portlet-asset-categories-navigation .toggle');
-
-    var categories = A.one('.portlet-asset-categories-navigation');
-    var publisher = A.one('.default-publisher');
-
-    if (toggle) {
-        toggle.on('click', function(event) {
-
-            if (categories) {
-                categories.toggleClass('categories-closed');
-                categories.removeClass('categories-auto-closed');
-            }
-
-            if (publisher) {
-                publisher.toggleClass('categories-closed');
-                publisher.removeClass('categories-auto-closed');
-            }
-
-        });
-    }
-});
-
-
-/**
- * Toggle the site-map of project-sections.
- */
-AUI().ready('node', function(A) {
-
-    var toggle = A.one('.portlet-site-map.project-sections .toggle-button');
-
-    var portlet = A.one('.portlet-site-map.project-sections');
-
-    var story = A.one('.project-story');
-
-    if (toggle) {
-        toggle.on('click', function(event) {
-
-            if (portlet) {
-                portlet.toggleClass('categories-closed');
-                portlet.removeClass('categories-auto-closed');
-            }
-
-            if (story) {
-                story.toggleClass('categories-closed');
-                story.removeClass('categories-auto-closed');
-            }
-
-        });
-    }
-});
 
 /**
  * Show hide the asset categories filter while scrolling.
@@ -210,13 +154,11 @@ AUI().ready('imageloader', function (Y) {
 //TODO: decide on going for CSS-Classes or elements: Y.all('img')
  var images = document.getElementsByTagName("img");
 
-// console.log("imageloader: " + images.length);
  for (var i = 0; i < images.length; i++)
  {
      if ( images[i].getAttribute("data-src") )
      {
-//         console.log(images[i].getAttribute("title"));
-//         console.log(images[i].getAttribute("id"));
+
          imageGroup.registerImage({
              domId: images[i].getAttribute("id"),
              srcUrl: images[i].getAttribute("data-src")
@@ -231,6 +173,48 @@ AUI().ready('imageloader', function (Y) {
  */
 
 $( document ).ready(function() {
+	
+	/**
+	 * Manually toggle the site-map of project-sections and
+	 * the categories navigation of the default-publisher (logbook).
+	 */
+    var toggle = $('.toggle');
+    
+	var categories = $('.portlet-asset-categories-navigation');
+	
+    var portlet = $('.portlet-site-map.project-sections');
+    
+	var publisher = $('.default-publisher'); 
+
+    var story = $('.project-story');   
+
+    if (toggle) {
+        toggle.on('click', function(event) {
+        	
+            toggle.toggleClass('categories-closed');
+            toggle.removeClass('categories-auto-closed');        	
+
+            if (categories) {
+            	categories.toggleClass('categories-closed');
+            	categories.removeClass('categories-auto-closed');
+            }
+
+            if (portlet) {
+                portlet.toggleClass('categories-closed');
+                portlet.removeClass('categories-auto-closed');
+            }
+
+            if (publisher) {
+                publisher.toggleClass('categories-closed');
+                publisher.removeClass('categories-auto-closed');
+            }
+
+            if (story) {
+                story.toggleClass('categories-closed');
+                story.removeClass('categories-auto-closed');
+            }
+        });
+    }
 	
 	/**
 	 * Toggle the categories navigation and project-sitemap 

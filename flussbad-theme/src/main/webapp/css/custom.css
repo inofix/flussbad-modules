@@ -1953,6 +1953,8 @@ input {
         right: 0;
         top: $nav-height;
         padding: 25px;
+        cursor: pointer; 
+        
                     
         font-family: $regular-font-family;
         font-size: $h2-font-size;
@@ -1962,18 +1964,17 @@ input {
         
         .toggle-button {
     
-            cursor: pointer; 
             transition: 0.2s ease-in-out;
             
-            @include rotate(45deg);  
-            
-            .categories-closed {
-            
-                transition: 0.2s ease-in-out;
-    
-                @include rotate(0deg);
-            }
-        }     
+            @include rotate(45deg);             
+        }
+        
+        &.categories-closed .toggle-button {
+        
+            transition: 0.2s ease-in-out;
+
+            @include rotate(0deg);
+        }    
     }
     
     .portlet-asset-categories-navigation,
