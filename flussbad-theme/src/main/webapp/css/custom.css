@@ -3877,5 +3877,13 @@ input {
                 min-height: 6em;
             }
         }
+        
+        .project-abstracts .intro .abstracts .abstract {
+        
+            h2 {
+            
+                min-height: 5.5em;
+            }
+        }
     }
 }
