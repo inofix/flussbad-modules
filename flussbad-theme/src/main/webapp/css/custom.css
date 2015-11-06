@@ -2604,17 +2604,6 @@ input {
             line-height: 45px;
             display: inline-block; 
     	}
-    	
-/*     	.site-map-wrapper { */
-    	
-/*     		margin: 15px 0;  */
-/*     		float: left;  */
-    		
-/*     		ul { */
-/*                 margin: 0;  */
-/*         		list-style: none;  */
-/*         	} */
-/*     	}	 */
     }
     
     .portlet-search {
@@ -2676,9 +2665,10 @@ input {
     
             .portlet-site-map {
             
-/*                 .site-map-wrapper { */
-/*                     display: inline;  */
-/*                 } */
+                .site-map-wrapper {
+                
+                    display: inline; 
+                }
             
                 .portlet-borderless-container {
                 
@@ -3423,6 +3413,7 @@ input {
             }
             
             /* ------------------------------------------ event */
+            
             &.event-publisher {
             
                 .asset-metadata {
@@ -3479,6 +3470,28 @@ input {
         /** TODO: remove when replaced with rcs-subscription */
         .portlet-login {
             overflow: hidden; 
+        }
+        
+        
+/* ----------------------------------------------- responsive footer */
+
+        .info {
+        
+            .portlet-site-map {
+            
+                .site-map-wrapper {
+                
+                    display: block !important;
+                    
+                    li:first-child {
+                        
+                        &::before {
+                    
+                            content: none !important;
+                        }  
+                    } 
+                }
+            }
         }
 	    
 	    
