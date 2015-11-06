@@ -1949,7 +1949,7 @@ input {
     .toggle {
                       
         position: fixed;
-        z-index: 10;
+        z-index: 100;
         right: 0;
         top: $nav-height;
         padding: 25px;
@@ -1969,8 +1969,9 @@ input {
             @include rotate(45deg);             
         }
         
+        &.categories-auto-closed .toggle-button,
         &.categories-closed .toggle-button {
-        
+    
             transition: 0.2s ease-in-out;
 
             @include rotate(0deg);
