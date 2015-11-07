@@ -2,13 +2,13 @@
     statements.ftl: Display a list of statements in a scrollview-carousel.
     
     Created:    2015-10-13 18:27 by Christian Berndt
-    Modified:   2015-10-24 19:54 by Christian Berndt
-    Version:    1.0.3
+    Modified:   2015-11-07 17:58 by Christian Berndt
+    Version:    1.0.4
 -->
 
-<#assign journalArticleService = serviceLocator.findService("com.liferay.portlet.journal.service.JournalArticleLocalService")>
+<#assign journalArticleService = serviceLocator.findService("com.liferay.portlet.journal.service.JournalArticleLocalService") />
 
-<#assign cssClass = "gray-green">
+<#assign cssClass = "gray-green" />
 
 <div class="statements flexslider ${cssClass}">
     <#if entries?has_content>
@@ -16,8 +16,8 @@
         <#list entries as curEntry>
             <li class="item">
 
-                <#assign article = journalArticleService.getLatestArticle(curEntry.getClassPK())>
-                <#assign content = journalContentUtil.getContent(themeDisplay.getScopeGroupId(), article.getArticleId(), article.getTemplateId(), themeDisplay.getLanguageId(), themeDisplay)>
+                <#assign article = journalArticleService.getLatestArticle(curEntry.getClassPK()) />
+                <#assign content = journalContentUtil.getContent(themeDisplay.getScopeGroupId(), article.getArticleId(), article.getTemplateId(), themeDisplay.getLanguageId(), themeDisplay) />
                 ${content}
 
             </li>
