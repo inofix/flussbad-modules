@@ -849,8 +849,12 @@ input {
 	    
 	    .btn-primary {
 	    
-	       @include btn-primary();
-	       margin: 3em 0;
+            @include btn-primary();
+	       
+            margin: 3em 0;
+            display: table; 
+            clear: both;
+            margin: auto; 
 	    }
     }
     
