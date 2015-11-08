@@ -1349,6 +1349,47 @@ input {
         }
     }
     
+    .press-releases {
+    
+        margin-bottom: 6em;
+        
+        .item {
+        
+            padding: 15px 0; 
+            font-size: $lead-font-size; 
+            line-height: $lead-line-height;               
+             
+            .publish-date {
+            
+                float: left; 
+                
+                &::after {
+                    content: " _ "; 
+                }
+            }
+            
+            h3 {
+            
+                font-family: $bold-font-family;
+                line-height: $lead-line-height;               
+                font-size: $lead-font-size !important;
+                text-transform: none; 
+                padding-bottom: 0;
+                padding-left: 0.4em;
+                display: table-cell;
+                      
+                a {
+                    color: $default-font-color; 
+                }
+                
+                a:hover {
+                   color: $hover-font-color;
+                }
+    
+            }            
+        }
+    }
+    
     .link {
     
         text-align: center; 

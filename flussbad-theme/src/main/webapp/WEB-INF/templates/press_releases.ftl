@@ -3,8 +3,8 @@
     format them in press-release fashion.
     
     Created:    2015-11-07 09:32 by Christian Berndt
-    Modified:   2015-11-07 09:32 by Christian Berndt
-    Version:    1.0.0
+    Modified:   2015-11-08 21:42 by Christian Berndt
+    Version:    1.0.1
 -->
 
 <#assign dateFormat = "dd MMM yyyy" />
@@ -20,9 +20,14 @@
                 <#assign document = saxReaderUtil.read(article.getContentByLocale(languageId)) />
                 <#assign title = document.valueOf("//dynamic-element[@name='headline']/dynamic-content/text()") />
                 <#assign assetRenderer = curEntry.getAssetRenderer() />
-                <#assign viewURL = assetRenderer.getURLViewInContext(renderRequest, renderResponse, null) />                                             
-                <h1><a href="${viewURL}">${title}</a></h1>
-                <div class="publish-date">${dateUtil.getDate(entry.getPublishDate(), dateFormat, locale)}</div>
+                <#assign viewURL = assetRenderer.getURLViewInContext(renderRequest, renderResponse, null) />
+                <div class="item">                                             
+                    <div class="publish-date">${dateUtil.getDate(entry.getPublishDate(), dateFormat, locale)}</div>
+                    <h3><a href="${viewURL}">${title}</a></h3>
+                    <#--
+                    <div class="asset-more"><a href="${viewURL}"><@liferay.language key="read-more" /></a></div>
+                    -->
+                </div>
             </#list>
         </div>
     </div>
