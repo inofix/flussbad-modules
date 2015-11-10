@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2015-11-06 15:50 by Christian Berndt
- * Version:     1.1.8
+ * Modified:    2015-11-10 15:10 by Christian Berndt
+ * Version:     1.1.9
  */
 
 /**
@@ -123,11 +123,15 @@ AUI().ready('imageloader', function (Y) {
 
 $( document ).ready(function() {
 	
+    var windowWidth = $(window).width();
+    
+    var windowHeight = $(window).height();
+	
     var toggle = $('.toggle');
     
-	var categories = $('.portlet-asset-categories-navigation');
+	var categoriesNavigation = $('.portlet-asset-categories-navigation');
 	
-    var portlet = $('.portlet-site-map.project-sections');
+    var sitemapPortlet = $('.portlet-site-map.project-sections');
     
 	var publisher = $('.default-publisher'); 
 
@@ -143,14 +147,14 @@ $( document ).ready(function() {
             toggle.toggleClass('categories-closed');
             toggle.removeClass('categories-auto-closed');        	
 
-            if (categories) {
-            	categories.toggleClass('categories-closed');
-            	categories.removeClass('categories-auto-closed');
+            if (categoriesNavigation) {
+            	categoriesNavigation.toggleClass('categories-closed');
+            	categoriesNavigation.removeClass('categories-auto-closed');
             }
 
-            if (portlet) {
-                portlet.toggleClass('categories-closed');
-                portlet.removeClass('categories-auto-closed');
+            if (sitemapPortlet) {
+                sitemapPortlet.toggleClass('categories-closed');
+                sitemapPortlet.removeClass('categories-auto-closed');
             }
 
             if (publisher) {
@@ -173,80 +177,77 @@ $( document ).ready(function() {
     
     $(window).scroll(function(event) {
 
-	var scrollTop = $(this).scrollTop();
-
-	// console.log("scrollTop = " + scrollTop);
-
-	if (scrollTop > lastScrollTop) {
-
-		// console.log("scrolling down");
-
-		if (categories) {
-			categories.addClass('categories-auto-closed');
+		var scrollTop = $(this).scrollTop();
+	
+		// console.log("scrollTop = " + scrollTop);
+	
+		if (scrollTop > lastScrollTop) {
+	
+			// console.log("scrolling down");
+	
+			if (categoriesNavigation) {
+				categoriesNavigation.addClass('categories-auto-closed');
+			}
+			if (story) {
+				story.addClass('categories-auto-closed');
+			}
+			if (toggle) {
+				toggle.addClass('categories-auto-closed');
+			}
+			if (sitemapPortlet) {
+				sitemapPortlet.addClass('categories-auto-closed');
+			}
+			if (publisher) {
+				publisher.addClass('categories-auto-closed');
+			}		
+	
+		} else {
+			
+			// console.log("scrolling up");
+	
+			if (categoriesNavigation) {
+				categoriesNavigation.removeClass('categories-auto-closed');
+			}
+			if (story) {
+				story.removeClass('categories-auto-closed');
+			}
+			if (toggle) {
+				toggle.removeClass('categories-auto-closed');
+			}
+			if (sitemapPortlet) {
+				sitemapPortlet.removeClass('categories-auto-closed');
+			}
+			if (publisher) {
+				publisher.removeClass('categories-auto-closed');
+			}
 		}
-		if (story) {
-			story.addClass('categories-auto-closed');
-		}
-		if (toggle) {
-			toggle.addClass('categories-auto-closed');
-		}
-		if (portlet) {
-			portlet.addClass('categories-auto-closed');
-		}
-		if (publisher) {
-			publisher.addClass('categories-auto-closed');
-		}		
-
-	} else {
-		
-		// console.log("scrolling up");
-
-		if (categories) {
-			categories.removeClass('categories-auto-closed');
-		}
-		if (story) {
-			story.removeClass('categories-auto-closed');
-		}
-		if (toggle) {
-			toggle.removeClass('categories-auto-closed');
-		}
-		if (portlet) {
-			portlet.removeClass('categories-auto-closed');
-		}
-		if (publisher) {
-			publisher.removeClass('categories-auto-closed');
-		}
-	}
-
-	lastScrollTop = scrollTop;
-});
-    
-    
+	
+		lastScrollTop = scrollTop;
+	});
+      
 	
 	/**
 	 * Toggle the categories navigation and project-sitemap 
-	 * on mobile devices.
+	 * by default on mobile devices.
 	 */	
-    var windowWidth = $(window).width(); 
-    var windowHeight = $(window).height();
-    
+  
     // console.log('windowHeight = ' + windowHeight); 
         
     if (windowWidth < 768) {
-    	
-    	var sitemapPortlet = $(".portlet-site-map.project-sections");
-    	
+    	    	
     	if (sitemapPortlet) {
     		
     		sitemapPortlet.addClass("categories-closed"); 
     	}
-    	
-    	var categoriesNavigation = $(".portlet-asset-categories-navigation.head-categories");
-    	
+    	    	
     	if (categoriesNavigation) {
     		
     		categoriesNavigation.addClass("categories-closed"); 
-    	}    	
+    	}  
+
+    	if (toggle) {
+    		toggle.addClass("categories-closed"); 
+    	}
     }
 	
 	/**
