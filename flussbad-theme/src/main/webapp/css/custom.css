@@ -3654,7 +3654,11 @@ input {
         #navigation .container {
         
             margin: 0 15px;
-        }        
+        } 
+        
+        .start-page .nav-collapse.open {
+            background: $color-turquois; 
+        }       
 
 	    .portlet-asset-categories-navigation,
 	    .portlet-site-map.project-sections {
