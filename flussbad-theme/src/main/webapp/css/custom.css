@@ -3254,7 +3254,8 @@ input {
 		      .span6:nth-child(-n+1) {
 		      
 		          border-right: none;
-		          border-bottom: 5px solid #cad3d3;
+/** disabled until the newsletter-description is re-enabled */
+/* 		          border-bottom: 5px solid #cad3d3; */
 		          margin-bottom: 60px;
 		      }
 		      
