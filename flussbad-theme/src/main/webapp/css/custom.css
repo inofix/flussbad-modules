@@ -1356,27 +1356,15 @@ input {
         .item {
         
             padding: 15px 0; 
-            font-size: $lead-font-size; 
-            line-height: $lead-line-height;               
-             
-            .publish-date {
-            
-                float: left; 
-                
-                &::after {
-                    content: " _ "; 
-                }
-            }
             
             h3 {
             
                 font-family: $bold-font-family;
-                line-height: $lead-line-height;               
-                font-size: $lead-font-size !important;
+                line-height: $h1-line-height;               
+                font-size: $h1-font-size !important;
+                letter-spacing:  0.02em;                
                 text-transform: none; 
                 padding-bottom: 0;
-                padding-left: 0.4em;
-                display: table-cell;
                       
                 a {
                     color: $default-font-color; 
