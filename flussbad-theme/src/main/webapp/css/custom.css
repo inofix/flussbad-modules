@@ -1949,6 +1949,10 @@ input {
     .portlet-asset-categories-navigation,
     .portlet-site-map.project-sections { 
     
+        /** hide the categories navigation by default and
+          show it via javascript after the page has been loaded */
+        display: none; 
+    
         background: lighten($color-sand, 3%);
         
         position: fixed; 
