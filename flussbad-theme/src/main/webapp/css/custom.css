@@ -3432,7 +3432,7 @@ input {
                 }
             }
             
-            /* ------------------------------------------ event */
+/* ------------------------------------------ event */
             
             &.event-publisher {
             
@@ -3679,6 +3679,18 @@ input {
 	    .story.with-keyvisual .toc,
         .toc {
            word-wrap: break-word;
+        }
+        
+        .press-releases {
+        
+            .span8 {
+                padding: 15px; 
+            }
+            
+            .item h3 {
+                font-size: $mobile-h1-font-size !important; 
+                line-height: $mobile-h1-line-height; 
+            }
         }
                 
         .web-form-portlet {
