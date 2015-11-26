@@ -242,10 +242,7 @@ $( document ).ready(function() {
 	/**
 	 * Toggle the categories navigation and project-sitemap 
 	 * by default on mobile devices.
-	 */	
-  
-    // console.log('windowHeight = ' + windowHeight); 
-        
+	 */        
     if (windowWidth < 768) {
     	    	
     	if (sitemapPortlet) {
@@ -286,5 +283,29 @@ $( document ).ready(function() {
 	});
 
 	$('.toc').scrollspy();
+	
+	
+	/**
+	 * Manage the transparency of the web-form-portlet used 
+	 * for the newsletter-subscription in the footer. 
+	 */
+
+	/* Check whether an input field is filled or not */
+	checkInputs();
+	
+    $('input').bind("focus change paste keyup blur", checkInputs);
+	
+    /* Loop over all input fields on the page and set the muted class if necessary. */
+    function checkInputs() {
+		$("input").each(function() {
+			if ($(this).val().length === 0) {
+				var label = $('label[for="' + $(this).attr('id') + '"]');
+				label.removeClass("muted");
+			} else {
+				var label = $('label[for="' + $(this).attr('id') + '"]');
+				label.addClass("muted");
+			}
+		})
+	}	
 
 });
