@@ -901,6 +901,11 @@ input {
                 
                    @include input();
                    background-color: white;
+                   font-family: $button-font-family;
+                   font-size: $button-font-size;
+                   font-weight: 600;
+                   letter-spacing: $button-letter-spacing; 
+                   color: $color-gray-green; 
                     
                    @media (max-width: 767px) and (orientation: landscape) { width: 95%; max-width: 95% !important; }
                    @media (max-width: 767px) { width: 94%;}
@@ -917,12 +922,17 @@ input {
                    top: 18px;
                    color: $color-gray;
                    font-size: $default-font-size;
+                   cursor: auto;
                    
                    @media (max-width: 767px) { left: 15px; }
                    @media (min-width: 768px) { left: 30px; }
                    @media (min-width: 992px) { left: 70px; }
                    @media (min-width: 1200px) { left: 100px; }
             
+                }
+                
+                label.muted {
+                    opacity: 0.05;
                 }
             
             }
@@ -2760,7 +2770,7 @@ input {
             font-size: 30px;
             text-align: center;
 /*             padding: 2.5em 0; */
-            padding: 1em 0;
+            padding: 4em 0;
         
             ul {
             
