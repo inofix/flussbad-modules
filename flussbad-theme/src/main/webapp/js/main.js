@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2015-11-11 15:01 by Christian Berndt
- * Version:     1.2.0
+ * Modified:    2015-11-26 18:20 by Christian Berndt
+ * Version:     1.2.1
  */
 
 /**
@@ -72,8 +72,9 @@ YUI().use(
               },
               plugins : [ Y.Plugin.WidgetAnim ],
               position: 'bottom',
+              cssClass: 'popover-lang',
           visible: false,
-          zIndex : 100
+          zIndex : 100,
         }
       ).render();
 
