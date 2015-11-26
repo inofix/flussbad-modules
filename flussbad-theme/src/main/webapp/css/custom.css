@@ -317,6 +317,12 @@ input {
 }
 
 
+/* Unset Liferay's taglib-language default settings */
+
+.taglib-language-list-text {
+    border-right: none; 
+}
+
 /* ----------------------------------------------- global settings */
 
 .aui {
@@ -3119,12 +3125,14 @@ input {
         
     
         #navigation {
-        
-            .language,
-            .language .portlet-language, 
+
             .search {
                 display: none; 
-            }        
+            }
+        }
+        
+        .portlet-language a[lang=es-ES] {
+            display: none; 
         }
     }
     
