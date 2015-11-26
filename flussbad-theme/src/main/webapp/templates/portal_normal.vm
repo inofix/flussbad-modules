@@ -3,8 +3,8 @@
 ## the example of portal_normal.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:18 by Christian Berndt
-## Modified:    2015-11-09 12:49 by Christian Berndt
-## Version:     1.1.8
+## Modified:    2015-11-25 16:18 by Christian Berndt
+## Version:     1.1.9
 ##
 <!DOCTYPE html>
 
@@ -15,6 +15,15 @@
 ##
 
 #set ($login_url = $theme_display.getThemeSetting('login-url'))
+
+## Unset portlet preferences via the resetPreferences macro, as described at
+## http://www.liferay.com/de/community/wiki/-/wiki/Main/Embedding+a+portlet+in+the+theme
+
+#macro (resetPreferences, $portletId, $requestVars, $preferences)
+    #set ($locPortletPreferenceService = $serviceLocator.findService("com.liferay.portal.service.PortletPreferencesLocalService"))
+    #set ($locPlidLong = $getterUtil.getLong($plid))
+    $locPortletPreferenceService.deletePortletPreferences(0, 3, $locPlidLong, $portletId)
+#end
 
 <html class="$root_css_class" dir="#language ("lang.dir")" lang="$w3c_language_id">
 
@@ -97,7 +106,7 @@ $theme.include($body_top_include)
     <footer id="footer" role="contentinfo">
         <div class="container first">
         
-            ## <div class="span6">
+            <div class="span6">
             
                 ##
                 ## Embed the newsletter-registration-portlet
@@ -111,6 +120,29 @@ $theme.include($body_top_include)
                 $velocityPortletPreferences.setValue("portletSetupTitle_de_DE", "Dranbleiben")
                 $velocityPortletPreferences.setValue("portletSetupTitle_en_US", "Dranbleiben")
                 $velocityPortletPreferences.setValue("portletSetupTitle_es_ES", "Dranbleiben")
+                
+                ## Include the web-form portlet as a temporary work-around
+                $velocityPortletPreferences.setValue("fieldLabel1", "Anrede")
+                $velocityPortletPreferences.setValue("fieldType1", "text")
+                $velocityPortletPreferences.setValue("fieldLabel2", "Vorname")
+                $velocityPortletPreferences.setValue("fieldType2", "text")
+                $velocityPortletPreferences.setValue("fieldLabel3", "Nachname")
+                $velocityPortletPreferences.setValue("fieldType3", "text")
+                $velocityPortletPreferences.setValue("fieldLabel4", "E-Mail")
+                $velocityPortletPreferences.setValue("fieldType4", "text")
+
+                $velocityPortletPreferences.setValue("emailFromAddress", "portal@flussbad-berlin.de")
+                $velocityPortletPreferences.setValue("emailFromName", "Website Flussbad Berlin")
+                $velocityPortletPreferences.setValue("emailAddress", "berndt@inofix.ch")
+                $velocityPortletPreferences.setValue("saveToFile", "true")                
+                $velocityPortletPreferences.setValue("sendAsEmail", "true")                
+                $velocityPortletPreferences.setValue("subject", "Newsletteranmeldung Online")
+                $velocityPortletPreferences.setValue("successURL", "/web/internet/newsletter/anmeldebestaetigung")
+                                
+                #set( $portletId = "1_WAR_webformportlet_INSTANCE_Kone7SQBx8fD" )          
+                #resetPreferences($portletId, $requestVars, $velocityPortletPreferences)
+                $theme.runtime("1_WAR_webformportlet_INSTANCE_Kone7SQBx8fD", "", $velocityPortletPreferences.toString())
+                
                
                 ## Include newsletter-registration-portlet
                 ## $theme.runtime("58", "", $velocityPortletPreferences.toString())
@@ -118,10 +150,9 @@ $theme.include($body_top_include)
                 
                 ## Reset the preferences settings.
                 $velocityPortletPreferences.reset()
-            ## </div>
+            </div>
                         
-            <div class="span6 offset3">
-##            <div class="span6">
+            <div class="span6">
                 ##
                 ## Embed a configurable web-content-display for the social-media links
                 ##
@@ -135,17 +166,25 @@ $theme.include($body_top_include)
                 
                 ## Set custom-title
                 $velocityPortletPreferences.setValue("portletSetupUseCustomTitle", "true")
-                $velocityPortletPreferences.setValue("portletSetupTitle_de_DE", "Weitersagen")
-                $velocityPortletPreferences.setValue("portletSetupTitle_en_US", "Tell others")
-                $velocityPortletPreferences.setValue("portletSetupTitle_es_ES", "Tell others")
+                $velocityPortletPreferences.setValue("portletSetupTitle_de_DE", "Weiterverfolgen")
+                $velocityPortletPreferences.setValue("portletSetupTitle_en_US", "Follow")
+                $velocityPortletPreferences.setValue("portletSetupTitle_es_ES", "Follow")
 
-                ## Set the articleId 
+                ## Reset portlet preferences
+                #set( $portletId = "56_INSTANCE_f6b8" )          
+                #resetPreferences($portletId, $requestVars, $velocityPortletPreferences)
+                
+                ## Set the articleId                 
                 $velocityPortletPreferences.setValue("articleId", "$social_article_id")
                 
                 ## Include a web-content-display instance
                 #if ($is_configured)
                     $theme.runtime("56_INSTANCE_f6b8", "", $velocityPortletPreferences.toString())
+
                 #end
+                
+                ## Reset the preferences settings.
+                $velocityPortletPreferences.reset()
             </div>
             
         </div>
