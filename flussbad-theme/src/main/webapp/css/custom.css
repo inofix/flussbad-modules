@@ -626,7 +626,11 @@ input {
             a {
                 padding: 20px 10px;
             }
-        }       
+        }
+        
+        .portlet-language {
+            display: none;
+        }     
     }
     
     /* unset bootstrap's default background */
@@ -737,6 +741,10 @@ input {
         
     .portlet-language .portlet-borderless-container {
         min-height: 1em;
+    }
+    
+    .popover-lang {
+        position: fixed; 
     }
 
 
