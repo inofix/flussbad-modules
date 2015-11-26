@@ -866,9 +866,9 @@ input {
     footer {
     
         .portlet-boundary_NewsletterRegistration_WAR_rcsnewsletterportlet_ {
-	    
-	       .portlet-body {
-    	        text-align: center;
+        
+           .portlet-body {
+                text-align: center;
             }
             
             .unregister-link {
@@ -878,57 +878,68 @@ input {
             input {
                 @include btn-primary();                
             }
-	    }
+        }
+        
+        .web-form-portlet {
+        
+            width: 100%;
+            
+            .portlet-body {
+                width: 100%;
+            }
     
-        .control-group {
-        
-            position: relative;
-            width: auto;
-            float: none;
-            text-align: center;
+            .control-group {
+            
+                margin-right: 0 !important;
+                position: relative;
+                width: auto;
+                float: none;
+                text-align: center;
+                    
+                input[type="text"],
+                input[type="password"] {
                 
-	        input[type="text"],
-	        input[type="password"] {
-	        
-	           @include input();
-	           background-color: white;
-	            
-	           @media (max-width: 767px) and (orientation: landscape) { width: 95%; max-width: 95% !important; }
-	           @media (max-width: 767px) { width: 94%;}
-               @media (min-width: 768px) { width: 280px; }
-               @media (min-width: 992px) { width: 300px; }
-               @media (min-width: 1200px) { width: 360px; }  
-	            
-	        }
-	        
-	        label {
-	        
-	           position: absolute;
-	           left: 70px;
-	           top: 18px;
-	           color: $color-gray;
-	           font-size: $default-font-size;
-	           
-	           @media (max-width: 767px) { left: 15px; }
-		       @media (min-width: 768px) { left: 30px; }
-		       @media (min-width: 992px) { left: 70px; }
-		       @media (min-width: 1200px) { left: 100px; }
+                   @include input();
+                   background-color: white;
+                    
+                   @media (max-width: 767px) and (orientation: landscape) { width: 95%; max-width: 95% !important; }
+                   @media (max-width: 767px) { width: 94%;}
+                   @media (min-width: 768px) { width: 280px; }
+                   @media (min-width: 992px) { width: 300px; }
+                   @media (min-width: 1200px) { width: 360px; }  
+                    
+                }
+                
+                label {
+                
+                   position: absolute;
+                   left: 70px;
+                   top: 18px;
+                   color: $color-gray;
+                   font-size: $default-font-size;
+                   
+                   @media (max-width: 767px) { left: 15px; }
+                   @media (min-width: 768px) { left: 30px; }
+                   @media (min-width: 992px) { left: 70px; }
+                   @media (min-width: 1200px) { left: 100px; }
+            
+                }
+            
+            }
+        }
         
-	        }
-	    }
-	    
-	    .btn-primary {
-	    
-	        @include btn-primary();
-	        margin-top: 0;
+        .btn-primary {
+        
+            @include btn-primary();
+            margin-top: 0;
             margin-bottom: 0;
-	    }
-	    
-	    .navigation,
-	    .form-inline {
-	    
-	       display: none;
-	    }
+        }
+        
+        .navigation,
+        .form-inline {
+        
+           display: none;
+        }
     }
     
 
@@ -2739,8 +2750,7 @@ input {
             
                 display:none;
             }
-        }
-        
+        }        
         
         
 /* ----------------------------------------------- Social Media Icons */
@@ -2797,16 +2807,16 @@ input {
             }  
         }
         
-/*         .span6 { */
+        .span6 {
         
-/*             margin-left: 0; */
-/*             min-height: 240px; */
-/*         } */
+            margin-left: 0;
+            min-height: 240px;
+        }
         
-/*         .span6:nth-child(-n+1) { */
+        .span6:nth-child(-n+1) {
         
-/*             border-right: 5px solid #cad3d3; */
-/*         } */
+            border-right: 5px solid #cad3d3;
+        }
              
         .container.status {
         
