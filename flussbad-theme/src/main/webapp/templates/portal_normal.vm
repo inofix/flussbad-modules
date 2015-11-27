@@ -3,8 +3,8 @@
 ## the example of portal_normal.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:18 by Christian Berndt
-## Modified:    2015-11-25 16:18 by Christian Berndt
-## Version:     1.1.9
+## Modified:    2015-11-27 10:44 by Christian Berndt
+## Version:     1.2.0
 ##
 <!DOCTYPE html>
 
@@ -133,10 +133,10 @@ $theme.include($body_top_include)
 
                 $velocityPortletPreferences.setValue("emailFromAddress", "portal@flussbad-berlin.de")
                 $velocityPortletPreferences.setValue("emailFromName", "Website Flussbad Berlin")
-                $velocityPortletPreferences.setValue("emailAddress", "berndt@inofix.ch")
+                $velocityPortletPreferences.setValue("emailAddress", "dranbleiben@flussbad-berlin.de")
                 $velocityPortletPreferences.setValue("saveToFile", "true")                
                 $velocityPortletPreferences.setValue("sendAsEmail", "true")                
-                $velocityPortletPreferences.setValue("subject", "Newsletteranmeldung Online")
+                $velocityPortletPreferences.setValue("subject", "Newsletter Eintrag")
                 $velocityPortletPreferences.setValue("successURL", "/web/internet/newsletter/anmeldebestaetigung")
                                 
                 #set( $portletId = "1_WAR_webformportlet_INSTANCE_Kone7SQBx8fD" )          
