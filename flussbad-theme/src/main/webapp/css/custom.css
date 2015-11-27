@@ -937,6 +937,8 @@ input {
                    color: $color-gray;
                    font-size: $default-font-size;
                    cursor: auto;
+                   text-transform: none;
+                   letter-spacing: normal;
                    
                    @media (max-width: 767px) { left: 15px; }
                    @media (min-width: 768px) { left: 30px; }
@@ -2697,8 +2699,8 @@ input {
         
         .container.first {
         
-/*             padding: 120px 0 80px; */
-            padding: 2em 0;
+            padding: 120px 0;
+/*             padding: 2em 0; */
         }
         
         .copyright {
