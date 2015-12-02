@@ -3,8 +3,8 @@
 ## the example of portal_normal.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:18 by Christian Berndt
-## Modified:    2015-11-27 10:44 by Christian Berndt
-## Version:     1.2.0
+## Modified:    2015-12-02 08:44 by Christian Berndt
+## Version:     1.2.1
 ##
 <!DOCTYPE html>
 
@@ -19,11 +19,11 @@
 ## Unset portlet preferences via the resetPreferences macro, as described at
 ## http://www.liferay.com/de/community/wiki/-/wiki/Main/Embedding+a+portlet+in+the+theme
 
-#macro (resetPreferences, $portletId, $requestVars, $preferences)
-    #set ($locPortletPreferenceService = $serviceLocator.findService("com.liferay.portal.service.PortletPreferencesLocalService"))
-    #set ($locPlidLong = $getterUtil.getLong($plid))
-    $locPortletPreferenceService.deletePortletPreferences(0, 3, $locPlidLong, $portletId)
-#end
+## #macro (resetPreferences, $portletId, $requestVars, $preferences)
+##    #set ($locPortletPreferenceService = $serviceLocator.findService("com.liferay.portal.service.PortletPreferencesLocalService"))
+##    #set ($locPlidLong = $getterUtil.getLong($plid))
+##    $locPortletPreferenceService.deletePortletPreferences(0, 3, $locPlidLong, $portletId)
+## #end
 
 <html class="$root_css_class" dir="#language ("lang.dir")" lang="$w3c_language_id">
 
@@ -140,7 +140,7 @@ $theme.include($body_top_include)
                 $velocityPortletPreferences.setValue("successURL", "/web/internet/newsletter/anmeldebestaetigung")
                                 
                 #set( $portletId = "1_WAR_webformportlet_INSTANCE_Kone7SQBx8fD" )          
-                #resetPreferences($portletId, $requestVars, $velocityPortletPreferences)
+##                #resetPreferences($portletId, $requestVars, $velocityPortletPreferences)
                 $theme.runtime("1_WAR_webformportlet_INSTANCE_Kone7SQBx8fD", "", $velocityPortletPreferences.toString())
                 
                
@@ -172,7 +172,7 @@ $theme.include($body_top_include)
 
                 ## Reset portlet preferences
                 #set( $portletId = "56_INSTANCE_f6b8" )          
-                #resetPreferences($portletId, $requestVars, $velocityPortletPreferences)
+##                #resetPreferences($portletId, $requestVars, $velocityPortletPreferences)
                 
                 ## Set the articleId                 
                 $velocityPortletPreferences.setValue("articleId", "$social_article_id")
