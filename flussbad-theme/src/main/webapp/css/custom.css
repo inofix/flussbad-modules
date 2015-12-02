@@ -3141,6 +3141,7 @@ input {
             }
         }
         
+        #langPopover, /* TODO: re-enable when english translation is finished */
         .portlet-language a[lang=es-ES] {
             display: none; 
         }
