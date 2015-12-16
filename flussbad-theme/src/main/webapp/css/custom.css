@@ -485,6 +485,11 @@ input {
 	    outline: 0;
 	}
 	
+	.toggle-button {
+	   height: 0;
+	   max-height: 0;
+	}
+	
 	.portlet-boundary {
 	
 	   /** 
@@ -1663,7 +1668,7 @@ input {
                     margin-right: 30px;
                 }
             
-                padding: 30px 0 60px;
+                padding: 60px 0;
                 
                 h1, h3 {
                 
@@ -3719,11 +3724,12 @@ input {
         #navigation .container {
         
             margin: 0 15px;
+ 
         } 
         
-        .start-page .nav-collapse.open {
-            background: $color-turquois; 
-        }       
+/*         .start-page .nav-collapse.open { */
+/*             background: $color-turquois;  */
+/*         }        */
 
 	    .portlet-asset-categories-navigation,
 	    .portlet-site-map.project-sections {
