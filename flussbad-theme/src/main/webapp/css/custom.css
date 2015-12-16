@@ -3226,8 +3226,8 @@ input {
         background: rgba(0,0,0,0.9);
     }
     
-    portlet-journal-content.toggle-button {
-       height: 0 !important;
+    .portlet-journal-content.toggle-button {
+       max-height: 0 !important;
     }
      
     
