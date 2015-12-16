@@ -1068,11 +1068,6 @@ input {
        }
        
        .section-body {
-        
-            @media (min-width: 768px) {
-            
-                @include cols();
-            }
             
             img {
                 margin: 1.5em 0;
@@ -2637,6 +2632,20 @@ input {
     .portlet-asset-publisher.story-publisher {
         
         width: 100%;
+        
+        .section-body {
+            -webkit-column-count: 1 !important;
+		    -moz-column-count: 1 !important;
+		    column-count: 1 !important;
+		    
+		    -webkit-column-width: 100% !important;
+		    -moz-column-width: 100% !important;
+		    column-width: 100% !important;
+		
+		    -webkit-column-gap: 0px !important;
+		    -moz-column-gap: 0px !important;
+		    column-gap: 0px !important;
+        }
     
         .asset-content {
         
