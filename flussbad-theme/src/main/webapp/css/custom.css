@@ -2629,41 +2629,43 @@ input {
         }
     }
     
-    .portlet-asset-publisher.story-publisher {
-        
-        width: 100%;
-        
-        .section-body {
-            -webkit-column-count: 1 !important;
-		    -moz-column-count: 1 !important;
-		    column-count: 1 !important;
-		    
-		    -webkit-column-width: 100% !important;
-		    -moz-column-width: 100% !important;
-		    column-width: 100% !important;
-		
-		    -webkit-column-gap: 0px !important;
-		    -moz-column-gap: 0px !important;
-		    column-gap: 0px !important;
-        }
+    .portlet-asset-publisher {
     
-        .asset-content {
-        
-            margin: 0 auto;
-            width: 100%;
-            border: none; 
-        }   
-        
-        .section {
-        
-            font-size: $default-font-size; 
-            line-height: $default-line-height; 
-        } 
-        
         .taglib-header {
-        
             display: none; 
         }
+        
+	    &.story-publisher {
+	        
+	        width: 100%;
+	        
+	        .section-body {
+	            -webkit-column-count: 1 !important;
+			    -moz-column-count: 1 !important;
+			    column-count: 1 !important;
+			    
+			    -webkit-column-width: 100% !important;
+			    -moz-column-width: 100% !important;
+			    column-width: 100% !important;
+			
+			    -webkit-column-gap: 0px !important;
+			    -moz-column-gap: 0px !important;
+			    column-gap: 0px !important;
+	        }
+	    
+	        .asset-content {
+	        
+	            margin: 0 auto;
+	            width: 100%;
+	            border: none; 
+	        }   
+	        
+	        .section {
+	        
+	            font-size: $default-font-size; 
+	            line-height: $default-line-height; 
+	        } 
+	    }
     }
     
     .portlet-journal-content.first-display {
