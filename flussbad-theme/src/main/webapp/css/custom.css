@@ -654,16 +654,37 @@ input {
     #navigation.affix-top .navbar-inner {
     
         height: $nav-height *3;
-    
-    	background: -moz-linear-gradient(top,  rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
-    	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.25)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
-    	background: -webkit-linear-gradient(top,  rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
-    	background: -o-linear-gradient(top,  rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
-    	background: -ms-linear-gradient(top,  rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
-    	background: linear-gradient(to bottom,  rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 100%); /* W3C */
-    	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+        background-color: $color-turquois;
     }
     
+	 @media (min-width: 980px) { /* no transparancy for the mobile navigation */
+	 
+	    #navigation.affix-top .navbar-inner {
+	    	    
+	    	background: -moz-linear-gradient(top,  rgba(0,0,0,0.20) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+	    	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.20)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+	    	background: -webkit-linear-gradient(top,  rgba(0,0,0,0.20) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+	    	background: -o-linear-gradient(top,  rgba(0,0,0,0.20) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+	    	background: -ms-linear-gradient(top,  rgba(0,0,0,0.20) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
+	    	background: linear-gradient(to bottom,  rgba(0,0,0,0.20) 0%,rgba(0,0,0,0) 100%); /* W3C */
+	    	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+	    }
+	    .start-page #navigation.affix-top .navbar-inner, /* affix-top is set via js, which comes too late on first load */
+	    #navigation.affix-top .navbar-inner {
+	    
+	        .brand {
+	            color: #fff;
+	        }
+	        
+	        li > a {
+	            color: #fff;
+	            &:hover {
+	                color: $color-turquois;
+	            }
+	        }
+	    }
+	 }
+	    
     #navigation.affix .navbar-inner {
     
         background-color: $color-turquois;
@@ -672,21 +693,6 @@ input {
         -o-transition: background-color 200ms ease-in;
         -ms-transition: background-color 200ms ease-in;
         transition: background-color 200ms ease-in;
-    }
-    
-    .start-page #navigation.affix-top .navbar-inner, /* affix-top is set via js, which comes too late on first load */
-    #navigation.affix-top .navbar-inner {
-    
-        .brand {
-            color: #fff;
-        }
-        
-        li > a {
-            color: #fff;
-            &:hover {
-                color: $color-turquois;
-            }
-        }
     }
      
     .navbar {
@@ -3642,21 +3648,22 @@ input {
                margin: 0;
             }
             
-            &.affix-top {
+/*             &.affix-top { */
             
-                .btn-navbar,
-	            .btn-navbar:hover,
-	            .btn-navbar:active {
+/*              .btn-navbar, */
+/* 	            .btn-navbar:hover, */
+/* 	            .btn-navbar:active { */
 	            
-	               color: white;
-	            }
-            }
+/* 	               color: white; */
+/* 	            } */
+/*             } */
         }
         
         .navbar-fixed-top .navbar-inner,
         .navbar-fixed-bottom .navbar-inner {
         
             padding: 10px 0;
+            background-color: $color-turquois;
         }
         
         .navbar .nav {
@@ -3726,10 +3733,6 @@ input {
             margin: 0 15px;
  
         } 
-        
-/*         .start-page .nav-collapse.open { */
-/*             background: $color-turquois;  */
-/*         }        */
 
 	    .portlet-asset-categories-navigation,
 	    .portlet-site-map.project-sections {
