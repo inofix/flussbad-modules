@@ -568,9 +568,12 @@ input {
             font-weight: 600;
             letter-spacing: $letter-spacing-wide;
             .portlet-static-end {
+            
                 li > a {
+                
                     font-size: $small-font-size;
                     color: $navigation-font-color;
+                    
                     &:hover {
                         color: $hover-font-color;
                     }
@@ -734,6 +737,7 @@ input {
             > li > a:focus,
             > li > a:hover {
                 color: $hover-font-color;
+                background: none !important;
             }
         }
         
@@ -3679,7 +3683,6 @@ input {
         .navbar-fixed-bottom .navbar-inner {
         
             padding: 10px 0;
-            background-color: $color-turquois;
         }
         
         .navbar .nav {
@@ -3697,9 +3700,15 @@ input {
             margin: 0;
         }
         
-        #navigation.affix-top .navbar-inner {
+        #navigation.affix-top .navbar-inner,
+        #navigation.affix .navbar-inner {
         
             height: 40px;
+            background-color: $color-turquois;
+            
+            .container {
+                background-color: $color-turquois;
+            }
         }
         
         #navigation .portlet-site-map {
@@ -3746,7 +3755,7 @@ input {
         
         #navigation .container {
         
-            margin: 0 15px;
+            padding: 0 15px;
  
         } 
 
