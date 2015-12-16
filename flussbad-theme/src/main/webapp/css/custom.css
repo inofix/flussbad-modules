@@ -568,9 +568,12 @@ input {
             font-weight: 600;
             letter-spacing: $letter-spacing-wide;
             .portlet-static-end {
+            
                 li > a {
+                
                     font-size: $small-font-size;
                     color: $navigation-font-color;
+                    
                     &:hover {
                         color: $hover-font-color;
                     }
@@ -734,6 +737,7 @@ input {
             > li > a:focus,
             > li > a:hover {
                 color: $hover-font-color;
+                background: none !important;
             }
         }
         
