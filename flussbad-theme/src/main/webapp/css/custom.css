@@ -3677,7 +3677,6 @@ input {
         .navbar-fixed-bottom .navbar-inner {
         
             padding: 10px 0;
-            background-color: $color-turquois;
         }
         
         .navbar .nav {
@@ -3695,9 +3694,15 @@ input {
             margin: 0;
         }
         
-        #navigation.affix-top .navbar-inner {
+        #navigation.affix-top .navbar-inner,
+        #navigation.affix .navbar-inner {
         
             height: 40px;
+            background-color: $color-turquois;
+            
+            .container {
+                background-color: $color-turquois;
+            }
         }
         
         #navigation .portlet-site-map {
@@ -3744,7 +3749,7 @@ input {
         
         #navigation .container {
         
-            margin: 0 15px;
+            padding: 0 15px;
  
         } 
 
