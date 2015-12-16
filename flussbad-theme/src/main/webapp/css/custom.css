@@ -1671,7 +1671,20 @@ input {
                 
                 li {
                     display: inline-block;
-                    margin-right: 30px;
+                    
+                    h3.category {
+                    
+	                    &::after {
+	                        content: ' / ';
+	                    }
+	                }
+	                
+	                &:last-child {
+	                
+                        h3.category::after {
+                          content: '';
+                        }
+                    }
                 }
             
                 padding: 60px 0;
