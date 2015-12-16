@@ -767,7 +767,8 @@ input {
                border: none !important;
                
                &::after {
-                border-bottom-color: $navigation-font-color !important;
+                    border-bottom-color: $navigation-font-color !important;
+                    margin: 0; 
                }
             }
         }
