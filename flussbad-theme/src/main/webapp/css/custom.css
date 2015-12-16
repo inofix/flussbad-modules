@@ -485,6 +485,11 @@ input {
 	    outline: 0;
 	}
 	
+	.toggle-button {
+	   height: 0;
+	   max-height: 0;
+	}
+	
 	.portlet-boundary {
 	
 	   /** 
