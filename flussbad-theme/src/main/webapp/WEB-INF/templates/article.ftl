@@ -2,8 +2,8 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2015-11-01 17:28 by Christian Berndt
-    Version:    1.1.9
+    Modified:   2015-12-07 23:40 by Christian Berndt
+    Version:    1.2.0
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -95,7 +95,11 @@
                 </ul>
             </#if>
             
-            <h1 id="section-0">${headline.getData()}</h1>
+            <#if headline??>
+                <#if headline.getData()?has_content>
+                    <h1 id="section-0">${headline.getData()}</h1>
+                </#if>
+            </#if>
             <p class="lead">${teaser.getData()}</p>
             <#if section?? >
                 <#if section.getSiblings()?has_content>
@@ -108,7 +112,10 @@
                         </#if>
                     
                         <div class="section" id="section-${i}">
-                            <h2>${cur_section.getData()}</h2>
+                        
+                            <#if cur_section.getData()?has_content>
+                                <h2>${cur_section.getData()}</h2>
+                            </#if>
                             
                             <#if imageAboveTheText >
                             
@@ -119,18 +126,28 @@
                                         <#if path?has_content>
                                             <img id="story-image-${i}-${j}" data-src="${path}&imageThumbnail=3"/>
                                             <#if cur_image.caption??>
-                                                <div class="caption">${cur_image.caption.getData()}</div>
+                                                <#if cur_image.caption.getData()?has_content>
+                                                    <div class="caption">${cur_image.caption.getData()}</div>
+                                                </#if>
                                             </#if>
                                         </#if>
                                         <#assign j = j+1 /> 
                                     </#list>
                                 </#if>
                                 
-                                <div class="section-body">${cur_section.body.getData()}</div>
+                                <#if cur_image.body??>
+                                    <#if cur_image.body.getData()?has_content>                                
+                                        <div class="section-body">${cur_section.body.getData()}</div>
+                                    </#if>
+                                </#if>
                                 
                             <#else>
-                            
-                                <div class="section-body">${cur_section.body.getData()}</div>
+ 
+                                <#if cur_image.body??>
+                                    <#if cur_image.body.getData()?has_content>                            
+                                        <div class="section-body">${cur_section.body.getData()}</div>
+                                    </#if>
+                                </#if>
                                 
                                 <#if cur_section.image.getSiblings()?has_content>
                                     <#assign j = 1 />
