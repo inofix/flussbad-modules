@@ -762,7 +762,7 @@ input {
         }
         
         &.bottom {
-        
+                
             .arrow {
                border: none !important;
                
@@ -780,6 +780,8 @@ input {
     
     .popover-lang {
         position: fixed;
+        width: 120px;
+        text-align: center;
     }
 
 

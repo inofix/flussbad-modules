@@ -61,26 +61,23 @@ YUI().use('event', 'node', function(Y) {
 YUI().use(
     'aui-popover','widget-anim',
     function(Y) {
+    	
+        var portlet = Y.one('#p_p_id_82_');
 
-      var trigger = Y.one('#langPopover');
+        var trigger = Y.one('#langPopover');
 
-          var popover = new Y.Popover(
-            {
-              align: {
-                node: trigger,
-                points:[Y.WidgetPositionAlign.TC, Y.WidgetPositionAlign.BL]
-              },
-              plugins : [ Y.Plugin.WidgetAnim ],
-              position: 'bottom',
-              cssClass: 'popover-lang',
-          visible: false,
-          zIndex : 100,
-        }
-      ).render();
-
-      var portlet = Y.one('#p_p_id_82_');
-
-      popover.set("bodyContent", portlet);
+		var popover = new Y.Popover({
+			align: {
+			    node: trigger,
+			    points:[Y.WidgetPositionAlign.TC, Y.WidgetPositionAlign.BC]
+			},
+			bodyContent: portlet,
+			plugins : [ Y.Plugin.WidgetAnim ],
+			position: 'bottom',
+			cssClass: 'popover-lang',
+			visible: false,
+			zIndex : 100
+		}).render();
 
       popover.get('boundingBox').on('clickoutside', function() {
            popover.set('visible', false);
