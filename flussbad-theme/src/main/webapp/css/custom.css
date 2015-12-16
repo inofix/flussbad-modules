@@ -485,11 +485,6 @@ input {
 	    outline: 0;
 	}
 	
-	.toggle-button {
-	   height: 0;
-	   max-height: 0;
-	}
-	
 	.portlet-boundary {
 	
 	   /** 
@@ -1647,7 +1642,6 @@ input {
         
             .container {
                 margin-top: $container-push;
-/*                 opacity: .95; */
                 position: relative; 
                 z-index:2;
             }
@@ -3232,6 +3226,10 @@ input {
     
     .portlet-journal-content .lfr-meta-actions:hover {
         background: rgba(0,0,0,0.9);
+    }
+    
+    portlet-journal-content.toggle-button {
+       height: 0 !important;
     }
      
     
