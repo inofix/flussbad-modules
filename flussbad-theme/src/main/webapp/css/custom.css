@@ -655,7 +655,7 @@ input {
         background-color: $color-turquois;
     }
     
-	 @media (min-width: 980px) { /* no transparancy for the mobile navigation */
+	@media (min-width: 980px) { /* no transparancy for the mobile navigation */
 	 
 	    #navigation.affix-top .navbar-inner {
 	    	    
@@ -761,7 +761,7 @@ input {
         }
         
         &.bottom {
-        
+                
             .arrow {
                border: none !important;
                
@@ -779,6 +779,8 @@ input {
     
     .popover-lang {
         position: fixed;
+        width: 120px;
+        text-align: center;
     }
 
 
@@ -1365,82 +1367,87 @@ input {
         }
     }
     
-    .portlet-asset-publisher.start-publisher {
+    .portlet-asset-publisher {
     
-        margin-bottom: 6em;
+        &.start-publisher {
         
-        .asset-abstract.sand,
-        .asset-abstract.gray-green,
-        .asset-abstract.turquois,
-        .asset-abstract.light-gray {
-            linkbackground-color: white !important;
-        }
-    
-        .container {
-        
-            text-align: center; 
-            background: white;
-            padding-top: 0 !important;
-            padding-bottom: 0 !important;
+            margin-bottom: 6em;
             
-            .asset-metadata {
-               display: inline;
-               float: none;
-               min-height: 0;
-               margin: 0 auto;
-               font-family: $regular-font-family !important;
-               font-size: $lead-font-size;
-               text-transform: none !important;
-               letter-spacing: 0 !important;
+            .asset-abstract.sand,
+            .asset-abstract.gray-green,
+            .asset-abstract.turquois,
+            .asset-abstract.light-gray {
+                linkbackground-color: white !important;
             }
         
-            .asset-metadata:after {
-                content: " _ "; 
-            }
+            .container {
             
-            h3.asset-title {
-                display: inline;
-                font-family: $bold-font-family;
-                font-size: $lead-font-size !important;
-                padding-bottom: 0;
+                text-align: center; 
+                background: white;
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
                 
-                a:hover {
-                   color: $hover-font-color;
+                .asset-metadata {
+                   display: inline;
+                   float: none;
+                   min-height: 0;
+                   margin: 0 auto;
+                   font-family: $regular-font-family !important;
+                   font-size: $lead-font-size;
+                   text-transform: none !important;
+                   letter-spacing: 0 !important;
                 }
-            }
             
-            .asset-more {
-                display: none;
-            }   
-        }
-    }
-    
-    .press-releases {
-    
-        margin-bottom: 6em;
-        
-        .item {
-        
-            padding: 15px 0; 
-            
-            h3 {
-            
-                font-family: $bold-font-family;
-                line-height: $h1-line-height;               
-                font-size: $h1-font-size !important;
-                letter-spacing:  0.02em;                
-                text-transform: none; 
-                padding-bottom: 0;
-                      
-                a {
-                    color: $default-font-color; 
+                .asset-metadata:after {
+                    content: " _ "; 
                 }
                 
-                a:hover {
-                   color: $hover-font-color;
+                h3.asset-title {
+                    display: inline;
+                    font-family: $bold-font-family;
+                    font-size: $lead-font-size !important;
+                    padding-bottom: 0;
+                    
+                    a:hover {
+                       color: $hover-font-color;
+                    }
                 }
-    
-            }            
+                
+                .asset-more {
+                    display: none;
+                }   
+            }
+        }
+        
+        &.press-releases {
+        
+            background: $color-light-gray;
+            padding: 60px 0; 
+            margin-bottom: 6em;            
+            
+            .item {
+        
+                padding: 15px 0; 
+                
+                h3 {
+                
+                    font-family: $bold-font-family;
+                    line-height: $h1-line-height;               
+                    font-size: $h1-font-size !important;
+                    letter-spacing:  0.02em;                
+                    text-transform: none; 
+                    padding-bottom: 0;
+                          
+                    a {
+                        color: $default-font-color; 
+                    }
+                    
+                    a:hover {
+                       color: $hover-font-color;
+                    }
+        
+                }            
+            }
         }
     }
     
@@ -1686,7 +1693,7 @@ input {
                     }
                 }
             
-                padding: 60px 0;
+                padding: 60px 0 30px;
                 
                 h1, h3 {
                 
