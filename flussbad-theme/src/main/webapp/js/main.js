@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2015-11-26 18:20 by Christian Berndt
- * Version:     1.2.1
+ * Modified:    2016-01-11 17:09 by Christian Berndt
+ * Version:     1.2.2
  */
 
 /**
@@ -281,6 +281,35 @@ $( document ).ready(function() {
 	});
 
 	$('.toc').scrollspy();
+	
+	/**
+	 * Smooth scrolling for the TOC - targets 
+	 * (from: http://stackoverflow.com/questions/14804941/how-to-add-smooth-scrolling-to-bootstraps-scroll-spy-function)
+	 */
+	$(".story .toc ul li a[href^='#']").on('click', function(e) {
+
+	   // prevent default anchor click behavior
+	   e.preventDefault();
+
+	   // store hash
+	   var hash = this.hash;
+	   
+	   // use offset because of fixed top navigation
+	   var offsetTop = 100; 
+	   
+	   console.log(hash);
+
+	   // animate
+	   $('html, body').animate({
+	       scrollTop: $(hash).offset().top - offsetTop
+	     }, 300, function(){
+
+	       // when done, add hash to url
+	       // (default click behaviour)
+	       window.location.hash = hash;
+	     });
+
+	});
 	
 	
 	/**
