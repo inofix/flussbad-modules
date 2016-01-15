@@ -906,6 +906,10 @@ input {
             clear: both;
             margin: auto; 
 	    }
+	    
+	    &.press-form {
+	       padding-bottom: 60px;
+	    }
     }
     
     

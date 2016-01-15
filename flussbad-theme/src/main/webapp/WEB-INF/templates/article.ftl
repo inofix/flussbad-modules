@@ -2,8 +2,8 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2016-01-15 16:16 by Christian Berndt
-    Version:    1.2.1
+    Modified:   2016-01-15 17:15 by Christian Berndt
+    Version:    1.2.2
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -135,21 +135,17 @@
                                     </#list>
                                 </#if>
                                 
-                                <#if cur_image??>
-                                    <#if cur_image.body??>
-                                        <#if cur_image.body.getData()?has_content>                                
-                                            <div class="section-body">${cur_section.body.getData()}</div>
-                                        </#if>
+                                <#if cur_section.body??>
+                                    <#if cur_section.body.getData()?has_content>                                
+                                        <div class="section-body">${cur_section.body.getData()}</div>
                                     </#if>
                                 </#if>
                                 
                             <#else>
  
-                                <#if cur_image??>
-                                    <#if cur_image.body??>
-                                        <#if cur_image.body.getData()?has_content>                            
-                                            <div class="section-body">${cur_section.body.getData()}</div>
-                                        </#if>
+                                <#if cur_section.body??>
+                                    <#if cur_section.body.getData()?has_content>                            
+                                        <div class="section-body">${cur_section.body.getData()}</div>
                                     </#if>
                                 </#if>
                                 
