@@ -2,8 +2,8 @@
     introduction.ftl: Format the introduction structure
     
     Created:    2015-10-15 23:58 by Christian Berndt
-    Modified:   2015-11-03 17:23 by Christian Berndt
-    Version:    1.0.7
+    Modified:   2016-01-14 23:55 by Christian Berndt
+    Version:    1.0.8
     
     Please note: Although this template is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -106,7 +106,7 @@
             <div class="span3">
                 <div class="toc">
                     <ul class="nav nav-list">                        
-                        <li>TODO: retrieve the layouts modules </li>
+                        <#-- LIs are appended via js -->
                     </ul>
                 </div> <#-- / .toc -->
             </div> <#-- / .span3 -->
