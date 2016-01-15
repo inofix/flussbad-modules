@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2016-01-15 10:32 by Christian Berndt
- * Version:     1.2.3
+ * Modified:    2016-01-15 16:33 by Christian Berndt
+ * Version:     1.2.4
  */
 
 /**
@@ -282,11 +282,11 @@ $( document ).ready(function() {
 	
 	/** 
 	 * Loop over the modules marked as toc-item and add them to 
-	 * the page's toc.
+	 * the page's toc. (Only applied to TOCs of introduction templates.)
 	 */	
 	$('.toc-item .portlet-borderless-container > .portlet-title-default' ).each(function( index ) {
 		var label = $(this).text();
-		$(".toc ul").append('<li><a href="#item-' + index + '">' + label + '</a></li>');
+		$(".introduction .toc ul").append('<li><a href="#item-' + index + '">' + label + '</a></li>');
 		$(this).attr("id", "item-" + index);		
 	});
 
