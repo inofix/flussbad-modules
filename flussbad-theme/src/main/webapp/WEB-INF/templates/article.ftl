@@ -2,8 +2,8 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2015-12-07 23:40 by Christian Berndt
-    Version:    1.2.0
+    Modified:   2016-01-15 16:16 by Christian Berndt
+    Version:    1.2.1
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -135,17 +135,21 @@
                                     </#list>
                                 </#if>
                                 
-                                <#if cur_image.body??>
-                                    <#if cur_image.body.getData()?has_content>                                
-                                        <div class="section-body">${cur_section.body.getData()}</div>
+                                <#if cur_image??>
+                                    <#if cur_image.body??>
+                                        <#if cur_image.body.getData()?has_content>                                
+                                            <div class="section-body">${cur_section.body.getData()}</div>
+                                        </#if>
                                     </#if>
                                 </#if>
                                 
                             <#else>
  
-                                <#if cur_image.body??>
-                                    <#if cur_image.body.getData()?has_content>                            
-                                        <div class="section-body">${cur_section.body.getData()}</div>
+                                <#if cur_image??>
+                                    <#if cur_image.body??>
+                                        <#if cur_image.body.getData()?has_content>                            
+                                            <div class="section-body">${cur_section.body.getData()}</div>
+                                        </#if>
                                     </#if>
                                 </#if>
                                 
@@ -188,9 +192,15 @@
                         <#if section.getSiblings()?has_content>
                             <#assign i = 1 />
                             <#list section.getSiblings() as cur_section >
-                                <#if cur_section.getData()?has_content >
+                                <#assign label = cur_section.getData() />
+                                <#if cur_section.label??>
+                                    <#if cur_section.label.getData()?has_content>
+                                        <#assign label = cur_section.label.getData() /> 
+                                    </#if>
+                                </#if>
+                                <#if label?has_content >
                                     <li class="">
-                                        <a href="#section-${i}">${cur_section.getData()}</a>
+                                        <a href="#section-${i}">${label}</a>
                                     </li>
                                 </#if>
                                 <#assign i = i+1 />
