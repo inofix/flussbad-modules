@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2016-01-11 17:09 by Christian Berndt
- * Version:     1.2.2
+ * Modified:    2016-01-15 10:32 by Christian Berndt
+ * Version:     1.2.3
  */
 
 /**
@@ -279,14 +279,24 @@ $( document ).ready(function() {
 	$('.introduction.with-keyvisual .toc').affix({
 	     offset: {top: (windowHeight - (60 + 160)), bottom: 900 }
 	});
+	
+	/** 
+	 * Loop over the modules marked as toc-item and add them to 
+	 * the page's toc.
+	 */	
+	$('.toc-item .portlet-borderless-container > .portlet-title-default' ).each(function( index ) {
+		var label = $(this).text();
+		$(".toc ul").append('<li><a href="#item-' + index + '">' + label + '</a></li>');
+		$(this).attr("id", "item-" + index);		
+	});
 
-	$('.toc').scrollspy();
+	$('body').scrollspy({offset: 120});
 	
 	/**
 	 * Smooth scrolling for the TOC - targets 
 	 * (from: http://stackoverflow.com/questions/14804941/how-to-add-smooth-scrolling-to-bootstraps-scroll-spy-function)
 	 */
-	$(".story .toc ul li a[href^='#']").on('click', function(e) {
+	$(".toc ul li a[href^='#']").on('click', function(e) {
 
 	   // prevent default anchor click behavior
 	   e.preventDefault();
@@ -297,8 +307,6 @@ $( document ).ready(function() {
 	   // use offset because of fixed top navigation
 	   var offsetTop = 100; 
 	   
-	   console.log(hash);
-
 	   // animate
 	   $('html, body').animate({
 	       scrollTop: $(hash).offset().top - offsetTop
