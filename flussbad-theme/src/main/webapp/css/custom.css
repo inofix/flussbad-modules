@@ -2732,6 +2732,13 @@ input {
     }
     
     .portlet-search {
+        
+        .asset-entry-title {
+        
+            img {
+                display: none; 
+            }
+        }
     
         .form {
         
