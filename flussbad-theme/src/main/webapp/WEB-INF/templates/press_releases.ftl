@@ -3,8 +3,8 @@
     format them in press-release fashion.
     
     Created:    2015-11-07 09:32 by Christian Berndt
-    Modified:   2015-11-11 11:35 by Christian Berndt
-    Version:    1.0.2
+    Modified:   2016-01-15 17:58 by Christian Berndt
+    Version:    1.0.3
 -->
 
 <#assign dateFormat = "dd MMM yyyy" />
@@ -13,7 +13,7 @@
 
 <#if entries?has_content>
     <div class="container press-releases">
-        <div class="span8 offset2">
+        <div class="span8 offset1">
             <h3><@liferay.language key="press-releases" /></h3>
             <#list entries as curEntry>   
                 <#assign article = journalArticleService.getLatestArticle(curEntry.getClassPK()) />
