@@ -1433,6 +1433,10 @@ input {
         
                 padding: 15px 0; 
                 
+                .publish-date {
+                    color: $color-gray-green;
+                }
+                
                 h3 {
                 
                     font-family: $bold-font-family;
