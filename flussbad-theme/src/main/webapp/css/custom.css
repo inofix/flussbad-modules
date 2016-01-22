@@ -1440,11 +1440,12 @@ input {
                 h3 {
                 
                     font-family: $bold-font-family;
-                    line-height: $h1-line-height;               
-                    font-size: $h1-font-size !important;
+                    line-height: $h2-line-height;               
+                    font-size: $h2-font-size !important;
                     letter-spacing:  0.02em;                
                     text-transform: none; 
                     padding-bottom: 0;
+                    color: $default-font-color;
                           
                     a {
                         color: $default-font-color; 
