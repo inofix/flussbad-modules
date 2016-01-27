@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2016-01-15 16:33 by Christian Berndt
- * Version:     1.2.4
+ * Modified:    2016-01-27 17:42 by Christian Berndt
+ * Version:     1.2.5
  */
 
 /**
@@ -314,7 +314,10 @@ $( document ).ready(function() {
 
 	       // when done, add hash to url
 	       // (default click behaviour)
-	       window.location.hash = hash;
+	    	 
+	       // disabled, since this causes 
+	       // an unwanted move in firefox
+	       // window.location.hash = hash;
 	     });
 
 	});
