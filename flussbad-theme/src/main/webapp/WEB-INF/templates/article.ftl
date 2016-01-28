@@ -2,14 +2,16 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2016-01-15 17:15 by Christian Berndt
-    Version:    1.2.2
+    Modified:   2016-01-28 19:12 by Christian Berndt
+    Version:    1.2.3
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
     change the template online make sure that you commit your
     changes to the flussbad-modules repo, too.
 -->
+<#assign themeDisplay = request['theme-display'] />
+<#assign plid = themeDisplay['plid'] />
 
 <#assign articleService = serviceLocator.findService("com.liferay.portlet.journal.service.JournalArticleService") />
 <#assign articleId = getterUtil.getString(.vars['reserved-article-id'].data) />
@@ -20,9 +22,23 @@
 <#assign categories = categoryService.getCategories("com.liferay.portlet.journal.model.JournalArticle", classPK) />
 <#assign language_id = languageUtil.getLanguageId(locale) />
 
-<#assign layoutService = serviceLocator.findService("com.liferay.portal.service.LayoutService") />
+<#assign layoutLocalService = serviceLocator.findService("com.liferay.portal.service.LayoutLocalService") />
 <#assign propertyService = serviceLocator.findService("com.liferay.portlet.asset.service.AssetCategoryPropertyService") />
-<#assign publicURL = "/web" />
+
+<#assign layout = layoutLocalService.getLayout(plid?number) />
+
+<#assign currentURL = request.attributes['CURRENT_URL']>
+<#assign pathFriendlyURL = themeDisplay['path-friendly-url-public'] />
+<#assign groupURL = layout.group.friendlyURL />
+<#assign pathAndGroupURL = pathFriendlyURL + groupURL />
+
+<#-- with virtualhost configured -->
+<#assign prefix = "" />
+
+<#-- without virtualhost configured -->
+<#if currentURL?starts_with(pathFriendlyURL)>
+    <#assign prefix = pathAndGroupURL />
+</#if>
 
 <#assign cssClass = "" />
 <#assign displayToc = false />
@@ -80,9 +96,9 @@
                         <#list properties as property>
                             <#if property.key == "layoutUuid">
                                 <#assign layoutUuid = property.value />
-                                <#assign layout = layoutService.getLayoutByUuidAndGroupId(layoutUuid, groupId, false) />
+                                <#assign layout = layoutLocalService.getLayoutByUuidAndGroupId(layoutUuid, groupId, false) />
                                 <#assign groupURL = layout.getGroup().getFriendlyURL() />
-                                <#assign url = "${publicURL}${groupURL}${layout.friendlyURL}" />
+                                <#assign url = prefix + layout.friendlyURL />
                             </#if>
                         </#list>
                         
@@ -207,4 +223,4 @@
             </div> <#-- / .span3 / 4 -->
         </#if>
     </div> <#-- / .container -->
-</div> <#-- / .story -->
+</div> <#-- / .article -->
