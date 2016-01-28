@@ -2,29 +2,43 @@
     introduction.ftl: Format the introduction structure
     
     Created:    2015-10-15 23:58 by Christian Berndt
-    Modified:   2016-01-14 23:55 by Christian Berndt
-    Version:    1.0.8
+    Modified:   2016-01-28 18:43 by Christian Berndt
+    Version:    1.0.9
     
     Please note: Although this template is stored in the 
     site's context it's source is managed via git. Whenever you 
     change the template online make sure that you commit your 
     changes to the flussbad-modules repo, too.
 -->
-
 <#assign themeDisplay = request['theme-display'] />
 <#assign plid = themeDisplay['plid'] />
-<#assign layoutService = serviceLocator.findService("com.liferay.portal.service.LayoutLocalService") />
-<#assign layout = layoutService.getLayout(plid?number) />
+
+<#assign layoutLocalService = serviceLocator.findService("com.liferay.portal.service.LayoutLocalService")>
+<#assign layout = layoutLocalService.getLayout(plid?number) />
 <#assign title = layout.getName(locale) />
-<#assign groupURL = layout.getGroup().getFriendlyURL() />
-<#assign publicURL = "/web" />
-<#assign backURL = "${publicURL}${groupURL}${layout.getFriendlyURL()}" />
+
+<#assign currentURL = request.attributes['CURRENT_URL']>
+<#assign pathFriendlyURL = themeDisplay['path-friendly-url-public'] />
+<#assign groupURL = layout.group.friendlyURL />
+<#assign pathAndGroupURL = pathFriendlyURL + groupURL />
+
+<#-- with virtualhost configured -->
+<#assign prefix = "" />
+
+<#-- without virtualhost configured -->
+<#if currentURL?starts_with(pathFriendlyURL)>
+    <#assign prefix = pathAndGroupURL />
+</#if>
+
+<#assign backURL = prefix + layout.getFriendlyURL(locale) />
+<#assign parentPlid = layout.getParentPlid() >
+
 <#assign parentPlid = layout.getParentPlid() >
 
 <#if parentPlid gt 0>
-    <#assign parentLayout = layoutService.getLayout(parentPlid) />
+    <#assign parentLayout = layoutLocalService.getLayout(parentPlid) />
     <#assign title = parentLayout.getName(locale) />
-    <#assign backURL = "${publicURL}${groupURL}${parentLayout.getFriendlyURL()}" />
+    <#assign backURL = prefix + parentLayout.getFriendlyURL() />
 </#if>
 
 <#assign style = "" />
