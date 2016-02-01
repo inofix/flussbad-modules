@@ -1860,8 +1860,10 @@ input {
             }
             
             &:hover > a,
-            &.active > a:hover {
-            
+            &.active > a:hover,
+            &.active > a:focus
+             {
+               text-shadow: none;
                background: none;
                color: $hover-font-color;
             }
@@ -3221,7 +3223,6 @@ input {
             }
         }
         
-        #langPopover, /* TODO: re-enable when english translation is finished */
         .portlet-language a[lang=es-ES] {
             display: none; 
         }
