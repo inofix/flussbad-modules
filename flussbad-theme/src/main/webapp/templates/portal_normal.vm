@@ -19,11 +19,11 @@
 ## Unset portlet preferences via the resetPreferences macro, as described at
 ## http://www.liferay.com/de/community/wiki/-/wiki/Main/Embedding+a+portlet+in+the+theme
 
-#macro (resetPreferences, $portletId, $requestVars, $preferences)
-   #set ($locPortletPreferenceService = $serviceLocator.findService("com.liferay.portal.service.PortletPreferencesLocalService"))
-   #set ($locPlidLong = $getterUtil.getLong($plid))
-   $locPortletPreferenceService.deletePortletPreferences(0, 3, $locPlidLong, $portletId)
-#end
+## #macro (resetPreferences, $portletId, $requestVars, $preferences)
+##   #set ($locPortletPreferenceService = $serviceLocator.findService("com.liferay.portal.service.PortletPreferencesLocalService"))
+##   #set ($locPlidLong = $getterUtil.getLong($plid))
+##   $locPortletPreferenceService.deletePortletPreferences(0, 3, $locPlidLong, $portletId)
+## #end
 
 <html class="$root_css_class" dir="#language ("lang.dir")" lang="$w3c_language_id">
 
@@ -146,7 +146,7 @@ $theme.include($body_top_include)
                 $velocityPortletPreferences.setValue("successURL", "/web/internet/newsletter/anmeldebestaetigung")
                                 
                 #set( $portletId = "1_WAR_webformportlet_INSTANCE_Kone7SQBx8fD" )          
-                #resetPreferences($portletId, $requestVars, $velocityPortletPreferences)
+##                #resetPreferences($portletId, $requestVars, $velocityPortletPreferences)
                 $theme.runtime("1_WAR_webformportlet_INSTANCE_Kone7SQBx8fD", "", $velocityPortletPreferences.toString())
                 
                
