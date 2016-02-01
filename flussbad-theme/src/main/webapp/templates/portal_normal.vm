@@ -3,8 +3,8 @@
 ## the example of portal_normal.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:18 by Christian Berndt
-## Modified:    2016-02-01 00:15 by Christian Berndt
-## Version:     1.2.2
+## Modified:    2016-02-01 12:00 by Christian Berndt
+## Version:     1.2.3
 ##
 <!DOCTYPE html>
 
@@ -122,14 +122,17 @@ $theme.include($body_top_include)
                 $velocityPortletPreferences.setValue("portletSetupTitle_es_ES", "Keep in Touch")
                 
                 ## Include the web-form portlet as a temporary work-around
-##                $velocityPortletPreferences.setValue("fieldLabel1", "Anrede")
+                $velocityPortletPreferences.setValue("fieldLabel1", "Anrede")
                 $velocityPortletPreferences.setValue("fieldLabel1_de_DE", "Anrede")
                 $velocityPortletPreferences.setValue("fieldLabel1_en_US", "Salutation")
-##                $velocityPortletPreferences.setValue("fieldLabel1", "Anrede")
                 $velocityPortletPreferences.setValue("fieldType1", "text")
                 $velocityPortletPreferences.setValue("fieldLabel2", "Vorname")
+                $velocityPortletPreferences.setValue("fieldLabel2_de_DE", "Vorname")
+                $velocityPortletPreferences.setValue("fieldLabel2_en_US", "First Name")
                 $velocityPortletPreferences.setValue("fieldType2", "text")
                 $velocityPortletPreferences.setValue("fieldLabel3", "Nachname")
+                $velocityPortletPreferences.setValue("fieldLabel3_de_DE", "Nachname")
+                $velocityPortletPreferences.setValue("fieldLabel3_en_US", "Last Name")
                 $velocityPortletPreferences.setValue("fieldType3", "text")
                 $velocityPortletPreferences.setValue("fieldLabel4", "E-Mail")
                 $velocityPortletPreferences.setValue("fieldType4", "text")
