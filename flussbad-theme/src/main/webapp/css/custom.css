@@ -3113,7 +3113,11 @@ input {
 	           .asset-entry-tags,
 	           .asset-entry-categories {
 	               border-top: 5px solid #ebebeb;
-	               padding: 15px 0 10px 0;
+	               padding: 15px 5px 10px 0;
+	               
+	               a {
+	                   margin-right: 5px;
+	               }
 	           }
 	           
 	           .asset-entry-categories {
