@@ -1,7 +1,6 @@
 <%--
-    search.jsp: A customized search.jsp for Liferay's default search portlet. 
-    Customized sections are marked with the comment: 
-    // Customized .
+    main_search_result_form.jsp: A customized main_search_result_form.jsp 
+    for Liferay's default search portlet.
     
     The following customization have been applied: 
     
