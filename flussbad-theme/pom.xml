@@ -4,14 +4,16 @@
 	<parent>
         <artifactId>flussbad-modules</artifactId>
         <groupId>de.flussbad</groupId>
-        <version>0.5.0-SNAPSHOT</version>
+        <version>0.6.0-SNAPSHOT</version>
     </parent>
 	<artifactId>flussbad-theme</artifactId>
 	<packaging>war</packaging>
 	<name>Flussbad Theme</name>
-	<version>0.7.4-SNAPSHOT</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<build>
 		<plugins>
+            <!-- Read properties from dev.properties in -->
+            <!-- the parent project directory.          -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>properties-maven-plugin</artifactId>

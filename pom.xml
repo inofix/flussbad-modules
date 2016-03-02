@@ -3,13 +3,13 @@
     pom.xml: Parent pom to Flssbad's Liferay Modules
 
     Created:    2015-08-31 13:48 by Christian Berndt
-    Modified:   2015-10-21 15:58 by Christian Berndt
-    Version:    1.0.3
+    Modified:   2015-11-10 14:44 by Christian Berndt
+    Version:    1.0.4
 --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.flussbad</groupId>
     <artifactId>flussbad-modules</artifactId>
-    <version>0.5.0-SNAPSHOT</version>
+    <version>0.6.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Flussbad Modules</name>
     <description>Maven parent project to the flussbad liferay modules.</description>
@@ -22,7 +22,6 @@
         <!-- and adjust it to your personal environment.   -->
 <!--          <liferay.base.dir>  -->
 <!--          </liferay.base.dir> -->
-
          <liferay.app.server.deploy.dir>
             ${liferay.base.dir}/tomcat-7.0.42/webapps
         </liferay.app.server.deploy.dir>
@@ -103,7 +102,6 @@
         <module>journal-hook</module>
         <module>lang-hook</module>
         <module>search-hook</module>
-        <module>toggle-button-hook</module>
         <module>asset-links-hook</module>
-    </modules>
+  </modules>
 </project>

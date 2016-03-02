@@ -2,14 +2,25 @@
     intro.ftl: Format the intro structure
     
     Created:    2015-08-28 17:52 by Christian Berndt
-    Modified:   2015-10-29 19:31 by Christian Berndt
-    Version:    1.0.4
+    Modified:   2016-01-28 18:09 by Christian Berndt
+    Version:    1.0.5
     
     Please note: Although this template is stored in the 
     site's context it's source is managed via git. Whenever you 
     change the template online make sure that you commit your 
     changes to the flussbad-modules repo, too.
 -->
+
+<#assign themeDisplay = request['theme-display'] />
+<#assign plid = themeDisplay['plid'] />
+
+<#assign layoutLocalService = serviceLocator.findService("com.liferay.portal.service.LayoutLocalService")>
+<#assign layout = layoutLocalService.getLayout(plid?number) />
+
+<#assign currentURL = request.attributes['CURRENT_URL']>
+<#assign pathFriendlyURL = themeDisplay['path-friendly-url-public'] />
+<#assign groupURL = layout.group.friendlyURL />
+<#assign pathAndGroupURL = pathFriendlyURL + groupURL />
 
 <#assign cssClass = "" />
 <#assign style = "background: white;" />
@@ -96,8 +107,19 @@
                                     <h2>${cur_caption.claim.getData()}</h2>
                                     <p>${cur_caption.abstract.getData()}</p>
                                     <#if cur_caption.abstractLink.getData()?has_content>
+                                    
+                                        <#assign target = layoutLocalService.getLayout(groupId?number, false, cur_caption.abstractLink.getData()?number) />                                        
+                                    
+                                        <#-- with virtualhost configured -->
+                                        <#assign targetURL = target.getFriendlyURL(locale) />
+                                        
+                                        <#-- without virtualhost configured -->
+                                        <#if currentURL?starts_with(pathFriendlyURL)>
+                                            <#assign targetURL = pathAndGroupURL + targetURL />
+                                        </#if>
+                                                        
                                         <div>
-                                            <a href="${cur_caption.abstractLink.getData()}" class="btn" title="${cur_caption.abstractLabel.getData()}">${cur_caption.abstractLabel.getData()}</a>
+                                            <a href="${targetURL}" class="btn" title="${cur_caption.abstractLabel.getData()}">${cur_caption.abstractLabel.getData()}</a>
                                         </div>
                                     </#if>
                                 </div>

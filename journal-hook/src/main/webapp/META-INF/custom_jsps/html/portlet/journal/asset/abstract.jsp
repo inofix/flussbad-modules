@@ -3,8 +3,8 @@
     which tries to retrieve the summary from the structure.  
     
     Created:    2015-09-17 13:45 by Christian Berndt
-    Modified:   2015-10-18 12:59 by Christian Berndt
-    Version:    1.0.1
+    Modified:   2015-11-05 23:19 by Christian Berndt
+    Version:    1.0.2
 --%>
 <%--
 /**
@@ -23,6 +23,8 @@
 --%>
 
 <%@ include file="/html/portlet/journal/init.jsp" %>
+
+<%@page import="com.liferay.portal.kernel.util.HtmlUtil"%>
 
 <%
 AssetRenderer assetRenderer = (AssetRenderer)request.getAttribute(WebKeys.ASSET_RENDERER);
@@ -74,7 +76,7 @@ try {
 
     if (summaryNode != null) {
 	    if (summaryNode.getText().length() > 0) {
-	        articleSummary = summaryNode.getText();
+	        articleSummary = HtmlUtil.extractText(summaryNode.getText());
 	    }
     }
     
