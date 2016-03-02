@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hook PUBLIC "-//Liferay//DTD Hook 6.2.0//EN" 
+    "http://www.liferay.com/dtd/liferay-hook_6_2_0.dtd">
+<!--  
+    liferay-hook.xml: The configuration of flussbad's asset-link hook.
+    
+    Created:    2016-03-02 00:00 by Michael Lustenberger
+    Modified:   2016-03-02 00:00 by Michael Lustenberger
+    Version:    1.0.0
+ -->
+<hook>
+    <custom-jsp-dir>/META-INF/custom_jsps</custom-jsp-dir>
+</hook>

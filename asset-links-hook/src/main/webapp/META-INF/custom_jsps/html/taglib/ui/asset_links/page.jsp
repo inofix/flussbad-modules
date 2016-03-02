@@ -99,6 +99,7 @@ if (assetEntryId > 0) {
                     String urlViewInContext = assetRenderer.getURLViewInContext((LiferayPortletRequest)portletRequest, (LiferayPortletResponse)portletResponse, viewFullContentURLString);
 
                     urlViewInContext = HttpUtil.setParameter(urlViewInContext, "inheritRedirect", true);
+                    urlViewInContext = HttpUtil.removeParameter(urlViewInContext, "noSuchEntryRedirect");
             %>
 
                     <li class="asset-links-list-item">
