@@ -4071,4 +4071,24 @@ input {
             }
         }
     }
+
+  
+    @media print {
+    
+		a[href]:after {
+			content: none !important;
+		}    
+		  
+        #banner {
+            display: none !important;
+        }
+    
+        #footer {
+	        .container.first,
+	        .logos-inner {
+	            display: none !important;
+	        }         
+        }
+       
+	}
 }
