@@ -1,4 +1,13 @@
 <%--
+    page.jsp: A customized page.jsp for Liferay's asset-links tag.
+    Customized sections are marked with the comment: 
+    // Customized .    
+        
+    Created:    2016-03-11 09:34 by Christian Berndt
+    Modified:   2015-03-11 09:34 by Christian Berndt
+    Version:    1.0.0
+--%>
+<%--
 /**
  * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
@@ -99,6 +108,12 @@ if (assetEntryId > 0) {
                     String urlViewInContext = assetRenderer.getURLViewInContext((LiferayPortletRequest)portletRequest, (LiferayPortletResponse)portletResponse, viewFullContentURLString);
 
                     urlViewInContext = HttpUtil.setParameter(urlViewInContext, "inheritRedirect", true);
+// Customized
+// Remove the noSuchEntryRedirect from viewInContext URL 
+// because a yet unresolved error in the flussbad installation
+// causes errors. Probably the error is caused by a NoSuchLayoutException
+// in FindAction.java, line 117 ff. and might be fixed by the correct
+// reconfiguration of the default display page.
                     urlViewInContext = HttpUtil.removeParameter(urlViewInContext, "noSuchEntryRedirect");
             %>
 
