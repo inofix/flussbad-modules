@@ -2,16 +2,28 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2016-01-28 19:12 by Christian Berndt
-    Version:    1.2.3
+    Modified:   2016-03-17 13:33 by Christian Berndt
+    Version:    1.2.4
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
     change the template online make sure that you commit your
     changes to the flussbad-modules repo, too.
 -->
-<#assign themeDisplay = request['theme-display'] />
-<#assign plid = themeDisplay['plid'] />
+
+<#assign currentURL = "">
+<#assign groupURL = "" />
+<#assign layout = ""/>
+<#assign pathFriendlyURL = "" />
+<#assign plid = "0" />
+<#assign themeDisplay = "" />
+
+<#-- request['theme-display'] is not available in search -->
+<#if request['theme-display']?? >
+    <#assign themeDisplay = request['theme-display'] />
+    <#assign plid = themeDisplay['plid'] />
+    <#assign pathFriendlyURL = themeDisplay['path-friendly-url-public'] />
+</#if>
 
 <#assign articleService = serviceLocator.findService("com.liferay.portlet.journal.service.JournalArticleService") />
 <#assign articleId = getterUtil.getString(.vars['reserved-article-id'].data) />
@@ -25,11 +37,14 @@
 <#assign layoutLocalService = serviceLocator.findService("com.liferay.portal.service.LayoutLocalService") />
 <#assign propertyService = serviceLocator.findService("com.liferay.portlet.asset.service.AssetCategoryPropertyService") />
 
-<#assign layout = layoutLocalService.getLayout(plid?number) />
+<#if plid?number gt 0 >
+    <#assign layout = layoutLocalService.getLayout(plid?number) />
+    <#assign groupURL = layout.group.friendlyURL />
+</#if>
 
-<#assign currentURL = request.attributes['CURRENT_URL']>
-<#assign pathFriendlyURL = themeDisplay['path-friendly-url-public'] />
-<#assign groupURL = layout.group.friendlyURL />
+<#if request.attributes?? >
+    <#assign currentURL = request.attributes['CURRENT_URL']/>
+</#if>
 <#assign pathAndGroupURL = pathFriendlyURL + groupURL />
 
 <#-- with virtualhost configured -->
