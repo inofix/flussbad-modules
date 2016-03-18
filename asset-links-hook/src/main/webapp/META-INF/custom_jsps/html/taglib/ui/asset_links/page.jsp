@@ -10,8 +10,8 @@
     https://github.com/inofix/liferay-modules/blob/6.2.x/asset-links-hook/src/main/webapp/META-INF/custom_jsps/html/taglib/ui/asset_links/page.jsp
         
     Created:    2016-03-14 15:27 by Christian Berndt
-    Modified:   2016-03-16 19:48 by Christian Berndt
-    Version:    1.0.3
+    Modified:   2016-03-18 14:58 by Christian Berndt
+    Version:    1.0.4
 --%>
 <%--
 /**
@@ -122,9 +122,10 @@ for (AssetLink assetLink : assetLinks) {
             if (groupedAssetRenderers != null && !groupedAssetRenderers.isEmpty()) {
                 
                 String[] orderByProperties = PropsUtil.getArray("inofix.asset.link." + assetRendererGroup + ".orderby.properties");
-                    
+                boolean ascending = GetterUtil.getBoolean(PropsUtil.get("inofix.asset.link." + assetRendererGroup + ".orderby.ascending"), true);
+                
                 if (orderByProperties.length > 0) {
-                    PropertyComparator comparator = new PropertyComparator(orderByProperties, true, true);
+                    PropertyComparator comparator = new PropertyComparator(orderByProperties, ascending, true);
                     Collections.sort(groupedAssetRenderers, comparator);                    
                 }    
                 
