@@ -558,6 +558,12 @@ input {
             position: fixed;
         }
         
+        &.navbar {
+            .nav li > a {
+                word-break: normal;
+            }
+        }
+        
         li {
             font-size: $default-font-size;
             font-weight: 600;
@@ -566,6 +572,7 @@ input {
             
                 li > a {
                 
+                    word-break: normal;
                     font-size: $small-font-size;
                     color: $navigation-font-color;
                     
@@ -3182,10 +3189,14 @@ input {
         }
         
         .portlet-borderless {
+        
             margin-top: $nav-height;
+                
+            &.portlet-login {
+                margin-top: 150px;
+            }
         }
-    } 
-    
+    }
 
     .signed-in {
 
