@@ -2,8 +2,8 @@
     intro.ftl: Format the intro structure
     
     Created:    2015-08-28 17:52 by Christian Berndt
-    Modified:   2016-01-28 18:09 by Christian Berndt
-    Version:    1.0.5
+    Modified:   2016-03-27 23:18 by Christian Berndt
+    Version:    1.0.6
     
     Please note: Although this template is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -88,7 +88,17 @@
                 <div class="container">
                     <div class="span4 offset8">
                         <div class="pull-right">
-                            <a class="club-link" href="${clubLink.getData()}" title="${languageUtil.get(locale, "get-involved")}"><span>${languageUtil.get(locale, "get-involved")}</span></a>
+                        
+                            <#assign target = layoutLocalService.getLayout(groupId?number, false, clubLink.getData()?number) />                                        
+                        
+                            <#-- with virtualhost configured -->
+                            <#assign targetURL = target.getFriendlyURL(locale) />
+                            
+                            <#-- without virtualhost configured -->
+                            <#if currentURL?starts_with(pathFriendlyURL)>
+                                <#assign targetURL = pathAndGroupURL + targetURL />
+                            </#if>                        
+                            <a class="club-link" href="${targetURL}" title="${languageUtil.get(locale, "get-involved")}"><span>${languageUtil.get(locale, "get-involved")}</span></a>
                         </div>
                     </div>
                 </div>
