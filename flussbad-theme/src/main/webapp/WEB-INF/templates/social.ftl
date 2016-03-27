@@ -1,5 +1,5 @@
 <#--
-    Intro template: Format the Intro structure
+    Social template: Format the social structure
     
     Created:    2015-09-29 11:31 by Christian Berndt
     Modified:   2015-09-29 11:31 by Christian Berndt
