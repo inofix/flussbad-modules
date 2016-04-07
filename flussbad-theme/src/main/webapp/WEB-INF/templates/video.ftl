@@ -42,14 +42,17 @@
     
     <#assign layout_url = prefix + layout.friendlyURL />
     
-    <div class="container">    
         <div id="${namespace}_video">&nbsp;</div>
+        
+    <div class="container">    
     </div>
     
         
-    <#assign config = "&maxwidth=1170&format=json" />
+    <#assign config = "&format=json" />
     <#assign embed_url = service.getData() + url.getData() + config />
     <#assign embed_url = httpUtil.encodeURL(embed_url) />
+    <#--
+    -->
     
     <script>
     <!--
@@ -57,13 +60,24 @@
      var oEmbedURL = "${layout_url}?p_p_id=proxyportlet_WAR_proxyportlet&p_p_lifecycle=2&_proxyportlet_WAR_proxyportlet_embedURL= ${embed_url}";
     
      $( document ).ready(function() {
-    
+     
+        var windowWidth = $(window).width();
+        console.log(oEmbedURL);
+//        oEmbedURL = oEmbedURL + "&width=" + windowWidth;
+//        console.log(oEmbedURL);
+//        oEmbedURL = encodeURIComponent(oEmbedURL);
+        console.log(oEmbedURL);
+        
         /**
          * oEmbed
          */
         $.get( oEmbedURL, function( str ) {
              var data = JSON.parse(str);
-              $("#${namespace}_video").html(data.html);
+             var html = data.html;
+             
+             // set width of iframe
+             html = html.replace("1280", "100%"); 
+              $("#${namespace}_video").html(html);
         });
     
     });
