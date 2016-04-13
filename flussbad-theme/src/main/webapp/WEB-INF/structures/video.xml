@@ -5,8 +5,8 @@
     vimeo, youtube, etc via the oembed api.
     
     Created:    2016-04-07 09:10 by Christian Berndt
-    Modified:   2016-04-07 09:10 by Christian Berndt
-    Version:    1.0.0
+    Modified:   2016-04-13 11:57 by Christian Berndt
+    Version:    1.0.1
     
     Please note: Although this structure is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -60,4 +60,20 @@
             </entry>
         </meta-data>
     </dynamic-element>
+    <dynamic-element dataType="boolean" indexType="keyword"
+        localizable="true" name="fullscreen" readOnly="false"
+        repeatable="false" required="false" showLabel="true" type="checkbox"
+        width="">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[Volle Bildschirmbreite]]>
+            </entry>
+            <entry name="predefinedValue">
+                <![CDATA[false]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Entscheide, ob das Video über die volle Bildschirmbreite oder innerhalb des Rasters angezeigt werden soll.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>    
 </root>

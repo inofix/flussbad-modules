@@ -2,8 +2,8 @@
     video.ftl: Format the video structure
 
     Created:    2016-04-06 21:32 by Christian Berndt
-    Modified:   2016-04-06 21:32 by Christian Berndt
-    Version:    1.0.0
+    Modified:   2016-04-13 11:59 by Christian Berndt
+    Version:    1.0.1
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -16,6 +16,7 @@
 <#if request['theme-display']??>
 
     <#assign current_url = request.attributes['CURRENT_URL']/>
+    <#assign displayFullscreen = false />
     <#assign group_url = "" />
     <#assign theme_display = request['theme-display'] />
     <#assign namespace = request['portlet-namespace'] />
@@ -24,6 +25,13 @@
     <#assign plid = theme_display['plid'] />
     <#assign proxy_ns = "proxyportlet_WAR_proxyportlet" />
     
+    <#if fullscreen?? >
+        <#if fullscreen.getData()?has_content>
+            <#if getterUtil.getBoolean(fullscreen.getData())>
+                <#assign displayFullscreen = getterUtil.getBoolean(fullscreen.getData()) />
+            </#if>
+        </#if>
+    </#if>
     
     <#if plid?number gt 0 >
         <#assign layout = layoutLocalService.getLayout(plid?number) />
@@ -42,17 +50,17 @@
     
     <#assign layout_url = prefix + layout.friendlyURL />
     
+    <#if displayFullscreen>
         <div id="${namespace}_video">&nbsp;</div>
-        
-    <div class="container">    
-    </div>
-    
+    <#else>
+        <div class="container">
+            <div id="${namespace}_video">&nbsp;</div>
+        </div>    
+    </#if>    
         
     <#assign config = "&format=json" />
     <#assign embed_url = service.getData() + url.getData() + config />
     <#assign embed_url = httpUtil.encodeURL(embed_url) />
-    <#--
-    -->
     
     <script>
     <!--
