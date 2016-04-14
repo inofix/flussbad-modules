@@ -2,8 +2,8 @@
     video.ftl: Format the video structure
 
     Created:    2016-04-06 21:32 by Christian Berndt
-    Modified:   2016-04-13 11:59 by Christian Berndt
-    Version:    1.0.1
+    Modified:   2016-04-14 13:43 by Christian Berndt
+    Version:    1.0.2
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -58,37 +58,70 @@
         </div>    
     </#if>    
         
-    <#assign config = "&format=json" />
+    <#assign config = "&format=json" />    
     <#assign embed_url = service.getData() + url.getData() + config />
     <#assign embed_url = httpUtil.encodeURL(embed_url) />
     
     <script>
-    <!--
+    <!--       
+        var oEmbedURL = "${layout_url}?p_p_id=proxyportlet_WAR_proxyportlet&p_p_lifecycle=2&_proxyportlet_WAR_proxyportlet_embedURL= ${embed_url}";
+         
+        var fullscreen = false;
+         
+        <#if displayFullscreen>
+           fullscreen = true;
+        </#if>        
         
-     var oEmbedURL = "${layout_url}?p_p_id=proxyportlet_WAR_proxyportlet&p_p_lifecycle=2&_proxyportlet_WAR_proxyportlet_embedURL= ${embed_url}";
-    
-     $( document ).ready(function() {
-     
-        var windowWidth = $(window).width();
-        console.log(oEmbedURL);
-//        oEmbedURL = oEmbedURL + "&width=" + windowWidth;
-//        console.log(oEmbedURL);
-//        oEmbedURL = encodeURIComponent(oEmbedURL);
-        console.log(oEmbedURL);
-        
-        /**
-         * oEmbed
-         */
-        $.get( oEmbedURL, function( str ) {
-             var data = JSON.parse(str);
-             var html = data.html;
-             
-             // set width of iframe
-             html = html.replace("1280", "100%"); 
-              $("#${namespace}_video").html(html);
+        $( document ).ready(function() {            
+            loadFrame();            
         });
-    
-    });
+        
+        function loadFrame() {
+        
+            /**
+             * oEmbed
+             */
+            $.get( oEmbedURL, function( str ) {
+            
+                 var data = JSON.parse(str);
+                 var html = data.html;
+                 var videoHeight = data.height; 
+                 var videoWidth = data.width; 
+                 
+                 var windowWidth = $(window).width();
+                 
+                 // set size of youtube iframe (default 480 x 270)
+                 var width = windowWidth; 
+                                  
+                 if (!fullscreen) {
+                    
+                     width = 1170;              // bootstrap container
+                     
+                     if (windowWidth < 1200) {
+                         width = 940;           // bootstrap container
+                     }
+                     if (windowWidth < 980) {
+                        width = 724;            // bootstrap container
+                     }                     
+                     if (windowWidth < 768) {
+                        width = windowWidth;    // bootstrap container
+                     }                     
+                     
+                 }                 
+                 
+                 // set width of vimeo iframe
+                 html = html.replace("1280", "100%");       // vimeo
+                 
+                 var height = (width / 16) * 9;
+                 
+                 // youtube sizes its videos with the iframe
+                 html = html.replace(videoWidth, width);        // youtube default width
+                 html = html.replace(videoHeight, height);      // youtube default height
+                                  
+                 $("#${namespace}_video").html(html);                  
+                     
+            });          
+        };        
     -->
     </script>
 
