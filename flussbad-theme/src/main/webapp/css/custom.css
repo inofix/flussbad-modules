@@ -1738,7 +1738,7 @@ input {
                         margin: 1em 0;
                     }
                     
-                    img {
+                    img, .video {
                     
                         margin: 2em 0;
                     }
