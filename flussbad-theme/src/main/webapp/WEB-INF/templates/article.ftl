@@ -2,8 +2,8 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2016-03-17 13:33 by Christian Berndt
-    Version:    1.2.4
+    Modified:   2016-04-14 19:26 by Christian Berndt
+    Version:    1.2.5
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -14,12 +14,14 @@
 <#assign currentURL = "">
 <#assign groupURL = "" />
 <#assign layout = ""/>
+<#assign namespace = "" />
 <#assign pathFriendlyURL = "" />
 <#assign plid = "0" />
 <#assign themeDisplay = "" />
 
 <#-- request['theme-display'] is not available in search -->
 <#if request['theme-display']?? >
+    <#assign namespace = request['portlet-namespace'] />
     <#assign themeDisplay = request['theme-display'] />
     <#assign plid = themeDisplay['plid'] />
     <#assign pathFriendlyURL = themeDisplay['path-friendly-url-public'] />
@@ -55,6 +57,8 @@
     <#assign prefix = pathAndGroupURL />
 </#if>
 
+<#assign layout_url = prefix + layout.friendlyURL />
+
 <#assign cssClass = "" />
 <#assign displayToc = false />
 <#assign hasKeyVisual = false />
@@ -79,6 +83,90 @@
 <#else>
     <#assign cssClass = "without-keyvisual" />
 </#if>
+
+<#macro images section>   
+    <#if section.image.getSiblings()?has_content>
+        <#assign j = 1 />
+        <#list section.image.getSiblings() as cur_image >
+            <#assign path = "${cur_image.getData()}" />
+            <#if path?has_content>
+                <img id="story-image-${i}-${j}" data-src="${path}&imageThumbnail=3"/>
+                <#if cur_image.caption??>
+                    <div class="caption">${cur_image.caption.getData()}</div>
+                </#if>
+             </#if>
+             <#assign j = j+1 /> 
+        </#list>
+    </#if>
+</#macro>
+
+<#macro video section>
+    <#if section.url??>
+        <#if section.url.getData()?has_content>  
+        
+            <#assign config = "&format=json" />    
+            <#assign embed_url = section.service.getData() + section.url.getData() + config />
+            <#assign embed_url = httpUtil.encodeURL(embed_url) />
+            
+            <div id="${namespace}_${i}_video" class="video">&nbsp;</div>
+            
+            <script>
+            <!--       
+                var ${namespace}_${i}_oEmbedURL = "${layout_url}?p_p_id=proxyportlet_WAR_proxyportlet&p_p_lifecycle=2&_proxyportlet_WAR_proxyportlet_embedURL= ${embed_url}";
+                                                             
+                $( document ).ready(function() {            
+                    ${namespace}_${i}_loadFrame();            
+                });
+                
+                function ${namespace}_${i}_loadFrame() {
+                
+                    /**
+                     * oEmbed
+                     */
+                    $.get( ${namespace}_${i}_oEmbedURL, function( str ) {
+                    
+                         var data = JSON.parse(str);
+                         var html = data.html;
+                         var videoHeight = data.height; 
+                         var videoWidth = data.width; 
+                         
+                         var windowWidth = $(window).width();
+                         
+                         // set size of youtube iframe 
+                         var width = windowWidth; 
+                                                                                                  
+                         width = 770;              // bootstrap span8
+                         
+                         if (windowWidth < 1200) {
+                             width = 620;           // bootstrap span8
+                         }
+                         if (windowWidth < 980) {
+                            width = windowWidth - 30;    // 100% - padding
+                         }                     
+                         if (windowWidth < 768) {
+                            width = windowWidth - 30;    // 100% - padding
+                         }                   
+                                 
+                         // set width of vimeo iframe
+                         html = html.replace("1280", "100%");       // vimeo
+                         
+                         var height = (width / 16) * 9;
+                         
+                         // youtube sizes its videos with the iframe
+                         html = html.replace(videoWidth, width);        // youtube default width
+                         html = html.replace(videoHeight, height);      // youtube default height
+                                          
+                         $("#${namespace}_${i}_video").html(html);                  
+                             
+                    });          
+                };        
+            -->
+            </script>                                        
+            
+        </#if>
+    </#if>                             
+
+</#macro>
 
 <div class="story ${cssClass}">
     <#if hasKeyVisual>
@@ -138,6 +226,7 @@
                     <#list section.getSiblings() as cur_section>
                     
                         <#assign imageAboveTheText = false />
+                        
                         <#if cur_section.imageAboveTheText??>
                             <#assign imageAboveTheText = getterUtil.getBoolean(cur_section.imageAboveTheText.getData()) />
                         </#if>
@@ -150,21 +239,9 @@
                             
                             <#if imageAboveTheText >
                             
-                                <#if cur_section.image.getSiblings()?has_content>
-                                    <#assign j = 1 />
-                                    <#list cur_section.image.getSiblings() as cur_image >
-                                        <#assign path = "${cur_image.getData()}" />
-                                        <#if path?has_content>
-                                            <img id="story-image-${i}-${j}" data-src="${path}&imageThumbnail=3"/>
-                                            <#if cur_image.caption??>
-                                                <#if cur_image.caption.getData()?has_content>
-                                                    <div class="caption">${cur_image.caption.getData()}</div>
-                                                </#if>
-                                            </#if>
-                                        </#if>
-                                        <#assign j = j+1 /> 
-                                    </#list>
-                                </#if>
+                                <@video cur_section/>
+                                
+                                <@images cur_section/>
                                 
                                 <#if cur_section.body??>
                                     <#if cur_section.body.getData()?has_content>                                
@@ -180,19 +257,10 @@
                                     </#if>
                                 </#if>
                                 
-                                <#if cur_section.image.getSiblings()?has_content>
-                                    <#assign j = 1 />
-                                    <#list cur_section.image.getSiblings() as cur_image >
-                                        <#assign path = "${cur_image.getData()}" />
-                                        <#if path?has_content>
-                                            <img id="story-image-${i}-${j}" data-src="${path}&imageThumbnail=3"/>
-                                            <#if cur_image.caption??>
-                                                <div class="caption">${cur_image.caption.getData()}</div>
-                                            </#if>
-                                         </#if>
-                                         <#assign j = j+1 /> 
-                                    </#list>
-                                </#if>                               
+                                <@video cur_section/>
+                                
+                                <@images cur_section/>
+                                                              
                             </#if>
                             
                         </div>
@@ -201,8 +269,9 @@
                 </#if>
             </#if>
             
-            <#-- Include the common social-media snippet -->
-            <#include "${templatesPath}/72079" />   
+            <#-- Include the common social-media snippet --> 
+            <#include "${templatesPath}/72079" /> 
+             
                           
         </div> <#-- / .span8 -->
         
