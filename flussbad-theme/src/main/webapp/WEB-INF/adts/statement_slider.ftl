@@ -1,5 +1,5 @@
 <#--
-    statements.ftl: Display a list of statements in a scrollview-carousel.
+    statement_slider.ftl: Display a list of statements in a scrollview-carousel.
     
     Created:    2015-10-13 18:27 by Christian Berndt
     Modified:   2015-11-07 17:58 by Christian Berndt

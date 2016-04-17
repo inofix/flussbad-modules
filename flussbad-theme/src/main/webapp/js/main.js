@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2016-01-27 17:53 by Christian Berndt
- * Version:     1.2.6
+ * Modified:    2016-04-16 16:03 by Christian Berndt
+ * Version:     1.2.7
  */
 
 /**
@@ -134,6 +134,68 @@ $( document ).ready(function() {
 	var publisher = $('.default-publisher'); 
 
     var story = $('.project-story'); 
+    
+    /**
+     * Show a modal slideshow. The box has a 2:3 ratio. Images
+     * with more panoramic ratios are centered vertically; images
+     * with portrait like ratios are centered horizontally.
+     */
+    $(document).on('show.bs.modal', function(event) {
+                
+        var button = $(event.relatedTarget); // Button that triggered the modal     
+        var target = button.data('target');
+        
+        var ratio = 0.9;
+        var boxHeight = windowHeight * ratio;
+        var boxWidth = windowWidth * ratio;
+        
+        $(target).css("width", boxWidth + "px");
+        $(target).css("height", boxHeight + "px");
+        
+        // center the modal gallery in the viewport        
+        var offset = (windowWidth - boxWidth) / 2;
+                    
+        $(target).css("visibility","visible");
+        $(target).css("left",offset);
+        
+        var padding = 15; /* top and bottom padding */
+        
+        $('.modal.slideshow img').imagesLoaded().progress( 
+            function( instance, image ) {
+                
+            var result = image.isLoaded ? 'loaded' : 'broken';
+            
+            var height = image.img.height; 
+            var width = image.img.width;
+            
+            if (windowHeight / windowWidth > height / width) {
+                 // landscape
+                console.log('landscape'); 
+                $(image.img).css("padding-top", (boxHeight - (height + 2 * padding)) / 2 + "px");
+                $(image.img).css("padding-bottom", (boxHeight - (height + 2 * padding)) / 2 + "px");
+                $(image.img).css("margin-bottom", "0");      
+                
+            } 
+            else {    
+                // portrait
+                $(image.img).css("height", ((boxHeight - 2* padding) + "px"));
+            }
+        });     
+    });
+    
+    /**
+     * Move the slider in the modalSlideshow to the current image.
+     */
+    $(document).on('shown.bs.modal', function(event) {
+        
+        var button = $(event.relatedTarget); // Button that triggered the modal     
+        var index = button.data('index');
+    
+        var slider = $('#slider').data('flexslider');
+        
+        slider.flexAnimate(index - 1);
+
+    });    
     
     /** 
      * show the categories-navigation and sitemap-portlet after the page 
@@ -344,6 +406,15 @@ $( document ).ready(function() {
 				label.addClass("muted");
 			}
 		})
-	}	
-
+	}
+        
+    $('#slider').flexslider({
+        animation: "fade",
+        controlNav: false,
+        animationLoop: true,
+        slideshow: false,
+        prevText:"",      
+        nextText:""        
+    });
+    
 });

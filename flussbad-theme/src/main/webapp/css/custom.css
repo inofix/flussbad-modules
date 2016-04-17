@@ -1380,6 +1380,26 @@ input {
     
     .portlet-asset-publisher {
     
+        .gallery {
+                
+            .row-fluid {
+                margin-bottom: 30px;
+            }
+            
+            .span3 {
+                height: 203px;  /* 4:3 */
+                background-color: lightgray; 
+            }
+            
+            .image-wrapper {
+                
+                height: 203px;  /* 4:3 */
+/*                 height: 152px;  16:9 */
+                
+                @include background-cover();
+            }
+        }
+    
         &.start-publisher {
         
             margin-bottom: 6em;
@@ -1562,6 +1582,36 @@ input {
     .statements.turquois {
         background-color: $color-turquois;
         color: white;
+    }
+    
+    .modal.fade.in {
+        top: 5%;
+    }
+    
+    .modal.slideshow {
+    
+        margin-left: auto;
+        
+        .close {
+            margin: -12px -14px 0 0;
+            padding: 4px;
+            font-size: 31.5px;
+            line-height: 12px;
+/*             border: 1px solid black; */
+/*             border-radius: 6px; */
+/*             border-radius: 100%; */
+            background: white;
+        }
+        
+        .modal-body {
+            max-height: none;
+        }
+        
+        img {
+            margin-left: auto; 
+            margin-right: auto;
+            margin-bottom: 15px;
+        }
     }
 
 /* ----------------------------------------------- Flexslider --------*/
