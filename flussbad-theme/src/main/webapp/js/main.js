@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2016-04-16 16:03 by Christian Berndt
- * Version:     1.2.7
+ * Modified:    2016-04-22 17:01 by Christian Berndt
+ * Version:     1.2.8
  */
 
 /**
@@ -95,23 +95,22 @@ YUI().use(
 
 //TODO: needs IDs in DOM (even with AUI().ready())
 AUI().ready('imageloader', function (Y) {
- var imageGroup = new Y.ImgLoadGroup({ name: 'foldGroup', foldDistance: 2 });
-// imageGroup.addTrigger('.item', 'mouseover');
-
-//TODO: decide on going for CSS-Classes or elements: Y.all('img')
- var images = document.getElementsByTagName("img");
-
- for (var i = 0; i < images.length; i++)
- {
-     if ( images[i].getAttribute("data-src") )
+    var imageGroup = new Y.ImgLoadGroup({ name: 'foldGroup', foldDistance: 2 });
+    // imageGroup.addTrigger('.item', 'mouseover');
+    
+    //TODO: decide on going for CSS-Classes or elements: Y.all('img')
+     var images = document.getElementsByTagName("img");
+    
+     for (var i = 0; i < images.length; i++)
      {
-
-         imageGroup.registerImage({
-             domId: images[i].getAttribute("id"),
-             srcUrl: images[i].getAttribute("data-src")
-         });
-     }
- }
+         if ( images[i].getAttribute("data-src") )
+         {   
+             imageGroup.registerImage({
+                 domId: images[i].getAttribute("id"),
+                 srcUrl: images[i].getAttribute("data-src")
+             });
+         }
+    }
 });
 
 
@@ -134,14 +133,12 @@ $( document ).ready(function() {
 	var publisher = $('.default-publisher'); 
 
     var story = $('.project-story'); 
-    
+        
     /**
-     * Show a modal slideshow. The box has a 2:3 ratio. Images
-     * with more panoramic ratios are centered vertically; images
-     * with portrait like ratios are centered horizontally.
+     * Show a modal slideshow.
      */
     $(document).on('show.bs.modal', function(event) {
-                
+                        
         var button = $(event.relatedTarget); // Button that triggered the modal     
         var target = button.data('target');
         
@@ -152,50 +149,50 @@ $( document ).ready(function() {
         $(target).css("width", boxWidth + "px");
         $(target).css("height", boxHeight + "px");
         
-        // center the modal gallery in the viewport        
+        // center the gallery in the viewport        
         var offset = (windowWidth - boxWidth) / 2;
                     
         $(target).css("visibility","visible");
         $(target).css("left",offset);
         
-        var padding = 15; /* top and bottom padding */
+        var padding = 0; /* top and bottom padding */
         
         $('.modal.slideshow img').imagesLoaded().progress( 
             function( instance, image ) {
                 
             var result = image.isLoaded ? 'loaded' : 'broken';
-            
+                        
             var height = image.img.height; 
             var width = image.img.width;
             
-            if (windowHeight / windowWidth > height / width) {
-                 // landscape
-                console.log('landscape'); 
-                $(image.img).css("padding-top", (boxHeight - (height + 2 * padding)) / 2 + "px");
-                $(image.img).css("padding-bottom", (boxHeight - (height + 2 * padding)) / 2 + "px");
-                $(image.img).css("margin-bottom", "0");      
+            if (width / height  >=  windowWidth / windowHeight ) {
                 
-            } 
-            else {    
-                // portrait
-                $(image.img).css("height", ((boxHeight - 2* padding) + "px"));
+                var padding = (boxHeight - height*ratio) / 2;
+                
+                 // extreme landscape
+                $(image.img).css("width", boxWidth + "px"); 
+                $(image.img).css("height", height * ratio); 
+                $(image.img).css("padding-top", padding + "px");
+                $(image.img).css("padding-bottom", padding + "px");    
+                
             }
         });     
-    });
+    }); 
     
     /**
      * Move the slider in the modalSlideshow to the current image.
      */
     $(document).on('shown.bs.modal', function(event) {
-        
+            
         var button = $(event.relatedTarget); // Button that triggered the modal     
         var index = button.data('index');
-    
+
         var slider = $('#slider').data('flexslider');
         
         slider.flexAnimate(index - 1);
 
-    });    
+    });   
+    
     
     /** 
      * show the categories-navigation and sitemap-portlet after the page 
@@ -384,6 +381,24 @@ $( document ).ready(function() {
 
 	});
 	
+	/**
+	 * Configure sliders.
+	 */
+    $('.slideshow .flexslider').flexslider({
+        animationLoop: true,
+        slideshow: false,    
+        prevText:"",      
+        nextText:""         
+    });	
+    
+    $('.flexslider.statements').flexslider({
+        animation: "slide", 
+        randomize: true,
+        pauseOnHover: true,
+        controlNav: false,
+        prevText:"",      
+        nextText:""      
+    });
 	
 	/**
 	 * Manage the transparency of the web-form-portlet used 
@@ -407,14 +422,5 @@ $( document ).ready(function() {
 			}
 		})
 	}
-        
-    $('#slider').flexslider({
-        animation: "fade",
-        controlNav: false,
-        animationLoop: true,
-        slideshow: false,
-        prevText:"",      
-        nextText:""        
-    });
     
 });
