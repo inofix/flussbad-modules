@@ -3,22 +3,16 @@
     format them in as a gallery.
     
     Created:    2016-04-16 13:07 by Christian Berndt
-    Modified:   2016-04-16 13:07 by Christian Berndt
-    Version:    1.0.0
+    Modified:   2016-04-22 17:19 by Christian Berndt
+    Version:    1.0.1
 -->
 
 <#assign fileEntryService  = serviceLocator.findService("com.liferay.portlet.documentlibrary.service.DLFileEntryLocalService") />
 <#assign journalArticleService = serviceLocator.findService("com.liferay.portlet.journal.service.JournalArticleLocalService") />
 
 <#assign namespace = renderResponse.namespace />
-<#assign current_url = "" />
-<#--
-<#assign current_url = request.attributes['CURRENT_URL'] />
--->
-<#assign path_friendly_url = "" />
-<#--
-<#assign path_friendly_url = theme_display['path-friendly-url-public'] />
--->
+<#assign current_url = portalUtil.getCurrentURL(request) />
+<#assign path_friendly_url = themeDisplay.pathFriendlyURLPublic />
 <#assign layout = themeDisplay.layout />
 <#assign group_url = layout.group.friendlyURL />       
 
@@ -77,7 +71,10 @@
                                         <#assign embed_url = service + url + config />
                                         <#assign embed_url = httpUtil.encodeURL(embed_url) />
                                         <li>
-                                            TODO: Display video.                            
+                                            <div class="video-wrapper">
+                                                <#-- embed_url = ${embed_url} -->
+                                                <div id="${namespace}_${i}_video" class="video">&nbsp;</div> 
+                                            </div>                            
                                         </li>
                                     <#else>
                                         <li>
@@ -157,8 +154,12 @@
                         <#assign embed_url = service + url + config />
                         <#assign embed_url = httpUtil.encodeURL(embed_url) />
         
-                        <div class="span3" style="height: 200px; background: lightgray;">                            
-                            <div id="${namespace}_${i}_video" class="video">&nbsp;</div>
+                        <div class="span3">
+                                                
+                            <a href="javascript:;" data-toggle="modal" data-target="#modalSlideshow" data-index="${i}">
+                            
+                                <div id="${namespace}_${i}_video_thumbnail" class="image-wrapper">&nbsp;</div>
+                            </a>
                         </div>
                         
                         <script>
@@ -175,39 +176,35 @@
                                  * oEmbed
                                  */
                                 $.get( ${namespace}_${i}_oEmbedURL, function( str ) {
-                                
-                                     var data = JSON.parse(str);
-                                     var html = data.html;
-                                     var videoHeight = data.height; 
-                                     var videoWidth = data.width; 
+
+                                    var data = JSON.parse(str);
+                                    var html = data.html;
+                                    var provider_name = data.provider_name;
+                                    var thumbnail_url = data.thumbnail_url;
+                                    var videoHeight = data.height; 
+                                    var videoWidth = data.width;
+                                                                         
+                                    var windowWidth = $(window).width();
+                                    var windowHeight = $(window).height(); 
+                                    
+                                    var scale = 0.9;
                                      
-                                     var windowWidth = $(window).width();
+                                    // set the size of the embedded video iframes
+                                    var width = windowWidth * scale;
+                                    var height = windowHeight * scale;
+                                                                                                               
+                                    // preserve the videos ratio 
+                                    width = (height / videoHeight) * videoWidth;
+                                    
+                                    html = html.replace(videoWidth, width); 
+                                    html = html.replace(videoHeight, height);
                                      
-                                     // set size of youtube iframe 
-                                     var width = windowWidth; 
-                                                                                                              
-                                     width = 770;              // bootstrap span8
-                                     
-                                     if (windowWidth < 1200) {
-                                         width = 620;           // bootstrap span8
-                                     }
-                                     if (windowWidth < 980) {
-                                        width = windowWidth - 30;    // 100% - padding
-                                     }                     
-                                     if (windowWidth < 768) {
-                                        width = windowWidth - 30;    // 100% - padding
-                                     }                   
-                                             
-                                     // set width of vimeo iframe
-                                     html = html.replace("1280", "100%");       // vimeo
-                                     
-                                     var height = (width / 16) * 9;
-                                     
-                                     // youtube sizes its videos with the iframe
-                                     html = html.replace(videoWidth, width);        // youtube default width
-                                     html = html.replace(videoHeight, height);      // youtube default height
-                                                      
-                                     $("#${namespace}_${i}_video").html(html);                  
+                                    // load the thumbnail into the gallery
+                                    var style = 'background-image: url("' +  thumbnail_url + '");';                                                    
+                                    $("#${namespace}_${i}_video_thumbnail").attr("style", style);
+                                    
+                                    // and the video into the slider                 
+                                    $("#${namespace}_${i}_video").html(html);                  
                                          
                                 });          
                             };        
