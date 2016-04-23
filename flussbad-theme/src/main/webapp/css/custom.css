@@ -1383,21 +1383,19 @@ input {
         .gallery {
                 
             .row-fluid {
-                margin-bottom: 4em;
+                margin-bottom: 2em;
             }
-            
-            .span3 {
-                height: 203px;  /* 4:3 */
-                background-color: lightgray; 
-            }
+          
             
             .image-wrapper {
                 
-                height: 203px;  /* 4:3 */
-/*                 height: 152px;  16:9 */
-                
+                height: 203px;  /* ~ 4:3 */
+                                
                 @include background-cover();
+                
+                margin-bottom: 10px;
             }
+            
         }
     
         &.start-publisher {
@@ -1597,7 +1595,7 @@ input {
         
             font-size: 60px;
             line-height: 40px;
-            margin-top: -10px;
+            margin-top: -5px;
             background: transparent;
             color: $color-turquois;
             opacity: 0.7;
@@ -1633,6 +1631,10 @@ input {
             overflow: hidden;
             max-height: none;
             padding: 0;
+        }
+        
+        .video-wrapper {
+            text-align: center;
         }
         
         &.fade {
