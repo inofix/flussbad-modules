@@ -2,38 +2,56 @@
     introduction.ftl: Format the introduction structure
     
     Created:    2015-10-15 23:58 by Christian Berndt
-    Modified:   2016-01-28 18:43 by Christian Berndt
-    Version:    1.0.9
+    Modified:   2016-04-25 21:19 by Christian Berndt
+    Version:    1.1.0
     
     Please note: Although this template is stored in the 
     site's context it's source is managed via git. Whenever you 
     change the template online make sure that you commit your 
     changes to the flussbad-modules repo, too.
 -->
-<#assign themeDisplay = request['theme-display'] />
-<#assign plid = themeDisplay['plid'] />
+
+<#assign backURL = "" />
+<#assign currentURL = "">
+<#assign groupURL = "" />
+<#assign layout = ""/>
+<#assign namespace = "" />
+<#assign parentPlid = 0 >
+<#assign pathFriendlyURL = "" />
+<#assign plid = "0" />
+<#assign prefix = "" />
+<#assign themeDisplay = "" />
+<#assign title = "" />
+
+<#-- request['theme-display'] is not available in search -->
+<#if request['theme-display']?? >
+    <#assign namespace = request['portlet-namespace'] />
+    <#assign themeDisplay = request['theme-display'] />
+    <#assign plid = themeDisplay['plid'] />
+    <#assign pathFriendlyURL = themeDisplay['path-friendly-url-public'] />
+</#if>
 
 <#assign layoutLocalService = serviceLocator.findService("com.liferay.portal.service.LayoutLocalService")>
-<#assign layout = layoutLocalService.getLayout(plid?number) />
-<#assign title = layout.getName(locale) />
 
-<#assign currentURL = request.attributes['CURRENT_URL']>
-<#assign pathFriendlyURL = themeDisplay['path-friendly-url-public'] />
-<#assign groupURL = layout.group.friendlyURL />
+<#if plid?number gt 0 >
+    <#assign layout = layoutLocalService.getLayout(plid?number) />
+    <#assign backURL = prefix + layout.getFriendlyURL(locale) />
+    <#assign groupURL = layout.group.friendlyURL />
+    <#assign parentPlid = layout.getParentPlid() >
+    <#assign title = layout.getName(locale) /> 
+</#if>
+
+
+<#if request.attributes?? >
+    <#assign currentURL = request.attributes['CURRENT_URL']/>
+</#if>
+
 <#assign pathAndGroupURL = pathFriendlyURL + groupURL />
-
-<#-- with virtualhost configured -->
-<#assign prefix = "" />
 
 <#-- without virtualhost configured -->
 <#if currentURL?starts_with(pathFriendlyURL)>
     <#assign prefix = pathAndGroupURL />
 </#if>
-
-<#assign backURL = prefix + layout.getFriendlyURL(locale) />
-<#assign parentPlid = layout.getParentPlid() >
-
-<#assign parentPlid = layout.getParentPlid() >
 
 <#if parentPlid gt 0>
     <#assign parentLayout = layoutLocalService.getLayout(parentPlid) />
