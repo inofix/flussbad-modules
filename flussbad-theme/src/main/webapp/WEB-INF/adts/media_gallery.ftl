@@ -3,8 +3,8 @@
     format them in as a gallery.
     
     Created:    2016-04-16 13:07 by Christian Berndt
-    Modified:   2016-04-22 17:19 by Christian Berndt
-    Version:    1.0.1
+    Modified:   2016-04-28 17:12 by Christian Berndt
+    Version:    1.0.2
 -->
 
 <#assign fileEntryService  = serviceLocator.findService("com.liferay.portlet.documentlibrary.service.DLFileEntryLocalService") />
@@ -194,7 +194,8 @@
                                     var height = windowHeight * scale;
                                                                                                                
                                     // preserve the videos ratio 
-                                    width = (height / videoHeight) * videoWidth;
+                                    var ratio = videoWidth / videoHeight; 
+                                    height = width / ratio;                                   
                                     
                                     html = html.replace(videoWidth, width); 
                                     html = html.replace(videoHeight, height);
