@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2016-04-22 17:01 by Christian Berndt
- * Version:     1.2.8
+ * Modified:    2016-04-30 14:08 by Christian Berndt
+ * Version:     1.2.9
  */
 
 /**
@@ -165,16 +165,30 @@ $( document ).ready(function() {
             var height = image.img.height; 
             var width = image.img.width;
             
-            if (width / height  >=  windowWidth / windowHeight ) {
+            var padding = (boxHeight - height*ratio) / 2;
+            
+            if (boxHeight > boxWidth) {
                 
-                var padding = (boxHeight - height*ratio) / 2;
+                // viewport with portrait ratio
                 
-                 // extreme landscape
-                $(image.img).css("width", boxWidth + "px"); 
-                $(image.img).css("height", height * ratio); 
+                $(image.img).css("width", boxWidth + "px");
                 $(image.img).css("padding-top", padding + "px");
-                $(image.img).css("padding-bottom", padding + "px");    
+                $(image.img).css("padding-bottom", padding + "px");                
                 
+                
+            } else {
+                
+                // viewport with landscape ratio
+                $(image.img).css("height", boxHeight + "px");   
+                
+                if (width / height  >=  windowWidth / windowHeight ) {
+                                        
+                    // extreme landscape
+                    $(image.img).css("width", boxWidth + "px"); 
+                    $(image.img).css("height", height * ratio); 
+                    $(image.img).css("padding-top", padding + "px");
+                    $(image.img).css("padding-bottom", padding + "px");    
+                }                
             }
         });     
     }); 

@@ -505,6 +505,24 @@ input {
                 margin-left: 17.02128%;  /* bootstrap  .offset2:first-child */        
            }
        }
+       
+       &.offset-1.portlet-asset-publisher {
+           .portlet-body {
+               margin-left: 0; /* bootstrap  .offset1:first-child */
+           }
+          .gallery {
+               margin-left: 8.54701%; /* bootstrap  .offset1:first-child */
+           }
+        }
+       
+        &.offset-2.portlet-asset-publisher {
+           .portlet-body {
+                margin-left: 0;  /* bootstrap  .offset2:first-child */        
+           }
+          .gallery {
+                margin-left: 17.02128%;  /* bootstrap  .offset2:first-child */        
+           }           
+       }
 	}
 
 
@@ -1620,11 +1638,20 @@ input {
                 }
             }       
         }
-                
-        img {
-            margin-left: auto; 
-            margin-right: auto;
-            height: 90vh;
+        
+        .image-wrapper {
+            img {
+                margin-left: auto; 
+                margin-right: auto;
+            }
+            
+            .caption {
+                background: white; 
+                position: absolute; 
+                opacity: 0.7;
+                bottom: 0; 
+                top: auto;
+            }
         }
         
         .modal-body {
@@ -3421,6 +3448,15 @@ input {
                padding-top: 30px;
                padding-bottom: 90px;
             }
+            
+                                
+            .modal.slideshow .close {
+                font-size: 40px;
+                position: absolute;
+                left: auto;
+                right: 0;  
+                z-index: 1000;              
+            }
 	        
 	        .section-body { 
         
@@ -3441,38 +3477,69 @@ input {
 		        padding-right: 15px;
 		    }
 		    
-		    .portlet-asset-publisher.start-publisher {
-		    
-		        margin-bottom: 3em;
-		        
-		        .fb-event-title {
-		        
-			          margin-bottom: 2em;
-			          
-			          .asset-metadata::after {
-			          
-			              content:"\A"; 
-			              white-space: pre;
-			          }
-		        }
-		    }
-		    
-		    .statements {
-		    
-			      .statement {
-			      			      			      
-			          blockquote {
-			          
-			             font-size: $lead-font-size;
-			             padding: 2em 0 0 0;
-			          }
-			          
-			          .author {
-			          
-			             padding: 0 0 1em 0;
-			          }
-			      }
-		    }
+		    .portlet-asset-publisher{
+    
+                .gallery {
+                
+                    padding: 0 15px;
+                        
+                    .row-fluid {
+                        margin-bottom: 2em;
+                    }
+                 
+                    .row-fluid [class*="span"] {
+                        float: left; 
+                        margin-left: 2.5641%;
+                    }
+                    
+                    .row-fluid [class*="span"]:first-child {
+                        margin-left: 0; 
+                    }
+                    
+                    .row-fluid .span6 {
+                        width: 48.7179%;
+                    }
+                    
+                    .image-wrapper {
+                        
+                        height: 140px;  /* ~ 4:3 */
+                                                                
+                        margin-bottom: 10px;
+                    }
+                    
+                }
+                
+                .statements {
+                
+                    .statement {
+                                                  
+                        blockquote {
+                            font-size: $lead-font-size;
+                            padding: 2em 0 0 0;
+                        }
+                      
+                        .author {
+                             padding: 0 0 1em 0;
+                        }
+                    }
+                }                
+                
+                &.start-publisher {
+            
+                    margin-bottom: 3em;
+                    
+                    .fb-event-title {
+                    
+                          margin-bottom: 2em;
+                          
+                          .asset-metadata::after {
+                          
+                              content:"\A"; 
+                              white-space: pre;
+                          }
+                    }                
+                }
+            }
 		    
 		    #footer {
 		    
@@ -3641,6 +3708,14 @@ input {
         }
         
         .portlet-asset-publisher {
+        
+            &.offet-1 .gallery {
+               margin-left: 0;
+            }
+            
+            &.offset-2 .gallery {
+                margin-left: 0;      
+            }        
         
             .asset-abstract.fb-display {
             
