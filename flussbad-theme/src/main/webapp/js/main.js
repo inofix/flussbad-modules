@@ -131,17 +131,14 @@ $( document ).ready(function() {
     
 	var publisher = $('.default-publisher'); 
 
-    var story = $('.project-story'); 
-    
-    // init the slideshow on load
-    resizeModal();
+    var story = $('.project-story');
         
     /**
      * Show a modal slideshow.
      */
     $(document).on('show.bs.modal', function(event) {
         
-        // resizeModal(); 
+        resizeModal(); 
                                 
         var button = $(event.relatedTarget); // Button that triggered the modal     
         var target = button.data('target');
@@ -150,12 +147,7 @@ $( document ).ready(function() {
         $(target).css("width", "90vw");                    
         $(target).css("visibility","visible");
         $(target).css("left", "5vw");
-                
-        $('.modal.slideshow img').imagesLoaded().progress( 
-            function( instance, image ) {
-                
-            var result = image.isLoaded ? 'loaded' : 'broken';
-        });     
+     
     });
     
     /**
@@ -412,23 +404,28 @@ function resizeModal() {
     var boxWidth = $(window).width() * boxScale;
     var boxHeight = $(window).height() * boxScale;    
     var boxRatio = boxWidth / boxHeight;
-        
-    $('.slides img').each(function() {
-        
-        // console.log(this);
-        var image = new Image();
-        image.src = $(this).attr("src");
-        
-        var nh = image.naturalHeight;
-        var nw = image.naturalWidth;
+    
+    $('.modal.slideshow img').imagesLoaded().progress( 
+        function( instance, image ) {
+            
+        var img = image.img;
+        var nh = img.naturalHeight;
+        var nw = img.naturalWidth;
         var imageRatio = nw / nh;
         
+        var caption = $(img).parent().find('.caption');
+        var wrapper = $(img).parent();
+        
         if (imageRatio < boxRatio) {
-            $(this).css("height", boxHeight);
-            $(this).css("width", "auto");
+            $(img).css("height", boxHeight);
+            $(img).css("width", "auto");
         } else {
-            $(this).css("width", boxWidth);
-            $(this).css("height", "auto");
+            $(img).css("width", boxWidth);
+            $(img).css("height", "auto");
         }
+        
+        $(caption).css("width", $(img).width());            
+        $(caption).css("left", ($(wrapper).width() - $(img).width()) / 2);
+        
     });
 }
