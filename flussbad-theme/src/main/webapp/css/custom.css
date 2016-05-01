@@ -1645,7 +1645,7 @@ input {
         
             top: 50%;
             transform: translateY(-50%);
-            position: relative;            
+            position: relative;  
         
             img {
                 margin-left: auto; 
@@ -1656,7 +1656,7 @@ input {
                 background: white; 
                 position: absolute; 
                 opacity: 0.7;
-                bottom: 0; 
+                bottom: 0;
                 top: auto;
             }
         }
@@ -3838,7 +3838,19 @@ input {
 		    
 		        clear: left;
 		    } 
-		}
+		}		
+		        
+        .portlet-boundary.portlet-asset-publisher {
+        
+            &.offet-1 .gallery {
+               margin-left: 0;
+            }
+            
+            &.offset-2 .gallery {
+                margin-left: 0;      
+            }        
+        }        
+		
         
         .lfr-meta-actions,
         .portlet-asset-categories-navigation .portlet-body,
@@ -3883,16 +3895,6 @@ input {
                padding: 7px 0 0;
                margin: 0;
             }
-            
-/*             &.affix-top { */
-            
-/*              .btn-navbar, */
-/* 	            .btn-navbar:hover, */
-/* 	            .btn-navbar:active { */
-	            
-/* 	               color: white; */
-/* 	            } */
-/*             } */
         }
         
         .navbar-fixed-top .navbar-inner,
@@ -4037,10 +4039,12 @@ input {
                 padding: 15px;
                 width: auto; 
             }
-        }        
-	}
+        }  
+              
+/* 	} */
     
-    @media(max-width: 979px) {
+/*     @media(max-width: 979px) { */
+
         .span3 .toc.affix, 
         .span3 .toc.affix-bottom {
             width: 210px; /** bootstrap span3 (220px) - 10px border */
