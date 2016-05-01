@@ -1602,8 +1602,6 @@ input {
         
     .modal.slideshow {
     
-        width: 90%;
-        left: 5%;
         background-color: transparent;
         margin-left: auto;
         box-shadow: none; 
@@ -1639,7 +1637,16 @@ input {
             }       
         }
         
+        .item {
+            height: 90vh;
+        }
+        
         .image-wrapper {
+        
+            top: 50%;
+            transform: translateY(-50%);
+            position: relative;            
+        
             img {
                 margin-left: auto; 
                 margin-right: auto;
@@ -3448,8 +3455,7 @@ input {
                padding-top: 30px;
                padding-bottom: 90px;
             }
-            
-                                
+                               
             .modal.slideshow .close {
                 font-size: 40px;
                 position: absolute;
