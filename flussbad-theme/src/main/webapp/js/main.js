@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2016-04-22 17:01 by Christian Berndt
- * Version:     1.2.8
+ * Modified:    2016-05-01 12:28 by Christian Berndt
+ * Version:     1.2.9
  */
 
 /**
@@ -120,8 +120,7 @@ AUI().ready('imageloader', function (Y) {
 
 $( document ).ready(function() {
 	
-    var windowWidth = $(window).width();
-    
+    var windowWidth = $(window).width();    
     var windowHeight = $(window).height();
 	
     var toggle = $('.toggle');
@@ -133,51 +132,31 @@ $( document ).ready(function() {
 	var publisher = $('.default-publisher'); 
 
     var story = $('.project-story'); 
+    
+    // init the slideshow on load
+    resizeModal();
         
     /**
      * Show a modal slideshow.
      */
     $(document).on('show.bs.modal', function(event) {
-                        
+        
+        // resizeModal(); 
+                                
         var button = $(event.relatedTarget); // Button that triggered the modal     
         var target = button.data('target');
         
-        var ratio = 0.9;
-        var boxHeight = windowHeight * ratio;
-        var boxWidth = windowWidth * ratio;
-        
-        $(target).css("width", boxWidth + "px");
-        $(target).css("height", boxHeight + "px");
-        
-        // center the gallery in the viewport        
-        var offset = (windowWidth - boxWidth) / 2;
-                    
+        $(target).css("height", "90vh");
+        $(target).css("width", "90vw");                    
         $(target).css("visibility","visible");
-        $(target).css("left",offset);
-        
-        var padding = 0; /* top and bottom padding */
-        
+        $(target).css("left", "5vw");
+                
         $('.modal.slideshow img').imagesLoaded().progress( 
             function( instance, image ) {
                 
             var result = image.isLoaded ? 'loaded' : 'broken';
-                        
-            var height = image.img.height; 
-            var width = image.img.width;
-            
-            if (width / height  >=  windowWidth / windowHeight ) {
-                
-                var padding = (boxHeight - height*ratio) / 2;
-                
-                 // extreme landscape
-                $(image.img).css("width", boxWidth + "px"); 
-                $(image.img).css("height", height * ratio); 
-                $(image.img).css("padding-top", padding + "px");
-                $(image.img).css("padding-bottom", padding + "px");    
-                
-            }
         });     
-    }); 
+    });
     
     /**
      * Move the slider in the modalSlideshow to the current image.
@@ -191,8 +170,7 @@ $( document ).ready(function() {
         
         slider.flexAnimate(index - 1);
 
-    });   
-    
+    });    
     
     /** 
      * show the categories-navigation and sitemap-portlet after the page 
@@ -421,6 +399,36 @@ $( document ).ready(function() {
 				label.addClass("muted");
 			}
 		})
-	}
-    
+	}    
 });
+
+$( window ).resize(function() { 
+    resizeModal();
+});
+
+function resizeModal() {
+    
+    var boxScale = 0.9;
+    var boxWidth = $(window).width() * boxScale;
+    var boxHeight = $(window).height() * boxScale;    
+    var boxRatio = boxWidth / boxHeight;
+        
+    $('.slides img').each(function() {
+        
+        // console.log(this);
+        var image = new Image();
+        image.src = $(this).attr("src");
+        
+        var nh = image.naturalHeight;
+        var nw = image.naturalWidth;
+        var imageRatio = nw / nh;
+        
+        if (imageRatio < boxRatio) {
+            $(this).css("height", boxHeight);
+            $(this).css("width", "auto");
+        } else {
+            $(this).css("width", boxWidth);
+            $(this).css("height", "auto");
+        }
+    });
+}

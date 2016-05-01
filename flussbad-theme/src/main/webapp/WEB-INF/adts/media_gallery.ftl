@@ -3,8 +3,8 @@
     format them in as a gallery.
     
     Created:    2016-04-16 13:07 by Christian Berndt
-    Modified:   2016-04-28 17:12 by Christian Berndt
-    Version:    1.0.2
+    Modified:   2016-04-28 19:52 by Christian Berndt
+    Version:    1.0.3
 -->
 
 <#assign fileEntryService  = serviceLocator.findService("com.liferay.portlet.documentlibrary.service.DLFileEntryLocalService") />
@@ -77,7 +77,7 @@
                                             </div>                            
                                         </li>
                                     <#else>
-                                        <li>
+                                        <li class="none">
                                             Only structures of type "Video" can be displayed
                                             in the Media Gallery.
                                         </li>
@@ -95,6 +95,9 @@
                                     <li class="item">
                                         <div class="image-wrapper">
                                             <img src="${imgSrc}?imageThumbnail=3" />
+                                            <#if caption?has_content >
+                                                <div class="caption">${caption}</div>
+                                            </#if>                                
                                         </div>
                                     </li>  
                                     
@@ -118,13 +121,15 @@
 
 
 <div class="container">
-    <div class="template gallery media">
+    <div class="template gallery media span8">
         <#if entries?has_content>                          
             <#assign i = 1 /> 
             
             <div class="row-fluid">          
                 
             <#list entries as entry>
+            
+                <div class="span6">
             
                 <#assign entry = entry />
                 <#assign assetRenderer = entry.assetRenderer />
@@ -153,15 +158,12 @@
                         <#assign config = "&format=json" />    
                         <#assign embed_url = service + url + config />
                         <#assign embed_url = httpUtil.encodeURL(embed_url) />
-        
-                        <div class="span3">
                                                 
-                            <a href="javascript:;" data-toggle="modal" data-target="#modalSlideshow" data-index="${i}">
-                            
-                                <div id="${namespace}_${i}_video_thumbnail" class="image-wrapper">&nbsp;</div>
-                            </a>
-                        </div>
+                        <a href="javascript:;" data-toggle="modal" data-target="#modalSlideshow" data-index="${i}">
                         
+                            <div id="${namespace}_${i}_video_thumbnail" class="image-wrapper">&nbsp;</div>
+                        </a>
+                                                    
                         <script>
                         <!--       
                             var ${namespace}_${i}_oEmbedURL = "${layout_url}?p_p_id=proxyportlet_WAR_proxyportlet&p_p_lifecycle=2&_proxyportlet_WAR_proxyportlet_embedURL= ${embed_url}";
@@ -213,7 +215,7 @@
                         </script> 
                     
                     <#else>
-                        <div class="span3">
+                        <div class="none">
                             Only structures of type "Video" can be displayed
                             in the Media Gallery.
                         </div>
@@ -228,27 +230,23 @@
                 
                     <#assign style = "background-image: url('/documents/" + groupId + "/" + fileEntry.folder.folderId + "/" + title + "?imageThumbnail=3');" /> 
                     <#assign caption = latestFileVersion.getDescription() />              
-                
-                    <div class="span3">
-                    
-                        <a href="javascript:;" data-toggle="modal" data-target="#modalSlideshow" data-index="${i}">
-                            <div class="image-wrapper" style="${style}">&nbsp;</div>
-                        </a>
-                        <#if caption?has_content >
-                            <div class="caption">${caption}</div>
-                        </#if>                    
-                    
-                    </div>  
-                    
+                                    
+                    <a href="javascript:;" data-toggle="modal" data-target="#modalSlideshow" data-index="${i}">
+                        <div class="image-wrapper" style="${style}">&nbsp;</div>
+                    </a>
+                    <#if caption?has_content >
+                        <div class="caption">${caption}</div>
+                    </#if>                    
+                                        
                 <#else>
                 
-                    <div class="span3">
-                        This is neither a video nor a document.
-                    </div>                        
+                    <div class="none">This is neither a video nor a document.</div>
                    
-                </#if>            
+                </#if>
                 
-                <#if i%4 == 0 && i gt 0 >
+                </div> <#-- /.span6 -->           
+                
+                <#if i%2 == 0 && i gt 0 >
                     </div>
                     <div class="row-fluid">
                 </#if>
@@ -262,5 +260,5 @@
         <#else>
             <div class="alert alert-info"><@liferay.language key="there-are-no-results" /></div>
         </#if>              
-    </div> <#-- /.media -->
+    </div> <#-- /.media .span8 -->
 </div> <#-- /.container -->
