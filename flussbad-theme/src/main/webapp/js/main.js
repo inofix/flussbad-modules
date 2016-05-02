@@ -356,7 +356,22 @@ $( document ).ready(function() {
 	 */
     $('.slideshow .flexslider').flexslider({
         animationLoop: true,
-        slideshow: false,    
+        slideshow: false, 
+        after: function(slider){
+            
+            // select the current slide
+            var current = slider.find("li:nth-of-type("+(slider.currentSlide+1)+")")[0];
+            
+            var img = $(current).find('img');
+            var caption = $(current).find('.caption');
+            var wrapper = $(img).parent();  
+            var padding = 2;
+            
+            $(caption).css("width", ($(img).width() - 2*padding) + "px" );            
+            $(caption).css("left", ($(wrapper).width() - $(img).width()) / 2);
+            $(caption).css("display", "block");
+            
+        },
         prevText:"",      
         nextText:""         
     });	
@@ -405,6 +420,7 @@ function resizeModal() {
     var boxHeight = $(window).height() * boxScale;    
     var boxRatio = boxWidth / boxHeight;
     
+    // rescale images
     $('.modal.slideshow img').imagesLoaded().progress( 
         function( instance, image ) {
             
@@ -412,9 +428,6 @@ function resizeModal() {
         var nh = img.naturalHeight;
         var nw = img.naturalWidth;
         var imageRatio = nw / nh;
-        
-        var caption = $(img).parent().find('.caption');
-        var wrapper = $(img).parent();
         
         if (imageRatio < boxRatio) {
             $(img).css("height", boxHeight);
@@ -424,8 +437,16 @@ function resizeModal() {
             $(img).css("height", "auto");
         }
         
-        $(caption).css("width", $(img).width());            
+        // TODO: merge with the corresponding method in the gallery flexslider.
+        var caption = $(img).parent().find('.caption');
+        var wrapper = $(img).parent();
+        var padding = 2; 
+        
+        $(caption).css("width", ($(img).width() - 2*padding) + "px" );            
         $(caption).css("left", ($(wrapper).width() - $(img).width()) / 2);
         
     });
+    
+    // rescale videos
+    
 }

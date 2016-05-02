@@ -1405,7 +1405,10 @@ input {
             }
           
             
-            .image-wrapper {
+            .image-wrapper,
+            .none,
+            .video-wrapper,
+            {
                 
                 height: 203px;  /* ~ 4:3 */
                                 
@@ -1634,41 +1637,50 @@ input {
                 .next {
                     right: 0;
                 }
-            }       
-        }
-        
-        .item {
-            height: 90vh;
-        }
-        
-        .image-wrapper {
-        
-            top: 50%;
-            transform: translateY(-50%);
-            position: relative;  
-        
-            img {
-                margin-left: auto; 
-                margin-right: auto;
+            } 
+            
+            .item {
+                height: 90vh;
             }
             
-            .caption {
-                background: white; 
-                position: absolute; 
-                opacity: 0.7;
-                bottom: 0;
-                top: auto;
+            .image-wrapper {
+            
+                top: 50%;
+                transform: translateY(-50%);
+                position: relative;  
+            
+                img {
+                    margin-left: auto; 
+                    margin-right: auto;
+                }
+                
+                .caption {
+                    background: white; 
+                    position: absolute; 
+                    opacity: 0.7;
+                    bottom: 0;
+                    top: auto;
+                    padding: 2px;
+                }
             }
-        }
+            
+            .none,
+            .video-wrapper { 
+                top: 50%;
+                transform: translateY(-50%);
+                position: relative;
+                text-align: center; 
+            }         
+            
+            .none {
+                color: white;
+            }          
+        }       
         
         .modal-body {
             overflow: hidden;
             max-height: none;
             padding: 0;
-        }
-        
-        .video-wrapper {
-            text-align: center;
         }
         
         &.fade {

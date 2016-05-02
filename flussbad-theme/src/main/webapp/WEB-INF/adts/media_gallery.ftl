@@ -3,8 +3,8 @@
     format them in as a gallery.
     
     Created:    2016-04-16 13:07 by Christian Berndt
-    Modified:   2016-04-28 19:52 by Christian Berndt
-    Version:    1.0.3
+    Modified:   2016-05-01 23:09 by Christian Berndt
+    Version:    1.0.4
 -->
 
 <#assign fileEntryService  = serviceLocator.findService("com.liferay.portlet.documentlibrary.service.DLFileEntryLocalService") />
@@ -43,72 +43,71 @@
                                             
                             <#list entries as entry>
                             
-                                <#assign entry = entry />
-                                <#assign assetRenderer = entry.assetRenderer />
-                                <#assign className = assetRenderer.className />              
+                                <li class="item">
                             
-                                <#if "com.liferay.portlet.journal.model.JournalArticle" == className >
+                                    <#assign entry = entry />
+                                    <#assign assetRenderer = entry.assetRenderer />
+                                    <#assign className = assetRenderer.className />              
                                 
-                                    <#assign article = journalArticleService.getLatestArticle(entry.getClassPK()) />
+                                    <#if "com.liferay.portlet.journal.model.JournalArticle" == className >
                                     
-                                    <#assign docXml = saxReaderUtil.read(entry.getAssetRenderer().getArticle().getContent()) />
-                                    
-                                    <#assign service = docXml.valueOf("//dynamic-element[@name='service']/dynamic-content/text()") />
-                                    <#assign url = docXml.valueOf("//dynamic-element[@name='url']/dynamic-content/text()") />
-                                   
-                                    <#assign viewURL = ""/>
-                                    <#assign assetRenderer = entry.getAssetRenderer() />
-                                    
-                                    <#if assetRenderer.getURLViewInContext(renderRequest, renderResponse, null)?? >                     
-                                        <#assign viewURL = assetRenderer.getURLViewInContext(renderRequest, renderResponse, null) />
-                                    <#else>
-                                        <#assign viewURL = assetPublisherHelper.getAssetViewURL(renderRequest, renderResponse, entry) />                        
-                                    </#if>
-                                    
-                                    <#if url?has_content>
-                                    
-                                        <#assign config = "&format=json" />    
-                                        <#assign embed_url = service + url + config />
-                                        <#assign embed_url = httpUtil.encodeURL(embed_url) />
-                                        <li>
+                                        <#assign article = journalArticleService.getLatestArticle(entry.getClassPK()) />
+                                        
+                                        <#assign docXml = saxReaderUtil.read(entry.getAssetRenderer().getArticle().getContent()) />
+                                        
+                                        <#assign service = docXml.valueOf("//dynamic-element[@name='service']/dynamic-content/text()") />
+                                        <#assign url = docXml.valueOf("//dynamic-element[@name='url']/dynamic-content/text()") />
+                                       
+                                        <#assign viewURL = ""/>
+                                        <#assign assetRenderer = entry.getAssetRenderer() />
+                                        
+                                        <#if assetRenderer.getURLViewInContext(renderRequest, renderResponse, null)?? >                     
+                                            <#assign viewURL = assetRenderer.getURLViewInContext(renderRequest, renderResponse, null) />
+                                        <#else>
+                                            <#assign viewURL = assetPublisherHelper.getAssetViewURL(renderRequest, renderResponse, entry) />                        
+                                        </#if>
+                                        
+                                        <#if url?has_content>
+                                        
+                                            <#assign config = "&format=json" />    
+                                            <#assign embed_url = service + url + config />
+                                            <#assign embed_url = httpUtil.encodeURL(embed_url) />
                                             <div class="video-wrapper">
                                                 <#-- embed_url = ${embed_url} -->
                                                 <div id="${namespace}_${i}_video" class="video">&nbsp;</div> 
                                             </div>                            
-                                        </li>
-                                    <#else>
-                                        <li class="none">
-                                            Only structures of type "Video" can be displayed
-                                            in the Media Gallery.
-                                        </li>
-                                    </#if>
-                                
-                                <#elseif "com.liferay.portlet.documentlibrary.model.DLFileEntry" == className >
-                
-                                    <#assign fileEntry = fileEntryService.getFileEntry(entry.classPK) />                
-                                    <#assign latestFileVersion = fileEntry.getFileVersion() />
-                                    <#assign latestFileVersionStatus = latestFileVersion.getStatus() />
-                                    <#assign fileTitle = httpUtil.encodeURL(htmlUtil.unescape(latestFileVersion.getTitle())) />
-                                
-                                    <#assign imgSrc = "/documents/" + groupId + "/" + fileEntry.folder.folderId + "/" + fileTitle /> 
-                                    <#assign caption = latestFileVersion.getDescription() />
-                                    <li class="item">
+                                        <#else>
+                                            <div class="none">
+                                                Only structures of type "Video" can be displayed
+                                                in the Media Gallery.
+                                            </div>
+                                        </#if>
+                                    
+                                    <#elseif "com.liferay.portlet.documentlibrary.model.DLFileEntry" == className >
+                    
+                                        <#assign fileEntry = fileEntryService.getFileEntry(entry.classPK) />                
+                                        <#assign latestFileVersion = fileEntry.getFileVersion() />
+                                        <#assign latestFileVersionStatus = latestFileVersion.getStatus() />
+                                        <#assign fileTitle = httpUtil.encodeURL(htmlUtil.unescape(latestFileVersion.getTitle())) />
+                                    
+                                        <#assign imgSrc = "/documents/" + groupId + "/" + fileEntry.folder.folderId + "/" + fileTitle /> 
+                                        <#assign caption = latestFileVersion.getDescription() />
                                         <div class="image-wrapper">
                                             <img src="${imgSrc}?imageThumbnail=3" />
                                             <#if caption?has_content >
-                                                <div class="caption">${caption}</div>
+                                                <div class="caption" style="display: none;">${caption}</div>
                                             </#if>                                
                                         </div>
-                                    </li>  
+                                        
+                                    <#else>
+                                        <div class="none">
+                                            This is neither a video nor a document.  
+                                        </div>              
+                                    </#if>
                                     
-                                <#else>
-                                    <li>
-                                        This is neither a video nor a document.
-                                    </li>                        
-                
-                                </#if>
+                                    <#assign i = i+1 /> 
                                 
-                                <#assign i = i+1 />                    
+                                </li>                   
                     
                             </#list>
                         </#if>
@@ -183,22 +182,46 @@
                                     var html = data.html;
                                     var provider_name = data.provider_name;
                                     var thumbnail_url = data.thumbnail_url;
+                                    
                                     var videoHeight = data.height; 
                                     var videoWidth = data.width;
-                                                                         
-                                    var windowWidth = $(window).width();
-                                    var windowHeight = $(window).height(); 
-                                    
+                                            
                                     var scale = 0.9;
-                                     
+                                    var buttonWidth = 40;
+                                                                         
+                                    var boxWidth = $(window).width() * scale - buttonWidth;
+                                    var boxHeight = $(window).height() * scale; 
+                                    var boxRatio = boxWidth / boxHeight;                                   
+                                                                         
                                     // set the size of the embedded video iframes
-                                    var width = windowWidth * scale;
-                                    var height = windowHeight * scale;
+                                    var width = boxWidth;
+                                    var height = boxHeight;
                                                                                                                
                                     // preserve the videos ratio 
-                                    var ratio = videoWidth / videoHeight; 
-                                    height = width / ratio;                                   
+                                    var videoRatio = videoWidth / videoHeight;
                                     
+                                    console.log('videoRatio = ' + videoRatio); 
+                                    console.log('boxRatio = ' + boxRatio);                                    
+                                    
+                                    if (videoRatio > boxRatio) {
+                                        console.log('box is more portrait'); 
+                                        width = boxWidth;
+                                        var ratio = videoWidth / boxWidth; 
+                                        height = videoHeight / ratio;
+                                    } else {
+                                        console.log('box is more landscape');                                    
+                                        height = boxHeight;
+                                        var ratio = videoHeight / boxHeight; 
+                                        width = videoWidth / ratio;
+                                    }
+                                    console.log('boxWidth = ' + boxWidth);                                    
+                                    console.log('videoWith = ' + videoWidth);                                    
+                                    console.log('width = ' + width);                                    
+                                    
+                                    console.log('boxHeight = ' + boxHeight);  
+                                    console.log('videoHeight = ' + videoHeight);  
+                                    console.log('height = ' + height);                                    
+                                                                        
                                     html = html.replace(videoWidth, width); 
                                     html = html.replace(videoHeight, height);
                                      
