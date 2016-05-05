@@ -3,8 +3,8 @@
     format them in as a gallery.
     
     Created:    2016-04-16 13:07 by Christian Berndt
-    Modified:   2016-05-05 12:20 by Christian Berndt
-    Version:    1.0.5
+    Modified:   2016-05-05 14:44 by Christian Berndt
+    Version:    1.0.6
 -->
 
 <#assign fileEntryService  = serviceLocator.findService("com.liferay.portlet.documentlibrary.service.DLFileEntryLocalService") />
@@ -184,7 +184,8 @@
                                     var html = data.html;
                                     var provider_name = data.provider_name;
                                     var thumbnail_url = data.thumbnail_url;
-                                    
+                                    var title = data.title;
+                                                                        
                                     var videoHeight = data.height; 
                                     var videoWidth = data.width;
                                             
@@ -200,29 +201,17 @@
                                     var height = boxHeight;
                                                                                                                
                                     // preserve the videos ratio 
-                                    var videoRatio = videoWidth / videoHeight;
-                                    
-                                    console.log('videoRatio = ' + videoRatio); 
-                                    console.log('boxRatio = ' + boxRatio);                                    
+                                    var videoRatio = videoWidth / videoHeight;                                   
                                     
                                     if (videoRatio > boxRatio) {
-                                        console.log('box is more portrait'); 
                                         width = boxWidth;
                                         var ratio = videoWidth / boxWidth; 
                                         height = videoHeight / ratio;
                                     } else {
-                                        console.log('box is more landscape');                                    
                                         height = boxHeight;
                                         var ratio = videoHeight / boxHeight; 
                                         width = videoWidth / ratio;
-                                    }
-                                    console.log('boxWidth = ' + boxWidth);                                    
-                                    console.log('videoWith = ' + videoWidth);                                    
-                                    console.log('width = ' + width);                                    
-                                    
-                                    console.log('boxHeight = ' + boxHeight);  
-                                    console.log('videoHeight = ' + videoHeight);  
-                                    console.log('height = ' + height);                                    
+                                    }                                
                                                                         
                                     html = html.replace(videoWidth, width); 
                                     html = html.replace(videoHeight, height);
@@ -230,6 +219,10 @@
                                     // load the thumbnail into the gallery
                                     var style = 'background-image: url("' +  thumbnail_url + '");';                                                    
                                     $("#${namespace}_${i}_video_thumbnail").attr("style", style);
+                                    
+                                    // insert the title as a caption after the video-wrapper
+                                    var caption = '<div class="caption">' + title + '</div>'; 
+                                    $(caption).insertAfter($("#${namespace}_${i}_video_thumbnail")); 
                                     
                                     // and the video into the slider                 
                                     $("#${namespace}_${i}_video").html(html);                  
@@ -258,10 +251,10 @@
                                     
                     <a href="javascript:;" data-toggle="modal" data-target="#modalSlideshow" data-index="${i}">
                         <div class="image-wrapper" style="${style}">&nbsp;</div>
-                    </a>
-                    <#if caption?has_content >
-                        <div class="caption">${caption}</div>
-                    </#if>                    
+                        <#if caption?has_content >
+                            <div class="caption">${caption}</div>
+                        </#if>                        
+                    </a>                   
                                         
                 <#else>
                 
