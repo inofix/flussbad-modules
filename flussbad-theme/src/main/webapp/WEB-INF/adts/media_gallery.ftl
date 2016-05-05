@@ -224,7 +224,7 @@
                                     var caption = '<div class="caption">' + title + '</div>'; 
                                     $(caption).insertAfter($("#${namespace}_${i}_video_thumbnail")); 
                                     
-                                    // and the video into the slider                 
+                                    // and load the video frame into the slider                 
                                     $("#${namespace}_${i}_video").html(html);                  
                                          
                                 });          

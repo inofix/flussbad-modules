@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2016-05-01 12:28 by Christian Berndt
- * Version:     1.2.9
+ * Modified:    2016-05-05 18:58 by Christian Berndt
+ * Version:     1.3.0
  */
 
 /**
@@ -356,12 +356,14 @@ $( document ).ready(function() {
 	 */
     $('.slideshow .flexslider').flexslider({
         animationLoop: true,
-        slideshow: false, 
+        slideshow: false,
+        
         after: function(slider){
             
             // select the current slide
             var current = slider.find("li:nth-of-type("+(slider.currentSlide+1)+")")[0];
             
+            // adjust the caption div
             var img = $(current).find('img');
             var caption = $(current).find('.caption');
             var wrapper = $(img).parent();  
@@ -370,6 +372,17 @@ $( document ).ready(function() {
             $(caption).css("width", ($(img).width() - 2*padding) + "px" );            
             $(caption).css("left", ($(wrapper).width() - $(img).width()) / 2);
             $(caption).css("display", "block");
+            
+            var frame = $(current).find("iframe")[0];
+            
+            // reset all videos except for the current
+            $(".slideshow iframe").each(function( index ) {
+                var src = $( this ).attr("src"); 
+                if ($(frame).attr("src") != src) {                   
+                    $( this ).attr("src", ""); 
+                    $( this ).attr("src", src); 
+                }
+            });
             
         },
         prevText:"",      
@@ -445,8 +458,5 @@ function resizeModal() {
         $(caption).css("width", ($(img).width() - 2*padding) + "px" );            
         $(caption).css("left", ($(wrapper).width() - $(img).width()) / 2);
         
-    });
-    
-    // rescale videos
-    
+    });    
 }
