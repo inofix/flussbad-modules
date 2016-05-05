@@ -1407,14 +1407,29 @@ input {
             
             .image-wrapper,
             .none,
-            .video-wrapper,
-            {
+            .video-wrapper {
                 
-                height: 203px;  /* ~ 4:3 */
-                                
-                @include background-cover();
-                
+                color: $color-turquois;
+                height: 150px;  /* applies only < 768px */
                 margin-bottom: 10px;
+                position: relative; 
+                text-align: center; 
+                                                
+                @include background-cover();                
+                
+                .icon {
+                    top: 50%;
+                    transform: translateY(-50%);
+                    position: absolute; 
+                    font-size: 60px;
+                    opacity: .85;                     
+                }
+                
+                &:hover {
+                    .icon {
+                        opacity: 1;                       
+                    }
+                }
             }
             
         }
@@ -4051,11 +4066,7 @@ input {
                 padding: 15px;
                 width: auto; 
             }
-        }  
-              
-/* 	} */
-    
-/*     @media(max-width: 979px) { */
+        }
 
         .span3 .toc.affix, 
         .span3 .toc.affix-bottom {
@@ -4075,6 +4086,20 @@ input {
         
             float: right;
         }
+        
+        .portlet-asset-publisher {
+    
+            .gallery {
+                
+                .image-wrapper,
+                .none,
+                .video-wrapper {
+                    
+                    height: 170px;  /* ~ 16:9 */
+                    
+                }
+            }
+        }         
     
         .columns-max,
         .lfr-meta-actions,
@@ -4104,6 +4129,20 @@ input {
     
     
     @media (min-width: 1200px) {
+    
+        .portlet-asset-publisher {
+    
+            .gallery {
+                
+                .image-wrapper,
+                .none,
+                .video-wrapper {
+                    
+                    height: 210px;  /* ~ 16:9 */
+                    
+                }
+            }
+        }      
 
         .portlet-site-map.project-sections .portlet-body,
     	.taglib-asset-categories-navigation .accordion-group {
@@ -4155,6 +4194,20 @@ input {
     }
     
     @media (max-width: 979px) and (min-width: 768px) {
+    
+        .portlet-asset-publisher {
+    
+            .gallery {
+                
+                .image-wrapper,
+                .none,
+                .video-wrapper {
+                    
+                    height: 130px;  /* ~ 16:9 */
+                    
+                }
+            }
+        }    
     
         .columns-max,
         .lfr-meta-actions,
