@@ -3,8 +3,8 @@
     format them in as a gallery.
     
     Created:    2016-04-16 13:07 by Christian Berndt
-    Modified:   2016-05-01 23:09 by Christian Berndt
-    Version:    1.0.4
+    Modified:   2016-05-05 12:20 by Christian Berndt
+    Version:    1.0.5
 -->
 
 <#assign fileEntryService  = serviceLocator.findService("com.liferay.portlet.documentlibrary.service.DLFileEntryLocalService") />
@@ -73,7 +73,6 @@
                                             <#assign embed_url = service + url + config />
                                             <#assign embed_url = httpUtil.encodeURL(embed_url) />
                                             <div class="video-wrapper">
-                                                <#-- embed_url = ${embed_url} -->
                                                 <div id="${namespace}_${i}_video" class="video">&nbsp;</div> 
                                             </div>                            
                                         <#else>
@@ -160,7 +159,10 @@
                                                 
                         <a href="javascript:;" data-toggle="modal" data-target="#modalSlideshow" data-index="${i}">
                         
-                            <div id="${namespace}_${i}_video_thumbnail" class="image-wrapper">&nbsp;</div>
+                            <div id="${namespace}_${i}_video_thumbnail" class="video-wrapper">
+                                <#-- <span class="icon-youtube-play"></span> -->
+                                <span class="icon icon-play-sign"></span>
+                            </div>
                         </a>
                                                     
                         <script>
