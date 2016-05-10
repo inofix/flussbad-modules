@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2016-05-05 18:58 by Christian Berndt
- * Version:     1.3.0
+ * Modified:    2016-05-09 14:46 by Christian Berndt
+ * Version:     1.3.1
  */
 
 /**
@@ -64,11 +64,13 @@ YUI().use(
     	
         var portlet = Y.one('#p_p_id_82_');
 
-        var trigger = Y.one('#langPopover');
+        var trigger1 = Y.one('#langPopover1');
+        var trigger2 = Y.one('#langPopover2');
 
-		var popover = new Y.Popover({
+        // Desktop
+		var popover1 = new Y.Popover({
 			align: {
-			    node: trigger,
+			    node: trigger1,
 			    points:[Y.WidgetPositionAlign.TC, Y.WidgetPositionAlign.BC]
 			},
 			bodyContent: portlet,
@@ -78,17 +80,43 @@ YUI().use(
 			visible: false,
 			zIndex : 100
 		}).render();
+		
+		// Tablet and mobile
+        var popover2 = new Y.Popover({
+            align: {
+                node: trigger2,
+                points:[Y.WidgetPositionAlign.TC, Y.WidgetPositionAlign.BC]
+            },
+            bodyContent: portlet,
+            plugins : [ Y.Plugin.WidgetAnim ],
+            position: 'bottom',
+            cssClass: 'popover-lang',
+            visible: false,
+            zIndex : 100
+        }).render();		
 
-      popover.get('boundingBox').on('clickoutside', function() {
-           popover.set('visible', false);
-      });
+		popover1.get('boundingBox').on('clickoutside', function() {
+		    popover1.set('visible', false);
+		});
+		
+	    popover2.get('boundingBox').on('clickoutside', function() {
+	        popover2.set('visible', false);
+	    });
 
-      if (trigger) {
-          trigger.on('click', function(e) {
-              popover.set('visible', !popover.get('visible'));
-                  e.stopPropagation();
-          });
-      }
+		if (trigger1) {
+		    trigger1.on('click', function(e) {
+		        popover1.set('visible', !popover1.get('visible'));
+		        e.stopPropagation();
+		    });
+		}
+		
+        if (trigger2) {
+            trigger2.on('click', function(e) {
+                popover2.set('visible', !popover2.get('visible'));
+                popover2.set('y', 50);
+                e.stopPropagation();
+            });
+        }
     }
 );
 

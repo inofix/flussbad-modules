@@ -3899,6 +3899,11 @@ input {
 
     
     @media (max-width: 979px) { 
+        
+        .flex-direction-nav {
+            
+           display: none;
+        }
     
         .navbar-fixed-top, 
         .navbar-fixed-bottom, 
@@ -3956,53 +3961,65 @@ input {
             }
         }
         
-        #navigation .portlet-site-map {
-        
-            float: none;
-            
-            .portlet-body {
-            
-                ul {
+        #navigation  {
                 
-                    padding: 20px 0;
-                    margin: 0;
+            .container {
+            
+                padding: 0 15px;
+     
+            } 
+            
+            #langPopover2 {
+                float: right;
+                font-size: 22px;
+                margin: 8px 20px;
+            }
+            
+            .language {
+                        
+                #langPopover1 {
+                    display: none;
+                }
+            }
+
+            
+            .portlet-site-map {
+            
+                float: none;
+                
+                .portlet-body {
+                
+                    ul {
                     
-                    li {
-                    
-                        display: block;
-                        padding: 5px 0;
-                    
-                        a {
-                     
-                            padding: 0;
+                        padding: 20px 0;
+                        margin: 0;
+                        
+                        li {
+                        
+                            display: block;
+                            padding: 5px 0;
+                        
+                            a {
+                         
+                                padding: 0;
+                            }
                         }
                     }
                 }
-            }
-        }
+            }            
         
-        #navigation .search {
-        
-            display: none;
+            .search {
             
-            float: none;
-            
-            a {
+                display: none;
                 
-                padding: 10px 0 0 0;
-            }
+                float: none;
+                
+                a {
+                    
+                    padding: 10px 0 0 0;
+                }
+            }       
         }
-        
-        .flex-direction-nav {
-            
-           display: none;
-        }
-        
-        #navigation .container {
-        
-            padding: 0 15px;
- 
-        } 
 
 	    .portlet-asset-categories-navigation,
 	    .portlet-site-map.project-sections {
