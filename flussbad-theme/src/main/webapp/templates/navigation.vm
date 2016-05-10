@@ -3,8 +3,8 @@
 ## the example of navigation.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:59 by Christian Berndt
-## Modified:    2015-10-01 14:56 by Christian Berndt
-## Version:     1.0.7
+## Modified:    2016-05-10 14:47 by Christian Berndt
+## Version:     1.0.8
 ##
 
 #set ($brand= $theme_display.getThemeSetting('brand'))
@@ -15,6 +15,7 @@
             <button type="button" class="btn btn-navbar"  id="nav_toggle" data-navid="navCollapse" data-toggle="collapse" data-target=".nav-collapse">
                 <span class="icon-reorder"></span>
             </button>
+            <a href="javascript:;" id="langPopover2"><span class="icon icon-globe"></span></a>      
             <a class="brand" href="$site_default_url" title="#language_format ("go-to-x", ["home"])">$brand</a>
             <div class="collapse nav-collapse">
                 <ul aria-label="#language ("site-pages")" id="navCollapse" class="nav" role="menubar">
@@ -64,7 +65,7 @@
                     #end
                     
                     <li class="language">
-                        <a href="javascript:;" id="langPopover"><span class="icon icon-globe"></span></a>
+                        <a href="javascript:;" id="langPopover1"><span class="icon icon-globe"></span></a>
                             
                         ##
                         ## Include Liferay's language-select portlet
