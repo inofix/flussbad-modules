@@ -288,7 +288,6 @@
                                     
                     <a href="javascript:;" data-toggle="modal" data-target="#modalSlideshow" data-index="${i}">
                         <div class="image-wrapper" style="${style}">&nbsp;</div>
-                        <div>${fileEntry.extension}</div>
                         <#if caption?has_content >
                             <div class="caption">${caption}</div>
                         </#if>                        
