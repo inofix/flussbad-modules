@@ -61,6 +61,8 @@ YUI().use('event', 'node', function(Y) {
 YUI().use(
     'aui-popover','widget-anim',
     function(Y) {
+        
+        var winWidth = Y.one("body").get("winWidth"); 
     	
         var portlet = Y.one('#p_p_id_82_');
 
@@ -68,54 +70,57 @@ YUI().use(
         var trigger2 = Y.one('#langPopover2');
 
         // Desktop
-		var popover1 = new Y.Popover({
-			align: {
-			    node: trigger1,
-			    points:[Y.WidgetPositionAlign.TC, Y.WidgetPositionAlign.BC]
-			},
-			bodyContent: portlet,
-			plugins : [ Y.Plugin.WidgetAnim ],
-			position: 'bottom',
-			cssClass: 'popover-lang',
-			visible: false,
-			zIndex : 100
-		}).render();
-		
-		// Tablet and mobile
-        var popover2 = new Y.Popover({
-            align: {
-                node: trigger2,
-                points:[Y.WidgetPositionAlign.TC, Y.WidgetPositionAlign.BC]
-            },
-            bodyContent: portlet,
-            plugins : [ Y.Plugin.WidgetAnim ],
-            position: 'bottom',
-            cssClass: 'popover-lang',
-            visible: false,
-            zIndex : 100
-        }).render();		
-
-		popover1.get('boundingBox').on('clickoutside', function() {
-		    popover1.set('visible', false);
-		});
-		
-	    popover2.get('boundingBox').on('clickoutside', function() {
-	        popover2.set('visible', false);
-	    });
-
-		if (trigger1) {
-		    trigger1.on('click', function(e) {
-		        popover1.set('visible', !popover1.get('visible'));
-		        e.stopPropagation();
-		    });
-		}
-		
-        if (trigger2) {
-            trigger2.on('click', function(e) {
-                popover2.set('visible', !popover2.get('visible'));
-                popover2.set('y', 50);
-                e.stopPropagation();
-            });
+        if (winWidth > 979) {
+    		var popover1 = new Y.Popover({
+    			align: {
+    			    node: trigger1,
+    			    points:[Y.WidgetPositionAlign.TC, Y.WidgetPositionAlign.BC]
+    			},
+    			bodyContent: portlet,
+    			plugins : [ Y.Plugin.WidgetAnim ],
+    			position: 'bottom',
+    			cssClass: 'popover-lang',
+    			visible: false,
+    			zIndex : 100
+    		}).render();
+    		
+	        popover1.get('boundingBox').on('clickoutside', function() {
+	            popover1.set('visible', false);
+	        });
+	        
+	        if (trigger1) {
+	            trigger1.on('click', function(e) {
+	                popover1.set('visible', !popover1.get('visible'));
+	                e.stopPropagation();
+	            });
+	        }	        
+	        
+        } else {
+            // Tablet and mobile
+            var popover2 = new Y.Popover({
+                align: {
+                    node: trigger2,
+                    points:[Y.WidgetPositionAlign.TC, Y.WidgetPositionAlign.BC]
+                },
+                bodyContent: portlet,
+                plugins : [ Y.Plugin.WidgetAnim ],
+                position: 'bottom',
+                cssClass: 'popover-lang',
+                visible: false,
+                zIndex : 100
+            }).render();
+            
+            popover2.get('boundingBox').on('clickoutside', function() {
+                popover2.set('visible', false);
+            }); 
+            
+            if (trigger2) {
+                trigger2.on('click', function(e) {
+                    popover2.set('visible', !popover2.get('visible'));
+                    popover2.set('y', 50);
+                    e.stopPropagation();
+                });
+            }           
         }
     }
 );
