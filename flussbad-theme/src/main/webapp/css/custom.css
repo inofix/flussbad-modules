@@ -582,6 +582,10 @@ input {
             }
         }
         
+        #langPopover2 {
+            display: none;
+        }
+        
         li {
             font-size: $default-font-size;
             font-weight: 600;
@@ -3970,6 +3974,7 @@ input {
             } 
             
             #langPopover2 {
+                display: block;
                 float: right;
                 font-size: 22px;
                 margin: 8px 20px;
