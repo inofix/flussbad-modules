@@ -3,8 +3,8 @@
     format them in as a gallery.
     
     Created:    2016-04-16 13:07 by Christian Berndt
-    Modified:   2016-05-05 14:44 by Christian Berndt
-    Version:    1.0.6
+    Modified:   2016-05-10 15:54 by Christian Berndt
+    Version:    1.0.7
 -->
 
 <#assign fileEntryService  = serviceLocator.findService("com.liferay.portlet.documentlibrary.service.DLFileEntryLocalService") />
@@ -28,6 +28,46 @@
 
 <#assign layout_url = prefix + layout.friendlyURL />
 
+<#assign filteredEntries = [] />
+
+<#list entries as entry>
+    
+    <#assign entry = entry />
+    <#assign assetRenderer = entry.assetRenderer />
+    <#assign className = assetRenderer.className />              
+    
+    <#if "com.liferay.portlet.journal.model.JournalArticle" == className >
+    
+        <#assign docXml = saxReaderUtil.read(entry.getAssetRenderer().getArticle().getContent()) />
+        
+        <#assign service = docXml.valueOf("//dynamic-element[@name='service']/dynamic-content/text()") />
+        <#assign url = docXml.valueOf("//dynamic-element[@name='url']/dynamic-content/text()") />
+          
+        <#if url?has_content>
+        
+            <#assign filteredEntries = filteredEntries + [entry] />
+                            
+        </#if>
+        
+    <#elseif "com.liferay.portlet.documentlibrary.model.DLFileEntry" == className >
+
+        <#assign fileEntry = fileEntryService.getFileEntry(entry.classPK) />
+        
+        <#assign formats = ["gif", "jpg", "png", "tif"] />
+        
+        <#list formats as format>
+        
+            <#if fileEntry.extension?lower_case == format >
+    
+                <#assign filteredEntries = filteredEntries + [entry] />
+                
+            </#if>
+        
+        </#list>
+           
+    </#if>
+    
+</#list>
 
 <!-- Modal slideshow -->
 <div class="modal slideshow fade" id="modalSlideshow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -38,10 +78,11 @@
                 <div id="slider" class="flexslider">
                     <ul class="slides">
                                     
-                        <#if entries?has_content>                          
+                        <#if filteredEntries?has_content> 
+                                                 
                             <#assign i = 1 /> 
                                             
-                            <#list entries as entry>
+                            <#list filteredEntries as entry>
                             
                                 <li class="item">
                             
@@ -50,9 +91,7 @@
                                     <#assign className = assetRenderer.className />              
                                 
                                     <#if "com.liferay.portlet.journal.model.JournalArticle" == className >
-                                    
-                                        <#assign article = journalArticleService.getLatestArticle(entry.getClassPK()) />
-                                        
+                                                                            
                                         <#assign docXml = saxReaderUtil.read(entry.getAssetRenderer().getArticle().getContent()) />
                                         
                                         <#assign service = docXml.valueOf("//dynamic-element[@name='service']/dynamic-content/text()") />
@@ -120,12 +159,12 @@
 
 <div class="container">
     <div class="template gallery media span8">
-        <#if entries?has_content>                          
+        <#if filteredEntries?has_content>                          
             <#assign i = 1 /> 
             
             <div class="row-fluid">          
                 
-            <#list entries as entry>
+            <#list filteredEntries as entry>
             
                 <div class="span6">
             
@@ -134,9 +173,7 @@
                 <#assign className = assetRenderer.className />              
             
                 <#if "com.liferay.portlet.journal.model.JournalArticle" == className >
-                
-                    <#assign article = journalArticleService.getLatestArticle(entry.getClassPK()) />
-                    
+                                    
                     <#assign docXml = saxReaderUtil.read(entry.getAssetRenderer().getArticle().getContent()) />
                     
                     <#assign service = docXml.valueOf("//dynamic-element[@name='service']/dynamic-content/text()") />
@@ -251,6 +288,7 @@
                                     
                     <a href="javascript:;" data-toggle="modal" data-target="#modalSlideshow" data-index="${i}">
                         <div class="image-wrapper" style="${style}">&nbsp;</div>
+                        <div>${fileEntry.extension}</div>
                         <#if caption?has_content >
                             <div class="caption">${caption}</div>
                         </#if>                        
