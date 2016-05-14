@@ -5,10 +5,12 @@
     The following customization have been applied: 
     
     - use font-awesome icons instead of image files
+    - use structure headlines / titles instead of article title
+    - add and format publish date of the asset
         
     Created:    2016-02-14 23:21 by Christian Berndt
-    Modified:   2015-02-14 23:21 by Christian Berndt
-    Version:    1.0.0
+    Modified:   2016-05-14 19:30 by Christian Berndt
+    Version:    1.0.1
 --%>
 <%--
 /**
@@ -28,6 +30,8 @@
 
 <%@ include file="/html/portlet/search/init.jsp" %>
 
+<%@page import="com.liferay.portlet.journal.asset.JournalArticleAssetRenderer"%>
+
 <%
 ResultRow row = (ResultRow)request.getAttribute(WebKeys.SEARCH_CONTAINER_RESULT_ROW);
 
@@ -41,6 +45,11 @@ String downloadURL = null;
 String returnToFullPageURL = (String)request.getAttribute("search.jsp-returnToFullPageURL");
 PortletURL viewFullContentURL = null;
 String viewURL = null;
+
+//Customized: 
+Format dateFormatDate = FastDateFormatFactoryUtil.getDate(DateFormat.MEDIUM, locale, timeZone);
+Date publishDate = new Date(); 
+long publishTime = publishDate.getTime(); 
 
 AssetRendererFactory assetRendererFactory = AssetRendererFactoryRegistryUtil.getAssetRendererFactoryByClassName(className);
 
@@ -109,21 +118,59 @@ else {
     viewURL = viewFullContentURL.toString();
 }
 
+//Customized: set display / publish-date    
+if (assetRenderer != null) {
+ publishTime = assetRenderer.getDisplayDate().getTime(); 
+}
+
+String timeStr = document.get("publishDate_sortable"); 
+long time = GetterUtil.getLong(timeStr); 
+if (time > 0) {
+ publishTime = time; 
+}
+
 Indexer indexer = IndexerRegistryUtil.getIndexer(className);
 
 Summary summary = null;
 
 if (indexer != null) {
     String snippet = document.get(Field.SNIPPET);
-
+    
     summary = indexer.getSummary(document, locale, snippet, viewFullContentURL);
 
     entryTitle = summary.getTitle();
-    entrySummary = summary.getContent();
+    entrySummary = summary.getContent();  
+    
+    
+// Customized: use the structure's headline or title field as entry title
+    if (JournalArticle.class.getName().equals(className)) {
+        
+        if (assetRenderer != null) {
+            
+            JournalArticleAssetRenderer journalArticleAssetRenderer = (JournalArticleAssetRenderer)assetRenderer; 
+            JournalArticle article = journalArticleAssetRenderer.getArticle();
+            String languageId = LanguageUtil.getLanguageId(request);
+            com.liferay.portal.kernel.xml.Document xmlDoc = SAXReaderUtil.read(article.getContentByLocale(languageId));
+            
+            // article.xml, intro.xml, introduction.xml
+            String title = xmlDoc.valueOf("//dynamic-element[@name='headline']/dynamic-content/text()");
+            
+            if (Validator.isNull(title)) {
+                // e.g. event.xml, genesis.xml
+                title = xmlDoc.valueOf("//dynamic-element[@name='title']/dynamic-content/text()");                
+            } 
+
+            if (Validator.isNotNull(title)) {
+                entryTitle = title;
+            }
+        }       
+    }
 }
 else if (assetRenderer != null) {
+       
     entryTitle = assetRenderer.getTitle(locale);
     entrySummary = assetRenderer.getSearchSummary(locale);
+    
 }
 
 if ((assetRendererFactory == null) && viewInContext) {
@@ -137,7 +184,9 @@ String[] queryTerms = (String[])request.getAttribute("search.jsp-queryTerms");
 PortletURL portletURL = (PortletURL)request.getAttribute("search.jsp-portletURL");
 %>
 
-<span class="asset-entry">
+<%-- // Customied: span8 --%>
+<span class="asset-entry span8">
+<%-- <span class="asset-entry"> --%>
     <span class="asset-entry-type">
         <%= ResourceActionsUtil.getModelResource(themeDisplay.getLocale(), className) %>
 
@@ -146,12 +195,16 @@ PortletURL portletURL = (PortletURL)request.getAttribute("search.jsp-portletURL"
         </c:if>
     </span>
 
+    <span class="asset-entry-date">
+        <%= dateFormatDate.format(publishTime) %>
+    </span>
+    
     <span class="asset-entry-title">
         <a href="<%= viewURL %>">
             <c:if test="<%= assetRenderer != null %>">
                 <img alt="" src="<%= assetRenderer.getIconPath(renderRequest) %>" />
             </c:if>
-
+            
             <%= StringUtil.highlight(HtmlUtil.escape(entryTitle), queryTerms) %>
         </a>
 
