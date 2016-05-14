@@ -7,8 +7,8 @@
     - use font-awesome icons instead of image files
         
     Created:    2016-02-15 09:36 by Christian Berndt
-    Modified:   2015-02-15 09:36 by Christian Berndt
-    Version:    1.0.0
+    Modified:   2016-05-14 19:28 by Christian Berndt
+    Version:    1.0.1
 --%>
 <%--
 /**
@@ -26,12 +26,13 @@
  */
 --%>
 
+<%@ include file="/html/portlet/search/facets/init.jsp" %>
+
 <%@page import="com.liferay.portlet.wiki.model.WikiPage"%>
 <%@page import="com.liferay.portlet.journal.model.JournalFolder"%>
 <%@page import="com.liferay.portlet.journal.model.JournalArticle"%>
 <%@page import="com.liferay.portlet.documentlibrary.model.DLFolder"%>
 <%@page import="com.liferay.portlet.documentlibrary.model.DLFileEntry"%>
-<%@ include file="/html/portlet/search/facets/init.jsp" %>
 
 <%
 int frequencyThreshold = dataJSONObject.getInt("frequencyThreshold");
