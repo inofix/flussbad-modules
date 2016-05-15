@@ -3075,7 +3075,7 @@ input {
 /* ----------------------------------------------- the big search */
 
     
-    .portlet-search {
+    .portlet-search.portlet-draggable { /** limit style to public part, do not apply to .portlet-configuration */
     
         .asset-entry-date {
             display:block;
