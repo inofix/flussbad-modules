@@ -9,8 +9,8 @@
     - add and format publish date of the asset
         
     Created:    2016-02-14 23:21 by Christian Berndt
-    Modified:   2016-05-14 19:30 by Christian Berndt
-    Version:    1.0.1
+    Modified:   2016-05-15 13:59 by Christian Berndt
+    Version:    1.0.2
 --%>
 <%--
 /**
@@ -120,13 +120,17 @@ else {
 
 //Customized: set display / publish-date    
 if (assetRenderer != null) {
- publishTime = assetRenderer.getDisplayDate().getTime(); 
+    if (assetRenderer.getDisplayDate() != null) {
+        publishTime = assetRenderer.getDisplayDate().getTime(); 
+    }
 }
 
-String timeStr = document.get("publishDate_sortable"); 
-long time = GetterUtil.getLong(timeStr); 
+String timeStr = document.get("publishDate_sortable");
+    
+long time = GetterUtil.getLong(timeStr);
+
 if (time > 0) {
- publishTime = time; 
+    publishTime = time; 
 }
 
 Indexer indexer = IndexerRegistryUtil.getIndexer(className);
