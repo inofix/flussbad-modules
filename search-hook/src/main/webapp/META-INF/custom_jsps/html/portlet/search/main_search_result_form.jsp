@@ -7,10 +7,11 @@
     - use font-awesome icons instead of image files
     - use structure headlines / titles instead of article title
     - add and format publish date of the asset
+    - preview for assets of type DLFileEntry
         
     Created:    2016-02-14 23:21 by Christian Berndt
-    Modified:   2016-05-15 13:59 by Christian Berndt
-    Version:    1.0.2
+    Modified:   2016-05-16 12:51 by Christian Berndt
+    Version:    1.0.3
 --%>
 <%--
 /**
@@ -30,6 +31,7 @@
 
 <%@ include file="/html/portlet/search/init.jsp" %>
 
+<%@page import="com.liferay.portlet.documentlibrary.asset.DLFileEntryAssetRenderer"%>
 <%@page import="com.liferay.portlet.journal.asset.JournalArticleAssetRenderer"%>
 
 <%
@@ -186,10 +188,41 @@ viewURL = _checkViewURL(themeDisplay, viewURL, currentURL, inheritRedirect);
 String[] queryTerms = (String[])request.getAttribute("search.jsp-queryTerms");
 
 PortletURL portletURL = (PortletURL)request.getAttribute("search.jsp-portletURL");
+
+// Customized: variables
+String cssClass = "asset-entry span8"; // default style for text records
+String previewURL = null; 
+String title = null; 
+String description = null; 
+
+if (DLFileEntry.class.getName().equals(className)) {
+    cssClass = "asset-entry gallery-item";
+    
+    if (assetRenderer != null) { 
+        DLFileEntryAssetRenderer fileEntryAssetRenderer = (DLFileEntryAssetRenderer) assetRenderer; 
+        previewURL = fileEntryAssetRenderer.getURLImagePreview(renderRequest);
+        
+        if (previewURL.endsWith("previewFileIndex=1")) {
+            previewURL = previewURL.replace("previewFileIndex=1", "documentThumbnail=2");
+        }
+        
+        if (previewURL.endsWith("imagePreview=1")) {
+            previewURL = previewURL.replace("imagePreview=1", "imageThumbnail=2");
+        }
+        
+        title = fileEntryAssetRenderer.getTitle(locale); 
+        description = fileEntryAssetRenderer.getSummary(locale); 
+    }
+    
+    if (Validator.isNull(title)) {
+        title = entryTitle; 
+    }
+}
 %>
 
-<%-- // Customied: span8 --%>
-<span class="asset-entry span8">
+
+<%-- // Customized: conditional css-class --%>
+<span class="<%= cssClass %>">
 <%-- <span class="asset-entry"> --%>
     <span class="asset-entry-type">
         <%= ResourceActionsUtil.getModelResource(themeDisplay.getLocale(), className) %>
@@ -199,6 +232,7 @@ PortletURL portletURL = (PortletURL)request.getAttribute("search.jsp-portletURL"
         </c:if>
     </span>
 
+<%-- // Customized: asset-entry-date --%>
     <span class="asset-entry-date">
         <%= dateFormatDate.format(publishTime) %>
     </span>
@@ -224,11 +258,30 @@ PortletURL portletURL = (PortletURL)request.getAttribute("search.jsp-portletURL"
 
     <c:if test="<%= Validator.isNotNull(entrySummary) || Validator.isNotNull(assetCategoryIds[0]) || Validator.isNotNull(assetTagNames[0]) %>">
         <div class="asset-entry-content">
-            <c:if test="<%= Validator.isNotNull(entrySummary) %>">
-                <span class="asset-entry-summary">
-                    <%= StringUtil.highlight(HtmlUtil.escape(entrySummary), queryTerms) %>
-                </span>
-            </c:if>
+        
+<%-- Customized --%>
+            <c:choose>
+                <c:when test="<%= DLFileEntry.class.getName().equals(className) %>">
+                    <span class="asset-entry-preview">
+                        <a href="<%= viewURL %>">
+                            <c:if test="<%= description != null %>">
+                                <div class="asset-entry-description"><%= description %></div>
+                            </c:if>
+                            <c:if test="<%= previewURL != null %>">
+                                <img src='<%= previewURL %>' title="<%= HtmlUtil.escape(description) %>" />
+                            </c:if>
+                        </a>
+                    </span>
+                </c:when>
+                <c:otherwise>
+<%-- Default behaviour --%>
+                    <c:if test="<%= Validator.isNotNull(entrySummary) %>">
+                        <span class="asset-entry-summary">
+                            <%= StringUtil.highlight(HtmlUtil.escape(entrySummary), queryTerms) %>
+                        </span>
+                    </c:if>                
+                </c:otherwise>
+            </c:choose>
 
             <c:if test="<%= Validator.isNotNull(assetTagNames[0]) %>">
                 <div class="asset-entry-tags">

@@ -3075,7 +3075,7 @@ input {
 /* ----------------------------------------------- the big search */
 
     
-    .portlet-search.portlet-draggable { /** limit style to public part, do not apply to .portlet-configuration */
+    .portlet-search.portlet-boundary { /** limit style to public part, do not apply to .portlet-configuration */
     
         .asset-entry-date {
             display:block;
@@ -3110,7 +3110,58 @@ input {
         .result {
         
             width: 100%;
-            margin-left: 0;  
+            margin-left: 0; 
+            
+            td, tr {
+                display: inline-block;
+            }
+            
+            .asset-entry.gallery-item {
+            
+                margin: 0 20px 0 0; /* compensate for rows bottom margin */
+                display: inline-block;
+                
+                
+                .asset-entry-categories,
+                .asset-entry-date,
+                .asset-entry-tags
+                 {
+                    display: none;
+                }
+            
+                .asset-entry-preview {
+                    position: relative; 
+                    display: block; 
+                    height: 180px;
+                    min-width: 40px;
+                    background: lightgray;
+                    overflow: hidden;
+                    
+                    .asset-entry-description {
+                        position: absolute; 
+                        bottom: 0;
+                        background: rgba(white, 0); 
+                        color: rgba($navigation-font-color, 0);
+                    }
+                    
+                    img {
+                        height: 180px; 
+                        width: auto; 
+                        max-width: none;
+                    }
+                    
+                    &:hover {
+                        .asset-entry-description {
+                            background: rgba(white, 0.75);
+                            color: rgba($hover-font-color, 1);
+                        }
+                    }
+                }
+                
+                .asset-entry-title {
+                    display: none;
+                }
+            }
         }
 	
         input {
@@ -3158,10 +3209,6 @@ input {
 		                  color: $hover-font-color;
 		              }
 		           }
-		       }
-		           
-		       #_3_clearSearch {
-		           display: none;
 		       }
 		       
 		       &:first-child {
