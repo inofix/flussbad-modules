@@ -3180,10 +3180,11 @@ input {
                     overflow: hidden;
                     
                     .asset-entry-description {
-                        position: absolute; 
-                        bottom: 0;
                         background: rgba(white, 0); 
+                        bottom: 0;
                         color: rgba($navigation-font-color, 0);
+                        position: absolute; 
+                        width: 100%;
                     }
                     
                     img {
