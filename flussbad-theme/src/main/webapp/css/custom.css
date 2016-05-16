@@ -2868,28 +2868,70 @@ input {
         margin-top: $nav-height;
     }
     
-    .portlet-site-map.project-sections {
-    	
-    	a {
-    	
-    		@include filter-item();
-    	}
-    	
-    	a.current {
-    	
-    		@include filter-item-selected(); 
-    	}
-    	
-    	.portlet-borderless-container {
-    	
-    		min-height: 0; 
-    	}
+    .portlet-site-map {    
     
-    	li {
-    	
-            line-height: 45px;
-            display: inline-block; 
-    	}
+        &.project-sections {
+            
+            a {
+            
+                @include filter-item();
+            }
+            
+            a.current {
+            
+                @include filter-item-selected(); 
+            }
+            
+            .portlet-borderless-container {
+            
+                min-height: 0; 
+            }
+        
+            li {
+            
+                line-height: 45px;
+                display: inline-block; 
+            }
+        } 
+        
+        &.search-map {
+        
+            ul {
+            
+                margin: 0;
+            
+                li {
+                    display: inline-block; 
+                    list-style: none;
+                    margin-top: 40px;
+                    
+                   a {
+                       border: 1px solid $color-gray-green;
+                       padding-top: 10px !important;
+                       padding-right: 30px;
+                       padding-bottom: 10px !important;
+                       padding-left: 30px;
+                       margin: 0 15px 15px 0;
+                       border-radius: 0;
+                       
+                       &:hover {
+                           color: $hover-font-color;
+                           border: 1px solid $hover-font-color;
+                           background: none;
+                       } 
+                       
+                       &.current {
+                           color: white;
+                           background: $color-gray-green;
+                           
+                           &:hover {
+                               background: $hover-font-color;
+                           }
+                        }             
+                    }                   
+                }
+            }           
+        }   
     }
     
     
@@ -3937,6 +3979,7 @@ input {
         .portlet-journal,
         .portlet-search,
         .portlet-site-map.project-sections .portlet-borderless-container,
+        .portlet-site-map.search-map .portlet-borderless-container,
         .web-form-portlet,
         .web-form-portlet .portlet-borderless-container
          {
@@ -4075,7 +4118,10 @@ input {
         }
 
 	    .portlet-asset-categories-navigation,
-	    .portlet-site-map.project-sections {
+	    .portlet-site-map.project-sections, 
+        .portlet-site-map.search-map
+	    
+	    {
 	    
 	        max-height: 100%;
 	        text-align: center;
@@ -4179,6 +4225,7 @@ input {
         .portlet-journal-content .taglib-asset-links,
         .portlet-search,
         .portlet-site-map.project-sections .portlet-borderless-container,
+        .portlet-site-map.search-map .portlet-borderless-container,
         .web-form-portlet {
         
             margin: auto;
@@ -4219,13 +4266,6 @@ input {
     	
 		    margin-left: 34.18803%; /* bootstrap .offset4:first-child */
     	}
-    	
-    	.portlet-asset-categories-navigation .taglib-asset-categories-navigation {
-    	
-    	/** do we need this? If yes, we need it for the 
-    	    .portlet-site-map.project-sections ul, too */
-/*     		margin-left: -30px; bootstrap .row */
-    	}
     
         .columns-max,
         .lfr-meta-actions,
@@ -4235,6 +4275,7 @@ input {
         .portlet-journal-content .taglib-asset-links,
         .portlet-search,
         .portlet-site-map.project-sections .portlet-borderless-container,
+        .portlet-site-map.search-map .portlet-borderless-container,
         .web-form-portlet {
         
             width: 1170px; /* bootstrap .container */
@@ -4287,6 +4328,7 @@ input {
         .portlet-journal-content .taglib-asset-links,
         .portlet-search,
         .portlet-site-map.project-sections .portlet-borderless-container,
+        .portlet-site-map.search-map .portlet-borderless-container,
         .web-form-portlet  {
             width: 724px; /* bootstrap .container */
         }
