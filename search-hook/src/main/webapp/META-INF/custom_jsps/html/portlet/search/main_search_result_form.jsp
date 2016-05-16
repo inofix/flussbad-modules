@@ -10,8 +10,8 @@
     - preview for assets of type DLFileEntry
         
     Created:    2016-02-14 23:21 by Christian Berndt
-    Modified:   2016-05-16 12:51 by Christian Berndt
-    Version:    1.0.3
+    Modified:   2016-05-16 23:15 by Christian Berndt
+    Version:    1.0.4
 --%>
 <%--
 /**
@@ -255,8 +255,10 @@ if (DLFileEntry.class.getName().equals(className)) {
     String[] assetCategoryIds = document.getValues(Field.ASSET_CATEGORY_IDS);
     String[] assetTagNames = document.getValues(Field.ASSET_TAG_NAMES);
     %>
+    <c:if test="<%= Validator.isNotNull(entrySummary) || Validator.isNotNull(assetCategoryIds[0]) || Validator.isNotNull(assetTagNames[0]) || Validator.isNotNull(viewURL) %>">
 
-    <c:if test="<%= Validator.isNotNull(entrySummary) || Validator.isNotNull(assetCategoryIds[0]) || Validator.isNotNull(assetTagNames[0]) %>">
+<%-- Customized display condition --%>
+<%--  <c:if test="<%= Validator.isNotNull(entrySummary) || Validator.isNotNull(assetCategoryIds[0]) || Validator.isNotNull(assetTagNames[0]) %>"> --%>
         <div class="asset-entry-content">
         
 <%-- Customized --%>
