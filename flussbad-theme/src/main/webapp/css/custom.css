@@ -3193,22 +3193,31 @@ input {
 		   
 		   .control-group {
 		   
-		       width: 10%;
+		       width: 19%;
 		       margin-bottom: 0;
 		       
+		       a,
 		       button {
 		       
 		          background: none;
 		          border: none;
-		       		           
+		       		 
+		       	   .icon-remove,          
 		           .icon-search {
+		           
 		              font-size: $h1-font-size;
 		              color: $navigation-font-color;
+		              vertical-align: middle;
 		              
 		              &:hover {
 		                  color: $hover-font-color;
 		              }
 		           }
+		       }
+		       
+		       a {
+		          margin-left: -130px;
+		          position: relative;
 		       }
 		       
 		       &:first-child {
