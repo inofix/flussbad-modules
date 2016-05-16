@@ -8,8 +8,8 @@
     - use font-awesome icons instead of image files
         
     Created:    2015-10-21 13:16 by Christian Berndt
-    Modified:   2016-05-16 18:42 by Christian Berndt
-    Version:    1.0.1
+    Modified:   2016-05-16 23:08 by Christian Berndt
+    Version:    1.0.2
 --%>
 <%--
 /**
@@ -65,7 +65,7 @@ request.setAttribute("search.jsp-returnToFullPageURL", portletDisplay.getURLBack
 
 <%-- Customized --%>
 <portlet:renderURL copyCurrentRenderParameters="<%= false %>" var="clearSearchURL">
-    <portlet:param name="groupId" value="0" />
+    <portlet:param name="groupId" value="<%= String.valueOf(scopeGroupId) %>" />
 </portlet:renderURL>
 
 <aui:form action="<%= searchURL %>" method="get" name="fm" onSubmit="event.preventDefault();">
