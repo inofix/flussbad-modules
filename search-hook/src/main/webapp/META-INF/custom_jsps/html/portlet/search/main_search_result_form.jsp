@@ -10,8 +10,8 @@
     - preview for assets of type DLFileEntry
         
     Created:    2016-02-14 23:21 by Christian Berndt
-    Modified:   2016-05-16 23:15 by Christian Berndt
-    Version:    1.0.4
+    Modified:   2016-05-17 22:20 by Christian Berndt
+    Version:    1.0.5
 --%>
 <%--
 /**
@@ -143,6 +143,9 @@ if (indexer != null) {
     String snippet = document.get(Field.SNIPPET);
     
     summary = indexer.getSummary(document, locale, snippet, viewFullContentURL);
+
+// Customized: setMaxContentLength (see: https://github.com/liferay/liferay-portal/commit/4a47ed5f8b46e23e6fc63d4e7bfa057290ef1ab1)
+    summary.setMaxContentLength(300);
 
     entryTitle = summary.getTitle();
     entrySummary = summary.getContent();  
