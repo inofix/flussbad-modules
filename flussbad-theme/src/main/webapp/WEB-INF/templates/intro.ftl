@@ -2,8 +2,8 @@
     intro.ftl: Format the intro structure
     
     Created:    2015-08-28 17:52 by Christian Berndt
-    Modified:   2016-03-27 23:18 by Christian Berndt
-    Version:    1.0.6
+    Modified:   2016-05-17 21:36 by Christian Berndt
+    Version:    1.0.7
     
     Please note: Although this template is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -11,22 +11,34 @@
     changes to the flussbad-modules repo, too.
 -->
 
-<#assign themeDisplay = request['theme-display'] />
-<#assign plid = themeDisplay['plid'] />
-
-<#assign layoutLocalService = serviceLocator.findService("com.liferay.portal.service.LayoutLocalService")>
-<#assign layout = layoutLocalService.getLayout(plid?number) />
-
-<#assign currentURL = request.attributes['CURRENT_URL']>
-<#assign pathFriendlyURL = themeDisplay['path-friendly-url-public'] />
-<#assign groupURL = layout.group.friendlyURL />
-<#assign pathAndGroupURL = pathFriendlyURL + groupURL />
-
 <#assign cssClass = "" />
 <#assign style = "background: white;" />
 <#assign hasKeyVisual = false />
 <#assign hasGradient = true />
+<#assign layoutLocalService = serviceLocator.findService("com.liferay.portal.service.LayoutLocalService")>
+<#-- with virtualhost configured -->
+<#assign prefix = "" />
+    
+<#-- request['theme-display'] is not available in search -->
+<#if request['theme-display']?? >
 
+    <#assign themeDisplay = request['theme-display'] />
+    <#assign plid = themeDisplay['plid'] />
+    
+    <#assign layout = layoutLocalService.getLayout(plid?number) />
+    
+    <#assign currentURL = request.attributes['CURRENT_URL']>
+    <#assign pathFriendlyURL = themeDisplay['path-friendly-url-public'] />
+    <#assign groupURL = layout.group.friendlyURL />
+    <#assign pathAndGroupURL = pathFriendlyURL + groupURL />
+        
+    <#-- without virtualhost configured -->
+    <#if currentURL?starts_with(pathFriendlyURL)>
+        <#assign prefix = pathAndGroupURL />
+    </#if>     
+    
+</#if>
+    
 <#if useGradient?? >
     <#if getterUtil.getBoolean(useGradient.getData())>
         <#assign hasGradient = true  />
@@ -90,14 +102,9 @@
                         <div class="pull-right">
                         
                             <#assign target = layoutLocalService.getLayout(groupId?number, false, clubLink.getData()?number) />                                        
-                        
-                            <#-- with virtualhost configured -->
-                            <#assign targetURL = target.getFriendlyURL(locale) />
-                            
-                            <#-- without virtualhost configured -->
-                            <#if currentURL?starts_with(pathFriendlyURL)>
-                                <#assign targetURL = pathAndGroupURL + targetURL />
-                            </#if>                        
+
+                            <#assign targetURL = prefix + target.getFriendlyURL(locale) />
+                                
                             <a class="club-link" href="${targetURL}" title="${languageUtil.get(locale, "get-involved")}"><span>${languageUtil.get(locale, "get-involved")}</span></a>
                         </div>
                     </div>
@@ -120,13 +127,7 @@
                                     
                                         <#assign target = layoutLocalService.getLayout(groupId?number, false, cur_caption.abstractLink.getData()?number) />                                        
                                     
-                                        <#-- with virtualhost configured -->
-                                        <#assign targetURL = target.getFriendlyURL(locale) />
-                                        
-                                        <#-- without virtualhost configured -->
-                                        <#if currentURL?starts_with(pathFriendlyURL)>
-                                            <#assign targetURL = pathAndGroupURL + targetURL />
-                                        </#if>
+                                        <#assign targetURL = prefix + target.getFriendlyURL(locale) />
                                                         
                                         <div>
                                             <a href="${targetURL}" class="btn" title="${cur_caption.abstractLabel.getData()}">${cur_caption.abstractLabel.getData()}</a>
