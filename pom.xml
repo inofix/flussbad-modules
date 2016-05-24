@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    pom.xml: Parent pom to Flssbad's Liferay Modules
+    pom.xml: Parent pom to Flussbad's Liferay Modules
 
     Created:    2015-08-31 13:48 by Christian Berndt
     Modified:   2015-11-10 14:44 by Christian Berndt
     Version:    1.0.4
---><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.flussbad</groupId>
     <artifactId>flussbad-modules</artifactId>
