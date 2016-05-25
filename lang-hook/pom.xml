@@ -3,8 +3,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
         <artifactId>flussbad-modules</artifactId>
-        <groupId>de.flussbad</groupId>
-        <version>0.6.0-SNAPSHOT</version>
+        <groupId>de.flussbad-berlin</groupId>
+        <version>0.7.0-SNAPSHOT</version>
     </parent>
 	<artifactId>lang-hook</artifactId>
 	<packaging>war</packaging>
