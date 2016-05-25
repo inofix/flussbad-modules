@@ -1409,10 +1409,25 @@ input {
             
             .asset-details-content {
             
-                .download-document a {
-                    height: 36px;   /* h2 font-size */
-                    margin: 10px 0; /* h2 margin */
-                    display: block; /* h2 display */                 
+                margin-top: 56px;
+            
+                .download-document {
+                
+                    display: block;
+                    margin: 0 0 2em;                   
+                
+                    a {                        
+                        .icon-download {
+                            font-size: 28px; 
+                            vertical-align: middle; 
+                        }              
+                    }
+                }
+                
+                .lfr-asset-description {
+                    border: none;
+                    margin: 0 0 2em;
+                    padding: 0;
                 }
             
                 .lfr-asset-author,
@@ -1421,6 +1436,17 @@ input {
                 .version,
                 .webdav-url {
                     display: none;
+                }
+            }
+            
+            .lfr-asset-metadata {
+                .accordion-toggle {
+                    padding: 0; 
+                }
+                
+                .accordion-inner {
+                    padding: 10px 0;
+                    border: none;
                 }
             }
             
@@ -1444,9 +1470,9 @@ input {
                 
             }
             
+            .document-description,
             .lfr-document-library-comments,
-            .version-history
-            {
+            .version-history {
                 display: none;
             }
                 
@@ -1458,6 +1484,7 @@ input {
             
             .lfr-preview-file-image-current {
                 max-height: none;
+                margin-bottom: 100px;
             }
 
             .lfr-preview-file-image-current-column {
