@@ -1402,6 +1402,75 @@ input {
     
     .portlet-asset-publisher {
     
+    
+        .asset-full-content {
+            
+            /** detail view of document search result */
+            
+            .asset-details-content {
+            
+                .download-document a {
+                    height: 36px;   /* h2 font-size */
+                    margin: 10px 0; /* h2 margin */
+                    display: block; /* h2 display */                 
+                }
+            
+                .lfr-asset-author,
+                .lfr-asset-date,
+                .taglib-workflow-status,
+                .version,
+                .webdav-url {
+                    display: none;
+                }
+            }
+            
+            .lfr-asset-panels {
+                padding: 0; 
+                
+                .accordion-group {
+                    border: none;
+                }
+            }
+            
+            .document-info {
+            
+                .document-thumbnail, 
+                .lfr-asset-ratings,
+                .lfr-asset-categories,
+                .lfr-asset-tags,
+                .user-date {
+                    display: none;
+                }
+                
+            }
+            
+            .lfr-document-library-comments,
+            .version-history
+            {
+                display: none;
+            }
+                
+            .lfr-preview-file-content {
+                border: none;
+                height: auto;
+                padding: 0;
+            }
+            
+            .lfr-preview-file-image-current {
+                max-height: none;
+            }
+
+            .lfr-preview-file-image-current-column {
+                box-shadow: none;
+                background: none;
+                padding: 0;
+            }
+            
+            .lfr-preview-file-image-container {
+                height: auto;
+            }        
+        }
+    
         .gallery {
                 
             .row-fluid {
