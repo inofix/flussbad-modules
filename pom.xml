@@ -3,14 +3,13 @@
     pom.xml: Parent pom to Flussbad's Liferay Modules
 
     Created:    2015-08-31 13:48 by Christian Berndt
-    Modified:   2015-11-10 14:44 by Christian Berndt
-    Version:    1.0.4
--->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    Modified:   2016-08-27 20:11 by Christian Berndt
+    Version:    1.0.5
+--><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.flussbad-berlin</groupId>
     <artifactId>flussbad-modules</artifactId>
-    <version>0.7.0-SNAPSHOT</version>
+    <version>0.8.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Flussbad Modules</name>
     <description>Maven parent project to the flussbad liferay modules.</description>
@@ -43,6 +42,8 @@
 
         <liferay.maven.plugin.version>6.2.2</liferay.maven.plugin.version>
 
+        <properties.plugin.version>1.0.0</properties.plugin.version>
+        
     </properties>
 
     <dependencies>
@@ -98,13 +99,14 @@
         </dependency>
     </dependencies>
     <modules>
+        <module>asset-links-hook</module>
         <module>asset-publisher-hook</module>
+        <module>document-library-hook</module>
         <module>flussbad-theme</module>
+        <module>indexer</module>
         <module>journal-hook</module>
         <module>lang-hook</module>
         <module>search-hook</module>
-        <module>asset-links-hook</module>
-        <module>document-library-hook</module>
     </modules>
     <build>
         <pluginManagement>
@@ -135,7 +137,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
