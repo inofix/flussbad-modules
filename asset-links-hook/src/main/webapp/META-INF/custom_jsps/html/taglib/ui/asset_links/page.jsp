@@ -10,8 +10,8 @@
     https://github.com/inofix/liferay-modules/blob/6.2.x/asset-links-hook/src/main/webapp/META-INF/custom_jsps/html/taglib/ui/asset_links/page.jsp
         
     Created:    2016-03-14 15:27 by Christian Berndt
-    Modified:   2016-03-18 14:58 by Christian Berndt
-    Version:    1.0.4
+    Modified:   2016-06-03 09:45 by Christian Berndt
+    Version:    1.0.5
 --%>
 <%--
 /**
@@ -158,7 +158,12 @@ for (AssetLink assetLink : assetLinks) {
                     // causes errors. Probably the error is caused by a NoSuchLayoutException
                     // in FindAction.java, line 117 ff. and might be fixed by the correct
                     // reconfiguration of the default display page.
-                    urlViewInContext = HttpUtil.removeParameter(urlViewInContext, "noSuchEntryRedirect");            
+                    urlViewInContext = HttpUtil.removeParameter(urlViewInContext, "noSuchEntryRedirect");
+                    
+                    // Maybe related, maybe not:
+                    if (urlViewInContext.contains("document_library/find_file_entry")) {
+                        urlViewInContext = HttpUtil.removeParameter(urlViewInContext, "p_l_id");
+                    }                    
             %>
                 <li class="asset-links-list-item <%= assetRendererFactory.getType() %>">
                     <liferay-ui:icon
@@ -203,9 +208,15 @@ for (AssetLink assetLink : assetLinks) {
          // causes errors. Probably the error is caused by a NoSuchLayoutException
          // in FindAction.java, line 117 ff. and might be fixed by the correct
          // reconfiguration of the default display page.
-            urlViewInContext = HttpUtil.removeParameter(urlViewInContext, "noSuchEntryRedirect");            
+            urlViewInContext = HttpUtil.removeParameter(urlViewInContext, "noSuchEntryRedirect");
+         
+         // Maybe related, maybe not:
+            if (urlViewInContext.contains("document_library/find_file_entry")) {
+                urlViewInContext = HttpUtil.removeParameter(urlViewInContext, "p_l_id");
+            }
             %>
             <li class="asset-links-list-item <%= assetRendererFactory.getType() %>">
+            
                 <liferay-ui:icon
                     label="<%= true %>"
                     message="<%= assetLinkEntryTitle %>"
