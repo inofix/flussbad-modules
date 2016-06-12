@@ -4,8 +4,8 @@
     type "article_with_keyvisual". 
     
     Created:    2015-10-16 19:35 by Christian Berndt
-    Modified:   2016-01-15 16:03 by Christian Berndt
-    Version:    1.0.0
+    Modified:   2016-06-12 22:19 by Christian Berndt
+    Version:    1.0.1
     
     Please note: Although this structure is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -130,6 +130,53 @@
                 </entry>
             </meta-data>
         </dynamic-element>
+        <dynamic-element dataType="string" indexType="keyword"
+            localizable="true" multiple="false" name="service" readOnly="false"
+            repeatable="false" required="false" showLabel="true" type="select"
+            width="">
+            <dynamic-element name="option3753" type="option"
+                value="http:&#047;&#047;www.youtube.com&#047;oembed?url=">
+                <meta-data locale="de_DE">
+                    <entry name="label">
+                        <![CDATA[youtube]]>
+                    </entry>
+                </meta-data>
+            </dynamic-element>
+            <dynamic-element name="option3754" type="option"
+                value="https:&#047;&#047;vimeo.com&#047;api&#047;oembed.json?url=">
+                <meta-data locale="de_DE">
+                    <entry name="label">
+                        <![CDATA[vimeo]]>
+                    </entry>
+                </meta-data>
+            </dynamic-element>
+            <meta-data locale="de_DE">
+                <entry name="label">
+                    <![CDATA[Service]]>
+                </entry>
+                <entry name="predefinedValue">
+                    <![CDATA[[""]]]>
+                </entry>
+                <entry name="tip">
+                    <![CDATA[Wähle den Dienst aus, von dem Du das Video einbetten möchtest.]]>
+                </entry>
+            </meta-data>
+        </dynamic-element>
+        <dynamic-element dataType="string" indexType="keyword"
+            localizable="true" name="url" readOnly="false" repeatable="false"
+            required="false" showLabel="true" type="text" width="small">
+            <meta-data locale="de_DE">
+                <entry name="label">
+                    <![CDATA[Video URL]]>
+                </entry>
+                <entry name="predefinedValue">
+                    <![CDATA[]]>
+                </entry>
+                <entry name="tip">
+                    <![CDATA[Gib hier den URL des Videos ein. Der URL muss entweder mit http:// oder https:// beginnen.]]>
+                </entry>
+            </meta-data>
+        </dynamic-element>         
         <meta-data locale="de_DE">
             <entry name="label">
                 <![CDATA[Abschnitt]]>
@@ -142,4 +189,14 @@
             </entry>
         </meta-data>
     </dynamic-element>
+    <dynamic-element dataType="string" indexType="keyword" localizable="true" name="tags" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="medium">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[Galerie Tags]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Trage hier ein oder mehrere Tags ein, auf deren Grundlage die Mediengalerie erstellt wird. Mehrere Tags werden durch Kommata von einander getrennt.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>    
 </root>
