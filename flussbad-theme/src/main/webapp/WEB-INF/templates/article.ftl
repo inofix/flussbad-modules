@@ -2,8 +2,8 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2016-04-14 19:26 by Christian Berndt
-    Version:    1.2.5
+    Modified:   2016-06-12 13:47 by Christian Berndt
+    Version:    1.2.6
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -101,7 +101,8 @@
 </#macro>
 
 <#macro video section>
-    <#if section.url??>
+    <#if section.url?has_content>
+<#--    <#if section.url??> -->
         <#if section.url.getData()?has_content>  
         
             <#assign config = "&format=json" />    
@@ -195,19 +196,19 @@
                     
                         <#assign properties = propertyService.getCategoryProperties(category.getCategoryId()) />
                         <#assign layoutUuid = ""/>
-                        
+                        <#assign categoryURL = "" />
                         <#list properties as property>
                             <#if property.key == "layoutUuid">
                                 <#assign layoutUuid = property.value />
                                 <#assign layout = layoutLocalService.getLayoutByUuidAndGroupId(layoutUuid, groupId, false) />
                                 <#assign groupURL = layout.getGroup().getFriendlyURL() />
-                                <#assign url = prefix + layout.friendlyURL />
+                                <#assign categoryURL = prefix + layout.friendlyURL />
                             </#if>
                         </#list>
                         
                         <#if layoutUuid?has_content >
                             <li>
-                                <h3 class="category"><a href="${url}">${category.getTitle(language_id)}</a></h3>
+                                <h3 class="category"><a href="${categoryURL}">${category.getTitle(language_id)}</a></h3>
                             </li>
                         </#if>
                     </#list>
