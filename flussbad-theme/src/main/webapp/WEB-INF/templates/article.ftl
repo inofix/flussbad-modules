@@ -2,8 +2,8 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2016-06-12 13:47 by Christian Berndt
-    Version:    1.2.6
+    Modified:   2016-06-12 19:06 by Christian Berndt
+    Version:    1.2.7
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -113,8 +113,46 @@
     </#if>
 </#if>
 
+<#assign filteredEntries = [] />
 
+<#list assetEntries as assetEntry>
+    
+    <#assign assetEntry = assetEntry />
+    <#assign assetRenderer = assetEntry.assetRenderer />
+    <#assign className = assetRenderer.className />              
+    
+    <#if "com.liferay.portlet.journal.model.JournalArticle" == className >
+    
+        <#assign docXml = saxReaderUtil.read(assetEntry.getAssetRenderer().getArticle().getContent()) />
+        
+        <#assign service = docXml.valueOf("//dynamic-element[@name='service']/dynamic-content/text()") />
+        <#assign url = docXml.valueOf("//dynamic-element[@name='url']/dynamic-content/text()") />
+          
+        <#if url?has_content>
+        
+            <#assign filteredEntries = filteredEntries + [assetEntry] />
+                            
+        </#if>
+        
+    <#elseif "com.liferay.portlet.documentlibrary.model.DLFileEntry" == className >
 
+        <#assign fileEntry = fileEntryService.getFileEntry(assetEntry.classPK) />
+        
+        <#assign formats = ["gif", "jpg", "png", "tif"] />
+        
+        <#list formats as format>
+        
+            <#if fileEntry.extension?lower_case == format >
+    
+                <#assign filteredEntries = filteredEntries + [assetEntry] />
+                
+            </#if>
+        
+        </#list>
+           
+    </#if>
+    
+</#list>
 
 
 <#macro images section>   
@@ -201,6 +239,96 @@
     </#if>                             
 
 </#macro>
+
+
+<!-- Modal slideshow -->
+<div class="modal slideshow fade" id="modalSlideshow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div id="slider" class="flexslider">
+                    <ul class="slides">
+                                    
+                        <#if filteredEntries?has_content> 
+                                                 
+                            <#assign i = 1 /> 
+                                            
+                            <#list filteredEntries as entry>
+                            
+                                <li class="item">
+                            
+                                    <#assign entry = entry />
+                                    <#assign assetRenderer = entry.assetRenderer />
+                                    <#assign className = assetRenderer.className />              
+                                
+                                    <#if "com.liferay.portlet.journal.model.JournalArticle" == className >
+                                                                            
+                                        <#assign docXml = saxReaderUtil.read(entry.getAssetRenderer().getArticle().getContent()) />
+                                        
+                                        <#assign service = docXml.valueOf("//dynamic-element[@name='service']/dynamic-content/text()") />
+                                        <#assign url = docXml.valueOf("//dynamic-element[@name='url']/dynamic-content/text()") />
+                                       
+                                        <#assign viewURL = ""/>
+                                        <#assign assetRenderer = entry.getAssetRenderer() />
+                                        
+                                        <#--
+                                        <#if assetRenderer.getURLViewInContext(renderRequest, renderResponse, null)?? >                     
+                                            <#assign viewURL = assetRenderer.getURLViewInContext(renderRequest, renderResponse, null) />
+                                        <#else>
+                                            <#assign viewURL = assetPublisherHelper.getAssetViewURL(renderRequest, renderResponse, entry) />                        
+                                        </#if>
+                                        -->
+                                        
+                                        <#if url?has_content>
+                                        
+                                            <#assign config = "&format=json" />    
+                                            <#assign embed_url = service + url + config />
+                                            <#assign embed_url = httpUtil.encodeURL(embed_url) />
+                                            <div class="video-wrapper">
+                                                <div id="${namespace}_${i}_video" class="video">&nbsp;</div> 
+                                            </div>                            
+                                        <#else>
+                                            <div class="none">
+                                                Only structures of type "Video" can be displayed
+                                                in the Media Gallery.
+                                            </div>
+                                        </#if>
+                                    
+                                    <#elseif "com.liferay.portlet.documentlibrary.model.DLFileEntry" == className >
+                    
+                                        <#assign fileEntry = fileEntryService.getFileEntry(entry.classPK) />                
+                                        <#assign latestFileVersion = fileEntry.getFileVersion() />
+                                        <#assign latestFileVersionStatus = latestFileVersion.getStatus() />
+                                        <#assign fileTitle = httpUtil.encodeURL(htmlUtil.unescape(latestFileVersion.getTitle())) />
+                                    
+                                        <#assign imgSrc = "/documents/" + groupId + "/" + fileEntry.folder.folderId + "/" + fileTitle /> 
+                                        <#assign caption = latestFileVersion.getDescription() />
+                                        <div class="image-wrapper">
+                                            <img src="${imgSrc}?imageThumbnail=3" />
+                                            <#if caption?has_content >
+                                                <div class="caption" style="display: none;">${caption}</div>
+                                            </#if>                                
+                                        </div>
+                                        
+                                    <#else>
+                                        <div class="none">
+                                            This is neither a video nor a document.  
+                                        </div>              
+                                    </#if>
+                                    
+                                    <#assign i = i+1 /> 
+                                
+                                </li>                   
+                    
+                            </#list>
+                        </#if>
+                    </ul>
+                </div>                                        
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="story ${cssClass}">
     <#if hasKeyVisual>
@@ -302,6 +430,165 @@
                     </#list>
                 </#if>
             </#if>
+            
+            <#if filteredEntries?has_content>
+                <div class="template gallery media">
+                    <#assign i = 1 /> 
+                    
+                    <div class="row-fluid">          
+                        
+                    <#list filteredEntries as entry>
+                    
+                        <div class="span6">
+                    
+                        <#assign entry = entry />
+                        <#assign assetRenderer = entry.assetRenderer />
+                        <#assign className = assetRenderer.className />              
+                    
+                        <#if "com.liferay.portlet.journal.model.JournalArticle" == className >
+                                            
+                            <#assign docXml = saxReaderUtil.read(entry.getAssetRenderer().getArticle().getContent()) />
+                            
+                            <#assign service = docXml.valueOf("//dynamic-element[@name='service']/dynamic-content/text()") />
+                            <#assign url = docXml.valueOf("//dynamic-element[@name='url']/dynamic-content/text()") />
+                           
+                            <#assign viewURL = ""/>
+                            <#assign assetRenderer = entry.getAssetRenderer() />
+                            
+                            <#--
+                            <#if assetRenderer.getURLViewInContext(renderRequest, renderResponse, null)?? >                     
+                                <#assign viewURL = assetRenderer.getURLViewInContext(renderRequest, renderResponse, null) />
+                            <#else>
+                                <#assign viewURL = assetPublisherHelper.getAssetViewURL(renderRequest, renderResponse, entry) />                        
+                            </#if>
+                            -->
+                            
+                            <#if url?has_content>
+                            
+                                <#assign config = "&format=json" />    
+                                <#assign embed_url = service + url + config />
+                                <#assign embed_url = httpUtil.encodeURL(embed_url) />
+                                                        
+                                <a href="javascript:;" data-toggle="modal" data-target="#modalSlideshow" data-index="${i}">
+                                
+                                    <div id="${namespace}_${i}_video_thumbnail" class="video-wrapper">
+                                        <#-- <span class="icon-youtube-play"></span> -->
+                                        <span class="icon icon-play-sign"></span>
+                                    </div>
+                                </a>
+                                                            
+                                <script>
+                                <!--       
+                                    var ${namespace}_${i}_oEmbedURL = "${layout_url}?p_p_id=proxyportlet_WAR_proxyportlet&p_p_lifecycle=2&_proxyportlet_WAR_proxyportlet_embedURL= ${embed_url}";
+                                                                                 
+                                    $( document ).ready(function() {            
+                                        ${namespace}_${i}_loadFrame();            
+                                    });
+                                    
+                                    function ${namespace}_${i}_loadFrame() {
+                                    
+                                        /**
+                                         * oEmbed
+                                         */
+                                        $.get( ${namespace}_${i}_oEmbedURL, function( str ) {
+        
+                                            var data = JSON.parse(str);
+                                            var html = data.html;
+                                            var provider_name = data.provider_name;
+                                            var thumbnail_url = data.thumbnail_url;
+                                            var title = data.title;
+                                                                                
+                                            var videoHeight = data.height; 
+                                            var videoWidth = data.width;
+                                                    
+                                            var scale = 0.9;
+                                            var buttonWidth = 40;
+                                                                                 
+                                            var boxWidth = $(window).width() * scale - buttonWidth;
+                                            var boxHeight = $(window).height() * scale; 
+                                            var boxRatio = boxWidth / boxHeight;                                   
+                                                                                 
+                                            // set the size of the embedded video iframes
+                                            var width = boxWidth;
+                                            var height = boxHeight;
+                                                                                                                       
+                                            // preserve the videos ratio 
+                                            var videoRatio = videoWidth / videoHeight;                                   
+                                            
+                                            if (videoRatio > boxRatio) {
+                                                width = boxWidth;
+                                                var ratio = videoWidth / boxWidth; 
+                                                height = videoHeight / ratio;
+                                            } else {
+                                                height = boxHeight;
+                                                var ratio = videoHeight / boxHeight; 
+                                                width = videoWidth / ratio;
+                                            }                                
+                                                                                
+                                            html = html.replace(videoWidth, width); 
+                                            html = html.replace(videoHeight, height);
+                                             
+                                            // load the thumbnail into the gallery
+                                            var style = 'background-image: url("' +  thumbnail_url + '");';                                                    
+                                            $("#${namespace}_${i}_video_thumbnail").attr("style", style);
+                                            
+                                            // insert the title as a caption after the video-wrapper
+                                            var caption = '<div class="caption">' + title + '</div>'; 
+                                            $(caption).insertAfter($("#${namespace}_${i}_video_thumbnail")); 
+                                            
+                                            // and load the video frame into the slider                 
+                                            $("#${namespace}_${i}_video").html(html);                  
+                                                 
+                                        });          
+                                    };        
+                                -->
+                                </script> 
+                            
+                            <#else>
+                                <div class="none">
+                                    Only structures of type "Video" can be displayed
+                                    in the Media Gallery.
+                                </div>
+                            </#if>
+                        
+                        <#elseif "com.liferay.portlet.documentlibrary.model.DLFileEntry" == className >
+                        
+                            <#assign fileEntry = fileEntryService.getFileEntry(entry.classPK) />
+                            <#assign latestFileVersion = fileEntry.getFileVersion() />
+                            <#assign latestFileVersionStatus = latestFileVersion.getStatus() />
+                            <#assign title = httpUtil.encodeURL(htmlUtil.unescape(latestFileVersion.getTitle())) />
+                        
+                            <#assign style = "background-image: url('/documents/" + groupId + "/" + fileEntry.folder.folderId + "/" + title + "?imageThumbnail=3');" /> 
+                            <#assign caption = latestFileVersion.getDescription() />              
+                                            
+                            <a href="javascript:;" data-toggle="modal" data-target="#modalSlideshow" data-index="${i}">
+                                <div class="image-wrapper" style="${style}">&nbsp;</div>
+                                <#if caption?has_content >
+                                    <div class="caption">${caption}</div>
+                                </#if>                        
+                            </a>                   
+                                                
+                        <#else>
+                        
+                            <div class="none">This is neither a video nor a document.</div>
+                           
+                        </#if>
+                        
+                        </div> <#-- /.span6 -->           
+                        
+                        <#if i%2 == 0 && i gt 0 >
+                            </div>
+                            <div class="row-fluid">
+                        </#if>
+                        
+                        <#assign i = i+1 />                    
+            
+                    </#list>
+                    
+                    </div> <#-- / .row-fluid -->
+                    
+                </div> <#-- /.media -->
+            </#if>            
             
             <#-- Include the common social-media snippet --> 
             <#include "${templatesPath}/72079" /> 
