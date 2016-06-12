@@ -8,8 +8,8 @@
     - use font-awesome icons instead of image files
         
     Created:    2015-10-21 13:16 by Christian Berndt
-    Modified:   2016-05-16 23:08 by Christian Berndt
-    Version:    1.0.2
+    Modified:   2016-06-12 15:49 by Christian Berndt
+    Version:    1.0.3
 --%>
 <%--
 /**
@@ -74,12 +74,12 @@ request.setAttribute("search.jsp-returnToFullPageURL", portletDisplay.getURLBack
     <aui:input name="format" type="hidden" value="<%= format %>" />
 
     <aui:fieldset id="searchContainer">
-        <aui:input autoFocus="<%= windowState.equals(WindowState.MAXIMIZED) %>" inlineField="<%= true %>" label="" name="keywords" size="30" value="<%= HtmlUtil.escape(keywords) %>" />
+        <aui:input autoFocus="<%= windowState.equals(WindowState.MAXIMIZED) %>" inlineField="<%= true %>" label="" name="keywords" size="30" title="search" value="<%= HtmlUtil.escape(keywords) %>" />
 
 <%-- Customization: use font-awesome search icon instead of search.png --%>
   <div class="control-group control-group-inline">
       <button id="<portlet:namespace/>search" name="<portlet:namespace/>search" type="submit" value="">
-	      <i id="<portlet:namespace/>searchIcon" class="icon-search"></i>
+          <i id="<portlet:namespace/>searchIcon" class="icon-search"></i>
       </button>
 <%--         <aui:input inlineField="<%= true %>" label="" name="search" src='<%= themeDisplay.getPathThemeImages() + "/common/search.png" %>' title="search" type="image" /> --%>
       <a href="<%= clearSearchURL %>" id="<portlet:namespace/>clearSearch" name="<portlet:namespace/>clearSearch">
@@ -145,7 +145,7 @@ request.setAttribute("search.jsp-returnToFullPageURL", portletDisplay.getURLBack
         function(event) {
             var targetId = event.target.get('id');
 
-            if (targetId === '<portlet:namespace />search' | targetId === '<portlet:namespace />searchIcon' ) {
+            if (targetId === '<portlet:namespace />search') {
                 <portlet:namespace />search();
             }
             else if (targetId === '<portlet:namespace />clearSearch') {
