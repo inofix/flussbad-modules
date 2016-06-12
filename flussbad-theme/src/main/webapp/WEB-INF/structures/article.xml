@@ -5,8 +5,8 @@
     long texts.
     
     Created:    2015-10-01 18:55 by Christian Berndt
-    Modified:   2016-04-14 19:15 by Christian Berndt
-    Version:    1.0.1
+    Modified:   2016-06-11 14:20 by Christian Berndt
+    Version:    1.0.2
     
     Please note: Although this structure is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -174,6 +174,16 @@
             </entry>
             <entry name="tip">
                 <![CDATA[Gib dem Abschnitt eine knappe aber aussagekräftige Zwischenüberschrift.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>
+    <dynamic-element dataType="string" indexType="keyword" localizable="true" name="tags" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="medium">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[Galerie Tags]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Trage hier ein oder mehrere Tags ein, auf deren Grundlage die Mediengalerie erstellt wird.]]>
             </entry>
         </meta-data>
     </dynamic-element>
