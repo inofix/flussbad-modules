@@ -11,6 +11,13 @@
     changes to the flussbad-modules repo, too.
 -->
 
+<#-- Import required services -->
+<#assign articleService = serviceLocator.findService("com.liferay.portlet.journal.service.JournalArticleService") />
+<#assign categoryService = serviceLocator.findService("com.liferay.portlet.asset.service.AssetCategoryLocalService") />
+<#assign fileEntryService  = serviceLocator.findService("com.liferay.portlet.documentlibrary.service.DLFileEntryLocalService") />
+<#assign layoutLocalService = serviceLocator.findService("com.liferay.portal.service.LayoutLocalService") />
+<#assign propertyService = serviceLocator.findService("com.liferay.portlet.asset.service.AssetCategoryPropertyService") />
+
 <#assign currentURL = "">
 <#assign groupURL = "" />
 <#assign layout = ""/>
@@ -27,17 +34,12 @@
     <#assign pathFriendlyURL = themeDisplay['path-friendly-url-public'] />
 </#if>
 
-<#assign articleService = serviceLocator.findService("com.liferay.portlet.journal.service.JournalArticleService") />
 <#assign articleId = getterUtil.getString(.vars['reserved-article-id'].data) />
 <#assign article = articleService.getArticle(groupId, articleId) />
 <#assign classPK =  article.getResourcePrimKey() />
-
-<#assign categoryService = serviceLocator.findService("com.liferay.portlet.asset.service.AssetCategoryLocalService") />
 <#assign categories = categoryService.getCategories("com.liferay.portlet.journal.model.JournalArticle", classPK) />
 <#assign language_id = languageUtil.getLanguageId(locale) />
 
-<#assign layoutLocalService = serviceLocator.findService("com.liferay.portal.service.LayoutLocalService") />
-<#assign propertyService = serviceLocator.findService("com.liferay.portlet.asset.service.AssetCategoryPropertyService") />
 
 <#if plid?number gt 0 >
     <#assign layout = layoutLocalService.getLayout(plid?number) />
@@ -47,6 +49,7 @@
 <#if request.attributes?? >
     <#assign currentURL = request.attributes['CURRENT_URL']/>
 </#if>
+
 <#assign pathAndGroupURL = pathFriendlyURL + groupURL />
 
 <#-- with virtualhost configured -->
@@ -83,6 +86,36 @@
 <#else>
     <#assign cssClass = "without-keyvisual" />
 </#if>
+
+<#-- Setup the modal slideshow -->
+
+<#assign assetSearchTool=utilLocator.findUtil("freemarker-tools-hook", "ch.inofix.hook.fmtools.AssetSearchTool")>
+<#assign groupIds = [groupId] />
+<#assign userId = getterUtil.getLong(request['remote-user']) />
+<#assign className = "" />
+<#assign userName = "" />
+<#assign title = "" />
+<#assign description = "" />
+<#assign assetCategoryIds = "" />
+<#assign assetTagNames = "" />
+<#assign anyTag = true />
+<#assign status = 0 />
+<#assign andSearch = false />
+<#assign start = 0 />
+<#assign end = 20 />
+
+<#assign assetEntries = [] />
+  
+<#if tags??>
+    <#if tags.getData()?has_content>
+        <#assign assetTagNames = tags.getData() />
+        <#assign assetEntries = assetSearchTool.search(companyId, groupIds, userId, permissionChecker, className, userName, title, description, assetCategoryIds, assetTagNames, anyTag, status, andSearch, start, end) />
+    </#if>
+</#if>
+
+
+
+
 
 <#macro images section>   
     <#if section.image.getSiblings()?has_content>
