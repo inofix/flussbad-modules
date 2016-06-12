@@ -1,12 +1,12 @@
 <root available-locales="de_DE" default-locale="de_DE">
 <!--
-    article_project: A structure for content objects of 
-    type "article_project", which is the default structure for project articles. 
-    This structure is meant to be configured as child structure of article_with_keyvisual. 
+    article_project is a copy of article_with_keyvisual and additional 
+    layoutUuid because the display-page-hook does not work with inherited
+    structures. 
     
     Created:    2015-10-16 19:35 by Christian Berndt
-    Modified:   2015-11-01 23:07 by Christian Berndt
-    Version:    0.9.3
+    Modified:   2016-06-12 22:19 by Christian Berndt
+    Version:    1.0.1
     
     Please note: Although this structure is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -66,6 +66,19 @@
         </meta-data>
     </dynamic-element>
     <dynamic-element dataType="string" indexType="keyword" localizable="true" name="section" readOnly="false" repeatable="true" required="false" showLabel="true" type="text" width="medium">
+        <dynamic-element dataType="string" indexType="keyword" localizable="true" name="label" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="medium">
+             <meta-data locale="de_DE">
+                 <entry name="label">
+                     <![CDATA[Beschriftung]]>
+                </entry>
+                <entry name="predefinedValue">
+                    <![CDATA[]]>
+                </entry>
+                <entry name="tip">
+                    <![CDATA[Wenn nötig, kannst Du hier dem Abschnitt eine von der Überschrift abweichende Beschriftung geben. Das ist besonders dann nützlich, wenn die Überschrift zu lang für vertikale Navigation mit dem Scrollspy ist.]]>
+                </entry>
+            </meta-data>
+        </dynamic-element>
         <dynamic-element dataType="html" fieldNamespace="ddm" indexType="keyword" localizable="true" name="body" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-text-html" width="large">
             <meta-data locale="de_DE">
                 <entry name="label">
@@ -118,6 +131,53 @@
                 </entry>
             </meta-data>
         </dynamic-element>
+        <dynamic-element dataType="string" indexType="keyword"
+            localizable="true" multiple="false" name="service" readOnly="false"
+            repeatable="false" required="false" showLabel="true" type="select"
+            width="">
+            <dynamic-element name="option3753" type="option"
+                value="http:&#047;&#047;www.youtube.com&#047;oembed?url=">
+                <meta-data locale="de_DE">
+                    <entry name="label">
+                        <![CDATA[youtube]]>
+                    </entry>
+                </meta-data>
+            </dynamic-element>
+            <dynamic-element name="option3754" type="option"
+                value="https:&#047;&#047;vimeo.com&#047;api&#047;oembed.json?url=">
+                <meta-data locale="de_DE">
+                    <entry name="label">
+                        <![CDATA[vimeo]]>
+                    </entry>
+                </meta-data>
+            </dynamic-element>
+            <meta-data locale="de_DE">
+                <entry name="label">
+                    <![CDATA[Service]]>
+                </entry>
+                <entry name="predefinedValue">
+                    <![CDATA[[""]]]>
+                </entry>
+                <entry name="tip">
+                    <![CDATA[Wähle den Dienst aus, von dem Du das Video einbetten möchtest.]]>
+                </entry>
+            </meta-data>
+        </dynamic-element>
+        <dynamic-element dataType="string" indexType="keyword"
+            localizable="true" name="url" readOnly="false" repeatable="false"
+            required="false" showLabel="true" type="text" width="small">
+            <meta-data locale="de_DE">
+                <entry name="label">
+                    <![CDATA[Video URL]]>
+                </entry>
+                <entry name="predefinedValue">
+                    <![CDATA[]]>
+                </entry>
+                <entry name="tip">
+                    <![CDATA[Gib hier den URL des Videos ein. Der URL muss entweder mit http:// oder https:// beginnen.]]>
+                </entry>
+            </meta-data>
+        </dynamic-element>         
         <meta-data locale="de_DE">
             <entry name="label">
                 <![CDATA[Abschnitt]]>
@@ -127,6 +187,16 @@
             </entry>
             <entry name="tip">
                 <![CDATA[Gib dem Abschnitt eine knappe aber aussagekräftige Zwischenüberschrift.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>
+    <dynamic-element dataType="string" indexType="keyword" localizable="true" name="tags" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="medium">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[Galerie Tags]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Trage hier ein oder mehrere Tags ein, auf deren Grundlage die Mediengalerie erstellt wird. Mehrere Tags werden durch Kommata von einander getrennt.]]>
             </entry>
         </meta-data>
     </dynamic-element>    

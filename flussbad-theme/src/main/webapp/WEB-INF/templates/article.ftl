@@ -2,8 +2,8 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2016-06-12 19:06 by Christian Berndt
-    Version:    1.2.7
+    Modified:   2016-06-12 21:52 by Christian Berndt
+    Version:    1.2.8
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -39,11 +39,12 @@
 <#assign classPK =  article.getResourcePrimKey() />
 <#assign categories = categoryService.getCategories("com.liferay.portlet.journal.model.JournalArticle", classPK) />
 <#assign language_id = languageUtil.getLanguageId(locale) />
-
+<#assign layoutFriendlyURL = "" />
 
 <#if plid?number gt 0 >
     <#assign layout = layoutLocalService.getLayout(plid?number) />
     <#assign groupURL = layout.group.friendlyURL />
+    <#assign layoutFriendlyURL = layout.friendlyURL />
 </#if>
 
 <#if request.attributes?? >
@@ -60,7 +61,7 @@
     <#assign prefix = pathAndGroupURL />
 </#if>
 
-<#assign layout_url = prefix + layout.friendlyURL />
+<#assign layout_url = prefix + layoutFriendlyURL />
 
 <#assign cssClass = "" />
 <#assign displayToc = false />
