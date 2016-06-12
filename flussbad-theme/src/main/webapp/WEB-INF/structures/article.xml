@@ -5,8 +5,8 @@
     long texts.
     
     Created:    2015-10-01 18:55 by Christian Berndt
-    Modified:   2016-06-11 14:20 by Christian Berndt
-    Version:    1.0.2
+    Modified:   2016-06-12 22:05 by Christian Berndt
+    Version:    1.0.3
     
     Please note: Although this structure is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -183,7 +183,7 @@
                 <![CDATA[Galerie Tags]]>
             </entry>
             <entry name="tip">
-                <![CDATA[Trage hier ein oder mehrere Tags ein, auf deren Grundlage die Mediengalerie erstellt wird.]]>
+                <![CDATA[Trage hier ein oder mehrere Tags ein, auf deren Grundlage die Mediengalerie erstellt wird. Mehrere Tags werden durch Kommata von einander getrennt.]]>
             </entry>
         </meta-data>
     </dynamic-element>
