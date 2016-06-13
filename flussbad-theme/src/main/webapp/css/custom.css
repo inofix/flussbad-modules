@@ -3213,7 +3213,7 @@ input {
 /* ----------------------------------------------- the big search */
 
     
-    .portlet-search.portlet-boundary { /** limit style to public part, do not apply to .portlet-configuration */
+    .portlet-search {
     
         .asset-entry-date {
             display:block;
@@ -3243,6 +3243,10 @@ input {
             
                 float: left; 
             }            
+        }
+        
+        .lfr-search-container {
+            overflow: hidden;
         }
         
         .result {
@@ -3325,45 +3329,46 @@ input {
             display: none; 
         }
 	
-		fieldset#_3_searchContainer {
+		fieldset {
 		
 		   margin: 30px 0;
 		   width: 100%;
 		   
-		   .control-group {
-		   
-		       width: 19%;
-		       margin-bottom: 0;
-		       
-		       a,
-		       button {
-		       
-		          background: none;
-		          border: none;
-		       		 
-		       	   .icon-remove,          
-		           .icon-search {
-		           
-		              font-size: $h1-font-size;
-		              color: $navigation-font-color;
-		              vertical-align: middle;
-		              
-		              &:hover {
-		                  color: $hover-font-color;
-		              }
-		           }
-		       }
-		       
-		       a {
-		          margin-left: -130px;
-		          position: relative;
-		       }
-		       
-		       &:first-child {
-		           width: 80%;
-		       }
-		   }
        }
+       
+       .control-group {
+       
+           width: 19%;
+           margin-bottom: 0;
+           
+           a,
+           button {
+           
+              background: none;
+              border: none;
+                 
+               .icon-remove,          
+               .icon-search {
+               
+                  font-size: $h1-font-size;
+                  color: $navigation-font-color;
+                  vertical-align: middle;
+                  
+                  &:hover {
+                      color: $hover-font-color;
+                  }
+               }
+           }
+           
+           a {
+              margin-left: -130px;
+              position: relative;
+           }
+           
+           &:first-child {
+               width: 80%;
+           }
+       }       
        
        .lfr-token-list {
         
@@ -3388,6 +3393,10 @@ input {
 	       
 	           padding: 0 0 30px 0;
 	           border: none;
+	           
+	           .control-group {
+	               width: 100%;
+	           }
 	           
 	           .facet-value {
 	           
@@ -4083,6 +4092,36 @@ input {
         
             width: 100%; /* bootstrap .container */
         }
+        
+        .portlet-site-map.search-map {
+            padding: 0 15px 0 15px;
+        }
+        
+        .portlet-search {
+        
+            .control-group {
+            
+                width: 20%; 
+                vertical-align: middle;
+                
+               a {
+                   margin-left: -60px;
+               }
+                
+                button {
+                    float: right;
+                }
+                
+                &:first-child {
+                    width: 75%;               
+                }
+
+            }
+        
+            form {
+                padding: 0 15px;
+            }
+        }
     }
     
     
@@ -4198,7 +4237,7 @@ input {
                             }
                         }
                     }
-                }
+                }    
             }            
         
             .search {
@@ -4216,9 +4255,7 @@ input {
 
 	    .portlet-asset-categories-navigation,
 	    .portlet-site-map.project-sections, 
-        .portlet-site-map.search-map
-	    
-	    {
+        .portlet-site-map.search-map {
 	    
 	        max-height: 100%;
 	        text-align: center;
@@ -4233,13 +4270,16 @@ input {
 		            margin: 0;
 		                
 		            li {
-		            
-		                float: none !important;
-		                display: block !important;
+		              float: left;
 		            }
 		        }
 	        }
-	    }
+	        
+	        .portlet-borderless-container {
+	           width: 100%;
+	        }
+	    }	    
+
 	    
 	    .story.with-keyvisual .toc,
         .toc {
@@ -4415,7 +4455,7 @@ input {
                     
                 }
             }
-        }    
+        } 
     
         .columns-max,
         .lfr-meta-actions,
@@ -4428,6 +4468,7 @@ input {
         .portlet-site-map.search-map .portlet-borderless-container,
         .web-form-portlet  {
             width: 724px; /* bootstrap .container */
+            margin: auto;
         }
     }
     
