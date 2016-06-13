@@ -8,8 +8,8 @@
     - use font-awesome icons.
         
     Created:    2016-06-13 15:41 by Christian Berndt
-    Modified:   2016-06-13 15:41 by Christian Berndt
-    Version:    1.0.0
+    Modified:   2016-06-13 16:57 by Christian Berndt
+    Version:    1.0.1
 --%>
 <%--
 /**
@@ -50,7 +50,8 @@ else {
 portletURL.setParameter("struts_action", "/search/search");
 portletURL.setParameter("redirect", currentURL);
 portletURL.setPortletMode(PortletMode.VIEW);
-portletURL.setWindowState(WindowState.MAXIMIZED);
+// Customized: do not maximize
+// portletURL.setWindowState(WindowState.MAXIMIZED);
 
 pageContext.setAttribute("portletURL", portletURL);
 %>
