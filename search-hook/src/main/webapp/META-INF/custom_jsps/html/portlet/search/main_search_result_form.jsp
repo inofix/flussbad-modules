@@ -10,8 +10,8 @@
     - preview for assets of type DLFileEntry
         
     Created:    2016-02-14 23:21 by Christian Berndt
-    Modified:   2016-05-17 22:20 by Christian Berndt
-    Version:    1.0.5
+    Modified:   2016-06-12 16:05 by Christian Berndt
+    Version:    1.0.6
 --%>
 <%--
 /**
@@ -31,6 +31,7 @@
 
 <%@ include file="/html/portlet/search/init.jsp" %>
 
+<%@page import="com.liferay.portal.kernel.xml.SAXReaderUtil"%>
 <%@page import="com.liferay.portlet.documentlibrary.asset.DLFileEntryAssetRenderer"%>
 <%@page import="com.liferay.portlet.journal.asset.JournalArticleAssetRenderer"%>
 
@@ -123,16 +124,16 @@ else {
 //Customized: set display / publish-date    
 if (assetRenderer != null) {
     if (assetRenderer.getDisplayDate() != null) {
-        publishTime = assetRenderer.getDisplayDate().getTime(); 
+        publishTime = assetRenderer.getDisplayDate().getTime();
     }
 }
 
 String timeStr = document.get("publishDate_sortable");
-    
+
 long time = GetterUtil.getLong(timeStr);
 
 if (time > 0) {
-    publishTime = time; 
+    publishTime = time;
 }
 
 Indexer indexer = IndexerRegistryUtil.getIndexer(className);
@@ -141,15 +142,14 @@ Summary summary = null;
 
 if (indexer != null) {
     String snippet = document.get(Field.SNIPPET);
-    
+
     summary = indexer.getSummary(document, locale, snippet, viewFullContentURL);
 
 // Customized: setMaxContentLength (see: https://github.com/liferay/liferay-portal/commit/4a47ed5f8b46e23e6fc63d4e7bfa057290ef1ab1)
     summary.setMaxContentLength(300);
 
     entryTitle = summary.getTitle();
-    entrySummary = summary.getContent();  
-    
+    entrySummary = summary.getContent(); 
     
 // Customized: use the structure's headline or title field as entry title
     if (JournalArticle.class.getName().equals(className)) {
@@ -173,24 +173,26 @@ if (indexer != null) {
                 entryTitle = title;
             }
         }       
-    }
+    }    
 }
 else if (assetRenderer != null) {
-       
     entryTitle = assetRenderer.getTitle(locale);
     entrySummary = assetRenderer.getSearchSummary(locale);
-    
 }
 
 if ((assetRendererFactory == null) && viewInContext) {
     viewURL = viewFullContentURL.toString();
 }
 
-viewURL = _checkViewURL(themeDisplay, viewURL, currentURL, inheritRedirect);
+viewURL =
+    _checkViewURL(
+        themeDisplay, viewURL, currentURL, inheritRedirect);
 
-String[] queryTerms = (String[])request.getAttribute("search.jsp-queryTerms");
+String[] queryTerms =
+    (String[]) request.getAttribute("search.jsp-queryTerms");
 
-PortletURL portletURL = (PortletURL)request.getAttribute("search.jsp-portletURL");
+PortletURL portletURL =
+    (PortletURL) request.getAttribute("search.jsp-portletURL");
 
 // Customized: variables
 String cssClass = "asset-entry span8"; // default style for text records
@@ -223,7 +225,6 @@ if (DLFileEntry.class.getName().equals(className)) {
 }
 %>
 
-
 <%-- // Customized: conditional css-class --%>
 <span class="<%= cssClass %>">
 <%-- <span class="asset-entry"> --%>
@@ -231,7 +232,12 @@ if (DLFileEntry.class.getName().equals(className)) {
         <%= ResourceActionsUtil.getModelResource(themeDisplay.getLocale(), className) %>
 
         <c:if test="<%= locale != summary.getLocale() %>">
-            <liferay-ui:icon image='<%= "../language/" + LocaleUtil.toLanguageId(summary.getLocale()) %>' message='<%= LanguageUtil.format(locale, "this-result-comes-from-the-x-version-of-this-web-content", LocaleUtil.getLongDisplayName(summary.getLocale(), new HashSet<String>())) %>' />
+
+            <%
+            Locale summaryLocale = summary.getLocale();
+            %>
+
+            <liferay-ui:icon image='<%= "../language/" + LocaleUtil.toLanguageId(summary.getLocale()) %>' message='<%= LanguageUtil.format(locale, "this-result-comes-from-the-x-version-of-this-content", summaryLocale.getDisplayLanguage(locale), false) %>' />
         </c:if>
     </span>
 
@@ -245,7 +251,7 @@ if (DLFileEntry.class.getName().equals(className)) {
             <c:if test="<%= assetRenderer != null %>">
                 <img alt="" src="<%= assetRenderer.getIconPath(renderRequest) %>" />
             </c:if>
-            
+
             <%= StringUtil.highlight(HtmlUtil.escape(entryTitle), queryTerms) %>
         </a>
 
@@ -258,12 +264,11 @@ if (DLFileEntry.class.getName().equals(className)) {
     String[] assetCategoryIds = document.getValues(Field.ASSET_CATEGORY_IDS);
     String[] assetTagNames = document.getValues(Field.ASSET_TAG_NAMES);
     %>
-    <c:if test="<%= Validator.isNotNull(entrySummary) || Validator.isNotNull(assetCategoryIds[0]) || Validator.isNotNull(assetTagNames[0]) || Validator.isNotNull(viewURL) %>">
 
+    <c:if test="<%= Validator.isNotNull(entrySummary) || Validator.isNotNull(assetCategoryIds[0]) || Validator.isNotNull(assetTagNames[0]) %>">
+    
 <%-- Customized display condition --%>
-<%--  <c:if test="<%= Validator.isNotNull(entrySummary) || Validator.isNotNull(assetCategoryIds[0]) || Validator.isNotNull(assetTagNames[0]) %>"> --%>
         <div class="asset-entry-content">
-        
 <%-- Customized --%>
             <c:choose>
                 <c:when test="<%= DLFileEntry.class.getName().equals(className) %>">
@@ -278,13 +283,13 @@ if (DLFileEntry.class.getName().equals(className)) {
                         </a>
                     </span>
                 </c:when>
-                <c:otherwise>
+                <c:otherwise> 
 <%-- Default behaviour --%>
                     <c:if test="<%= Validator.isNotNull(entrySummary) %>">
                         <span class="asset-entry-summary">
                             <%= StringUtil.highlight(HtmlUtil.escape(entrySummary), queryTerms) %>
                         </span>
-                    </c:if>                
+                    </c:if>
                 </c:otherwise>
             </c:choose>
 
@@ -352,17 +357,17 @@ if (DLFileEntry.class.getName().equals(className)) {
 
                         <c:if test="<%= i == 0 %>">
                             <div class="taglib-asset-categories-summary">
-                            
-<%-- Do not display the name of the asset-vocabulary in the search 
+
+<%-- Do not display the name of the asset-vocabulary in the search                             
                                 <span class="asset-vocabulary">
                                     <%= HtmlUtil.escape(assetVocabulary.getTitle(assetCategoryLocale)) %>:
                                 </span>
---%>                                
+--%>
                         </c:if>
                         <a href="<%= categoryURL.toString() %>"><span class="icon-tags"></span>
                             <%= _buildAssetCategoryPath(assetCategory, assetCategoryLocale) %>
                         </a>
-<%-- 
+<%--
                         <a class="asset-category" href="<%= categoryURL.toString() %>">
                             <%= _buildAssetCategoryPath(assetCategory, assetCategoryLocale) %>
                         </a>

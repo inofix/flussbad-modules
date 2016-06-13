@@ -9,7 +9,7 @@
 	<artifactId>search-hook</artifactId>
 	<packaging>war</packaging>
 	<name>Search Hook</name>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<build>
 		<plugins>
             <!-- Read properties from dev.properties in -->
