@@ -3891,6 +3891,20 @@ input {
                 padding: 15px;
             }
         }
+        
+        .portlet-asset-categories-navigation,
+        .portlet-site-map.project-sections {
+            .portlet-body {
+                ul li {
+                    float: none !important;
+                    display: block;
+                }
+            }
+        }
+        
+        .portlet-site-map.project-sections {
+            
+        }
 
         .portlet-asset-publisher.story-publisher,
         .project-story.categories-closed {
@@ -4067,15 +4081,27 @@ input {
 		    } 
 		}		
 		        
-        .portlet-boundary.portlet-asset-publisher {
+        .portlet-asset-publisher {
         
-            &.offet-1 .gallery {
-               margin-left: 0;
+            .view {
+                padding: 0 15px;
+                
+                .lfr-preview-file-image-current {
+                    margin-bottom: 0; 
+                }
+                
             }
-            
-            &.offset-2 .gallery {
-                margin-left: 0;      
-            }        
+        
+            &.portlet-boundary {
+        
+                &.offet-1 .gallery {
+                   margin-left: 0;
+                }
+                
+                &.offset-2 .gallery {
+                    margin-left: 0;      
+                } 
+            }      
         }        
 		
         
@@ -4104,8 +4130,9 @@ input {
                 width: 20%; 
                 vertical-align: middle;
                 
-               a {
-                   margin-left: -60px;
+               a#_3_clearSearch {
+                   margin-left: -50px;
+                   position: absolute;
                }
                 
                 button {
@@ -4278,7 +4305,14 @@ input {
 	        .portlet-borderless-container {
 	           width: 100%;
 	        }
-	    }	    
+	    }
+	    
+        .portlet-asset-categories-navigation,
+        .portlet-site-map.project-sections {
+            .portlet-body {
+                padding: 0 15px;
+            }
+        }	    
 
 	    
 	    .story.with-keyvisual .toc,
