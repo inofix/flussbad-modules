@@ -3,8 +3,8 @@
     site-map links.
     
     Created:    2016-06-18 21:54 by Christian Berndt
-    Modified:   2016-06-18 21:54 by Christian Berndt
-    Version:    1.0.0
+    Modified:   2016-06-19 13:15 by Christian Berndt
+    Version:    1.0.1
 -->
 
 
@@ -24,6 +24,7 @@
         <#if keywords?has_content>
             <#assign layoutURL = httpUtil.addParameter(layoutURL, "_3_keywords", keywords) />
             <#assign layoutURL = httpUtil.addParameter(layoutURL, "p_p_id", "3") />
+            <#assign layoutURL = httpUtil.addParameter(layoutURL, "_3_struts_action", "/search/search") />
         </#if>
         
         <li><a href="${layoutURL}" class="${cssClass}">${curLayout.getName(locale)}</a></li>
