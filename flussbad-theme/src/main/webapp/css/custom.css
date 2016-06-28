@@ -4125,28 +4125,77 @@ input {
         
         .portlet-search {
         
-            .control-group {
+            .taglib-search-iterator-page-iterator-bottom,
+            .taglib-search-iterator-page-iterator-top {
+                margin-right: 15px;
+            }
+                       
+            .disabled {
+                display: block !important;
+            }
             
-                width: 20%; 
-                vertical-align: middle;
-                
-               a#_3_clearSearch {
-                   margin-left: -50px;
-                   position: absolute;
-               }
-                
-                button {
-                    float: right;
-                }
-                
-                &:first-child {
-                    width: 75%;               
-                }
-
+            .disabled.first {
+                display: none !important;
             }
         
+            .lfr-pagination-buttons {
+                margin-top: 0;
+            }
+                
             form {
-                padding: 0 15px;
+                padding: 0 0 0 15px;
+        
+                .control-group {
+                
+                    width: 20%; 
+                    vertical-align: middle;
+                    
+                   a#_3_clearSearch {
+                       margin-left: -50px;
+                       position: absolute;
+                   }
+                    
+                    button {
+                        float: right;
+                    }
+                    
+                    &:first-child {
+                        width: 75%;               
+                    }
+    
+                }
+                
+                .result {
+                
+                    table {
+                        margin-right: -15px;
+                    }
+                
+                    tr {
+                        width: 50%; 
+                        display: inline-block;
+                    }
+                
+                    .table-cell {
+                        width: 100%;
+                    }
+                
+                    .asset-entry.gallery-item {
+                    
+                        margin: 0 15px 0 0;
+                    
+                        .asset-entry-preview {
+                        
+                            height: auto;
+                        
+                            img {
+                                height: auto;
+                                width: 100%;
+                                max-width: none;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
