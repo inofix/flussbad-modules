@@ -1439,15 +1439,45 @@ input {
                 }
             }
             
+            .metadata,
             .lfr-asset-metadata {
+            
                 .accordion-toggle {
-                    padding: 0; 
+                    padding-left: 0; 
                 }
                 
                 .accordion-inner {
                     padding: 10px 0;
-                    border: none;
+                    border: none; 
                 }
+                
+                .toggler-header {
+                    border-bottom: 1px solid #e5e5e5;
+                    
+                    .accordion-toggle {
+                        &::after {
+                            color: $default-font-color; 
+                            font-family: "fontawesome-alloy";
+                            content: "\f078";
+                            font-style: normal;
+                            font-weight: normal;
+                            font-variant: normal;
+                            text-transform: none;
+                            margin-right: -10px;
+                            font-size: 14px;
+                            float: right;                          
+                        }
+                    }
+                }
+                
+                .toggler-header-expanded {
+                
+                    .accordion-toggle {
+                        &::after {
+                            content: "\f077";
+                        }
+                    }              
+                }                
             }
             
             .lfr-asset-panels {
@@ -3493,24 +3523,24 @@ input {
                }
            }
            
-           .taglib-search-iterator-page-iterator-top,
-           .taglib-search-iterator-page-iterator-bottom {
-           
-               background-color: $color-sand;
-               padding: 0 15px;
-               margin-bottom: 60px;
-               
-               .lfr-pagination {
-                   padding: 0;
-                   
-                   .lfr-pagination-buttons {
+            .taglib-search-iterator-page-iterator-top,
+            .taglib-search-iterator-page-iterator-bottom {
+            
+                background-color: $color-sand;
+                padding: 0 15px;
+                margin-bottom: 60px;
+                
+                .lfr-pagination {
+                    padding: 0;
+                    
+                    .lfr-pagination-buttons {
                        padding: 15px 0;
-                   }
-               }
-           }
+                    }
+                }
+            }
            
-           .search-suggested-spelling {
-           
+            .search-suggested-spelling {
+            
                margin-bottom: 30px;
               
                .label {
@@ -3518,16 +3548,16 @@ input {
                    border-radius: 0;
                    padding: 5px;
                }
-           }
+            }
            
-           .alert-info {
+            .alert-info {
                background-color: $color-orange;
                color: white;
                border: none;
                padding: 15px;
                margin-bottom: 60px;
-           }
-       }
+            }
+        }
     }
 
     
@@ -4125,25 +4155,70 @@ input {
         
         .portlet-search {
         
-            .taglib-search-iterator-page-iterator-bottom,
-            .taglib-search-iterator-page-iterator-top {
-                margin-right: 15px;
+            .lfr-pagination-buttons {
+                margin-top: 0;
             }
-                       
+            
+            .asset-entry {
+                margin-right: -45px;
+            }
+                     
             .disabled {
                 display: block !important;
             }
             
             .disabled.first {
                 display: none !important;
-            }
-        
-            .lfr-pagination-buttons {
-                margin-top: 0;
+            }            
+            
+            &.gallery {
+            
+                .taglib-search-iterator-page-iterator-bottom,
+                .taglib-search-iterator-page-iterator-top {
+                    margin-right: 15px;
+                }
+                        
+                form {
+                
+                    padding: 0 0 0 15px;
+                    
+                    .result {
+                    
+                        table {
+                            margin-right: -15px;
+                        }
+                    
+                        tr {
+                            width: 50%; 
+                            display: inline-block;
+                        }
+                    
+                        .table-cell {
+                            width: 100%;
+                        } 
+                        
+                        .asset-entry.gallery-item {
+                        
+                            margin: 0 15px 0 0;
+                        
+                            .asset-entry-preview {
+                            
+                                height: auto;
+                            
+                                img {
+                                    height: auto;
+                                    width: 100%;
+                                    max-width: none;
+                                }
+                            }
+                        }                        
+                    }              
+                }                
             }
                 
             form {
-                padding: 0 0 0 15px;
+            
+                padding: 0 15px;
         
                 .control-group {
                 
@@ -4161,40 +4236,7 @@ input {
                     
                     &:first-child {
                         width: 75%;               
-                    }
-    
-                }
-                
-                .result {
-                
-                    table {
-                        margin-right: -15px;
-                    }
-                
-                    tr {
-                        width: 50%; 
-                        display: inline-block;
-                    }
-                
-                    .table-cell {
-                        width: 100%;
-                    }
-                
-                    .asset-entry.gallery-item {
-                    
-                        margin: 0 15px 0 0;
-                    
-                        .asset-entry-preview {
-                        
-                            height: auto;
-                        
-                            img {
-                                height: auto;
-                                width: 100%;
-                                max-width: none;
-                            }
-                        }
-                    }
+                    }   
                 }
             }
         }
@@ -4361,7 +4403,19 @@ input {
             .portlet-body {
                 padding: 0 15px;
             }
-        }       
+        }  
+        
+        .portlet-search {
+                               
+            .disabled {
+                display: block !important;
+            }
+            
+            .disabled.first {
+                display: none !important;
+            }
+            
+        }     
 
         
         .story.with-keyvisual .toc,
