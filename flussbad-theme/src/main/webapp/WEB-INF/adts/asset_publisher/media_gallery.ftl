@@ -3,8 +3,8 @@
     format them in as a gallery.
     
     Created:    2016-04-16 13:07 by Christian Berndt
-    Modified:   2016-05-10 15:54 by Christian Berndt
-    Version:    1.0.7
+    Modified:   2016-07-06 11:53 by Christian Berndt
+    Version:    1.0.8
 -->
 
 <#assign fileEntryService  = serviceLocator.findService("com.liferay.portlet.documentlibrary.service.DLFileEntryLocalService") />
@@ -70,7 +70,7 @@
 </#list>
 
 <!-- Modal slideshow -->
-<div class="modal slideshow fade" id="modalSlideshow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal slideshow fade" id="${namespace}modalSlideshow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
@@ -78,7 +78,7 @@
                 <div id="slider" class="flexslider">
                     <ul class="slides">
                                     
-                        <#if filteredEntries?has_content> 
+                        <#if filteredEntries?has_content>
                                                  
                             <#assign i = 1 /> 
                                             
@@ -194,7 +194,7 @@
                         <#assign embed_url = service + url + config />
                         <#assign embed_url = httpUtil.encodeURL(embed_url) />
                                                 
-                        <a href="javascript:;" data-toggle="modal" data-target="#modalSlideshow" data-index="${i}">
+                        <a href="javascript:;" data-toggle="modal" data-target="#${namespace}modalSlideshow" data-index="${i}">
                         
                             <div id="${namespace}_${i}_video_thumbnail" class="video-wrapper">
                                 <#-- <span class="icon-youtube-play"></span> -->
@@ -286,7 +286,7 @@
                     <#assign style = "background-image: url('/documents/" + groupId + "/" + fileEntry.folder.folderId + "/" + title + "?imageThumbnail=3');" /> 
                     <#assign caption = latestFileVersion.getDescription() />              
                                     
-                    <a href="javascript:;" data-toggle="modal" data-target="#modalSlideshow" data-index="${i}">
+                    <a href="javascript:;" data-toggle="modal" data-target="#${namespace}modalSlideshow" data-index="${i}">
                         <div class="image-wrapper" style="${style}">&nbsp;</div>
                         <#if caption?has_content >
                             <div class="caption">${caption}</div>
