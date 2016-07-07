@@ -1439,6 +1439,7 @@ input {
                 }
             }
             
+            .custom-fields,
             .metadata,
             .lfr-asset-metadata {
             
@@ -1449,6 +1450,10 @@ input {
                 .accordion-inner {
                     padding: 10px 0;
                     border: none; 
+                    
+                    .field-wrapper-content {
+                        margin-left: 0; 
+                    }
                 }
                 
                 .toggler-header {
