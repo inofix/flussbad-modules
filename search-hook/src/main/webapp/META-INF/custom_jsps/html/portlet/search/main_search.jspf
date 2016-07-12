@@ -8,8 +8,8 @@
     - increase the number of displayed results to 40
         
     Created:    2016-06-13 12:03 by Christian Berndt
-    Modified:   2016-06-13 12:03 by Christian Berndt
-    Version:    1.0.0
+    Modified:   2016-07-12 18:10 by Christian Berndt
+    Version:    1.0.1
 --%>
 <%--
 /**
@@ -29,7 +29,7 @@
 
 <%
 // Customized: increase the number of displayed results to 40
-SearchContainer mainSearchSearchContainer = new SearchContainer(renderRequest, null, null, SearchContainer.DEFAULT_CUR_PARAM, SearchContainer.DEFAULT_DELTA, portletURL, null, null);
+SearchContainer mainSearchSearchContainer = new SearchContainer(renderRequest, null, null, SearchContainer.DEFAULT_CUR_PARAM, 40, portletURL, null, null);
 // SearchContainer mainSearchSearchContainer = new SearchContainer(renderRequest, null, null, SearchContainer.DEFAULT_CUR_PARAM, SearchContainer.DEFAULT_DELTA, portletURL, null, null);
 
 SearchContext searchContext = SearchContextFactory.getInstance(request);
