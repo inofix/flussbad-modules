@@ -2,8 +2,8 @@
     intro.ftl: Format the intro structure
     
     Created:    2015-08-28 17:52 by Christian Berndt
-    Modified:   2016-05-17 21:36 by Christian Berndt
-    Version:    1.0.7
+    Modified:   2016-07-18 10:54 by Christian Berndt
+    Version:    1.0.8
     
     Please note: Although this template is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -74,7 +74,11 @@
                 <div class="row">
                     <div class="span6 offset3">
                         <#if link.getData()?has_content >
-                            <a href="${link.getData()}" title="${label.getData()}">
+                        
+                            <#assign target = layoutLocalService.getLayout(groupId?number, false, link.getData()?number) />                                        
+                            <#assign targetURL = prefix + target.getFriendlyURL(locale) />
+                                                   
+                            <a href="${targetURL}" title="${label.getData()}">
                                 <h1>${headline.getData()}</h1>
                             </a>
                         <#else>
