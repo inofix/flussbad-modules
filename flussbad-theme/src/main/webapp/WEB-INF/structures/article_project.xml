@@ -11,7 +11,7 @@
     site's context it's source is managed via git. Whenever you 
     change the structure online make sure that you commit your 
     changes to the flussbad-modules repo, too.
--->   
+-->
     <dynamic-element dataType="string" indexType="keyword" localizable="true" name="layoutUuid" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="small">
         <meta-data locale="de_DE">
             <entry name="label">
