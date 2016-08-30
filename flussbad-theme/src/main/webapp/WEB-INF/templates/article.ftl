@@ -2,8 +2,8 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2016-06-12 21:52 by Christian Berndt
-    Version:    1.2.8
+    Modified:   2016-08-30 11:40 by Christian Berndt
+    Version:    1.2.9
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -101,7 +101,7 @@
 <#assign assetTagNames = "" />
 <#assign anyTag = true />
 <#assign status = 0 />
-<#assign andSearch = false />
+<#assign andSearch = true />
 <#assign start = 0 />
 <#assign end = 20 />
 
