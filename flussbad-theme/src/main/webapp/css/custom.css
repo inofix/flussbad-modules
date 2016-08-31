@@ -1567,7 +1567,13 @@ input {
             
             .lfr-preview-file-image-container {
                 height: auto;
-            }        
+            }    
+            
+            /* hide pdf thumbnail-previews in search result detail */
+            .lfr-preview-file-actions,
+            .lfr-preview-file-images {
+                display: none; 
+            }    
         }
     
         &.start-publisher {
