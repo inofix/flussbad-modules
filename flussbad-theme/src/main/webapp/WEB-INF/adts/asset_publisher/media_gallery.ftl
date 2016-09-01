@@ -3,8 +3,8 @@
     format them in as a gallery.
     
     Created:    2016-04-16 13:07 by Christian Berndt
-    Modified:   2016-07-06 11:53 by Christian Berndt
-    Version:    1.0.8
+    Modified:   2016-09-01 15:18 by Christian Berndt
+    Version:    1.0.9
 -->
 
 <#assign fileEntryService  = serviceLocator.findService("com.liferay.portlet.documentlibrary.service.DLFileEntryLocalService") />
@@ -130,6 +130,7 @@
                                     
                                         <#assign imgSrc = "/documents/" + groupId + "/" + fileEntry.folder.folderId + "/" + fileTitle /> 
                                         <#assign caption = latestFileVersion.getDescription() />
+                                        
                                         <div class="image-wrapper">
                                             <img src="${imgSrc}?imageThumbnail=3" />
                                             <#if caption?has_content >
@@ -159,6 +160,9 @@
 
 <div class="container">
     <div class="template gallery media span8">
+        <#if themeDisplay.portletDisplay.title?has_content >
+            <h3>${themeDisplay.portletDisplay.title}</h3>
+        </#if> 
         <#if filteredEntries?has_content>                          
             <#assign i = 1 /> 
             
@@ -285,14 +289,15 @@
                 
                     <#assign style = "background-image: url('/documents/" + groupId + "/" + fileEntry.folder.folderId + "/" + title + "?imageThumbnail=3');" /> 
                     <#assign caption = latestFileVersion.getDescription() />              
+                    <#assign downloadURL = "/documents/" + groupId + "/" + fileEntry.folder.folderId + "/" + title + "?download=true" />            
                                     
                     <a href="javascript:;" data-toggle="modal" data-target="#${namespace}modalSlideshow" data-index="${i}">
-                        <div class="image-wrapper" style="${style}">&nbsp;</div>
-                        <#if caption?has_content >
-                            <div class="caption">${caption}</div>
-                        </#if>                        
-                    </a>                   
-                                        
+                        <div class="image-wrapper" style="${style}">&nbsp;</div>                     
+                    </a> 
+                    <#if caption?has_content >
+                        <span class="caption">${caption}</span>
+                    </#if>                     
+                    <a href="${downloadURL}" title="<@liferay.language key="download" />" class="download"><span class="icon icon-download"></span></a>
                 <#else>
                 
                     <div class="none">This is neither a video nor a document.</div>
