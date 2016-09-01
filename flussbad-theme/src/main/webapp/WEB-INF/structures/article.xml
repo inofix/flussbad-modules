@@ -5,8 +5,8 @@
     long texts.
     
     Created:    2015-10-01 18:55 by Christian Berndt
-    Modified:   2016-06-12 22:05 by Christian Berndt
-    Version:    1.0.3
+    Modified:   2016-08-31 18:45 by Christian Berndt
+    Version:    1.0.4
     
     Please note: Although this structure is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -187,4 +187,17 @@
             </entry>
         </meta-data>
     </dynamic-element>
+    <dynamic-element dataType="boolean" indexType="keyword" localizable="true" name="showDownload" readOnly="false" repeatable="false" required="false" showLabel="true" type="checkbox" width="">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[Downloadoption anzeigen?]]>
+            </entry>
+            <entry name="predefinedValue">
+                <![CDATA[false]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Markiere diese Option, wenn für die Dateien in der Mediengalerie eine Download-Option angezeigt werden soll.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>    
 </root>
