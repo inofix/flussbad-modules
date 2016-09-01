@@ -1578,6 +1578,14 @@ input {
                 display: none; 
             }    
         }
+        
+        &.hide-download {
+            .gallery {
+                a.download {
+                    display: none;
+                }
+            }
+        }
     
         &.start-publisher {
         
