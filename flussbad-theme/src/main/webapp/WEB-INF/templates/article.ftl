@@ -2,8 +2,8 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2016-08-30 11:40 by Christian Berndt
-    Version:    1.2.9
+    Modified:   2016-08-31 16:10 by Christian Berndt
+    Version:    1.3.0
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -64,8 +64,17 @@
 <#assign layout_url = prefix + layoutFriendlyURL />
 
 <#assign cssClass = "" />
+<#assign displayDownload = false />
 <#assign displayToc = false />
 <#assign hasKeyVisual = false />
+
+<#if showDownload?? >
+    <#if showDownload.getData()?has_content>
+        <#if getterUtil.getBoolean(showDownload.getData())>
+            <#assign displayDownload = getterUtil.getBoolean(showDownload.getData()) />
+        </#if>
+    </#if>
+</#if>
 
 <#if showToc?? >
     <#if showToc.getData()?has_content>
@@ -560,14 +569,18 @@
                             <#assign title = httpUtil.encodeURL(htmlUtil.unescape(latestFileVersion.getTitle())) />
                         
                             <#assign style = "background-image: url('/documents/" + groupId + "/" + fileEntry.folder.folderId + "/" + title + "?imageThumbnail=3');" /> 
-                            <#assign caption = latestFileVersion.getDescription() />              
+                            <#assign caption = latestFileVersion.getDescription() />  
+                            <#assign downloadURL = "/documents/" + groupId + "/" + fileEntry.folder.folderId + "/" + title + "?download=true" />            
                                             
                             <a href="javascript:;" data-toggle="modal" data-target="#modalSlideshow" data-index="${i}">
-                                <div class="image-wrapper" style="${style}">&nbsp;</div>
-                                <#if caption?has_content >
-                                    <div class="caption">${caption}</div>
-                                </#if>                        
-                            </a>                   
+                                <div class="image-wrapper" style="${style}">&nbsp;</div>                      
+                            </a>
+                            <#if caption?has_content >
+                                <span class="caption">${caption}</span>
+                            </#if>                              
+                            <#if displayDownload >
+                                <a href="${downloadURL}" title="<@liferay.language key="download" />" class="download"><span class="icon icon-download"></span></a>
+                            </#if>                  
                                                 
                         <#else>
                         
@@ -591,9 +604,8 @@
                 </div> <#-- /.media -->
             </#if>            
             
-            <#-- Include the common social-media snippet --> 
+            <#-- Include the common social-media snippet -->            
             <#include "${templatesPath}/72079" /> 
-             
                           
         </div> <#-- / .span8 -->
         

@@ -4,8 +4,8 @@
     type "article_with_keyvisual". 
     
     Created:    2015-10-16 19:35 by Christian Berndt
-    Modified:   2016-06-12 22:19 by Christian Berndt
-    Version:    1.0.1
+    Modified:   2016-08-31 18:56 by Christian Berndt
+    Version:    1.0.2
     
     Please note: Although this structure is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -196,6 +196,19 @@
             </entry>
             <entry name="tip">
                 <![CDATA[Trage hier ein oder mehrere Tags ein, auf deren Grundlage die Mediengalerie erstellt wird. Mehrere Tags werden durch Kommata von einander getrennt.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element> 
+    <dynamic-element dataType="boolean" indexType="keyword" localizable="true" name="showDownload" readOnly="false" repeatable="false" required="false" showLabel="true" type="checkbox" width="">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[Downloadoption anzeigen?]]>
+            </entry>
+            <entry name="predefinedValue">
+                <![CDATA[false]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Markiere diese Option, wenn für die Dateien in der Mediengalerie eine Download-Option angezeigt werden soll.]]>
             </entry>
         </meta-data>
     </dynamic-element>    
