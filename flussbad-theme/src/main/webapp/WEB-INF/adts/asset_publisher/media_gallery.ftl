@@ -3,8 +3,8 @@
     format them in as a gallery.
     
     Created:    2016-04-16 13:07 by Christian Berndt
-    Modified:   2016-09-01 15:18 by Christian Berndt
-    Version:    1.0.9
+    Modified:   2016-09-07 18:53 by Christian Berndt
+    Version:    1.1.0
 -->
 
 <#assign fileEntryService  = serviceLocator.findService("com.liferay.portlet.documentlibrary.service.DLFileEntryLocalService") />
@@ -75,7 +75,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <div id="slider" class="flexslider">
+                <div id="${namespace}slider" class="flexslider">
                     <ul class="slides">
                                     
                         <#if filteredEntries?has_content>
@@ -319,6 +319,28 @@
             
         <#else>
             <div class="alert alert-info"><@liferay.language key="there-are-no-results" /></div>
-        </#if>              
+        </#if> 
+        
+        <script>
+            /**
+             * Move the slider in the modalSlideshow to the current image.
+             */
+            $(document).on('shown.bs.modal', function(event) {
+                    
+                var button = $(event.relatedTarget); // Button that triggered the modal     
+                var index = button.data('index');
+                
+                console.log('shown.bs.modal'); 
+                console.log('index = ' + index); 
+        
+                var slider = $('#${namespace}slider').data('flexslider');
+                
+                console.log(slider); 
+                
+                slider.flexAnimate(index - 1);
+        
+            });        
+        </script>
+                     
     </div> <#-- /.media .span8 -->
 </div> <#-- /.container -->
