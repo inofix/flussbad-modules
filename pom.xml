@@ -22,13 +22,15 @@
         <!-- and adjust it to your personal environment.   -->
 <!--          <liferay.base.dir>  -->
 <!--          </liferay.base.dir> -->
+         <tomcat.version>tomcat-7.0.62</tomcat.version>
+
          <liferay.app.server.deploy.dir>
-            ${liferay.base.dir}/tomcat-7.0.62/webapps
-        </liferay.app.server.deploy.dir>
+             ${liferay.base.dir}/${tomcat.version}/webapps
+         </liferay.app.server.deploy.dir>
 
         <liferay.app.server.lib.global.dir>
-            ${liferay.base.dir}/tomcat-7.0.62/lib/ext
-        </liferay.app.server.lib.global.dir>
+             ${liferay.base.dir}/${tomcat.version}/lib/ext
+         </liferay.app.server.lib.global.dir>
 
         <liferay.app.server.portal.dir>
             ${liferay.app.server.deploy.dir}/ROOT
@@ -108,43 +110,4 @@
         <module>lang-hook</module>
         <module>search-hook</module>
     </modules>
-    <build>
-        <pluginManagement>
-            <plugins>
-                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-                <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>
-                                            org.codehaus.mojo
-                                        </groupId>
-                                        <artifactId>
-                                            properties-maven-plugin
-                                        </artifactId>
-                                        <versionRange>
-                                            [1.0-alpha-2,)
-                                        </versionRange>
-                                        <goals>
-                                            <goal>
-                                                read-project-properties
-                                            </goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore/>
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 </project>
