@@ -3,13 +3,13 @@
     pom.xml: Parent pom to Flussbad's Liferay Modules
 
     Created:    2015-08-31 13:48 by Christian Berndt
-    Modified:   2016-08-27 20:11 by Christian Berndt
-    Version:    1.0.5
+    Modified:   2016-09-12 13:19 by Christian Berndt
+    Version:    1.0.6
 --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.flussbad-berlin</groupId>
     <artifactId>flussbad-modules</artifactId>
-    <version>0.8.0-SNAPSHOT</version>
+    <version>0.9.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Flussbad Modules</name>
     <description>Maven parent project to the flussbad liferay modules.</description>
@@ -23,11 +23,11 @@
 <!--          <liferay.base.dir>  -->
 <!--          </liferay.base.dir> -->
          <liferay.app.server.deploy.dir>
-            ${liferay.base.dir}/tomcat-7.0.42/webapps
+            ${liferay.base.dir}/tomcat-7.0.62/webapps
         </liferay.app.server.deploy.dir>
 
         <liferay.app.server.lib.global.dir>
-            ${liferay.base.dir}/tomcat-7.0.42/lib/ext
+            ${liferay.base.dir}/tomcat-7.0.62/lib/ext
         </liferay.app.server.lib.global.dir>
 
         <liferay.app.server.portal.dir>
@@ -38,9 +38,9 @@
             ${liferay.base.dir}/deploy
         </liferay.auto.deploy.dir>
 
-        <liferay.version>6.2.3</liferay.version>
+        <liferay.version>6.2.5</liferay.version>
 
-        <liferay.maven.plugin.version>6.2.2</liferay.maven.plugin.version>
+        <liferay.maven.plugin.version>6.2.5</liferay.maven.plugin.version>
 
         <properties.plugin.version>1.0.0</properties.plugin.version>
         
