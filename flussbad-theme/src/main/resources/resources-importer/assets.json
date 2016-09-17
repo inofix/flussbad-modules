@@ -1,0 +1,12 @@
+{
+    "assets": [
+        {
+            "abstractSummary": "Zusammenfassung Spreekanal von unten.",
+            "name": "My first article.xml",
+            "indexable": "true",
+            "tags": [
+                "Spreewasser"
+            ]           
+        }        
+    ]
+}
