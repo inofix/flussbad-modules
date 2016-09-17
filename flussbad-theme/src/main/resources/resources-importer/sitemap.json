@@ -21,14 +21,46 @@
             "columns": [
                 [
                     {
-                        "portletId": "101"
+                        "portletId": "101",
+                        "portletPreferences": {
+                            "metadataFields": "publish-date",
+                            "displayStyle": "fb-abstract"
+                        }                        
                     }
                 ]
             ],        
             "friendlyURL": "/logbook",
             "name": "Logbook",
             "title": "Logbook"
-        }				
+        }, 
+        {
+            "columns": [
+                [
+                    {
+                        "portletId": "101",
+                        "portletPreferences": {
+                            "metadataFields": "categories",
+                            "displayStyle": "fb-abstract"
+                        }                         
+                    }
+                ]
+            ],        
+            "friendlyURL": "/project",
+            "name": "Project",
+            "title": "Project"
+        },
+        {
+            "columns": [
+                [
+                    {
+                        "portletId": "101"
+                    }
+                ]
+            ],        
+            "friendlyURL": "/we",
+            "name": "We",
+            "title": "We"
+        }             				
 	],
 	"layoutTemplateId": "1_column"
 }
