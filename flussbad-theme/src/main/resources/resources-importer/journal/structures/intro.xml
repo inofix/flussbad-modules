@@ -1,4 +1,4 @@
-<root available-locales="de_DE" default-locale="de_DE">
+<root available-locales="en_US" default-locale="en_US">
 <!--
     intro.xml: A structure for a content object of 
     type "Intro", which is a short introduction into a
@@ -6,16 +6,11 @@
     three introductory abstracts. 
     
     Created:    2015-09-29 12:12 by Christian Berndt
-    Modified:   2015-10-28 21:00 by Christian Berndt
-    Version:    1.0.0
-    
-    Please note: Although this structure is stored in the 
-    site's context it's source is managed via git. Whenever you 
-    change the structure online make sure that you commit your 
-    changes to the flussbad-modules repo, too.
+    Modified:   2016-09-21 17:11 by Christian Berndt
+    Version:    1.0.1
 -->
     <dynamic-element dataType="string" indexType="keyword" localizable="true" name="headline" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="small">
-        <meta-data locale="de_DE">
+        <meta-data locale="en_US">
             <entry name="label">
                 <![CDATA[Überschrift]]>
             </entry>
@@ -28,7 +23,7 @@
         </meta-data>
     </dynamic-element>
     <dynamic-element dataType="document-library" fieldNamespace="ddm" indexType="keyword" localizable="true" name="background" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-documentlibrary" width="">
-        <meta-data locale="de_DE">
+        <meta-data locale="en_US">
             <entry name="label">
                 <![CDATA[Hintergrundbild]]>
             </entry>
@@ -41,7 +36,7 @@
         </meta-data>
     </dynamic-element>
     <dynamic-element dataType="boolean" indexType="keyword" localizable="true" name="useGradient" readOnly="false" repeatable="false" required="false" showLabel="true" type="checkbox" width="">
-        <meta-data locale="de_DE">
+        <meta-data locale="en_US">
             <entry name="label">
                 <![CDATA[Hintergrundbild abdunkeln]]>
             </entry>
@@ -54,7 +49,7 @@
         </meta-data>
     </dynamic-element>
     <dynamic-element dataType="link-to-page" fieldNamespace="ddm" indexType="keyword" localizable="true" name="clubLink" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-link-to-page" width="small">
-        <meta-data locale="de_DE">
+        <meta-data locale="en_US">
             <entry name="label">
                 <![CDATA[Werde aktiv! Link]]>
             </entry>
@@ -68,34 +63,34 @@
     </dynamic-element>
     <dynamic-element dataType="string" indexType="keyword" localizable="true" multiple="false" name="backgroundColor" readOnly="false" repeatable="false" required="false" showLabel="true" type="select" width="">
         <dynamic-element name="option7089" type="option" value="">
-            <meta-data locale="de_DE">
+            <meta-data locale="en_US">
                 <entry name="label">
                     <![CDATA[keine]]>
                 </entry>
             </meta-data>
         </dynamic-element>
         <dynamic-element name="option6582" type="option" value="turquois">
-            <meta-data locale="de_DE">
+            <meta-data locale="en_US">
                 <entry name="label">
                     <![CDATA[türkis]]>
                 </entry>
             </meta-data>
         </dynamic-element>
         <dynamic-element name="option6583" type="option" value="gray-green">
-            <meta-data locale="de_DE">
+            <meta-data locale="en_US">
                 <entry name="label">
                     <![CDATA[graugrün]]>
                 </entry>
             </meta-data>
         </dynamic-element>
         <dynamic-element name="option6584" type="option" value="sand">
-            <meta-data locale="de_DE">
+            <meta-data locale="en_US">
                 <entry name="label">
                     <![CDATA[sand]]>
                 </entry>
             </meta-data>
         </dynamic-element>
-        <meta-data locale="de_DE">
+        <meta-data locale="en_US">
             <entry name="label">
                 <![CDATA[Hintergrundfarbe]]>
             </entry>
@@ -109,7 +104,7 @@
     </dynamic-element>
     <dynamic-element dataType="string" indexType="keyword" localizable="true" name="caption" readOnly="false" repeatable="true" required="false" showLabel="true" type="text" width="small">
         <dynamic-element dataType="string" indexType="keyword" localizable="true" name="claim" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="large">
-            <meta-data locale="de_DE">
+            <meta-data locale="en_US">
                 <entry name="label">
                     <![CDATA[Claim]]>
                 </entry>
@@ -122,7 +117,7 @@
             </meta-data>
         </dynamic-element>
         <dynamic-element dataType="string" indexType="keyword" localizable="true" name="abstract" readOnly="false" repeatable="false" required="false" showLabel="true" type="textarea" width="medium">
-            <meta-data locale="de_DE">
+            <meta-data locale="en_US">
                 <entry name="label">
                     <![CDATA[Abstract]]>
                 </entry>
@@ -135,7 +130,7 @@
             </meta-data>
         </dynamic-element>
         <dynamic-element dataType="link-to-page" fieldNamespace="ddm" indexType="keyword" localizable="true" name="abstractLink" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-link-to-page" width="small">
-            <meta-data locale="de_DE">
+            <meta-data locale="en_US">
                 <entry name="label">
                     <![CDATA[Link]]>
                 </entry>
@@ -148,7 +143,7 @@
             </meta-data>
         </dynamic-element>
         <dynamic-element dataType="string" indexType="keyword" localizable="true" name="abstractLabel" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="small">
-            <meta-data locale="de_DE">
+            <meta-data locale="en_US">
                 <entry name="label">
                     <![CDATA[Link Beschriftung]]>
                 </entry>
@@ -160,7 +155,7 @@
                 </entry>
             </meta-data>
         </dynamic-element>
-        <meta-data locale="de_DE">
+        <meta-data locale="en_US">
             <entry name="label">
                 <![CDATA[Titel]]>
             </entry>
@@ -173,7 +168,7 @@
         </meta-data>
     </dynamic-element>
     <dynamic-element dataType="link-to-page" fieldNamespace="ddm" indexType="keyword" localizable="true" name="link" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-link-to-page" width="small">
-        <meta-data locale="de_DE">
+        <meta-data locale="en_US">
             <entry name="label">
                 <![CDATA[Link]]>
             </entry>
@@ -186,7 +181,7 @@
         </meta-data>
     </dynamic-element>
     <dynamic-element dataType="string" indexType="keyword" localizable="true" name="label" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="small">
-        <meta-data locale="de_DE">
+        <meta-data locale="en_US">
             <entry name="label">
                 <![CDATA[Link Beschriftung]]>
             </entry>

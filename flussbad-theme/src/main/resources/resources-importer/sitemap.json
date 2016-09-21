@@ -1,18 +1,17 @@
 {
 	"layouts": [
 		{
-			"columns": [
-				[
-					{
-						"portletId": "58"
-					}
-				],
-				[
-					{
-						"portletId": "47"
-					}
-				]
-			],
+            "columns": [
+                [
+                    {
+                        "portletId": "56",
+                        "portletPreferences": {
+                            "articleId": "Start intro.xml",
+                            "groupId": "${groupId}"
+                        }                        
+                    }
+                ]
+            ],
 			"friendlyURL": "/home",
 			"name": "Welcome",
 			"title": "Welcome"

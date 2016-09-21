@@ -62,7 +62,6 @@ $full-image-height-md: 558px;
 $full-image-height-sm: 432px;
 $full-image-height-xs: 400px;
 
-
 /* Mixins */
 
 @mixin filter-item() {
@@ -3659,6 +3658,10 @@ input {
         .portlet-configuration.portlet-asset-categories-navigation {
             top: 20px; 
         }
+        
+        .taglib-header {
+            margin-top: 100px;
+        }
     }
     
     .signed-out {
@@ -3692,7 +3695,7 @@ input {
         position: absolute; 
         top: 0;
         background: rgba(0,0,0,0.5);  
-        z-index: 10; 
+        z-index: 100; 
         float: left;
         width: auto; 
         padding: 1em; 
