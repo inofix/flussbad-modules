@@ -1,6 +1,13 @@
 {
     "assets": [
         {
+            "name": "Start intro.jpg",
+            "tags": [
+                "hans-wilhelm",
+                "testfilter"
+            ]
+        },    
+        {
             "abstractSummary": "Zusammenfassung Spreekanal von unten.",
             "name": "My first article.xml",
             "indexable": "true",

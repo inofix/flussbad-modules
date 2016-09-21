@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+
+<root available-locales="en_US" default-locale="en_US">
+    <dynamic-element name="headline" type="text" index-type="keyword" index="0">
+        <dynamic-content language-id="en_US"><![CDATA[In diesen historischen Lastkahn bauen wir den Testfilter]]></dynamic-content>
+    </dynamic-element>
+    <dynamic-element name="background" type="document_library" index-type="keyword" index="0">
+        <dynamic-content language-id="en_US"><![CDATA[[$FILE=start_intro.jpg$]]]></dynamic-content>
+    </dynamic-element>
+    <dynamic-element name="useGradient" type="boolean" index-type="keyword" index="0">
+        <dynamic-content language-id="en_US"><![CDATA[]]></dynamic-content>
+    </dynamic-element>
+    <dynamic-element name="clubLink" type="link_to_layout" index-type="keyword" index="0">
+        <dynamic-content language-id="en_US"><![CDATA[]]></dynamic-content>
+    </dynamic-element>
+    <dynamic-element name="backgroundColor" type="list" index-type="keyword" index="0">
+        <dynamic-content language-id="en_US"><![CDATA[turquois]]></dynamic-content>
+    </dynamic-element>
+    <dynamic-element name="caption" type="text" index-type="keyword" index="0">
+        <dynamic-element name="claim" index="0" type="text" index-type="keyword">
+            <dynamic-content language-id="en_US"><![CDATA[Hier kannst Du aktiv mitgestalten]]></dynamic-content>
+        </dynamic-element>
+        <dynamic-element name="abstract" index="0" type="text_box" index-type="keyword">
+            <dynamic-content language-id="en_US"><![CDATA[Wir sind derzeit ca. 200 Mitglieder und der Verein wächst. Wenn du auch mitmachen willst, meld dich an.]]></dynamic-content>
+        </dynamic-element>
+        <dynamic-element name="abstractLink" index="0" type="link_to_layout" index-type="keyword">
+            <dynamic-content language-id="en_US"><![CDATA[]]></dynamic-content>
+        </dynamic-element>
+        <dynamic-element name="abstractLabel" index="0" type="text" index-type="keyword">
+            <dynamic-content language-id="en_US"><![CDATA[Mach mit]]></dynamic-content>
+        </dynamic-element>
+        <dynamic-content language-id="en_US"><![CDATA[Werde Mitglied]]></dynamic-content>
+    </dynamic-element>
+    <dynamic-element name="caption" type="text" index-type="keyword" index="1">
+        <dynamic-element name="claim" index="1" type="text" index-type="keyword">
+            <dynamic-content language-id="en_US"><![CDATA[Das Flussbad Berlin]]></dynamic-content>
+        </dynamic-element>
+        <dynamic-element name="abstract" index="1" type="text_box" index-type="keyword">
+            <dynamic-content language-id="en_US"><![CDATA[ist ein öffentlicher Raum im Spreekanal mitten in der Stadt. Er lädt ein zum Verweilen, zum Verbinden, zum Reinigen, zum Nutzen, zum Mitmachen…]]></dynamic-content>
+        </dynamic-element>
+        <dynamic-element name="abstractLink" index="1" type="link_to_layout" index-type="keyword">
+            <dynamic-content language-id="en_US"><![CDATA[]]></dynamic-content>
+        </dynamic-element>
+        <dynamic-element name="abstractLabel" index="1" type="text" index-type="keyword">
+            <dynamic-content language-id="en_US"><![CDATA[Alle Aspekte hier]]></dynamic-content>
+        </dynamic-element>
+        <dynamic-content language-id="en_US"><![CDATA[Projekt]]></dynamic-content>
+    </dynamic-element>
+    <dynamic-element name="caption" type="text" index-type="keyword" index="2">
+        <dynamic-element name="claim" index="2" type="text" index-type="keyword">
+            <dynamic-content language-id="en_US"><![CDATA[Spende und hilf]]></dynamic-content>
+        </dynamic-element>
+        <dynamic-element name="abstract" index="2" type="text_box" index-type="keyword">
+            <dynamic-content language-id="en_US"><![CDATA[Mit schon kleinen Beträgen kommen wir der Vision Flussbad Berlin näher. Ganz einfach mit unserem Partner betterplace.]]></dynamic-content>
+        </dynamic-element>
+        <dynamic-element name="abstractLink" index="2" type="link_to_layout" index-type="keyword">
+            <dynamic-content language-id="en_US"><![CDATA[]]></dynamic-content>
+        </dynamic-element>
+        <dynamic-element name="abstractLabel" index="2" type="text" index-type="keyword">
+            <dynamic-content language-id="en_US"><![CDATA[Spende hier]]></dynamic-content>
+        </dynamic-element>
+        <dynamic-content language-id="en_US"><![CDATA[Spende]]></dynamic-content>
+    </dynamic-element>
+    <dynamic-element name="link" type="link_to_layout" index-type="keyword" index="0">
+        <dynamic-content language-id="en_US"><![CDATA[]]></dynamic-content>
+    </dynamic-element>
+    <dynamic-element name="label" type="text" index-type="keyword" index="0">
+        <dynamic-content language-id="en_US"><![CDATA[]]></dynamic-content>
+    </dynamic-element>
+</root>
