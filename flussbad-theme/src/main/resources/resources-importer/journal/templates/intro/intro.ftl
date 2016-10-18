@@ -1,4 +1,3 @@
-s
 <#--
     intro.ftl: Format the intro structure
     
