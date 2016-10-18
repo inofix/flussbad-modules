@@ -59,7 +59,23 @@
             "friendlyURL": "/we",
             "name": "We",
             "title": "We"
-        }             				
+        }, 
+        {
+            "columns": [
+                [
+                    {
+                        "portletId": "56",
+                        "portletPreferences": {
+                            "articleId": "A Newsletter.xml",
+                            "groupId": "${groupId}"
+                        }                        
+                    }
+                ]
+            ],        
+            "friendlyURL": "/newsletter",
+            "name": "Newsletter",
+            "title": "Newsletter"
+        }                    				
 	],
 	"layoutTemplateId": "1_column"
 }

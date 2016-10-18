@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<root available-locales="en_US" default-locale="en_US">
+    <dynamic-element name="introduction" type="text_area"
+        index-type="keyword" index="0">
+        <dynamic-content language-id="en_US"><![CDATA[<p>Vielen Dank allen HelferInnen für Ihr tolles Engagement am „Aktionstag für ein schönes Berlin“! Gemeinsam haben wir bei gefühlten 35 Grad mit Besen, Zangen und in weißen Ganzkörperanzügen die Uferzonen des Spreekanals vom Bode Museum bis zur Schlossbrücke von Dreck und Müll befreit.</p>]]></dynamic-content>
+    </dynamic-element>
+    <dynamic-element name="section" type="text"
+        index-type="keyword" index="0">
+        <dynamic-element name="image" index="0"
+            type="document_library" index-type="keyword">
+            <dynamic-content language-id="en_US"><![CDATA[[$FILE=Ueberfluss04.jpg$]]]></dynamic-content>
+        </dynamic-element>
+        <dynamic-element name="date" index="0" type="ddm-date"
+            index-type="keyword">
+            <dynamic-content language-id="en_US"><![CDATA[1474416000000]]></dynamic-content>
+        </dynamic-element>
+        <dynamic-element name="text" index="0" type="text_area"
+            index-type="keyword">
+            <dynamic-content language-id="en_US"><![CDATA[Am 21.09.2016 fand unsere fünfte überFLUSS Veranstaltung in der AEDES Galerie statt. Dieses mal war das Thema "Recht auf Fluss". Flussbad Berlin e.V. war im Gespräch mit <a href="http://www.rivernet.org" target="_blank">Roberto Epple</a> (European Rivers Network I Le Puy, Genf), <a href="https://steffi-lemke.de" target="_blank">Steffi Lemke </a>(MdB, Vors. der Parlamentarischen Gruppe „Frei-fließende-Flüsse“ I Berlin) und <a href="http://belius.de/" target="_blank">Andreas Krüger</a> (belius Stiftung und Initiative StadtNeudenken, Berlin). Die Diskussion wurde von der Stadtforscherin Leona Lynen moderiert.]]></dynamic-content>
+        </dynamic-element>
+        <dynamic-content language-id="en_US"><![CDATA[überFLUSS #5 - Recht auf Fluss]]></dynamic-content>
+    </dynamic-element>
+    <dynamic-element name="section" type="text"
+        index-type="keyword" index="1">
+        <dynamic-element name="image" index="1"
+            type="document_library" index-type="keyword">
+            <dynamic-content language-id="en_US"><![CDATA[[$FILE=start_intro.jpg$]]]></dynamic-content>
+        </dynamic-element>
+        <dynamic-element name="date" index="1" type="ddm-date"
+            index-type="keyword">
+            <dynamic-content language-id="en_US"><![CDATA[1474416000000]]></dynamic-content>
+        </dynamic-element>
+        <dynamic-element name="text" index="1" type="text_area"
+            index-type="keyword">
+            <dynamic-content language-id="en_US"><![CDATA[Am 21.09.2016 fand unsere fünfte überFLUSS Veranstaltung in der AEDES Galerie statt. Dieses mal war das Thema "Recht auf Fluss". Flussbad Berlin e.V. war im Gespräch mit <a href="http://www.rivernet.org" target="_blank">Roberto Epple</a> (European Rivers Network I Le Puy, Genf), <a href="https://steffi-lemke.de" target="_blank">Steffi Lemke </a>(MdB, Vors. der Parlamentarischen Gruppe „Frei-fließende-Flüsse“ I Berlin) und <a href="http://belius.de/" target="_blank">Andreas Krüger</a> (belius Stiftung und Initiative StadtNeudenken, Berlin). Die Diskussion wurde von der Stadtforscherin Leona Lynen moderiert.]]></dynamic-content>
+        </dynamic-element>
+        <dynamic-content language-id="en_US"><![CDATA["Hans Wilhelm" kann jetzt zu Wasser gelassen werden]]></dynamic-content>
+    </dynamic-element>    
+</root>
