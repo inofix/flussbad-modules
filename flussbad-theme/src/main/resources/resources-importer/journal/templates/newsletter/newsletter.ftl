@@ -2,8 +2,8 @@
     newsletter.ftl: Format the newsletter structure
     
     Created:    2016-10-18 22:59 by Christian Berndt
-    Modified:   2016-10-18 22:59 by Christian Berndt
-    Version:    1.0.0
+    Modified:   2016-10-19 09:59 by Christian Berndt
+    Version:    1.0.1
 -->
 
 <style>
@@ -12,7 +12,7 @@
     }
     
     .newsletter .introduction {
-        padding: 40px;
+        padding: 0 40px 40px;
     }
     
     .newsletter p {
@@ -27,6 +27,7 @@
     .newsletter .section .content {
         padding: 40px;
     }
+    
 </style>
 
 <div class="newsletter">
