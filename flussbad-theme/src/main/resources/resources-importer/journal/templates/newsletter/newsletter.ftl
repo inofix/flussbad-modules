@@ -2,8 +2,8 @@
     newsletter.ftl: Format the newsletter structure
     
     Created:    2016-10-18 22:59 by Christian Berndt
-    Modified:   2016-10-22 18:59 by Christian Berndt
-    Version:    1.0.2
+    Modified:   2016-10-23 13:07 by Christian Berndt
+    Version:    1.0.3
 -->
 
 <style>
@@ -50,6 +50,11 @@
         padding: 40px;
     }
     
+    .newsletter .section img {
+        width: 100%;
+        height: auto;
+    }
+    
     .newsletter-footer {
         background: #fff;
         font-size: 16px;
@@ -86,7 +91,7 @@
                         <div class="section">
                             <#if cur_section.image??>
                                 <#if cur_section.image.getData()?has_content>
-                                    <img src="${cur_section.image.getData()}">
+                                    <img src="${cur_section.image.getData()}&imageThumbnail=2" />
                                 </#if>
                             </#if> 
                             <div class="content">                            
