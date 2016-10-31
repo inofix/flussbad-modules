@@ -2,8 +2,8 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2016-08-31 16:10 by Christian Berndt
-    Version:    1.3.0
+    Modified:   2016-10-25 17.56 by Christian Berndt
+    Version:    1.3.1
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -13,6 +13,8 @@
 
 <#-- Import required services -->
 <#assign articleService = serviceLocator.findService("com.liferay.portlet.journal.service.JournalArticleService") />
+<#assign assetEntryService = serviceLocator.findService("com.liferay.portlet.asset.service.AssetEntryLocalService") />
+<#assign assetLinkService = serviceLocator.findService("com.liferay.portlet.asset.service.AssetLinkLocalService") />
 <#assign categoryService = serviceLocator.findService("com.liferay.portlet.asset.service.AssetCategoryLocalService") />
 <#assign fileEntryService  = serviceLocator.findService("com.liferay.portlet.documentlibrary.service.DLFileEntryLocalService") />
 <#assign layoutLocalService = serviceLocator.findService("com.liferay.portal.service.LayoutLocalService") />
@@ -40,6 +42,15 @@
 <#assign categories = categoryService.getCategories("com.liferay.portlet.journal.model.JournalArticle", classPK) />
 <#assign language_id = languageUtil.getLanguageId(locale) />
 <#assign layoutFriendlyURL = "" />
+
+<#-- Retrieve the article's asset links -->
+<#assign assetEntry = assetEntryService.fetchEntry("com.liferay.portlet.journal.model.JournalArticle", classPK) />
+<#assign entryId = assetEntry.entryId />
+<#assign assetLinks = assetLinkService.getDirectLinks(entryId) />
+
+    entryId = ${entryId}<br/>
+    classPK = ${classPK}<br/>
+    assetLinks = ${assetLinks?size}
 
 <#if plid?number gt 0 >
     <#assign layout = layoutLocalService.getLayout(plid?number) />
@@ -183,7 +194,6 @@
 
 <#macro video section>
     <#if section.url?has_content>
-<#--    <#if section.url??> -->
         <#if section.url.getData()?has_content>  
         
             <#assign config = "&format=json" />    
@@ -604,8 +614,9 @@
                 </div> <#-- /.media -->
             </#if>            
             
-            <#-- Include the common social-media snippet -->            
+            <#-- Include the common social-media snippet             
             <#include "${templatesPath}/72079" /> 
+            -->
                           
         </div> <#-- / .span8 -->
         
@@ -640,5 +651,43 @@
                 </div> <#-- / .toc -->
             </div> <#-- / .span3 / 4 -->
         </#if>
+    
     </div> <#-- / .container -->
+    
+    <#-- Related Assets -->
+    
+    <#if assetLinks?size gt 0>
+    
+        <div class="asset-links">
+            <div class="container">
+                <div class="span12">
+                    <h3><@liferay.language key="you-might-be-interested-in-these-articles-too" /></h3>
+                </div>
+                <#list assetLinks as assetLink>
+                    <div class="span4">
+                    
+                        <#assign linkEntryId = 0 />
+                        
+                        <#if assetLink.entryId1 == entryId >
+                            <#assign linkEntryId = assetLink.entryId2 />                            
+                        <#else>
+                            <#assign linkEntryId = assetLink.entryId2 />                            
+                        </#if>
+                        
+                        <#assign linkEntry = assetEntryService.getEntry(linkEntryId) />
+                        <#assign className = portalUtil.getClassName(linkEntry.getClassNameId()) />
+                        <#--
+                        <div>linkEntry = ${linkEntry} </div>
+                        -->
+                        
+                        <#if "com.liferay.portlet.journal.model.JournalArticle" == className>
+                            <div>className = ${className} </div>
+                        </#if>
+                    </div>                  
+                </#list>
+            </div> <#-- / .container -->
+        </div><#-- / .asset-links -->
+    
+    </#if>
+    
 </div> <#-- / .article -->
