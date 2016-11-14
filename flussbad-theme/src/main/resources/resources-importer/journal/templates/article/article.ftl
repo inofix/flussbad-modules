@@ -2,8 +2,8 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2016-10-25 17.56 by Christian Berndt
-    Version:    1.3.1
+    Modified:   2016-11-09 16:42 by Christian Berndt
+    Version:    1.3.2
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -48,9 +48,11 @@
 <#assign entryId = assetEntry.entryId />
 <#assign assetLinks = assetLinkService.getDirectLinks(entryId) />
 
+<#--
     entryId = ${entryId}<br/>
     classPK = ${classPK}<br/>
     assetLinks = ${assetLinks?size}
+-->
 
 <#if plid?number gt 0 >
     <#assign layout = layoutLocalService.getLayout(plid?number) />
@@ -413,39 +415,42 @@
                             <#assign imageAboveTheText = getterUtil.getBoolean(cur_section.imageAboveTheText.getData()) />
                         </#if>
                     
-                        <div class="section" id="section-${i}">
-                        
-                            <#if cur_section.getData()?has_content>
-                                <h2>${cur_section.getData()}</h2>
-                            </#if>
+                        <#if cur_section.getData()?has_content || (cur_section.body?? && cur_section.body.getData()?has_content) >
                             
-                            <#if imageAboveTheText >
+                            <div class="section" id="section-${i}">
                             
-                                <@video cur_section/>
-                                
-                                <@images cur_section/>
-                                
-                                <#if cur_section.body??>
-                                    <#if cur_section.body.getData()?has_content>                                
-                                        <div class="section-body">${cur_section.body.getData()}</div>
-                                    </#if>
+                                <#if cur_section.getData()?has_content>
+                                    <h2>${cur_section.getData()}</h2>
                                 </#if>
                                 
-                            <#else>
- 
-                                <#if cur_section.body??>
-                                    <#if cur_section.body.getData()?has_content>                            
-                                        <div class="section-body">${cur_section.body.getData()}</div>
+                                <#if imageAboveTheText >
+                                
+                                    <@video cur_section/>
+                                    
+                                    <@images cur_section/>
+                                    
+                                    <#if cur_section.body??>
+                                        <#if cur_section.body.getData()?has_content>                                
+                                            <div class="section-body">${cur_section.body.getData()}</div>
+                                        </#if>
                                     </#if>
+                                    
+                                <#else>
+     
+                                    <#if cur_section.body??>
+                                        <#if cur_section.body.getData()?has_content>                            
+                                            <div class="section-body">${cur_section.body.getData()}</div>
+                                        </#if>
+                                    </#if>
+                                    
+                                    <@video cur_section/>
+                                    
+                                    <@images cur_section/>
+                                                                  
                                 </#if>
                                 
-                                <@video cur_section/>
-                                
-                                <@images cur_section/>
-                                                              
-                            </#if>
-                            
-                        </div>
+                            </div>
+                        </#if>
                         <#assign i = i+1 />
                     </#list>
                 </#if>
