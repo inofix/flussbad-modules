@@ -1,12 +1,12 @@
-<root available-locales="de_DE" default-locale="de_DE">
+<root available-locales="en_US" default-locale="en_US">
 <!--
     article.xml: A structure for a content object of 
     type "article", which is the standard structure for all
     long texts.
     
     Created:    2015-10-01 18:55 by Christian Berndt
-    Modified:   2016-08-31 18:45 by Christian Berndt
-    Version:    1.0.4
+    Modified:   2016-11-14 16:26 by Christian Berndt
+    Version:    1.0.5
     
     Please note: Although this structure is stored in the 
     site's context it's source is managed via git. Whenever you 
