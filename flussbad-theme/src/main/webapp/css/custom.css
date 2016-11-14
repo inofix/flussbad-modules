@@ -1974,6 +1974,32 @@ input {
             
             }
         }
+        
+                        
+        .asset-links {
+        
+            background: $color-gray-green;
+            color: white;
+            
+            h2 {
+                a {
+                    color: white;
+                    
+                    &:hover {
+                        color: $color-turquois;
+                    }
+                }
+            }
+            
+            h3 {
+                text-align: center;
+                color: $color-turquois;
+            }
+            
+            .container {
+                background: $color-gray-green;
+            }
+        }
     
         .container {
         

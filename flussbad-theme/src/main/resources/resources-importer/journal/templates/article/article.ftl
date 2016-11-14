@@ -2,8 +2,8 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2016-11-09 16:42 by Christian Berndt
-    Version:    1.3.2
+    Modified:   2016-11-14 18:19 by Christian Berndt
+    Version:    1.3.3
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -27,10 +27,12 @@
 <#assign pathFriendlyURL = "" />
 <#assign plid = "0" />
 <#assign themeDisplay = "" />
+<#assign instanceId = "" />
 
 <#-- request['theme-display'] is not available in search -->
 <#if request['theme-display']?? >
     <#assign namespace = request['portlet-namespace'] />
+    <#assign instanceId = namespace?substring(14, namespace?length-1) />
     <#assign themeDisplay = request['theme-display'] />
     <#assign plid = themeDisplay['plid'] />
     <#assign pathFriendlyURL = themeDisplay['path-friendly-url-public'] />
@@ -174,6 +176,23 @@
         </#list>
            
     </#if>
+    
+</#list>
+
+<#assign linkEntries = [] />
+
+<#list assetLinks as assetLink>
+    
+    <#assign linkEntryId = 0 />
+    
+    <#if assetLink.entryId1 == entryId >
+        <#assign linkEntryId = assetLink.entryId2 />                            
+    <#else>
+        <#assign linkEntryId = assetLink.entryId1 />                            
+    </#if>
+    
+    <#assign linkEntry = assetEntryService.getEntry(linkEntryId) />
+    <#assign linkEntries = linkEntries + [linkEntry] />   
     
 </#list>
 
@@ -668,29 +687,66 @@
                 <div class="span12">
                     <h3><@liferay.language key="you-might-be-interested-in-these-articles-too" /></h3>
                 </div>
-                <#list assetLinks as assetLink>
-                    <div class="span4">
+            </div>
+            <div class="container">
+            
+                <#list linkEntries as linkEntry>
                     
-                        <#assign linkEntryId = 0 />
+                    <#assign className = portalUtil.getClassName(linkEntry.getClassNameId()) />
+                    
+                    <#if "com.liferay.portlet.journal.model.JournalArticle" == className>
+                    
+                        <#assign assetRenderer = linkEntry.assetRenderer />
+                        <#assign linkArticle = assetRenderer.article />
+                        <#assign docXml = saxReaderUtil.read(linkArticle.content) />
+                        <#assign headline = docXml.valueOf("//dynamic-element[@name='headline']/dynamic-content/text()") />
+                        <#assign viewURL = layout_url + "/-/asset_publisher/" + instanceId + "/content/" + assetRenderer.urlTitle >                   
                         
-                        <#if assetLink.entryId1 == entryId >
-                            <#assign linkEntryId = assetLink.entryId2 />                            
-                        <#else>
-                            <#assign linkEntryId = assetLink.entryId2 />                            
+                        <#if linkArticle.layoutUuid?has_content>
+                            <#assign viewURL = prefix + "/-/" + assetRenderer.urlTitle />
                         </#if>
+                    
+                        <div class="span4">
                         
-                        <#assign linkEntry = assetEntryService.getEntry(linkEntryId) />
-                        <#assign className = portalUtil.getClassName(linkEntry.getClassNameId()) />
-                        <#--
-                        <div>linkEntry = ${linkEntry} </div>
-                        -->
-                        
-                        <#if "com.liferay.portlet.journal.model.JournalArticle" == className>
-                            <div>className = ${className} </div>
-                        </#if>
-                    </div>                  
+                            <#if headline?has_content>
+                                <h2><a href="${viewURL}">${headline}</h2>
+                            </#if>
+                        </div>                  
+                    </#if>
                 </#list>
             </div> <#-- / .container -->
+            
+            <div class="container">
+            
+                <#list linkEntries as linkEntry>
+                    
+                    <#assign className = portalUtil.getClassName(linkEntry.getClassNameId()) />
+                    
+                    <#if "com.liferay.portlet.journal.model.JournalArticle" == className>
+                    
+                        <#assign assetRenderer = linkEntry.assetRenderer />
+                        <#assign linkArticle = assetRenderer.article />
+                        <#assign docXml = saxReaderUtil.read(linkArticle.content) />
+                        <#assign headline = docXml.valueOf("//dynamic-element[@name='headline']/dynamic-content/text()") />
+                        <#assign viewURL = layout_url + "/-/asset_publisher/" + instanceId + "/content/" + assetRenderer.urlTitle >                   
+                        
+                        <#if linkArticle.layoutUuid?has_content>
+                            <#assign viewURL = prefix + "/-/" + assetRenderer.urlTitle />
+                        </#if>
+                    
+                        <div class="span4">
+                            publishdate categories
+                        </div>
+                        
+                        <div class="span8">
+                        
+                            <#if headline?has_content>
+                                <h2><a href="${viewURL}">${headline}</h2>
+                            </#if>
+                        </div>                  
+                    </#if>
+                </#list>
+            </div> <#-- / .container -->            
         </div><#-- / .asset-links -->
     
     </#if>
