@@ -1957,7 +1957,7 @@ input {
         
         &.with-keyvisual {
         
-            .container {
+            > .container {
                 margin-top: $container-push;
                 position: relative; 
                 z-index:2;
@@ -1981,12 +1981,80 @@ input {
             background: $color-gray-green;
             color: white;
             
+            .asset-abstract {
+            
+                padding: 0;
+                            
+                .container {
+                    border-bottom: 1px solid #73A0A2;   
+                    padding: 30px 0;                
+                }   
+
+                h2 {
+                    margin-top: 0; 
+                } 
+                
+                p.lead {
+                    color: white;
+                    
+                    a.asset-more {
+                    
+                        color: $color-turquois;
+                        font-size: 16px;
+                        font-weight: normal;
+                        letter-spacing: 0.1em;
+                        text-transform: uppercase; 
+                        
+                        &:hover {
+                            color: darken($color-turquois, 20%);
+                        } 
+                        
+                        &:before {
+                            content: "\203A";
+                            margin-right: 3px;
+                        }                    
+                    }
+                }
+                
+                &:last-child {
+                
+                    .container {
+                        border: none; 
+                    }
+                }          
+            }
+            
+            .category {
+            
+                border-bottom: 1px solid $color-turquois;
+            
+                a {
+                    color: $color-turquois;
+                    text-transform: uppercase; 
+                    letter-spacing: 0.1em;
+                    
+                    &:hover {
+                        color: darken($color-turquois, 20%);
+                    }                    
+                }
+            }
+            
+            .gallery {
+                border-bottom: 5px solid #73A0A2;   
+                padding-bottom: 30px; 
+                
+                .keyvisual {
+                    height: 208px !important; 
+                    margin-bottom: 20px;
+                }         
+            }
+            
             h2 {
                 a {
                     color: white;
                     
                     &:hover {
-                        color: $color-turquois;
+                        color: $color-light-gray;
                     }
                 }
             }
@@ -1994,6 +2062,8 @@ input {
             h3 {
                 text-align: center;
                 color: $color-turquois;
+                margin-top: 60px; 
+                margin-bottom: 60px;
             }
             
             .container {
