@@ -2,8 +2,8 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2016-11-14 18:19 by Christian Berndt
-    Version:    1.3.3
+    Modified:   2016-11-15 17:53 by Christian Berndt
+    Version:    1.3.4
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -675,80 +675,148 @@
                 </div> <#-- / .toc -->
             </div> <#-- / .span3 / 4 -->
         </#if>
-    
     </div> <#-- / .container -->
     
     <#-- Related Assets -->
     
     <#if assetLinks?size gt 0>
-    
         <div class="asset-links">
             <div class="container">
                 <div class="span12">
                     <h3><@liferay.language key="you-might-be-interested-in-these-articles-too" /></h3>
                 </div>
             </div>
-            <div class="container">
             
-                <#list linkEntries as linkEntry>
-                    
-                    <#assign className = portalUtil.getClassName(linkEntry.getClassNameId()) />
-                    
-                    <#if "com.liferay.portlet.journal.model.JournalArticle" == className>
-                    
-                        <#assign assetRenderer = linkEntry.assetRenderer />
-                        <#assign linkArticle = assetRenderer.article />
-                        <#assign docXml = saxReaderUtil.read(linkArticle.content) />
-                        <#assign headline = docXml.valueOf("//dynamic-element[@name='headline']/dynamic-content/text()") />
-                        <#assign viewURL = layout_url + "/-/asset_publisher/" + instanceId + "/content/" + assetRenderer.urlTitle >                   
+            <#if linkEntries?size gt 0>
+            
+                <div class="container gallery">
+                
+                    <#list linkEntries as linkEntry>
                         
-                        <#if linkArticle.layoutUuid?has_content>
-                            <#assign viewURL = prefix + "/-/" + assetRenderer.urlTitle />
-                        </#if>
-                    
-                        <div class="span4">
+                        <#assign className = portalUtil.getClassName(linkEntry.getClassNameId()) />
                         
-                            <#if headline?has_content>
-                                <h2><a href="${viewURL}">${headline}</h2>
+                        <#if "com.liferay.portlet.journal.model.JournalArticle" == className>
+                        
+                            <#assign assetRenderer = linkEntry.assetRenderer />
+                            <#assign linkArticle = assetRenderer.article />
+                            <#assign docXml = saxReaderUtil.read(linkArticle.content) />
+                            <#assign headline = docXml.valueOf("//dynamic-element[@name='headline']/dynamic-content/text()") />
+                            <#assign keyVisual = docXml.valueOf("//dynamic-element[@name='keyVisual']/dynamic-content/text()") />
+                            <#assign viewURL = layout_url + "/-/asset_publisher/" + instanceId + "/content/" + assetRenderer.urlTitle >                   
+                            
+                            <#if linkArticle.layoutUuid?has_content>
+                                <#assign viewURL = prefix + "/-/" + assetRenderer.urlTitle />
                             </#if>
-                        </div>                  
-                    </#if>
-                </#list>
-            </div> <#-- / .container -->
-            
-            <div class="container">
-            
-                <#list linkEntries as linkEntry>
-                    
-                    <#assign className = portalUtil.getClassName(linkEntry.getClassNameId()) />
-                    
-                    <#if "com.liferay.portlet.journal.model.JournalArticle" == className>
-                    
-                        <#assign assetRenderer = linkEntry.assetRenderer />
-                        <#assign linkArticle = assetRenderer.article />
-                        <#assign docXml = saxReaderUtil.read(linkArticle.content) />
-                        <#assign headline = docXml.valueOf("//dynamic-element[@name='headline']/dynamic-content/text()") />
-                        <#assign viewURL = layout_url + "/-/asset_publisher/" + instanceId + "/content/" + assetRenderer.urlTitle >                   
+                            
+                            <#assign categories = categoryService.getCategories("com.liferay.portlet.journal.model.JournalArticle", linkArticle.resourcePrimKey) />                                                 
                         
-                        <#if linkArticle.layoutUuid?has_content>
-                            <#assign viewURL = prefix + "/-/" + assetRenderer.urlTitle />
+                            <div class="span4">
+                            
+                                <#if keyVisual?has_content>
+                                    <#assign style = "background-image: url('${keyVisual}&imageThumbnail=3');" />
+                                    <div class="keyvisual" style="${style}"></div>
+                                </#if>
+                                
+                                <#if categories?size gt 0 >
+                                    <#list categories as category >
+                                    
+                                        <#assign properties = propertyService.getCategoryProperties(category.getCategoryId()) />
+                                        <#assign layoutUuid = ""/>
+                                        <#assign categoryURL = "#" />
+                                        <#list properties as property>
+                                            <#if property.key == "layoutUuid">
+                                                <#assign layoutUuid = property.value />
+                                                <#assign layout = layoutLocalService.getLayoutByUuidAndGroupId(layoutUuid, groupId, false) />
+                                                <#assign groupURL = layout.getGroup().getFriendlyURL() />
+                                                <#assign categoryURL = prefix + layout.friendlyURL />
+                                            </#if>
+                                        </#list>
+                                        
+                                        <div class="categories">
+                                            <#if layoutUuid?has_content >
+                                                <span class="category"><a href="${categoryURL}">${category.getTitle(language_id)}</a></span>
+                                            </#if>
+                                        </div>
+                                    </#list>
+                                </#if>                                
+                            
+                                <#if headline?has_content>
+                                    <h2><a href="${viewURL}">${headline}</a></h2>
+                                </#if>
+                            </div>                  
                         </#if>
-                    
-                        <div class="span4">
-                            publishdate categories
-                        </div>
+                    </#list>
+                </div> <#-- / .container -->
+            </#if>
+            
+            <#if linkEntries?size gt 0>
+                <div class="list">              
+                    <#list linkEntries as linkEntry>
                         
-                        <div class="span8">
+                        <#assign className = portalUtil.getClassName(linkEntry.getClassNameId()) />
                         
-                            <#if headline?has_content>
-                                <h2><a href="${viewURL}">${headline}</h2>
+                        <#if "com.liferay.portlet.journal.model.JournalArticle" == className>
+                        
+                            <#assign assetRenderer = linkEntry.assetRenderer />
+                            <#assign linkArticle = assetRenderer.article />
+                            <#assign docXml = saxReaderUtil.read(linkArticle.content) />
+                            <#assign headline = docXml.valueOf("//dynamic-element[@name='headline']/dynamic-content/text()") />
+                            <#assign teaser = docXml.valueOf("//dynamic-element[@name='teaser']/dynamic-content/text()") />
+                            <#assign summary = linkEntry.getSummary(locale) />
+                            <#if teaser?has_content>
+                                <#assign summary = teaser />
                             </#if>
-                        </div>                  
-                    </#if>
-                </#list>
-            </div> <#-- / .container -->            
-        </div><#-- / .asset-links -->
-    
+                            <#assign viewURL = layout_url + "/-/asset_publisher/" + instanceId + "/content/" + assetRenderer.urlTitle >                                                                       
+                            
+                            <#if linkArticle.layoutUuid?has_content>
+                                <#assign viewURL = prefix + "/-/" + assetRenderer.urlTitle />
+                            </#if>
+                            
+                            <#assign categories = categoryService.getCategories("com.liferay.portlet.journal.model.JournalArticle", linkArticle.resourcePrimKey) />                        
+                        
+                            <div class="asset-abstract">
+                                <div class="container">
+                                    <div class="span4">
+                                        <span class="date">${dateUtil.getDate(linkEntry.publishDate, "dd MMM yyyy", locale)}</span>
+                                        <#if categories?size gt 0 >
+                                            <#list categories as category >
+                                            
+                                                <#assign properties = propertyService.getCategoryProperties(category.getCategoryId()) />
+                                                <#assign layoutUuid = ""/>
+                                                <#assign categoryURL = "#" />
+                                                <#list properties as property>
+                                                    <#if property.key == "layoutUuid">
+                                                        <#assign layoutUuid = property.value />
+                                                        <#assign layout = layoutLocalService.getLayoutByUuidAndGroupId(layoutUuid, groupId, false) />
+                                                        <#assign groupURL = layout.getGroup().getFriendlyURL() />
+                                                        <#assign categoryURL = prefix + layout.friendlyURL />
+                                                    </#if>
+                                                </#list>
+                                                
+                                                <#if layoutUuid?has_content >
+                                                    / <span class="category"><a href="${categoryURL}">${category.getTitle(language_id)}</a></span>
+                                                </#if>
+                                            </#list>
+                                        </#if> 
+                                    </div>
+                                    
+                                    <div class="span8">
+                                    
+                                        <#if headline?has_content>
+                                            <h2><a href="${viewURL}">${headline}</a></h2>
+                                            <#if summary?has_content>
+                                                <p class="lead">${summary} <a href="${viewURL}" class="asset-more"><@liferay.language key="read-more" /></a></p>
+                                            </#if>
+                                        </#if>
+                                    </div>
+                                </div>
+                            </div>                
+                        </#if>
+                    </#list>
+                </div> <#-- / .container -->
+            </#if>             
+        
+        </div> <#-- ./asset-links -->
     </#if>
     
 </div> <#-- / .article -->
