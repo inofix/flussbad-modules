@@ -2,8 +2,8 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2016-11-15 17:53 by Christian Berndt
-    Version:    1.3.4
+    Modified:   2016-11-16 14:10 by Christian Berndt
+    Version:    1.3.5
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -28,6 +28,7 @@
 <#assign plid = "0" />
 <#assign themeDisplay = "" />
 <#assign instanceId = "" />
+<#assign numRelated = 5 />
 
 <#-- request['theme-display'] is not available in search -->
 <#if request['theme-display']?? >
@@ -49,12 +50,6 @@
 <#assign assetEntry = assetEntryService.fetchEntry("com.liferay.portlet.journal.model.JournalArticle", classPK) />
 <#assign entryId = assetEntry.entryId />
 <#assign assetLinks = assetLinkService.getDirectLinks(entryId) />
-
-<#--
-    entryId = ${entryId}<br/>
-    classPK = ${classPK}<br/>
-    assetLinks = ${assetLinks?size}
--->
 
 <#if plid?number gt 0 >
     <#assign layout = layoutLocalService.getLayout(plid?number) />
@@ -179,6 +174,10 @@
     
 </#list>
 
+<!-- Related assets -->
+
+<#assign galleryEntries = [] />
+<#assign listEntries = [] />
 <#assign linkEntries = [] />
 
 <#list assetLinks as assetLink>
@@ -192,7 +191,64 @@
     </#if>
     
     <#assign linkEntry = assetEntryService.getEntry(linkEntryId) />
-    <#assign linkEntries = linkEntries + [linkEntry] />   
+    
+    <#assign className = portalUtil.getClassName(linkEntry.getClassNameId()) />
+    
+    <#if "com.liferay.portlet.journal.model.JournalArticle" == className>
+    
+        <#assign assetRenderer = linkEntry.assetRenderer />
+        <#assign linkArticle = assetRenderer.article />
+        <#assign docXml = saxReaderUtil.read(linkArticle.content) />
+        <#assign keyVisual = docXml.valueOf("//dynamic-element[@name='keyVisual']/dynamic-content/text()") />
+        
+        <#if keyVisual?has_content>
+        
+            <#assign galleryEntries = galleryEntries + [linkEntry] /> 
+        
+        <#else>
+        
+            <#assign listEntries = listEntries + [linkEntry] />
+        
+        </#if>
+        
+        <#assign linkEntries = linkEntries + [linkEntry] /> 
+    
+    </#if>  
+    
+</#list>
+
+<#-- Fill the gallery- and listEntries lists with -->
+<#-- assetEntries of the same categories.         -->
+<#list categories as category>
+    <#assign categoryEntries = assetEntryService.getAssetCategoryAssetEntries(category.categoryId, 0, numRelated) />
+ 
+    <#list categoryEntries as categoryEntry>
+    
+        <#assign className = portalUtil.getClassName(categoryEntry.getClassNameId()) />
+        
+        <#if "com.liferay.portlet.journal.model.JournalArticle" == className>
+        
+            <#if categoryEntry.assetRenderer??>
+                <#assign assetRenderer = categoryEntry.assetRenderer />
+                <#assign linkArticle = assetRenderer.article />
+                <#assign docXml = saxReaderUtil.read(linkArticle.content) />
+                <#assign keyVisual = docXml.valueOf("//dynamic-element[@name='keyVisual']/dynamic-content/text()") />
+                
+                <#if assetEntry.entryId != categoryEntry.entryId >
+                    <#if keyVisual?has_content>                    
+                        <#if !galleryEntries?seq_contains(categoryEntry) >
+                            <#assign galleryEntries = galleryEntries + [categoryEntry] />
+                        </#if>               
+                    <#else>         
+                        <#if !listEntries?seq_contains(categoryEntry) >         
+                            <#assign listEntries = listEntries + [categoryEntry] />
+                        </#if>                 
+                    </#if>               
+                </#if>              
+            </#if>              
+        </#if>
+        
+    </#list>   
     
 </#list>
 
@@ -679,7 +735,7 @@
     
     <#-- Related Assets -->
     
-    <#if assetLinks?size gt 0>
+    <#if galleryEntries?size gt 0 || listEntries?size gt 0>
         <div class="asset-links">
             <div class="container">
                 <div class="span12">
@@ -687,11 +743,11 @@
                 </div>
             </div>
             
-            <#if linkEntries?size gt 0>
+            <#if galleryEntries?size gt 0>
             
                 <div class="container gallery">
                 
-                    <#list linkEntries as linkEntry>
+                    <#list galleryEntries as linkEntry>
                         
                         <#assign className = portalUtil.getClassName(linkEntry.getClassNameId()) />
                         
@@ -749,9 +805,9 @@
                 </div> <#-- / .container -->
             </#if>
             
-            <#if linkEntries?size gt 0>
+            <#if listEntries?size gt 0>
                 <div class="list">              
-                    <#list linkEntries as linkEntry>
+                    <#list listEntries as linkEntry>
                         
                         <#assign className = portalUtil.getClassName(linkEntry.getClassNameId()) />
                         
