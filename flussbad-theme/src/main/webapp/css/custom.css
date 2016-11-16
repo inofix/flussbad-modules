@@ -4172,13 +4172,19 @@ input {
 /* ------------------------------------------ event */
             
             &.event-publisher {
-            
-                .asset-metadata {
+                        
+                .metadata {
+                                
                     margin-left: 0; 
                     margin-bottom: 1em;
-                                           
+                                         
+                    .date {
+                        padding-bottom: 0;                    
+                    }    
+                                      
                     .metadata-event-date {
                         padding: 15px 0 0; 
+                        margin-bottom: 1em;
                     }
                 }
                 
