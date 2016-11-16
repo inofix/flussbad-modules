@@ -2040,8 +2040,13 @@ input {
             }
             
             .gallery {
+            
                 border-bottom: 5px solid #73A0A2;   
                 padding-bottom: 30px; 
+                
+                .category {
+                    font-size: $small-font-size;
+                }
                 
                 .keyvisual {
                     height: 208px !important; 
@@ -4068,6 +4073,24 @@ input {
             }
         }
         
+        .story {
+            .asset-links {
+            
+                .gallery,
+                .list {
+                    margin: 15px;
+                    padding: 0; 
+                }
+                
+                .gallery {
+                    .span4 {
+                        padding: 30px 0 15px; 
+                        border-bottom: 1px solid #73A0A2 
+                    }
+                }
+            } 
+        }
+        
         .portlet-asset-categories-navigation,
         .portlet-site-map.project-sections {
             .portlet-body {
@@ -4172,19 +4195,33 @@ input {
 /* ------------------------------------------ event */
             
             &.event-publisher {
-                        
-                .metadata {
-                                
-                    margin-left: 0; 
-                    margin-bottom: 1em;
-                                         
-                    .date {
-                        padding-bottom: 0;                    
-                    }    
-                                      
-                    .metadata-event-date {
-                        padding: 15px 0 0; 
+            
+                .asset-full-content {
+                                        
+                    .metadata {
+                                    
+                        margin-left: 0; 
                         margin-bottom: 1em;
+                        padding-top: 0;
+                        
+                                             
+                        .date {
+                            padding-bottom: 0;                    
+                        }    
+                                          
+                        .metadata-event-date {
+                            padding: 15px 0 0; 
+                            margin-bottom: 1em;
+                        }
+                    }                
+                }
+                
+                .asset-metadata {
+                
+                    margin-left: 0; 
+                    
+                    .metadata-event-date {
+                        padding-bottom: 0;
                     }
                 }
                 
