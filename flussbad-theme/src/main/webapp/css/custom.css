@@ -2025,18 +2025,14 @@ input {
             }
             
             .category {
-            
-                border-bottom: 1px solid $color-turquois;
-            
-                a {
-                    color: $color-turquois;
-                    text-transform: uppercase; 
-                    letter-spacing: 0.1em;
-                    
-                    &:hover {
-                        color: darken($color-turquois, 20%);
-                    }                    
-                }
+                        
+                color: $color-turquois;
+                text-transform: uppercase; 
+                letter-spacing: 0.1em;
+                
+                &:hover {
+                    color: darken($color-turquois, 20%);
+                }                    
             }
             
             .gallery {
@@ -2045,7 +2041,25 @@ input {
                 padding-bottom: 30px; 
                 
                 .category {
+                
                     font-size: $small-font-size;
+                    
+                    span {
+                        border-bottom: 1px solid $color-turquois;
+                        
+                        &:hover {
+                            border-bottom: 1px solid darken($color-turquois, 20%);                        
+                        }
+                    }
+                    
+                    &:after {
+                        content: "/"; 
+                        color: white;
+                        margin-left: 5px;
+                    }
+                    &:last-of-type:after {
+                        content: ""; 
+                    }
                 }
                 
                 .keyvisual {

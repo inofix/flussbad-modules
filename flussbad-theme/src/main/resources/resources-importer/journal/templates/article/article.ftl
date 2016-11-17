@@ -2,8 +2,8 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2016-11-16 23:52 by Christian Berndt
-    Version:    1.3.6
+    Modified:   2016-11-17 14:27 by Christian Berndt
+    Version:    1.3.8
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -44,6 +44,7 @@
 <#assign classPK =  article.getResourcePrimKey() />
 <#assign categories = categoryService.getCategories("com.liferay.portlet.journal.model.JournalArticle", classPK) />
 <#assign language_id = languageUtil.getLanguageId(locale) />
+<#assign default_language_id = languageUtil.getLanguageId(localeUtil.getDefault()) />
 <#assign layoutFriendlyURL = "" />
 
 <#-- Retrieve the article's asset links -->
@@ -145,9 +146,9 @@
     
         <#assign docXml = saxReaderUtil.read(assetEntry.getAssetRenderer().getArticle().getContent()) />
         
-        <#assign service = docXml.valueOf("//dynamic-element[@name='service']/dynamic-content/text()") />
-        <#assign url = docXml.valueOf("//dynamic-element[@name='url']/dynamic-content/text()") />
-          
+        <#assign service = value_of(docXml, "service", language_id) />
+        <#assign url = value_of(docXml, "url", language_id) />
+        
         <#if url?has_content>
         
             <#assign filteredEntries = filteredEntries + [assetEntry] />
@@ -173,6 +174,14 @@
     </#if>
     
 </#list>
+
+<#function value_of docXml field language_id>
+    <#local value = docXml.valueOf("//dynamic-element[@name='" + field + "']/dynamic-content[@language-id='"+ language_id + "']/text()") />
+    <#if !value?has_content>
+        <#local value = docXml.valueOf("//dynamic-element[@name='" + field + "']/dynamic-content[@language-id='"+ default_language_id + "']/text()") />
+    </#if>
+    <#return value />
+</#function>
 
 <#macro images section>   
     <#if section.image.getSiblings()?has_content>
@@ -284,19 +293,11 @@
                                                                             
                                         <#assign docXml = saxReaderUtil.read(entry.getAssetRenderer().getArticle().getContent()) />
                                         
-                                        <#assign service = docXml.valueOf("//dynamic-element[@name='service']/dynamic-content/text()") />
-                                        <#assign url = docXml.valueOf("//dynamic-element[@name='url']/dynamic-content/text()") />
+                                        <#assign service = value_of(docXml, "service", language_id) />
+                                        <#assign url = value_of(docXml, "url", language_id) />
                                        
                                         <#assign viewURL = ""/>
                                         <#assign assetRenderer = entry.getAssetRenderer() />
-                                        
-                                        <#--
-                                        <#if assetRenderer.getURLViewInContext(renderRequest, renderResponse, null)?? >                     
-                                            <#assign viewURL = assetRenderer.getURLViewInContext(renderRequest, renderResponse, null) />
-                                        <#else>
-                                            <#assign viewURL = assetPublisherHelper.getAssetViewURL(renderRequest, renderResponse, entry) />                        
-                                        </#if>
-                                        -->
                                         
                                         <#if url?has_content>
                                         
@@ -470,19 +471,11 @@
                                             
                             <#assign docXml = saxReaderUtil.read(entry.getAssetRenderer().getArticle().getContent()) />
                             
-                            <#assign service = docXml.valueOf("//dynamic-element[@name='service']/dynamic-content/text()") />
-                            <#assign url = docXml.valueOf("//dynamic-element[@name='url']/dynamic-content/text()") />
+                            <#assign service = value_of(docXml, "service", language_id) />
+                            <#assign url = value_of(docXml, "url", language_id) />
                            
                             <#assign viewURL = ""/>
                             <#assign assetRenderer = entry.getAssetRenderer() />
-                            
-                            <#--
-                            <#if assetRenderer.getURLViewInContext(renderRequest, renderResponse, null)?? >                     
-                                <#assign viewURL = assetRenderer.getURLViewInContext(renderRequest, renderResponse, null) />
-                            <#else>
-                                <#assign viewURL = assetPublisherHelper.getAssetViewURL(renderRequest, renderResponse, entry) />                        
-                            </#if>
-                            -->
                             
                             <#if url?has_content>
                             
@@ -679,7 +672,7 @@
             <#assign assetRenderer = linkEntry.assetRenderer />
             <#assign linkArticle = assetRenderer.article />
             <#assign docXml = saxReaderUtil.read(linkArticle.content) />
-            <#assign keyVisual = docXml.valueOf("//dynamic-element[@name='keyVisual']/dynamic-content/text()") />
+            <#assign keyVisual = value_of(docXml, "keyVisual", language_id) />
             
             <#if keyVisual?has_content>
             
@@ -702,7 +695,12 @@
     
     <#list categories as category>
     
+        <#assign categoryIds = category.categoryId?string />
+        <#assign categoryEntries = assetSearchTool.search(companyId, groupIds, userId, permissionChecker, className, userName, title, description, assetCategoryIds, assetTagNames, anyTag, status, andSearch, start, end) />
+    
+        <#--
         <#assign categoryEntries = assetEntryService.getAssetCategoryAssetEntries(category.categoryId, 0, numRelated) />
+        -->
      
         <#list categoryEntries as categoryEntry>
         
@@ -714,7 +712,7 @@
                     <#assign assetRenderer = categoryEntry.assetRenderer />
                     <#assign linkArticle = assetRenderer.article />
                     <#assign docXml = saxReaderUtil.read(linkArticle.content) />
-                    <#assign keyVisual = docXml.valueOf("//dynamic-element[@name='keyVisual']/dynamic-content/text()") />
+                    <#assign keyVisual = value_of(docXml, "keyVisual", language_id) />
                     
                     <#if assetEntry.entryId != categoryEntry.entryId >
                         <#if keyVisual?has_content>                    
@@ -756,8 +754,8 @@
                             <#assign assetRenderer = linkEntry.assetRenderer />
                             <#assign linkArticle = assetRenderer.article />
                             <#assign docXml = saxReaderUtil.read(linkArticle.content) />
-                            <#assign headline = docXml.valueOf("//dynamic-element[@name='headline']/dynamic-content/text()") />
-                            <#assign keyVisual = docXml.valueOf("//dynamic-element[@name='keyVisual']/dynamic-content/text()") />
+                            <#assign headline = value_of(docXml, "headline", language_id) />
+                            <#assign keyVisual = value_of(docXml, "keyVisual", language_id) />
                             <#assign viewURL = layout_url + "/-/asset_publisher/" + instanceId + "/content/" + assetRenderer.urlTitle >                   
                             
                             <#if linkArticle.layoutUuid?has_content>
@@ -776,31 +774,30 @@
                                     </#if>
                                     
                                     <#if categories?size gt 0 >
-                                        <#list categories as category >
-                                        
-                                            <#assign properties = propertyService.getCategoryProperties(category.getCategoryId()) />
-                                            <#assign layoutUuid = ""/>
-                                            <#assign categoryURL = "#" />
-                                            <#list properties as property>
-                                                <#if property.key == "layoutUuid">
-                                                    <#assign layoutUuid = property.value />
-                                                    <#assign layout = layoutLocalService.getLayoutByUuidAndGroupId(layoutUuid, groupId, false) />
-                                                    <#assign groupURL = layout.getGroup().getFriendlyURL() />
-                                                    <#assign categoryURL = prefix + layout.friendlyURL />
+                                        <div class="categories">
+                                            <#list categories as category >
+                                                <#assign properties = propertyService.getCategoryProperties(category.getCategoryId()) />
+                                                <#assign layoutUuid = ""/>
+                                                <#assign categoryURL = "#" />
+                                                <#list properties as property>
+                                                    <#if property.key == "layoutUuid">
+                                                        <#assign layoutUuid = property.value />
+                                                        <#assign layout = layoutLocalService.getLayoutByUuidAndGroupId(layoutUuid, groupId, false) />
+                                                        <#assign groupURL = layout.getGroup().getFriendlyURL() />
+                                                        <#assign categoryURL = prefix + layout.friendlyURL />
+                                                    </#if>
+                                                </#list>
+                                                <#if layoutUuid?has_content >
+                                                    <a href="${categoryURL}" class="category"><span>${category.getTitle(language_id)}</span></a>
                                                 </#if>
                                             </#list>
-                                            
-                                            <div class="categories">
-                                                <#if layoutUuid?has_content >
-                                                    <span class="category"><a href="${categoryURL}">${category.getTitle(language_id)}</a></span>
-                                                </#if>
-                                            </div>
-                                        </#list>
+                                        </div>
                                     </#if>                                
                                 
                                     <#if headline?has_content>
                                         <h2><a href="${viewURL}">${headline}</a></h2>
                                     </#if>
+                                    
                                 </div>
                             </#if> 
                             <#assign i=i+1 />                 
@@ -823,8 +820,8 @@
                             <#assign assetRenderer = linkEntry.assetRenderer />
                             <#assign linkArticle = assetRenderer.article />
                             <#assign docXml = saxReaderUtil.read(linkArticle.content) />
-                            <#assign headline = docXml.valueOf("//dynamic-element[@name='headline']/dynamic-content/text()") />
-                            <#assign teaser = docXml.valueOf("//dynamic-element[@name='teaser']/dynamic-content/text()") />
+                            <#assign headline = value_of(docXml, "headline", language_id) />
+                            <#assign teaser = value_of(docXml, "teaser", language_id) />
                             <#assign summary = linkEntry.getSummary(locale) />
                             <#if teaser?has_content>
                                 <#assign summary = teaser />
@@ -858,14 +855,20 @@
                                                     </#list>
                                                     
                                                     <#if layoutUuid?has_content >
-                                                        / <span class="category"><a href="${categoryURL}">${category.getTitle(language_id)}</a></span>
+                                                        / <a href="${categoryURL}" class="category">${category.getTitle(language_id)}</a>
                                                     </#if>
                                                 </#list>
                                             </#if> 
+                                            
+                                            <#--
+                                            <div>
+                                                language_id = ${language_id} <br/>
+                                                default_language_id = ${default_language_id}
+                                            </div>
+                                            -->
                                         </div>
                                         
                                         <div class="span8">
-                                        
                                             <#if headline?has_content>
                                                 <h2><a href="${viewURL}">${headline}</a></h2>
                                                 <#if summary?has_content>
@@ -877,6 +880,9 @@
                                 </div>
                             </#if>                                         
                         </#if>
+                        
+                        <#assign i = i+1 />
+                        
                     </#list>
                 </div> <#-- / .container -->
             </#if>             
