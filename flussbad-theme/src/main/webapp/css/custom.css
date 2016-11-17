@@ -1124,6 +1124,7 @@ input {
             margin-top: 1em;
             border-top: 5px solid $color-light-gray;
             padding-top: .5em;
+            padding-bottom: 1em;
        
             @include social-media();
        }
@@ -1441,8 +1442,12 @@ input {
     
     .portlet-asset-publisher {
     
-    
         .asset-full-content {
+        
+            .asset-content {
+                margin-right: 0;
+                margin-bottom: -20px; /* compensate the two linebreaks of the full-content-template */
+            }
             
             /** detail view of document search result */
             
@@ -2037,8 +2042,8 @@ input {
             
             .gallery {
             
-                border-bottom: 5px solid #73A0A2;   
                 padding-bottom: 30px; 
+                background: magenta;
                 
                 .category {
                 
@@ -2088,6 +2093,10 @@ input {
             .container {
                 background: $color-gray-green;
             }
+        }
+        
+        .separator {
+            border-top: 5px solid #73A0A2;
         }
     
         .container {
@@ -2185,6 +2194,7 @@ input {
                     margin-top: 1em;
                     border-top: 5px solid $color-light-gray;
                     padding-top: .5em;
+                    padding-bottom: 1em;
                     
                     a {
                         text-decoration: none;
@@ -3122,7 +3132,13 @@ input {
                 margin: 0 auto;
                 width: 100%;
                 border: none; 
-            }   
+            }
+                        
+            .asset-full-content {
+                .asset-content {
+                    margin-bottom: -20px; /* compensate the two linebreaks of the full-content-template */
+                }  
+            }  
             
             .section {
             
