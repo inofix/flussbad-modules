@@ -2,8 +2,8 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2016-11-17 16:52 by Christian Berndt
-    Version:    1.3.9
+    Modified:   2016-11-20 21:40 by Christian Berndt
+    Version:    1.4.0
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -44,7 +44,6 @@
 <#assign classPK =  article.getResourcePrimKey() />
 <#assign categories = categoryService.getCategories("com.liferay.portlet.journal.model.JournalArticle", classPK) />
 <#assign language_id = languageUtil.getLanguageId(locale) />
-<#assign default_language_id = languageUtil.getLanguageId(localeUtil.getDefault()) />
 <#assign layoutFriendlyURL = "" />
 
 <#-- Retrieve the article's asset links -->
@@ -176,6 +175,7 @@
 </#list>
 
 <#function value_of docXml field language_id>
+    <#local default_language_id = docXml.valueOf("/root/@default-locale") />
     <#local value = docXml.valueOf("//dynamic-element[@name='" + field + "']/dynamic-content[@language-id='"+ language_id + "']/text()") />
     <#if !value?has_content>
         <#local value = docXml.valueOf("//dynamic-element[@name='" + field + "']/dynamic-content[@language-id='"+ default_language_id + "']/text()") />
@@ -377,7 +377,12 @@
                         <#assign properties = propertyService.getCategoryProperties(category.getCategoryId()) />
                         <#assign layoutUuid = ""/>
                         <#assign categoryURL = "" />
+                        <#assign queryString = "" />
                         <#list properties as property>
+                            <#if property.key == "queryString">
+                                <#assign queryString =  "?" + property.value?replace("--", "=") />                                                       
+                                <#assign queryString =  queryString?replace("$$", "&") />                                                       
+                            </#if> 
                             <#if property.key == "layoutUuid">
                                 <#assign layoutUuid = property.value />
                                 <#assign layout = layoutLocalService.getLayoutByUuidAndGroupId(layoutUuid, groupId, false) />
@@ -388,7 +393,7 @@
                         
                         <#if layoutUuid?has_content >
                             <li>
-                                <h3 class="category"><a href="${categoryURL}">${category.getTitle(language_id)}</a></h3>
+                                <h3 class="category"><a href="${categoryURL + queryString}">${category.getTitle(language_id)}</a></h3>
                             </li>
                         </#if>
                     </#list>
@@ -782,7 +787,12 @@
                                                 <#assign properties = propertyService.getCategoryProperties(category.getCategoryId()) />
                                                 <#assign layoutUuid = ""/>
                                                 <#assign categoryURL = "#" />
+                                                <#assign queryString = "" />
                                                 <#list properties as property>
+                                                    <#if property.key == "queryString">
+                                                        <#assign queryString =  "?" + property.value?replace("--", "=") />                                                       
+                                                        <#assign queryString =  queryString?replace("$$", "&") />                                                       
+                                                    </#if>   
                                                     <#if property.key == "layoutUuid">
                                                         <#assign layoutUuid = property.value />
                                                         <#assign layout = layoutLocalService.getLayoutByUuidAndGroupId(layoutUuid, groupId, false) />
@@ -791,7 +801,7 @@
                                                     </#if>
                                                 </#list>
                                                 <#if layoutUuid?has_content >
-                                                    <a href="${categoryURL}" class="category"><span>${category.getTitle(language_id)}</span></a>
+                                                    <a href="${categoryURL + queryString}" class="category"><span>${category.getTitle(language_id)}</span></a>
                                                 </#if>
                                             </#list>
                                         </div>
@@ -855,27 +865,27 @@
                                                     <#assign properties = propertyService.getCategoryProperties(category.getCategoryId()) />
                                                     <#assign layoutUuid = ""/>
                                                     <#assign categoryURL = "#" />
+                                                    <#assign queryString = "" />
                                                     <#list properties as property>
+                                                        <#if property.key == "queryString">
+                                                            <#assign queryString =  "?" + property.value?replace("--", "=") />                                                       
+                                                            <#assign queryString =  queryString?replace("$$", "&") />                                                       
+                                                        </#if>
                                                         <#if property.key == "layoutUuid">
                                                             <#assign layoutUuid = property.value />
                                                             <#assign layout = layoutLocalService.getLayoutByUuidAndGroupId(layoutUuid, groupId, false) />
                                                             <#assign groupURL = layout.getGroup().getFriendlyURL() />
                                                             <#assign categoryURL = prefix + layout.friendlyURL />
                                                         </#if>
+                                                        
                                                     </#list>
                                                     
                                                     <#if layoutUuid?has_content >
-                                                        / <a href="${categoryURL}" class="category">${category.getTitle(language_id)}</a>
+                                                        / <a href="${categoryURL + queryString}" class="category">${category.getTitle(language_id)}</a>
                                                     </#if>
+                                                    
                                                 </#list>
-                                            </#if> 
-                                            
-                                            <#--
-                                            <div>
-                                                language_id = ${language_id} <br/>
-                                                default_language_id = ${default_language_id}
-                                            </div>
-                                            -->
+                                            </#if>
                                         </div>
                                         
                                         <div class="span8">
@@ -887,15 +897,11 @@
                                     </div>
                                 </div>
                             </#if>                                         
-                        </#if>
-                        
-                        <#assign i = i+1 />
-                        
+                        </#if>                       
+                        <#assign i = i+1 />                       
                     </#list>
                 </div> <#-- / .container -->
-            </#if>             
-        
+            </#if>                    
         </div> <#-- ./asset-links -->
     </#if>
-    
 </div> <#-- / .article -->
