@@ -1,11 +1,11 @@
-<root available-locales="en_US" default-locale="en_US">
+<root available-locales="de_DE" default-locale="de_DE">
 <!--
     article_with_keyvisual: A structure for content objects of 
     type "article_with_keyvisual". 
     
     Created:    2015-10-16 19:35 by Christian Berndt
-    Modified:   2016-08-31 18:56 by Christian Berndt
-    Version:    1.0.2
+    Modified:   2016-11-22 12:16 by Christian Berndt
+    Version:    1.0.3
     
     Please note: Although this structure is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -13,7 +13,7 @@
     changes to the flussbad-modules repo, too.
 -->
     <dynamic-element dataType="string" indexType="keyword" localizable="true" name="headline" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="large">
-        <meta-data locale="en_US">
+        <meta-data locale="de_DE">
             <entry name="label">
                 <![CDATA[Überschrift]]>
             </entry>
@@ -26,7 +26,7 @@
         </meta-data>
     </dynamic-element>
     <dynamic-element dataType="document-library" fieldNamespace="ddm" indexType="keyword" localizable="true" name="keyVisual" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-documentlibrary" width="">
-        <meta-data locale="en_US">
+        <meta-data locale="de_DE">
             <entry name="label">
                 <![CDATA[Schlüsselbild]]>
             </entry>
@@ -39,7 +39,7 @@
         </meta-data>
     </dynamic-element>
     <dynamic-element dataType="string" indexType="keyword" localizable="true" name="teaser" readOnly="false" repeatable="false" required="false" showLabel="true" type="textarea" width="large">
-        <meta-data locale="en_US">
+        <meta-data locale="de_DE">
             <entry name="label">
                 <![CDATA[Teaser]]>
             </entry>
@@ -52,7 +52,7 @@
         </meta-data>
     </dynamic-element>
     <dynamic-element dataType="boolean" indexType="keyword" localizable="true" name="showToc" readOnly="false" repeatable="false" required="false" showLabel="true" type="checkbox" width="">
-        <meta-data locale="en_US">
+        <meta-data locale="de_DE">
             <entry name="label">
                 <![CDATA[Inhaltsverzeichnis anzeigen?]]>
             </entry>
@@ -64,9 +64,22 @@
             </entry>
         </meta-data>
     </dynamic-element>
+    <dynamic-element dataType="boolean" indexType="keyword" localizable="true" name="showRelatedAssets" readOnly="false" repeatable="false" required="false" showLabel="true" type="checkbox" width="">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[Verknüpfte Objekte anzeigen?]]>
+            </entry>
+            <entry name="predefinedValue">
+                <![CDATA[true]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Markiere diese Option, wenn Du am Ende des Beitrags verknüpfte Objekte anzeigen möchtest.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>
     <dynamic-element dataType="string" indexType="keyword" localizable="true" name="section" readOnly="false" repeatable="true" required="false" showLabel="true" type="text" width="medium">
 		<dynamic-element dataType="string" indexType="keyword" localizable="true" name="label" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="medium">
-             <meta-data locale="en_US">
+             <meta-data locale="de_DE">
                  <entry name="label">
                      <![CDATA[Beschriftung]]>
                 </entry>
@@ -79,7 +92,7 @@
             </meta-data>
         </dynamic-element>
         <dynamic-element dataType="html" fieldNamespace="ddm" indexType="keyword" localizable="true" name="body" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-text-html" width="large">
-            <meta-data locale="en_US">
+            <meta-data locale="de_DE">
                 <entry name="label">
                     <![CDATA[Textkörper]]>
                 </entry>
@@ -92,7 +105,7 @@
             </meta-data>
         </dynamic-element>
         <dynamic-element dataType="boolean" indexType="keyword" localizable="true" name="imageAboveTheText" readOnly="false" repeatable="false" required="false" showLabel="true" type="checkbox" width="">
-            <meta-data locale="en_US">
+            <meta-data locale="de_DE">
                 <entry name="label">
                     <![CDATA[Abbildung(en) vor dem Text?]]>
                 </entry>
@@ -106,7 +119,7 @@
         </dynamic-element>
         <dynamic-element dataType="document-library" fieldNamespace="ddm" indexType="keyword" localizable="true" name="image" readOnly="false" repeatable="true" required="false" showLabel="true" type="ddm-documentlibrary" width="">
             <dynamic-element dataType="string" indexType="keyword" localizable="true" name="caption" readOnly="false" repeatable="false" required="false" showLabel="true" type="textarea" width="small">
-                <meta-data locale="en_US">
+                <meta-data locale="de_DE">
                     <entry name="label">
                         <![CDATA[Bildunterschrift]]>
                     </entry>
@@ -118,7 +131,7 @@
                     </entry>
                 </meta-data>
             </dynamic-element>
-            <meta-data locale="en_US">
+            <meta-data locale="de_DE">
                 <entry name="label">
                     <![CDATA[Abbildung]]>
                 </entry>
@@ -136,7 +149,7 @@
             width="">
             <dynamic-element name="option3753" type="option"
                 value="http:&#047;&#047;www.youtube.com&#047;oembed?url=">
-                <meta-data locale="en_US">
+                <meta-data locale="de_DE">
                     <entry name="label">
                         <![CDATA[youtube]]>
                     </entry>
@@ -144,13 +157,13 @@
             </dynamic-element>
             <dynamic-element name="option3754" type="option"
                 value="https:&#047;&#047;vimeo.com&#047;api&#047;oembed.json?url=">
-                <meta-data locale="en_US">
+                <meta-data locale="de_DE">
                     <entry name="label">
                         <![CDATA[vimeo]]>
                     </entry>
                 </meta-data>
             </dynamic-element>
-            <meta-data locale="en_US">
+            <meta-data locale="de_DE">
                 <entry name="label">
                     <![CDATA[Service]]>
                 </entry>
@@ -165,7 +178,7 @@
         <dynamic-element dataType="string" indexType="keyword"
             localizable="true" name="url" readOnly="false" repeatable="false"
             required="false" showLabel="true" type="text" width="small">
-            <meta-data locale="en_US">
+            <meta-data locale="de_DE">
                 <entry name="label">
                     <![CDATA[Video URL]]>
                 </entry>
@@ -177,7 +190,7 @@
                 </entry>
             </meta-data>
         </dynamic-element>         
-        <meta-data locale="en_US">
+        <meta-data locale="de_DE">
             <entry name="label">
                 <![CDATA[Abschnitt]]>
             </entry>
@@ -190,7 +203,7 @@
         </meta-data>
     </dynamic-element>
     <dynamic-element dataType="string" indexType="keyword" localizable="true" name="tags" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="medium">
-        <meta-data locale="en_US">
+        <meta-data locale="de_DE">
             <entry name="label">
                 <![CDATA[Galerie Tags]]>
             </entry>
@@ -200,7 +213,7 @@
         </meta-data>
     </dynamic-element> 
     <dynamic-element dataType="boolean" indexType="keyword" localizable="true" name="showDownload" readOnly="false" repeatable="false" required="false" showLabel="true" type="checkbox" width="">
-        <meta-data locale="en_US">
+        <meta-data locale="de_DE">
             <entry name="label">
                 <![CDATA[Downloadoption anzeigen?]]>
             </entry>
