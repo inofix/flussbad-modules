@@ -1,12 +1,12 @@
-<root available-locales="en_US" default-locale="en_US">
+<root available-locales="de_DE" default-locale="de_DE">
 <!--
     article.xml: A structure for a content object of 
     type "article", which is the standard structure for all
     long texts.
     
     Created:    2015-10-01 18:55 by Christian Berndt
-    Modified:   2016-11-14 16:26 by Christian Berndt
-    Version:    1.0.5
+    Modified:   2016-11-22 10:56 by Christian Berndt
+    Version:    1.0.6
     
     Please note: Although this structure is stored in the 
     site's context it's source is managed via git. Whenever you 
@@ -49,6 +49,19 @@
             </entry>
             <entry name="tip">
                 <![CDATA[Markiere diese Option, wenn Du ein Inhaltsverzeichnis für diesen Beitrag anzeigen möchtest. Das Inhaltsverzeichnis wird auf Grundlage der von Dir vergebenen Zwischenüberschriften erstellt.]]>
+            </entry>
+        </meta-data>
+    </dynamic-element>    
+    <dynamic-element dataType="boolean" indexType="keyword" localizable="true" name="showRelatedAssets" readOnly="false" repeatable="false" required="false" showLabel="true" type="checkbox" width="">
+        <meta-data locale="de_DE">
+            <entry name="label">
+                <![CDATA[Verknüpfte Objekte anzeigen?]]>
+            </entry>
+            <entry name="predefinedValue">
+                <![CDATA[true]]>
+            </entry>
+            <entry name="tip">
+                <![CDATA[Markiere diese Option, wenn Du am Ende des Beitrags verknüpfte Objekte anzeigen möchtest.]]>
             </entry>
         </meta-data>
     </dynamic-element>
