@@ -2,8 +2,8 @@
     newsletter.ftl: Format the newsletter structure
     
     Created:    2016-10-18 22:59 by Christian Berndt
-    Modified:   2016-10-23 13:07 by Christian Berndt
-    Version:    1.0.3
+    Modified:   2016-11-24 15:28 by Christian Berndt
+    Version:    1.0.4
 -->
 
 <style>
@@ -91,7 +91,7 @@
                         <div class="section">
                             <#if cur_section.image??>
                                 <#if cur_section.image.getData()?has_content>
-                                    <img src="${cur_section.image.getData()}&imageThumbnail=2" />
+                                    <img src="${cur_section.image.getData()}&imageThumbnail=3" />
                                 </#if>
                             </#if> 
                             <div class="content">                            
