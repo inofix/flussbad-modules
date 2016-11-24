@@ -1,9 +1,9 @@
 <#--
-    newsletter.ftl: Format the newsletter structure
+    mailing.ftl: Format the mailing structure
     
     Created:    2016-10-18 22:59 by Christian Berndt
-    Modified:   2016-11-24 15:28 by Christian Berndt
-    Version:    1.0.4
+    Modified:   2016-11-24 17:41 by Christian Berndt
+    Version:    1.0.5
 -->
 
 <style>
