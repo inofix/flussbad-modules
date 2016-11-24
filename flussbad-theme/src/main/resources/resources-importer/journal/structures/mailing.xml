@@ -1,13 +1,13 @@
-<root available-locales="en_US" default-locale="en_US">
+<root available-locales="de_DE" default-locale="de_DE">
 <!--
-    newsletter.xml: A structure for newsletter contents.
+    mailing.xml: A structure for mailing contents.
     
     Created:    2016-10-18 22:54 by Christian Berndt
     Modified:   2016-10-18 22:54 by Christian Berndt
-    Version:    1.0.0
+    Version:    1.0.1
 -->
     <dynamic-element dataType="html" fieldNamespace="ddm" indexType="keyword" localizable="true" name="introduction" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-text-html" width="large">
-        <meta-data locale="en_US">
+        <meta-data locale="de_DE">
             <entry name="label">
                 <![CDATA[Introduction]]>
             </entry>
@@ -21,7 +21,7 @@
     </dynamic-element>
     <dynamic-element dataType="string" indexType="keyword" localizable="true" name="section" readOnly="false" repeatable="true" required="false" showLabel="true" type="text" width="large">
         <dynamic-element dataType="date" fieldNamespace="ddm" indexType="keyword" localizable="true" name="date" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-date" width="small">
-            <meta-data locale="en_US">
+            <meta-data locale="de_DE">
                 <entry name="label">
                     <![CDATA[Date]]>
                 </entry>
@@ -34,7 +34,7 @@
             </meta-data>
         </dynamic-element>
         <dynamic-element dataType="document-library" fieldNamespace="ddm" indexType="keyword" localizable="true" name="image" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-documentlibrary" width="">
-            <meta-data locale="en_US">
+            <meta-data locale="de_DE">
                 <entry name="label">
                     <![CDATA[Image]]>
                 </entry>
@@ -47,7 +47,7 @@
             </meta-data>
         </dynamic-element>
         <dynamic-element dataType="html" fieldNamespace="ddm" indexType="keyword" localizable="true" name="text" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-text-html" width="large">
-            <meta-data locale="en_US">
+            <meta-data locale="de_DE">
                 <entry name="label">
                     <![CDATA[Text]]>
                 </entry>
@@ -59,7 +59,7 @@
                 </entry>
             </meta-data>
         </dynamic-element>
-        <meta-data locale="en_US">
+        <meta-data locale="de_DE">
             <entry name="label">
                 <![CDATA[Section]]>
             </entry>
