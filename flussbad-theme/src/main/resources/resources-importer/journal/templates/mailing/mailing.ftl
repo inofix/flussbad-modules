@@ -2,15 +2,16 @@
     mailing.ftl: Format the mailing structure
     
     Created:    2016-10-18 22:59 by Christian Berndt
-    Modified:   2016-11-24 17:41 by Christian Berndt
-    Version:    1.0.5
+    Modified:   2016-11-25 15:53 by Christian Berndt
+    Version:    1.0.6
 -->
 
 <style>
     .newsletter {
         background-color: #ebebeb;
         font-size: 18px;
-        line-height: 24px;   
+        font-family: 'Apercu Pro Regular', Calibri, Roboto, sans-serif;       
+        line-height: 30px;   
     }
     
     .newsletter a {
@@ -30,6 +31,9 @@
     }
     
     .newsletter h2 {
+        font-family: 'Apercu Pro Bold', Calibri, Roboto, sans-serif;
+        font-size: 31.5px;     
+        line-height: 40px;   
         margin-top: 0;
     }
     
