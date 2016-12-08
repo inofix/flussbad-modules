@@ -50,8 +50,10 @@ $color-orange: #F5A623;
 $color-muted: #B2C4C4;
 
 /* button */
-$button-font-size: 21px;
-$button-font-family: 'Qiltray Regular Condensed';
+$button-font-size: 32px;
+/* $button-font-size: 21px; */
+$button-font-family: 'Amatic SC', cursive;
+/* $button-font-family: 'Qiltray Regular Condensed'; */
 $button-letter-spacing: 0.1em;
 $button-font-size-adjust:0.477; 
 $button-padding: 10px 30px 8px;
@@ -145,6 +147,8 @@ $full-image-height-xs: 400px;
     font-family: $button-font-family;
     font-size: $button-font-size; 
     font-size-adjust: $button-font-size-adjust;
+    /* only as a workaround with amatic */
+    font-weight: 600; 
     letter-spacing: $button-letter-spacing;
     text-transform: uppercase;
     padding: $button-padding;
@@ -282,6 +286,75 @@ $full-image-height-xs: 400px;
         }
     }
 }
+
+/* Bold */
+@font-face {
+    font-family: 'Apercu Pro Bold';
+    src: url('../fonts/apercu_bold.eot');
+    src: url('../fonts/apercu_bold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/apercu_bold.woff') format('woff'),
+         url('../fonts/apercu_bold.woff2') format('woff2'),
+         url('../fonts/apercu_bold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+
+/* Italic */
+@font-face {
+    font-family: 'Apercu Pro Regular';
+    src: url('../fonts/apercu_regular_italic.eot');
+    src: url('../fonts/apercu_regular_italic.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/apercu_regular_italic.woff') format('woff'),
+         url('../fonts/apercu_regular_italic.woff2') format('woff2'),
+         url('../fonts/apercu_regular_italic.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+
+/* Light */
+@font-face {
+    font-family: 'Apercu Pro Light';
+    src: url('../fonts/apercu_light.eot');
+    src: url('../fonts/apercu_light.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/apercu_light.woff') format('woff'),
+         url('../fonts/apercu_light.woff2') format('woff2'),
+         url('../fonts/apercu_light.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+
+/* Medium */
+@font-face {
+    font-family: 'Apercu Pro Medium';
+    src: url('../fonts/apercu_medium.eot');
+    src: url('../fonts/apercu_medium.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/apercu_medium.woff') format('woff'),
+         url('../fonts/apercu_medium.woff2') format('woff2'),
+         url('../fonts/apercu_medium.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+/* Normal */
+@font-face {
+    font-family: 'Apercu Pro Regular';
+    src: url('../fonts/apercu_regular.eot');
+    src: url('../fonts/apercu_regular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/apercu_regular.woff') format('woff'),
+         url('../fonts/apercu_regular.woff2') format('woff2'),
+         url('../fonts/apercu_regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
 
 
 /* Unset input borders set by jQuery */
@@ -587,7 +660,7 @@ input {
         
         li {
             font-size: $default-font-size;
-            font-weight: 600;
+/*             font-weight: 600; */
             letter-spacing: $letter-spacing-wide;
             .portlet-static-end {
             
@@ -1196,6 +1269,8 @@ input {
             font-size: $button-font-size; 
             font-size-adjust: $button-font-size-adjust;
             font-family: $button-font-family;
+            /* only as a workaround with amatic */
+            font-weight: 600;             
             letter-spacing: $button-letter-spacing;
             text-transform: uppercase;
             margin-top: 1em;
@@ -1283,11 +1358,15 @@ input {
             a.club-link span {
                 
                 font-family: $button-font-family;
-                font-size: 38px;
-                line-height: 34px !important;
+                font-size: 48px;
+/*                 font-size: 38px; */
+                font-weight: 600; 
+                line-height: 40px !important;
+/*                 line-height: 34px !important; */
                 text-transform: uppercase;
                 color: #fff;
-                padding-top: 28px;
+                padding-top: 20px;
+/*                 padding-top: 28px; */
                 padding-left: -5px;
                 display: block;
                 
@@ -1690,6 +1769,8 @@ input {
             font-family: $button-font-family;
             font-size: $button-font-size; 
             font-size-adjust: $button-font-size-adjust;
+            /* Only as a workaround for Qiltray */
+            font-weight: 600; 
             letter-spacing: $button-letter-spacing;
             text-transform: uppercase;
             padding: $button-padding;
