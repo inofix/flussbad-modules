@@ -50,12 +50,13 @@ $color-orange: #F5A623;
 $color-muted: #B2C4C4;
 
 /* button */
-$button-font-size: 32px;
+$button-font-size: 22px;
 /* $button-font-size: 21px; */
 $button-font-family: 'Amatic SC', cursive;
 /* $button-font-family: 'Qiltray Regular Condensed'; */
-$button-letter-spacing: 0.1em;
-$button-font-size-adjust:0.477; 
+$button-letter-spacing: 2.6px;
+/* $button-letter-spacing: 0.1em; */
+/* $button-font-size-adjust:0.477;  */
 $button-padding: 10px 30px 8px;
 
 /* slideshow */
@@ -146,7 +147,7 @@ $full-image-height-xs: 400px;
     color: $navigation-font-color; 
     font-family: $button-font-family;
     font-size: $button-font-size; 
-    font-size-adjust: $button-font-size-adjust;
+/*     font-size-adjust: $button-font-size-adjust; */
     /* only as a workaround with amatic */
     font-weight: 600; 
     letter-spacing: $button-letter-spacing;
@@ -1267,7 +1268,7 @@ input {
             -moz-box-shadow: none; 
             box-shadow: none;
             font-size: $button-font-size; 
-            font-size-adjust: $button-font-size-adjust;
+/*             font-size-adjust: $button-font-size-adjust; */
             font-family: $button-font-family;
             /* only as a workaround with amatic */
             font-weight: 600;             
@@ -1768,7 +1769,7 @@ input {
             color: $navigation-font-color; 
             font-family: $button-font-family;
             font-size: $button-font-size; 
-            font-size-adjust: $button-font-size-adjust;
+/*             font-size-adjust: $button-font-size-adjust; */
             /* Only as a workaround for Qiltray */
             font-weight: 600; 
             letter-spacing: $button-letter-spacing;
