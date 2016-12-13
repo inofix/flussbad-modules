@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2016-05-10 15:48 by Christian Berndt
- * Version:     1.3.2
+ * Modified:    2016-12-13 10:56 by Christian Berndt
+ * Version:     1.3.3
  */
 
 /**
@@ -147,6 +147,7 @@ AUI().ready('imageloader', function (Y) {
 });
 
 
+
 /**
  * jQuery plugins
  */
@@ -158,13 +159,27 @@ $( document ).ready(function() {
 	
     var toggle = $('.toggle');
     
-	var categoriesNavigation = $('.portlet-asset-categories-navigation');
-	
-    var sitemapPortlet = $('.portlet-site-map.project-sections');
-    
+    /** Toggle second level navigation with headroom.js */
+	var categoriesNavigation = $('.portlet-asset-categories-navigation');	
+    var sitemapPortlet = $('.portlet-site-map.project-sections');    
 	var publisher = $('.default-publisher'); 
-
     var story = $('.project-story');
+
+    if (categoriesNavigation) {
+    	$(categoriesNavigation).headroom({ tolerance : 10 }); 	
+    }
+    
+    if (sitemapPortlet) {
+    	$(sitemapPortlet).headroom({ tolerance : 10 });  	
+    }
+    
+    if (publisher) {
+    	$(publisher).headroom({ tolerance : 10 });   	
+    }
+    
+    if (story) {
+    	$(story).headroom({ tolerance : 10 });  	
+    }
         
     /**
      * Show a modal slideshow.
@@ -208,19 +223,7 @@ $( document ).ready(function() {
            $( this ).attr("src", ""); 
            $( this ).attr("src", src); 
        });
-    }); 
-    
-    /** 
-     * show the categories-navigation and sitemap-portlet after the page 
-     * is ready. 
-     */
-    if (categoriesNavigation) {
-    	categoriesNavigation.css('display', 'block');
-    }
-    
-    if (sitemapPortlet) {
-    	sitemapPortlet.css('display', 'block');
-    }
+    });
         
     
 	/**
@@ -230,108 +233,47 @@ $( document ).ready(function() {
     if (toggle) {
         toggle.on('click', function(event) {
         	
-            toggle.toggleClass('categories-closed');
-            toggle.removeClass('categories-auto-closed');        	
+        	toggle.toggleClass('headroom--unpinned');        	
 
             if (categoriesNavigation) {
-            	categoriesNavigation.toggleClass('categories-closed');
-            	categoriesNavigation.removeClass('categories-auto-closed');
+            	categoriesNavigation.toggleClass('headroom--pinned headroom--unpinned');
             }
 
             if (sitemapPortlet) {
-                sitemapPortlet.toggleClass('categories-closed');
-                sitemapPortlet.removeClass('categories-auto-closed');
+            	sitemapPortlet.toggleClass('headroom--pinned headroom--unpinned');
             }
 
             if (publisher) {
-                publisher.toggleClass('categories-closed');
-                publisher.removeClass('categories-auto-closed');
+            	publisher.toggleClass('headroom--pinned headroom--unpinned');
             }
 
             if (story) {
-                story.toggleClass('categories-closed');
-                story.removeClass('categories-auto-closed');
+            	story.toggleClass('headroom--pinned headroom--unpinned');
             }
         });
     }
-    
-    /**
-     * Automatically toggle the categories and sitemap 
-     * while scrolling.
-     */   
-    var lastScrollTop = 0;
-    
-    $(window).scroll(function(event) {
-
-		var scrollTop = $(this).scrollTop();
-	
-		// console.log("scrollTop = " + scrollTop);
-	
-		if (scrollTop > lastScrollTop) {
-	
-			// console.log("scrolling down");
-	
-			if (categoriesNavigation) {
-				categoriesNavigation.addClass('categories-auto-closed');
-			}
-			if (story) {
-				story.addClass('categories-auto-closed');
-			}
-			if (toggle) {
-				toggle.addClass('categories-auto-closed');
-			}
-			if (sitemapPortlet) {
-				sitemapPortlet.addClass('categories-auto-closed');
-			}
-			if (publisher) {
-				publisher.addClass('categories-auto-closed');
-			}		
-	
-		} else {
-			
-			// console.log("scrolling up");
-	
-			if (categoriesNavigation) {
-				categoriesNavigation.removeClass('categories-auto-closed');
-			}
-			if (story) {
-				story.removeClass('categories-auto-closed');
-			}
-			if (toggle) {
-				toggle.removeClass('categories-auto-closed');
-			}
-			if (sitemapPortlet) {
-				sitemapPortlet.removeClass('categories-auto-closed');
-			}
-			if (publisher) {
-				publisher.removeClass('categories-auto-closed');
-			}
-		}
-	
-		lastScrollTop = scrollTop;
-	});
       
 	
 	/**
 	 * Toggle the categories navigation and project-sitemap 
 	 * by default on mobile devices.
 	 */        
-    if (windowWidth < 768) {
-    	    	
-    	if (sitemapPortlet) {
-    		
-    		sitemapPortlet.addClass("categories-closed"); 
-    	}
-    	    	
-    	if (categoriesNavigation) {
-    		
-    		categoriesNavigation.addClass("categories-closed"); 
-    	}  
-
-    	if (toggle) {
-    		toggle.addClass("categories-closed"); 
-    	}
-    }
+//    if (windowWidth < 768) {
+//    	    	
+//    	if (sitemapPortlet) {
+//    		
+//    		sitemapPortlet.addClass("categories-closed"); 
+//    	}
+//    	    	
+//    	if (categoriesNavigation) {
+//    		
+//    		categoriesNavigation.addClass("categories-closed"); 
+//    	}  
+//
+//    	if (toggle) {
+//    		toggle.addClass("categories-closed"); 
+//    	}
+//    }
 	
 	/**
 	 * Apply the affix class to the main-navigation .
