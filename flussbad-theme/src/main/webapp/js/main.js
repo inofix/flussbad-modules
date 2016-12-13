@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2016-12-13 10:56 by Christian Berndt
- * Version:     1.3.3
+ * Modified:    2016-12-13 15:29 by Christian Berndt
+ * Version:     1.3.4
  */
 
 /**
@@ -164,23 +164,41 @@ $( document ).ready(function() {
     var sitemapPortlet = $('.portlet-site-map.project-sections');    
 	var publisher = $('.default-publisher'); 
     var story = $('.project-story');
+    
+    var config = { 
+		tolerance : 10,
+		onPin : function() {
+			if (toggle) {
+	        	toggle.toggleClass('headroom--pinned headroom--unpinned');				
+			}
+			if (publisher) {
+				publisher.toggleClass('headroom--pinned headroom--unpinned');				
+			}
+			if (story) {
+				story.toggleClass('headroom--pinned headroom--unpinned');				
+			}			
+		},
+		onUnpin : function() {
+			if (toggle) {
+	        	toggle.toggleClass('headroom--pinned headroom--unpinned');				
+			}
+			if (publisher) {
+				publisher.toggleClass('headroom--pinned headroom--unpinned');				
+			}
+			if (story) {
+				story.toggleClass('headroom--pinned headroom--unpinned');				
+			}			
+		}
+	}; 
 
     if (categoriesNavigation) {
-    	$(categoriesNavigation).headroom({ tolerance : 10 }); 	
+    	$(categoriesNavigation).headroom(config);   	
     }
     
     if (sitemapPortlet) {
-    	$(sitemapPortlet).headroom({ tolerance : 10 });  	
+    	$(sitemapPortlet).headroom(config);  	
     }
-    
-    if (publisher) {
-    	$(publisher).headroom({ tolerance : 10 });   	
-    }
-    
-    if (story) {
-    	$(story).headroom({ tolerance : 10 });  	
-    }
-        
+
     /**
      * Show a modal slideshow.
      */
@@ -233,7 +251,7 @@ $( document ).ready(function() {
     if (toggle) {
         toggle.on('click', function(event) {
         	
-        	toggle.toggleClass('headroom--unpinned');        	
+        	toggle.toggleClass('headroom--pinned headroom--unpinned');
 
             if (categoriesNavigation) {
             	categoriesNavigation.toggleClass('headroom--pinned headroom--unpinned');
@@ -259,19 +277,19 @@ $( document ).ready(function() {
 	 * by default on mobile devices.
 	 */        
 //    if (windowWidth < 768) {
-//    	    	
-//    	if (sitemapPortlet) {
-//    		
-//    		sitemapPortlet.addClass("categories-closed"); 
-//    	}
-//    	    	
+//    	
 //    	if (categoriesNavigation) {
 //    		
-//    		categoriesNavigation.addClass("categories-closed"); 
-//    	}  
+//    		categoriesNavigation.addClass("headroom--unpinned"); 
+//    	}      	
+//    	    	
+//    	if (sitemapPortlet) {
+//
+//    		sitemapPortlet.addClass("headroom--unpinned"); 
+//    	}
 //
 //    	if (toggle) {
-//    		toggle.addClass("categories-closed"); 
+//    		toggle.addClass("headroom--unpinned"); 
 //    	}
 //    }
 	
