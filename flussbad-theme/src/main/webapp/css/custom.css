@@ -2340,6 +2340,10 @@ input {
             }
         }
         
+        &.headroom--pinned {
+            margin-top: 0; 
+        }
+        
 /*         &.categories-closed, */
 /*         &.categories-auto-closed {        */
 /*             margin-top: 0; */
@@ -2746,11 +2750,10 @@ input {
             }
         }
         
-/*         &.categories-auto-closed, */
-/*         &.categories-closed { */
-        
-/*             margin-top: 0; */
-/*         } */
+                
+        &.headroom--pinned {
+            margin-top: 0; 
+        }
         
         .taglib-categorization-filter.entry-title {
         
@@ -4133,8 +4136,7 @@ input {
         .portlet-asset-publisher {
         
 /*             &.categories-closed, */
-/*             &.default-publisher { */
-            
+/*             &.default-publisher { */         
 /*                 margin-top: 0; */
 /*             } */
         
@@ -4182,6 +4184,10 @@ input {
                 
                     min-width: 45px;
                 }
+            }
+            
+            &.headroom--pinned {
+                margin-top: 0; 
             }
         }
      
