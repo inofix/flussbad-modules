@@ -3,19 +3,19 @@
     mailing.xml: A structure for mailing contents.
     
     Created:    2016-10-18 22:54 by Christian Berndt
-    Modified:   2016-10-18 22:54 by Christian Berndt
-    Version:    1.0.1
+    Modified:   2016-12-16 13:27 by Christian Berndt
+    Version:    1.0.2
 -->
     <dynamic-element dataType="html" fieldNamespace="ddm" indexType="keyword" localizable="true" name="introduction" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-text-html" width="large">
         <meta-data locale="de_DE">
             <entry name="label">
-                <![CDATA[Introduction]]>
+                <![CDATA[Einführung]]>
             </entry>
             <entry name="predefinedValue">
                 <![CDATA[]]>
             </entry>
             <entry name="tip">
-                <![CDATA[]]>
+                <![CDATA[Der Einleitungstext für den Newsletter.]]>
             </entry>
         </meta-data>
     </dynamic-element>
@@ -23,26 +23,26 @@
         <dynamic-element dataType="date" fieldNamespace="ddm" indexType="keyword" localizable="true" name="date" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-date" width="small">
             <meta-data locale="de_DE">
                 <entry name="label">
-                    <![CDATA[Date]]>
+                    <![CDATA[Datum]]>
                 </entry>
                 <entry name="predefinedValue">
                     <![CDATA[]]>
                 </entry>
                 <entry name="tip">
-                    <![CDATA[]]>
+                    <![CDATA[Das Datum, das über dem Abschnitt angezeigt wird.]]>
                 </entry>
             </meta-data>
         </dynamic-element>
         <dynamic-element dataType="document-library" fieldNamespace="ddm" indexType="keyword" localizable="true" name="image" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-documentlibrary" width="">
             <meta-data locale="de_DE">
                 <entry name="label">
-                    <![CDATA[Image]]>
+                    <![CDATA[Bild]]>
                 </entry>
                 <entry name="predefinedValue">
                     <![CDATA[]]>
                 </entry>
                 <entry name="tip">
-                    <![CDATA[]]>
+                    <![CDATA[Wähle für den Abschnitt ein Bild aus der Dokumentenbibliothek aus.]]>
                 </entry>
             </meta-data>
         </dynamic-element>
@@ -55,19 +55,19 @@
                     <![CDATA[]]>
                 </entry>
                 <entry name="tip">
-                    <![CDATA[]]>
+                    <![CDATA[Ein kurzer Text, in dem beschrieben wird, was passiert. Nutze Links zum Online-Angebot www.flussbad-berlin.de, um den Leser zu vertiefenden Informationen weiter zu leiten.]]>
                 </entry>
             </meta-data>
         </dynamic-element>
         <meta-data locale="de_DE">
             <entry name="label">
-                <![CDATA[Section]]>
+                <![CDATA[Abschnitt]]>
             </entry>
             <entry name="predefinedValue">
                 <![CDATA[]]>
             </entry>
             <entry name="tip">
-                <![CDATA[]]>
+                <![CDATA[Gib dem Abschnitt eine aussagekräftige Überschrift. Zusätzliche Abschnitte kannst Du mit dem Schaltelement oben rechts einfügen.]]>
             </entry>
         </meta-data>
     </dynamic-element>
