@@ -6,9 +6,9 @@
         <groupId>de.flussbad-berlin</groupId>
         <version>0.9.0-SNAPSHOT</version>
     </parent>
-	<artifactId>asset-publisher-hook</artifactId>
+	<artifactId>display-styles-hook</artifactId>
 	<packaging>war</packaging>
-	<name>Asset Publisher Hook</name>
+	<name>Display Styles Hook</name>
 	<version>1.0.7</version>
 	<build>
 		<plugins>
