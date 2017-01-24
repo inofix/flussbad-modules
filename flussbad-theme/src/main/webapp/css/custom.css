@@ -2575,7 +2575,11 @@ input {
         width: 100%;  
         
         will-change: transform;
-        transition: transform 200ms linear;
+        
+      -webkit-transition: -webkit-transform 200ms linear;
+         -moz-transition: -moz-transform 200ms linear;
+           -o-transition: -o-transform 200ms linear; 
+              transition: transform 200ms linear;
         
 /*         -webkit-transition: max-height 0.2s;  */
 /*         -moz-transition: max-height 0.2s;  */
@@ -2634,7 +2638,10 @@ input {
         
         .toggle-button {
     
-            transition: 0.2s ease-in-out;
+          -webkit-transition: -webkit-transform 0.2s ease-in-out;
+             -moz-transition: -moz-transform 0.2s ease-in-out;
+               -o-transition: -o-transform 0.2s ease-in-out;  
+                  transition: 0.2s ease-in-out;
             
             @include rotate(45deg);             
         }
@@ -2684,11 +2691,16 @@ input {
     
         width: 100%;
         
-        -webkit-transition: margin-top 0.2s; 
-        -moz-transition: margin-top 0.2s; 
-        -ms-transition: margin-top 0.2s; 
-        -o-transition: margin-top 0.2s; 
-        transition: margin-top 0.2s;
+/*       -webkit-transition: -webkit-transform 200ms linear; */
+/*          -moz-transition: -moz-transform 200ms linear; */
+/*            -o-transition: -o-transform 200ms linear;  */
+/*               transition: transform 200ms linear; */
+        
+        -webkit-transition: margin-top 200ms linear; 
+        -moz-transition: margin-top 200ms linear; 
+        -ms-transition: margin-top 200ms linear;
+        -o-transition: margin-top 200ms linear;
+        transition: margin-top 200ms linear;
         
         &.default-publisher {
         
