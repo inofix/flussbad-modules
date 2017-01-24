@@ -1,7 +1,7 @@
 # Introduction
 flussbad-modules is a collection of liferay-modules written for the Liferay Portal of <a href="http://www.flussbad-berlin.de" target="_blank">www.flussbad-berlin.de</a>
 # Module Description
-## asset-publisher-hook
+## display-styles-hook
 additional display styles used with the flussbad-theme
 ## flussbad-theme
 flussbad-theme is a bootstrap based theme for public sites of <a href="http://www.flussbad-berlin.de" target="_blank">www.flussbad-berlin.de</a>
