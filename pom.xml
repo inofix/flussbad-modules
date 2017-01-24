@@ -9,19 +9,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.flussbad-berlin</groupId>
     <artifactId>flussbad-modules</artifactId>
-    <version>0.9.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
     <name>Flussbad Modules</name>
     <description>Maven parent project to the flussbad liferay modules.</description>
 
     <properties>
 
-        <!-- Configure liferay.base.dir in dev.properties  -->
-        <!-- in the parent project's directory. Copy the   -->
-        <!-- included sample.properties to dev.properties  -->
-        <!-- and adjust it to your personal environment.   -->
-<!--          <liferay.base.dir>  -->
-<!--          </liferay.base.dir> -->
          <tomcat.version>tomcat-7.0.62</tomcat.version>
 
          <liferay.app.server.deploy.dir>
@@ -102,7 +96,7 @@
     </dependencies>
     <modules>
         <module>asset-links-hook</module>
-        <module>asset-publisher-hook</module>
+        <module>display-styles-hook</module>
         <module>document-library-hook</module>
         <module>flussbad-theme</module>
         <module>indexer</module>
