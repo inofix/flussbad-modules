@@ -2,16 +2,18 @@
     mailing.ftl: Format the mailing structure
     
     Created:    2016-10-18 22:59 by Christian Berndt
-    Modified:   2016-11-25 15:53 by Christian Berndt
-    Version:    1.0.6
+    Modified:   2017-01-26 16:25 by Christian Berndt
+    Version:    1.0.7
 -->
 
 <style>
     .newsletter {
         background-color: #ebebeb;
-        font-size: 18px;
+        font-size: 16px;
+/*        font-size: 18px; */
         font-family: 'Apercu Pro Regular', Calibri, Roboto, sans-serif;       
-        line-height: 30px;   
+        line-height: 24px;   
+/*        line-height: 30px;   */
     }
     
     .newsletter a {
@@ -26,19 +28,21 @@
     }
     
     .newsletter .date {
-        font-size: 16px;
+        font-size: 14px;
+/*        font-size: 16px; */
         text-transform: uppercase;
     }
     
     .newsletter h2 {
         font-family: 'Apercu Pro Bold', Calibri, Roboto, sans-serif;
-        font-size: 31.5px;     
-        line-height: 40px;   
+        font-size: 24px;     
+/*        font-size: 31.5px;  */    
+/*        line-height: 40px;  */ 
         margin-top: 0;
     }
     
     .newsletter .introduction {
-        padding: 0 40px 40px;
+        padding: 0 30px 40px;
     }
     
     .newsletter p {
@@ -51,7 +55,7 @@
     }
     
     .newsletter .section .content {
-        padding: 40px;
+        padding: 30px;
     }
     
     .newsletter .section img {
@@ -62,7 +66,7 @@
     .newsletter-footer {
         background: #fff;
         font-size: 16px;
-        padding: 40px;
+        padding: 30px;
         text-align: center; 
     }
     
@@ -76,6 +80,53 @@
         margin: 0; 
     }
     
+@media only screen and (min-width: 768px) {
+    .newsletter {
+        font-size: 18px; 
+        line-height: 30px;
+    }
+    
+    .newsletter .date {
+        font-size: 16px;
+    }
+    
+    .newsletter h2 {    
+        font-size: 31.5px;    
+        line-height: 40px; 
+    }
+    
+    .newsletter .introduction {
+        padding: 0 40px 40px;
+    }
+    
+    .newsletter .section .content {
+        padding: 40px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+    .newsletter-container {
+        width: 100%;
+    }
+    
+    .newsletter .introduction {
+        padding: 0 15px; 
+    }
+    
+    .newsletter .section {
+        margin-left: auto; 
+        margin-right: auto;
+        max-width: 600px;
+        padding-bottom: 30px;
+        width: 90%;
+    }    
+    
+    .newsletter .section .content {
+        padding: 30px 15px 0;
+    }
+
+}
     
 </style>
 
@@ -84,8 +135,10 @@
         <div class="span8 offset2">
             <#if introduction??>
                 <#if introduction.getData()?has_content>
-                    <div class="introduction section">
+                    <div class="section">
+                        <div class="introduction">
                             ${introduction.getData()}
+                        </div>
                     </div>
                 </#if>
             </#if>
