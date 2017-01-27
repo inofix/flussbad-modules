@@ -42,6 +42,7 @@
     }
     
     .newsletter .introduction {
+        background-color: #fff;    
         padding: 0 30px 40px;
     }
     
@@ -50,11 +51,11 @@
     }
     
     .newsletter .section {
-        background-color: #ffffff;
         margin-bottom: 50px;
     }
     
     .newsletter .section .content {
+        background-color: #fff;    
         padding: 30px;
     }
     
@@ -111,7 +112,7 @@
     }
     
     .newsletter .introduction {
-        padding: 0 15px; 
+        padding: 0 15px 15px; 
     }
     
     .newsletter .section {
@@ -123,7 +124,7 @@
     }    
     
     .newsletter .section .content {
-        padding: 30px 15px 0;
+        padding: 30px 15px 15px;
     }
 
 }
@@ -179,7 +180,7 @@
     <div class="newsletter-footer">
         <div class="container">
             <div class="copyright">
-                Copyright &copy; 2016 Flussbad Berlin e.V. Gemeinnütziger Verein <br/>
+                Copyright &copy; 2016-2017 Flussbad Berlin e.V. Gemeinnütziger Verein <br/>
                 Falckensteinstr. 48, 10997 Berlin. All rights reserved.
             </div>
             <div class="phone">
