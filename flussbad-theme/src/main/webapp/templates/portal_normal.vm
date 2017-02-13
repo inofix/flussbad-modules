@@ -3,8 +3,8 @@
 ## the example of portal_normal.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:18 by Christian Berndt
-## Modified:    2016-12-13 10:54 by Christian Berndt
-## Version:     1.2.7
+## Modified:    2017-02-10 13:43 by Christian Berndt
+## Version:     1.2.8
 ##
 <!DOCTYPE html>
 
@@ -25,6 +25,63 @@
 ##   $locPortletPreferenceService.deletePortletPreferences(0, 3, $locPlidLong, $portletId)
 ## #end
 
+##
+## TODO: read og_image from configuration
+##
+#set ($og_image = "https://www.flussbad-berlin.de/documents/41139/46318/05_Flussbad_Berlin_Log_Mit_Plan.png")
+
+##
+## TODO: read description from configuration
+##
+#set ($description = "Alles zum und über das Flussbad-Projekt.")
+
+## 
+## Get the current article (if any)
+##
+#set ($articleService = $serviceLocator.findService("com.liferay.portlet.journal.service.JournalArticleService"))
+#set ($assetEntry = $request.getAttribute("LIFERAY_SHARED_LAYOUT_ASSET_ENTRY"))
+#set ($articleId = 0)
+
+#if ($validator.isNotNull($assetEntry))
+    #set ($articleId = $getterUtil.getLong($assetEntry.getClassPK()))
+#end
+
+#if ($articleId > 0) 
+    #set ($article = $articleService.getLatestArticle($getterUtil.getLong($articleId)))
+
+    #if ($validator.isNotNull($article))
+
+        #set ($languageId = $languageUtil.getLanguageId($request.getLocale()))
+        #set ($document = $saxReaderUtil.read($article.getContentByLocale($languageId)))
+        #set ($summary = $assetEntry.getSummary($request.getLocale()))
+        #set ($teaser = $document.valueOf("//dynamic-element[@name='teaser']/dynamic-content/text()"))
+        #set ($title = $document.valueOf("//dynamic-element[@name='headline']/dynamic-content/text()"))
+        #set ($key_visual = $document.valueOf("//dynamic-element[@name='keyVisual']/dynamic-content/text()"))
+        
+        #if ($validator.isNotNull($title)) 
+            #set ($the_title = $htmlUtil.escape($title))
+        #end
+    
+        #if ($validator.isNotNull($key_visual)) 
+            #set ($og_image = $request.getScheme() + "://" + $request.getServerName() + $key_visual)
+        #end
+    
+        #if ($validator.isNotNull($summary)) 
+            #set ($description = $htmlUtil.escape($summary))
+        #end
+        
+        #if ($validator.isNotNull($teaser)) 
+            #set ($description = $htmlUtil.escape($teaser))
+        #end
+    
+    #end
+    
+#end
+
+#set ($complete_url = $portalUtil.getCurrentCompleteURL($request))
+#set ($canonical_url = $portalUtil.getCanonicalURL($complete_url, $themeDisplay, $layout))
+#set ($canonical_url = $httpUtil.removeParameter($canonical_url, "inheritRedirect"))
+
 <html class="$root_css_class" dir="#language ("lang.dir")" lang="$w3c_language_id">
 
 <head>
@@ -32,6 +89,15 @@
 
     <meta content="initial-scale=1.0, width=device-width" name="viewport" />
     
+    <meta name="description" content="$description">
+    
+    <meta property="og:title"          content="$the_title" />
+    <meta property="og:type"           content="website" />
+    <meta property="og:locale"         content="$languageUtil.getLanguageId($request.getLocale())" />
+    <meta property="og:url"            content="$canonical_url" />
+    <meta property="og:site_name"      content="www.flussbad-berlin.de" />
+    <meta property="og:image"          content="$og_image" />
+   
     ## As a temporary replacement of Quiltray
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&amp;subset=latin-ext" rel="stylesheet">
     
@@ -95,6 +161,16 @@ $theme.include($body_top_include)
 
             $theme.wrapPortlet("portlet.vm", $content_include)
         #end
+
+
+        #set ($attributes = $request.getAttributeNames())
+        <ul>
+          #foreach( $attribute in $attributes )
+            <li>$attribute</li>
+          #end
+        </ul>
+        
+        
     </div>
     
     <footer id="footer" role="contentinfo">

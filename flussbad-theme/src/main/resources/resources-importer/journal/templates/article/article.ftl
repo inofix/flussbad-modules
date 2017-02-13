@@ -2,8 +2,8 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2016-11-22 11:06 by Christian Berndt
-    Version:    1.4.1
+    Modified:   2017-02-10 18:07 by Christian Berndt
+    Version:    1.4.2
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -57,8 +57,12 @@
     <#assign layoutFriendlyURL = layout.friendlyURL />
 </#if>
 
-<#if request.attributes?? >
-    <#assign currentURL = request.attributes['CURRENT_URL']/>
+<#if request??>
+    <#if request.attributes??>
+        <#if request.attributes['CURRENT_URL']?? >
+            <#assign currentURL = request.attributes['CURRENT_URL']/>
+        </#if>
+    </#if>
 </#if>
 
 <#assign pathAndGroupURL = pathFriendlyURL + groupURL />
@@ -620,9 +624,8 @@
                 </div> <#-- /.media -->
             </#if>            
             
-            <#-- Include the common social-media snippet             
+            <#-- Include the common social-media snippet -->         
             <#include "${templatesPath}/72079" /> 
-            -->
                           
         </div> <#-- / .span8 -->
         
