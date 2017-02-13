@@ -2,34 +2,46 @@
     fb_social.jsp: Shariff based social media buttons for the flussbad-abstracts.
     
     Created:    2015-10-08 17:05 by Christian Berndt
-    Modified:   2015-10-29 19:19 by Christian Berndt
-    Version:    1.0.5
+    Modified:   2017-02-13 18:51 by Christian Berndt
+    Version:    1.0.6
 --%>
+<%
+    String addressScheme = request.getScheme(); 
+    String serverName = request.getServerName();
 
-<div class="asset-social-media">
-
-	<% 
-	
-    String canonicalURL = PortalUtil.getCanonicalURL(viewURL, themeDisplay, layout);
-	String[] tokens = canonicalURL.split("\\?"); 
-	String shareURL = tokens[0]; 
-	
+    // TODO: read fb-api-key from configuration
+    String fbApiKey = "755224881300786";
+    String fbPicture = addressScheme + "://" + serverName + "/documents/41139/46318/05_Flussbad_Berlin_Log_Mit_Plan.png/30fcb9f2-f81b-446f-8e8a-9ffe01a3e049?version=1.1&t=1481636347608&download=true";
+    if (Validator.isNotNull(keyVisual)) {
+        fbPicture = addressScheme + "://" + serverName + keyVisual;
+    }
+    String canonicalURL = PortalUtil.getCanonicalURL(viewURL,
+            themeDisplay, layout);
+    String[] tokens = canonicalURL.split("\\?");
+    String shareURL = tokens[0];
     // TODO: make the shariff properties configurable
-    String mailBody = "Schau mal hier auf www.flussbad-berlin.de"; 
-//     String mailBody = "Schau mal hier <a href=\"" + viewURL + "\"> + auf www.flussbad-berlin.de</a>"; 
-    String mailSubject = "Schau mal auf www.flussbad-berlin.de"; 
-    String mailUrl = "mailto:"; 
-    String selectedOrientation = "horizontal"; 
-    String servicesConfig = "[&quot;facebook&quot;,&quot;twitter&quot;,&quot;mail&quot;]"; 
-    String selectedTheme = "standard"; 
-    String twitterVia = "flussbad"; 
-
+    String mailBody = "Schau mal hier auf www.flussbad-berlin.de";
+    //     String mailBody = "Schau mal hier <a href=\"" + viewURL + "\"> + auf www.flussbad-berlin.de</a>"; 
+    String mailSubject = "Schau mal auf www.flussbad-berlin.de";
+    String mailUrl = "mailto:";
+    String selectedOrientation = "horizontal";
+    String servicesConfig = "[&quot;facebook&quot;,&quot;twitter&quot;,&quot;mail&quot;]";
+    String selectedTheme = "standard";
+    String twitterVia = "flussbad";
 %>
-	<span class="tell-others"><liferay-ui:message key="tell-others" /></span>
-	<div class="shariff"
-		data-url="<%= shareURL %>" data-mail-body="<%= mailBody %>"
-		data-mail-subject="<%= mailSubject %>" data-mail-url="<%= mailUrl %>"
-		data-orientation="<%= selectedOrientation %>"
-		data-services="<%= servicesConfig %>"
-		data-theme="<%= selectedTheme %>" data-twitter-via="<%= twitterVia %>"></div>
+<div class="asset-social-media">
+    <span class="tell-others"><liferay-ui:message
+            key="tell-others" /></span>
+    <div class="shariff" data-url="<%=shareURL%>"
+        data-fb-api-key="<%= fbApiKey %>"
+        data-fb-picture="<%= fbPicture %>"
+        data-fb-description="<%= HtmlUtil.escape(HtmlUtil.stripHtml(fbDescription)) %>"
+        data-fb-name="<%= HtmlUtil.escape(title) %>"
+        data-mail-body="<%=mailBody%>"
+        data-mail-subject="<%=mailSubject%>"
+        data-mail-url="<%=mailUrl%>"
+        data-orientation="<%=selectedOrientation%>"
+        data-services="<%=servicesConfig%>"
+        data-theme="<%=selectedTheme%>"
+        data-twitter-via="<%= twitterVia %>"></div>
 </div>

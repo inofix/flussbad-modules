@@ -2,8 +2,8 @@
     fb_init.jsp: Common setup-code for the flussbad-displays and abstracts.
     
     Created:    2015-10-08 16:48 by Christian Berndt
-    Modified:   2015-10-26 07:45 by Christian Berndt
-    Version:    1.0.7
+    Modified:   2017-02-13 18:50 by Christian Berndt
+    Version:    1.0.8
 --%>
 
 <%@ include file="/html/portlet/asset_publisher/init.jsp" %>
@@ -88,7 +88,8 @@
 	String keyVisual = null;
 	String location = null;
 	String minute = null; 
-	String structureId = null; 
+	String structureId = null;
+	String fbDescription = null; 
 	
 	String languageId = LanguageUtil.getLanguageId(request);
 	
@@ -103,6 +104,16 @@
 	
 	            Document document = SAXReaderUtil.read(article
 	                    .getContentByLocale(languageId));
+                
+                String eventDescription = document.valueOf("//dynamic-element[@name='summary']/dynamic-content/text()");
+                String teaser = document.valueOf("//dynamic-element[@name='teaser']/dynamic-content/text()");
+                
+                if (Validator.isNotNull(eventDescription)) {
+                    fbDescription = eventDescription; 
+                }                
+                if (Validator.isNotNull(teaser)) {
+                    fbDescription = teaser; 
+                }
 	            	            	
                 Node bodyNode = document
                         .selectSingleNode("/root/dynamic-element[@name='section']/dynamic-element[@name='body']/dynamic-content");
