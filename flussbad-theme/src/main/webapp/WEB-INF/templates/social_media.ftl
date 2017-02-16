@@ -5,8 +5,8 @@
     template.
 
     Created:    2015-11-01 11:41 by Christian Berndt
-    Modified:   2017-02-12 22:43 by Christian Berndt
-    Version:    1.0.4
+    Modified:   2017-02-16 11:33 by Christian Berndt
+    Version:    1.0.5
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -41,8 +41,16 @@
 </#if>
 <#assign keyVisual = value_of(docXml, "keyVisual", language_id) />
 
+<#assign currentURL = "" />
+<#if request.attributes['CURRENT_COMPLETE_URL']??>
+    <#assign currentURL = request.attributes['CURRENT_COMPLETE_URL'] />
+</#if>
 
-<#assign protocol = "https" />
+<#assign protocol = "http" />
+<#if currentURL?starts_with("https")>
+    <#assign protocol = "https" />
+</#if>
+
 <#assign serverName = "www.flussbad-berlin.de" /> 
 <#assign picture = protocol + "://" + serverName + "/documents/41139/46318/05_Flussbad_Berlin_Log_Mit_Plan.png/30fcb9f2-f81b-446f-8e8a-9ffe01a3e049?version=1.1&t=1481636347608&download=true" />
 <#if keyVisual?has_content>
@@ -52,11 +60,8 @@
 
 <#assign shareURL = "" />
 
-<#assign backendUrl = "https://www.flussbad-berlin.de/shariff" /> 
-<#assign currentURL = "" />
-<#if request.attributes['CURRENT_COMPLETE_URL']??>
-    <#assign currentURL = request.attributes['CURRENT_COMPLETE_URL'] />
-</#if>
+<#assign backendUrl = protocol + "://" + serverName + "/shariff" /> 
+
 <#assign shareURL = currentURL />
 <#assign shareURL = httpUtil.removeParameter(shareURL, "inheritRedirect") />
 <#assign shareURL = httpUtil.removeParameter(shareURL, "redirect") />
