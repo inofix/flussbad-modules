@@ -907,6 +907,17 @@ input {
                     margin-bottom: .5em;
                 }
                 
+                .format-paragraph {
+                
+                    display: block; 
+                    clear: both; 
+                    font-size: $small-font-size;
+                    letter-spacing: $letter-spacing-wide;
+                    border: none;
+                    margin-bottom: 1.5em;
+                  
+                }
+                
                 .test {
                 
                     @media (min-width: 768px) {
@@ -995,9 +1006,7 @@ input {
             
                 margin: 2.75em 0 0 5px;
             }
-        }
-        
-        
+        }    
         
         .btn-primary {
         
@@ -1007,6 +1016,10 @@ input {
             display: table; 
             clear: both;
             margin: auto; 
+        }
+        
+        &.last {
+            padding-bottom: 70px; 
         }
         
         &.press-form {
