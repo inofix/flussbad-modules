@@ -161,15 +161,6 @@ $theme.include($body_top_include)
 
             $theme.wrapPortlet("portlet.vm", $content_include)
         #end
-
-
-        #set ($attributes = $request.getAttributeNames())
-        <ul>
-          #foreach( $attribute in $attributes )
-            <li>$attribute</li>
-          #end
-        </ul>
-        
         
     </div>
     
