@@ -98,7 +98,7 @@
     <meta property="og:site_name"      content="www.flussbad-berlin.de" />
     <meta property="og:image"          content="$og_image" />
    
-    ## As a temporary replacement of Quiltray
+    ## As a replacement of Quiltray
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&amp;subset=latin-ext" rel="stylesheet">
     
     $theme.include($top_head_include)
