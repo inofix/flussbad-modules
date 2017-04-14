@@ -51,12 +51,8 @@ $color-muted: #B2C4C4;
 
 /* button */
 $button-font-size: 22px;
-/* $button-font-size: 21px; */
 $button-font-family: 'Amatic SC', cursive;
-/* $button-font-family: 'Qiltray Regular Condensed'; */
 $button-letter-spacing: 2.6px;
-/* $button-letter-spacing: 0.1em; */
-/* $button-font-size-adjust:0.477;  */
 $button-padding: 10px 30px 8px;
 
 /* slideshow */
@@ -147,8 +143,6 @@ $full-image-height-xs: 400px;
     color: $navigation-font-color; 
     font-family: $button-font-family;
     font-size: $button-font-size; 
-/*     font-size-adjust: $button-font-size-adjust; */
-    /* only as a workaround with amatic */
     font-weight: 600; 
     letter-spacing: $button-letter-spacing;
     text-transform: uppercase;
@@ -360,8 +354,7 @@ $full-image-height-xs: 400px;
 
 /* Unset input borders set by jQuery */
 
-input {
-    
+input {    
     border: none; 
 }
 
@@ -374,8 +367,7 @@ input {
     }
     
     .metadata-publish-date,
-    .metadata-event-date {
-        
+    .metadata-event-date {       
         padding-left: 30px;
     }
     
@@ -439,94 +431,77 @@ input {
         font-family: $bold-font-family;
     }
             
-    .alert {
-    
+    .alert {  
         margin-bottom: 1.5em;
         margin-top: 1em; 
     }
     
-    h1 {
-    
+    h1 {  
         font-family: $bold-font-family;
         font-size: $h1-font-size;
         line-height: $h1-line-height;
-        letter-spacing: 0.02em;
-        
-        
+        letter-spacing: 0.02em;             
     }
     
-    h2 {
-    
+    h2 {   
         font-family: $bold-font-family;
         font-size: $h2-font-size;
         line-height: $h2-line-height;
     }
     
-    h3 {
-    
+    h3 {   
         font-family: $medium-font-family;
         font-size: $h3-font-size;
         text-transform: uppercase;
         letter-spacing: $letter-spacing-wide;
     }
     
-    h1,h2,h3,h4,h5,h6,strong {
-    
+    h1,h2,h3,h4,h5,h6,strong {    
         font-style: normal;
         font-weight: normal;
     }
     
-    cite {
-    
+    cite {    
         font-style: italic;
         font-weight: normal;
         letter-spacing: $letter-spacing-wide;
     }
     
-    a {
-    
+    a {    
         color: $navigation-font-color;
     }
 
     a:hover, 
-    a:focus {
-    
+    a:focus {    
         text-decoration: none;
         color: $hover-font-color;
     }
     
-    .highlight {
-    
+    .highlight {   
         background-color: $color-turquois;
     }
     
-    .required {
-    
+    .required {   
         color: $color-orange;
     }
     
-    .disabled {
-    
+    .disabled {    
         display: none !important;
     }
     
-    ul, ol {
-    
+    ul, ol {   
         margin: 0 0 10px 10px;
     }
     
-    form {
-    
+    form {   
         margin: 0; 
     }
     
-    #wrapper {
-    
+    #wrapper {    
         padding: 0;
     }
     
     #content {
-    
         font-size: $default-font-size;
         line-height: $default-line-height;
         margin-top: $nav-height;
@@ -536,8 +511,7 @@ input {
         margin-top: 0; 
     }
     
-    .lfr-pagination {
-    
+    .lfr-pagination {    
         padding: 1em 0;
     }
     
@@ -553,8 +527,7 @@ input {
         }
     }
     
-    *:focus {
-    
+    *:focus {    
         outline: 0;
     }
     
@@ -661,7 +634,6 @@ input {
         
         li {
             font-size: $default-font-size;
-/*             font-weight: 600; */
             letter-spacing: $letter-spacing-wide;
             .portlet-static-end {
             
@@ -741,18 +713,15 @@ input {
     /* unset bootstrap's default background */
     
     #navigation .navbar-inner,              /* affix-top is set via js, which comes too late on first load */
-    #navigation.affix-top .navbar-inner {
-    
+    #navigation.affix-top .navbar-inner {    
         background-color: transparent;
     }
     
-    .default-page #navigation .navbar-inner {
-    
+    .default-page #navigation .navbar-inner {    
         background-color: $color-turquois;
     }
     
-    #navigation.affix-top .navbar-inner {
-    
+    #navigation.affix-top .navbar-inner {   
         height: $nav-height *3;
         background-color: $color-turquois;
     }
@@ -783,7 +752,7 @@ input {
                 }
             }
         }
-     }
+    }
         
     #navigation.affix .navbar-inner {
     
@@ -1028,8 +997,6 @@ input {
     }
     
     
-    
-    
     /* Newsletter form */
     
     footer {
@@ -1179,25 +1146,24 @@ input {
             }
             
             .location {
+            
                 @include event-location();
                 
                 span {
                     float: left; 
                 }
-            }
-            
+            }            
         }
         
-        .lead p {
-       
+        .lead p {    
            font-family: $light-font-family;
            font-size: $lead-font-size;
            line-height: $lead-line-height;
-       }
+        }
        
-       .section {
+        .section {
             padding-bottom: 3em;
-       }
+        }
        
        .section-body {
             
@@ -1206,15 +1172,14 @@ input {
             }
         }
        
-       .social-media {
-
+        .social-media {
             margin-top: 1em;
             border-top: 5px solid $color-light-gray;
             padding-top: .5em;
             padding-bottom: 1em;
        
             @include social-media();
-       }
+        }
     }
     
     
@@ -1253,8 +1218,7 @@ input {
                     opacity: 1;                       
                 }
             }
-        }
-        
+        }       
     }    
 
     
@@ -1281,9 +1245,7 @@ input {
             -moz-box-shadow: none; 
             box-shadow: none;
             font-size: $button-font-size; 
-/*             font-size-adjust: $button-font-size-adjust; */
             font-family: $button-font-family;
-            /* only as a workaround with amatic */
             font-weight: 600;             
             letter-spacing: $button-letter-spacing;
             text-transform: uppercase;
@@ -1293,8 +1255,7 @@ input {
             &:hover {
                 color: $hover-font-color;
                 border: 2px solid $hover-font-color;
-            }
-            
+            }           
         } 
         
         h1 {
@@ -1373,14 +1334,11 @@ input {
                 
                 font-family: $button-font-family;
                 font-size: 48px;
-/*                 font-size: 38px; */
                 font-weight: 600; 
                 line-height: 40px !important;
-/*                 line-height: 34px !important; */
                 text-transform: uppercase;
                 color: #fff;
                 padding-top: 20px;
-/*                 padding-top: 28px; */
                 padding-left: -5px;
                 display: block;
                 
@@ -1498,14 +1456,14 @@ input {
             }
             
             .btn {
-                 background: white;
-                 border: none;
-                 
-                 &:hover {
-                   opacity: 0.75;
-                   color: $hover-font-color;
-                 }
-             }
+                background: white;
+                border: none;
+                
+                &:hover {
+                    opacity: 0.75;
+                    color: $hover-font-color;
+                }
+            }
         }
     }
     
@@ -1782,8 +1740,6 @@ input {
             color: $navigation-font-color; 
             font-family: $button-font-family;
             font-size: $button-font-size; 
-/*             font-size-adjust: $button-font-size-adjust; */
-            /* Only as a workaround for Qiltray */
             font-weight: 600; 
             letter-spacing: $button-letter-spacing;
             text-transform: uppercase;
@@ -2157,6 +2113,7 @@ input {
                         color: white;
                         margin-left: 5px;
                     }
+                    
                     &:last-of-type:after {
                         content: ""; 
                     }
@@ -2356,11 +2313,6 @@ input {
         &.headroom--pinned {
             margin-top: 0; 
         }
-        
-/*         &.categories-closed, */
-/*         &.categories-auto-closed {        */
-/*             margin-top: 0; */
-/*         } */
     }
     
     .toc {
@@ -2498,57 +2450,15 @@ input {
     
         width: 100%; 
         z-index: 10;
-                    
-        .accordion {
-        
-            margin-bottom: 0;
-        }
     
-        .portlet-body .taglib-asset-categories-navigation {
-    
-            min-height: $categories-height;       
+        .portlet-body {
                 
-            a {
-            
+            a {           
                 @include filter-item(); 
             }
     
-            a.tag-selected {
-            
+            a.selected {            
                 @include filter-item-selected(); 
-            }
-    
-            .tree-view {
-            
-                overflow: hidden;
-            }
-            
-            .tree-node-leaf,
-            .tree-node-content .tree-label {
-            
-                margin: 0; 
-            }
-            
-            .tree-node-over .tree-label {
-            
-                text-decoration: none; 
-            }
-            
-            .lfr-asset-category-list span {
-            
-                padding: 0; 
-            }
-        
-            .accordion-group,
-            .accordion-inner {
-            
-                border: none; 
-                padding: 0;
-            }
-            
-            .accordion-heading {
-            
-                display: none;
             }
             
             ul {
@@ -2567,13 +2477,12 @@ input {
             }
         }
         
-        .portlet-borderless-container {
-        
+        .portlet-borderless-container {      
             min-height: 0; 
         }
     }
     
-    .portlet-asset-categories-navigation,
+    .portlet-asset-categories-navigation .wrapper,
     .portlet-site-map.project-sections { 
     
         /** hide the categories navigation by default and
@@ -2582,7 +2491,7 @@ input {
     
         background: lighten($color-sand, 3%);
         
-        position: fixed; 
+/*         position: fixed;  */
         top: $nav-height;
         z-index: 10; 
         width: 100%;  
@@ -2593,12 +2502,6 @@ input {
          -moz-transition: -moz-transform 200ms linear;
            -o-transition: -o-transform 200ms linear; 
               transition: transform 200ms linear;
-        
-/*         -webkit-transition: max-height 0.2s;  */
-/*         -moz-transition: max-height 0.2s;  */
-/*         -ms-transition: max-height 0.2s;  */
-/*         -o-transition: max-height 0.2s;  */
-/*         transition: max-height 0.2s; */
         
         max-height: 120px; 
         overflow: hidden;
@@ -2616,25 +2519,23 @@ input {
                   transform: translateY(0%);
         }
         
+        &.buttons--unpinned,
         &.headroom--unpinned {
           -webkit-transform: translateY(-100%);
              -moz-transform: translateY(-100%);
               -ms-transform: translateY(-100%);
                -o-transform: translateY(-100%);
                   transform: translateY(-100%);
-        }
+        }  
 
-/*         &.categories-auto-closed, */
-/*         &.categories-closed, */
-        &.headroom--unpinned
-        {                
-/*             max-height: 0; */
-/*             overflow: hidden; */
+        &:before {
+            display: table;
+            background: lighten($color-sand, 3%);   
         }
     }
     
     .toggle {
-                      
+                         
         position: fixed;
         z-index: 100;
         right: 0;
@@ -2659,10 +2560,8 @@ input {
             @include rotate(45deg);             
         }
         
-        &.headroom--unpinned .toggle-button
-/*         &.categories-auto-closed .toggle-button, */
-/*         &.categories-closed .toggle-button  */
-        {
+        &.buttons--unpinned .toggle-button,
+        &.headroom--unpinned .toggle-button {
           -webkit-transition: -webkit-transform 0.2s ease-in-out;
              -moz-transition: -moz-transform 0.2s ease-in-out;
                -o-transition: -o-transform 0.2s ease-in-out;  
@@ -2704,11 +2603,6 @@ input {
     
         width: 100%;
         
-/*       -webkit-transition: -webkit-transform 200ms linear; */
-/*          -moz-transition: -moz-transform 200ms linear; */
-/*            -o-transition: -o-transform 200ms linear;  */
-/*               transition: transform 200ms linear; */
-        
         -webkit-transition: margin-top 200ms linear; 
         -moz-transition: margin-top 200ms linear; 
         -ms-transition: margin-top 200ms linear;
@@ -2716,7 +2610,7 @@ input {
         transition: margin-top 200ms linear;
         
         &.default-publisher {
-        
+                    
             margin-top: $categories-height;
                         
             .asset-abstract {
@@ -2756,17 +2650,18 @@ input {
                 /* Do not show asset-categories that don't have the "show-in-logbook" */
                 /* class */
                 
-                .asset-metadata .metadata-categories a.asset-category {
-                
+                .asset-metadata .metadata-categories a.asset-category {               
                     display: none; 
                 }
                 
-                .asset-metadata .metadata-categories a.asset-category.show-in-logbook {
-                
+                .asset-metadata .metadata-categories a.asset-category.show-in-logbook {            
                     display: inline;
                 } 
             }
-
+                          
+            &.buttons--unpinned {
+                margin-top: 0; 
+            }
         }
         
         &.project-publisher {
@@ -4106,13 +4001,12 @@ input {
                     
                     .fb-event-title {
                     
-                          margin-bottom: 2em;
-                          
-                          .asset-metadata::after {
-                          
-                              content:"\A"; 
-                              white-space: pre;
-                          }
+                        margin-bottom: 2em;
+                        
+                        .asset-metadata::after {                        
+                            content:"\A"; 
+                            white-space: pre;
+                        }
                     }                
                 }
             }
@@ -4170,11 +4064,6 @@ input {
 
         .portlet-asset-publisher {
         
-/*             &.categories-closed, */
-/*             &.default-publisher { */         
-/*                 margin-top: 0; */
-/*             } */
-        
             .metadata-publish-date,
             .metadata-event-date {
             
@@ -4221,8 +4110,15 @@ input {
                 }
             }
             
-            &.headroom--pinned {
-                margin-top: 0; 
+
+            &.default-publisher {
+            
+                margin-top: $nav-height; 
+                
+                &.buttons--unpinned,
+                &.headroom--pinned {
+                    margin-top: $nav-height;                
+                }
             }
         }
      
@@ -4256,8 +4152,30 @@ input {
             } 
         }
         
-        .portlet-asset-categories-navigation,
+        .portlet-asset-categories-navigation {
+        
+            .portlet-body {
+                padding: 0 !important;
+            }
+                
+            .wrapper {
+            
+                background: lighten($color-sand, 3%);            
+                display: none;
+                max-height: none; 
+                width: 100%;                
+                
+                ul li {
+                    float: none !important;
+                    display: block;
+                }
+            }        
+        }
+        
         .portlet-site-map.project-sections {
+        
+            display: none;
+            
             .portlet-body {
                 ul li {
                     float: none !important;
@@ -4270,9 +4188,7 @@ input {
             
         }
 
-        .portlet-asset-publisher.story-publisher
-/*         .project-story.categories-closed  */
-        {
+        .portlet-asset-publisher.story-publisher {
         
             margin-top: 0;
         }
@@ -4753,7 +4669,7 @@ input {
             }
         }
         
-        .portlet-asset-categories-navigation,
+/*         .portlet-asset-categories-navigation, */
         .portlet-site-map.project-sections {
             .portlet-body {
                 padding: 0 15px;
@@ -4842,10 +4758,11 @@ input {
                 
             }
         }
+        
+
     
         .columns-max,
         .lfr-meta-actions,
-        .portlet-asset-categories-navigation .portlet-body,
         .portlet-dynamic-data-mapping,
         .portlet-journal,
         .portlet-journal-content .taglib-asset-links,
@@ -4883,16 +4800,10 @@ input {
                 
             }
         }
-
-        .portlet-site-map.project-sections .portlet-body,
-        .taglib-asset-categories-navigation .accordion-group {
         
-            margin-left: 34.18803%; /* bootstrap .offset4:first-child */
-        }
-    
         .columns-max,
         .lfr-meta-actions,
-        .portlet-asset-categories-navigation .portlet-body,
+/*         .portlet-asset-categories-navigation .wrapper, */
         .portlet-dynamic-data-mapping,
         .portlet-journal,
         .portlet-journal-content .taglib-asset-links,
@@ -4927,6 +4838,21 @@ input {
         }
     }
     
+    @media (max-width: 1199px) {
+    
+        .portlet-asset-categories-navigation {
+                        
+            .offset4:first-child {
+                margin-left: 0; 
+            }
+            
+            .span8 {
+                width: 100%;
+            }
+            
+        }
+    }
+    
     @media (max-width: 979px) and (min-width: 768px) {
         
         .gallery {
@@ -4939,10 +4865,33 @@ input {
                 
             }
         }
+        
+        .portlet-asset-categories-navigation {
+        
+            .container {
+                width: 100%; 
+            }
+                
+            .offset4:first-child {
+                margin-left: 0; 
+            }
+            
+            .span8 {
+                width: 100%;
+            }
+        
+            .wrapper {
+                padding: 10px 15px;
+                width: 100%; 
+                
+                a {
+                    padding: 5px 23px;
+                }
+            }
+        }
     
         .columns-max,
         .lfr-meta-actions,
-        .portlet-asset-categories-navigation .portlet-body,
         .portlet-dynamic-data-mapping,
         .portlet-journal,
         .portlet-journal-content .taglib-asset-links,

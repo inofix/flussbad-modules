@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2016-12-13 15:29 by Christian Berndt
- * Version:     1.3.4
+ * Modified:    2017-04-14 16:45 by Christian Berndt
+ * Version:     1.3.5
  */
 
 /**
@@ -160,14 +160,14 @@ $( document ).ready(function() {
     var toggle = $('.toggle');
     
     /** Toggle second level navigation with headroom.js */
-	var categoriesNavigation = $('.portlet-asset-categories-navigation');	
+	var categoriesNavigation = $('.portlet-asset-categories-navigation .wrapper');	
     var sitemapPortlet = $('.portlet-site-map.project-sections');    
 	var publisher = $('.default-publisher'); 
     var story = $('.project-story');
     
     var config = { 
 		tolerance : 10,
-		onPin : function() {
+		onPin : function() {			
 			if (toggle) {
 	        	toggle.toggleClass('headroom--pinned headroom--unpinned');				
 			}
@@ -178,7 +178,7 @@ $( document ).ready(function() {
 				story.toggleClass('headroom--pinned headroom--unpinned');				
 			}			
 		},
-		onUnpin : function() {
+		onUnpin : function() {			
 			if (toggle) {
 	        	toggle.toggleClass('headroom--pinned headroom--unpinned');				
 			}
@@ -190,13 +190,34 @@ $( document ).ready(function() {
 			}			
 		}
 	}; 
+    
+	var phoneConfig = { 
+		tolerance : 10,
+		classes : {
+			initial : 'headroom--unpinned'
+		}
+	}
 
     if (categoriesNavigation) {
-    	$(categoriesNavigation).headroom(config);   	
+    	    	
+    	if (windowWidth < 768) {
+//    		console.log('phone-config');
+        	$(categoriesNavigation).css('display', 'block');
+        	$(categoriesNavigation).headroom(phoneConfig); 
+    	} else {
+        	$(categoriesNavigation).headroom(config);
+    	}
     }
     
     if (sitemapPortlet) {
-    	$(sitemapPortlet).headroom(config);  	
+    	
+    	if (windowWidth < 768) {
+//    		console.log('phone-config');
+        	$(categoriesNavigation).css('display', 'block');    		
+        	$(sitemapPortlet).headroom(phoneConfig); 
+    	} else {
+        	$(sitemapPortlet).headroom(config);  	
+    	}    	
     }
 
     /**
@@ -251,10 +272,12 @@ $( document ).ready(function() {
     if (toggle) {
         toggle.on('click', function(event) {
         	
-        	toggle.toggleClass('headroom--pinned headroom--unpinned');
+        	toggle.toggleClass('buttons--unpinned');
+//        	toggle.toggleClass('headroom--pinned headroom--unpinned');
 
             if (categoriesNavigation) {
-            	categoriesNavigation.toggleClass('headroom--pinned headroom--unpinned');
+            	categoriesNavigation.toggleClass('buttons--unpinned');
+//            	categoriesNavigation.toggleClass('headroom--pinned headroom--unpinned');
             }
 
             if (sitemapPortlet) {
@@ -262,7 +285,8 @@ $( document ).ready(function() {
             }
 
             if (publisher) {
-            	publisher.toggleClass('headroom--pinned headroom--unpinned');
+            	publisher.toggleClass('buttons--unpinned');
+//            	publisher.toggleClass('headroom--pinned headroom--unpinned');
             }
 
             if (story) {
@@ -276,22 +300,24 @@ $( document ).ready(function() {
 	 * Toggle the categories navigation and project-sitemap 
 	 * by default on mobile devices.
 	 */        
-//    if (windowWidth < 768) {
-//    	
-//    	if (categoriesNavigation) {
-//    		
-//    		categoriesNavigation.addClass("headroom--unpinned"); 
-//    	}      	
-//    	    	
-//    	if (sitemapPortlet) {
-//
-//    		sitemapPortlet.addClass("headroom--unpinned"); 
-//    	}
-//
-//    	if (toggle) {
-//    		toggle.addClass("headroom--unpinned"); 
-//    	}
-//    }
+    if (windowWidth < 768) {
+    	
+    	if (categoriesNavigation) {    		
+    		categoriesNavigation.addClass("buttons--unpinned"); 
+    	}
+    	
+//    	if (publisher) {    		
+//    		publisher.addClass("buttons--unpinned"); 
+//    	} 
+    	    	
+    	if (sitemapPortlet) {
+    		sitemapPortlet.addClass("buttons--unpinned"); 
+    	}
+
+    	if (toggle) {
+    		toggle.addClass("buttons--unpinned"); 
+    	}
+    }
 	
 	/**
 	 * Apply the affix class to the main-navigation .
