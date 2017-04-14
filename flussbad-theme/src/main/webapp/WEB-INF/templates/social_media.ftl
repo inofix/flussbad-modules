@@ -5,8 +5,8 @@
     template.
 
     Created:    2015-11-01 11:41 by Christian Berndt
-    Modified:   2017-02-16 11:33 by Christian Berndt
-    Version:    1.0.5
+    Modified:   2017-04-04 14:52 by Christian Berndt
+    Version:    1.0.6
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -42,8 +42,10 @@
 <#assign keyVisual = value_of(docXml, "keyVisual", language_id) />
 
 <#assign currentURL = "" />
-<#if request.attributes['CURRENT_COMPLETE_URL']??>
-    <#assign currentURL = request.attributes['CURRENT_COMPLETE_URL'] />
+<#if request.attributes??>
+    <#if request.attributes['CURRENT_COMPLETE_URL']??>
+        <#assign currentURL = request.attributes['CURRENT_COMPLETE_URL'] />
+    </#if>
 </#if>
 
 <#assign protocol = "http" />
