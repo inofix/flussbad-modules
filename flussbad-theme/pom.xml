@@ -9,7 +9,7 @@
 	<artifactId>flussbad-theme</artifactId>
 	<packaging>war</packaging>
 	<name>Flussbad Theme</name>
-	<version>1.2.4</version>
+	<version>1.2.5</version>
     <build>
         <plugins>
             <!-- Read properties from dev.properties in -->
