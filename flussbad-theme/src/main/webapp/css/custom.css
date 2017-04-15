@@ -4162,7 +4162,8 @@ input {
                 background: lighten($color-sand, 3%);            
                 display: none;
                 max-height: none; 
-                width: 100%;                
+                width: 100%; 
+                padding: 15px 0;                
                 
                 ul li {
                     float: none !important;
