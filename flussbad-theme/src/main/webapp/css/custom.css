@@ -4039,22 +4039,21 @@ input {
               
               .logos {
               
-                  .container {
-                  
-                      margin: 0;
-                      background-color: $color-light-gray;
-                      
-                      .logos-inner {
-                      
-                          width: 100%;
-                      
-                          a {
-                          
-                              margin: 0 15px;
-                          }
-                      }
-                   }
-               }
+                    .container {
+                    
+                            background-color: $color-light-gray;
+                            margin: 0;
+                            
+                            .logos-inner {
+                            
+                                width: 100%;
+                            
+                            a {
+                                margin: 0 15px;
+                            }
+                        }
+                    }
+                }
             }
         } 
 
@@ -4113,11 +4112,11 @@ input {
 
             &.default-publisher {
             
-                margin-top: $nav-height; 
+                margin-top: 0; 
                 
                 &.buttons--unpinned,
                 &.headroom--pinned {
-                    margin-top: $nav-height;                
+                    margin-top: 0;                
                 }
             }
         }
