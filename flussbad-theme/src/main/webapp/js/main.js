@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2017-04-14 16:45 by Christian Berndt
- * Version:     1.3.5
+ * Modified:    2017-04-15 23:48 by Christian Berndt
+ * Version:     1.3.6
  */
 
 /**
@@ -167,57 +167,86 @@ $( document ).ready(function() {
     
     var config = { 
 		tolerance : 10,
-		onPin : function() {			
+		onPin : function() {
+						
 			if (toggle) {
-	        	toggle.toggleClass('headroom--pinned headroom--unpinned');				
-			}
-			if (publisher) {
-				publisher.toggleClass('headroom--pinned headroom--unpinned');				
-			}
-			if (story) {
-				story.toggleClass('headroom--pinned headroom--unpinned');				
-			}			
+	        	toggle.toggleClass('headroom--unpinned');				
+			}		
 		},
-		onUnpin : function() {			
+		onUnpin : function() {	
+						
 			if (toggle) {
-	        	toggle.toggleClass('headroom--pinned headroom--unpinned');				
+	        	toggle.toggleClass('headroom--unpinned');
 			}
 			if (publisher) {
-				publisher.toggleClass('headroom--pinned headroom--unpinned');				
+				publisher.toggleClass('headroom--unpinned');				
 			}
 			if (story) {
-				story.toggleClass('headroom--pinned headroom--unpinned');				
+				story.toggleClass('headroom--unpinned');				
 			}			
 		}
-	}; 
-    
-	var phoneConfig = { 
-		tolerance : 10,
-		classes : {
-			initial : 'headroom--unpinned'
-		}
-	}
+	};
+  
+	/**
+	 * Manually toggle the site-map of project-sections and
+	 * the categories navigation of the default-publisher (logbook).
+	 */    
+    if (toggle) {
+        toggle.on('click', function(event) {
+        	        	
+        	if (toggle.hasClass('headroom--unpinned')) {
+        		
+        		// pin unpinned navigation
+        		
+    			toggle.toggleClass('headroom--unpinned'); 
+        		
+        		if (categoriesNavigation) {
+        			categoriesNavigation.toggleClass('headroom--unpinned'); 
+        		}
+        		
+        		if (publisher) {
+        			publisher.toggleClass('headroom--unpinned'); 
+        		}
+        		
+        	} else {
+        		
+        		// disable auto pinning by manually closing the navigation
+        		
+    			toggle.toggleClass('manually--closed'); 
+        		
+        		if (categoriesNavigation) {
+        			categoriesNavigation.toggleClass('manually--closed');
+        		}
+        		
+        		if (publisher) {
+        			publisher.toggleClass('manually--closed');    			
+        		} 
+        		
+        		// TODO: enable sitemap + story
+        	}            
+        });
+        
+    	if (windowWidth < 768) {
+			toggle.toggleClass('manually--closed'); 
+		    if (categoriesNavigation) {
+		    	categoriesNavigation.toggleClass('manually--closed');
+		    	categoriesNavigation.css('display', 'block');		    	
+		    }
+    	}
+    }
 
     if (categoriesNavigation) {
-    	    	
-    	if (windowWidth < 768) {
-//    		console.log('phone-config');
-        	$(categoriesNavigation).css('display', 'block');
-        	$(categoriesNavigation).headroom(phoneConfig); 
-    	} else {
+    	
+    	if (windowWidth > 767) {
         	$(categoriesNavigation).headroom(config);
     	}
     }
     
     if (sitemapPortlet) {
     	
-    	if (windowWidth < 768) {
-//    		console.log('phone-config');
-        	$(categoriesNavigation).css('display', 'block');    		
-        	$(sitemapPortlet).headroom(phoneConfig); 
-    	} else {
-        	$(sitemapPortlet).headroom(config);  	
-    	}    	
+    	if (windowWidth > 767) {
+        	$(sitemapPortlet).headroom(config);  	    		
+    	}   	
     }
 
     /**
@@ -263,61 +292,6 @@ $( document ).ready(function() {
            $( this ).attr("src", src); 
        });
     });
-        
-    
-	/**
-	 * Manually toggle the site-map of project-sections and
-	 * the categories navigation of the default-publisher (logbook).
-	 */    
-    if (toggle) {
-        toggle.on('click', function(event) {
-        	
-        	toggle.toggleClass('buttons--unpinned');
-//        	toggle.toggleClass('headroom--pinned headroom--unpinned');
-
-            if (categoriesNavigation) {
-            	categoriesNavigation.toggleClass('buttons--unpinned');
-//            	categoriesNavigation.toggleClass('headroom--pinned headroom--unpinned');
-            }
-
-            if (sitemapPortlet) {
-            	sitemapPortlet.toggleClass('headroom--pinned headroom--unpinned');
-            }
-
-            if (publisher) {
-            	publisher.toggleClass('buttons--unpinned');
-//            	publisher.toggleClass('headroom--pinned headroom--unpinned');
-            }
-
-            if (story) {
-            	story.toggleClass('headroom--pinned headroom--unpinned');
-            }
-        });
-    }
-      
-	
-	/**
-	 * Toggle the categories navigation and project-sitemap 
-	 * by default on mobile devices.
-	 */        
-    if (windowWidth < 768) {
-    	
-    	if (categoriesNavigation) {    		
-    		categoriesNavigation.addClass("buttons--unpinned"); 
-    	}
-    	
-//    	if (publisher) {    		
-//    		publisher.addClass("buttons--unpinned"); 
-//    	} 
-    	    	
-    	if (sitemapPortlet) {
-    		sitemapPortlet.addClass("buttons--unpinned"); 
-    	}
-
-    	if (toggle) {
-    		toggle.addClass("buttons--unpinned"); 
-    	}
-    }
 	
 	/**
 	 * Apply the affix class to the main-navigation .

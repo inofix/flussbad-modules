@@ -4,7 +4,7 @@
 $dockbar-height: 60px;
 $dockbar-nav-height: 120px;
 $nav-height: 60px;
-$categories-height: 120px;
+$categories-height: 90px;
 $container-push: -165px;
 
 /* typography */
@@ -2485,23 +2485,24 @@ input {
     .portlet-asset-categories-navigation .wrapper,
     .portlet-site-map.project-sections { 
     
-        /** hide the categories navigation by default and
-          show it via javascript after the page has been loaded */
-/*         display: none;  */
-    
         background: lighten($color-sand, 3%);
         
-/*         position: fixed;  */
         top: $nav-height;
         z-index: 10; 
-        width: 100%;  
+        width: 100%; 
+        
+        -webkit-transform: translateY(0%);
+           -moz-transform: translateY(0%);
+            -ms-transform: translateY(0%);
+             -o-transform: translateY(0%);        
+                transform: translateY(0%);
         
         will-change: transform;
         
-      -webkit-transition: -webkit-transform 200ms linear;
-         -moz-transition: -moz-transform 200ms linear;
-           -o-transition: -o-transform 200ms linear; 
-              transition: transform 200ms linear;
+        -webkit-transition: -webkit-transform 200ms linear;
+           -moz-transition: -moz-transform 200ms linear;
+             -o-transition: -o-transform 200ms linear; 
+                transition: transform 200ms linear;
         
         max-height: 120px; 
         overflow: hidden;
@@ -2511,15 +2512,7 @@ input {
             padding: 0; 
         }
         
-        &.headroom--pinned {
-          -webkit-transform: translateY(0%);
-             -moz-transform: translateY(0%);
-              -ms-transform: translateY(0%);
-               -o-transform: translateY(0%);        
-                  transform: translateY(0%);
-        }
-        
-        &.buttons--unpinned,
+        &.manually--closed,
         &.headroom--unpinned {
           -webkit-transform: translateY(-100%);
              -moz-transform: translateY(-100%);
@@ -2560,7 +2553,8 @@ input {
             @include rotate(45deg);             
         }
         
-        &.buttons--unpinned .toggle-button,
+        
+        &.manually--closed .toggle-button,
         &.headroom--unpinned .toggle-button {
           -webkit-transition: -webkit-transform 0.2s ease-in-out;
              -moz-transition: -moz-transform 0.2s ease-in-out;
@@ -2659,7 +2653,7 @@ input {
                 } 
             }
                           
-            &.buttons--unpinned {
+            &.manually--closed {
                 margin-top: 0; 
             }
         }
@@ -4114,7 +4108,7 @@ input {
             
                 margin-top: 0; 
                 
-                &.buttons--unpinned,
+                &.manually--closed,
                 &.headroom--pinned {
                     margin-top: 0;                
                 }
@@ -4163,12 +4157,26 @@ input {
                 display: none;
                 max-height: none; 
                 width: 100%; 
-                padding: 15px 0;                
+                padding: 15px 0;  
                 
+                -webkit-transform: translateY(0%);
+                   -moz-transform: translateY(0%);
+                    -ms-transform: translateY(0%);
+                     -o-transform: translateY(0%);
+                        transform: translateY(0%);
+                                              
                 ul li {
                     float: none !important;
                     display: block;
                 }
+                
+                &.manually--closed {
+                  -webkit-transform: translateY(-100%);
+                     -moz-transform: translateY(-100%);
+                      -ms-transform: translateY(-100%);
+                       -o-transform: translateY(-100%);
+                          transform: translateY(-100%);
+                } 
             }        
         }
         
