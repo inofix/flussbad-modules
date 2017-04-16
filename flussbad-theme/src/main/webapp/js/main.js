@@ -2,8 +2,8 @@
  * Scripts required by the flussbad-theme.
  *
  * Created:     2015-09-02 22:31 by Christian Berndt
- * Modified:    2017-04-15 23:48 by Christian Berndt
- * Version:     1.3.6
+ * Modified:    2017-04-16 16:06 by Christian Berndt
+ * Version:     1.3.7
  */
 
 /**
@@ -161,7 +161,7 @@ $( document ).ready(function() {
     
     /** Toggle second level navigation with headroom.js */
 	var categoriesNavigation = $('.portlet-asset-categories-navigation .wrapper');	
-    var sitemapPortlet = $('.portlet-site-map.project-sections');    
+    var sitemapPortlet = $('.portlet-site-map.project-sections .wrapper');    
 	var publisher = $('.default-publisher'); 
     var story = $('.project-story');
     
@@ -204,9 +204,17 @@ $( document ).ready(function() {
         			categoriesNavigation.toggleClass('headroom--unpinned'); 
         		}
         		
-        		if (publisher) {
+        		if (publisher) {        			
         			publisher.toggleClass('headroom--unpinned'); 
         		}
+        		
+        		if (sitemapPortlet) {
+        			sitemapPortlet.toggleClass('headroom--unpinned');
+        		}
+        		
+        		if (story) {
+        			story.toggleClass('headroom--unpinned');    			
+        		} 
         		
         	} else {
         		
@@ -222,15 +230,28 @@ $( document ).ready(function() {
         			publisher.toggleClass('manually--closed');    			
         		} 
         		
-        		// TODO: enable sitemap + story
+        		if (sitemapPortlet) {
+        			sitemapPortlet.toggleClass('manually--closed');
+        		}
+        		
+        		if (story) {
+        			story.toggleClass('manually--closed');    			
+        		} 
         	}            
         });
         
     	if (windowWidth < 768) {
+    		
 			toggle.toggleClass('manually--closed'); 
+			
 		    if (categoriesNavigation) {
 		    	categoriesNavigation.toggleClass('manually--closed');
 		    	categoriesNavigation.css('display', 'block');		    	
+		    }
+		    
+		    if (sitemapPortlet) {
+		    	sitemapPortlet.toggleClass('manually--closed');
+		    	sitemapPortlet.css('display', 'block');		    	
 		    }
     	}
     }
