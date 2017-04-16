@@ -2282,11 +2282,11 @@ input {
     
     .project-story {
     
-        -webkit-transition: margin-top 0.2s; 
-        -moz-transition: margin-top 0.2s; 
-        -ms-transition: margin-top 0.2s; 
-        -o-transition: margin-top 0.2s; 
-        transition: margin-top 0.2s;
+         -webkit-transition: margin-top 200ms linear; 
+        -moz-transition: margin-top 200ms linear; 
+        -ms-transition: margin-top 200ms linear;
+        -o-transition: margin-top 200ms linear;
+        transition: margin-top 200ms linear;
         
         margin-top: $categories-height;
          
@@ -2309,9 +2309,10 @@ input {
                 margin-left: -18px;
             }
         }
-        
+                
+        &.manually--closed,
         &.headroom--pinned {
-            margin-top: 0; 
+            margin-top: 0;                
         }
     }
     
@@ -2446,7 +2447,8 @@ input {
     
 /* Portlets */
     
-    .portlet-asset-categories-navigation {
+    .portlet-asset-categories-navigation,
+    .portlet-site-map.project-sections {
     
         width: 100%; 
         z-index: 10;
@@ -2480,51 +2482,50 @@ input {
         .portlet-borderless-container {      
             min-height: 0; 
         }
-    }
+        
+        .wrapper { 
+        
+            background: lighten($color-sand, 3%);
+            
+            top: $nav-height;
+            z-index: 10; 
+            width: 100%; 
+            
+            -webkit-transform: translateY(0%);
+               -moz-transform: translateY(0%);
+                -ms-transform: translateY(0%);
+                 -o-transform: translateY(0%);        
+                    transform: translateY(0%);
+            
+            will-change: transform;
+            
+            -webkit-transition: -webkit-transform 200ms linear;
+               -moz-transition: -moz-transform 200ms linear;
+                 -o-transition: -o-transform 200ms linear; 
+                    transition: transform 200ms linear;
+            
+            max-height: 120px; 
+            overflow: hidden;
+            
+            ul {
+                margin: 15px 0; 
+                padding: 0; 
+            }
+            
+            &.manually--closed,
+            &.headroom--unpinned {
+              -webkit-transform: translateY(-100%);
+                 -moz-transform: translateY(-100%);
+                  -ms-transform: translateY(-100%);
+                   -o-transform: translateY(-100%);
+                      transform: translateY(-100%);
+            }  
     
-    .portlet-asset-categories-navigation .wrapper,
-    .portlet-site-map.project-sections { 
-    
-        background: lighten($color-sand, 3%);
-        
-        top: $nav-height;
-        z-index: 10; 
-        width: 100%; 
-        
-        -webkit-transform: translateY(0%);
-           -moz-transform: translateY(0%);
-            -ms-transform: translateY(0%);
-             -o-transform: translateY(0%);        
-                transform: translateY(0%);
-        
-        will-change: transform;
-        
-        -webkit-transition: -webkit-transform 200ms linear;
-           -moz-transition: -moz-transform 200ms linear;
-             -o-transition: -o-transform 200ms linear; 
-                transition: transform 200ms linear;
-        
-        max-height: 120px; 
-        overflow: hidden;
-        
-        ul {
-            margin: 15px 0; 
-            padding: 0; 
-        }
-        
-        &.manually--closed,
-        &.headroom--unpinned {
-          -webkit-transform: translateY(-100%);
-             -moz-transform: translateY(-100%);
-              -ms-transform: translateY(-100%);
-               -o-transform: translateY(-100%);
-                  transform: translateY(-100%);
-        }  
-
-        &:before {
-            display: table;
-            background: lighten($color-sand, 3%);   
-        }
+            &:before {
+                display: table;
+                background: lighten($color-sand, 3%);   
+            }
+        }        
     }
     
     .toggle {
@@ -2567,8 +2568,8 @@ input {
     
     .portlet-asset-categories-navigation,
     .portlet-asset-categories-navigation.affix, 
-    .portlet-asset-categories-navigation.affix-top {
-    
+    .portlet-asset-categories-navigation.affix-top, 
+    .portlet-site-map.project-sections {
         position: fixed;
         top: $nav-height;
     }
@@ -3174,31 +3175,7 @@ input {
         margin-top: $nav-height;
     }
     
-    .portlet-site-map {    
-    
-        &.project-sections {
-            
-            a {
-            
-                @include filter-item();
-            }
-            
-            a.current {
-            
-                @include filter-item-selected(); 
-            }
-            
-            .portlet-borderless-container {
-            
-                min-height: 0; 
-            }
-        
-            li {
-            
-                line-height: 45px;
-                display: inline-block; 
-            }
-        } 
+    .portlet-site-map {
         
         &.search-map {
         
@@ -4145,7 +4122,8 @@ input {
             } 
         }
         
-        .portlet-asset-categories-navigation {
+        .portlet-asset-categories-navigation, 
+        .portlet-site-map.project-sections {
         
             .portlet-body {
                 padding: 0 !important;
@@ -4178,22 +4156,6 @@ input {
                           transform: translateY(-100%);
                 } 
             }        
-        }
-        
-        .portlet-site-map.project-sections {
-        
-            display: none;
-            
-            .portlet-body {
-                ul li {
-                    float: none !important;
-                    display: block;
-                }
-            }
-        }
-        
-        .portlet-site-map.project-sections {
-            
         }
 
         .portlet-asset-publisher.story-publisher {
@@ -4422,8 +4384,7 @@ input {
         .portlet-site-map.project-sections .portlet-borderless-container,
         .portlet-site-map.search-map .portlet-borderless-container,
         .web-form-portlet,
-        .web-form-portlet .portlet-borderless-container
-         {
+        .web-form-portlet .portlet-borderless-container {
         
             width: 100%; /* bootstrap .container */
         }
@@ -4677,13 +4638,6 @@ input {
             }
         }
         
-/*         .portlet-asset-categories-navigation, */
-        .portlet-site-map.project-sections {
-            .portlet-body {
-                padding: 0 15px;
-            }
-        }  
-        
         .portlet-search {
                                
             .disabled {
@@ -4766,16 +4720,13 @@ input {
                 
             }
         }
-        
-
-    
+           
         .columns-max,
         .lfr-meta-actions,
         .portlet-dynamic-data-mapping,
         .portlet-journal,
         .portlet-journal-content .taglib-asset-links,
         .portlet-search,
-        .portlet-site-map.project-sections .portlet-borderless-container,
         .portlet-site-map.search-map .portlet-borderless-container,
         .web-form-portlet {
         
@@ -4811,13 +4762,10 @@ input {
         
         .columns-max,
         .lfr-meta-actions,
-/*         .portlet-asset-categories-navigation .wrapper, */
         .portlet-dynamic-data-mapping,
         .portlet-journal,
         .portlet-journal-content .taglib-asset-links,
         .portlet-search,
-        .portlet-site-map.project-sections .portlet-borderless-container,
-        .portlet-site-map.search-map .portlet-borderless-container,
         .web-form-portlet {
         
             width: 1170px; /* bootstrap .container */
@@ -4848,7 +4796,8 @@ input {
     
     @media (max-width: 1199px) {
     
-        .portlet-asset-categories-navigation {
+        .portlet-asset-categories-navigation,
+        .portlet-site-map.project-sections {
                         
             .offset4:first-child {
                 margin-left: 0; 
@@ -4874,7 +4823,8 @@ input {
             }
         }
         
-        .portlet-asset-categories-navigation {
+        .portlet-asset-categories-navigation, 
+        .portlet-site-map.project-sections {
         
             .container {
                 width: 100%; 
@@ -4904,7 +4854,6 @@ input {
         .portlet-journal,
         .portlet-journal-content .taglib-asset-links,
         .portlet-search,
-        .portlet-site-map.project-sections .portlet-borderless-container,
         .portlet-site-map.search-map .portlet-borderless-container,
         .web-form-portlet  {
             width: 724px; /* bootstrap .container */
