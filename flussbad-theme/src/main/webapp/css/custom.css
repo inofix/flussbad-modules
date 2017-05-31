@@ -1412,7 +1412,7 @@ input {
             
             h3 {
             
-                color: $color-turquois;
+                color: $color-gray-green;
             }
             
             h2 {
@@ -3948,6 +3948,15 @@ input {
             .toc {
                display: none; 
             }
+            
+            .portlet-boundary {
+               
+                &.offset-1.portlet-asset-publisher {
+                    .gallery {
+                        margin-left: 0;
+                    }
+                }
+            }
                  
             
 /* ----------------------------------------------- responsive front-page */
@@ -4115,6 +4124,7 @@ input {
         }
         
         .story {
+        
             .asset-links {
             
                 .gallery,
@@ -4124,11 +4134,16 @@ input {
                 }
                 
                 .gallery {
+                                
                     .span4 {
                         padding: 30px 0 15px; 
                         border-bottom: 1px solid #73A0A2 
                     }
                 }
+            }
+            
+            .gallery {
+                padding: 0; 
             } 
         }
         
