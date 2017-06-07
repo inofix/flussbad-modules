@@ -570,8 +570,13 @@ input {
            }           
        }
     }
-
-
+    
+    #portlet_status {
+        width: 1170px; /* bs2 container */
+        margin-left: auto; 
+        margin-right: auto;
+        padding: 30px;
+    }
 
 /* ----------------------------------------------- Dockbar */
     
@@ -2030,7 +2035,6 @@ input {
             
             }
         }
-        
                         
         .asset-links {
         
@@ -2091,33 +2095,49 @@ input {
                 }                    
             }
             
-            .gallery {
+            .categories-list {
             
-                padding-bottom: 30px; 
-                background: magenta;
+                list-style: none; 
+                margin: 0; 
                 
-                .category {
+                a {
                 
+                    border-bottom: 1px solid $color-turquois;
+                    color: $color-turquois;
                     font-size: $small-font-size;
-                    
-                    span {
-                        border-bottom: 1px solid $color-turquois;
-                        
-                        &:hover {
-                            border-bottom: 1px solid darken($color-turquois, 20%);                        
+                                            
+                    &:hover {
+                        border-bottom: 1px solid darken($color-turquois, 20%);                        
+                        color: darken($color-turquois, 20%);
+                    }                 
+                }                    
+                
+                h3, li {
+                    display: inline;
+                }
+                
+                li {
+                    h3.category {
+                        &:after {
+                            content: "/"; 
+                            color: white;
+                            margin-left: 5px;
                         }
                     }
                     
-                    &:after {
-                        content: "/"; 
-                        color: white;
-                        margin-left: 5px;
-                    }
-                    
-                    &:last-of-type:after {
-                        content: ""; 
+                    &:last-child {
+                        h3.category {
+                            &:after {
+                                content: "";
+                            }
+                        }
                     }
                 }
+            }
+            
+            .gallery {
+            
+                padding-bottom: 30px;
                 
                 .keyvisual {
                     height: 208px !important; 
@@ -2144,6 +2164,24 @@ input {
             
             .container {
                 background: $color-gray-green;
+            }
+            
+            .list {
+                .categories-list {
+                
+                    display: inline; 
+                    
+                    h3.category {
+                    
+                        &:before {
+                            content: "/"; 
+                            color: white;
+                            margin-left: 5px;
+                            margin-right: 5px;
+                        }                    
+                    }
+                    
+                }
             }
         }
         
@@ -4667,10 +4705,8 @@ input {
             
             .disabled.first {
                 display: none !important;
-            }
-            
-        }     
-
+            }         
+        }
         
         .story.with-keyvisual .toc,
         .toc {
@@ -4817,6 +4853,13 @@ input {
     
     @media (max-width: 1199px) {
     
+        #portlet_status {
+            width: 940px; /* bs2 container */
+            margin-left: auto; 
+            margin-right: auto;
+            padding: 30px;
+        }
+    
         .portlet-asset-categories-navigation,
         .portlet-site-map.project-sections {
                         
@@ -4829,6 +4872,15 @@ input {
             }
             
         }
+    }
+    
+    @media (max-width: 979px) { 
+      
+        #portlet_status {
+            width: auto;
+            padding: 15px;
+            margin: 0;
+        }     
     }
     
     @media (max-width: 979px) and (min-width: 768px) {
