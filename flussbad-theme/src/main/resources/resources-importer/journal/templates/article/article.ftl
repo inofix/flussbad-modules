@@ -2,8 +2,8 @@
     article.ftl: Format the article structure
 
     Created:    2015-08-28 17:50 by Christian Berndt
-    Modified:   2017-02-10 18:07 by Christian Berndt
-    Version:    1.4.2
+    Modified:   2017-06-07 16:22 by Christian Berndt
+    Version:    1.4.5
 
     Please note: Although this template is stored in the
     site's context it's source is managed via git. Whenever you
@@ -194,6 +194,41 @@
     <#return value />
 </#function>
 
+<#macro categories_list categories>
+    <#if categories?size gt 0 >
+        <ul class="categories-list">
+            <#list categories as category >
+            
+                <#assign properties = propertyService.getCategoryProperties(category.getCategoryId()) />
+                <#assign layoutUuid = ""/>
+                <#assign categoryURL = "" />
+                <#assign queryString = "" />
+                <#list properties as property>
+                    <#if property.key == "queryString">
+                        <#assign queryString =  "?" + property.value?replace("--", "=") />                                                       
+                        <#assign queryString =  queryString?replace("$$", "&") />                                                       
+                    </#if> 
+                    <#if property.key == "layoutUuid">
+                        <#assign layoutUuid = property.value />
+                        <#if layoutUuid?has_content >
+                            <#if layoutLocalService.getLayoutByUuidAndGroupId(layoutUuid, groupId, false)??>
+                                <#assign layout = layoutLocalService.getLayoutByUuidAndGroupId(layoutUuid, groupId, false) />
+                                <#assign groupURL = layout.getGroup().getFriendlyURL() />
+                                <#assign categoryURL = prefix + layout.friendlyURL />
+                            </#if>
+                        </#if>                              
+                    </#if>
+                </#list>
+                <#if layoutUuid?has_content >
+                    <li>
+                        <h3 class="category"><a class="category" href="${categoryURL + queryString}">${category.getTitle(language_id)}</a></h3>
+                    </li>
+                </#if>
+            </#list>
+        </ul>
+    </#if>
+</#macro>
+
 <#macro images section>   
     <#if section.image.getSiblings()?has_content>
         <#assign j = 1 />
@@ -380,36 +415,8 @@
         </#if>      
 
         <div class="${cssStyle}">
-        
-            <#if categories?size gt 0 >
-                <ul>
-                    <#list categories as category >
-                    
-                        <#assign properties = propertyService.getCategoryProperties(category.getCategoryId()) />
-                        <#assign layoutUuid = ""/>
-                        <#assign categoryURL = "" />
-                        <#assign queryString = "" />
-                        <#list properties as property>
-                            <#if property.key == "queryString">
-                                <#assign queryString =  "?" + property.value?replace("--", "=") />                                                       
-                                <#assign queryString =  queryString?replace("$$", "&") />                                                       
-                            </#if> 
-                            <#if property.key == "layoutUuid">
-                                <#assign layoutUuid = property.value />
-                                <#assign layout = layoutLocalService.getLayoutByUuidAndGroupId(layoutUuid, groupId, false) />
-                                <#assign groupURL = layout.getGroup().getFriendlyURL() />
-                                <#assign categoryURL = prefix + layout.friendlyURL />
-                            </#if>
-                        </#list>
-                        
-                        <#if layoutUuid?has_content >
-                            <li>
-                                <h3 class="category"><a href="${categoryURL + queryString}">${category.getTitle(language_id)}</a></h3>
-                            </li>
-                        </#if>
-                    </#list>
-                </ul>
-            </#if>
+                
+            <@categories_list categories/>
             
             <#if headline??>
                 <#if headline.getData()?has_content>
@@ -624,7 +631,7 @@
                 </div> <#-- /.media -->
             </#if>            
             
-            <#-- Include the common social-media snippet -->         
+            <#-- Include the common social-media snippet -->          
             <#include "${templatesPath}/72079" /> 
                           
         </div> <#-- / .span8 -->
@@ -793,31 +800,7 @@
                                             <div class="keyvisual" style="${style}"></div>
                                         </#if>
                                         
-                                        <#if categories?size gt 0 >
-                                            <div class="categories">
-                                                <#list categories as category >
-                                                    <#assign properties = propertyService.getCategoryProperties(category.getCategoryId()) />
-                                                    <#assign layoutUuid = ""/>
-                                                    <#assign categoryURL = "#" />
-                                                    <#assign queryString = "" />
-                                                    <#list properties as property>
-                                                        <#if property.key == "queryString">
-                                                            <#assign queryString =  "?" + property.value?replace("--", "=") />                                                       
-                                                            <#assign queryString =  queryString?replace("$$", "&") />                                                       
-                                                        </#if>   
-                                                        <#if property.key == "layoutUuid">
-                                                            <#assign layoutUuid = property.value />
-                                                            <#assign layout = layoutLocalService.getLayoutByUuidAndGroupId(layoutUuid, groupId, false) />
-                                                            <#assign groupURL = layout.getGroup().getFriendlyURL() />
-                                                            <#assign categoryURL = prefix + layout.friendlyURL />
-                                                        </#if>
-                                                    </#list>
-                                                    <#if layoutUuid?has_content >
-                                                        <a href="${categoryURL + queryString}" class="category"><span>${category.getTitle(language_id)}</span></a>
-                                                    </#if>
-                                                </#list>
-                                            </div>
-                                        </#if>                                
+                                        <@categories_list categories/>                               
                                     
                                         <#if headline?has_content>
                                             <h2><a href="${viewURL}">${headline}</a></h2>
@@ -871,33 +854,9 @@
                                         <div class="container">
                                             <div class="span4">
                                                 <span class="date">${dateUtil.getDate(linkEntry.publishDate, "dd MMM yyyy", locale)}</span>
-                                                <#if categories?size gt 0 >
-                                                    <#list categories as category >
-                                                    
-                                                        <#assign properties = propertyService.getCategoryProperties(category.getCategoryId()) />
-                                                        <#assign layoutUuid = ""/>
-                                                        <#assign categoryURL = "#" />
-                                                        <#assign queryString = "" />
-                                                        <#list properties as property>
-                                                            <#if property.key == "queryString">
-                                                                <#assign queryString =  "?" + property.value?replace("--", "=") />                                                       
-                                                                <#assign queryString =  queryString?replace("$$", "&") />                                                       
-                                                            </#if>
-                                                            <#if property.key == "layoutUuid">
-                                                                <#assign layoutUuid = property.value />
-                                                                <#assign layout = layoutLocalService.getLayoutByUuidAndGroupId(layoutUuid, groupId, false) />
-                                                                <#assign groupURL = layout.getGroup().getFriendlyURL() />
-                                                                <#assign categoryURL = prefix + layout.friendlyURL />
-                                                            </#if>
-                                                            
-                                                        </#list>
-                                                        
-                                                        <#if layoutUuid?has_content >
-                                                            / <a href="${categoryURL + queryString}" class="category">${category.getTitle(language_id)}</a>
-                                                        </#if>
-                                                        
-                                                    </#list>
-                                                </#if>
+                                                
+                                                <@categories_list categories/>                               
+
                                             </div>
                                             
                                             <div class="span8">
