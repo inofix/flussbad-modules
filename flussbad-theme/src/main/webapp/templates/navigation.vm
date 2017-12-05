@@ -140,9 +140,6 @@
             </div>
         </div>
     </div>
-    
-##    theme_display.getURLCurrent().contains("$prefix") = $theme_display.getURLCurrent().contains("$prefix")
-    
 </nav>
 
 
