@@ -3,11 +3,22 @@
 ## the example of navigation.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:59 by Christian Berndt
-## Modified:    2017-04-20 15:05 by Christian Berndt
-## Version:     1.0.9
+## Modified:    2017-12-05 12:25 by Christian Berndt
+## Version:     1.1.0
 ##
 
-#set ($brand= $theme_display.getThemeSetting('brand'))
+#set ($brand = $theme_display.getThemeSetting('brand'))
+#set ($group_name = $theme_display.getScopeGroup().getName().toLowerCase())
+#set ($home_url = $theme_display.getURLHome())
+#set ($path_friendly_url_public = $theme_display.getPathFriendlyURLPublic())
+#set ($prefix = "$path_friendly_url_public/$group_name")
+
+#if ($theme_display.getURLCurrent().contains("$prefix")) 
+    #set ($home_url = $prefix)          ## without virtual host configured    
+#else 
+    #set ($home_url = "/")              ## with virtual host configured    
+#end
+
 
 <nav class="$nav_css_class navbar navbar-fixed-top top site-navigation" id="navigation" role="navigation">
     <div class="navbar-inner">
@@ -16,7 +27,7 @@
                 <span class="icon-reorder"></span>
             </button>
             <a href="javascript:;" id="langPopover2"><span class="icon icon-globe"></span></a>      
-            <a class="brand" href="$site_default_url" title="#language_format ("go-to-x", ["home"])">$brand</a>
+            <a class="brand" href="$home_url" title="#language_format ("go-to-x", ["home"])">$brand</a>
             <div class="collapse nav-collapse">
                 <ul aria-label="#language ("site-pages")" id="navCollapse" class="nav" role="menubar">
                     #foreach ($nav_item in $nav_items)
@@ -129,7 +140,12 @@
             </div>
         </div>
     </div>
+    
+##    theme_display.getURLCurrent().contains("$prefix") = $theme_display.getURLCurrent().contains("$prefix")
+    
 </nav>
+
+
 
 <script>
     Liferay.Data.NAV_LIST_SELECTOR = '.navbar-inner .nav-collapse > ul';
