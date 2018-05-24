@@ -3,8 +3,8 @@
 ## the example of portal_normal.vm of Liferay's classic-theme.
 ##
 ## Created:     2015-08-31 16:18 by Christian Berndt
-## Modified:    2017-02-10 13:43 by Christian Berndt
-## Version:     1.2.8
+## Modified:    2018-05-24 by Michael Lustenberger
+## Version:     1.2.9
 ##
 <!DOCTYPE html>
 
@@ -322,6 +322,9 @@ $theme.include($body_top_include)
 $theme.include($body_bottom_include)
 
 $theme.include($bottom_include)
+
+## Opt-Out
+<iframe style="border: 0; height: 8em; width: 100%; opacity: 0.6; background-color: #f6f6f6;" src="https://piwik.inofix.net/index.php?module=CoreAdminHome&action=optOut&idsite=1&language=de"></iframe>
 
 ## 
 ## load required javascripts (main.js is loaded by default)
