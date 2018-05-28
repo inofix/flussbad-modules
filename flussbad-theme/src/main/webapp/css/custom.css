@@ -1076,9 +1076,8 @@ input {
 
                 label.muted {
 /*                    opacity: 0.05; */
-                    left: 80px;
+                    width: 60%;
                 }
-
             }
         }
 

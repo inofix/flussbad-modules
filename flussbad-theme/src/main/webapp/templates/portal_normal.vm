@@ -197,6 +197,10 @@ $theme.include($body_top_include)
                 $velocityPortletPreferences.setValue("fieldType3", "text")
                 $velocityPortletPreferences.setValue("fieldLabel4", "E-Mail")
                 $velocityPortletPreferences.setValue("fieldType4", "text")
+                $velocityPortletPreferences.setValue("fieldLabel5", "Ich bestätige hiermit die neuen Datenschutzrichtlinien")
+                $velocityPortletPreferences.setValue("fieldLabel5_de_DE", "Ich bestätige hiermit die neuen Datenschutzrichtlinien.")
+                $velocityPortletPreferences.setValue("fieldLabel5_en_US", "I confirm the new data protection terms and conditions.")
+                $velocityPortletPreferences.setValue("fieldType5", "checkbox")
 
                 $velocityPortletPreferences.setValue("emailFromAddress", "portal@flussbad-berlin.de")
                 $velocityPortletPreferences.setValue("emailFromName", "Website Flussbad Berlin")
@@ -207,7 +211,7 @@ $theme.include($body_top_include)
                 $velocityPortletPreferences.setValue("successURL", "/web/internet/newsletter/anmeldebestaetigung")
                                 
                 #set( $portletId = "1_WAR_webformportlet_INSTANCE_Kone7SQBx8fD" )          
-##                #resetPreferences($portletId, $requestVars, $velocityPortletPreferences)
+##                 #resetPreferences($portletId, $requestVars, $velocityPortletPreferences)
                 $theme.runtime("1_WAR_webformportlet_INSTANCE_Kone7SQBx8fD", "", $velocityPortletPreferences.toString())
                 
                
@@ -239,7 +243,7 @@ $theme.include($body_top_include)
 
                 ## Reset portlet preferences
                 #set( $portletId = "56_INSTANCE_f6b8" )          
-##                #resetPreferences($portletId, $requestVars, $velocityPortletPreferences)
+##                 #resetPreferences($portletId, $requestVars, $velocityPortletPreferences)
                 
                 ## Set the articleId                 
                 $velocityPortletPreferences.setValue("articleId", "$social_article_id")
