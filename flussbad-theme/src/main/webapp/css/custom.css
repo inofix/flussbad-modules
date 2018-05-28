@@ -1075,7 +1075,8 @@ input {
                 }
                 
                 label.muted {
-                    opacity: 0.05;
+/*                    opacity: 0.05; */
+                    left: 80px;
                 }
             
             }
@@ -1093,6 +1094,11 @@ input {
         
            display: none;
         }
+
+        .input-checkbox-wrapper {
+
+            display: block;
+            height: 70px;
     }
     
 
